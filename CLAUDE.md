@@ -27,6 +27,40 @@
 编写代码 → /build 编译 → /harmonyos-ui-inspect --auto-hap --emulator 5555 验证 UI
 ```
 
+## 环境配置（.env）
+
+项目根目录的 `.env` 文件为 `build` 和 `harmonyos-ui-inspect` 两个 skill 提供环境信息。
+
+### DEVECO_HOME（必填）
+
+DevEco Studio 安装路径。`build` 用它定位 ohpm/hvigor/node/Java，`ui-inspect` 用它自动检测 hdc。
+
+各平台典型值：
+
+| 平台 | 值 |
+|------|---|
+| macOS | `DEVECO_HOME=/Applications/DevEco-Studio.app/Contents` |
+| Windows | `DEVECO_HOME=C:\Program Files\Huawei\DevEco Studio` |
+| Linux | `DEVECO_HOME=/opt/deveco-studio` |
+
+### CANGJIE_SDK_HOME-8k（可选）
+
+覆盖仓颉 SDK 路径。不配置时自动在 `~/.cangjie-sdk/` 下检测。
+
+| 平台 | 示例 |
+|------|------|
+| macOS/Linux | `CANGJIE_SDK_HOME-8k=/Users/xxx/.cangjie-sdk/6.0/cangjie` |
+| Windows | `CANGJIE_SDK_HOME-8k=C:\Users\xxx\.cangjie-sdk\6.0\cangjie` |
+
+### hdc 路径
+
+无需单独配置。`ui_capture.py` 按以下顺序自动检测：
+1. 系统 PATH 中的 `hdc`
+2. `.env` 中 `DEVECO_HOME` 推导：`$DEVECO_HOME/sdk/default/openharmony/toolchains/hdc`
+3. macOS 默认路径：`/Applications/DevEco-Studio.app/Contents/sdk/default/openharmony/toolchains/hdc`
+
+> Windows 用户注意：`.env` 中的路径使用反斜杠（`C:\...`）或正斜杠（`C:/...`）均可，脚本内部会统一处理。
+
 ## 语言与风格
 
 - 文档和代码注释使用**中文**

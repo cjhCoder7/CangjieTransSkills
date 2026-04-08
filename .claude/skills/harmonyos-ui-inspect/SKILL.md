@@ -27,7 +27,7 @@ argument-hint: "[--scenario scenario.json] [--emulator port]"
 
 ### Step 0：确认设备连接
 
-```powershell
+```bash
 hdc list targets
 ```
 
@@ -48,7 +48,7 @@ hdc list targets
 
 常用命令：
 
-```powershell
+```bash
 # 在鸿蒙项目目录运行（自动检测 bundle/ability）
 cd <鸿蒙项目目录>
 python "${CLAUDE_SKILL_DIR}/ui_capture.py" --out ./ui_capture_output
@@ -88,10 +88,10 @@ python "${CLAUDE_SKILL_DIR}/ui_capture.py" --emulator 5555 \
 
 脚本不可用时，可手动执行等价命令：
 
-```powershell
-hdc shell aa start -a EntryAbility -b com.example.openvk330
-Start-Sleep 3
-hdc shell snapshot_display -f /data/local/tmp/screen.png
+```bash
+hdc shell aa start -a EntryAbility -b com.example.personalfinancedashboard
+sleep 3
+hdc shell uitest screenCap -p /data/local/tmp/screen.png
 hdc file recv /data/local/tmp/screen.png ./screenshot.png
 hdc shell uitest dumpLayout -p /data/local/tmp/layout.json
 hdc file recv /data/local/tmp/layout.json ./layout.json
@@ -132,7 +132,7 @@ hdc file recv /data/local/tmp/layout.json ./layout.json
 
 ### Step 3：执行交互验证
 
-```powershell
+```bash
 python "${CLAUDE_SKILL_DIR}/ui_capture.py" \
   --emulator 5555 --scenario ./auto_scenario.json --out ./ui_capture_output
 ```
