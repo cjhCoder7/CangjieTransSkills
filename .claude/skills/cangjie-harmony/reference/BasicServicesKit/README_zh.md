@@ -1,0 +1,25 @@
+# Basic Services Kit（基础服务）（Beta特性）
+
+- 仓颉API
+    - 设备管理
+        - [ohos.battery_info（电量信息）](cj-apis-battery_info.md)（Beta特性）
+        - [ohos.device_info（设备信息）](cj-apis-device_info.md)（Beta特性）
+    - 数据文件处理
+        - [ohos.request（上传下载）](cj-apis-request-agent.md)（Beta特性）
+    - 进程线程通信
+        - [ohos.common_event_manager（公共事件模块）](cj-apis-common_event_manager.md)（Beta特性）
+    - 其他
+        - [ohos.settings（设置数据项名称）](cj-apis-settings.md)（Beta特性）
+        - [ohos.system_date_time（系统时间、时区）](cj-apis-system_date_time.md)（Beta特性）
+        - [ohos.common_event_subscriber](cj-apis-common_event_subscriber.md)（Beta特性）
+        - [ohos.common_event_subscribe_info](cj-apis-common_event_subscribe_info.md)（Beta特性）
+        - [ohos.common_event_data](cj-apis-common_event_data.md)（Beta特性）
+        - [ohos.common_event_publish_data](cj-apis-common_event_publish_data.md)（Beta特性）
+        - [ohos.value_type](cj-apis-value_type.md)（Beta特性）
+- 错误码
+    - [上传下载错误码](cj-errorcode-request.md)（Beta特性）
+    - [时间时区服务错误码](cj-errorcode-time.md)（Beta特性）
+    - [事件错误码](cj-errorcode-common_event_service.md)（Beta特性）
+    - [系统电源管理错误码](cj-errorcode-power.md)（Beta特性）
+    - [账号管理错误码](cj-errorcode-basic-account.md)（Beta特性）
+    - [设置数据项错误码](cj-errorcode-settings.md)（Beta特性）

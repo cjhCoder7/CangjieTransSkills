@@ -1,0 +1,36 @@
+# Crypto Architecture Kit（加解密算法框架服务）（Beta特性）
+
+- [Crypto Architecture Kit简介](cj-crypto-architecture-kit-intro.md)（Beta特性）
+- 密钥生成和转换
+    - [密钥生成与转换介绍](cj-crypto-key-generation-conversion-overview.md)（Beta特性）
+    - 密钥生成和转换规格
+        - [对称密钥生成和转换规格](cj-crypto-sym-key-generation-conversion-spec.md)（Beta特性）
+    - 密钥生成和转换开发指导
+        - [随机生成对称密钥](cj-crypto-generate-sym-key-randomly.md)（Beta特性）
+        - [指定二进制数据转换对称密钥](cj-crypto-convert-binary-data-to-sym-key.md)（Beta特性）
+- 加解密
+    - [加解密介绍](cj-crypto-encryption-decryption-overview.md)（Beta特性）
+    - 加解密算法规格
+        - [对称密钥加解密算法规格](cj-crypto-sym-encrypt-decrypt-spec.md)（Beta特性）
+        - [非对称密钥加解密算法规格](cj-crypto-asym-encrypt-decrypt-spec.md)（Beta特性）
+        - [分段加解密说明](cj-crypto-encrypt-decrypt-by-segment.md)（Beta特性）
+    - 加解密开发指导
+        - [使用AES对称密钥（GCM模式）加解密](cj-crypto-aes-sym-encrypt-decrypt-gcm.md)（Beta特性）
+        - [使用AES对称密钥（CCM模式）加解密](cj-crypto-aes-sym-encrypt-decrypt-ccm.md)（Beta特性）
+        - [使用AES对称密钥（CBC模式）加解密](cj-crypto-aes-sym-encrypt-decrypt-cbc.md)（Beta特性）
+        - [使用AES对称密钥（ECB模式）加解密](cj-crypto-aes-sym-encrypt-decrypt-ecb.md)（Beta特性）
+        - [使用AES对称密钥（GCM模式）分段加解密](cj-crypto-aes-sym-encrypt-decrypt-gcm-by-segment.md)（Beta特性）
+        - [使用3DES对称密钥（ECB模式）加解密](cj-crypto-3des-sym-encrypt-decrypt-ecb.md)（Beta特性）
+        - [使用SM4对称密钥（ECB模式）加解密](cj-crypto-sm4-sym-encrypt-decrypt-ecb.md)（Beta特性）
+        - [使用SM4对称密钥（CBC模式）加解密](cj-crypto-sm4-sym-encrypt-decrypt-cbc.md)（Beta特性）
+        - [使用SM4对称密钥（GCM模式）加解密](cj-crypto-sm4-sym-encrypt-decrypt-gcm.md)（Beta特性）
+        - [使用SM4对称密钥（GCM模式）分段加解密](cj-crypto-sm4-sym-encrypt-decrypt-gcm-by-segment.md)（Beta特性）
+    - 消息摘要计算
+        - [消息摘要计算介绍及算法规格](cj-crypto-generate-message-digest-overview.md)（Beta特性）
+        - 消息摘要计算开发指导
+            - [消息摘要计算SHA256](cj-crypto-generate-message-digest.md)（Beta特性）
+            - [消息摘要计算MD5](cj-crypto-generate-message-digest-md5.md)（Beta特性）
+    - 消息认证码
+        - [消息认证码计算](cj-crypto-compute-mac.md)（Beta特性）
+    - 随机数
+        - [安全随机数生成](cj-crypto-generate-random-number.md)（Beta特性）

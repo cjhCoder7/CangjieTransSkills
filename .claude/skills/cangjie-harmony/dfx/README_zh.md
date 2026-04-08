@@ -1,0 +1,31 @@
+# Performance Analysis Kit（性能分析服务）（Beta特性）
+
+- [Performance Analysis Kit简介](cj-performance-analysis-kit-overview.md)（Beta特性）
+- 故障检测
+  - [分析Cangjie Crash（进程崩溃）](cj-cangjiecrash-guidelines.md)（Beta特性）
+  - [分析AppFreeze（应用无响应）](cj-appfreeze-guidelines.md)（Beta特性）
+- 日志打印
+  - [使用HiLog打印日志](cj-hilog-guidelines.md)（Beta特性）
+- 事件订阅
+  - [HiAppEvent介绍](cj-hiappevent-intro.md)（Beta特性）
+  - 使用HiAppEvent订阅事件
+    - 应用事件
+      - [订阅应用事件](cj-hiappevent-watcher-app-events.md)（Beta特性）
+    - 系统事件
+      - 崩溃事件
+        - [崩溃事件介绍](cj-hiappevent-watcher-crash-events.md)（Beta特性）
+        - [订阅崩溃事件](cj-hiappevent-watcher-crash-events-cangjie.md)（Beta特性）
+      - 应用冻屏事件
+        - [应用冻屏事件介绍](cj-hiappevent-watcher-freeze-events.md)（Beta特性）
+        - [订阅应用冻屏事件](cj-hiappevent-watcher-freeze-events-cangjie.md)（Beta特性）
+  - [事件上报](cj-hiappevent-event-reporting.md)（Beta特性）
+- 性能跟踪
+  - [查看HiTraceMeter日志](cj-hitracemeter-view.md)（Beta特性）
+- 错误管理
+  - [错误管理开发指导](cj-errormanager-guidelines.md)（Beta特性）
+- 命令行工具
+  - [hdc](../tools/cj-hdc.md)（Beta特性）
+  - [hilog](../tools/cj-hilog.md)（Beta特性）
+  - [hidumper](../tools/cj-hidumper.md)（Beta特性）
+  - [hitrace](../tools/cj-hitrace.md)（Beta特性）
+  - [hiperf](../tools/cj-hiperf.md)（Beta特性）
