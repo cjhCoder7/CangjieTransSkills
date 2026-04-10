@@ -1,4 +1,5 @@
 .DS_Store
+.env
 
 hm-docs/
 *.log
