@@ -27,7 +27,7 @@ HarmonyOS 平台应用开发，涉及框架、组件、系统 API。
 
 ### 4. 代码翻译 → `/cangjie-translate`
 
-将 ArkTS/Swift/Java 代码翻译为仓颉，在子代理中隔离执行。用法：`/cangjie-translate arkts [code]`。
+将其他语言的代码翻译为仓颉，在子代理中隔离执行。用法：`/cangjie-translate arkts [code]`。
 
 ### 5. 经验总结 → `evolution`
 

@@ -2,7 +2,7 @@
 name: download-script
 description: "从 GitCode 下载最新仓颉语言和 HarmonyOS 原始文档。当 cangjie-kernel 和 cangjie-harmony 未覆盖所需内容时作为兜底使用"
 disable-model-invocation: true
-allowed-tools: Bash(python3 *) Bash(cd *) Bash(ls *)
+allowed-tools: Bash(python3 *), Bash(cd *), Bash(ls *)
 argument-hint: "[--sources stdlib|stdx|syntax|ui-dev|tools]"
 ---
 

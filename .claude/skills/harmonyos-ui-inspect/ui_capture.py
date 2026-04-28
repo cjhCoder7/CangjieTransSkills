@@ -1,22 +1,21 @@
 # -*- coding: utf-8 -*-
-"""HarmonyOS UI 状态采集 + 自动交互验证脚本
+"""HarmonyOS UI 状态采集 + 逐步交互脚本
 
 用法:
     # 基础采集（截图 + 控件树）
     python ui_capture.py [--bundle BUNDLE] [--ability ABILITY] [--out DIR] [--no-launch]
     python ui_capture.py --emulator 5555
 
-    # 交互验证（执行场景 → 二次采集 → 差异报告）
-    python ui_capture.py --scenario scenario.json --out ./ui_capture_output
-    python ui_capture.py --scenario scenario.json --emulator 5555
+    # 单步动作（执行后重新采集截图）
+    python ui_capture.py --emulator 5555 --no-launch --do click --target '{"text":"下一步"}'
+    python ui_capture.py --emulator 5555 --no-launch --do input --target '{"hint":"Message"}' --input-text "Hello"
 
 功能:
     1. 检测设备连接（支持 USB 物理设备和本地模拟器）
     2. 安装并启动应用（可选）
     3. 截屏 + dump 控件树
     4. 解析控件树输出结构化摘要
-    5. 可配置交互场景：点击/输入/滑动/返回/等待
-    6. 交互前后二次采集，生成差异对比与断言报告
+    5. 单步交互：点击/输入/滑动/返回，执行后立即重新采集
 
 原理:
     直接调用 hdc 命令行工具完成采集与交互，不依赖 Hypium 测试框架
@@ -34,42 +33,8 @@ import sys
 import time
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+from typing import List, Optional, Tuple
 
-
-# ============================================================
-# 交互场景配置格式说明 (scenario JSON)
-# ============================================================
-# {
-#   "name": "场景名称",
-#   "description": "场景描述",
-#   "steps": [
-#     {"action": "click", "target": {"text": "按钮文字"}},
-#     {"action": "click", "target": {"key": "btn_submit"}},
-#     {"action": "click", "target": {"type": "Button", "index": 0}},
-#     {"action": "click", "target": {"x": 540, "y": 1200}},
-#     {"action": "long_click", "target": {"text": "长按我"}, "duration": 2000},
-#     {"action": "double_click", "target": {"text": "双击我"}},
-#     {"action": "input", "target": {"type": "TextInput", "index": 0}, "text": "hello"},
-#     {"action": "swipe", "direction": "up"},
-#     {"action": "swipe", "from": {"x": 540, "y": 1800}, "to": {"x": 540, "y": 600}, "speed": 600},
-#     {"action": "fling", "direction": "down"},
-#     {"action": "back"},
-#     {"action": "home"},
-#     {"action": "wait", "seconds": 2},
-#     {"action": "snapshot", "label": "中间状态"}
-#   ],
-#   "assertions": [
-#     {"type": "exists", "target": {"text": "提交成功"}, "message": "应显示成功提示"},
-#     {"type": "not_exists", "target": {"text": "加载中"}, "message": "加载应已完成"},
-#     {"type": "text_changed", "target": {"key": "counter"}, "message": "计数器应变化"},
-#     {"type": "text_equals", "target": {"key": "counter"}, "expected": "1", "message": "计数器应为1"},
-#     {"type": "clickable", "target": {"text": "下一步"}, "expected": true, "message": "下一步应可点击"},
-#     {"type": "count_changed", "target": {"type": "ListItem"}, "message": "列表项数量应变化"},
-#     {"type": "page_changed", "message": "页面应发生变化"}
-#   ]
-# }
-# ============================================================
 
 
 # 全局设备 target（-t 参数），为空时不加 -t
@@ -206,6 +171,8 @@ def launch_app(bundle: str, ability: str):
 
 def capture_screenshot(out_dir: str) -> str:
     """截取设备屏幕并拉取到本地，依次尝试多种截图方式"""
+    # 截图前等待 1 秒，避免动画/过渡未完成导致截图状态不稳定
+    time.sleep(1)
     local_path = os.path.join(out_dir, "screenshot.png")
     device_path = "/data/local/tmp/_ui_capture_screen.png"
 
@@ -657,18 +624,6 @@ def _swipe_coords(direction: str, screen_w: int, screen_h: int
     return mapping.get(direction, mapping["up"])
 
 
-def load_scenario(path: str) -> dict:
-    """加载交互场景配置 JSON 文件"""
-    with open(path, "r", encoding="utf-8") as f:
-        content = f.read()
-    # 去除 JSON 中的 // 注释
-    content = re.sub(r'//.*?$', '', content, flags=re.MULTILINE)
-    scenario = json.loads(content)
-    print(f"[OK] 加载场景: {scenario.get('name', path)} ({len(scenario.get('steps', []))} 步, "
-          f"{len(scenario.get('assertions', []))} 个断言)")
-    return scenario
-
-
 def execute_step(step: dict, flat_nodes: List[dict], screen_w: int, screen_h: int,
                  out_dir: str, step_idx: int, bundle: Optional[str] = None) -> dict:
     """执行单个交互步骤，返回执行结果"""
@@ -798,343 +753,6 @@ def _refresh_step_layout(out_dir: str) -> tuple:
     return flat_nodes, screen_w, screen_h
 
 
-def execute_scenario(scenario: dict, out_dir: str, bundle: Optional[str] = None) -> List[dict]:
-    """执行完整交互场景，返回每步结果列表"""
-    steps = scenario.get("steps", [])
-    if not steps:
-        print("[WARN] 场景无交互步骤")
-        return []
-
-    results = []
-    for i, step in enumerate(steps):
-        # 每步之前重新 dump 控件树以获取最新布局
-        print(f"\n--- Step {i + 1}/{len(steps)}: {step.get('action', '?')} ---")
-        flat_nodes, screen_w, screen_h = _refresh_step_layout(out_dir)
-
-        r = execute_step(step, flat_nodes, screen_w, screen_h, out_dir, i + 1, bundle)
-        results.append(r)
-
-        # 交互后默认等待 1s 让界面刷新
-        wait_after = step.get("wait_after", 1)
-        if wait_after > 0 and step.get("action") != "wait":
-            time.sleep(wait_after)
-
-    # 清理临时文件
-    tmp_file = os.path.join(out_dir, "_tmp_layout.json")
-    if os.path.isfile(tmp_file):
-        os.remove(tmp_file)
-
-    return results
-
-
-# ============================================================
-# 差异对比引擎
-# ============================================================
-
-def _build_node_index(flat_nodes: List[dict]) -> Dict[str, dict]:
-    """构建以 key/text+type 为键的节点索引"""
-    index = {}
-    type_counts = {}
-    for n in flat_nodes:
-        k = n.get("key", "")
-        t = n.get("text", "")
-        comp_type = n.get("type", "Unknown")
-        # 优先用 key
-        if k:
-            index[f"key:{k}"] = n
-        # 用 text
-        if t:
-            index[f"text:{t}"] = n
-        # 用 type+index
-        cnt = type_counts.get(comp_type, 0)
-        index[f"type:{comp_type}#{cnt}"] = n
-        type_counts[comp_type] = cnt + 1
-    return index
-
-
-def diff_layouts(before_path: str, after_path: str) -> dict:
-    """对比两次控件树 JSON，返回结构化差异
-
-    返回:
-    {
-      "nodes_added": [...],       # 新增节点
-      "nodes_removed": [...],     # 消失节点
-      "attrs_changed": [...],     # 属性变化 {node_id, attr, before, after}
-      "text_changes": [...],      # 文本变化
-      "count_changes": {...},     # 各类型控件数量变化
-      "summary": str              # 人类可读摘要
-    }
-    """
-    diff = {
-        "nodes_added": [],
-        "nodes_removed": [],
-        "attrs_changed": [],
-        "text_changes": [],
-        "count_changes": {},
-        "summary": "",
-    }
-
-    before_nodes = _safe_load_flat(before_path)
-    after_nodes = _safe_load_flat(after_path)
-
-    before_idx = _build_node_index(before_nodes)
-    after_idx = _build_node_index(after_nodes)
-
-    before_keys = set(before_idx.keys())
-    after_keys = set(after_idx.keys())
-
-    # 新增节点
-    for k in after_keys - before_keys:
-        n = after_idx[k]
-        diff["nodes_added"].append({
-            "id": k, "type": n.get("type", ""), "text": n.get("text", ""),
-            "bounds": n.get("bounds", "")
-        })
-
-    # 删除节点
-    for k in before_keys - after_keys:
-        n = before_idx[k]
-        diff["nodes_removed"].append({
-            "id": k, "type": n.get("type", ""), "text": n.get("text", ""),
-            "bounds": n.get("bounds", "")
-        })
-
-    # 属性变化（对共同节点比较关键属性）
-    check_attrs = ["text", "clickable", "scrollable", "enabled", "checked",
-                   "selected", "focused", "bounds", "description"]
-    for k in before_keys & after_keys:
-        bn, an = before_idx[k], after_idx[k]
-        for attr in check_attrs:
-            bv = bn.get(attr, "")
-            av = an.get(attr, "")
-            if bv != av:
-                change = {"node_id": k, "attr": attr, "before": bv, "after": av}
-                diff["attrs_changed"].append(change)
-                if attr == "text":
-                    diff["text_changes"].append(change)
-
-    # 类型数量变化
-    def count_types(nodes):
-        counts = {}
-        for n in nodes:
-            t = n.get("type", "Unknown")
-            counts[t] = counts.get(t, 0) + 1
-        return counts
-
-    before_counts = count_types(before_nodes)
-    after_counts = count_types(after_nodes)
-    all_types = set(list(before_counts.keys()) + list(after_counts.keys()))
-    for t in all_types:
-        bc = before_counts.get(t, 0)
-        ac = after_counts.get(t, 0)
-        if bc != ac:
-            diff["count_changes"][t] = {"before": bc, "after": ac, "delta": ac - bc}
-
-    # 生成摘要
-    lines = []
-    if diff["nodes_added"]:
-        lines.append(f"新增 {len(diff['nodes_added'])} 个节点")
-    if diff["nodes_removed"]:
-        lines.append(f"移除 {len(diff['nodes_removed'])} 个节点")
-    if diff["text_changes"]:
-        lines.append(f"文本变化 {len(diff['text_changes'])} 处")
-    if diff["attrs_changed"]:
-        lines.append(
-            f"属性变化 {len(diff['attrs_changed'])} 处")
-    if diff["count_changes"]:
-        parts = [f"{t}: {v['before']}→{v['after']}" for t, v in diff["count_changes"].items()]
-        lines.append(f"数量变化: {', '.join(parts)}")
-    if not lines:
-        lines.append("界面无明显变化")
-    diff["summary"] = "; ".join(lines)
-    return diff
-
-
-# ============================================================
-# 断言引擎：对交互后的控件树执行断言检查
-# ============================================================
-
-def evaluate_assertions(assertions: List[dict], before_path: str, after_path: str,
-                        diff: dict) -> List[dict]:
-    """根据断言配置检查交互前后控件树
-
-    返回断言结果列表:
-    [{"assertion": dict, "passed": bool, "detail": str}, ...]
-    """
-    results = []
-
-    after_nodes = _safe_load_flat(after_path)
-    before_nodes = _safe_load_flat(before_path)
-
-    for a in assertions:
-        atype = a.get("type", "")
-        target = a.get("target", {})
-        msg = a.get("message", "")
-        r = {"assertion": a, "passed": False, "detail": ""}
-
-        if atype == "exists":
-            node = find_target_node(after_nodes, target)
-            r["passed"] = node is not None
-            r["detail"] = "找到目标控件" if r["passed"] else f"未找到: {target}"
-
-        elif atype == "not_exists":
-            node = find_target_node(after_nodes, target)
-            r["passed"] = node is None
-            r["detail"] = "目标控件不存在（符合预期）" if r["passed"] else f"目标控件仍存在: {target}"
-
-        elif atype == "text_changed":
-            # 检查目标节点交互前后 text 是否变化
-            bn = find_target_node(before_nodes, target)
-            an = find_target_node(after_nodes, target)
-            if bn and an:
-                bt = bn.get("text", "")
-                at = an.get("text", "")
-                r["passed"] = bt != at
-                r["detail"] = f"文本变化: \"{bt}\" → \"{at}\"" if r["passed"] else f"文本未变化: \"{bt}\""
-            else:
-                r["detail"] = f"前后有节点未找到 (before={'有' if bn else '无'}, after={'有' if an else '无'})"
-
-        elif atype == "text_equals":
-            an = find_target_node(after_nodes, target)
-            if an:
-                actual = an.get("text", "")
-                expected = str(a.get("expected", ""))
-                r["passed"] = actual == expected
-                r["detail"] = f"文本=\"{actual}\"" + ("" if r["passed"] else f", 期望=\"{expected}\"")
-            else:
-                r["detail"] = f"未找到节点: {target}"
-
-        elif atype == "clickable":
-            an = find_target_node(after_nodes, target)
-            if an:
-                actual = an.get("clickable") == "true"
-                expected = a.get("expected", True)
-                r["passed"] = actual == expected
-                r["detail"] = f"clickable={actual}" + ("" if r["passed"] else f", 期望={expected}")
-            else:
-                r["detail"] = f"未找到节点: {target}"
-
-        elif atype == "count_changed":
-            comp_type = target.get("type", "")
-            if comp_type in diff.get("count_changes", {}):
-                delta = diff["count_changes"][comp_type]["delta"]
-                r["passed"] = delta != 0
-                r["detail"] = f"{comp_type} 数量变化: {delta:+d}"
-            else:
-                r["passed"] = False
-                r["detail"] = f"{comp_type} 数量无变化"
-
-        elif atype == "page_changed":
-            total_changes = (len(diff.get("nodes_added", [])) +
-                             len(diff.get("nodes_removed", [])) +
-                             len(diff.get("attrs_changed", [])))
-            r["passed"] = total_changes > 0
-            r["detail"] = f"总变化 {total_changes} 处" if r["passed"] else "界面无任何变化"
-
-        else:
-            r["detail"] = f"未知断言类型: {atype}"
-
-        results.append(r)
-    return results
-
-
-# ============================================================
-# 交互报告生成
-# ============================================================
-
-def generate_interaction_report(scenario: dict, step_results: List[dict],
-                                diff: dict, assertion_results: List[dict],
-                                out_dir: str) -> str:
-    """生成交互验证的完整 Markdown 报告"""
-    report_path = os.path.join(out_dir, "interaction_report.md")
-    lines = []
-    lines.append(f"# 交互验证报告\n")
-    lines.append(f"**场景**: {scenario.get('name', '未命名')}")
-    if scenario.get("description"):
-        lines.append(f"**描述**: {scenario['description']}")
-    lines.append("")
-
-    # 步骤执行结果
-    lines.append("## 交互步骤执行结果\n")
-    lines.append("| # | 操作 | 状态 | 详情 |")
-    lines.append("|---|------|------|------|")
-    for i, r in enumerate(step_results):
-        status = "PASS" if r["success"] else "FAIL"
-        detail = r["detail"][:80] if r["detail"] else ""
-        lines.append(f"| {i + 1} | {r['action']} | {status} | {detail} |")
-    lines.append("")
-
-    # 界面差异
-    lines.append("## 交互前后界面差异\n")
-    lines.append(f"**摘要**: {diff.get('summary', '无')}\n")
-
-    if diff.get("text_changes"):
-        lines.append("### 文本变化")
-        for tc in diff["text_changes"]:
-            lines.append(f"- `{tc['node_id']}`: \"{tc['before']}\" → \"{tc['after']}\"")
-        lines.append("")
-
-    if diff.get("nodes_added"):
-        lines.append("### 新增节点")
-        for n in diff["nodes_added"][:20]:
-            lines.append(f"- `{n['id']}` ({n['type']}) {n.get('text', '')}")
-        if len(diff["nodes_added"]) > 20:
-            lines.append(f"- ... 共 {len(diff['nodes_added'])} 个")
-        lines.append("")
-
-    if diff.get("nodes_removed"):
-        lines.append("### 移除节点")
-        for n in diff["nodes_removed"][:20]:
-            lines.append(f"- `{n['id']}` ({n['type']}) {n.get('text', '')}")
-        if len(diff["nodes_removed"]) > 20:
-            lines.append(f"- ... 共 {len(diff['nodes_removed'])} 个")
-        lines.append("")
-
-    if diff.get("attrs_changed"):
-        non_text = [c for c in diff["attrs_changed"] if c["attr"] != "text"]
-        if non_text:
-            lines.append("### 属性变化")
-            for c in non_text[:30]:
-                lines.append(f"- `{c['node_id']}`.{c['attr']}: \"{c['before']}\" → \"{c['after']}\"")
-            lines.append("")
-
-    if diff.get("count_changes"):
-        lines.append("### 控件数量变化")
-        for t, v in diff["count_changes"].items():
-            lines.append(f"- {t}: {v['before']} → {v['after']} ({v['delta']:+d})")
-        lines.append("")
-
-    # 断言结果
-    if assertion_results:
-        lines.append("## 断言检查结果\n")
-        passed = sum(1 for r in assertion_results if r["passed"])
-        total = len(assertion_results)
-        lines.append(f"**通过 {passed}/{total}**\n")
-        lines.append("| # | 类型 | 结果 | 说明 | 详情 |")
-        lines.append("|---|------|------|------|------|")
-        for i, r in enumerate(assertion_results):
-            a = r["assertion"]
-            status = "PASS" if r["passed"] else "FAIL"
-            msg = a.get("message", "")
-            detail = r["detail"][:60]
-            lines.append(f"| {i + 1} | {a.get('type', '')} | {status} | {msg} | {detail} |")
-        lines.append("")
-
-        if passed == total:
-            lines.append("> **结论**: 所有断言通过，交互行为符合预期。\n")
-        else:
-            failed = [r for r in assertion_results if not r["passed"]]
-            lines.append("> **结论**: 存在断言失败，需检查以下问题：\n")
-            for r in failed:
-                lines.append(f"> - {r['assertion'].get('message', r['detail'])}")
-            lines.append("")
-
-    with open(report_path, "w", encoding="utf-8") as f:
-        f.write("\n".join(lines))
-    print(f"[OK] 交互验证报告: {report_path}")
-    return report_path
-
-
 def find_latest_hap(project_dir: str) -> Optional[str]:
     """在项目构建产物目录中查找最新的 .hap 文件"""
     search_dir = Path(project_dir) / "entry" / "build"
@@ -1175,10 +793,20 @@ def main():
                         help="模拟器地址（端口号如 5555，或完整地址如 127.0.0.1:5555）")
     parser.add_argument("--device", "-t", default=None, metavar="SN",
                         help="指定目标设备 SN（多设备连接时使用）")
-    parser.add_argument("--scenario", default=None, metavar="JSON",
-                        help="交互场景配置文件路径（JSON），指定后自动执行交互→二次采集→差异报告")
+    parser.add_argument("--do", default=None, metavar="ACTION",
+                        help="执行单个动作后重新采集截图（click/input/swipe/fling/back/home/long_click/double_click）")
+    parser.add_argument("--target", default=None, metavar="JSON",
+                        help="--do 的目标控件，JSON 字符串，如 '{\"text\":\"下一步\"}' 或 '{\"type\":\"TextInput\",\"index\":0}'")
+    parser.add_argument("--input-text", default=None, metavar="TEXT",
+                        help="--do input 时要输入的文本")
+    parser.add_argument("--swipe-dir", default=None, metavar="DIR",
+                        help="--do swipe/fling 的方向（up/down/left/right）")
+    parser.add_argument("--wait-after", type=float, default=1.5, metavar="SEC",
+                        help="--do 执行后等待秒数（默认 1.5），让界面完成刷新再采集")
     parser.add_argument("--hilog", action="store_true", help="采集期间同时抓取 HiLog 日志")
     parser.add_argument("--timestamp", action="store_true", help="输出目录名追加时间戳，防止覆盖")
+    parser.add_argument("--no-screenshot", action="store_true",
+                        help="跳过截图采集，仅产出控件树与文本摘要（纯文本模型或不需要视觉确认时使用）")
     args = parser.parse_args()
 
     # === 确保 hdc 可用 ===
@@ -1237,7 +865,11 @@ def main():
     print(f"\n{'='*50}")
     print("Phase 1: 基线采集")
     print(f"{'='*50}")
-    screenshot_path = capture_screenshot(args.out)
+    if args.no_screenshot:
+        print("[INFO] --no-screenshot 启用，跳过截图采集（纯文本模式）")
+        screenshot_path = None
+    else:
+        screenshot_path = capture_screenshot(args.out)
     layout_path = dump_layout(args.out)
     summary_path = summarize_layout(layout_path, args.out, bundle=args.bundle)
 
@@ -1246,85 +878,68 @@ def main():
         capture_hilog(args.out, args.bundle)
 
     print(f"\n  采集完成: {args.out}")
-    print(f"    截图: {screenshot_path}")
+    if screenshot_path:
+        print(f"    截图: {screenshot_path}")
     print(f"    控件树: {layout_path}")
     print(f"    摘要: {summary_path}")
 
-    # === Phase 2: 交互执行（仅在指定 --scenario 时） ===
+    # === 单步动作模式（--do） ===
     exit_code = 0
-    if args.scenario:
-        scenario = load_scenario(args.scenario)
+    if args.do:
+        action = args.do
+        step: dict = {"action": action}
+        if args.target:
+            try:
+                step["target"] = json.loads(args.target)
+            except json.JSONDecodeError as e:
+                print(f"[ERROR] --target 不是合法 JSON: {e}")
+                sys.exit(1)
+        if args.input_text:
+            step["text"] = args.input_text
+        if args.swipe_dir:
+            step["direction"] = args.swipe_dir
 
         print(f"\n{'='*50}")
-        print(f"Phase 2: 执行交互场景 — {scenario.get('name', '未命名')}")
+        print(f"执行单步动作: {action}")
         print(f"{'='*50}")
 
-        step_results = execute_scenario(scenario, args.out, bundle=args.bundle)
+        flat_nodes, screen_w, screen_h = _refresh_step_layout(args.out)
+        r = execute_step(step, flat_nodes, screen_w, screen_h, args.out, 1, bundle=args.bundle)
 
-        # === Phase 3: 交互后二次采集 ===
-        print(f"\n{'='*50}")
-        print("Phase 3: 交互后二次采集")
-        print(f"{'='*50}")
+        if r["success"]:
+            print(f"[OK] {action}: {r['detail']}")
+        else:
+            print(f"[FAIL] {action}: {r['detail']}")
+            exit_code = 1
 
-        after_dir = os.path.join(args.out, "after")
-        os.makedirs(after_dir, exist_ok=True)
-        after_screenshot = capture_screenshot(after_dir)
-        after_layout = dump_layout(after_dir)
-        after_summary = summarize_layout(after_layout, after_dir, bundle=args.bundle)
-
-        if args.hilog:
-            capture_hilog(after_dir, args.bundle)
-
-        print(f"\n  采集完成: {after_dir}")
-        print(f"    截图: {after_screenshot}")
-        print(f"    控件树: {after_layout}")
-        print(f"    摘要: {after_summary}")
-
-        # === Phase 4: 差异对比 + 断言检查 ===
-        print(f"\n{'='*50}")
-        print("Phase 4: 差异分析 + 断言检查")
-        print(f"{'='*50}")
-
-        diff = diff_layouts(layout_path, after_layout)
-        print(f"  差异摘要: {diff['summary']}")
-
-        # 保存差异 JSON
-        diff_json_path = os.path.join(args.out, "diff.json")
-        with open(diff_json_path, "w", encoding="utf-8") as f:
-            json.dump(diff, f, ensure_ascii=False, indent=2)
-        print(f"  差异数据: {diff_json_path}")
-
-        # 执行断言
-        assertions = scenario.get("assertions", [])
-        assertion_results = evaluate_assertions(assertions, layout_path, after_layout, diff)
-
-        if assertion_results:
-            passed = sum(1 for r in assertion_results if r["passed"])
-            total = len(assertion_results)
-            print(f"\n  断言结果: {passed}/{total} 通过")
-            for i, r in enumerate(assertion_results):
-                status = "PASS" if r["passed"] else "FAIL"
-                msg = r["assertion"].get("message", "")
-                print(f"    {status} [{r['assertion']['type']}] {msg}: {r['detail']}")
-            # 断言失败时设置非零退出码
-            if passed < total:
-                exit_code = 2
-
-        # === Phase 5: 生成报告 ===
-        report_path = generate_interaction_report(
-            scenario, step_results, diff, assertion_results, args.out)
+        if action not in ("wait", "snapshot", "back", "home"):
+            print(f"[INFO] 等待 {args.wait_after}s 界面刷新...")
+            time.sleep(args.wait_after)
 
         print(f"\n{'='*50}")
-        print(f"交互验证完成！")
-        print(f"  报告: {report_path}")
-        print(f"  基线: {args.out}/screenshot.png + layout.json")
-        print(f"  交互后: {after_dir}/screenshot.png + layout.json")
-        print(f"  差异: {diff_json_path}")
+        print("执行后采集")
         print(f"{'='*50}")
-    else:
+        if not args.no_screenshot:
+            capture_screenshot(args.out)
+        new_layout = dump_layout(args.out)
+        summarize_layout(new_layout, args.out, bundle=args.bundle)
+
+        tmp_file = os.path.join(args.out, "_tmp_layout.json")
+        if os.path.isfile(tmp_file):
+            os.remove(tmp_file)
+
         print(f"\n{'='*50}")
-        print(f"基础采集完成！（如需交互验证，请使用 --scenario 参数）")
+        print(f"单步完成！结果: {'成功' if r['success'] else '失败'}")
+        if not args.no_screenshot:
+            print(f"  截图: {args.out}/screenshot.png")
+        print(f"  控件树: {args.out}/layout.json")
+        print(f"  摘要: {args.out}/ui_summary.md")
         print(f"{'='*50}")
+        sys.exit(exit_code)
+
+    print(f"\n{'='*50}")
+    print(f"基础采集完成！")
+    print(f"{'='*50}")
 
     sys.exit(exit_code)
 

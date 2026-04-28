@@ -1,8 +1,8 @@
 ---
 name: build
 description: "编译构建仓颉 HarmonyOS 应用，执行 ohpm 依赖安装、仓颉资源同步和 HAP 包打包。用户说编译、构建、build、打包时触发"
-disable-model-invocation: true
-allowed-tools: Bash(python3 *) Bash(ls *) Bash(cat *)
+allowed-tools: Bash(python3 *), Bash(ls *), Bash(cat *)
+argument-hint: "[-v 8k|15k]"
 ---
 
 # 仓颉 HarmonyOS 应用编译构建
