@@ -11,17 +11,18 @@
 
 <p><strong>面向仓颉语言 / HarmonyOS 代码迁移场景的 Claude Skills 集合</strong></p>
 
-<p>围绕 <strong>Claude Code + Skills + GLM5.1-FP8</strong> 的翻译工作流，用于将应用项目或库项目翻译到仓颉，并补充构建、验证、经验记录与 UI 检查等配套能力。</p>
+<p>围绕 <strong>Claude Code + Skills</strong> 的翻译工作流，用于将应用项目或库项目翻译到仓颉，并将翻译过程中的经验持续回流到 Skills 与经验库中。</p>
 
 </div>
 
 ## ✨ 项目简介
 
-`CangjieTransSkills` 的目标不是只做一次性代码转换，而是提供一套可复用的翻译方法：
+`CangjieTransSkills` 提供一套面向仓颉迁移场景的可复用工作流：
 
 - 应用级翻译：ArkTS / Swift / Java App → 仓颉 HarmonyOS 应用
 - 库级翻译：任意语言库 / SDK / CLI → 纯仓颉 `cjpm` 包
 - 配套支持：构建、测试、UI 检查、经验沉淀、文档下载
+- 经验回流：将类型映射、API 替代、构建修复、语义差异与已知问题写回经验库，用于后续任务复用
 
 核心 skill 位于 [`.claude/skills/`](.claude/skills/)，其中包含：
 
@@ -30,7 +31,7 @@
 - `cangjie-translate-lib`：库级翻译
 - `build` / `cangjie-lib-build`：应用与库的构建验证
 - `harmonyos-ui-inspect`：UI 截图、控件树与交互验证
-- `evolution`：翻译经验与踩坑记录
+- `evolution`：翻译经验与踩坑记录，作为后续任务的经验底座
 
 更完整的规则见 [CLAUDE.md](CLAUDE.md)。
 
@@ -43,6 +44,24 @@
 
 2. **翻译样例项目**
    位于 [`CangjieProject/`](CangjieProject/)，用于展示这套 workflow 的实际产物。
+
+## 🔁 经验回流与迭代
+
+本仓库将翻译过程中的经验记录视为工作流的一部分，而不是附属产物。
+
+- 每次翻译过程中遇到的非显而易见问题，均要求沉淀为经验
+- 应用级经验写回 `cangjie-translate/` 对应语言目录
+- 仓颉通用经验写回 `evolution/cangjie/`
+- 库级工程化经验写回 `cangjie-translate-lib/experience/`
+
+经验回流后，可直接用于后续同类任务，例如：
+
+- 类型映射可以复用
+- API 替代策略可以复用
+- 构建与兼容性修复可以复用
+- 已知限制和失败案例也会被记录下来，减少重复试错
+
+因此，`CangjieTransSkills` 并非一组静态 prompt，而是一套可迭代维护的翻译与验证流程。
 
 ## 🚀 6 个翻译项目
 
@@ -69,7 +88,7 @@
 
 ## 🛠️ 使用方式
 
-如果你希望复用这套 workflow，可以从以下入口开始：
+可从以下入口了解和使用这套 workflow：
 
 - 阅读 [CLAUDE.md](CLAUDE.md) 了解 skill 路由规则
 - 查看 [`cangjie-translate`](.claude/skills/cangjie-translate/SKILL.md) 了解应用级翻译流程
