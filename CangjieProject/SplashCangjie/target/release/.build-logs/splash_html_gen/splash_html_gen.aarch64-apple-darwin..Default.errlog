@@ -1,9 +1,0 @@
-[33mwarning[0m: class 'Console' is deprecated. Use related global functions in the std.env instead.
- [36m==>[0m /Users/coder7/Code/SwiftProject/SplashCangjie/splash_html_gen/src/main.cj:8:9:
-  [36m| [0m
-[36m8[0m [36m| [0m        Console.stdErr.write("Please supply the code to generate HTML for as a string argument\n")[0m
-  [36m| [0m        [33m^^^^^^^ deprecated[0m
-  [36m| [0m
-  [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff deprecated`
-
-1 warning generated, 1 warning printed.

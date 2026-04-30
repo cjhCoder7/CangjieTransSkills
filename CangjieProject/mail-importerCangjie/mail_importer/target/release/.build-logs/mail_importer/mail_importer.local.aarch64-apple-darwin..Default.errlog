@@ -1,9 +1,0 @@
-[33mwarning[0m: unused variable:'message'
-  [36m==>[0m /Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/MailStorage.cj:32:41:
-   [36m| [0m
-[36m32[0m [36m| [0m    public open func createLocalMessage(message: MailMessage): LocalMessage {[0m
-   [36m| [0m                                        [33m^^^^^^^ unused variable[0m
-   [36m| [0m
-   [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
-
-1 warning generated, 1 warning printed.

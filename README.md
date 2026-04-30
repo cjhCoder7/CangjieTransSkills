@@ -5,7 +5,7 @@
 <p>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License"></a>
   <a href=".claude/skills/"><img src="https://img.shields.io/badge/Cangjie-HarmonyOS%20Skills-0A84FF" alt="Cangjie Skills"></a>
-  <a href="CLAUDE.md"><img src="https://img.shields.io/badge/Workflow-Claude%20Code-black" alt="Claude Code Workflow"></a>
+  <a href="CLAUDE.md"><img src="https://img.shields.io/badge/Workflow-Claude%20Code-E86C3A" alt="Claude Code Workflow"></a>
   <a href="CangjieProject/"><img src="https://img.shields.io/badge/Examples-6%20Projects-7A3EFF" alt="6 Projects"></a>
 </p>
 
