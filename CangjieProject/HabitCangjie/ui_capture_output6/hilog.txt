@@ -1,0 +1,1 @@
+Invalid log type, the valid log types include app/core/init/kmsg/only_prerelease [CODE: -3]

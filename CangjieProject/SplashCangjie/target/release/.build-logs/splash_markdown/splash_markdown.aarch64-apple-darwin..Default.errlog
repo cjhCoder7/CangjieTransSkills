@@ -1,0 +1,17 @@
+[33mwarning[0m: class 'Console' is deprecated. Use related global functions in the std.env instead.
+  [36m==>[0m /Users/coder7/Code/SwiftProject/SplashCangjie/splash_markdown/src/main.cj:10:9:
+   [36m| [0m
+[36m10[0m [36m| [0m        Console.stdErr.write("Please supply the path to a Markdown file to process as an argument\n")[0m
+   [36m| [0m        [33m^^^^^^^ deprecated[0m
+   [36m| [0m
+   [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff deprecated`
+
+[33mwarning[0m: class 'Console' is deprecated. Use related global functions in the std.env instead.
+  [36m==>[0m /Users/coder7/Code/SwiftProject/SplashCangjie/splash_markdown/src/main.cj:24:9:
+   [36m| [0m
+[36m24[0m [36m| [0m        Console.stdErr.write("Failed to open Markdown file at '${args[0]}': ${e.message}\n")[0m
+   [36m| [0m        [33m^^^^^^^ deprecated[0m
+   [36m| [0m
+   [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff deprecated`
+
+2 warnings generated, 2 warnings printed.

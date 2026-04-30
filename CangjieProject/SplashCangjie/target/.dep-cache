@@ -1,0 +1,910 @@
+{
+  "bin": {},
+  "pkg-build": {
+    "/Users/coder7/Code/SwiftProject/SplashCangjie/splash_lib/src": {
+      "package": "splash_lib",
+      "isMacro": false,
+      "accessLevel": "public",
+      "timeStamp": 1777455089,
+      "dependencies": [
+        {
+          "orPackage": "",
+          "package": "std.collection",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/SwiftProject/SplashCangjie/splash_lib/src/segment.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/SwiftProject/SplashCangjie/splash_lib/src/swift_grammar.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/SwiftProject/SplashCangjie/splash_lib/src/tokenizer.cj"
+            }
+          ]
+        }
+      ],
+      "std-dependencies": [
+        {
+          "std.collection": [
+            "std.core",
+            "std.math"
+          ]
+        },
+        {
+          "std.core": []
+        },
+        {
+          "std.math": [
+            "std.core"
+          ]
+        }
+      ],
+      "features": [],
+      "product": true,
+      "testUsed": false,
+      "mockUsed": false
+    },
+    "/Users/coder7/Code/SwiftProject/SplashCangjie/splash_html_gen/src": {
+      "package": "splash_html_gen",
+      "isMacro": false,
+      "accessLevel": "public",
+      "timeStamp": 1777449895,
+      "dependencies": [
+        {
+          "orPackage": "",
+          "package": "splash_lib",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/SwiftProject/SplashCangjie/splash_html_gen/src/main.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "",
+          "package": "std.console",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/SwiftProject/SplashCangjie/splash_html_gen/src/main.cj"
+            }
+          ]
+        }
+      ],
+      "std-dependencies": [
+        {
+          "std.binary": [
+            "std.core"
+          ]
+        },
+        {
+          "std.collection": [
+            "std.core",
+            "std.math"
+          ]
+        },
+        {
+          "std.console": [
+            "std.core",
+            "std.io",
+            "std.sync"
+          ]
+        },
+        {
+          "std.convert": [
+            "std.core"
+          ]
+        },
+        {
+          "std.core": []
+        },
+        {
+          "std.io": [
+            "std.core"
+          ]
+        },
+        {
+          "std.math": [
+            "std.core"
+          ]
+        },
+        {
+          "std.sync": [
+            "std.core",
+            "std.time"
+          ]
+        },
+        {
+          "std.time": [
+            "std.binary",
+            "std.collection",
+            "std.convert",
+            "std.core",
+            "std.io"
+          ]
+        }
+      ],
+      "features": [],
+      "product": true,
+      "testUsed": false,
+      "mockUsed": false
+    },
+    "/Users/coder7/Code/SwiftProject/SplashCangjie/splash_markdown/src": {
+      "package": "splash_markdown",
+      "isMacro": false,
+      "accessLevel": "public",
+      "timeStamp": 1777449918,
+      "dependencies": [
+        {
+          "orPackage": "",
+          "package": "splash_lib",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/SwiftProject/SplashCangjie/splash_markdown/src/main.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "",
+          "package": "std.console",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/SwiftProject/SplashCangjie/splash_markdown/src/main.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "",
+          "package": "std.fs",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/SwiftProject/SplashCangjie/splash_markdown/src/main.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "",
+          "package": "std.io",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/SwiftProject/SplashCangjie/splash_markdown/src/main.cj"
+            }
+          ]
+        }
+      ],
+      "std-dependencies": [
+        {
+          "std.binary": [
+            "std.core"
+          ]
+        },
+        {
+          "std.collection": [
+            "std.core",
+            "std.math"
+          ]
+        },
+        {
+          "std.console": [
+            "std.core",
+            "std.io",
+            "std.sync"
+          ]
+        },
+        {
+          "std.convert": [
+            "std.core"
+          ]
+        },
+        {
+          "std.core": []
+        },
+        {
+          "std.fs": [
+            "std.collection",
+            "std.core",
+            "std.io",
+            "std.time"
+          ]
+        },
+        {
+          "std.io": [
+            "std.core"
+          ]
+        },
+        {
+          "std.math": [
+            "std.core"
+          ]
+        },
+        {
+          "std.sync": [
+            "std.core",
+            "std.time"
+          ]
+        },
+        {
+          "std.time": [
+            "std.binary",
+            "std.collection",
+            "std.convert",
+            "std.core",
+            "std.io"
+          ]
+        }
+      ],
+      "features": [],
+      "product": true,
+      "testUsed": false,
+      "mockUsed": false
+    },
+    "/Users/coder7/Code/SwiftProject/SplashCangjie/splash_tokenizer/src": {
+      "package": "splash_tokenizer",
+      "isMacro": false,
+      "accessLevel": "public",
+      "timeStamp": 1777449910,
+      "dependencies": [
+        {
+          "orPackage": "",
+          "package": "splash_lib",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/SwiftProject/SplashCangjie/splash_tokenizer/src/main.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "",
+          "package": "std.collection",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/SwiftProject/SplashCangjie/splash_tokenizer/src/main.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "",
+          "package": "std.console",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/SwiftProject/SplashCangjie/splash_tokenizer/src/main.cj"
+            }
+          ]
+        }
+      ],
+      "std-dependencies": [
+        {
+          "std.binary": [
+            "std.core"
+          ]
+        },
+        {
+          "std.collection": [
+            "std.core",
+            "std.math"
+          ]
+        },
+        {
+          "std.console": [
+            "std.core",
+            "std.io",
+            "std.sync"
+          ]
+        },
+        {
+          "std.convert": [
+            "std.core"
+          ]
+        },
+        {
+          "std.core": []
+        },
+        {
+          "std.io": [
+            "std.core"
+          ]
+        },
+        {
+          "std.math": [
+            "std.core"
+          ]
+        },
+        {
+          "std.sync": [
+            "std.core",
+            "std.time"
+          ]
+        },
+        {
+          "std.time": [
+            "std.binary",
+            "std.collection",
+            "std.convert",
+            "std.core",
+            "std.io"
+          ]
+        }
+      ],
+      "features": [],
+      "product": true,
+      "testUsed": false,
+      "mockUsed": false
+    }
+  },
+  "pkg-test": {
+    "/Users/coder7/Code/SwiftProject/SplashCangjie/splash_lib/src": {
+      "package": "splash_lib",
+      "isMacro": false,
+      "accessLevel": "public",
+      "timeStamp": 1777455089,
+      "dependencies": [
+        {
+          "orPackage": "",
+          "package": "std.collection",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/SwiftProject/SplashCangjie/splash_lib/src/mocks_test.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/SwiftProject/SplashCangjie/splash_lib/src/segment.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/SwiftProject/SplashCangjie/splash_lib/src/swift_grammar.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/SwiftProject/SplashCangjie/splash_lib/src/tokenizer.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "",
+          "package": "std.unittest",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/SwiftProject/SplashCangjie/splash_lib/src/closure_test.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/SwiftProject/SplashCangjie/splash_lib/src/comment_test.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/SwiftProject/SplashCangjie/splash_lib/src/declaration_test.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/SwiftProject/SplashCangjie/splash_lib/src/enum_test.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/SwiftProject/SplashCangjie/splash_lib/src/function_call_test.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/SwiftProject/SplashCangjie/splash_lib/src/literal_test.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/SwiftProject/SplashCangjie/splash_lib/src/optional_test.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/SwiftProject/SplashCangjie/splash_lib/src/preprocessor_test.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/SwiftProject/SplashCangjie/splash_lib/src/splash_lib_test.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/SwiftProject/SplashCangjie/splash_lib/src/statement_test.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/SwiftProject/SplashCangjie/splash_lib/src/token_type_test.cj"
+            }
+          ]
+        }
+      ],
+      "std-dependencies": [
+        {
+          "std.binary": [
+            "std.core"
+          ]
+        },
+        {
+          "std.collection": [
+            "std.core",
+            "std.math"
+          ]
+        },
+        {
+          "std.collection.concurrent": [
+            "std.collection",
+            "std.core",
+            "std.sync",
+            "std.time"
+          ]
+        },
+        {
+          "std.convert": [
+            "std.core"
+          ]
+        },
+        {
+          "std.core": []
+        },
+        {
+          "std.env": [
+            "std.collection",
+            "std.core",
+            "std.fs",
+            "std.io",
+            "std.sync"
+          ]
+        },
+        {
+          "std.fs": [
+            "std.collection",
+            "std.core",
+            "std.io",
+            "std.time"
+          ]
+        },
+        {
+          "std.io": [
+            "std.core"
+          ]
+        },
+        {
+          "std.math": [
+            "std.core"
+          ]
+        },
+        {
+          "std.net": [
+            "std.binary",
+            "std.collection",
+            "std.convert",
+            "std.core",
+            "std.io",
+            "std.math",
+            "std.overflow",
+            "std.sort",
+            "std.sync",
+            "std.time"
+          ]
+        },
+        {
+          "std.overflow": [
+            "std.core"
+          ]
+        },
+        {
+          "std.process": [
+            "std.collection",
+            "std.core",
+            "std.fs",
+            "std.io",
+            "std.sync",
+            "std.time"
+          ]
+        },
+        {
+          "std.random": [
+            "std.core",
+            "std.math"
+          ]
+        },
+        {
+          "std.regex": [
+            "std.collection",
+            "std.core",
+            "std.sync"
+          ]
+        },
+        {
+          "std.runtime": [
+            "std.collection",
+            "std.core",
+            "std.fs",
+            "std.sync"
+          ]
+        },
+        {
+          "std.sort": [
+            "std.collection",
+            "std.core",
+            "std.math"
+          ]
+        },
+        {
+          "std.sync": [
+            "std.core",
+            "std.time"
+          ]
+        },
+        {
+          "std.time": [
+            "std.binary",
+            "std.collection",
+            "std.convert",
+            "std.core",
+            "std.io"
+          ]
+        },
+        {
+          "std.unicode": [
+            "std.collection",
+            "std.core"
+          ]
+        },
+        {
+          "std.unittest": [
+            "std.binary",
+            "std.collection",
+            "std.collection.concurrent",
+            "std.convert",
+            "std.core",
+            "std.env",
+            "std.fs",
+            "std.io",
+            "std.math",
+            "std.net",
+            "std.process",
+            "std.random",
+            "std.regex",
+            "std.runtime",
+            "std.sort",
+            "std.sync",
+            "std.time",
+            "std.unicode",
+            "std.unittest.common",
+            "std.unittest.diff",
+            "std.unittest.mock",
+            "std.unittest.prop_test"
+          ]
+        },
+        {
+          "std.unittest.common": [
+            "std.collection",
+            "std.convert",
+            "std.core",
+            "std.sync"
+          ]
+        },
+        {
+          "std.unittest.diff": [
+            "std.collection",
+            "std.convert",
+            "std.core",
+            "std.math",
+            "std.unittest.common"
+          ]
+        },
+        {
+          "std.unittest.mock": [
+            "std.collection",
+            "std.core",
+            "std.fs",
+            "std.sync",
+            "std.unittest.common",
+            "std.unittest.mock.internal"
+          ]
+        },
+        {
+          "std.unittest.mock.internal": [
+            "std.collection",
+            "std.core"
+          ]
+        },
+        {
+          "std.unittest.prop_test": [
+            "std.collection",
+            "std.core",
+            "std.math",
+            "std.random",
+            "std.unittest.common"
+          ]
+        }
+      ],
+      "features": [],
+      "product": true,
+      "testUsed": true,
+      "mockUsed": false
+    },
+    "/Users/coder7/Code/SwiftProject/SplashCangjie/splash_html_gen/src": {
+      "package": "splash_html_gen",
+      "isMacro": false,
+      "accessLevel": "public",
+      "timeStamp": 1777449895,
+      "dependencies": [
+        {
+          "orPackage": "",
+          "package": "splash_lib",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/SwiftProject/SplashCangjie/splash_html_gen/src/main.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "",
+          "package": "std.console",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/SwiftProject/SplashCangjie/splash_html_gen/src/main.cj"
+            }
+          ]
+        }
+      ],
+      "std-dependencies": [
+        {
+          "std.binary": [
+            "std.core"
+          ]
+        },
+        {
+          "std.collection": [
+            "std.core",
+            "std.math"
+          ]
+        },
+        {
+          "std.console": [
+            "std.core",
+            "std.io",
+            "std.sync"
+          ]
+        },
+        {
+          "std.convert": [
+            "std.core"
+          ]
+        },
+        {
+          "std.core": []
+        },
+        {
+          "std.io": [
+            "std.core"
+          ]
+        },
+        {
+          "std.math": [
+            "std.core"
+          ]
+        },
+        {
+          "std.sync": [
+            "std.core",
+            "std.time"
+          ]
+        },
+        {
+          "std.time": [
+            "std.binary",
+            "std.collection",
+            "std.convert",
+            "std.core",
+            "std.io"
+          ]
+        }
+      ],
+      "features": [],
+      "product": true,
+      "testUsed": false,
+      "mockUsed": false
+    },
+    "/Users/coder7/Code/SwiftProject/SplashCangjie/splash_markdown/src": {
+      "package": "splash_markdown",
+      "isMacro": false,
+      "accessLevel": "public",
+      "timeStamp": 1777449918,
+      "dependencies": [
+        {
+          "orPackage": "",
+          "package": "splash_lib",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/SwiftProject/SplashCangjie/splash_markdown/src/main.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "",
+          "package": "std.console",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/SwiftProject/SplashCangjie/splash_markdown/src/main.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "",
+          "package": "std.fs",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/SwiftProject/SplashCangjie/splash_markdown/src/main.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "",
+          "package": "std.io",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/SwiftProject/SplashCangjie/splash_markdown/src/main.cj"
+            }
+          ]
+        }
+      ],
+      "std-dependencies": [
+        {
+          "std.binary": [
+            "std.core"
+          ]
+        },
+        {
+          "std.collection": [
+            "std.core",
+            "std.math"
+          ]
+        },
+        {
+          "std.console": [
+            "std.core",
+            "std.io",
+            "std.sync"
+          ]
+        },
+        {
+          "std.convert": [
+            "std.core"
+          ]
+        },
+        {
+          "std.core": []
+        },
+        {
+          "std.fs": [
+            "std.collection",
+            "std.core",
+            "std.io",
+            "std.time"
+          ]
+        },
+        {
+          "std.io": [
+            "std.core"
+          ]
+        },
+        {
+          "std.math": [
+            "std.core"
+          ]
+        },
+        {
+          "std.sync": [
+            "std.core",
+            "std.time"
+          ]
+        },
+        {
+          "std.time": [
+            "std.binary",
+            "std.collection",
+            "std.convert",
+            "std.core",
+            "std.io"
+          ]
+        }
+      ],
+      "features": [],
+      "product": true,
+      "testUsed": false,
+      "mockUsed": false
+    },
+    "/Users/coder7/Code/SwiftProject/SplashCangjie/splash_tokenizer/src": {
+      "package": "splash_tokenizer",
+      "isMacro": false,
+      "accessLevel": "public",
+      "timeStamp": 1777449910,
+      "dependencies": [
+        {
+          "orPackage": "",
+          "package": "splash_lib",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/SwiftProject/SplashCangjie/splash_tokenizer/src/main.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "",
+          "package": "std.collection",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/SwiftProject/SplashCangjie/splash_tokenizer/src/main.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "",
+          "package": "std.console",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/SwiftProject/SplashCangjie/splash_tokenizer/src/main.cj"
+            }
+          ]
+        }
+      ],
+      "std-dependencies": [
+        {
+          "std.binary": [
+            "std.core"
+          ]
+        },
+        {
+          "std.collection": [
+            "std.core",
+            "std.math"
+          ]
+        },
+        {
+          "std.console": [
+            "std.core",
+            "std.io",
+            "std.sync"
+          ]
+        },
+        {
+          "std.convert": [
+            "std.core"
+          ]
+        },
+        {
+          "std.core": []
+        },
+        {
+          "std.io": [
+            "std.core"
+          ]
+        },
+        {
+          "std.math": [
+            "std.core"
+          ]
+        },
+        {
+          "std.sync": [
+            "std.core",
+            "std.time"
+          ]
+        },
+        {
+          "std.time": [
+            "std.binary",
+            "std.collection",
+            "std.convert",
+            "std.core",
+            "std.io"
+          ]
+        }
+      ],
+      "features": [],
+      "product": true,
+      "testUsed": false,
+      "mockUsed": false
+    }
+  }
+}

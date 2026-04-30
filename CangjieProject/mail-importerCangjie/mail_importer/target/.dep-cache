@@ -1,0 +1,1892 @@
+{
+  "bin": {},
+  "pkg-build": {
+    "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/errorstrategy": {
+      "package": "mail_importer.errorstrategy",
+      "isMacro": false,
+      "accessLevel": "public",
+      "timeStamp": 1777479367,
+      "dependencies": [
+        {
+          "orPackage": "mail_importer.local.LocalMessage",
+          "package": "mail_importer.local",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/errorstrategy/ErrorStrategy.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/errorstrategy/Fail.cj"
+            }
+          ]
+        }
+      ],
+      "std-dependencies": [
+        {
+          "std.core": []
+        }
+      ],
+      "features": [],
+      "product": true,
+      "testUsed": false,
+      "mockUsed": false
+    },
+    "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/fixers": {
+      "package": "mail_importer.fixers",
+      "isMacro": false,
+      "accessLevel": "public",
+      "timeStamp": 1777492736,
+      "dependencies": [
+        {
+          "orPackage": "mail_importer.local.MailMessage",
+          "package": "mail_importer.local",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/fixers/CorruptEmailFixer.cj"
+            }
+          ]
+        }
+      ],
+      "std-dependencies": [
+        {
+          "std.core": []
+        }
+      ],
+      "features": [],
+      "product": true,
+      "testUsed": false,
+      "mockUsed": false
+    },
+    "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail": {
+      "package": "mail_importer.gmail",
+      "isMacro": false,
+      "accessLevel": "public",
+      "timeStamp": 1777515936,
+      "dependencies": [
+        {
+          "orPackage": "mail_importer.errorstrategy.ErrorStrategy",
+          "package": "mail_importer.errorstrategy",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/GmailSyncer.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.errorstrategy.ErrorStrategyResult",
+          "package": "mail_importer.errorstrategy",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/GmailSyncer.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.errorstrategy.Fail",
+          "package": "mail_importer.errorstrategy",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/GmailSyncer.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.gmail.curl.CurlHelper",
+          "package": "mail_importer.gmail.curl",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/FileBasedOAuth2Provider.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/RealGmailHttpClient.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.gmail.curl.CurlResponse",
+          "package": "mail_importer.gmail.curl",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/FileBasedOAuth2Provider.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/RealGmailHttpClient.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.local.LocalMessage",
+          "package": "mail_importer.local",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/GmailLabel.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/GmailSyncer.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/Mailbox.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "",
+          "package": "std.collection",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/FileBasedOAuth2Provider.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/GmailHttpClient.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/GmailJsonParser.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/GmailLabel.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/GmailSyncer.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/Mailbox.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/RealGmailHttpClient.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/StubGmailHttpClient.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/TokenStore.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "",
+          "package": "std.collection",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/GmailJsonParser.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/GmailLabel.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/GmailSyncer.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/Mailbox.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/StubGmailHttpClient.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/TokenStore.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "",
+          "package": "std.collection",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/GmailLabel.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/Mailbox.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "",
+          "package": "std.fs",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/TokenStore.cj"
+            }
+          ]
+        }
+      ],
+      "std-dependencies": [
+        {
+          "std.binary": [
+            "std.core"
+          ]
+        },
+        {
+          "std.collection": [
+            "std.core",
+            "std.math"
+          ]
+        },
+        {
+          "std.convert": [
+            "std.core"
+          ]
+        },
+        {
+          "std.core": []
+        },
+        {
+          "std.fs": [
+            "std.collection",
+            "std.core",
+            "std.io",
+            "std.time"
+          ]
+        },
+        {
+          "std.io": [
+            "std.core"
+          ]
+        },
+        {
+          "std.math": [
+            "std.core"
+          ]
+        },
+        {
+          "std.time": [
+            "std.binary",
+            "std.collection",
+            "std.convert",
+            "std.core",
+            "std.io"
+          ]
+        }
+      ],
+      "features": [],
+      "product": true,
+      "testUsed": false,
+      "mockUsed": false
+    },
+    "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/thunderbird": {
+      "package": "mail_importer.local.thunderbird",
+      "isMacro": false,
+      "accessLevel": "public",
+      "timeStamp": 1777489955,
+      "dependencies": [
+        {
+          "orPackage": "mail_importer.local.LocalMessage",
+          "package": "mail_importer.local",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/thunderbird/ThunderbirdLocalMessage.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/thunderbird/ThunderbirdMailStorage.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.local.LocalMessageStorage",
+          "package": "mail_importer.local",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/thunderbird/ThunderbirdMailbox.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.local.MailFolder",
+          "package": "mail_importer.local",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/thunderbird/ThunderbirdMailStorage.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.local.MailMessage",
+          "package": "mail_importer.local",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/thunderbird/ThunderbirdLocalMessage.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/thunderbird/ThunderbirdMailStorage.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/thunderbird/XMozillaStatusParser.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.local.MailProvider",
+          "package": "mail_importer.local",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/thunderbird/ThunderbirdMailbox.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.local.MailStorage",
+          "package": "mail_importer.local",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/thunderbird/ThunderbirdMailStorage.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.local.SimpleLogger",
+          "package": "mail_importer.local",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/thunderbird/ThunderbirdMailStorage.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/thunderbird/ThunderbirdMailbox.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.local.mbox.MboxDirectoryScanner",
+          "package": "mail_importer.local.mbox",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/thunderbird/ThunderbirdMailbox.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "",
+          "package": "std.collection",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/thunderbird/ThunderbirdLocalMessage.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "",
+          "package": "std.io",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/thunderbird/ThunderbirdLocalMessage.cj"
+            }
+          ]
+        }
+      ],
+      "std-dependencies": [
+        {
+          "std.collection": [
+            "std.core",
+            "std.math"
+          ]
+        },
+        {
+          "std.core": []
+        },
+        {
+          "std.io": [
+            "std.core"
+          ]
+        },
+        {
+          "std.math": [
+            "std.core"
+          ]
+        }
+      ],
+      "features": [],
+      "product": true,
+      "testUsed": false,
+      "mockUsed": false
+    },
+    "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer": {
+      "package": "mail_importer",
+      "isMacro": false,
+      "accessLevel": "public",
+      "timeStamp": 1777515519,
+      "dependencies": [
+        {
+          "orPackage": "mail_importer.gmail.Authorizer",
+          "package": "mail_importer.gmail",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/Importer.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.gmail.GmailService",
+          "package": "mail_importer.gmail",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/Importer.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.gmail.GmailSyncer",
+          "package": "mail_importer.gmail",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/Importer.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.gmail.RealGmailHttpClient",
+          "package": "mail_importer.gmail",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/Importer.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.gmail.User",
+          "package": "mail_importer.gmail",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/Importer.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.local.ConsoleLogger",
+          "package": "mail_importer.local",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/Importer.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.local.LocalMessage",
+          "package": "mail_importer.local",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/Importer.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.local.LocalMessageStorage",
+          "package": "mail_importer.local",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/Importer.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.local.MailProvider",
+          "package": "mail_importer.local",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/Importer.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.local.SimpleLogger",
+          "package": "mail_importer.local",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/Importer.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.local.thunderbird.ThunderbirdMailbox",
+          "package": "mail_importer.local.thunderbird",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/Importer.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.local.thunderbird.XMozillaStatusParser",
+          "package": "mail_importer.local.thunderbird",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/Importer.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "",
+          "package": "std.collection",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/Importer.cj"
+            }
+          ]
+        }
+      ],
+      "std-dependencies": [
+        {
+          "std.collection": [
+            "std.core",
+            "std.math"
+          ]
+        },
+        {
+          "std.core": []
+        },
+        {
+          "std.math": [
+            "std.core"
+          ]
+        }
+      ],
+      "features": [],
+      "product": true,
+      "testUsed": false,
+      "mockUsed": false
+    },
+    "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local": {
+      "package": "mail_importer.local",
+      "isMacro": false,
+      "accessLevel": "public",
+      "timeStamp": 1777486514,
+      "dependencies": [
+        {
+          "orPackage": "",
+          "package": "std.collection",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/LocalMessage.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/MailStorage.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "",
+          "package": "std.io",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/MailMessage.cj"
+            }
+          ]
+        }
+      ],
+      "std-dependencies": [
+        {
+          "std.collection": [
+            "std.core",
+            "std.math"
+          ]
+        },
+        {
+          "std.core": []
+        },
+        {
+          "std.io": [
+            "std.core"
+          ]
+        },
+        {
+          "std.math": [
+            "std.core"
+          ]
+        }
+      ],
+      "features": [],
+      "product": true,
+      "testUsed": false,
+      "mockUsed": false
+    },
+    "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/mbox": {
+      "package": "mail_importer.local.mbox",
+      "isMacro": false,
+      "accessLevel": "public",
+      "timeStamp": 1777490446,
+      "dependencies": [
+        {
+          "orPackage": "mail_importer.local.FolderConstants",
+          "package": "mail_importer.local",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/mbox/MboxDirectoryScanner.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.local.MailAddress",
+          "package": "mail_importer.local",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/mbox/MboxMailMessage.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.local.MailFolder",
+          "package": "mail_importer.local",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/mbox/MboxMailFolder.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/mbox/MboxMailMessage.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.local.MailMessage",
+          "package": "mail_importer.local",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/mbox/MboxMailFolder.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/mbox/MboxMailMessage.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "",
+          "package": "std.collection",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/mbox/MboxDirectoryScanner.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/mbox/MboxMailFolder.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/mbox/MboxMailMessage.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/mbox/MboxParser.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/mbox/MboxRawMessage.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "",
+          "package": "std.collection",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/mbox/MboxDirectoryScanner.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/mbox/MboxParser.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/mbox/MboxRawMessage.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "",
+          "package": "std.fs",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/mbox/MboxDirectoryScanner.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "",
+          "package": "std.io",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/mbox/MboxMailMessage.cj"
+            }
+          ]
+        }
+      ],
+      "std-dependencies": [
+        {
+          "std.binary": [
+            "std.core"
+          ]
+        },
+        {
+          "std.collection": [
+            "std.core",
+            "std.math"
+          ]
+        },
+        {
+          "std.convert": [
+            "std.core"
+          ]
+        },
+        {
+          "std.core": []
+        },
+        {
+          "std.fs": [
+            "std.collection",
+            "std.core",
+            "std.io",
+            "std.time"
+          ]
+        },
+        {
+          "std.io": [
+            "std.core"
+          ]
+        },
+        {
+          "std.math": [
+            "std.core"
+          ]
+        },
+        {
+          "std.time": [
+            "std.binary",
+            "std.collection",
+            "std.convert",
+            "std.core",
+            "std.io"
+          ]
+        }
+      ],
+      "features": [],
+      "product": true,
+      "testUsed": false,
+      "mockUsed": false
+    },
+    "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/curl": {
+      "package": "mail_importer.gmail.curl",
+      "isMacro": false,
+      "accessLevel": "public",
+      "timeStamp": 1777491758,
+      "dependencies": [
+        {
+          "orPackage": "",
+          "package": "std.collection",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/curl/CurlHelper.cj"
+            }
+          ]
+        }
+      ],
+      "std-dependencies": [
+        {
+          "std.collection": [
+            "std.core",
+            "std.math"
+          ]
+        },
+        {
+          "std.core": []
+        },
+        {
+          "std.math": [
+            "std.core"
+          ]
+        }
+      ],
+      "features": [],
+      "product": true,
+      "testUsed": false,
+      "mockUsed": false
+    }
+  },
+  "pkg-test": {
+    "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/fixers": {
+      "package": "mail_importer.fixers",
+      "isMacro": false,
+      "accessLevel": "public",
+      "timeStamp": 1777492736,
+      "dependencies": [
+        {
+          "orPackage": "mail_importer.local.MailAddress",
+          "package": "mail_importer.local",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/fixers/CorruptEmailFixer_test.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.local.MailFolder",
+          "package": "mail_importer.local",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/fixers/CorruptEmailFixer_test.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.local.MailMessage",
+          "package": "mail_importer.local",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/fixers/CorruptEmailFixer.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/fixers/CorruptEmailFixer_test.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "",
+          "package": "std.collection",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/fixers/CorruptEmailFixer_test.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "",
+          "package": "std.collection",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/fixers/CorruptEmailFixer_test.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "",
+          "package": "std.io",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/fixers/CorruptEmailFixer_test.cj"
+            }
+          ]
+        }
+      ],
+      "std-dependencies": [
+        {
+          "std.collection": [
+            "std.core",
+            "std.math"
+          ]
+        },
+        {
+          "std.core": []
+        },
+        {
+          "std.io": [
+            "std.core"
+          ]
+        },
+        {
+          "std.math": [
+            "std.core"
+          ]
+        }
+      ],
+      "features": [],
+      "product": true,
+      "testUsed": false,
+      "mockUsed": false
+    },
+    "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/errorstrategy": {
+      "package": "mail_importer.errorstrategy",
+      "isMacro": false,
+      "accessLevel": "public",
+      "timeStamp": 1777479367,
+      "dependencies": [
+        {
+          "orPackage": "mail_importer.local.LocalMessage",
+          "package": "mail_importer.local",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/errorstrategy/ErrorStrategy.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/errorstrategy/Fail.cj"
+            }
+          ]
+        }
+      ],
+      "std-dependencies": [
+        {
+          "std.core": []
+        }
+      ],
+      "features": [],
+      "product": true,
+      "testUsed": false,
+      "mockUsed": false
+    },
+    "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local": {
+      "package": "mail_importer.local",
+      "isMacro": false,
+      "accessLevel": "public",
+      "timeStamp": 1777486514,
+      "dependencies": [
+        {
+          "orPackage": "",
+          "package": "std.collection",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/LocalMessage.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/MailStorage.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/MailStorage_test.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "",
+          "package": "std.collection",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/MailStorage_test.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "",
+          "package": "std.io",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/MailMessage.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/MailStorage_test.cj"
+            }
+          ]
+        }
+      ],
+      "std-dependencies": [
+        {
+          "std.collection": [
+            "std.core",
+            "std.math"
+          ]
+        },
+        {
+          "std.core": []
+        },
+        {
+          "std.io": [
+            "std.core"
+          ]
+        },
+        {
+          "std.math": [
+            "std.core"
+          ]
+        }
+      ],
+      "features": [],
+      "product": true,
+      "testUsed": false,
+      "mockUsed": false
+    },
+    "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/thunderbird": {
+      "package": "mail_importer.local.thunderbird",
+      "isMacro": false,
+      "accessLevel": "public",
+      "timeStamp": 1777489955,
+      "dependencies": [
+        {
+          "orPackage": "mail_importer.local.ConsoleLogger",
+          "package": "mail_importer.local",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/thunderbird/ThunderbirdMailStorage_test.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.local.LocalMessage",
+          "package": "mail_importer.local",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/thunderbird/ThunderbirdLocalMessage.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/thunderbird/ThunderbirdMailStorage.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.local.LocalMessageStorage",
+          "package": "mail_importer.local",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/thunderbird/ThunderbirdMailbox.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.local.MailAddress",
+          "package": "mail_importer.local",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/thunderbird/ThunderbirdLocalMessage_test.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/thunderbird/XMozillaStatus_test.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.local.MailFolder",
+          "package": "mail_importer.local",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/thunderbird/ThunderbirdLocalMessage_test.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/thunderbird/ThunderbirdMailStorage.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/thunderbird/ThunderbirdMailStorage_test.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/thunderbird/XMozillaStatus_test.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.local.MailMessage",
+          "package": "mail_importer.local",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/thunderbird/ThunderbirdLocalMessage.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/thunderbird/ThunderbirdLocalMessage_test.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/thunderbird/ThunderbirdMailStorage.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/thunderbird/ThunderbirdMailStorage_test.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/thunderbird/XMozillaStatusParser.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/thunderbird/XMozillaStatus_test.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.local.MailProvider",
+          "package": "mail_importer.local",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/thunderbird/ThunderbirdMailbox.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.local.MailStorage",
+          "package": "mail_importer.local",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/thunderbird/ThunderbirdMailStorage.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.local.SimpleLogger",
+          "package": "mail_importer.local",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/thunderbird/ThunderbirdMailStorage.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/thunderbird/ThunderbirdMailbox.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.local.mbox.MboxDirectoryScanner",
+          "package": "mail_importer.local.mbox",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/thunderbird/ThunderbirdMailbox.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "",
+          "package": "std.collection",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/thunderbird/ThunderbirdLocalMessage.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/thunderbird/ThunderbirdLocalMessage_test.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/thunderbird/ThunderbirdMailStorage_test.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/thunderbird/XMozillaStatus_test.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "",
+          "package": "std.collection",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/thunderbird/ThunderbirdLocalMessage_test.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/thunderbird/XMozillaStatus_test.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "",
+          "package": "std.io",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/thunderbird/ThunderbirdLocalMessage.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/thunderbird/ThunderbirdLocalMessage_test.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/thunderbird/XMozillaStatus_test.cj"
+            }
+          ]
+        }
+      ],
+      "std-dependencies": [
+        {
+          "std.collection": [
+            "std.core",
+            "std.math"
+          ]
+        },
+        {
+          "std.core": []
+        },
+        {
+          "std.io": [
+            "std.core"
+          ]
+        },
+        {
+          "std.math": [
+            "std.core"
+          ]
+        }
+      ],
+      "features": [],
+      "product": true,
+      "testUsed": false,
+      "mockUsed": false
+    },
+    "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/mbox": {
+      "package": "mail_importer.local.mbox",
+      "isMacro": false,
+      "accessLevel": "public",
+      "timeStamp": 1777490446,
+      "dependencies": [
+        {
+          "orPackage": "mail_importer.local.FolderConstants",
+          "package": "mail_importer.local",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/mbox/MboxDirectoryScanner.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.local.MailAddress",
+          "package": "mail_importer.local",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/mbox/MboxMailMessage.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/mbox/MboxParser_test.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.local.MailFolder",
+          "package": "mail_importer.local",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/mbox/MboxMailFolder.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/mbox/MboxMailMessage.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/mbox/MboxParser_test.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.local.MailMessage",
+          "package": "mail_importer.local",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/mbox/MboxMailFolder.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/mbox/MboxMailMessage.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/mbox/MboxParser_test.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "",
+          "package": "std.collection",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/mbox/MboxDirectoryScanner.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/mbox/MboxMailFolder.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/mbox/MboxMailMessage.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/mbox/MboxParser.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/mbox/MboxParser_test.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/mbox/MboxRawMessage.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "",
+          "package": "std.collection",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/mbox/MboxDirectoryScanner.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/mbox/MboxParser.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/mbox/MboxParser_test.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/mbox/MboxRawMessage.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "",
+          "package": "std.fs",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/mbox/MboxDirectoryScanner.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "",
+          "package": "std.io",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/mbox/MboxMailMessage.cj"
+            }
+          ]
+        }
+      ],
+      "std-dependencies": [
+        {
+          "std.binary": [
+            "std.core"
+          ]
+        },
+        {
+          "std.collection": [
+            "std.core",
+            "std.math"
+          ]
+        },
+        {
+          "std.convert": [
+            "std.core"
+          ]
+        },
+        {
+          "std.core": []
+        },
+        {
+          "std.fs": [
+            "std.collection",
+            "std.core",
+            "std.io",
+            "std.time"
+          ]
+        },
+        {
+          "std.io": [
+            "std.core"
+          ]
+        },
+        {
+          "std.math": [
+            "std.core"
+          ]
+        },
+        {
+          "std.time": [
+            "std.binary",
+            "std.collection",
+            "std.convert",
+            "std.core",
+            "std.io"
+          ]
+        }
+      ],
+      "features": [],
+      "product": true,
+      "testUsed": false,
+      "mockUsed": false
+    },
+    "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail": {
+      "package": "mail_importer.gmail",
+      "isMacro": false,
+      "accessLevel": "public",
+      "timeStamp": 1777515936,
+      "dependencies": [
+        {
+          "orPackage": "mail_importer.errorstrategy.ErrorStrategy",
+          "package": "mail_importer.errorstrategy",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/GmailSyncer.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.errorstrategy.ErrorStrategyResult",
+          "package": "mail_importer.errorstrategy",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/GmailSyncer.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.errorstrategy.Fail",
+          "package": "mail_importer.errorstrategy",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/GmailSyncer.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.gmail.curl.CurlHelper",
+          "package": "mail_importer.gmail.curl",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/FileBasedOAuth2Provider.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/RealGmailHttpClient.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.gmail.curl.CurlResponse",
+          "package": "mail_importer.gmail.curl",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/FileBasedOAuth2Provider.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/RealGmailHttpClient.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.local.LocalMessage",
+          "package": "mail_importer.local",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/GmailLabel.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/GmailSyncer.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/GmailSyncer_test.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/Mailbox.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/Mailbox_test.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "",
+          "package": "std.collection",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/FileBasedOAuth2Provider.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/GmailHttpClient.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/GmailJsonParser.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/GmailLabel.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/GmailSyncer.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/GmailSyncer_test.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/Mailbox.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/Mailbox_test.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/RealGmailHttpClient.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/StubGmailHttpClient.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/TokenStore.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "",
+          "package": "std.collection",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/GmailJsonParser.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/GmailLabel.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/GmailSyncer.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/GmailSyncer_test.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/Mailbox.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/Mailbox_test.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/StubGmailHttpClient.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/TokenStore.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "",
+          "package": "std.collection",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/GmailLabel.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/Mailbox.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "",
+          "package": "std.fs",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/TokenStore.cj"
+            }
+          ]
+        }
+      ],
+      "std-dependencies": [
+        {
+          "std.binary": [
+            "std.core"
+          ]
+        },
+        {
+          "std.collection": [
+            "std.core",
+            "std.math"
+          ]
+        },
+        {
+          "std.convert": [
+            "std.core"
+          ]
+        },
+        {
+          "std.core": []
+        },
+        {
+          "std.fs": [
+            "std.collection",
+            "std.core",
+            "std.io",
+            "std.time"
+          ]
+        },
+        {
+          "std.io": [
+            "std.core"
+          ]
+        },
+        {
+          "std.math": [
+            "std.core"
+          ]
+        },
+        {
+          "std.time": [
+            "std.binary",
+            "std.collection",
+            "std.convert",
+            "std.core",
+            "std.io"
+          ]
+        }
+      ],
+      "features": [],
+      "product": true,
+      "testUsed": false,
+      "mockUsed": false
+    },
+    "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer": {
+      "package": "mail_importer",
+      "isMacro": false,
+      "accessLevel": "public",
+      "timeStamp": 1777515519,
+      "dependencies": [
+        {
+          "orPackage": "mail_importer.gmail.Authorizer",
+          "package": "mail_importer.gmail",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/Importer.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.gmail.GmailService",
+          "package": "mail_importer.gmail",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/Importer.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/Importer_test.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.gmail.GmailSyncer",
+          "package": "mail_importer.gmail",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/Importer.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/Importer_test.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.gmail.Mailbox",
+          "package": "mail_importer.gmail",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/Importer_test.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.gmail.RealGmailHttpClient",
+          "package": "mail_importer.gmail",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/Importer.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.gmail.User",
+          "package": "mail_importer.gmail",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/Importer.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/Importer_test.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.local.ConsoleLogger",
+          "package": "mail_importer.local",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/Importer.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/Importer_test.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.local.LocalMessage",
+          "package": "mail_importer.local",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/Importer.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/Importer_test.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.local.LocalMessageStorage",
+          "package": "mail_importer.local",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/Importer.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/Importer_test.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.local.MailProvider",
+          "package": "mail_importer.local",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/Importer.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/Importer_test.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.local.SimpleLogger",
+          "package": "mail_importer.local",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/Importer.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.local.thunderbird.ThunderbirdMailbox",
+          "package": "mail_importer.local.thunderbird",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/Importer.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "mail_importer.local.thunderbird.XMozillaStatusParser",
+          "package": "mail_importer.local.thunderbird",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/Importer.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "",
+          "package": "std.collection",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/Importer.cj"
+            },
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/Importer_test.cj"
+            }
+          ]
+        }
+      ],
+      "std-dependencies": [
+        {
+          "std.collection": [
+            "std.core",
+            "std.math"
+          ]
+        },
+        {
+          "std.core": []
+        },
+        {
+          "std.math": [
+            "std.core"
+          ]
+        }
+      ],
+      "features": [],
+      "product": true,
+      "testUsed": false,
+      "mockUsed": false
+    },
+    "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/curl": {
+      "package": "mail_importer.gmail.curl",
+      "isMacro": false,
+      "accessLevel": "public",
+      "timeStamp": 1777491758,
+      "dependencies": [
+        {
+          "orPackage": "",
+          "package": "std.collection",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/curl/CurlHelper.cj"
+            }
+          ]
+        }
+      ],
+      "std-dependencies": [
+        {
+          "std.collection": [
+            "std.core",
+            "std.math"
+          ]
+        },
+        {
+          "std.core": []
+        },
+        {
+          "std.math": [
+            "std.core"
+          ]
+        }
+      ],
+      "features": [],
+      "product": true,
+      "testUsed": false,
+      "mockUsed": false
+    }
+  }
+}

@@ -1,0 +1,517 @@
+[33mwarning[0m: unused variable:'localMessages'
+  [36m==>[0m /Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/GmailSyncer_test.cj:20:40:
+   [36m| [0m
+[36m20[0m [36m| [0m    public override func mapMessageIds(localMessages: ArrayList<LocalMessage>): HashMap<String, ArrayList<GmailMessage>> {[0m
+   [36m| [0m                                       [33m^^^^^^^^^^^^^ unused variable[0m
+   [36m| [0m
+   [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+
+[33mwarning[0m: unused variable:'messages'
+  [36m==>[0m /Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/GmailSyncer_test.cj:29:46:
+   [36m| [0m
+[36m29[0m [36m| [0m    public override func fetchExistingLabels(messages: ArrayList<GmailMessage>): Unit {[0m
+   [36m| [0m                                             [33m^^^^^^^^ unused variable[0m
+   [36m| [0m
+   [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+
+[33mwarning[0m: unused variable:'map'
+  [36m==>[0m /Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/GmailSyncer_test.cj:33:49:
+   [36m| [0m
+[36m33[0m [36m| [0m    public override func syncLocalLabelsToGmail(map: HashMap<String, ArrayList<GmailMessage>>, localMessages: ArrayList<LocalMessage>): Unit {[0m
+   [36m| [0m                                                [33m^^^ unused variable[0m
+   [36m| [0m
+   [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+
+[33mwarning[0m: unused variable:'localMessages'
+  [36m==>[0m /Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/GmailSyncer_test.cj:33:96:
+   [36m| [0m
+[36m33[0m [36m| [0m    public override func syncLocalLabelsToGmail(map: HashMap<String, ArrayList<GmailMessage>>, localMessages: ArrayList<LocalMessage>): Unit {[0m
+   [36m| [0m                                                                                               [33m^^^^^^^^^^^^^ unused variable[0m
+   [36m| [0m
+   [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+
+[33mwarning[0m: unused expression
+   [36m| [0m
+   [36m| [0m/* 5.34 */                None < Exception >[0m
+   [36m| [0m                          [33m^^^^^^^^^^^^^^^^^^ unused expression[0m
+   [36m| [0m
+   [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+[34mnote[0m: the code after the macro is expanded as follows
+    [36m| [0m
+    [36m| [0m  /* 5.1 */@Attribute[TEST_GENERATED] class AuthorizerTest <: TestClass {[0m
+    [36m| [0m [34m_[0m[34m^[0m
+    [36m| [0m[34m|[0m /* 5.2 */    @Attribute[TestCase_0][0m
+    [36m| [0m[34m|[0m /* 5.3 */    func testStaticOAuth2Provider(): Unit {[0m
+    [36m| [0m[34m|[0m /* 5.4 */        let provider = StaticOAuth2Provider("test-token-123")[0m
+    [36m| [0m[34m|[0m /* 5.5 */        expectEqual("provider.getAccessToken()", "\"test-token-123\"", provider.getAccessToken(), "test-token-123", isDelta: false)[0m
+    [36m| [0m[34m|[0m /* 5.6 */    }[0m
+    [36m| [0m[34m|[0m /* 5.7 */    [0m
+    [36m| [0m[34m|[0m /* 5.8 */    @Attribute[TestCase_1][0m
+    [36m| [0m[34m|[0m /* 5.9 */    func testStaticOAuth2ProviderDifferentTokens(): Unit {[0m
+    [36m| [0m[34m|[0m /* 5.10 */        let provider1 = StaticOAuth2Provider("token-aaa")[0m
+    [36m| [0m[34m|[0m /* 5.11 */        let provider2 = StaticOAuth2Provider("token-bbb")[0m
+    [36m| [0m[34m|[0m /* 5.12 */        expectEqual("provider1.getAccessToken()", "\"token-aaa\"", provider1.getAccessToken(), "token-aaa", isDelta: false)[0m
+    [36m| [0m[34m|[0m /* 5.13 */        expectEqual("provider2.getAccessToken()", "\"token-bbb\"", provider2.getAccessToken(), "token-bbb", isDelta: false)[0m
+    [36m| [0m[34m|[0m /* 5.14 */    }[0m
+    [36m| [0m[34m|[0m /* 5.15 */    [0m
+    [36m| [0m[34m|[0m /* 5.16 */    @Attribute[TestCase_2][0m
+    [36m| [0m[34m|[0m /* 5.17 */    func testAuthorizerWithToken(): Unit {[0m
+    [36m| [0m[34m|[0m /* 5.18 */        let user = User("test@example.com")[0m
+    [36m| [0m[34m|[0m /* 5.19 */        let authorizer = Authorizer(user)[0m
+    [36m| [0m[34m|[0m /* 5.20 */        let provider = authorizer.authorizeWithToken("my-access-token")[0m
+    [36m| [0m[34m|[0m /* 5.21 */        expectEqual("provider.getAccessToken()", "\"my-access-token\"", provider.getAccessToken(), "my-access-token", isDelta: false)[0m
+    [36m| [0m[34m|[0m /* 5.22 */        expectEqual("authorizer.getProvider().getAccessToken()", "\"my-access-token\"", authorizer.getProvider().getAccessToken(), "my-access-token", isDelta: false)[0m
+    [36m| [0m[34m|[0m /* 5.23 */    }[0m
+    [36m| [0m[34m|[0m /* 5.24 */    [0m
+    [36m| [0m[34m|[0m /* 5.25 */    @Attribute[TestCase_3][0m
+    [36m| [0m[34m|[0m /* 5.26 */    func testAuthorizerNotAuthorizedThrows(): Unit {[0m
+    [36m| [0m[34m|[0m /* 5.27 */        let user = User("test@example.com")[0m
+    [36m| [0m[34m|[0m /* 5.28 */        let authorizer = Authorizer(user)[0m
+    [36m| [0m[34m|[0m /* 5.29 */        try {[0m
+    [36m| [0m[34m|[0m /* 5.30 */            try {[0m
+    [36m| [0m[34m|[0m /* 5.31 */                assertEqual("true", "true", true, true)[0m
+    [36m| [0m[34m|[0m /* 5.32 */                authorizer.getProvider()[0m
+    [36m| [0m[34m|[0m /* 5.33 */                failExpect("@ExpectThrows: Expected 'Exception' was not caught.")[0m
+    [36m| [0m[34m|[0m /* 5.34 */                None < Exception >[0m
+    [36m| [0m[34m|[0m /* 5.35 */            } catch(e: Exception) {[0m
+    [36m| [0m[34m|[0m /* 5.36 */                if(e is AssertException) {[0m
+    [36m| [0m[34m|[0m /* 5.37 */                    throw e[0m
+    [36m| [0m[34m|[0m /* 5.38 */                }[0m
+    [36m| [0m[34m|[0m /* 5.39 */                if(e is AssertIntermediateException) {[0m
+    [36m| [0m[34m|[0m /* 5.40 */                    throw e[0m
+    [36m| [0m[34m|[0m /* 5.41 */                }[0m
+    [36m| [0m[34m|[0m /* 5.42 */                if(e is UnittestTimeoutException) {[0m
+    [36m| [0m[34m|[0m /* 5.43 */                    throw e[0m
+    [36m| [0m[34m|[0m /* 5.44 */                }[0m
+    [36m| [0m[34m|[0m /* 5.45 */                e[0m
+    [36m| [0m[34m|[0m /* 5.46 */            }[0m
+    [36m| [0m[34m|[0m /* 5.47 */        } catch(e: Exception) {[0m
+    [36m| [0m[34m|[0m /* 5.48 */            if(e is AssertException || e is AssertIntermediateException || e is UnittestTimeoutException) {[0m
+    [36m| [0m[34m|[0m /* 5.49 */                throw e[0m
+    [36m| [0m[34m|[0m /* 5.50 */            }[0m
+    [36m| [0m[34m|[0m /* 5.51 */            expectCaughtUnexpectedE("@ExpectThrows(Exception)", "Exception", e.toString())[0m
+    [36m| [0m[34m|[0m /* 5.52 */            None < Exception >[0m
+    [36m| [0m[34m|[0m /* 5.53 */        }[0m
+    [36m| [0m[34m|[0m /* 5.54 */    }[0m
+    [36m| [0m[34m|[0m /* 5.55 */    [0m
+    [36m| [0m[34m|[0m /* 5.56 */    @Attribute[TestCase_4][0m
+    [36m| [0m[34m|[0m /* 5.57 */    func testOAuth2TokenNotExpired(): Unit {[0m
+    [36m| [0m[34m|[0m /* 5.58 */        let now = unsafe {[0m
+    [36m| [0m[34m|[0m /* 5.59 */            time(CPointer < Int64 >())[0m
+    [36m| [0m[34m|[0m /* 5.60 */        } * 1000[0m
+    [36m| [0m[34m|[0m /* 5.61 */        let token = OAuth2Token("access", "refresh", 3600, now)[0m
+    [36m| [0m[34m|[0m /* 5.62 */        expectEqual("token.isExpired()", "false", token.isExpired(), false, isDelta: false)[0m
+    [36m| [0m[34m|[0m /* 5.63 */    }[0m
+    [36m| [0m[34m|[0m /* 5.64 */    [0m
+    [36m| [0m[34m|[0m /* 5.65 */    @Attribute[TestCase_5][0m
+    [36m| [0m[34m|[0m /* 5.66 */    func testOAuth2TokenExpired(): Unit {[0m
+    [36m| [0m[34m|[0m /* 5.67 */        let now = unsafe {[0m
+    [36m| [0m[34m|[0m /* 5.68 */            time(CPointer < Int64 >())[0m
+    [36m| [0m[34m|[0m /* 5.69 */        } * 1000[0m
+    [36m| [0m[34m|[0m /* 5.70 */        let token = OAuth2Token("access", "refresh", 3600, now - 7200000)[0m
+    [36m| [0m[34m|[0m /* 5.71 */        expectEqual("token.isExpired()", "true", token.isExpired(), true, isDelta: false)[0m
+    [36m| [0m[34m|[0m /* 5.72 */    }[0m
+    [36m| [0m[34m|[0m /* 5.73 */    [0m
+    [36m| [0m[34m|[0m /* 5.74 */    @Attribute[TestCase_6][0m
+    [36m| [0m[34m|[0m /* 5.75 */    func testTokenStoreRoundTrip(): Unit {[0m
+    [36m| [0m[34m|[0m /* 5.76 */        let store = TokenStore("/tmp/test_mailimporter_tokens")[0m
+    [36m| [0m[34m|[0m /* 5.77 */        let now = unsafe {[0m
+    [36m| [0m[34m|[0m /* 5.78 */            time(CPointer < Int64 >())[0m
+    [36m| [0m[34m|[0m /* 5.79 */        } * 1000[0m
+    [36m| [0m[34m|[0m /* 5.80 */        let original = OAuth2Token("access123", "refresh456", 3600, now)[0m
+    [36m| [0m[34m|[0m /* 5.81 */        store.saveToken("testuser@example.com", original)[0m
+    [36m| [0m[34m|[0m /* 5.82 */        if(let Some(loaded) <- store.loadToken("testuser@example.com")) {[0m
+    [36m| [0m[34m|[0m /* 5.83 */            expectEqual("loaded.accessToken", "\"access123\"", loaded.accessToken, "access123", isDelta: false)[0m
+    [36m| [0m[34m|[0m /* 5.84 */            expectEqual("loaded.refreshToken", "\"refresh456\"", loaded.refreshToken, "refresh456", isDelta: false)[0m
+    [36m| [0m[34m|[0m /* 5.85 */            expectEqual("loaded.expiresIn", "3600", loaded.expiresIn, 3600, isDelta: false)[0m
+    [36m| [0m[34m|[0m /* 5.86 */        }[0m
+    [36m| [0m[34m|[0m /* 5.87 */        else {[0m
+    [36m| [0m[34m|[0m /* 5.88 */            expectEqual("true", "false", true, false, isDelta: false)[0m
+    [36m| [0m[34m|[0m /* 5.89 */        }[0m
+    [36m| [0m[34m|[0m /* 5.90 */    }[0m
+    [36m| [0m[34m|[0m /* 5.91 */    [0m
+    [36m| [0m[34m|[0m /* 5.92 */    init() {[0m
+    [36m| [0m[34m|[0m /* 5.93 */    }[0m
+    [36m| [0m[34m|[0m /* 5.94 */    private func classConfiguration(): Configuration {[0m
+    [36m| [0m[34m|[0m /* 5.95 */        let configuration = Configuration()[0m
+    [36m| [0m[34m|[0m /* 5.96 */        [0m
+    [36m| [0m[34m|[0m /* 5.97 */        return configuration[0m
+    [36m| [0m[34m|[0m /* 5.98 */    }[0m
+    [36m| [0m[34m|[0m /* 5.99 */    public override func asTestSuite(): TestSuite {[0m
+    [36m| [0m[34m|[0m /* 5.100 */        [0m
+    [36m| [0m[34m|[0m /* 5.101 */        let suiteConfiguration = classConfiguration()[0m
+    [36m| [0m[34m|[0m /* 5.102 */        let suiteBuilder = TestSuite.builder("AuthorizerTest").configure(suiteConfiguration)[0m
+    [36m| [0m[34m|[0m /* 5.103 */        [0m
+    [36m| [0m[34m|[0m /* 5.104 */        { => let caseConfig = Configuration()[0m
+    [36m| [0m[34m|[0m /* 5.105 */            [0m
+    [36m| [0m[34m|[0m /* 5.106 */            let testStaticOAuth2ProviderTestFunc = { => testStaticOAuth2Provider();() }[0m
+    [36m| [0m[34m|[0m /* 5.107 */            suiteBuilder.add([0m
+    [36m| [0m[34m|[0m /* 5.108 */            UnitTestCase.create([0m
+    [36m| [0m[34m|[0m /* 5.109 */            "testStaticOAuth2Provider",[0m
+    [36m| [0m[34m|[0m /* 5.110 */            configuration: caseConfig,[0m
+    [36m| [0m[34m|[0m /* 5.111 */            body: testStaticOAuth2ProviderTestFunc[0m
+    [36m| [0m[34m|[0m /* 5.112 */            )[0m
+    [36m| [0m[34m|[0m /* 5.113 */            )[0m
+    [36m| [0m[34m|[0m /* 5.114 */            [0m
+    [36m| [0m[34m|[0m /* 5.115 */        }()[0m
+    [36m| [0m[34m|[0m /* 5.116 */        [0m
+    [36m| [0m[34m|[0m /* 5.117 */        [0m
+    [36m| [0m[34m|[0m /* 5.118 */        { => let caseConfig = Configuration()[0m
+    [36m| [0m[34m|[0m /* 5.119 */            [0m
+    [36m| [0m[34m|[0m /* 5.120 */            let testStaticOAuth2ProviderDifferentTokensTestFunc = { => testStaticOAuth2ProviderDifferentTokens();() }[0m
+    [36m| [0m[34m|[0m /* 5.121 */            suiteBuilder.add([0m
+    [36m| [0m[34m|[0m /* 5.122 */            UnitTestCase.create([0m
+    [36m| [0m[34m|[0m /* 5.123 */            "testStaticOAuth2ProviderDifferentTokens",[0m
+    [36m| [0m[34m|[0m /* 5.124 */            configuration: caseConfig,[0m
+    [36m| [0m[34m|[0m /* 5.125 */            body: testStaticOAuth2ProviderDifferentTokensTestFunc[0m
+    [36m| [0m[34m|[0m /* 5.126 */            )[0m
+    [36m| [0m[34m|[0m /* 5.127 */            )[0m
+    [36m| [0m[34m|[0m /* 5.128 */            [0m
+    [36m| [0m[34m|[0m /* 5.129 */        }()[0m
+    [36m| [0m[34m|[0m /* 5.130 */        [0m
+    [36m| [0m[34m|[0m /* 5.131 */        [0m
+    [36m| [0m[34m|[0m /* 5.132 */        { => let caseConfig = Configuration()[0m
+    [36m| [0m[34m|[0m /* 5.133 */            [0m
+    [36m| [0m[34m|[0m /* 5.134 */            let testAuthorizerWithTokenTestFunc = { => testAuthorizerWithToken();() }[0m
+    [36m| [0m[34m|[0m /* 5.135 */            suiteBuilder.add([0m
+    [36m| [0m[34m|[0m /* 5.136 */            UnitTestCase.create([0m
+    [36m| [0m[34m|[0m /* 5.137 */            "testAuthorizerWithToken",[0m
+    [36m| [0m[34m|[0m /* 5.138 */            configuration: caseConfig,[0m
+    [36m| [0m[34m|[0m /* 5.139 */            body: testAuthorizerWithTokenTestFunc[0m
+    [36m| [0m[34m|[0m /* 5.140 */            )[0m
+    [36m| [0m[34m|[0m /* 5.141 */            )[0m
+    [36m| [0m[34m|[0m /* 5.142 */            [0m
+    [36m| [0m[34m|[0m /* 5.143 */        }()[0m
+    [36m| [0m[34m|[0m /* 5.144 */        [0m
+    [36m| [0m[34m|[0m /* 5.145 */        [0m
+    [36m| [0m[34m|[0m /* 5.146 */        { => let caseConfig = Configuration()[0m
+    [36m| [0m[34m|[0m /* 5.147 */            [0m
+    [36m| [0m[34m|[0m /* 5.148 */            let testAuthorizerNotAuthorizedThrowsTestFunc = { => testAuthorizerNotAuthorizedThrows();() }[0m
+    [36m| [0m[34m|[0m /* 5.149 */            suiteBuilder.add([0m
+    [36m| [0m[34m|[0m /* 5.150 */            UnitTestCase.create([0m
+    [36m| [0m[34m|[0m /* 5.151 */            "testAuthorizerNotAuthorizedThrows",[0m
+    [36m| [0m[34m|[0m /* 5.152 */            configuration: caseConfig,[0m
+    [36m| [0m[34m|[0m /* 5.153 */            body: testAuthorizerNotAuthorizedThrowsTestFunc[0m
+    [36m| [0m[34m|[0m /* 5.154 */            )[0m
+    [36m| [0m[34m|[0m /* 5.155 */            )[0m
+    [36m| [0m[34m|[0m /* 5.156 */            [0m
+    [36m| [0m[34m|[0m /* 5.157 */        }()[0m
+    [36m| [0m[34m|[0m /* 5.158 */        [0m
+    [36m| [0m[34m|[0m /* 5.159 */        [0m
+    [36m| [0m[34m|[0m /* 5.160 */        { => let caseConfig = Configuration()[0m
+    [36m| [0m[34m|[0m /* 5.161 */            [0m
+    [36m| [0m[34m|[0m /* 5.162 */            let testOAuth2TokenNotExpiredTestFunc = { => testOAuth2TokenNotExpired();() }[0m
+    [36m| [0m[34m|[0m /* 5.163 */            suiteBuilder.add([0m
+    [36m| [0m[34m|[0m /* 5.164 */            UnitTestCase.create([0m
+    [36m| [0m[34m|[0m /* 5.165 */            "testOAuth2TokenNotExpired",[0m
+    [36m| [0m[34m|[0m /* 5.166 */            configuration: caseConfig,[0m
+    [36m| [0m[34m|[0m /* 5.167 */            body: testOAuth2TokenNotExpiredTestFunc[0m
+    [36m| [0m[34m|[0m /* 5.168 */            )[0m
+    [36m| [0m[34m|[0m /* 5.169 */            )[0m
+    [36m| [0m[34m|[0m /* 5.170 */            [0m
+    [36m| [0m[34m|[0m /* 5.171 */        }()[0m
+    [36m| [0m[34m|[0m /* 5.172 */        [0m
+    [36m| [0m[34m|[0m /* 5.173 */        [0m
+    [36m| [0m[34m|[0m /* 5.174 */        { => let caseConfig = Configuration()[0m
+    [36m| [0m[34m|[0m /* 5.175 */            [0m
+    [36m| [0m[34m|[0m /* 5.176 */            let testOAuth2TokenExpiredTestFunc = { => testOAuth2TokenExpired();() }[0m
+    [36m| [0m[34m|[0m /* 5.177 */            suiteBuilder.add([0m
+    [36m| [0m[34m|[0m /* 5.178 */            UnitTestCase.create([0m
+    [36m| [0m[34m|[0m /* 5.179 */            "testOAuth2TokenExpired",[0m
+    [36m| [0m[34m|[0m /* 5.180 */            configuration: caseConfig,[0m
+    [36m| [0m[34m|[0m /* 5.181 */            body: testOAuth2TokenExpiredTestFunc[0m
+    [36m| [0m[34m|[0m /* 5.182 */            )[0m
+    [36m| [0m[34m|[0m /* 5.183 */            )[0m
+    [36m| [0m[34m|[0m /* 5.184 */            [0m
+    [36m| [0m[34m|[0m /* 5.185 */        }()[0m
+    [36m| [0m[34m|[0m /* 5.186 */        [0m
+    [36m| [0m[34m|[0m /* 5.187 */        [0m
+    [36m| [0m[34m|[0m /* 5.188 */        { => let caseConfig = Configuration()[0m
+    [36m| [0m[34m|[0m /* 5.189 */            [0m
+    [36m| [0m[34m|[0m /* 5.190 */            let testTokenStoreRoundTripTestFunc = { => testTokenStoreRoundTrip();() }[0m
+    [36m| [0m[34m|[0m /* 5.191 */            suiteBuilder.add([0m
+    [36m| [0m[34m|[0m /* 5.192 */            UnitTestCase.create([0m
+    [36m| [0m[34m|[0m /* 5.193 */            "testTokenStoreRoundTrip",[0m
+    [36m| [0m[34m|[0m /* 5.194 */            configuration: caseConfig,[0m
+    [36m| [0m[34m|[0m /* 5.195 */            body: testTokenStoreRoundTripTestFunc[0m
+    [36m| [0m[34m|[0m /* 5.196 */            )[0m
+    [36m| [0m[34m|[0m /* 5.197 */            )[0m
+    [36m| [0m[34m|[0m /* 5.198 */            [0m
+    [36m| [0m[34m|[0m /* 5.199 */        }()[0m
+    [36m| [0m[34m|[0m /* 5.200 */        [0m
+    [36m| [0m[34m|[0m /* 5.201 */        return suiteBuilder.build()[0m
+    [36m| [0m[34m|[0m /* 5.202 */    }[0m
+    [36m| [0m[34m|[0m /* 5.203 */    private func inheritedFromClassAnnotatedByTestTemplate < T >(): TestSuite where T <: TestClass {[0m
+    [36m| [0m[34m|[0m /* 5.204 */        throw Exception("Unreachable code")[0m
+    [36m| [0m[34m|[0m /* 5.205 */    }[0m
+    [36m| [0m[34m|[0m /* 5.206 */}[0m
+    [36m| [0m[34m|[0m /* 5.207 */[0m
+    [36m| [0m[34m|[0m /* 5.208 */[0m
+    [36m| [0m[34m|[0m /* 5.209 */interface TestPackageExtension_AuthorizerTest {[0m
+    [36m| [0m[34m|[0m /* 5.210 */    func registerAuthorizerTest(): Unit[0m
+    [36m| [0m[34m|[0m /* 5.211 */}[0m
+    [36m| [0m[34m|[0m /* 5.212 */extend TestPackage <: TestPackageExtension_AuthorizerTest {[0m
+    [36m| [0m[34m|[0m /* 5.213 */    @Attribute[TEST_REGISTER][0m
+    [36m| [0m[34m|[0m /* 5.214 */    public func registerAuthorizerTest() {[0m
+    [36m| [0m[34m|[0m /* 5.215 */        registerSuite({ => AuthorizerTest().asTestSuite() })[0m
+    [36m| [0m[34m|[0m /* 5.216 */    }[0m
+    [36m| [0m[34m|[0m /* 5.217 */}[0m
+    [36m| [0m[34m|[0m /* 5.218 */[0m
+    [36m| [0m[34m|[0m[34m_[0m[34m__________^[0m
+    [36m| [0m
+[34mnote[0m: the warning occurs after the macro is expanded
+  [36m==>[0m /Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/Authorizer_test.cj:5:1:
+   [36m| [0m
+[36m5[0m  [36m| [0m  @Test[0m
+   [36m| [0m [34m_[0m[34m^[0m
+[36m6[0m  [36m| [0m[34m|[0m class AuthorizerTest {[0m
+   [36m| [0m[34m|[0m ...[0m
+[36m73[0m [36m| [0m[34m|[0m }[0m
+   [36m| [0m[34m|[0m[34m_[0m[34m^[0m
+   [36m| [0m
+
+[33mwarning[0m: unused expression
+   [36m| [0m
+   [36m| [0m/* 5.52 */            None < Exception >[0m
+   [36m| [0m                      [33m^^^^^^^^^^^^^^^^^^ unused expression[0m
+   [36m| [0m
+   [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+[34mnote[0m: the warning occurs after the macro is expanded
+  [36m==>[0m /Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/Authorizer_test.cj:5:1:
+   [36m| [0m
+[36m5[0m  [36m| [0m  @Test[0m
+   [36m| [0m [34m_[0m[34m^[0m
+[36m6[0m  [36m| [0m[34m|[0m class AuthorizerTest {[0m
+   [36m| [0m[34m|[0m ...[0m
+[36m73[0m [36m| [0m[34m|[0m }[0m
+   [36m| [0m[34m|[0m[34m_[0m[34m^[0m
+   [36m| [0m
+
+[33mwarning[0m: unused expression
+   [36m| [0m
+   [36m| [0m/* 65.12 */                None < IllegalStateException >[0m
+   [36m| [0m                           [33m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ unused expression[0m
+   [36m| [0m
+   [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+[34mnote[0m: the code after the macro is expanded as follows
+    [36m| [0m
+    [36m| [0m  /* 65.1 */@Attribute[TEST_GENERATED] class GmailSyncerTest <: TestClass {[0m
+    [36m| [0m [34m_[0m[34m^[0m
+    [36m| [0m[34m|[0m /* 65.2 */    @Attribute[TestCase_8][0m
+    [36m| [0m[34m|[0m /* 65.3 */    func testInitRequiredBeforeSync(): Unit {[0m
+    [36m| [0m[34m|[0m /* 65.4 */        let httpClient = StubGmailHttpClient()[0m
+    [36m| [0m[34m|[0m /* 65.5 */        let mailbox = Mailbox(httpClient, User("test@test.com"))[0m
+    [36m| [0m[34m|[0m /* 65.6 */        let syncer = GmailSyncer(mailbox)[0m
+    [36m| [0m[34m|[0m /* 65.7 */        try {[0m
+    [36m| [0m[34m|[0m /* 65.8 */            try {[0m
+    [36m| [0m[34m|[0m /* 65.9 */                assertEqual("true", "true", true, true)[0m
+    [36m| [0m[34m|[0m /* 65.10 */                syncer.sync(ArrayList < LocalMessage >())[0m
+    [36m| [0m[34m|[0m /* 65.11 */                failExpect("@ExpectThrows: Expected 'IllegalStateException' was not caught.")[0m
+    [36m| [0m[34m|[0m /* 65.12 */                None < IllegalStateException >[0m
+    [36m| [0m[34m|[0m /* 65.13 */            } catch(e: IllegalStateException) {[0m
+    [36m| [0m[34m|[0m /* 65.14 */                if(e is AssertException) {[0m
+    [36m| [0m[34m|[0m /* 65.15 */                    throw e[0m
+    [36m| [0m[34m|[0m /* 65.16 */                }[0m
+    [36m| [0m[34m|[0m /* 65.17 */                if(e is AssertIntermediateException) {[0m
+    [36m| [0m[34m|[0m /* 65.18 */                    throw e[0m
+    [36m| [0m[34m|[0m /* 65.19 */                }[0m
+    [36m| [0m[34m|[0m /* 65.20 */                if(e is UnittestTimeoutException) {[0m
+    [36m| [0m[34m|[0m /* 65.21 */                    throw e[0m
+    [36m| [0m[34m|[0m /* 65.22 */                }[0m
+    [36m| [0m[34m|[0m /* 65.23 */                e[0m
+    [36m| [0m[34m|[0m /* 65.24 */            }[0m
+    [36m| [0m[34m|[0m /* 65.25 */        } catch(e: Exception) {[0m
+    [36m| [0m[34m|[0m /* 65.26 */            if(e is AssertException || e is AssertIntermediateException || e is UnittestTimeoutException) {[0m
+    [36m| [0m[34m|[0m /* 65.27 */                throw e[0m
+    [36m| [0m[34m|[0m /* 65.28 */            }[0m
+    [36m| [0m[34m|[0m /* 65.29 */            expectCaughtUnexpectedE("@ExpectThrows(IllegalStateException)", "IllegalStateException", e.toString())[0m
+    [36m| [0m[34m|[0m /* 65.30 */            None < IllegalStateException >[0m
+    [36m| [0m[34m|[0m /* 65.31 */        }[0m
+    [36m| [0m[34m|[0m /* 65.32 */    }[0m
+    [36m| [0m[34m|[0m /* 65.33 */    [0m
+    [36m| [0m[34m|[0m /* 65.34 */    @Attribute[TestCase_9][0m
+    [36m| [0m[34m|[0m /* 65.35 */    func testSyncEmptyList(): Unit {[0m
+    [36m| [0m[34m|[0m /* 65.36 */        let mailbox = GSFakeMailbox()[0m
+    [36m| [0m[34m|[0m /* 65.37 */        let syncer = GmailSyncer(mailbox)[0m
+    [36m| [0m[34m|[0m /* 65.38 */        syncer.connect()[0m
+    [36m| [0m[34m|[0m /* 65.39 */        syncer.sync(ArrayList < LocalMessage >())[0m
+    [36m| [0m[34m|[0m /* 65.40 */        expectEqual("mailbox.uploadedMessages.size", "0", mailbox.uploadedMessages.size, 0, isDelta: false)[0m
+    [36m| [0m[34m|[0m /* 65.41 */    }[0m
+    [36m| [0m[34m|[0m /* 65.42 */    [0m
+    [36m| [0m[34m|[0m /* 65.43 */    @Attribute[TestCase_10][0m
+    [36m| [0m[34m|[0m /* 65.44 */    func testSyncWithMessages(): Unit {[0m
+    [36m| [0m[34m|[0m /* 65.45 */        let mailbox = GSFakeMailbox()[0m
+    [36m| [0m[34m|[0m /* 65.46 */        let syncer = GmailSyncer(mailbox)[0m
+    [36m| [0m[34m|[0m /* 65.47 */        syncer.connect()[0m
+    [36m| [0m[34m|[0m /* 65.48 */        let msg1 = GSFakeLocalMessage("id1", "from1@test.com")[0m
+    [36m| [0m[34m|[0m /* 65.49 */        let msg2 = GSFakeLocalMessage("id2", "from2@test.com")[0m
+    [36m| [0m[34m|[0m /* 65.50 */        let messages = ArrayList < LocalMessage >()[0m
+    [36m| [0m[34m|[0m /* 65.51 */        messages.add(msg1)[0m
+    [36m| [0m[34m|[0m /* 65.52 */        messages.add(msg2)[0m
+    [36m| [0m[34m|[0m /* 65.53 */        syncer.sync(messages)[0m
+    [36m| [0m[34m|[0m /* 65.54 */        expectEqual("mailbox.uploadedMessages.size", "2", mailbox.uploadedMessages.size, 2, isDelta: false)[0m
+    [36m| [0m[34m|[0m /* 65.55 */    }[0m
+    [36m| [0m[34m|[0m /* 65.56 */    [0m
+    [36m| [0m[34m|[0m /* 65.57 */    init() {[0m
+    [36m| [0m[34m|[0m /* 65.58 */    }[0m
+    [36m| [0m[34m|[0m /* 65.59 */    private func classConfiguration(): Configuration {[0m
+    [36m| [0m[34m|[0m /* 65.60 */        let configuration = Configuration()[0m
+    [36m| [0m[34m|[0m /* 65.61 */        [0m
+    [36m| [0m[34m|[0m /* 65.62 */        return configuration[0m
+    [36m| [0m[34m|[0m /* 65.63 */    }[0m
+    [36m| [0m[34m|[0m /* 65.64 */    public override func asTestSuite(): TestSuite {[0m
+    [36m| [0m[34m|[0m /* 65.65 */        [0m
+    [36m| [0m[34m|[0m /* 65.66 */        let suiteConfiguration = classConfiguration()[0m
+    [36m| [0m[34m|[0m /* 65.67 */        let suiteBuilder = TestSuite.builder("GmailSyncerTest").configure(suiteConfiguration)[0m
+    [36m| [0m[34m|[0m /* 65.68 */        [0m
+    [36m| [0m[34m|[0m /* 65.69 */        { => let caseConfig = Configuration()[0m
+    [36m| [0m[34m|[0m /* 65.70 */            [0m
+    [36m| [0m[34m|[0m /* 65.71 */            let testInitRequiredBeforeSyncTestFunc = { => testInitRequiredBeforeSync();() }[0m
+    [36m| [0m[34m|[0m /* 65.72 */            suiteBuilder.add([0m
+    [36m| [0m[34m|[0m /* 65.73 */            UnitTestCase.create([0m
+    [36m| [0m[34m|[0m /* 65.74 */            "testInitRequiredBeforeSync",[0m
+    [36m| [0m[34m|[0m /* 65.75 */            configuration: caseConfig,[0m
+    [36m| [0m[34m|[0m /* 65.76 */            body: testInitRequiredBeforeSyncTestFunc[0m
+    [36m| [0m[34m|[0m /* 65.77 */            )[0m
+    [36m| [0m[34m|[0m /* 65.78 */            )[0m
+    [36m| [0m[34m|[0m /* 65.79 */            [0m
+    [36m| [0m[34m|[0m /* 65.80 */        }()[0m
+    [36m| [0m[34m|[0m /* 65.81 */        [0m
+    [36m| [0m[34m|[0m /* 65.82 */        [0m
+    [36m| [0m[34m|[0m /* 65.83 */        { => let caseConfig = Configuration()[0m
+    [36m| [0m[34m|[0m /* 65.84 */            [0m
+    [36m| [0m[34m|[0m /* 65.85 */            let testSyncEmptyListTestFunc = { => testSyncEmptyList();() }[0m
+    [36m| [0m[34m|[0m /* 65.86 */            suiteBuilder.add([0m
+    [36m| [0m[34m|[0m /* 65.87 */            UnitTestCase.create([0m
+    [36m| [0m[34m|[0m /* 65.88 */            "testSyncEmptyList",[0m
+    [36m| [0m[34m|[0m /* 65.89 */            configuration: caseConfig,[0m
+    [36m| [0m[34m|[0m /* 65.90 */            body: testSyncEmptyListTestFunc[0m
+    [36m| [0m[34m|[0m /* 65.91 */            )[0m
+    [36m| [0m[34m|[0m /* 65.92 */            )[0m
+    [36m| [0m[34m|[0m /* 65.93 */            [0m
+    [36m| [0m[34m|[0m /* 65.94 */        }()[0m
+    [36m| [0m[34m|[0m /* 65.95 */        [0m
+    [36m| [0m[34m|[0m /* 65.96 */        [0m
+    [36m| [0m[34m|[0m /* 65.97 */        { => let caseConfig = Configuration()[0m
+    [36m| [0m[34m|[0m /* 65.98 */            [0m
+    [36m| [0m[34m|[0m /* 65.99 */            let testSyncWithMessagesTestFunc = { => testSyncWithMessages();() }[0m
+    [36m| [0m[34m|[0m /* 65.100 */            suiteBuilder.add([0m
+    [36m| [0m[34m|[0m /* 65.101 */            UnitTestCase.create([0m
+    [36m| [0m[34m|[0m /* 65.102 */            "testSyncWithMessages",[0m
+    [36m| [0m[34m|[0m /* 65.103 */            configuration: caseConfig,[0m
+    [36m| [0m[34m|[0m /* 65.104 */            body: testSyncWithMessagesTestFunc[0m
+    [36m| [0m[34m|[0m /* 65.105 */            )[0m
+    [36m| [0m[34m|[0m /* 65.106 */            )[0m
+    [36m| [0m[34m|[0m /* 65.107 */            [0m
+    [36m| [0m[34m|[0m /* 65.108 */        }()[0m
+    [36m| [0m[34m|[0m /* 65.109 */        [0m
+    [36m| [0m[34m|[0m /* 65.110 */        return suiteBuilder.build()[0m
+    [36m| [0m[34m|[0m /* 65.111 */    }[0m
+    [36m| [0m[34m|[0m /* 65.112 */    private func inheritedFromClassAnnotatedByTestTemplate < T >(): TestSuite where T <: TestClass {[0m
+    [36m| [0m[34m|[0m /* 65.113 */        throw Exception("Unreachable code")[0m
+    [36m| [0m[34m|[0m /* 65.114 */    }[0m
+    [36m| [0m[34m|[0m /* 65.115 */}[0m
+    [36m| [0m[34m|[0m /* 65.116 */[0m
+    [36m| [0m[34m|[0m /* 65.117 */[0m
+    [36m| [0m[34m|[0m /* 65.118 */interface TestPackageExtension_GmailSyncerTest {[0m
+    [36m| [0m[34m|[0m /* 65.119 */    func registerGmailSyncerTest(): Unit[0m
+    [36m| [0m[34m|[0m /* 65.120 */}[0m
+    [36m| [0m[34m|[0m /* 65.121 */extend TestPackage <: TestPackageExtension_GmailSyncerTest {[0m
+    [36m| [0m[34m|[0m /* 65.122 */    @Attribute[TEST_REGISTER][0m
+    [36m| [0m[34m|[0m /* 65.123 */    public func registerGmailSyncerTest() {[0m
+    [36m| [0m[34m|[0m /* 65.124 */        registerSuite({ => GmailSyncerTest().asTestSuite() })[0m
+    [36m| [0m[34m|[0m /* 65.125 */    }[0m
+    [36m| [0m[34m|[0m /* 65.126 */}[0m
+    [36m| [0m[34m|[0m /* 65.127 */[0m
+    [36m| [0m[34m|[0m[34m_[0m[34m___________^[0m
+    [36m| [0m
+[34mnote[0m: the warning occurs after the macro is expanded
+   [36m==>[0m /Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/GmailSyncer_test.cj:65:1:
+    [36m| [0m
+[36m65[0m  [36m| [0m  @Test[0m
+    [36m| [0m [34m_[0m[34m^[0m
+[36m66[0m  [36m| [0m[34m|[0m class GmailSyncerTest {[0m
+    [36m| [0m[34m|[0m ...[0m
+[36m105[0m [36m| [0m[34m|[0m }[0m
+    [36m| [0m[34m|[0m[34m_[0m[34m^[0m
+    [36m| [0m
+
+[33mwarning[0m: unreachable block in 'if' expression
+   [36m| [0m
+   [36m| [0m  /* 65.14 */                if(e is AssertException) {[0m
+   [36m| [0m [33m_[0m[33m____________________________________________________^[0m
+   [36m| [0m[33m|[0m /* 65.15 */                    throw e[0m
+   [36m| [0m[33m|[0m /* 65.16 */                }[0m
+   [36m| [0m[33m|[0m[33m_[0m[33m___________________________^ unreachable block in 'if' expression[0m
+   [36m| [0m
+   [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+[34mnote[0m: the warning occurs after the macro is expanded
+   [36m==>[0m /Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/GmailSyncer_test.cj:65:1:
+    [36m| [0m
+[36m65[0m  [36m| [0m  @Test[0m
+    [36m| [0m [34m_[0m[34m^[0m
+[36m66[0m  [36m| [0m[34m|[0m class GmailSyncerTest {[0m
+    [36m| [0m[34m|[0m ...[0m
+[36m105[0m [36m| [0m[34m|[0m }[0m
+    [36m| [0m[34m|[0m[34m_[0m[34m^[0m
+    [36m| [0m
+
+[33mwarning[0m: unreachable block in 'if' expression
+   [36m| [0m
+   [36m| [0m  /* 65.17 */                if(e is AssertIntermediateException) {[0m
+   [36m| [0m [33m_[0m[33m________________________________________________________________^[0m
+   [36m| [0m[33m|[0m /* 65.18 */                    throw e[0m
+   [36m| [0m[33m|[0m /* 65.19 */                }[0m
+   [36m| [0m[33m|[0m[33m_[0m[33m___________________________^ unreachable block in 'if' expression[0m
+   [36m| [0m
+   [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+[34mnote[0m: the warning occurs after the macro is expanded
+   [36m==>[0m /Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/GmailSyncer_test.cj:65:1:
+    [36m| [0m
+[36m65[0m  [36m| [0m  @Test[0m
+    [36m| [0m [34m_[0m[34m^[0m
+[36m66[0m  [36m| [0m[34m|[0m class GmailSyncerTest {[0m
+    [36m| [0m[34m|[0m ...[0m
+[36m105[0m [36m| [0m[34m|[0m }[0m
+    [36m| [0m[34m|[0m[34m_[0m[34m^[0m
+    [36m| [0m
+
+[33mwarning[0m: unreachable block in 'if' expression
+   [36m| [0m
+   [36m| [0m  /* 65.20 */                if(e is UnittestTimeoutException) {[0m
+   [36m| [0m [33m_[0m[33m_____________________________________________________________^[0m
+   [36m| [0m[33m|[0m /* 65.21 */                    throw e[0m
+   [36m| [0m[33m|[0m /* 65.22 */                }[0m
+   [36m| [0m[33m|[0m[33m_[0m[33m___________________________^ unreachable block in 'if' expression[0m
+   [36m| [0m
+   [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+[34mnote[0m: the warning occurs after the macro is expanded
+   [36m==>[0m /Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/GmailSyncer_test.cj:65:1:
+    [36m| [0m
+[36m65[0m  [36m| [0m  @Test[0m
+    [36m| [0m [34m_[0m[34m^[0m
+[36m66[0m  [36m| [0m[34m|[0m class GmailSyncerTest {[0m
+    [36m| [0m[34m|[0m ...[0m
+[36m105[0m [36m| [0m[34m|[0m }[0m
+    [36m| [0m[34m|[0m[34m_[0m[34m^[0m
+    [36m| [0m
+
+[33mwarning[0m: unused expression
+   [36m| [0m
+   [36m| [0m/* 65.30 */            None < IllegalStateException >[0m
+   [36m| [0m                       [33m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ unused expression[0m
+   [36m| [0m
+   [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+[34mnote[0m: the warning occurs after the macro is expanded
+   [36m==>[0m /Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/GmailSyncer_test.cj:65:1:
+    [36m| [0m
+[36m65[0m  [36m| [0m  @Test[0m
+    [36m| [0m [34m_[0m[34m^[0m
+[36m66[0m  [36m| [0m[34m|[0m class GmailSyncerTest {[0m
+    [36m| [0m[34m|[0m ...[0m
+[36m105[0m [36m| [0m[34m|[0m }[0m
+    [36m| [0m[34m|[0m[34m_[0m[34m^[0m
+    [36m| [0m
+
+11 warnings generated, 11 warnings printed.
+ld64.lld: warning: /Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/libs/libcurl_helper.dylib has version 15.0.0, which is newer than target minimum of 12.0.0

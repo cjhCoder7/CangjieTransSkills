@@ -1,0 +1,17 @@
+[33mwarning[0m: class 'Console' is deprecated. Use related global functions in the std.env instead.
+  [36m==>[0m /Users/coder7/Code/SwiftProject/SplashCangjie/splash_tokenizer/src/main.cj:54:9:
+   [36m| [0m
+[36m54[0m [36m| [0m        Console.stdErr.write("Please supply the code to tokenize as a string argument\n")[0m
+   [36m| [0m        [33m^^^^^^^ deprecated[0m
+   [36m| [0m
+   [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff deprecated`
+
+[33mwarning[0m: unused variable:'whitespace'
+  [36m==>[0m /Users/coder7/Code/SwiftProject/SplashCangjie/splash_tokenizer/src/main.cj:43:31:
+   [36m| [0m
+[36m43[0m [36m| [0m    public func addWhitespace(whitespace: String): Unit {[0m
+   [36m| [0m                              [33m^^^^^^^^^^ unused variable[0m
+   [36m| [0m
+   [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+
+2 warnings generated, 2 warnings printed.

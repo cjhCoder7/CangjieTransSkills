@@ -1,0 +1,17 @@
+[33mwarning[0m: unused variable:'v'
+  [36m==>[0m /Users/coder7/Code/PythonProject/tinydbCangjie/src/utils.cj:43:18:
+   [36m| [0m
+[36m43[0m [36m| [0m        for ((k, v) in cache) {[0m
+   [36m| [0m                 [33m^ unused variable[0m
+   [36m| [0m
+   [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+
+[33mwarning[0m: unused variable:'v'
+  [36m==>[0m /Users/coder7/Code/PythonProject/tinydbCangjie/src/utils.cj:85:18:
+   [36m| [0m
+[36m85[0m [36m| [0m        for ((k, v) in cache) {[0m
+   [36m| [0m                 [33m^ unused variable[0m
+   [36m| [0m
+   [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+
+2 warnings generated, 2 warnings printed.

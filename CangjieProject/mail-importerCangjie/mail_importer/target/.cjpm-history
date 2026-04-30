@@ -1,0 +1,675 @@
+{
+  "resolves": [
+    {
+      "rootPackageName": "mail_importer",
+      "modulePath": ".",
+      "packagePath": {
+        "isMultiplatform": false,
+        "sources": {
+          "roots": [
+            "src/mail_importer"
+          ],
+          "graph": {
+            "src/mail_importer": {
+              "indeg": [],
+              "outdeg": []
+            }
+          },
+          "toposort": [
+            "src/mail_importer"
+          ],
+          "data": {
+            "src/mail_importer": {
+              "sourceSetDir": "src/mail_importer",
+              "srcDir": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/curl",
+              "features": [],
+              "product": true,
+              "configuredProduct": true,
+              "outputSuffix": ""
+            }
+          }
+        }
+      },
+      "fullName": "mail_importer.gmail.curl",
+      "isMacroPackage": false,
+      "output-type": "static",
+      "compile-option": "",
+      "native-compile-option": "",
+      "customized-option": {},
+      "link-option": "",
+      "native-link-option": "",
+      "requires": [],
+      "std-requires": [
+        {
+          "std.collection": [
+            "std.core",
+            "std.math"
+          ]
+        },
+        {
+          "std.core": []
+        },
+        {
+          "std.math": [
+            "std.core"
+          ]
+        }
+      ],
+      "c_libs": {
+        "curl_helper": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/libs"
+      },
+      "cross_c_libs": {
+        "curl_helper": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/libs"
+      },
+      "hasTestFiles": false,
+      "hasProdFiles": true,
+      "hasTestsInProdFiles": false,
+      "accessLevel": "public",
+      "features": [
+        "os.darwin"
+      ],
+      "deducer": {
+        "features": [],
+        "mapping": {}
+      }
+    },
+    {
+      "rootPackageName": "mail_importer",
+      "modulePath": ".",
+      "packagePath": {
+        "isMultiplatform": false,
+        "sources": {
+          "roots": [
+            "src/mail_importer"
+          ],
+          "graph": {
+            "src/mail_importer": {
+              "indeg": [],
+              "outdeg": []
+            }
+          },
+          "toposort": [
+            "src/mail_importer"
+          ],
+          "data": {
+            "src/mail_importer": {
+              "sourceSetDir": "src/mail_importer",
+              "srcDir": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local",
+              "features": [],
+              "product": true,
+              "configuredProduct": true,
+              "outputSuffix": ""
+            }
+          }
+        }
+      },
+      "fullName": "mail_importer.local",
+      "isMacroPackage": false,
+      "output-type": "static",
+      "compile-option": "",
+      "native-compile-option": "",
+      "customized-option": {},
+      "link-option": "",
+      "native-link-option": "",
+      "requires": [],
+      "std-requires": [
+        {
+          "std.collection": [
+            "std.core",
+            "std.math"
+          ]
+        },
+        {
+          "std.core": []
+        },
+        {
+          "std.io": [
+            "std.core"
+          ]
+        },
+        {
+          "std.math": [
+            "std.core"
+          ]
+        }
+      ],
+      "c_libs": {
+        "curl_helper": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/libs"
+      },
+      "cross_c_libs": {
+        "curl_helper": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/libs"
+      },
+      "hasTestFiles": true,
+      "hasProdFiles": true,
+      "hasTestsInProdFiles": false,
+      "accessLevel": "public",
+      "features": [
+        "os.darwin"
+      ],
+      "deducer": {
+        "features": [],
+        "mapping": {}
+      }
+    },
+    {
+      "rootPackageName": "mail_importer",
+      "modulePath": ".",
+      "packagePath": {
+        "isMultiplatform": false,
+        "sources": {
+          "roots": [
+            "src/mail_importer"
+          ],
+          "graph": {
+            "src/mail_importer": {
+              "indeg": [],
+              "outdeg": []
+            }
+          },
+          "toposort": [
+            "src/mail_importer"
+          ],
+          "data": {
+            "src/mail_importer": {
+              "sourceSetDir": "src/mail_importer",
+              "srcDir": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/errorstrategy",
+              "features": [],
+              "product": true,
+              "configuredProduct": true,
+              "outputSuffix": ""
+            }
+          }
+        }
+      },
+      "fullName": "mail_importer.errorstrategy",
+      "isMacroPackage": false,
+      "output-type": "static",
+      "compile-option": "",
+      "native-compile-option": "",
+      "customized-option": {},
+      "link-option": "",
+      "native-link-option": "",
+      "requires": [
+        "mail_importer.local"
+      ],
+      "std-requires": [
+        {
+          "std.core": []
+        }
+      ],
+      "c_libs": {
+        "curl_helper": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/libs"
+      },
+      "cross_c_libs": {
+        "curl_helper": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/libs"
+      },
+      "hasTestFiles": false,
+      "hasProdFiles": true,
+      "hasTestsInProdFiles": false,
+      "accessLevel": "public",
+      "features": [
+        "os.darwin"
+      ],
+      "deducer": {
+        "features": [],
+        "mapping": {}
+      }
+    },
+    {
+      "rootPackageName": "mail_importer",
+      "modulePath": ".",
+      "packagePath": {
+        "isMultiplatform": false,
+        "sources": {
+          "roots": [
+            "src/mail_importer"
+          ],
+          "graph": {
+            "src/mail_importer": {
+              "indeg": [],
+              "outdeg": []
+            }
+          },
+          "toposort": [
+            "src/mail_importer"
+          ],
+          "data": {
+            "src/mail_importer": {
+              "sourceSetDir": "src/mail_importer",
+              "srcDir": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/fixers",
+              "features": [],
+              "product": true,
+              "configuredProduct": true,
+              "outputSuffix": ""
+            }
+          }
+        }
+      },
+      "fullName": "mail_importer.fixers",
+      "isMacroPackage": false,
+      "output-type": "static",
+      "compile-option": "",
+      "native-compile-option": "",
+      "customized-option": {},
+      "link-option": "",
+      "native-link-option": "",
+      "requires": [
+        "mail_importer.local"
+      ],
+      "std-requires": [
+        {
+          "std.collection": [
+            "std.core",
+            "std.math"
+          ]
+        },
+        {
+          "std.core": []
+        },
+        {
+          "std.io": [
+            "std.core"
+          ]
+        },
+        {
+          "std.math": [
+            "std.core"
+          ]
+        }
+      ],
+      "c_libs": {
+        "curl_helper": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/libs"
+      },
+      "cross_c_libs": {
+        "curl_helper": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/libs"
+      },
+      "hasTestFiles": true,
+      "hasProdFiles": true,
+      "hasTestsInProdFiles": false,
+      "accessLevel": "public",
+      "features": [
+        "os.darwin"
+      ],
+      "deducer": {
+        "features": [],
+        "mapping": {}
+      }
+    },
+    {
+      "rootPackageName": "mail_importer",
+      "modulePath": ".",
+      "packagePath": {
+        "isMultiplatform": false,
+        "sources": {
+          "roots": [
+            "src/mail_importer"
+          ],
+          "graph": {
+            "src/mail_importer": {
+              "indeg": [],
+              "outdeg": []
+            }
+          },
+          "toposort": [
+            "src/mail_importer"
+          ],
+          "data": {
+            "src/mail_importer": {
+              "sourceSetDir": "src/mail_importer",
+              "srcDir": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/mbox",
+              "features": [],
+              "product": true,
+              "configuredProduct": true,
+              "outputSuffix": ""
+            }
+          }
+        }
+      },
+      "fullName": "mail_importer.local.mbox",
+      "isMacroPackage": false,
+      "output-type": "static",
+      "compile-option": "",
+      "native-compile-option": "",
+      "customized-option": {},
+      "link-option": "",
+      "native-link-option": "",
+      "requires": [
+        "mail_importer.local"
+      ],
+      "std-requires": [
+        {
+          "std.binary": [
+            "std.core"
+          ]
+        },
+        {
+          "std.collection": [
+            "std.core",
+            "std.math"
+          ]
+        },
+        {
+          "std.convert": [
+            "std.core"
+          ]
+        },
+        {
+          "std.core": []
+        },
+        {
+          "std.fs": [
+            "std.collection",
+            "std.core",
+            "std.io",
+            "std.time"
+          ]
+        },
+        {
+          "std.io": [
+            "std.core"
+          ]
+        },
+        {
+          "std.math": [
+            "std.core"
+          ]
+        },
+        {
+          "std.time": [
+            "std.binary",
+            "std.collection",
+            "std.convert",
+            "std.core",
+            "std.io"
+          ]
+        }
+      ],
+      "c_libs": {
+        "curl_helper": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/libs"
+      },
+      "cross_c_libs": {
+        "curl_helper": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/libs"
+      },
+      "hasTestFiles": true,
+      "hasProdFiles": true,
+      "hasTestsInProdFiles": false,
+      "accessLevel": "public",
+      "features": [
+        "os.darwin"
+      ],
+      "deducer": {
+        "features": [],
+        "mapping": {}
+      }
+    },
+    {
+      "rootPackageName": "mail_importer",
+      "modulePath": ".",
+      "packagePath": {
+        "isMultiplatform": false,
+        "sources": {
+          "roots": [
+            "src/mail_importer"
+          ],
+          "graph": {
+            "src/mail_importer": {
+              "indeg": [],
+              "outdeg": []
+            }
+          },
+          "toposort": [
+            "src/mail_importer"
+          ],
+          "data": {
+            "src/mail_importer": {
+              "sourceSetDir": "src/mail_importer",
+              "srcDir": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail",
+              "features": [],
+              "product": true,
+              "configuredProduct": true,
+              "outputSuffix": ""
+            }
+          }
+        }
+      },
+      "fullName": "mail_importer.gmail",
+      "isMacroPackage": false,
+      "output-type": "static",
+      "compile-option": "",
+      "native-compile-option": "",
+      "customized-option": {},
+      "link-option": "",
+      "native-link-option": "",
+      "requires": [
+        "mail_importer.errorstrategy",
+        "mail_importer.gmail.curl",
+        "mail_importer.local"
+      ],
+      "std-requires": [
+        {
+          "std.binary": [
+            "std.core"
+          ]
+        },
+        {
+          "std.collection": [
+            "std.core",
+            "std.math"
+          ]
+        },
+        {
+          "std.convert": [
+            "std.core"
+          ]
+        },
+        {
+          "std.core": []
+        },
+        {
+          "std.fs": [
+            "std.collection",
+            "std.core",
+            "std.io",
+            "std.time"
+          ]
+        },
+        {
+          "std.io": [
+            "std.core"
+          ]
+        },
+        {
+          "std.math": [
+            "std.core"
+          ]
+        },
+        {
+          "std.time": [
+            "std.binary",
+            "std.collection",
+            "std.convert",
+            "std.core",
+            "std.io"
+          ]
+        }
+      ],
+      "c_libs": {
+        "curl_helper": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/libs"
+      },
+      "cross_c_libs": {
+        "curl_helper": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/libs"
+      },
+      "hasTestFiles": true,
+      "hasProdFiles": true,
+      "hasTestsInProdFiles": false,
+      "accessLevel": "public",
+      "features": [
+        "os.darwin"
+      ],
+      "deducer": {
+        "features": [],
+        "mapping": {}
+      }
+    },
+    {
+      "rootPackageName": "mail_importer",
+      "modulePath": ".",
+      "packagePath": {
+        "isMultiplatform": false,
+        "sources": {
+          "roots": [
+            "src/mail_importer"
+          ],
+          "graph": {
+            "src/mail_importer": {
+              "indeg": [],
+              "outdeg": []
+            }
+          },
+          "toposort": [
+            "src/mail_importer"
+          ],
+          "data": {
+            "src/mail_importer": {
+              "sourceSetDir": "src/mail_importer",
+              "srcDir": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/thunderbird",
+              "features": [],
+              "product": true,
+              "configuredProduct": true,
+              "outputSuffix": ""
+            }
+          }
+        }
+      },
+      "fullName": "mail_importer.local.thunderbird",
+      "isMacroPackage": false,
+      "output-type": "static",
+      "compile-option": "",
+      "native-compile-option": "",
+      "customized-option": {},
+      "link-option": "",
+      "native-link-option": "",
+      "requires": [
+        "mail_importer.local",
+        "mail_importer.local.mbox"
+      ],
+      "std-requires": [
+        {
+          "std.collection": [
+            "std.core",
+            "std.math"
+          ]
+        },
+        {
+          "std.core": []
+        },
+        {
+          "std.io": [
+            "std.core"
+          ]
+        },
+        {
+          "std.math": [
+            "std.core"
+          ]
+        }
+      ],
+      "c_libs": {
+        "curl_helper": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/libs"
+      },
+      "cross_c_libs": {
+        "curl_helper": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/libs"
+      },
+      "hasTestFiles": true,
+      "hasProdFiles": true,
+      "hasTestsInProdFiles": false,
+      "accessLevel": "public",
+      "features": [
+        "os.darwin"
+      ],
+      "deducer": {
+        "features": [],
+        "mapping": {}
+      }
+    },
+    {
+      "rootPackageName": "mail_importer",
+      "modulePath": ".",
+      "packagePath": {
+        "isMultiplatform": false,
+        "sources": {
+          "roots": [
+            "src/mail_importer"
+          ],
+          "graph": {
+            "src/mail_importer": {
+              "indeg": [],
+              "outdeg": []
+            }
+          },
+          "toposort": [
+            "src/mail_importer"
+          ],
+          "data": {
+            "src/mail_importer": {
+              "sourceSetDir": "src/mail_importer",
+              "srcDir": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer",
+              "features": [],
+              "product": true,
+              "configuredProduct": true,
+              "outputSuffix": ""
+            }
+          }
+        }
+      },
+      "fullName": "mail_importer",
+      "isMacroPackage": false,
+      "output-type": "static",
+      "compile-option": "",
+      "native-compile-option": "",
+      "customized-option": {},
+      "link-option": "",
+      "native-link-option": "",
+      "requires": [
+        "mail_importer.gmail",
+        "mail_importer.local",
+        "mail_importer.local.thunderbird"
+      ],
+      "std-requires": [
+        {
+          "std.collection": [
+            "std.core",
+            "std.math"
+          ]
+        },
+        {
+          "std.core": []
+        },
+        {
+          "std.math": [
+            "std.core"
+          ]
+        }
+      ],
+      "c_libs": {
+        "curl_helper": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/libs"
+      },
+      "cross_c_libs": {
+        "curl_helper": "/Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/libs"
+      },
+      "hasTestFiles": true,
+      "hasProdFiles": true,
+      "hasTestsInProdFiles": false,
+      "accessLevel": "public",
+      "features": [
+        "os.darwin"
+      ],
+      "deducer": {
+        "features": [],
+        "mapping": {}
+      }
+    }
+  ],
+  "binDeps": {},
+  "crossBinDeps": {}
+}

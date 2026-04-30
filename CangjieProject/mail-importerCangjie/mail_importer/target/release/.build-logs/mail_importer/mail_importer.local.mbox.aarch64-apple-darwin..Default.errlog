@@ -1,0 +1,33 @@
+[33mwarning[0m: unused import 'std.collection.ArrayList'
+ [36m==>[0m /Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/mbox/MboxRawMessage.cj:3:1:
+  [36m| [0m
+[36m3[0m [36m| [0mimport std.collection.ArrayList[0m
+  [36m| [0m[33m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ unused import[0m
+  [36m| [0m
+  [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+
+[33mwarning[0m: unused variable:'mode'
+  [36m==>[0m /Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/mbox/MboxMailFolder.cj:43:22:
+   [36m| [0m
+[36m43[0m [36m| [0m    public func open(mode: Int64): Unit { isOpenFlag = true }[0m
+   [36m| [0m                     [33m^^^^ unused variable[0m
+   [36m| [0m
+   [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+
+[33mwarning[0m: unused variable:'expunge'
+  [36m==>[0m /Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/mbox/MboxMailFolder.cj:44:23:
+   [36m| [0m
+[36m44[0m [36m| [0m    public func close(expunge: Bool): Unit { isOpenFlag = false }[0m
+   [36m| [0m                      [33m^^^^^^^ unused variable[0m
+   [36m| [0m
+   [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+
+[33mwarning[0m: unused variable:'size'
+  [36m==>[0m /Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/mbox/MboxParser.cj:80:13:
+   [36m| [0m
+[36m80[0m [36m| [0m        let size = end - start[0m
+   [36m| [0m            [33m^^^^ unused variable[0m
+   [36m| [0m
+   [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+
+4 warnings generated, 4 warnings printed.

@@ -1,0 +1,36 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "时光刻度应用入口模块"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "用于管理重要日子、倒计时与纪念日的应用"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "时光刻度"
+    },
+    {
+      "name": "EntryFormAbility_desc",
+      "value": "时光刻度服务卡片"
+    },
+    {
+      "name": "EntryFormAbility_label",
+      "value": "时光刻度卡片"
+    },
+    {
+      "name": "widget_desc",
+      "value": "在桌面快速查看最近的重要日子"
+    },
+    {
+      "name": "widget_display_name",
+      "value": "时光刻度"
+    },
+    {
+      "name": "calendar_permission_reason",
+      "value": "用于将事件提醒同步到系统日历"
+    }
+  ]
+}

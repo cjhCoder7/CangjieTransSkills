@@ -1,0 +1,16 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "智能记账本"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "简账智能记账本"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "简账"
+    }
+  ]
+}

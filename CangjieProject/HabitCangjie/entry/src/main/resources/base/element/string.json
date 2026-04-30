@@ -1,0 +1,140 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "习惯追踪应用"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "习惯追踪主入口"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "Habit"
+    },
+    {
+      "name": "app_name",
+      "value": "Habit"
+    },
+    {
+      "name": "add_habit",
+      "value": "添加习惯"
+    },
+    {
+      "name": "edit_habit",
+      "value": "编辑习惯"
+    },
+    {
+      "name": "add_new_habit",
+      "value": "添加新习惯"
+    },
+    {
+      "name": "edit_a_habit",
+      "value": "编辑习惯"
+    },
+    {
+      "name": "save",
+      "value": "保存"
+    },
+    {
+      "name": "delete_habit",
+      "value": "删除习惯"
+    },
+    {
+      "name": "close",
+      "value": "关闭"
+    },
+    {
+      "name": "edit",
+      "value": "编辑"
+    },
+    {
+      "name": "name",
+      "value": "名称"
+    },
+    {
+      "name": "name_placeholder",
+      "value": "读书、冥想等"
+    },
+    {
+      "name": "motivate_yourself",
+      "value": "激励自己"
+    },
+    {
+      "name": "color",
+      "value": "颜色"
+    },
+    {
+      "name": "sort_by_date",
+      "value": "按日期排序"
+    },
+    {
+      "name": "sort_by_name",
+      "value": "按名称排序"
+    },
+    {
+      "name": "regularity",
+      "value": "规律性"
+    },
+    {
+      "name": "every_day",
+      "value": "每天"
+    },
+    {
+      "name": "remind_me",
+      "value": "提醒我"
+    },
+    {
+      "name": "overview",
+      "value": "概览"
+    },
+    {
+      "name": "habit_strength",
+      "value": "习惯强度"
+    },
+    {
+      "name": "completions",
+      "value": "完成次数"
+    },
+    {
+      "name": "streak",
+      "value": "连续天数"
+    },
+    {
+      "name": "days",
+      "value": "天"
+    },
+    {
+      "name": "month",
+      "value": "月"
+    },
+    {
+      "name": "year",
+      "value": "年"
+    },
+    {
+      "name": "history",
+      "value": "历史"
+    },
+    {
+      "name": "six_months",
+      "value": "六个月"
+    },
+    {
+      "name": "one_year",
+      "value": "一年"
+    },
+    {
+      "name": "completed",
+      "value": "已完成"
+    },
+    {
+      "name": "not_completed",
+      "value": "未完成"
+    },
+    {
+      "name": "longest_streak",
+      "value": "最长连续"
+    }
+  ]
+}

@@ -1,0 +1,121 @@
+[33mwarning[0m: class 'Console' is deprecated. Use related global functions in the std.env instead.
+ [36m==>[0m /Users/coder7/Code/SwiftProject/SplashCangjie/splash_html_gen/src/main.cj:8:9:
+  [36m| [0m
+[36m8[0m [36m| [0m        Console.stdErr.write("Please supply the code to generate HTML for as a string argument\n")[0m
+  [36m| [0m        [33m^^^^^^^ deprecated[0m
+  [36m| [0m
+  [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff deprecated`
+
+1 warning generated, 1 warning printed.
+ld64.lld: error: library not found for -lSystem
+ld64.lld: error: undefined symbol: ___stack_chk_fail
+>>> referenced by section.cpp:0 (/opt/ohcangjie/source/cangjie_runtime/runtime/src/os/Macos/section.cpp:0)
+>>>               /Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/section.o:(symbol _InitData+0x314)
+>>> referenced by section.cpp:0 (/opt/ohcangjie/source/cangjie_runtime/runtime/src/os/Macos/section.cpp:0)
+>>>               /Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/section.o:(symbol __ZL22InitSectionInformationPK14mach_header_64+0x37c)
+>>> referenced by /Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/libcangjie-std-console.a(console_write.c.o):(symbol _CJ_CONSOLE_Flush+0x5c)
+>>> referenced 89 more times
+
+ld64.lld: error: undefined symbol: ___stack_chk_guard
+>>> referenced by section.cpp:198 (/opt/ohcangjie/source/cangjie_runtime/runtime/src/os/Macos/section.cpp:198)
+>>>               /Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/section.o:(symbol _InitData+0x2f0)
+>>> referenced by section.cpp:198 (/opt/ohcangjie/source/cangjie_runtime/runtime/src/os/Macos/section.cpp:198)
+>>>               /Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/section.o:(symbol _InitData+0x2ec)
+>>> referenced by section.cpp:150 (/opt/ohcangjie/source/cangjie_runtime/runtime/src/os/Macos/section.cpp:150)
+>>>               /Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/section.o:(symbol _InitData+0x18)
+>>> referenced 387 more times
+
+ld64.lld: error: undefined symbol: __dyld_get_image_header
+>>> referenced by section.cpp:170 (/opt/ohcangjie/source/cangjie_runtime/runtime/src/os/Macos/section.cpp:170)
+>>>               /Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/section.o:(symbol _InitData+0x90)
+
+ld64.lld: error: undefined symbol: ___assert_rtn
+>>> referenced by section.cpp:169 (/opt/ohcangjie/source/cangjie_runtime/runtime/src/os/Macos/section.cpp:169)
+>>>               /Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/section.o:(symbol _InitData+0x88)
+
+ld64.lld: error: undefined symbol: _strcmp
+>>> referenced by section.cpp:162 (/opt/ohcangjie/source/cangjie_runtime/runtime/src/os/Macos/section.cpp:162)
+>>>               /Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/section.o:(symbol _InitData+0x58)
+>>> referenced by /Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/libcangjie-std-core.a(core.o):(symbol __CNatXk6equalsHk+0x38)
+>>> referenced by /Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/libcangjie-std-core.a(core.o):(symbol __CNatXk7compareHk+0x50)
+
+ld64.lld: error: undefined symbol: __dyld_get_image_name
+>>> referenced by section.cpp:161 (/opt/ohcangjie/source/cangjie_runtime/runtime/src/os/Macos/section.cpp:161)
+>>>               /Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/section.o:(symbol _InitData+0x50)
+
+ld64.lld: error: undefined symbol: __dyld_image_count
+>>> referenced by section.cpp:158 (/opt/ohcangjie/source/cangjie_runtime/runtime/src/os/Macos/section.cpp:158)
+>>>               /Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/section.o:(symbol _InitData+0x38)
+
+ld64.lld: error: undefined symbol: _dladdr
+>>> referenced by section.cpp:154 (/opt/ohcangjie/source/cangjie_runtime/runtime/src/os/Macos/section.cpp:154)
+>>>               /Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/section.o:(symbol _InitData+0x30)
+
+ld64.lld: error: undefined symbol: _getsectiondata
+>>> referenced by section.cpp:144 (/opt/ohcangjie/source/cangjie_runtime/runtime/src/os/Macos/section.cpp:144)
+>>>               /Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/section.o:(symbol __ZL22InitSectionInformationPK14mach_header_64+0x338)
+>>> referenced by section.cpp:140 (/opt/ohcangjie/source/cangjie_runtime/runtime/src/os/Macos/section.cpp:140)
+>>>               /Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/section.o:(symbol __ZL22InitSectionInformationPK14mach_header_64+0x314)
+>>> referenced by section.cpp:139 (/opt/ohcangjie/source/cangjie_runtime/runtime/src/os/Macos/section.cpp:139)
+>>>               /Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/section.o:(symbol __ZL22InitSectionInformationPK14mach_header_64+0x2f0)
+>>> referenced 19 more times
+
+ld64.lld: error: undefined symbol: _memset
+>>> referenced by /Users/coder7/Code/SwiftProject/SplashCangjie/splash_html_gen/target/release/splash_lib/libsplash_lib.a(splash_lib.o):(symbol __CN10splash_lib10NumberRule7matchesHRNY_7SegmentE+0x1e0)
+>>> referenced by /Users/coder7/Code/SwiftProject/SplashCangjie/splash_html_gen/target/release/splash_lib/libsplash_lib.a(splash_lib.o):(symbol __CN10splash_lib10NumberRule7matchesHRNY_7SegmentE+0x1bc)
+>>> referenced by /Users/coder7/Code/SwiftProject/SplashCangjie/splash_html_gen/target/release/splash_lib/libsplash_lib.a(splash_lib.o):(symbol __CN10splash_lib10NumberRule7matchesHRNY_7SegmentE+0x180)
+>>> referenced 132 more times
+
+ld64.lld: error: undefined symbol: _memcpy
+>>> referenced by /Users/coder7/Code/SwiftProject/SplashCangjie/splash_html_gen/target/release/splash_lib/libsplash_lib.a(splash_lib.o):(symbol __CN10splash_lib15SegmentIterator11makeSegmentHCNY_9ComponentEl+0xa98)
+>>> referenced by /Users/coder7/Code/SwiftProject/SplashCangjie/splash_html_gen/target/release/splash_lib/libsplash_lib.a(splash_lib.o):(symbol __CN10splash_lib15SegmentIterator11makeSegmentHCNY_9ComponentEl+0xa88)
+>>> referenced by /Users/coder7/Code/SwiftProject/SplashCangjie/splash_html_gen/target/release/splash_lib/libsplash_lib.a(splash_lib.o):(symbol __CN10splash_lib15SegmentIterator11makeSegmentHCNY_9ComponentEl+0x158)
+>>> referenced 168 more times
+
+ld64.lld: error: undefined symbol: _log2
+>>> referenced by /Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/libcangjie-std-collection.a(collection.o):(symbol __CNacXRNat5ArrayIG_E7timSortHF0NNat8OrderingEG_G_E+0x39c)
+>>> referenced by /Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/libcangjie-std-math.a(math.o):(symbol __CNbg4log2Hd+0x30)
+
+ld64.lld: error: undefined symbol: _memmove
+>>> referenced by /Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/libcangjie-std-collection.a(collection.o):(symbol __CNac4NodeIG_G0_E11deleteChildHl+0x1e0)
+>>> referenced by /Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/libcangjie-std-collection.a(collection.o):(symbol __CNac4NodeIG_G0_E11deleteChildHl+0x138)
+>>> referenced by /Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/libcangjie-std-collection.a(collection.o):(symbol __CNac4NodeIG_G0_E11deleteEntryHl+0x1e0)
+>>> referenced 133 more times
+
+ld64.lld: error: undefined symbol: _fflush
+>>> referenced by /Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/libcangjie-std-console.a(console_write.c.o):(symbol _CJ_CONSOLE_Flush+0x58)
+>>> referenced by /Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/libcangjie-std-core.a(print.c.o):(symbol _CJ_CORE_PrintUTF8+0x6c)
+>>> referenced by /Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/libcangjie-std-core.a(print.c.o):(symbol _CJ_CORE_ErrorPrintUTF8+0x6c)
+>>> referenced 5 more times
+
+ld64.lld: error: undefined symbol: ___stderrp
+>>> referenced by /Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/libcangjie-std-console.a(console_write.c.o):(symbol _CJ_CONSOLE_Flush+0x28)
+>>> referenced by /Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/libcangjie-std-console.a(console_write.c.o):(symbol _CJ_CONSOLE_Flush+0x24)
+>>> referenced by /Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/libcangjie-std-core.a(print.c.o):(symbol _CJ_CORE_ErrorPrintUTF8+0x34)
+>>> referenced 3 more times
+
+ld64.lld: error: undefined symbol: ___stdoutp
+>>> referenced by /Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/libcangjie-std-console.a(console_write.c.o):(symbol _CJ_CONSOLE_Flush+0x20)
+>>> referenced by /Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/libcangjie-std-console.a(console_write.c.o):(symbol _CJ_CONSOLE_Flush+0x1c)
+>>> referenced by /Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/libcangjie-std-core.a(print.c.o):(symbol _CJ_CORE_PrintUTF8+0x34)
+>>> referenced 15 more times
+
+ld64.lld: error: undefined symbol: _write
+>>> referenced by /Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/libcangjie-std-console.a(console_write.c.o):(symbol _CJ_CONSOLE_Write+0x64)
+>>> referenced by /Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/libcangjie-std-console.a(console_write.c.o):(symbol _CJ_CONSOLE_Write+0x28)
+
+ld64.lld: error: undefined symbol: _free
+>>> referenced by /Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/libcangjie-std-core.a(console_read.c.o):(symbol _CJ_CONSOLE_Readline+0x138)
+>>> referenced by /Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/libcangjie-std-core.a(console_read.c.o):(symbol _CJ_CONSOLE_Readline+0x130)
+>>> referenced by /Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/libcangjie-std-core.a(console_read.c.o):(symbol _CJ_CONSOLE_Readline+0x128)
+>>> referenced 26 more times
+
+ld64.lld: error: undefined symbol: _malloc
+>>> referenced by /Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/libcangjie-std-core.a(console_read.c.o):(symbol _CJ_CONSOLE_Readline+0xb8)
+>>> referenced by /Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/libcangjie-std-core.a(console_read.c.o):(symbol _CJ_CONSOLE_Readline+0x40)
+>>> referenced by /Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/libcangjie-std-core.a(console_read.c.o):(symbol _CJ_CONSOLE_Readline+0x30)
+>>> referenced 10 more times
+
+ld64.lld: error: too many errors emitted, stopping now (use --error-limit=0 to see all errors)
+[31merror[0m: '/Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/third_party/llvm/bin/ld64.lld' '-o' '/Users/coder7/Code/SwiftProject/SplashCangjie/splash_html_gen/target/release/bin/main' '-arch' 'arm64' '-platform_version' 'macos' '12.0.0' '12' '-syslibroot' '/' '-pie' '-L/Users/coder7/Code/SwiftProject/SplashCangjie/splash_html_gen/target/release/splash_lib' '-L/Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/runtime/lib/darwin_aarch64_cjnative' '-L/Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative' '/Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/section.o' '/Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/cjstart.o' '/private/var/folders/f9/g0wrs53d3_192jzjff2s8gs80000gn/T/cangjie-tmp-27iJPlm6FM4-b4a11837/splash_html_gen.o' '-lsplash_lib' '/Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/libcangjie-std-binary.a' '/Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/libcangjie-std-collection.a' '/Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/libcangjie-std-console.a' '/Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/libcangjie-std-convert.a' '/Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/libcangjie-std-core.a' '/Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/libcangjie-std-io.a' '/Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/libcangjie-std-math.a' '/Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/libcangjie-std-sync.a' '/Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/libcangjie-std-time.a' '-lcangjie-runtime' '-lboundscheck' '-lSystem' '/Users/coder7/.cangjie-sdk/6.0/cangjie/build-tools/lib/darwin_aarch64_cjnative/libclang_rt.osx.a' : command failed (use -V to see invocation)
+Error: failed to compile package `splash_html_gen`, return code is 1

@@ -1,0 +1,89 @@
+[33mwarning[0m: unused import 'std.collection.ArrayList'
+ [36m==>[0m /Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/FileBasedOAuth2Provider.cj:3:1:
+  [36m| [0m
+[36m3[0m [36m| [0mimport std.collection.ArrayList[0m
+  [36m| [0m[33m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ unused import[0m
+  [36m| [0m
+  [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+
+[33mwarning[0m: unused import 'std.collection.HashMap'
+ [36m==>[0m /Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/GmailJsonParser.cj:4:1:
+  [36m| [0m
+[36m4[0m [36m| [0mimport std.collection.HashMap[0m
+  [36m| [0m[33m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ unused import[0m
+  [36m| [0m
+  [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+
+[33mwarning[0m: unused import 'std.collection.HashMap'
+ [36m==>[0m /Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/GmailLabel.cj:4:1:
+  [36m| [0m
+[36m4[0m [36m| [0mimport std.collection.HashMap[0m
+  [36m| [0m[33m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ unused import[0m
+  [36m| [0m
+  [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+
+[33mwarning[0m: unused import 'std.collection.HashSet'
+ [36m==>[0m /Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/GmailLabel.cj:5:1:
+  [36m| [0m
+[36m5[0m [36m| [0mimport std.collection.HashSet[0m
+  [36m| [0m[33m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ unused import[0m
+  [36m| [0m
+  [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+
+[33mwarning[0m: unused import 'mail_importer.local.LocalMessage'
+ [36m==>[0m /Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/GmailLabel.cj:6:1:
+  [36m| [0m
+[36m6[0m [36m| [0mimport mail_importer.local.LocalMessage[0m
+  [36m| [0m[33m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ unused import[0m
+  [36m| [0m
+  [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+
+[33mwarning[0m: unused variable:'userId'
+  [36m==>[0m /Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/StubGmailHttpClient.cj:54:28:
+   [36m| [0m
+[36m54[0m [36m| [0m    public func listLabels(userId: String): GmailListLabelsResponse {[0m
+   [36m| [0m                           [33m^^^^^^ unused variable[0m
+   [36m| [0m
+   [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+
+[33mwarning[0m: unused variable:'userId'
+  [36m==>[0m /Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/StubGmailHttpClient.cj:63:30:
+   [36m| [0m
+[36m63[0m [36m| [0m    public func listMessages(userId: String, query: String): GmailListMessagesResponse {[0m
+   [36m| [0m                             [33m^^^^^^ unused variable[0m
+   [36m| [0m
+   [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+
+[33mwarning[0m: unused variable:'userId'
+  [36m==>[0m /Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/StubGmailHttpClient.cj:80:28:
+   [36m| [0m
+[36m80[0m [36m| [0m    public func getMessage(userId: String, messageId: String): GmailMessageResponse {[0m
+   [36m| [0m                           [33m^^^^^^ unused variable[0m
+   [36m| [0m
+   [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+
+[33mwarning[0m: unused variable:'userId'
+  [36m==>[0m /Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/StubGmailHttpClient.cj:88:31:
+   [36m| [0m
+[36m88[0m [36m| [0m    public func importMessage(userId: String, rawBytes: Array<UInt8>): GmailMessageResponse {[0m
+   [36m| [0m                              [33m^^^^^^ unused variable[0m
+   [36m| [0m
+   [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+
+[33mwarning[0m: unused variable:'userId'
+   [36m==>[0m /Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/StubGmailHttpClient.cj:109:31:
+    [36m| [0m
+[36m109[0m [36m| [0m    public func modifyMessage(userId: String, messageId: String,[0m
+    [36m| [0m                              [33m^^^^^^ unused variable[0m
+    [36m| [0m
+    [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+
+[33mwarning[0m: unused variable:'userId'
+   [36m==>[0m /Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/gmail/StubGmailHttpClient.cj:135:29:
+    [36m| [0m
+[36m135[0m [36m| [0m    public func createLabel(userId: String, name: String): GmailLabelResponse {[0m
+    [36m| [0m                            [33m^^^^^^ unused variable[0m
+    [36m| [0m
+    [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+
+11 warnings generated, 11 warnings printed.

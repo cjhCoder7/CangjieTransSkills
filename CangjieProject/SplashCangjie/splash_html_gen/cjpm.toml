@@ -1,0 +1,9 @@
+[package]
+cjc-version = "1.1.0"
+name = "splash_html_gen"
+version = "0.16.0"
+output-type = "executable"
+description = "Splash HTML generator CLI"
+
+[dependencies]
+splash_lib = { path = "../splash_lib" }

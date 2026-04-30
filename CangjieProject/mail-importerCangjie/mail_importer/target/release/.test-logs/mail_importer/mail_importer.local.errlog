@@ -1,0 +1,202 @@
+[33mwarning[0m: unused variable:'mode'
+  [36m==>[0m /Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/MailStorage_test.cj:41:22:
+   [36m| [0m
+[36m41[0m [36m| [0m    public func open(mode: Int64): Unit { isOpenFlag = true }[0m
+   [36m| [0m                     [33m^^^^ unused variable[0m
+   [36m| [0m
+   [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+
+[33mwarning[0m: unused variable:'expunge'
+  [36m==>[0m /Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/MailStorage_test.cj:42:23:
+   [36m| [0m
+[36m42[0m [36m| [0m    public func close(expunge: Bool): Unit { isOpenFlag = false }[0m
+   [36m| [0m                      [33m^^^^^^^ unused variable[0m
+   [36m| [0m
+   [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+
+[33mwarning[0m: unused variable:'i'
+  [36m==>[0m /Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/MailStorage_test.cj:85:14:
+   [36m| [0m
+[36m85[0m [36m| [0m        for (i in 0..numMessages) {[0m
+   [36m| [0m             [33m^ unused variable[0m
+   [36m| [0m
+   [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+[34mnote[0m: the warning occurs after the macro is expanded
+   [36m==>[0m /Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/MailStorage_test.cj:80:1:
+    [36m| [0m
+[36m80[0m  [36m| [0m  @Test[0m
+    [36m| [0m [34m_[0m[34m^[0m
+[36m81[0m  [36m| [0m[34m|[0m class MailStorageTest {[0m
+    [36m| [0m[34m|[0m ...[0m
+[36m168[0m [36m| [0m[34m|[0m }[0m
+    [36m| [0m[34m|[0m[34m_[0m[34m^[0m
+    [36m| [0m
+[34mnote[0m: the code after the macro is expanded as follows
+    [36m| [0m
+    [36m| [0m  /* 80.1 */@Attribute[TEST_GENERATED] class MailStorageTest <: TestClass {[0m
+    [36m| [0m [34m_[0m[34m^[0m
+    [36m| [0m[34m|[0m /* 80.2 */    func makeFolderWithMessages(numMessages: Int64, subFolders: Array < MSFakeMailFolder >): MSFakeMailFolder {[0m
+    [36m| [0m[34m|[0m /* 80.3 */        let folder = MSFakeMailFolder("test", "test", 3)[0m
+    [36m| [0m[34m|[0m /* 80.4 */        for(i in 0 .. numMessages) {[0m
+    [36m| [0m[34m|[0m /* 80.5 */            folder.messages.add(MSFakeMailMessage())[0m
+    [36m| [0m[34m|[0m /* 80.6 */        }[0m
+    [36m| [0m[34m|[0m /* 80.7 */        for(sub in subFolders) {[0m
+    [36m| [0m[34m|[0m /* 80.8 */            folder.subFolders.add(sub)[0m
+    [36m| [0m[34m|[0m /* 80.9 */        }[0m
+    [36m| [0m[34m|[0m /* 80.10 */        folder[0m
+    [36m| [0m[34m|[0m /* 80.11 */    }[0m
+    [36m| [0m[34m|[0m /* 80.12 */    [0m
+    [36m| [0m[34m|[0m /* 80.13 */    @Attribute[TestCase_0][0m
+    [36m| [0m[34m|[0m /* 80.14 */    func testIterator_simple(): Unit {[0m
+    [36m| [0m[34m|[0m /* 80.15 */        let folder = makeFolderWithMessages(5,[])[0m
+    [36m| [0m[34m|[0m /* 80.16 */        let storage = TestableMailStorage(ConsoleLogger("test"), folder)[0m
+    [36m| [0m[34m|[0m /* 80.17 */        var count: Int64 = 0[0m
+    [36m| [0m[34m|[0m /* 80.18 */        let iter = storage.iterator()[0m
+    [36m| [0m[34m|[0m /* 80.19 */        while(let Some(_) <- iter.next()) {[0m
+    [36m| [0m[34m|[0m /* 80.20 */            count ++[0m
+    [36m| [0m[34m|[0m /* 80.21 */        }[0m
+    [36m| [0m[34m|[0m /* 80.22 */        expectEqual("count", "5", count, 5, isDelta: false)[0m
+    [36m| [0m[34m|[0m /* 80.23 */    }[0m
+    [36m| [0m[34m|[0m /* 80.24 */    [0m
+    [36m| [0m[34m|[0m /* 80.25 */    @Attribute[TestCase_1][0m
+    [36m| [0m[34m|[0m /* 80.26 */    func testIterator_withSubFolders(): Unit {[0m
+    [36m| [0m[34m|[0m /* 80.27 */        let deepSub = makeFolderWithMessages(6,[makeFolderWithMessages(9,[]), makeFolderWithMessages(3,[])])[0m
+    [36m| [0m[34m|[0m /* 80.28 */        let deepEmpty = makeFolderWithMessages(0,[makeFolderWithMessages(0,[makeFolderWithMessages(5,[])])])[0m
+    [36m| [0m[34m|[0m /* 80.29 */        let mid = makeFolderWithMessages(15,[deepSub, deepEmpty])[0m
+    [36m| [0m[34m|[0m /* 80.30 */        let folder = makeFolderWithMessages(5,[mid, makeFolderWithMessages(10,[]), makeFolderWithMessages(7,[])])[0m
+    [36m| [0m[34m|[0m /* 80.31 */        let storage = TestableMailStorage(ConsoleLogger("test"), folder)[0m
+    [36m| [0m[34m|[0m /* 80.32 */        var count: Int64 = 0[0m
+    [36m| [0m[34m|[0m /* 80.33 */        let iter = storage.iterator()[0m
+    [36m| [0m[34m|[0m /* 80.34 */        while(let Some(_) <- iter.next()) {[0m
+    [36m| [0m[34m|[0m /* 80.35 */            count ++[0m
+    [36m| [0m[34m|[0m /* 80.36 */        }[0m
+    [36m| [0m[34m|[0m /* 80.37 */        expectEqual("count", "60", count, 60, isDelta: false)[0m
+    [36m| [0m[34m|[0m /* 80.38 */    }[0m
+    [36m| [0m[34m|[0m /* 80.39 */    [0m
+    [36m| [0m[34m|[0m /* 80.40 */    @Attribute[TestCase_2][0m
+    [36m| [0m[34m|[0m /* 80.41 */    func testIterator_pathologicalNoMessages(): Unit {[0m
+    [36m| [0m[34m|[0m /* 80.42 */        let folder = makeFolderWithMessages(0,[makeFolderWithMessages(0,[]), makeFolderWithMessages(0,[])])[0m
+    [36m| [0m[34m|[0m /* 80.43 */        let storage = TestableMailStorage(ConsoleLogger("test"), folder)[0m
+    [36m| [0m[34m|[0m /* 80.44 */        var count: Int64 = 0[0m
+    [36m| [0m[34m|[0m /* 80.45 */        let iter = storage.iterator()[0m
+    [36m| [0m[34m|[0m /* 80.46 */        while(let Some(_) <- iter.next()) {[0m
+    [36m| [0m[34m|[0m /* 80.47 */            count ++[0m
+    [36m| [0m[34m|[0m /* 80.48 */        }[0m
+    [36m| [0m[34m|[0m /* 80.49 */        expectEqual("count", "0", count, 0, isDelta: false)[0m
+    [36m| [0m[34m|[0m /* 80.50 */    }[0m
+    [36m| [0m[34m|[0m /* 80.51 */    [0m
+    [36m| [0m[34m|[0m /* 80.52 */    @Attribute[TestCase_3][0m
+    [36m| [0m[34m|[0m /* 80.53 */    func testIterator_getWithoutLooking(): Unit {[0m
+    [36m| [0m[34m|[0m /* 80.54 */        let folder = makeFolderWithMessages(0,[makeFolderWithMessages(0,[]), makeFolderWithMessages(0,[makeFolderWithMessages(0,[]), makeFolderWithMessages(1,[])])])[0m
+    [36m| [0m[34m|[0m /* 80.55 */        let storage = TestableMailStorage(ConsoleLogger("test"), folder)[0m
+    [36m| [0m[34m|[0m /* 80.56 */        let iter = storage.iterator()[0m
+    [36m| [0m[34m|[0m /* 80.57 */        var found = false[0m
+    [36m| [0m[34m|[0m /* 80.58 */        if(let Some(_) <- iter.next()) {[0m
+    [36m| [0m[34m|[0m /* 80.59 */            found = true[0m
+    [36m| [0m[34m|[0m /* 80.60 */        }[0m
+    [36m| [0m[34m|[0m /* 80.61 */        expectEqual("found", "true", found, true, isDelta: false)[0m
+    [36m| [0m[34m|[0m /* 80.62 */    }[0m
+    [36m| [0m[34m|[0m /* 80.63 */    [0m
+    [36m| [0m[34m|[0m /* 80.64 */    init() {[0m
+    [36m| [0m[34m|[0m /* 80.65 */    }[0m
+    [36m| [0m[34m|[0m /* 80.66 */    private func classConfiguration(): Configuration {[0m
+    [36m| [0m[34m|[0m /* 80.67 */        let configuration = Configuration()[0m
+    [36m| [0m[34m|[0m /* 80.68 */        [0m
+    [36m| [0m[34m|[0m /* 80.69 */        return configuration[0m
+    [36m| [0m[34m|[0m /* 80.70 */    }[0m
+    [36m| [0m[34m|[0m /* 80.71 */    public override func asTestSuite(): TestSuite {[0m
+    [36m| [0m[34m|[0m /* 80.72 */        [0m
+    [36m| [0m[34m|[0m /* 80.73 */        let suiteConfiguration = classConfiguration()[0m
+    [36m| [0m[34m|[0m /* 80.74 */        let suiteBuilder = TestSuite.builder("MailStorageTest").configure(suiteConfiguration)[0m
+    [36m| [0m[34m|[0m /* 80.75 */        [0m
+    [36m| [0m[34m|[0m /* 80.76 */        { => let caseConfig = Configuration()[0m
+    [36m| [0m[34m|[0m /* 80.77 */            [0m
+    [36m| [0m[34m|[0m /* 80.78 */            let testIterator_simpleTestFunc = { => testIterator_simple();() }[0m
+    [36m| [0m[34m|[0m /* 80.79 */            suiteBuilder.add([0m
+    [36m| [0m[34m|[0m /* 80.80 */            UnitTestCase.create([0m
+    [36m| [0m[34m|[0m /* 80.81 */            "testIterator_simple",[0m
+    [36m| [0m[34m|[0m /* 80.82 */            configuration: caseConfig,[0m
+    [36m| [0m[34m|[0m /* 80.83 */            body: testIterator_simpleTestFunc[0m
+    [36m| [0m[34m|[0m /* 80.84 */            )[0m
+    [36m| [0m[34m|[0m /* 80.85 */            )[0m
+    [36m| [0m[34m|[0m /* 80.86 */            [0m
+    [36m| [0m[34m|[0m /* 80.87 */        }()[0m
+    [36m| [0m[34m|[0m /* 80.88 */        [0m
+    [36m| [0m[34m|[0m /* 80.89 */        [0m
+    [36m| [0m[34m|[0m /* 80.90 */        { => let caseConfig = Configuration()[0m
+    [36m| [0m[34m|[0m /* 80.91 */            [0m
+    [36m| [0m[34m|[0m /* 80.92 */            let testIterator_withSubFoldersTestFunc = { => testIterator_withSubFolders();() }[0m
+    [36m| [0m[34m|[0m /* 80.93 */            suiteBuilder.add([0m
+    [36m| [0m[34m|[0m /* 80.94 */            UnitTestCase.create([0m
+    [36m| [0m[34m|[0m /* 80.95 */            "testIterator_withSubFolders",[0m
+    [36m| [0m[34m|[0m /* 80.96 */            configuration: caseConfig,[0m
+    [36m| [0m[34m|[0m /* 80.97 */            body: testIterator_withSubFoldersTestFunc[0m
+    [36m| [0m[34m|[0m /* 80.98 */            )[0m
+    [36m| [0m[34m|[0m /* 80.99 */            )[0m
+    [36m| [0m[34m|[0m /* 80.100 */            [0m
+    [36m| [0m[34m|[0m /* 80.101 */        }()[0m
+    [36m| [0m[34m|[0m /* 80.102 */        [0m
+    [36m| [0m[34m|[0m /* 80.103 */        [0m
+    [36m| [0m[34m|[0m /* 80.104 */        { => let caseConfig = Configuration()[0m
+    [36m| [0m[34m|[0m /* 80.105 */            [0m
+    [36m| [0m[34m|[0m /* 80.106 */            let testIterator_pathologicalNoMessagesTestFunc = { => testIterator_pathologicalNoMessages();() }[0m
+    [36m| [0m[34m|[0m /* 80.107 */            suiteBuilder.add([0m
+    [36m| [0m[34m|[0m /* 80.108 */            UnitTestCase.create([0m
+    [36m| [0m[34m|[0m /* 80.109 */            "testIterator_pathologicalNoMessages",[0m
+    [36m| [0m[34m|[0m /* 80.110 */            configuration: caseConfig,[0m
+    [36m| [0m[34m|[0m /* 80.111 */            body: testIterator_pathologicalNoMessagesTestFunc[0m
+    [36m| [0m[34m|[0m /* 80.112 */            )[0m
+    [36m| [0m[34m|[0m /* 80.113 */            )[0m
+    [36m| [0m[34m|[0m /* 80.114 */            [0m
+    [36m| [0m[34m|[0m /* 80.115 */        }()[0m
+    [36m| [0m[34m|[0m /* 80.116 */        [0m
+    [36m| [0m[34m|[0m /* 80.117 */        [0m
+    [36m| [0m[34m|[0m /* 80.118 */        { => let caseConfig = Configuration()[0m
+    [36m| [0m[34m|[0m /* 80.119 */            [0m
+    [36m| [0m[34m|[0m /* 80.120 */            let testIterator_getWithoutLookingTestFunc = { => testIterator_getWithoutLooking();() }[0m
+    [36m| [0m[34m|[0m /* 80.121 */            suiteBuilder.add([0m
+    [36m| [0m[34m|[0m /* 80.122 */            UnitTestCase.create([0m
+    [36m| [0m[34m|[0m /* 80.123 */            "testIterator_getWithoutLooking",[0m
+    [36m| [0m[34m|[0m /* 80.124 */            configuration: caseConfig,[0m
+    [36m| [0m[34m|[0m /* 80.125 */            body: testIterator_getWithoutLookingTestFunc[0m
+    [36m| [0m[34m|[0m /* 80.126 */            )[0m
+    [36m| [0m[34m|[0m /* 80.127 */            )[0m
+    [36m| [0m[34m|[0m /* 80.128 */            [0m
+    [36m| [0m[34m|[0m /* 80.129 */        }()[0m
+    [36m| [0m[34m|[0m /* 80.130 */        [0m
+    [36m| [0m[34m|[0m /* 80.131 */        return suiteBuilder.build()[0m
+    [36m| [0m[34m|[0m /* 80.132 */    }[0m
+    [36m| [0m[34m|[0m /* 80.133 */    private func inheritedFromClassAnnotatedByTestTemplate < T >(): TestSuite where T <: TestClass {[0m
+    [36m| [0m[34m|[0m /* 80.134 */        throw Exception("Unreachable code")[0m
+    [36m| [0m[34m|[0m /* 80.135 */    }[0m
+    [36m| [0m[34m|[0m /* 80.136 */}[0m
+    [36m| [0m[34m|[0m /* 80.137 */[0m
+    [36m| [0m[34m|[0m /* 80.138 */[0m
+    [36m| [0m[34m|[0m /* 80.139 */interface TestPackageExtension_MailStorageTest {[0m
+    [36m| [0m[34m|[0m /* 80.140 */    func registerMailStorageTest(): Unit[0m
+    [36m| [0m[34m|[0m /* 80.141 */}[0m
+    [36m| [0m[34m|[0m /* 80.142 */extend TestPackage <: TestPackageExtension_MailStorageTest {[0m
+    [36m| [0m[34m|[0m /* 80.143 */    @Attribute[TEST_REGISTER][0m
+    [36m| [0m[34m|[0m /* 80.144 */    public func registerMailStorageTest() {[0m
+    [36m| [0m[34m|[0m /* 80.145 */        registerSuite({ => MailStorageTest().asTestSuite() })[0m
+    [36m| [0m[34m|[0m /* 80.146 */    }[0m
+    [36m| [0m[34m|[0m /* 80.147 */}[0m
+    [36m| [0m[34m|[0m /* 80.148 */[0m
+    [36m| [0m[34m|[0m[34m_[0m[34m___________^[0m
+    [36m| [0m
+[34mnote[0m: which is expanded as follows
+   [36m| [0m
+   [36m| [0m/* 80.4 */        for(i in 0 .. numMessages) {[0m
+   [36m| [0m                      [34m^ [0m
+   [36m| [0m
+
+[33mwarning[0m: unused variable:'message'
+   [36m==>[0m /Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/local/MailStorage_test.cj:175:36:
+    [36m| [0m
+[36m175[0m [36m| [0m    public func createLocalMessage(message: MailMessage): LocalMessage {[0m
+    [36m| [0m                                   [33m^^^^^^^ unused variable[0m
+    [36m| [0m
+    [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+
+4 warnings generated, 4 warnings printed.
+ld64.lld: warning: /Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/libs/libcurl_helper.dylib has version 15.0.0, which is newer than target minimum of 12.0.0

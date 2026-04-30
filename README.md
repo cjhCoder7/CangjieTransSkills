@@ -1,2 +1,81 @@
+<div align="center">
+
 # CangjieTransSkills
-x语言到仓颉翻译的Claude Skills
+
+<p>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License"></a>
+  <a href=".claude/skills/"><img src="https://img.shields.io/badge/Cangjie-HarmonyOS%20Skills-0A84FF" alt="Cangjie Skills"></a>
+  <a href="CLAUDE.md"><img src="https://img.shields.io/badge/Workflow-Claude%20Code-black" alt="Claude Code Workflow"></a>
+  <a href="CangjieProject/"><img src="https://img.shields.io/badge/Examples-6%20Projects-7A3EFF" alt="6 Projects"></a>
+</p>
+
+<p><strong>面向仓颉语言 / HarmonyOS 代码迁移场景的 Claude Skills 集合</strong></p>
+
+<p>围绕 <strong>Claude Code + Skills + GLM5.1-FP8</strong> 的翻译工作流，用于将应用项目或库项目翻译到仓颉，并补充构建、验证、经验记录与 UI 检查等配套能力。</p>
+
+</div>
+
+## ✨ 项目简介
+
+`CangjieTransSkills` 的目标不是只做一次性代码转换，而是提供一套可复用的翻译方法：
+
+- 应用级翻译：ArkTS / Swift / Java App → 仓颉 HarmonyOS 应用
+- 库级翻译：任意语言库 / SDK / CLI → 纯仓颉 `cjpm` 包
+- 配套支持：构建、测试、UI 检查、经验沉淀、文档下载
+
+核心 skill 位于 [`.claude/skills/`](.claude/skills/)，其中包含：
+
+- `base-skill`：统一入口与路由
+- `cangjie-translate`：应用级翻译
+- `cangjie-translate-lib`：库级翻译
+- `build` / `cangjie-lib-build`：应用与库的构建验证
+- `harmonyos-ui-inspect`：UI 截图、控件树与交互验证
+- `evolution`：翻译经验与踩坑记录
+
+更完整的规则见 [CLAUDE.md](CLAUDE.md)。
+
+## 📦 仓库内容
+
+本仓库包含两部分内容：
+
+1. **Skills 定义**
+   用于指导 Claude Code 在仓颉 / HarmonyOS 场景下完成翻译、构建和验证。
+
+2. **翻译样例项目**
+   位于 [`CangjieProject/`](CangjieProject/)，用于展示这套 workflow 的实际产物。
+
+## 🚀 6 个翻译项目
+
+以下 6 个项目均基于 **Skills + Claude Code + GLM5.1-FP8** 完成翻译或迁移，覆盖应用级与库级两类典型场景。
+
+> 示例环境：macOS  
+> 使用模型：GLM5.1-FP8 + Claude Code v2.1.112
+
+### 📱 应用级项目
+
+| 仓颉项目 | 原项目（GitHub） | 翻译方向 | 源语言 | 原始规模 | 简介 |
+|------|------|------|------|------|------|
+| [TimeScaleCangjie](CangjieProject/TimeScaleCangjie/) | [TimeScale](https://github.com/yingying1997/TimeScale) | ArkTS2Cangjie | ArkTS / ArkUI | 6073 行 | 面向 HarmonyOS 的重要日子、倒计时与纪念日管理应用，支持公历/农历日期、重复事件、系统日历提醒、桌面服务卡片和统计分析。 |
+| [HarmonyOSNoteBookCangjie](CangjieProject/HarmonyOSNoteBookCangjie/) | [HarmonyOS-NoteBook](https://github.com/Magic181/HarmonyOS-NoteBook) | ArkTS2Cangjie | ArkTS / ArkUI | 1779 行 | “简账”智能记账本示例应用，围绕个人收支记录、消费统计、预算挑战和动态主题构建。 |
+| [HabitCangjie](CangjieProject/HabitCangjie/) | [Habit](https://github.com/okmoz/Habit) | Swift2Cangjie | Swift / SwiftUI | 32 个文件，2334 行 | iOS 习惯追踪应用，支持习惯打卡、颜色分类、日历热力图、连续打卡记录以及日/周/月统计。 |
+
+### 📚 库级项目
+
+| 仓颉项目 | 原项目（GitHub） | 翻译方向 | 源语言 | 原始规模 | 简介 |
+|------|------|------|------|------|------|
+| [SplashCangjie](CangjieProject/SplashCangjie/) | [Splash](https://github.com/JohnSundell/Splash) | Swift2Cangjie | Swift | 50 个文件，5956 行 | 轻量、快速且灵活的 Swift 语法高亮工具，翻译后保留了核心库与多个 CLI 工具。 |
+| [tinydbCangjie](CangjieProject/tinydbCangjie/) | [TinyDB](https://github.com/msiemens/tinydb) | Python2Cangjie | Python | 约 4500 行 | 轻量级纯 Python 文档数据库，使用 JSON 文件存储数据，提供类似 MongoDB 的查询 API 与中间件扩展机制。 |
+| [mail-importerCangjie](CangjieProject/mail-importerCangjie/) | [mail-importer](https://github.com/google/mail-importer) | Java2Cangjie | Java | 约 4104 行 | 将 Thunderbird 本地邮件归档上传到 Gmail 的工具，支持保留附件、邮件头、已读/星标状态和文件夹结构。 |
+
+## 🛠️ 使用方式
+
+如果你希望复用这套 workflow，可以从以下入口开始：
+
+- 阅读 [CLAUDE.md](CLAUDE.md) 了解 skill 路由规则
+- 查看 [`cangjie-translate`](.claude/skills/cangjie-translate/SKILL.md) 了解应用级翻译流程
+- 查看 [`cangjie-translate-lib`](.claude/skills/cangjie-translate-lib/SKILL.md) 了解库级翻译流程
+- 参考 [`CangjieProject/`](CangjieProject/) 中的样例项目组织输出结构
+
+## 📄 License
+
+[MIT](LICENSE)

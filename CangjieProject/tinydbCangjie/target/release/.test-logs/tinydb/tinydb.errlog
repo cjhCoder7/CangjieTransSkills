@@ -1,0 +1,87 @@
+[33mwarning[0m: unused variable:'i'
+    [36m==>[0m /Users/coder7/Code/PythonProject/tinydbCangjie/src/tinydb_test.cj:1281:10:
+     [36m| [0m
+[36m1281[0m [36m| [0m    for (i in 0..3) {[0m
+     [36m| [0m         [33m^ unused variable[0m
+     [36m| [0m
+     [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+[34mnote[0m: the warning occurs after the macro is expanded
+    [36m==>[0m /Users/coder7/Code/PythonProject/tinydbCangjie/src/tinydb_test.cj:1278:1:
+     [36m| [0m
+[36m1278[0m [36m| [0m  @Test[0m
+     [36m| [0m [34m_[0m[34m^[0m
+[36m1279[0m [36m| [0m[34m|[0m func testUpdateAll(): Unit {[0m
+     [36m| [0m[34m|[0m ...[0m
+[36m1290[0m [36m| [0m[34m|[0m }[0m
+     [36m| [0m[34m|[0m[34m_[0m[34m^[0m
+     [36m| [0m
+[34mnote[0m: the code after the macro is expanded as follows
+     [36m| [0m
+     [36m| [0m  /* 1278.1 */@Attribute[TEST_GENERATED] class TestCase_testUpdateAll <: TestClass {[0m
+     [36m| [0m [34m_[0m[34m^[0m
+     [36m| [0m[34m|[0m /* 1278.2 */    init() {[0m
+     [36m| [0m[34m|[0m /* 1278.3 */    }[0m
+     [36m| [0m[34m|[0m /* 1278.4 */    private func classConfiguration(): Configuration {[0m
+     [36m| [0m[34m|[0m /* 1278.5 */        let configuration = Configuration()[0m
+     [36m| [0m[34m|[0m /* 1278.6 */        configuration.set(KeyFromTopLevel.fromTopLevel, true)[0m
+     [36m| [0m[34m|[0m /* 1278.7 */        [0m
+     [36m| [0m[34m|[0m /* 1278.8 */        return configuration[0m
+     [36m| [0m[34m|[0m /* 1278.9 */    }[0m
+     [36m| [0m[34m|[0m /* 1278.10 */    public override func asTestSuite(): TestSuite {[0m
+     [36m| [0m[34m|[0m /* 1278.11 */        [0m
+     [36m| [0m[34m|[0m /* 1278.12 */        let suiteConfiguration = classConfiguration()[0m
+     [36m| [0m[34m|[0m /* 1278.13 */        let suiteBuilder = TestSuite.builder("TestCase_testUpdateAll").configure(suiteConfiguration)[0m
+     [36m| [0m[34m|[0m /* 1278.14 */        [0m
+     [36m| [0m[34m|[0m /* 1278.15 */        { => let caseConfig = Configuration()[0m
+     [36m| [0m[34m|[0m /* 1278.16 */            caseConfig.set(KeyFromTopLevel.fromTopLevel, true)[0m
+     [36m| [0m[34m|[0m /* 1278.17 */            [0m
+     [36m| [0m[34m|[0m /* 1278.18 */            let testUpdateAllTestFunc = { => testUpdateAll();() }[0m
+     [36m| [0m[34m|[0m /* 1278.19 */            suiteBuilder.add([0m
+     [36m| [0m[34m|[0m /* 1278.20 */            UnitTestCase.create([0m
+     [36m| [0m[34m|[0m /* 1278.21 */            "testUpdateAll",[0m
+     [36m| [0m[34m|[0m /* 1278.22 */            configuration: caseConfig,[0m
+     [36m| [0m[34m|[0m /* 1278.23 */            body: testUpdateAllTestFunc[0m
+     [36m| [0m[34m|[0m /* 1278.24 */            )[0m
+     [36m| [0m[34m|[0m /* 1278.25 */            )[0m
+     [36m| [0m[34m|[0m /* 1278.26 */            [0m
+     [36m| [0m[34m|[0m /* 1278.27 */        }()[0m
+     [36m| [0m[34m|[0m /* 1278.28 */        [0m
+     [36m| [0m[34m|[0m /* 1278.29 */        return suiteBuilder.build()[0m
+     [36m| [0m[34m|[0m /* 1278.30 */    }[0m
+     [36m| [0m[34m|[0m /* 1278.31 */    private func inheritedFromClassAnnotatedByTestTemplate < T >(): TestSuite where T <: TestClass {[0m
+     [36m| [0m[34m|[0m /* 1278.32 */        throw Exception("Unreachable code")[0m
+     [36m| [0m[34m|[0m /* 1278.33 */    }[0m
+     [36m| [0m[34m|[0m /* 1278.34 */}[0m
+     [36m| [0m[34m|[0m /* 1278.35 */func testUpdateAll(): Unit {[0m
+     [36m| [0m[34m|[0m /* 1278.36 */    let db = TinyDB(MemoryStorage())[0m
+     [36m| [0m[34m|[0m /* 1278.37 */    for(i in 0 .. 3) {[0m
+     [36m| [0m[34m|[0m /* 1278.38 */        let doc = HashMap < String, Any >()[0m
+     [36m| [0m[34m|[0m /* 1278.39 */        doc["int"] = Int64(1)[0m
+     [36m| [0m[34m|[0m /* 1278.40 */        db.insert(doc)[0m
+     [36m| [0m[34m|[0m /* 1278.41 */    }[0m
+     [36m| [0m[34m|[0m /* 1278.42 */    let updateMap = HashMap < String, Any >()[0m
+     [36m| [0m[34m|[0m /* 1278.43 */    updateMap["newField"] = true[0m
+     [36m| [0m[34m|[0m /* 1278.44 */    db.update(updateMap, cond: None < QueryInstance >, docIds: None < Array < Int64 >>)[0m
+     [36m| [0m[34m|[0m /* 1278.45 */    assertEqual("db.count(`where`(\"newField\").eq(true)) == Int64(3)", "true", db.count(`where`("newField").eq(true)) == Int64(3), true, isDelta: false,)[0m
+     [36m| [0m[34m|[0m /* 1278.46 */}[0m
+     [36m| [0m[34m|[0m /* 1278.47 */[0m
+     [36m| [0m[34m|[0m /* 1278.48 */[0m
+     [36m| [0m[34m|[0m /* 1278.49 */interface TestPackageExtension_TestCase_testUpdateAll {[0m
+     [36m| [0m[34m|[0m /* 1278.50 */    func registerTestCase_testUpdateAll(): Unit[0m
+     [36m| [0m[34m|[0m /* 1278.51 */}[0m
+     [36m| [0m[34m|[0m /* 1278.52 */extend TestPackage <: TestPackageExtension_TestCase_testUpdateAll {[0m
+     [36m| [0m[34m|[0m /* 1278.53 */    @Attribute[TEST_REGISTER][0m
+     [36m| [0m[34m|[0m /* 1278.54 */    public func registerTestCase_testUpdateAll() {[0m
+     [36m| [0m[34m|[0m /* 1278.55 */        registerSuite({ => TestCase_testUpdateAll().asTestSuite() })[0m
+     [36m| [0m[34m|[0m /* 1278.56 */    }[0m
+     [36m| [0m[34m|[0m /* 1278.57 */}[0m
+     [36m| [0m[34m|[0m /* 1278.58 */[0m
+     [36m| [0m[34m|[0m[34m_[0m[34m____________^[0m
+     [36m| [0m
+[34mnote[0m: which is expanded as follows
+     [36m| [0m
+     [36m| [0m/* 1278.37 */    for(i in 0 .. 3) {[0m
+     [36m| [0m                     [34m^ [0m
+     [36m| [0m
+
+1 warning generated, 1 warning printed.

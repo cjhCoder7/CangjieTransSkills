@@ -1,0 +1,221 @@
+[33mwarning[0m: unused import 'mail_importer.gmail.GmailSyncer'
+ [36m==>[0m /Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/Importer_test.cj:4:1:
+  [36m| [0m
+[36m4[0m [36m| [0mimport mail_importer.gmail.GmailSyncer[0m
+  [36m| [0m[33m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ unused import[0m
+  [36m| [0m
+  [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+
+[33mwarning[0m: unused import 'mail_importer.gmail.Mailbox'
+ [36m==>[0m /Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/Importer_test.cj:5:1:
+  [36m| [0m
+[36m5[0m [36m| [0mimport mail_importer.gmail.Mailbox[0m
+  [36m| [0m[33m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ unused import[0m
+  [36m| [0m
+  [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+
+[33mwarning[0m: unused import 'mail_importer.gmail.GmailService'
+ [36m==>[0m /Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/Importer_test.cj:6:1:
+  [36m| [0m
+[36m6[0m [36m| [0mimport mail_importer.gmail.GmailService[0m
+  [36m| [0m[33m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ unused import[0m
+  [36m| [0m
+  [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+
+[33mwarning[0m: unused import 'mail_importer.gmail.User'
+ [36m==>[0m /Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/Importer_test.cj:7:1:
+  [36m| [0m
+[36m7[0m [36m| [0mimport mail_importer.gmail.User[0m
+  [36m| [0m[33m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ unused import[0m
+  [36m| [0m
+  [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+
+[33mwarning[0m: unused import 'mail_importer.local.ConsoleLogger'
+  [36m==>[0m /Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/Importer_test.cj:11:1:
+   [36m| [0m
+[36m11[0m [36m| [0mimport mail_importer.local.ConsoleLogger[0m
+   [36m| [0m[33m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ unused import[0m
+   [36m| [0m
+   [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+
+[33mwarning[0m: unused expression
+   [36m| [0m
+   [36m| [0m/* 3.11 */                None < IllegalArgumentException >[0m
+   [36m| [0m                          [33m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ unused expression[0m
+   [36m| [0m
+   [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+[34mnote[0m: the code after the macro is expanded as follows
+    [36m| [0m
+    [36m| [0m  /* 3.1 */@Attribute[TEST_GENERATED] class CommandLineArgumentsTest <: TestClass {[0m
+    [36m| [0m [34m_[0m[34m^[0m
+    [36m| [0m[34m|[0m /* 3.2 */    @Attribute[TestCase_0][0m
+    [36m| [0m[34m|[0m /* 3.3 */    func testArgumentParsing_noRequiredArguments(): Unit {[0m
+    [36m| [0m[34m|[0m /* 3.4 */        let args = Array < String >()[0m
+    [36m| [0m[34m|[0m /* 3.5 */        let result = CommandLineArguments.parse(args)[0m
+    [36m| [0m[34m|[0m /* 3.6 */        try {[0m
+    [36m| [0m[34m|[0m /* 3.7 */            try {[0m
+    [36m| [0m[34m|[0m /* 3.8 */                assertEqual("true", "true", true, true)[0m
+    [36m| [0m[34m|[0m /* 3.9 */                result.validate()[0m
+    [36m| [0m[34m|[0m /* 3.10 */                failExpect("@ExpectThrows: Expected 'IllegalArgumentException' was not caught.")[0m
+    [36m| [0m[34m|[0m /* 3.11 */                None < IllegalArgumentException >[0m
+    [36m| [0m[34m|[0m /* 3.12 */            } catch(e: IllegalArgumentException) {[0m
+    [36m| [0m[34m|[0m /* 3.13 */                if(e is AssertException) {[0m
+    [36m| [0m[34m|[0m /* 3.14 */                    throw e[0m
+    [36m| [0m[34m|[0m /* 3.15 */                }[0m
+    [36m| [0m[34m|[0m /* 3.16 */                if(e is AssertIntermediateException) {[0m
+    [36m| [0m[34m|[0m /* 3.17 */                    throw e[0m
+    [36m| [0m[34m|[0m /* 3.18 */                }[0m
+    [36m| [0m[34m|[0m /* 3.19 */                if(e is UnittestTimeoutException) {[0m
+    [36m| [0m[34m|[0m /* 3.20 */                    throw e[0m
+    [36m| [0m[34m|[0m /* 3.21 */                }[0m
+    [36m| [0m[34m|[0m /* 3.22 */                e[0m
+    [36m| [0m[34m|[0m /* 3.23 */            }[0m
+    [36m| [0m[34m|[0m /* 3.24 */        } catch(e: Exception) {[0m
+    [36m| [0m[34m|[0m /* 3.25 */            if(e is AssertException || e is AssertIntermediateException || e is UnittestTimeoutException) {[0m
+    [36m| [0m[34m|[0m /* 3.26 */                throw e[0m
+    [36m| [0m[34m|[0m /* 3.27 */            }[0m
+    [36m| [0m[34m|[0m /* 3.28 */            expectCaughtUnexpectedE("@ExpectThrows(IllegalArgumentException)", "IllegalArgumentException", e.toString())[0m
+    [36m| [0m[34m|[0m /* 3.29 */            None < IllegalArgumentException >[0m
+    [36m| [0m[34m|[0m /* 3.30 */        }[0m
+    [36m| [0m[34m|[0m /* 3.31 */    }[0m
+    [36m| [0m[34m|[0m /* 3.32 */    [0m
+    [36m| [0m[34m|[0m /* 3.33 */    @Attribute[TestCase_1][0m
+    [36m| [0m[34m|[0m /* 3.34 */    func testArgumentParsing_bogusMailbox(): Unit {[0m
+    [36m| [0m[34m|[0m /* 3.35 */        let args =["--mailbox=/no/such/directory"][0m
+    [36m| [0m[34m|[0m /* 3.36 */        let result = CommandLineArguments.parse(args)[0m
+    [36m| [0m[34m|[0m /* 3.37 */        expectEqual("result.mailboxFileName", "\"/no/such/directory\"", result.mailboxFileName, "/no/such/directory", isDelta: false)[0m
+    [36m| [0m[34m|[0m /* 3.38 */        expectEqual("result.user", "\"me\"", result.user, "me", isDelta: false)[0m
+    [36m| [0m[34m|[0m /* 3.39 */    }[0m
+    [36m| [0m[34m|[0m /* 3.40 */    [0m
+    [36m| [0m[34m|[0m /* 3.41 */    @Attribute[TestCase_2][0m
+    [36m| [0m[34m|[0m /* 3.42 */    func testArgumentParsing_bogusMailboxAndUser(): Unit {[0m
+    [36m| [0m[34m|[0m /* 3.43 */        let args =["--mailbox=/no/such/directory", "--user=foobar"][0m
+    [36m| [0m[34m|[0m /* 3.44 */        let result = CommandLineArguments.parse(args)[0m
+    [36m| [0m[34m|[0m /* 3.45 */        expectEqual("result.mailboxFileName", "\"/no/such/directory\"", result.mailboxFileName, "/no/such/directory", isDelta: false)[0m
+    [36m| [0m[34m|[0m /* 3.46 */        expectEqual("result.user", "\"foobar\"", result.user, "foobar", isDelta: false)[0m
+    [36m| [0m[34m|[0m /* 3.47 */    }[0m
+    [36m| [0m[34m|[0m /* 3.48 */    [0m
+    [36m| [0m[34m|[0m /* 3.49 */    @Attribute[TestCase_3][0m
+    [36m| [0m[34m|[0m /* 3.50 */    func testArgumentParsing_maxMessages(): Unit {[0m
+    [36m| [0m[34m|[0m /* 3.51 */        let args =["--mailbox=/tmp", "--max_messages=50"][0m
+    [36m| [0m[34m|[0m /* 3.52 */        let result = CommandLineArguments.parse(args)[0m
+    [36m| [0m[34m|[0m /* 3.53 */        expectEqual("result.maxMessages", "Some(Int64(50))", result.maxMessages, Some(Int64(50)), isDelta: false)[0m
+    [36m| [0m[34m|[0m /* 3.54 */    }[0m
+    [36m| [0m[34m|[0m /* 3.55 */    [0m
+    [36m| [0m[34m|[0m /* 3.56 */    init() {[0m
+    [36m| [0m[34m|[0m /* 3.57 */    }[0m
+    [36m| [0m[34m|[0m /* 3.58 */    private func classConfiguration(): Configuration {[0m
+    [36m| [0m[34m|[0m /* 3.59 */        let configuration = Configuration()[0m
+    [36m| [0m[34m|[0m /* 3.60 */        [0m
+    [36m| [0m[34m|[0m /* 3.61 */        return configuration[0m
+    [36m| [0m[34m|[0m /* 3.62 */    }[0m
+    [36m| [0m[34m|[0m /* 3.63 */    public override func asTestSuite(): TestSuite {[0m
+    [36m| [0m[34m|[0m /* 3.64 */        [0m
+    [36m| [0m[34m|[0m /* 3.65 */        let suiteConfiguration = classConfiguration()[0m
+    [36m| [0m[34m|[0m /* 3.66 */        let suiteBuilder = TestSuite.builder("CommandLineArgumentsTest").configure(suiteConfiguration)[0m
+    [36m| [0m[34m|[0m /* 3.67 */        [0m
+    [36m| [0m[34m|[0m /* 3.68 */        { => let caseConfig = Configuration()[0m
+    [36m| [0m[34m|[0m /* 3.69 */            [0m
+    [36m| [0m[34m|[0m /* 3.70 */            let testArgumentParsing_noRequiredArgumentsTestFunc = { => testArgumentParsing_noRequiredArguments();() }[0m
+    [36m| [0m[34m|[0m /* 3.71 */            suiteBuilder.add([0m
+    [36m| [0m[34m|[0m /* 3.72 */            UnitTestCase.create([0m
+    [36m| [0m[34m|[0m /* 3.73 */            "testArgumentParsing_noRequiredArguments",[0m
+    [36m| [0m[34m|[0m /* 3.74 */            configuration: caseConfig,[0m
+    [36m| [0m[34m|[0m /* 3.75 */            body: testArgumentParsing_noRequiredArgumentsTestFunc[0m
+    [36m| [0m[34m|[0m /* 3.76 */            )[0m
+    [36m| [0m[34m|[0m /* 3.77 */            )[0m
+    [36m| [0m[34m|[0m /* 3.78 */            [0m
+    [36m| [0m[34m|[0m /* 3.79 */        }()[0m
+    [36m| [0m[34m|[0m /* 3.80 */        [0m
+    [36m| [0m[34m|[0m /* 3.81 */        [0m
+    [36m| [0m[34m|[0m /* 3.82 */        { => let caseConfig = Configuration()[0m
+    [36m| [0m[34m|[0m /* 3.83 */            [0m
+    [36m| [0m[34m|[0m /* 3.84 */            let testArgumentParsing_bogusMailboxTestFunc = { => testArgumentParsing_bogusMailbox();() }[0m
+    [36m| [0m[34m|[0m /* 3.85 */            suiteBuilder.add([0m
+    [36m| [0m[34m|[0m /* 3.86 */            UnitTestCase.create([0m
+    [36m| [0m[34m|[0m /* 3.87 */            "testArgumentParsing_bogusMailbox",[0m
+    [36m| [0m[34m|[0m /* 3.88 */            configuration: caseConfig,[0m
+    [36m| [0m[34m|[0m /* 3.89 */            body: testArgumentParsing_bogusMailboxTestFunc[0m
+    [36m| [0m[34m|[0m /* 3.90 */            )[0m
+    [36m| [0m[34m|[0m /* 3.91 */            )[0m
+    [36m| [0m[34m|[0m /* 3.92 */            [0m
+    [36m| [0m[34m|[0m /* 3.93 */        }()[0m
+    [36m| [0m[34m|[0m /* 3.94 */        [0m
+    [36m| [0m[34m|[0m /* 3.95 */        [0m
+    [36m| [0m[34m|[0m /* 3.96 */        { => let caseConfig = Configuration()[0m
+    [36m| [0m[34m|[0m /* 3.97 */            [0m
+    [36m| [0m[34m|[0m /* 3.98 */            let testArgumentParsing_bogusMailboxAndUserTestFunc = { => testArgumentParsing_bogusMailboxAndUser();() }[0m
+    [36m| [0m[34m|[0m /* 3.99 */            suiteBuilder.add([0m
+    [36m| [0m[34m|[0m /* 3.100 */            UnitTestCase.create([0m
+    [36m| [0m[34m|[0m /* 3.101 */            "testArgumentParsing_bogusMailboxAndUser",[0m
+    [36m| [0m[34m|[0m /* 3.102 */            configuration: caseConfig,[0m
+    [36m| [0m[34m|[0m /* 3.103 */            body: testArgumentParsing_bogusMailboxAndUserTestFunc[0m
+    [36m| [0m[34m|[0m /* 3.104 */            )[0m
+    [36m| [0m[34m|[0m /* 3.105 */            )[0m
+    [36m| [0m[34m|[0m /* 3.106 */            [0m
+    [36m| [0m[34m|[0m /* 3.107 */        }()[0m
+    [36m| [0m[34m|[0m /* 3.108 */        [0m
+    [36m| [0m[34m|[0m /* 3.109 */        [0m
+    [36m| [0m[34m|[0m /* 3.110 */        { => let caseConfig = Configuration()[0m
+    [36m| [0m[34m|[0m /* 3.111 */            [0m
+    [36m| [0m[34m|[0m /* 3.112 */            let testArgumentParsing_maxMessagesTestFunc = { => testArgumentParsing_maxMessages();() }[0m
+    [36m| [0m[34m|[0m /* 3.113 */            suiteBuilder.add([0m
+    [36m| [0m[34m|[0m /* 3.114 */            UnitTestCase.create([0m
+    [36m| [0m[34m|[0m /* 3.115 */            "testArgumentParsing_maxMessages",[0m
+    [36m| [0m[34m|[0m /* 3.116 */            configuration: caseConfig,[0m
+    [36m| [0m[34m|[0m /* 3.117 */            body: testArgumentParsing_maxMessagesTestFunc[0m
+    [36m| [0m[34m|[0m /* 3.118 */            )[0m
+    [36m| [0m[34m|[0m /* 3.119 */            )[0m
+    [36m| [0m[34m|[0m /* 3.120 */            [0m
+    [36m| [0m[34m|[0m /* 3.121 */        }()[0m
+    [36m| [0m[34m|[0m /* 3.122 */        [0m
+    [36m| [0m[34m|[0m /* 3.123 */        return suiteBuilder.build()[0m
+    [36m| [0m[34m|[0m /* 3.124 */    }[0m
+    [36m| [0m[34m|[0m /* 3.125 */    private func inheritedFromClassAnnotatedByTestTemplate < T >(): TestSuite where T <: TestClass {[0m
+    [36m| [0m[34m|[0m /* 3.126 */        throw Exception("Unreachable code")[0m
+    [36m| [0m[34m|[0m /* 3.127 */    }[0m
+    [36m| [0m[34m|[0m /* 3.128 */}[0m
+    [36m| [0m[34m|[0m /* 3.129 */[0m
+    [36m| [0m[34m|[0m /* 3.130 */[0m
+    [36m| [0m[34m|[0m /* 3.131 */interface TestPackageExtension_CommandLineArgumentsTest {[0m
+    [36m| [0m[34m|[0m /* 3.132 */    func registerCommandLineArgumentsTest(): Unit[0m
+    [36m| [0m[34m|[0m /* 3.133 */}[0m
+    [36m| [0m[34m|[0m /* 3.134 */extend TestPackage <: TestPackageExtension_CommandLineArgumentsTest {[0m
+    [36m| [0m[34m|[0m /* 3.135 */    @Attribute[TEST_REGISTER][0m
+    [36m| [0m[34m|[0m /* 3.136 */    public func registerCommandLineArgumentsTest() {[0m
+    [36m| [0m[34m|[0m /* 3.137 */        registerSuite({ => CommandLineArgumentsTest().asTestSuite() })[0m
+    [36m| [0m[34m|[0m /* 3.138 */    }[0m
+    [36m| [0m[34m|[0m /* 3.139 */}[0m
+    [36m| [0m[34m|[0m /* 3.140 */[0m
+    [36m| [0m[34m|[0m[34m_[0m[34m__________^[0m
+    [36m| [0m
+[34mnote[0m: the warning occurs after the macro is expanded
+  [36m==>[0m /Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/CommandLineArguments_test.cj:3:1:
+   [36m| [0m
+[36m3[0m  [36m| [0m  @Test[0m
+   [36m| [0m [34m_[0m[34m^[0m
+[36m4[0m  [36m| [0m[34m|[0m class CommandLineArgumentsTest {[0m
+   [36m| [0m[34m|[0m ...[0m
+[36m40[0m [36m| [0m[34m|[0m }[0m
+   [36m| [0m[34m|[0m[34m_[0m[34m^[0m
+   [36m| [0m
+
+[33mwarning[0m: unused expression
+   [36m| [0m
+   [36m| [0m/* 3.29 */            None < IllegalArgumentException >[0m
+   [36m| [0m                      [33m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ unused expression[0m
+   [36m| [0m
+   [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+[34mnote[0m: the warning occurs after the macro is expanded
+  [36m==>[0m /Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/src/mail_importer/CommandLineArguments_test.cj:3:1:
+   [36m| [0m
+[36m3[0m  [36m| [0m  @Test[0m
+   [36m| [0m [34m_[0m[34m^[0m
+[36m4[0m  [36m| [0m[34m|[0m class CommandLineArgumentsTest {[0m
+   [36m| [0m[34m|[0m ...[0m
+[36m40[0m [36m| [0m[34m|[0m }[0m
+   [36m| [0m[34m|[0m[34m_[0m[34m^[0m
+   [36m| [0m
+
+7 warnings generated, 7 warnings printed.
+ld64.lld: warning: /Users/coder7/Code/DevEcoStudioProjects/mail-importerCangjie/mail_importer/libs/libcurl_helper.dylib has version 15.0.0, which is newer than target minimum of 12.0.0

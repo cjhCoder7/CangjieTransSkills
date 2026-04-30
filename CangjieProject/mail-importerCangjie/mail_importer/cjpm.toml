@@ -1,0 +1,18 @@
+[package]
+cjc-version = "26.0.0"
+name = "mail_importer"
+description = "Gmail 邮件导入工具 - 仓颉版"
+version = "0.0.1"
+compile-option = ""
+link-option = ""
+output-type = "static"
+src-dir = "src/mail_importer"
+
+[target]
+
+[dependencies]
+
+[ffi.c]
+curl_helper = { path = "./libs" }
+
+[coverage]

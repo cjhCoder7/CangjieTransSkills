@@ -1,0 +1,4 @@
+﻿<svg class="icon" style="width: 1em;height: 1em;vertical-align: middle;fill: none;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path fill="none" fill-rule="evenodd" d="M512 128C300.527 128 128 300.527 128 512s172.527 384 384 384 384-172.527 384-384S723.473 128 512 128z m0 64c176.569 0 320 143.431 320 320S688.569 832 512 832 192 688.569 192 512 335.431 192 512 192z"></path>
+  <circle cx="512" cy="512" r="180" fill="none"></circle>
+</svg>

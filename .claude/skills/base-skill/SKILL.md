@@ -7,6 +7,37 @@ description: "仓颉语言 HarmonyOS 开发的入口路由。遇到仓颉语法�
 
 遇到仓颉相关问题时，按以下优先级选择 skill：
 
+## 环境检查（使用任何 skill 前必须执行）
+
+在执行构建、翻译、UI 检测等操作前，**必须先确认 `.env` 配置就绪**。项目根目录的 `.env` 为多个 skill 提供环境信息。
+
+### 检查流程
+
+1. 读取项目根 `.env`，确认以下变量：
+   - **`DEVECO_HOME`**（`/build` 和 `harmonyos-ui-inspect` 必需）— DevEco Studio 安装路径
+   - **`CANGJIE_SDK_HOME`**（`cangjie-lib-build` 可选但推荐）— 仓颉 SDK 安装路径，未配置时自动扫描 `~/.cangjie-sdk/`
+   - **`CANGJIE_SDK_HOME-8k`** / **`CANGJIE_SDK_HOME-15k`**（可选）— 按版本锁定的 SDK 路径，优先级高于 `CANGJIE_SDK_HOME`
+
+2. 检查规则：
+   - 若 `.env` 不存在或缺少必要变量，**主动提示用户补充**，给出平台典型值示例后再继续
+   - `CANGJIE_SDK_HOME` 系列缺失时可以继续（自动检测兜底），但 `DEVECO_HOME` 缺失时 `/build` 和 `harmonyos-ui-inspect` 无法运行，必须补充
+
+### 各变量与 skill 的依赖关系
+
+| 变量 | 依赖的 skill | 必要性 |
+|------|------------|--------|
+| `DEVECO_HOME` | `/build`、`harmonyos-ui-inspect` | 必填 |
+| `CANGJIE_SDK_HOME` | `/cangjie-lib-build` | 可选（自动扫描 `~/.cangjie-sdk/`） |
+| `CANGJIE_SDK_HOME-8k` | `/cangjie-lib-build` | 可选（覆盖通用路径） |
+| `CANGJIE_SDK_HOME-15k` | `/cangjie-lib-build` | 可选（覆盖通用路径） |
+
+### 平台典型值
+
+| 变量 | macOS | Windows |
+|------|-------|---------|
+| `DEVECO_HOME` | `/Applications/DevEco-Studio.app/Contents` | `C:\Program Files\Huawei\DevEco Studio` |
+| `CANGJIE_SDK_HOME` | `/Users/xxx/.cangjie-sdk/6.0/cangjie` | `C:\Users\xxx\.cangjie-sdk\6.0\cangjie` |
+
 ## 资源查找流程
 
 ### 1. 语言核心 → `cangjie-kernel`
@@ -21,13 +52,21 @@ HarmonyOS 平台应用开发，涉及框架、组件、系统 API。
 
 覆盖：Stage 模型、Ability Kit（UIAbility/Want）、ArkUI 声明式 UI（组件/布局/状态管理/渲染控制/动画/弹窗/导航）、ArkData（Preferences/KV-Store/RDB）、互操作、安全/网络/媒体/文件/本地化、API 参考与错误码。
 
-### 3. 编译构建 → `/build`
+### 3a. 应用级编译构建 → `/build`
 
-编译、打包仓颉 HarmonyOS 应用。用户说"编译"、"构建"、"build"、"打包"时使用。
+编译、打包仓颉 HarmonyOS 应用（产物 HAP）。需要 `.env` 中的 `DEVECO_HOME`。用户在含 `entry/` + `module.json5` 的项目说"编译/构建/build/打包"时使用。
 
-### 4. 代码翻译 → `/cangjie-translate`
+### 3b. 库级编译构建 → `/cangjie-lib-build`
 
-将其他语言的代码翻译为仓颉，在子代理中隔离执行。用法：`/cangjie-translate arkts [code]`。
+编译纯仓颉 cjpm 库（`cjpm build` + `cjpm test`，产物 `.cjo`/静态/动态库）。不需要 `DEVECO_HOME`，仅需仓颉 SDK（自动检测）。用户在含 `cjpm.toml` 的库根说"编译/构建/跑测试"时使用。
+
+### 4a. 应用级翻译 → `/cangjie-translate`
+
+源项目是可运行应用（含 UI/资源），目标输出 HarmonyOS HAP。会执行资源迁移、`$r()` 引用改写、UI 截图辅助等流程。用法：`/cangjie-translate arkts [code]`。
+
+### 4b. 库级翻译 → `/cangjie-translate-lib`
+
+源项目是库 / SDK / CLI 工具 / 算法包等任意语言纯逻辑代码，目标输出**纯仓颉 cjpm 包**。语言无关，关注 API 面、依赖策略、cjpm 包骨架与构建验证；不处理 UI 资源、`entry/`、`module.json5`。判定不明时先看 SKILL.md 中的 Phase 0 决策表。用法：`/cangjie-translate-lib [source-lib-path]`。
 
 ### 5. 经验总结 → `evolution`
 

@@ -1,0 +1,11 @@
+[package]
+name = "tinydb"
+version = "1.0.0"
+cjc-version = "1.1.0"
+description = "A tiny document oriented database for Cangjie"
+license = "MIT"
+output-type = "static"
+
+[dependencies]
+
+[test.dependencies]

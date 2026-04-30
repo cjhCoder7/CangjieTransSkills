@@ -7,8 +7,12 @@
 1. **首先**查阅 `.claude/skills/base-skill/SKILL.md` 获取开发指引和路由信息
 2. **语言问题**（语法/类型/标准库/并发/宏等）→ 使用 `cangjie-kernel` skill
 3. **鸿蒙开发问题**（ArkUI/Ability/系统API/互操作等）→ 使用 `cangjie-harmony` skill
-4. **代码翻译**（ArkTS/Swift/Java → 仓颉）→ 使用 `/cangjie-translate` skill
-5. **编译构建** → 使用 `/build` 执行编译打包
+4. **代码翻译**：
+   - **应用级**（ArkTS/Swift/Java App → 仓颉应用）→ 使用 `/cangjie-translate` skill
+   - **库级**（任意语言库/SDK/CLI → 纯仓颉 cjpm 包）→ 使用 `/cangjie-translate-lib` skill
+5. **编译构建**：
+   - **应用级**（HarmonyOS 应用，产物 HAP）→ 使用 `/build`，需 `DEVECO_HOME`
+   - **库级**（cjpm 库，产物 `.cjo`/静态/动态库）→ 使用 `/cangjie-lib-build`，仅需仓颉 SDK
 6. **UI 验证** → 使用 `/harmonyos-ui-inspect` 采集截图、控件树、执行交互场景
 7. **经验查阅** → 使用 `evolution` skill 查阅已积累的踩坑记录
 8. **以上未覆盖** → 使用 `/download-script` 下载原始文档查询
@@ -73,13 +77,16 @@ DevEco Studio 安装路径。`build` 用它定位 ohpm/hvigor/node/Java，`ui-in
 ```
 .claude/skills/
 ├── base-skill/              # 入口路由（自动加载）
-├── build/                   # 编译构建（/build）
+├── build/                   # 应用级编译构建（/build，HAP）
+├── cangjie-lib-build/       # 库级编译构建（/cangjie-lib-build，cjpm）
 ├── cangjie-kernel/          # 仓颉语言核心文档
 ├── cangjie-harmony/         # HarmonyOS 应用开发文档
-├── cangjie-translate/       # 代码翻译（/cangjie-translate）
+├── cangjie-translate/       # 应用级翻译（/cangjie-translate）
 │   ├── arkts2cangjie/       #   ArkTS → 仓颉经验
 │   ├── swift2cangjie/       #   Swift → 仓颉经验
 │   └── java2cangjie/        #   Java → 仓颉经验
+├── cangjie-translate-lib/   # 库级翻译（/cangjie-translate-lib，源语言无关）
+│   └── experience/          #   库工程化经验索引（type-mapping/deps/build/api-design）
 ├── harmonyos-ui-inspect/    # UI 采集与交互验证（/harmonyos-ui-inspect）
 ├── download-script/         # 原始文档下载（/download-script）
 └── evolution/               # 开发经验总结
