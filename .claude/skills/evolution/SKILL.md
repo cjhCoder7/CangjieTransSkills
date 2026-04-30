@@ -13,7 +13,12 @@ description: "仓颉开发经验总结。遇到编译错误、API 差异、迁�
 |------|------|------|
 | 仓颉通用 | [cangjie/](./cangjie/) | 仓颉语言 + HarmonyOS 开发中的通用经验，内部按主题拆分文件，详见其 [README.md](./cangjie/README.md) 索引 |
 
-> 翻译类经验（ArkTS/Swift/Java → 仓颉）已移至 `cangjie-translate` skill 管理。
+> **经验沉淀分工**：
+> - **本目录**（`evolution/cangjie/`）：仓颉语言 + HarmonyOS 开发中的**通用**经验（语法踩坑、编译配置、API 行为差异等）
+> - `cangjie-translate/*2cangjie/`：**应用翻译**中"源语言 → 仓颉"的语法 / 表达差异
+> - `cangjie-translate-lib/experience/`：**库翻译**独有的工程化经验（包布局、API 面、依赖替代、cjpm 构建）
+>
+> 两边有交叉的语法点优先记到 `cangjie-translate/*2cangjie/`，本目录只记与翻译无关的通用经验。
 
 ## 经验记录规范
 

@@ -14,17 +14,17 @@ argument-hint: "[--sources stdlib|stdx|syntax|ui-dev|tools]"
 
 ```bash
 # 下载全部文档（约 1100+ 篇 Markdown）
-cd .claude/skills/download-script && python3 download_hm_docs.py
+python3 ${CLAUDE_SKILL_DIR}/download_hm_docs.py
 
 # 下载指定文档源
-python3 download_hm_docs.py --sources stdlib
-python3 download_hm_docs.py --sources "标准扩展库"
+python3 ${CLAUDE_SKILL_DIR}/download_hm_docs.py --sources stdlib
+python3 ${CLAUDE_SKILL_DIR}/download_hm_docs.py --sources "标准扩展库"
 
 # 列出可用文档源
-python3 download_hm_docs.py --list-sources
+python3 ${CLAUDE_SKILL_DIR}/download_hm_docs.py --list-sources
 
 # 下载英文文档
-python3 download_hm_docs.py --lang en
+python3 ${CLAUDE_SKILL_DIR}/download_hm_docs.py --lang en
 ```
 
 ### 参数说明

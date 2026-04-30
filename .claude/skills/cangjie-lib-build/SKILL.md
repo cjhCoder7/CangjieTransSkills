@@ -13,6 +13,15 @@ argument-hint: "[lib-path] [-v 8k|15k] [--no-test] [--clean]"
 python3 ${CLAUDE_SKILL_DIR}/lib_build.py $ARGUMENTS
 ```
 
+## 前置检查（构建前必须完成）
+
+| # | 检查项 | 检查方式 | 未通过时 |
+|---|-------|---------|---------|
+| 1 | 项目类型是 cjpm 库 | 工程根含 `cjpm.toml`，无 `entry/` | 若是 HarmonyOS 应用 → 改用 `/build` |
+| 2 | 仓颉 SDK 可用 | `~/.cangjie-sdk/` 存在或 `.env` 中已配置 | 提示用户安装仓颉 SDK |
+| 3 | 构建版本确认 | `.openvk-version` 或 `-v` 参数 | 默认使用 `8k` |
+| 4 | 是否需要运行测试 | 检查 `src/*_test.cj`、`tests/` 或 `cjpm.toml` 中 `[test]` 段 | 无测试则跳过；用户可加 `--no-test` |
+
 ## 适用范围
 
 **仅适用于纯仓颉库项目（cjpm 包），不适用于 HarmonyOS 应用。**
@@ -50,7 +59,7 @@ python3 ${CLAUDE_SKILL_DIR}/lib_build.py $ARGUMENTS
 | 产物 | `entry/build/.../*.hap` | `<lib>/target/`（`.cjo` / `.a` / `.dylib` / `.so` / 可执行文件） |
 | "运行" | 装 hap 到设备/模拟器 | 有 `main.cj` 时可执行；否则以 `cjpm test` 验证 |
 
-## 前置配置
+## 配置说明
 
 **最小可用配置：装好 `~/.cangjie-sdk/` 即可，`.env` 可空。**
 
@@ -90,3 +99,4 @@ python3 ${CLAUDE_SKILL_DIR}/lib_build.py -v 15k --clean
 3. `未在 SDK 中找到 cjpm 可执行文件` → SDK 安装不全；查 `<sdk>/bin/cjpm` 是否存在
 4. `cjpm build` 编译错误 → 错误信息含 `.cj` 文件路径与行号；先查 `evolution/cangjie/syntax.md`，再查 `cangjie-translate-lib/experience/`
 5. `cjpm test` 失败 → 测试自身问题；用 `--no-test` 隔离再单独排查
+6. **经验回写**：排查并解决了非显而易见的构建问题后，通用问题写入 `evolution/cangjie/`，库工程化问题（包循环、导出不一致等）写入 `cangjie-translate-lib/experience/`

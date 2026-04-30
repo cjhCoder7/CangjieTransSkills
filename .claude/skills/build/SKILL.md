@@ -13,6 +13,15 @@ argument-hint: "[-v 8k|15k]"
 python3 ${CLAUDE_SKILL_DIR}/build.py $ARGUMENTS
 ```
 
+## 前置检查（构建前必须完成）
+
+| # | 检查项 | 检查方式 | 未通过时 |
+|---|-------|---------|---------|
+| 1 | 项目类型是 HarmonyOS 应用 | 工程根含 `entry/` + `module.json5` | 若是 cjpm 库 → 改用 `/cangjie-lib-build` |
+| 2 | `.env` 中 `DEVECO_HOME` 已配置 | 读取 `.env` 文件 | 提示用户补充，给出平台典型值 |
+| 3 | 仓颉 SDK 可用 | `.env` 中配置或 `~/.cangjie-sdk/` 存在 | 提示用户安装 SDK |
+| 4 | 构建版本确认 | 检查 `.openvk-version` 或用户传 `-v` 参数 | 默认使用 `8k` |
+
 ## 构建流程
 
 脚本按顺序执行三个阶段：
@@ -20,19 +29,10 @@ python3 ${CLAUDE_SKILL_DIR}/build.py $ARGUMENTS
 2. **同步仓颉资源** — `hvigorw SyncCangjieResource`
 3. **编译打包** — `hvigorw assembleHap`
 
-## 前置配置
+## 配置说明
 
-项目根目录需要 `.env` 文件：
-```
-DEVECO_HOME=/Applications/DevEco-Studio.app/Contents
-```
-
-仓颉 SDK 默认自动检测 `~/.cangjie-sdk/`，可在 `.env` 中覆盖：
-```
-CANGJIE_SDK_HOME-8k=/path/to/cangjie
-```
-
-`.openvk-version` 文件指定构建版本（`8k` 或 `15k`，默认 `8k`）。
+- `.env` 中 `DEVECO_HOME` 和 `CANGJIE_SDK_HOME-*` 的配置详见 `base-skill` 平台典型值
+- `.openvk-version` 文件指定构建版本（`8k` 或 `15k`，默认 `8k`），也可通过 `-v` 参数覆盖
 
 ## 常用参数
 
@@ -54,3 +54,4 @@ entry/build/default/outputs/default/entry-default-unsigned.hap
 3. `macro evaluation has failed` → 检查 `@Component`/`@Observed` 等宏的使用约束
 4. 类型不匹配 → 注意 `Int32` vs `Int64`、`Array` vs `ArrayList` 等差异
 5. 环境问题 → 确认 `.env` 中 `DEVECO_HOME` 路径正确
+6. **经验回写**：排查并解决了非显而易见的编译问题后，将经验写入 `evolution/cangjie/` 对应主题文件（格式参见 `evolution/SKILL.md`）

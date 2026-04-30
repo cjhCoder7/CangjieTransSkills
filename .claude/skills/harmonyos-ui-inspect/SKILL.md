@@ -11,23 +11,31 @@ argument-hint: "[--scenario scenario.json] [--emulator port] [--no-screenshot]"
 
 在应用构建成功并安装到设备后，采集截图与控件树，执行真实交互验证，输出可落地的 UI 迭代建议。
 
-## 前置条件
+## 前置检查（启动前必须完成）
 
-- 构建已通过（`BUILD SUCCESSFUL`）
-- 设备已连接（`hdc list targets` 有输出），或本地模拟器已启动
-- 应用已安装，或有可安装的 `.hap` 文件
+| # | 检查项 | 检查方式 | 未通过时 |
+|---|-------|---------|---------|
+| 1 | 模型能力确认 | 参照 `base-skill` 第 1 步自检 | 纯文本 → 后续全程加 `--no-screenshot`；多模态 → 可选读截图 |
+| 2 | 构建已通过 | 确认最近一次 `/build` 输出 `BUILD SUCCESSFUL` | 先执行 `/build` 完成构建 |
+| 3 | 设备已连接 | `hdc list targets` 有输出 | 启动模拟器或连接 USB 设备（见 Step 0） |
+| 4 | HAP 就绪 | 有 `.hap` 文件或应用已安装 | 使用 `--auto-hap` 或 `--hap <路径>`（见 Step 0.5） |
+| 5 | `.env` 中 `DEVECO_HOME` 已配置 | 读取 `.env` | 提示用户补充 |
 
 ---
 
-## 纯文本模式（重要）
+## 截图读取规则
+
+> 模型能力已在「前置检查」#1 中确认。以下规则基于该结论执行。
 
 **默认行为：只依赖文本产物（`ui_summary.md` + `layout.json`），不读取 `screenshot.png`。**
 
-原因：`ui_summary.md` 与 `layout.json` 已包含控件类型、文本、尺寸、间距、可点击性、屏幕利用率等完整结构化信息，足以覆盖绝大多数 UI 验证场景。读取截图仅在需要颜色/图像/渲染异常等"视觉层"判断时才必要。
+`ui_summary.md` 与 `layout.json` 已包含控件类型、文本、尺寸、间距、可点击性、屏幕利用率等完整结构化信息，足以覆盖绝大多数 UI 验证场景。
 
-- **纯文本模型 / 无图像能力**：加 `--no-screenshot` 跳过截图采集，且**禁止**对 `screenshot.png` 使用 Read 工具（会报错）
-- **多模态模型**：默认仍产出 `screenshot.png`，但**只有在文本信息不足以下结论时**才 Read 它
-- 不确定时，先读 `ui_summary.md`，如果字段齐备就直接出结论
+| 模型能力 | 行为 |
+|---------|------|
+| **纯文本** | 加 `--no-screenshot` 跳过截图采集，**禁止** Read `screenshot.png` |
+| **多模态** | 默认产出 `screenshot.png`，但**仅在文本信息不足时**才 Read 它 |
+| **不确定** | 按纯文本处理，先读 `ui_summary.md` |
 
 ---
 
@@ -40,6 +48,14 @@ hdc list targets
 - `127.0.0.1:5555` → 模拟器，后续加 `--emulator 5555`
 - `0123456789ABCDEF` → USB 设备，无需 `--emulator`
 - 空或 `Empty` → 先启动模拟器或连接设备
+
+---
+
+## Step 0.5：确认 HAP 就绪
+
+- 已有 `.hap` 文件：后续步骤中使用 `--hap <路径>` 指定安装
+- 刚构建完成：使用 `--auto-hap` 自动搜索 `entry/build/` 下最新 HAP
+- 应用已安装且在前台：使用 `--no-launch` 跳过安装与启动
 
 ---
 
@@ -231,3 +247,4 @@ hdc file recv /data/local/tmp/layout.json ./layout.json
 3. **聚焦可执行**：每个问题给出明确修复方向
 4. **不过度设计**：界面正常时明确标注"无需改动"
 5. **真实交互优先**：能用模式 B 验证行为时，不只依赖模式 A 的静态采集
+6. **经验回写**：UI 验证中发现并解决了非显而易见的布局/组件/状态问题，将经验写入 `evolution/cangjie/` 对应主题文件（如 `arkui.md`、`state.md`）

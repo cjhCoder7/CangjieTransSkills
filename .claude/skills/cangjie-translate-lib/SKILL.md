@@ -10,6 +10,16 @@ argument-hint: "[source-lib-path] [--lang <hint>]"
 
 本 skill 面向**库级别**翻译，产物为 **`cjpm` 包**。不包含应用资源迁移、`$r()` 引用、HarmonyOS `entry/` 骨架、UI 截图辅助等 app 级逻辑 —— 这些由 `/cangjie-translate` 负责。
 
+## 前置检查（启动翻译前必须完成）
+
+| # | 检查项 | 获取方式 | 未就绪时 |
+|---|-------|---------|---------|
+| 1 | 源项目路径 | 参数 `$1` 或用户指定 | 询问用户提供路径 |
+| 2 | 源语言 | 从 manifest 自动推断（见 Phase 1）；无法推断时用 `--lang` | 询问用户确认 |
+| 3 | 分流判定 | 检查源项目是 app 还是 lib（见 Phase 0） | app → 切到 `/cangjie-translate` |
+| 4 | 仓颉 SDK 可用 | `~/.cangjie-sdk/` 或 `.env` 中配置 | 提示用户安装（Phase 9 构建验证需要） |
+| 5 | 输出目标路径 | 默认当前目录下以源库名创建 | 确认用户是否有特殊要求 |
+
 ## Phase 0 — 分流自检（强制前置）
 
 在执行任何翻译前先判定本 skill 是否适用：
@@ -25,7 +35,7 @@ argument-hint: "[source-lib-path] [--lang <hint>]"
 - Android：`AndroidManifest.xml` 含 `<activity>` 且声明 `LAUNCHER`
 - iOS：`@main` AppDelegate / `App` 结构体
 - Web：`index.html` + 运行时入口
-- Server/CLI：可执行二进制入口（main 函数 + 被 manifest 标记为 `bin`）
+- Server/CLI **应用**：可执行二进制入口（main 函数 + 被 manifest 标记为 `bin`）。注意：CLI 参数解析库、工具函数库等**仍属于库**，应使用本 skill
 
 判定结果在产出的翻译报告首行明确写出："分流判定：lib / 继续本 skill"。
 
@@ -197,7 +207,7 @@ argument-hint: "[source-lib-path] [--lang <hint>]"
 python3 ${CLAUDE_SKILL_DIR}/../cangjie-lib-build/lib_build.py <lib-root>
 ```
 
-或在交互中下发 `/cangjie-lib-build <lib-root>`。该命令会：
+或在交互中直接下发 `/cangjie-lib-build <lib-root>`（推荐，无路径依赖）。该命令会：
 
 - 自动检测仓颉 SDK（`.env` 或 `~/.cangjie-sdk/`）
 - 跑 `cjpm build`，产物落到 `<lib-root>/target/`

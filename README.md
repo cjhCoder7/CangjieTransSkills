@@ -9,7 +9,7 @@
   <a href="CangjieProject/"><img src="https://img.shields.io/badge/Examples-6%20Projects-7A3EFF" alt="6 Projects"></a>
 </p>
 
-<p><strong>面向仓颉语言 / HarmonyOS 代码迁移场景的 Claude Skills 集合</strong></p>
+<p><strong>面向仓颉语言 / HarmonyOS 代码迁移场景的 Claude Code Skills</strong></p>
 
 <p>围绕 <strong>Claude Code + Skills</strong> 的翻译工作流，用于将应用项目或库项目翻译到仓颉，并将翻译过程中的经验持续回流到 Skills 与经验库中。</p>
 
@@ -19,7 +19,7 @@
 
 `CangjieTransSkills` 提供一套面向仓颉迁移场景的可复用工作流：
 
-- 应用级翻译：ArkTS / Swift / Java App → 仓颉 HarmonyOS 应用
+- 应用级翻译：ArkTS / Swift / Java / Python App → 仓颉 HarmonyOS 应用
 - 库级翻译：任意语言库 / SDK / CLI → 纯仓颉 `cjpm` 包
 - 配套支持：构建、测试、UI 检查、经验沉淀、文档下载
 - 经验回流：将类型映射、API 替代、构建修复、语义差异与已知问题写回经验库，用于后续任务复用
@@ -88,12 +88,121 @@
 
 ## 🛠️ 使用方式
 
-可从以下入口了解和使用这套 workflow：
+### 1. 安装 Claude Code
 
-- 阅读 [CLAUDE.md](CLAUDE.md) 了解 skill 路由规则
-- 查看 [`cangjie-translate`](.claude/skills/cangjie-translate/SKILL.md) 了解应用级翻译流程
-- 查看 [`cangjie-translate-lib`](.claude/skills/cangjie-translate-lib/SKILL.md) 了解库级翻译流程
-- 参考 [`CangjieProject/`](CangjieProject/) 中的样例项目组织输出结构
+Claude Code 以 npm 包形式发布，需要 **Node.js 18+**：
+
+```bash
+# 全局安装
+npm install -g @anthropic-ai/claude-code
+
+# 验证安装
+claude --version
+```
+
+### 2. 安装 Skills 到目标项目
+
+将本仓库的 `.claude/` 目录和 `CLAUDE.md` 复制到你的仓颉 HarmonyOS 项目根目录：
+
+```bash
+# 克隆本仓库
+git clone https://github.com/cjhCoder7/CangjieTransSkills.git
+
+# 复制 Skills 和项目说明到你的项目
+cp -r CangjieTransSkills/.claude /path/to/your-cangjie-project/
+cp CangjieTransSkills/CLAUDE.md /path/to/your-cangjie-project/
+```
+
+复制后你的项目目录结构应如下：
+
+```
+your-cangjie-project/
+├── .claude/
+│   └── skills/          # 全部 Skills 定义
+│       ├── base-skill/
+│       ├── build/
+│       ├── cangjie-kernel/
+│       ├── cangjie-harmony/
+│       ├── cangjie-translate/
+│       ├── cangjie-translate-lib/
+│       ├── cangjie-lib-build/
+│       ├── harmonyos-ui-inspect/
+│       ├── download-script/
+│       └── evolution/
+├── CLAUDE.md            # 项目级规则
+├── .env                 # 环境配置（需手动创建）
+├── entry/               # HarmonyOS 应用目录（应用项目）
+│   └── ...
+└── cjpm.toml            # 或 cjpm 库项目
+```
+
+### 3. 配置环境变量（.env）
+
+在项目根目录创建 `.env` 文件，配置必要的环境变量：
+
+```bash
+# DevEco Studio 安装路径（/build 和 /harmonyos-ui-inspect 必需）
+DEVECO_HOME=/Applications/DevEco-Studio.app/Contents
+
+# 仓颉 SDK 路径（可选，不配置时自动检测 ~/.cangjie-sdk/）
+CANGJIE_SDK_HOME=/Users/xxx/.cangjie-sdk/6.0/cangjie
+
+# 按版本锁定 SDK（可选，优先级高于 CANGJIE_SDK_HOME）
+CANGJIE_SDK_HOME-8k=/Users/xxx/.cangjie-sdk/6.0/cangjie
+CANGJIE_SDK_HOME-15k=/Users/xxx/.cangjie-sdk/6.0/compatibility-sdk-xxx/compatibility
+```
+
+> **Windows 用户**：路径使用反斜杠（`C:\...`）或正斜杠（`C:/...`）均可。
+
+### 4. 自定义模型
+
+Claude Code 默认使用 Anthropic 官方模型，但支持通过环境变量切换为其他模型或第三方提供商。
+
+如需使用第三方 API（如 OpenRouter、本地代理等兼容 Anthropic API 格式的服务）：
+
+```bash
+# 设置 API 地址和密钥
+export ANTHROPIC_BASE_URL="https://api.your-provider.com/v1"
+export ANTHROPIC_API_KEY="your-api-key"
+
+# 设置使用的模型
+export ANTHROPIC_MODEL="your-model-id"
+
+# 启动 Claude Code
+claude
+```
+
+> **注意**：本仓库中的 6 个样例项目均基于 **GLM5.1-FP8** 通过第三方 API 完成翻译。在 Claude Code 会话中运行 `/status` 可查看当前使用的模型和 API 端点。
+
+### 5. 开始使用
+
+在项目目录下启动 Claude Code：
+
+```bash
+cd /path/to/your-cangjie-project
+claude
+```
+
+Claude Code 会自动加载 `CLAUDE.md` 和 `.claude/skills/` 中的 Skills。常用工作流：
+
+```bash
+# 应用级翻译
+/cangjie-translate arkts /path/to/source-project
+
+# 库级翻译
+/cangjie-translate-lib /path/to/source-lib
+
+# 编译构建（应用）
+/build
+
+# 编译构建（库）
+/cangjie-lib-build
+
+# UI 验证
+/harmonyos-ui-inspect --auto-hap --emulator 5555
+```
+
+更完整的 skill 路由规则和前置检查流程见 [CLAUDE.md](CLAUDE.md)。
 
 ## 📄 License
 
