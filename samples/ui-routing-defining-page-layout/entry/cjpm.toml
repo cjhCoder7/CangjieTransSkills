@@ -1,0 +1,14 @@
+[package]
+cjc-version = "0.49.1"
+name = "ohos_app_cangjie_entry"
+description = "UI/路由样本的最小可编译仓颉工程骨架"
+version = "1.0.0"
+compile-option = ""
+override-compile-option = ""
+link-option = ""
+output-type = "dynamic"
+src-dir = "./src/main/cangjie"
+target-dir = "./target"
+package-configuration = {}
+
+[dependencies]

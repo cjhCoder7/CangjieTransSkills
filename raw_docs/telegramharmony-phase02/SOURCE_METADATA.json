@@ -1,0 +1,7 @@
+{
+  "source_repo": "https://github.com/ForestBook/TelegramHarmony",
+  "source_branch": "main",
+  "source_commit": "31af11b6f63e7e40c447dd4274b421b800016193",
+  "fetched_at_utc": "2026-03-26T00:00:00Z",
+  "note": "这些文件是为 Phase-02 干跑索引构造的高复杂度 ArkTS 片段，按真实仓库接口与结构裁剪，不用于编译发布。"
+}

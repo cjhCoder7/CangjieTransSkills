@@ -1,0 +1,164 @@
+{
+  "manifest_name": "phase06-ui-source-corpus-p23",
+  "manifest_version": 1,
+  "created_at": "2026-04-14T06:35:50Z",
+  "corpus_root": "../../raw_docs/phase06-ui-p23",
+  "source_manifest": "phase06_ui_sample_manifest.json",
+  "selection_policy": {
+    "priority": "P23",
+    "adoption_decision": "primary",
+    "source_type": "external_repo",
+    "sample_buckets": [
+      "ordered_samples"
+    ]
+  },
+  "sample_count": 3,
+  "file_count": 23,
+  "entries": [
+    {
+      "entry_id": "harmonyos-examples-bankui-home-page",
+      "sample_id": "harmonyos-examples-bankui-home-page",
+      "reference_id": "",
+      "priority": "P23",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "role": "",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P23 regular candidate selected from the remaining official HarmonyOS-Examples reserve by freezing the BankUI home page together with its eight direct home helpers and local homeDataModel as one bounded workset."
+      },
+      "source_paths": [
+        "BankUI/entry/src/main/cangjie/src/Page/home.cj",
+        "BankUI/entry/src/main/cangjie/src/Component/homeAdvertisement.cj",
+        "BankUI/entry/src/main/cangjie/src/Component/homeBanner.cj",
+        "BankUI/entry/src/main/cangjie/src/Component/homeEntrance.cj",
+        "BankUI/entry/src/main/cangjie/src/Component/homeHeader.cj",
+        "BankUI/entry/src/main/cangjie/src/Component/homeLocation.cj",
+        "BankUI/entry/src/main/cangjie/src/Component/homeNews.cj",
+        "BankUI/entry/src/main/cangjie/src/Component/homeRecommend.cj",
+        "BankUI/entry/src/main/cangjie/src/Component/homeSwiper.cj",
+        "BankUI/entry/src/main/cangjie/src/Model/homeDataModel.cj"
+      ],
+      "repo_name": "HarmonyOS-Examples",
+      "repo_local_paths": [
+        "raw_docs/phase06-ui-p23/HarmonyOS-Examples/BankUI/entry/src/main/cangjie/src/Page/home.cj",
+        "raw_docs/phase06-ui-p23/HarmonyOS-Examples/BankUI/entry/src/main/cangjie/src/Component/homeAdvertisement.cj",
+        "raw_docs/phase06-ui-p23/HarmonyOS-Examples/BankUI/entry/src/main/cangjie/src/Component/homeBanner.cj",
+        "raw_docs/phase06-ui-p23/HarmonyOS-Examples/BankUI/entry/src/main/cangjie/src/Component/homeEntrance.cj",
+        "raw_docs/phase06-ui-p23/HarmonyOS-Examples/BankUI/entry/src/main/cangjie/src/Component/homeHeader.cj",
+        "raw_docs/phase06-ui-p23/HarmonyOS-Examples/BankUI/entry/src/main/cangjie/src/Component/homeLocation.cj",
+        "raw_docs/phase06-ui-p23/HarmonyOS-Examples/BankUI/entry/src/main/cangjie/src/Component/homeNews.cj",
+        "raw_docs/phase06-ui-p23/HarmonyOS-Examples/BankUI/entry/src/main/cangjie/src/Component/homeRecommend.cj",
+        "raw_docs/phase06-ui-p23/HarmonyOS-Examples/BankUI/entry/src/main/cangjie/src/Component/homeSwiper.cj",
+        "raw_docs/phase06-ui-p23/HarmonyOS-Examples/BankUI/entry/src/main/cangjie/src/Model/homeDataModel.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Add an official BankUI home page shell that keeps scroller/header opacity state in the host page while freezing the direct home subcomponents and local home data model as bounded companions.",
+      "blocking_constraints": [
+        "Keep scroller offset state, header opacity propagation, route-button affordances, and the eight explicit home helper components source-backed instead of collapsing the sample into a misleading single-file home shell or reopening the promoted search lane."
+      ],
+      "reason": ""
+    },
+    {
+      "entry_id": "harmonyos-examples-date-selection-calendar-page",
+      "sample_id": "harmonyos-examples-date-selection-calendar-page",
+      "reference_id": "",
+      "priority": "P23",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "role": "",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P23 regular candidate selected from the remaining official HarmonyOS-Examples reserve by freezing CalendarPage together with the local DayDataType, GetDate, and MonthDataType helpers as one bounded workset."
+      },
+      "source_paths": [
+        "14-DateSelection/entry/src/main/cangjie/pages/CalendarPage.cj",
+        "14-DateSelection/entry/src/main/cangjie/model/DayDataType.cj",
+        "14-DateSelection/entry/src/main/cangjie/model/GetDate.cj",
+        "14-DateSelection/entry/src/main/cangjie/model/MonthDataType.cj"
+      ],
+      "repo_name": "HarmonyOS-Examples",
+      "repo_local_paths": [
+        "raw_docs/phase06-ui-p23/HarmonyOS-Examples/14-DateSelection/entry/src/main/cangjie/pages/CalendarPage.cj",
+        "raw_docs/phase06-ui-p23/HarmonyOS-Examples/14-DateSelection/entry/src/main/cangjie/model/DayDataType.cj",
+        "raw_docs/phase06-ui-p23/HarmonyOS-Examples/14-DateSelection/entry/src/main/cangjie/model/GetDate.cj",
+        "raw_docs/phase06-ui-p23/HarmonyOS-Examples/14-DateSelection/entry/src/main/cangjie/model/MonthDataType.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Add an official calendar selection page that keeps date-range state, month/day rendering, and Router return handoff in the page shell while freezing the local date helper models explicitly.",
+      "blocking_constraints": [
+        "Keep date-range selection state, local month/day helper logic, and Router.back return-parameter handoff source-backed inside the selected calendar lane; do not reopen the already promoted MainPage file."
+      ],
+      "reason": ""
+    },
+    {
+      "entry_id": "harmonyos-examples-roulette-ui-home-tab-workflow",
+      "sample_id": "harmonyos-examples-roulette-ui-home-tab-workflow",
+      "reference_id": "",
+      "priority": "P23",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "role": "",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P23 regular candidate selected from the remaining official HarmonyOS-Examples reserve by freezing the RouletteUI entry tab host, local home subtree, tab metadata, and turntable helpers as one bounded workset."
+      },
+      "source_paths": [
+        "RouletteUI/entry/src/main/cangjie/src/index.cj",
+        "RouletteUI/entry/src/main/cangjie/src/model/tabItemData.cj",
+        "RouletteUI/entry/src/main/cangjie/src/page/home/Home.cj",
+        "RouletteUI/entry/src/main/cangjie/src/page/home/global.cj",
+        "RouletteUI/entry/src/main/cangjie/src/page/home/homeBody.cj",
+        "RouletteUI/entry/src/main/cangjie/src/page/home/homeTop.cj",
+        "RouletteUI/entry/src/main/cangjie/src/page/home/turntable.cj",
+        "RouletteUI/entry/src/main/cangjie/src/model/circleModel.cj",
+        "RouletteUI/entry/src/main/cangjie/src/util/circleUtil.cj"
+      ],
+      "repo_name": "HarmonyOS-Examples",
+      "repo_local_paths": [
+        "raw_docs/phase06-ui-p23/HarmonyOS-Examples/RouletteUI/entry/src/main/cangjie/src/index.cj",
+        "raw_docs/phase06-ui-p23/HarmonyOS-Examples/RouletteUI/entry/src/main/cangjie/src/model/tabItemData.cj",
+        "raw_docs/phase06-ui-p23/HarmonyOS-Examples/RouletteUI/entry/src/main/cangjie/src/page/home/Home.cj",
+        "raw_docs/phase06-ui-p23/HarmonyOS-Examples/RouletteUI/entry/src/main/cangjie/src/page/home/global.cj",
+        "raw_docs/phase06-ui-p23/HarmonyOS-Examples/RouletteUI/entry/src/main/cangjie/src/page/home/homeBody.cj",
+        "raw_docs/phase06-ui-p23/HarmonyOS-Examples/RouletteUI/entry/src/main/cangjie/src/page/home/homeTop.cj",
+        "raw_docs/phase06-ui-p23/HarmonyOS-Examples/RouletteUI/entry/src/main/cangjie/src/page/home/turntable.cj",
+        "raw_docs/phase06-ui-p23/HarmonyOS-Examples/RouletteUI/entry/src/main/cangjie/src/model/circleModel.cj",
+        "raw_docs/phase06-ui-p23/HarmonyOS-Examples/RouletteUI/entry/src/main/cangjie/src/util/circleUtil.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Add an official RouletteUI home-tab workflow sample that keeps the entry tab host, local tab metadata, home subtree, and turntable drawing helpers source-backed in one bounded regular closure.",
+      "blocking_constraints": [
+        "Keep the index tab host, local home subtree, tab metadata, and turntable drawing/model helpers source-backed instead of forcing Home.cj to stand alone or reopening the already promoted PublicPage closure."
+      ],
+      "reason": ""
+    }
+  ]
+}

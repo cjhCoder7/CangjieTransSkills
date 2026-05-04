@@ -1,0 +1,56 @@
+{
+  "batch_name": "telegramharmony-phase02-batch1-real-compile",
+  "src_root": "../../raw_docs/telegramharmony-phase02",
+  "pipeline_defaults": {
+    "mock_mode": true,
+    "verify_dry_run": false,
+    "verify_mock_compiler": false,
+    "verify_mock_unit_test": true,
+    "verify_mock_behavior": true,
+    "max_rounds": 3,
+    "parser_mode": "hybrid",
+    "repair_anchor_file": "../../samples/real-message-service-cache-001/src/real_message_service_cache_harness.cj",
+    "verify_compiler_home": "../../artifacts/toolchains/cangjie-sdk-linux-x64-6.1.0.818-unzip/cangjie",
+    "verify_compiler_executable": "../../artifacts/toolchains/cangjie-sdk-linux-x64-6.1.0.818-unzip/cangjie/build-tools/bin/cjc",
+    "verify_package_manager_executable": "../../artifacts/toolchains/cangjie-sdk-linux-x64-6.1.0.818-unzip/cangjie/build-tools/tools/bin/cjpm",
+    "verify_runtime_lib_path": "../../artifacts/toolchains/cangjie-sdk-linux-x64-6.1.0.818-unzip/cangjie/build-tools/runtime/lib/linux_x86_64_cjnative",
+    "verify_tool_bin_path": "../../artifacts/toolchains/cangjie-sdk-linux-x64-6.1.0.818-unzip/cangjie/build-tools/tools/bin"
+  },
+  "entries": [
+    {
+      "target_file": "src/core/mtproto/MTProtoConfig.ets",
+      "risk_level": "low",
+      "verification_mode": "real-compile",
+      "count_toward_kpi": true,
+      "notes": "配置与常量层，先验证 compile-only 物理链路。"
+    },
+    {
+      "target_file": "src/core/mtproto/CryptoUtils.ets",
+      "risk_level": "low",
+      "verification_mode": "real-compile",
+      "count_toward_kpi": true,
+      "notes": "纯工具函数，适合作为 real compile 首轮探针。"
+    },
+    {
+      "target_file": "src/core/mtproto/TLMethods.ets",
+      "risk_level": "medium",
+      "verification_mode": "real-compile",
+      "count_toward_kpi": true,
+      "notes": "协议方法定义层，验证 method shell 的真实物理编译表现。"
+    },
+    {
+      "target_file": "src/core/mtproto/TLSerialization.ets",
+      "risk_level": "medium",
+      "verification_mode": "real-compile",
+      "count_toward_kpi": true,
+      "notes": "序列化/反序列化层，验证 bytes 工具链在 cjc 下的真实反馈。"
+    },
+    {
+      "target_file": "src/services/RealMessageService.ets",
+      "risk_level": "control",
+      "verification_mode": "real-compile",
+      "count_toward_kpi": false,
+      "notes": "冻结控制样板，不计入 KPI，只用于观察 compile pipeline 在真实 service 样板上的输出。"
+    }
+  ]
+}

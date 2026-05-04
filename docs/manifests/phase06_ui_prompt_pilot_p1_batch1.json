@@ -1,0 +1,454 @@
+{
+  "manifest_name": "phase06_ui_prompt_pilot_p1_batch1",
+  "manifest_version": 1,
+  "created_at": "2026-04-09T17:36:02Z",
+  "phase": "phase06",
+  "status": "active",
+  "source_manifest": "docs/manifests/phase06_ui_p1_file_manifest.json",
+  "intended_consumer": "Phase06 prompt-pilot curator and prompt-dump runner",
+  "selection_policy": {
+    "batch_id": "phase06-ui-prompt-pilot-p1-batch1",
+    "selection_mode": "one deterministic slice per required prompt lane",
+    "track_profile": "p1-batch1",
+    "required_tracks": [
+      {
+        "track_id": "page-shell-view-model-renderer",
+        "target_role": "page",
+        "structure_tag": "page-shell",
+        "ownership_tag": "view-model-renderer",
+        "required_interaction_tags": [],
+        "required_sample_scope_tags": [],
+        "forbidden_interaction_tags": [
+          "gesture-component"
+        ],
+        "forbidden_sample_scope_tags": [
+          "mixed-app-pattern"
+        ]
+      },
+      {
+        "track_id": "rich-component-view-model-renderer",
+        "target_role": "component",
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "required_interaction_tags": [],
+        "required_sample_scope_tags": [],
+        "forbidden_interaction_tags": [
+          "gesture-component"
+        ],
+        "forbidden_sample_scope_tags": [
+          "mixed-app-pattern"
+        ]
+      },
+      {
+        "track_id": "page-shell-controller-owned-state",
+        "target_role": "page",
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "required_interaction_tags": [],
+        "required_sample_scope_tags": [],
+        "forbidden_interaction_tags": [
+          "gesture-component"
+        ],
+        "forbidden_sample_scope_tags": [
+          "mixed-app-pattern"
+        ]
+      },
+      {
+        "track_id": "rich-component-controller-owned-state",
+        "target_role": "component",
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "required_interaction_tags": [],
+        "required_sample_scope_tags": [],
+        "forbidden_interaction_tags": [
+          "gesture-component"
+        ],
+        "forbidden_sample_scope_tags": [
+          "mixed-app-pattern"
+        ]
+      },
+      {
+        "track_id": "mixed-app-page-shell-controller-owned-state",
+        "target_role": "page",
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "required_interaction_tags": [],
+        "required_sample_scope_tags": [
+          "mixed-app-pattern"
+        ],
+        "forbidden_interaction_tags": [
+          "gesture-component"
+        ],
+        "forbidden_sample_scope_tags": []
+      }
+    ],
+    "artifact_root": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1",
+    "architecture_skill_path": "docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md",
+    "notes": [
+      "Batch1 is a prompt-pilot workset, not a full translation batch.",
+      "Track profile `p1-batch1` defines which required lanes must be covered.",
+      "Each selected slice carries repo-local pipeline paths so prompt dumps can be regenerated without hand assembly.",
+      "Explicit ui_prompt_tags injection is still required for the final pilot prompt dump."
+    ],
+    "excluded_slice_ids": []
+  },
+  "summary": {
+    "pilot_count": 5,
+    "source_sample_count": 3,
+    "role_counts": {
+      "page": 3,
+      "component": 2
+    },
+    "track_counts": {
+      "page-shell-view-model-renderer": 1,
+      "rich-component-view-model-renderer": 1,
+      "page-shell-controller-owned-state": 1,
+      "rich-component-controller-owned-state": 1,
+      "mixed-app-page-shell-controller-owned-state": 1
+    },
+    "coverage": {
+      "structure_tags": [
+        "page-shell",
+        "rich-component"
+      ],
+      "ownership_tags": [
+        "controller-owned-state",
+        "view-model-renderer"
+      ],
+      "interaction_tags": []
+    },
+    "selected_slice_ids": [
+      "phase06-ui-p1-svg-render-merman-page",
+      "phase06-ui-p1-svg-image-view-component",
+      "phase06-ui-p1-editor-kit-host-page",
+      "phase06-ui-p1-editor-kit-component",
+      "phase06-ui-p1-httpnews-index-page"
+    ],
+    "excluded_slice_count": 0
+  },
+  "entries": [
+    {
+      "pilot_id": "phase06-ui-pilot-p1-batch1-phase06-ui-p1-svg-render-merman-page",
+      "pilot_order": 1,
+      "track_id": "page-shell-view-model-renderer",
+      "slice_id": "phase06-ui-p1-svg-render-merman-page",
+      "sample_id": "svg4cj-view-model-renderer",
+      "repo_name": "svg4cj",
+      "repo_local_path": "raw_docs/phase06-ui-p1/svg4cj/entry/src/main/cangjie/src/render_merman.cj",
+      "source_path": "entry/src/main/cangjie/src/render_merman.cj",
+      "priority": "P1",
+      "selection_rank": 2,
+      "sample_rank": 2,
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "usage_goal": "Entry page slice hosting SVGImageView and page-owned model state for renderer-backed asset display.",
+      "selection_reason": "Keep the first P1 page-shell anchor on a renderer-backed but still self-contained entry page before widening into mixed-app flows.",
+      "pilot_goal": "Establish the first P1 page-shell + view-model-renderer prompt-dump anchor.",
+      "recommended_few_shot_entry_ids": [
+        "local-ui-routing-page-shell-view-model-renderer",
+        "harmonyos-examples-badgeview-page-shell-view-model-renderer"
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class RenderMerman {"
+        ]
+      },
+      "notes": [
+        "Use this file as the page-shell host; renderer internals stay in the paired component slice."
+      ],
+      "src_root": "raw_docs/phase06-ui-p1/svg4cj/entry/src/main/cangjie/src",
+      "target_file": "render_merman.cj",
+      "artifact_root": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-svg-render-merman-page",
+      "pipeline_run_root": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-svg-render-merman-page/pipeline_run",
+      "db_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-svg-render-merman-page/pipeline_run/repo_index.sqlite",
+      "repo_map_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-svg-render-merman-page/pipeline_run/repo_map.txt",
+      "base_tu_json_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-svg-render-merman-page/pipeline_run/target.tu.json",
+      "explicit_tu_json_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-svg-render-merman-page/target.explicit_ui_tags.tu.json",
+      "orchestration_output_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-svg-render-merman-page/pipeline_run/target.orchestration.json",
+      "pipeline_summary_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-svg-render-merman-page/pipeline_run/summary.json",
+      "failure_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-svg-render-merman-page/pipeline_run/failure.json",
+      "pipeline_log_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-svg-render-merman-page/pipeline.log",
+      "base_prompt_dump_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-svg-render-merman-page/prompt_dump.txt",
+      "explicit_prompt_dump_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-svg-render-merman-page/prompt_dump.explicit_ui_tags.txt",
+      "prompt_dump_summary_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-svg-render-merman-page/pilot-summary.json",
+      "snapshot_label": "phase06-ui-p1-batch1-phase06-ui-p1-svg-render-merman-page",
+      "expected_prompt_signal": "resolution_source=explicit-target-ui-tags",
+      "pipeline_command": "python3 scripts/pipeline_runner.py --src-root raw_docs/phase06-ui-p1/svg4cj/entry/src/main/cangjie/src --target-file render_merman.cj --run-root artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-svg-render-merman-page/pipeline_run --db-path artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-svg-render-merman-page/pipeline_run/repo_index.sqlite --repo-map-path artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-svg-render-merman-page/pipeline_run/repo_map.txt --tu-json-path artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-svg-render-merman-page/pipeline_run/target.tu.json --orchestration-output-path artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-svg-render-merman-page/pipeline_run/target.orchestration.json --summary-path artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-svg-render-merman-page/pipeline_run/summary.json --failure-path artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-svg-render-merman-page/pipeline_run/failure.json --prompt-dump-path artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-svg-render-merman-page/prompt_dump.txt --architecture-skill docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md --snapshot-label phase06-ui-p1-batch1-phase06-ui-p1-svg-render-merman-page --dump-prompt-only --extensions .cj --pattern-limit 0"
+    },
+    {
+      "pilot_id": "phase06-ui-pilot-p1-batch1-phase06-ui-p1-svg-image-view-component",
+      "pilot_order": 2,
+      "track_id": "rich-component-view-model-renderer",
+      "slice_id": "phase06-ui-p1-svg-image-view-component",
+      "sample_id": "svg4cj-view-model-renderer",
+      "repo_name": "svg4cj",
+      "repo_local_path": "raw_docs/phase06-ui-p1/svg4cj/svg/src/main/cangjie/src/svg_image_view.cj",
+      "source_path": "svg/src/main/cangjie/src/svg_image_view.cj",
+      "priority": "P1",
+      "selection_rank": 1,
+      "sample_rank": 1,
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "usage_goal": "Primary renderer/component slice for SVGImageView plus the embedded observed model contract that drives render state.",
+      "selection_reason": "Use the primary renderer/component slice as the first reusable P1 component lane instead of starting with the narrower title-bar sample.",
+      "pilot_goal": "Cover renderer-driven rich-component translation under a view-model-renderer ownership model.",
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "public class SVGImageView {",
+          "public class SVGImageViewModel {"
+        ]
+      },
+      "notes": [
+        "The same file contains both SVGImageView and SVGImageViewModel; keep the render-facing component boundary as the primary slice."
+      ],
+      "src_root": "raw_docs/phase06-ui-p1/svg4cj/svg/src/main/cangjie/src",
+      "target_file": "svg_image_view.cj",
+      "artifact_root": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-svg-image-view-component",
+      "pipeline_run_root": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-svg-image-view-component/pipeline_run",
+      "db_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-svg-image-view-component/pipeline_run/repo_index.sqlite",
+      "repo_map_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-svg-image-view-component/pipeline_run/repo_map.txt",
+      "base_tu_json_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-svg-image-view-component/pipeline_run/target.tu.json",
+      "explicit_tu_json_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-svg-image-view-component/target.explicit_ui_tags.tu.json",
+      "orchestration_output_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-svg-image-view-component/pipeline_run/target.orchestration.json",
+      "pipeline_summary_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-svg-image-view-component/pipeline_run/summary.json",
+      "failure_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-svg-image-view-component/pipeline_run/failure.json",
+      "pipeline_log_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-svg-image-view-component/pipeline.log",
+      "base_prompt_dump_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-svg-image-view-component/prompt_dump.txt",
+      "explicit_prompt_dump_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-svg-image-view-component/prompt_dump.explicit_ui_tags.txt",
+      "prompt_dump_summary_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-svg-image-view-component/pilot-summary.json",
+      "snapshot_label": "phase06-ui-p1-batch1-phase06-ui-p1-svg-image-view-component",
+      "expected_prompt_signal": "resolution_source=explicit-target-ui-tags",
+      "pipeline_command": "python3 scripts/pipeline_runner.py --src-root raw_docs/phase06-ui-p1/svg4cj/svg/src/main/cangjie/src --target-file svg_image_view.cj --run-root artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-svg-image-view-component/pipeline_run --db-path artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-svg-image-view-component/pipeline_run/repo_index.sqlite --repo-map-path artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-svg-image-view-component/pipeline_run/repo_map.txt --tu-json-path artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-svg-image-view-component/pipeline_run/target.tu.json --orchestration-output-path artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-svg-image-view-component/pipeline_run/target.orchestration.json --summary-path artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-svg-image-view-component/pipeline_run/summary.json --failure-path artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-svg-image-view-component/pipeline_run/failure.json --prompt-dump-path artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-svg-image-view-component/prompt_dump.txt --architecture-skill docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md --snapshot-label phase06-ui-p1-batch1-phase06-ui-p1-svg-image-view-component --dump-prompt-only --extensions .cj --pattern-limit 0"
+    },
+    {
+      "pilot_id": "phase06-ui-pilot-p1-batch1-phase06-ui-p1-editor-kit-host-page",
+      "pilot_order": 3,
+      "track_id": "page-shell-controller-owned-state",
+      "slice_id": "phase06-ui-p1-editor-kit-host-page",
+      "sample_id": "editor4cj-controller-owned-state",
+      "repo_name": "editor4cj",
+      "repo_local_path": "raw_docs/phase06-ui-p1/editor4cj/entry/src/main/cangjie/src/index.cj",
+      "source_path": "entry/src/main/cangjie/src/index.cj",
+      "priority": "P1",
+      "selection_rank": 4,
+      "sample_rank": 2,
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "usage_goal": "Entry page slice that wires EditorKitController into a host page without pulling editor internals into the page contract.",
+      "selection_reason": "Anchor controller-owned host-page behavior on the editor sample before adding integrated client variance.",
+      "pilot_goal": "Introduce non-mixed controller-owned page-shell behavior for P1 prompt pilots.",
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class MyView {",
+          "class Solution {",
+          "class Solution {",
+          "class Solution {"
+        ]
+      },
+      "notes": [
+        "Algorithm demo helpers remain incidental noise; the page-shell to controller handoff is the contract to keep."
+      ],
+      "src_root": "raw_docs/phase06-ui-p1/editor4cj/entry/src/main/cangjie/src",
+      "target_file": "index.cj",
+      "artifact_root": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-editor-kit-host-page",
+      "pipeline_run_root": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-editor-kit-host-page/pipeline_run",
+      "db_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-editor-kit-host-page/pipeline_run/repo_index.sqlite",
+      "repo_map_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-editor-kit-host-page/pipeline_run/repo_map.txt",
+      "base_tu_json_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-editor-kit-host-page/pipeline_run/target.tu.json",
+      "explicit_tu_json_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-editor-kit-host-page/target.explicit_ui_tags.tu.json",
+      "orchestration_output_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-editor-kit-host-page/pipeline_run/target.orchestration.json",
+      "pipeline_summary_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-editor-kit-host-page/pipeline_run/summary.json",
+      "failure_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-editor-kit-host-page/pipeline_run/failure.json",
+      "pipeline_log_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-editor-kit-host-page/pipeline.log",
+      "base_prompt_dump_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-editor-kit-host-page/prompt_dump.txt",
+      "explicit_prompt_dump_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-editor-kit-host-page/prompt_dump.explicit_ui_tags.txt",
+      "prompt_dump_summary_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-editor-kit-host-page/pilot-summary.json",
+      "snapshot_label": "phase06-ui-p1-batch1-phase06-ui-p1-editor-kit-host-page",
+      "expected_prompt_signal": "resolution_source=explicit-target-ui-tags",
+      "pipeline_command": "python3 scripts/pipeline_runner.py --src-root raw_docs/phase06-ui-p1/editor4cj/entry/src/main/cangjie/src --target-file index.cj --run-root artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-editor-kit-host-page/pipeline_run --db-path artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-editor-kit-host-page/pipeline_run/repo_index.sqlite --repo-map-path artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-editor-kit-host-page/pipeline_run/repo_map.txt --tu-json-path artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-editor-kit-host-page/pipeline_run/target.tu.json --orchestration-output-path artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-editor-kit-host-page/pipeline_run/target.orchestration.json --summary-path artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-editor-kit-host-page/pipeline_run/summary.json --failure-path artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-editor-kit-host-page/pipeline_run/failure.json --prompt-dump-path artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-editor-kit-host-page/prompt_dump.txt --architecture-skill docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md --snapshot-label phase06-ui-p1-batch1-phase06-ui-p1-editor-kit-host-page --dump-prompt-only --extensions .cj --pattern-limit 0"
+    },
+    {
+      "pilot_id": "phase06-ui-pilot-p1-batch1-phase06-ui-p1-editor-kit-component",
+      "pilot_order": 4,
+      "track_id": "rich-component-controller-owned-state",
+      "slice_id": "phase06-ui-p1-editor-kit-component",
+      "sample_id": "editor4cj-controller-owned-state",
+      "repo_name": "editor4cj",
+      "repo_local_path": "raw_docs/phase06-ui-p1/editor4cj/entry/src/main/cangjie/src/editor_kit/editorText.cj",
+      "source_path": "entry/src/main/cangjie/src/editor_kit/editorText.cj",
+      "priority": "P1",
+      "selection_rank": 3,
+      "sample_rank": 1,
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "usage_goal": "Primary editor component slice covering controller binding, layout measurement, and large rich-text editing state.",
+      "selection_reason": "Use the large editor component as the main controller-owned rich-component anchor before batching secondary support files.",
+      "pilot_goal": "Cover primary controller-owned rich-component behavior for P1.",
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class EditorKitController {",
+          "public class EditorKit {"
+        ]
+      },
+      "notes": [
+        "Controller and component live in one file; keep the direct EditorKit component contract as the slice boundary."
+      ],
+      "src_root": "raw_docs/phase06-ui-p1/editor4cj/entry/src/main/cangjie/src",
+      "target_file": "editor_kit/editorText.cj",
+      "artifact_root": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-editor-kit-component",
+      "pipeline_run_root": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-editor-kit-component/pipeline_run",
+      "db_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-editor-kit-component/pipeline_run/repo_index.sqlite",
+      "repo_map_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-editor-kit-component/pipeline_run/repo_map.txt",
+      "base_tu_json_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-editor-kit-component/pipeline_run/target.tu.json",
+      "explicit_tu_json_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-editor-kit-component/target.explicit_ui_tags.tu.json",
+      "orchestration_output_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-editor-kit-component/pipeline_run/target.orchestration.json",
+      "pipeline_summary_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-editor-kit-component/pipeline_run/summary.json",
+      "failure_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-editor-kit-component/pipeline_run/failure.json",
+      "pipeline_log_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-editor-kit-component/pipeline.log",
+      "base_prompt_dump_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-editor-kit-component/prompt_dump.txt",
+      "explicit_prompt_dump_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-editor-kit-component/prompt_dump.explicit_ui_tags.txt",
+      "prompt_dump_summary_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-editor-kit-component/pilot-summary.json",
+      "snapshot_label": "phase06-ui-p1-batch1-phase06-ui-p1-editor-kit-component",
+      "expected_prompt_signal": "resolution_source=explicit-target-ui-tags",
+      "pipeline_command": "python3 scripts/pipeline_runner.py --src-root raw_docs/phase06-ui-p1/editor4cj/entry/src/main/cangjie/src --target-file editor_kit/editorText.cj --run-root artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-editor-kit-component/pipeline_run --db-path artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-editor-kit-component/pipeline_run/repo_index.sqlite --repo-map-path artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-editor-kit-component/pipeline_run/repo_map.txt --tu-json-path artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-editor-kit-component/pipeline_run/target.tu.json --orchestration-output-path artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-editor-kit-component/pipeline_run/target.orchestration.json --summary-path artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-editor-kit-component/pipeline_run/summary.json --failure-path artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-editor-kit-component/pipeline_run/failure.json --prompt-dump-path artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-editor-kit-component/prompt_dump.txt --architecture-skill docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md --snapshot-label phase06-ui-p1-batch1-phase06-ui-p1-editor-kit-component --dump-prompt-only --extensions .cj --pattern-limit 0"
+    },
+    {
+      "pilot_id": "phase06-ui-pilot-p1-batch1-phase06-ui-p1-httpnews-index-page",
+      "pilot_order": 5,
+      "track_id": "mixed-app-page-shell-controller-owned-state",
+      "slice_id": "phase06-ui-p1-httpnews-index-page",
+      "sample_id": "httpnews-integrated-client",
+      "repo_name": "HttpNewsApp-Cangjie",
+      "repo_local_path": "raw_docs/phase06-ui-p1/HttpNewsApp-Cangjie/entry/src/main/cangjie/src/index.cj",
+      "source_path": "entry/src/main/cangjie/src/index.cj",
+      "priority": "P1",
+      "selection_rank": 5,
+      "sample_rank": 1,
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [
+        "mixed-app-pattern"
+      ],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": [
+          "mixed-app-pattern"
+        ]
+      },
+      "usage_goal": "Integrated client page slice for list/search/swiper composition, Router navigation, and page-owned HTTP-backed state.",
+      "selection_reason": "P1 introduces integrated client variance, so batch1 needs a dedicated mixed-app page-shell lane instead of inheriting the P0 gesture slot.",
+      "pilot_goal": "Add list/detail/router plus HTTP-backed page-shell evidence to the first P1 prompt-pilot batch.",
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class MyDataSource <: IDataSource<CJResource> {",
+          "class EntryView {"
+        ]
+      },
+      "notes": [
+        "Keep the mixed-app-pattern tag because routing, async loading, and page composition all live in this file."
+      ],
+      "src_root": "raw_docs/phase06-ui-p1/HttpNewsApp-Cangjie/entry/src/main/cangjie/src",
+      "target_file": "index.cj",
+      "artifact_root": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-httpnews-index-page",
+      "pipeline_run_root": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-httpnews-index-page/pipeline_run",
+      "db_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-httpnews-index-page/pipeline_run/repo_index.sqlite",
+      "repo_map_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-httpnews-index-page/pipeline_run/repo_map.txt",
+      "base_tu_json_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-httpnews-index-page/pipeline_run/target.tu.json",
+      "explicit_tu_json_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-httpnews-index-page/target.explicit_ui_tags.tu.json",
+      "orchestration_output_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-httpnews-index-page/pipeline_run/target.orchestration.json",
+      "pipeline_summary_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-httpnews-index-page/pipeline_run/summary.json",
+      "failure_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-httpnews-index-page/pipeline_run/failure.json",
+      "pipeline_log_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-httpnews-index-page/pipeline.log",
+      "base_prompt_dump_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-httpnews-index-page/prompt_dump.txt",
+      "explicit_prompt_dump_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-httpnews-index-page/prompt_dump.explicit_ui_tags.txt",
+      "prompt_dump_summary_path": "artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-httpnews-index-page/pilot-summary.json",
+      "snapshot_label": "phase06-ui-p1-batch1-phase06-ui-p1-httpnews-index-page",
+      "expected_prompt_signal": "resolution_source=explicit-target-ui-tags",
+      "pipeline_command": "python3 scripts/pipeline_runner.py --src-root raw_docs/phase06-ui-p1/HttpNewsApp-Cangjie/entry/src/main/cangjie/src --target-file index.cj --run-root artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-httpnews-index-page/pipeline_run --db-path artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-httpnews-index-page/pipeline_run/repo_index.sqlite --repo-map-path artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-httpnews-index-page/pipeline_run/repo_map.txt --tu-json-path artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-httpnews-index-page/pipeline_run/target.tu.json --orchestration-output-path artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-httpnews-index-page/pipeline_run/target.orchestration.json --summary-path artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-httpnews-index-page/pipeline_run/summary.json --failure-path artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-httpnews-index-page/pipeline_run/failure.json --prompt-dump-path artifacts/ui_pilots/20260410-phase06-ui-p1-pilot-batch1/phase06-ui-p1-httpnews-index-page/prompt_dump.txt --architecture-skill docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md --snapshot-label phase06-ui-p1-batch1-phase06-ui-p1-httpnews-index-page --dump-prompt-only --extensions .cj --pattern-limit 0"
+    }
+  ]
+}

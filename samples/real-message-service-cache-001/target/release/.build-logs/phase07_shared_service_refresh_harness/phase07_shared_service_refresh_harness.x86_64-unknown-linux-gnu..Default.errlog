@@ -1,0 +1,33 @@
+[33mwarning[0m: unused variable:'_peerId'
+   [36m==>[0m /volume/wzhang/cky-workspace/my_projects/Cangjie/samples/phase07-shared-service-refresh-harness/src/phase07_shared_service_refresh_harness.cj:155:38:
+    [36m| [0m
+[36m155[0m [36m| [0m    public func notifyDatasetChanged(_peerId: PeerId, _messages: Array<DomainMessage>): Unit {[0m
+    [36m| [0m                                     [33m^^^^^^^ unused variable[0m
+    [36m| [0m
+    [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+
+[33mwarning[0m: unused variable:'_messages'
+   [36m==>[0m /volume/wzhang/cky-workspace/my_projects/Cangjie/samples/phase07-shared-service-refresh-harness/src/phase07_shared_service_refresh_harness.cj:155:55:
+    [36m| [0m
+[36m155[0m [36m| [0m    public func notifyDatasetChanged(_peerId: PeerId, _messages: Array<DomainMessage>): Unit {[0m
+    [36m| [0m                                                      [33m^^^^^^^^^ unused variable[0m
+    [36m| [0m
+    [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+
+[33mwarning[0m: unused variable:'_reason'
+   [36m==>[0m /volume/wzhang/cky-workspace/my_projects/Cangjie/samples/phase07-shared-service-refresh-harness/src/phase07_shared_service_refresh_harness.cj:160:40:
+    [36m| [0m
+[36m160[0m [36m| [0m    public func debugForceAdvanceEpoch(_reason: String): Int64 {[0m
+    [36m| [0m                                       [33m^^^^^^^ unused variable[0m
+    [36m| [0m
+    [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+
+[33mwarning[0m: unused variable:'_reason'
+   [36m==>[0m /volume/wzhang/cky-workspace/my_projects/Cangjie/samples/phase07-shared-service-refresh-harness/src/phase07_shared_service_refresh_harness.cj:207:40:
+    [36m| [0m
+[36m207[0m [36m| [0m    public func debugForceAdvanceEpoch(_reason: String): Int64 {[0m
+    [36m| [0m                                       [33m^^^^^^^ unused variable[0m
+    [36m| [0m
+    [36m#[0m [0mnote[0m: this warning can be suppressed by setting the compiler option `-Woff unused`
+
+4 warnings generated, 4 warnings printed.

@@ -1,0 +1,14 @@
+{
+  "packageInformation": {
+    "phase07_shared_service_refresh_harness": {
+      "rootPackageName": "phase07_shared_service_refresh_harness",
+      "fileNameHash": "-7464663768445478783",
+      "timeStamp": 1776360674,
+      "isBuilt": true,
+      "exeName": "",
+      "hasSubPkgs": true
+    }
+  },
+  "jsonHash": "5491154355583502820",
+  "rootPackageName": "phase07_shared_service_refresh_harness"
+}

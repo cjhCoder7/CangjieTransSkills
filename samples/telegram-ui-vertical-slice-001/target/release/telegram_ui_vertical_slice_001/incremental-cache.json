@@ -1,0 +1,14 @@
+{
+  "packageInformation": {
+    "telegram_ui_vertical_slice_001": {
+      "rootPackageName": "telegram_ui_vertical_slice_001",
+      "fileNameHash": "4322184250139452193",
+      "timeStamp": 1776740310,
+      "isBuilt": true,
+      "exeName": "main",
+      "hasSubPkgs": true
+    }
+  },
+  "jsonHash": "4663555820444870261",
+  "rootPackageName": "telegram_ui_vertical_slice_001"
+}

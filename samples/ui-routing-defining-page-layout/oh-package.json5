@@ -1,0 +1,13 @@
+{
+  // 工程级 OHPM 配置。
+  // 首次在 DevEco Studio 中导入后，如 IDE 提示升级 modelVersion、补齐 lock 文件或更新依赖，请直接按提示执行 Sync / Update。
+  "modelVersion": "5.0.0",
+  "description": "UI/路由样本的工程级 OHPM 配置，用于支撑 DevEco Studio 导入与依赖同步。",
+  "dependencies": {
+  },
+  "devDependencies": {
+    // 这里采用 OpenHarmony / HarmonyOS 工程中常见的 Hypium 版本。
+    // 如果本地 IDE 模板自动替换为其他版本，请以 IDE 自动修复结果为准。
+    "@ohos/hypium": "1.0.19"
+  }
+}

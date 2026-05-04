@@ -1,0 +1,79 @@
+{
+  "batch_name": "telegramharmony-phase05-mass-translation-fresh-real-translator",
+  "src_root": "../../raw_docs/telegramharmony-phase02",
+  "pipeline_defaults": {
+    "mock_mode": false,
+    "llm_model": "Pro/zai-org/GLM-5",
+    "timeout_seconds": 600,
+    "llm_max_retries": 2,
+    "verify_dry_run": false,
+    "verify_mock_compiler": false,
+    "verify_mock_unit_test": true,
+    "verify_mock_behavior": true,
+    "max_rounds": 1,
+    "prefer_tree_sitter": true
+  },
+  "ordered_targets": [
+    {
+      "file": "src/core/mtproto/MTProtoConfig.ets",
+      "risk_level": "low",
+      "verification_mode": "phase05-real-translator+real-compile",
+      "notes": "Phase05 first massive sweep: configuration and constant layer. Fresh real translator lane from Phase05 baseline."
+    },
+    {
+      "file": "src/core/mtproto/CryptoUtils.ets",
+      "risk_level": "low",
+      "verification_mode": "phase05-real-translator+real-compile",
+      "notes": "Phase05 first massive sweep: utility layer. Fresh real translator lane from Phase05 baseline."
+    },
+    {
+      "file": "src/core/mtproto/TLMethods.ets",
+      "risk_level": "medium",
+      "verification_mode": "phase05-real-translator+real-compile",
+      "notes": "Phase05 first massive sweep: protocol method declarations. Fresh real translator lane from Phase05 baseline."
+    },
+    {
+      "file": "src/core/mtproto/TLSerialization.ets",
+      "risk_level": "medium",
+      "verification_mode": "phase05-real-translator+real-compile",
+      "notes": "Phase05 first massive sweep: serializer and deserializer layer. Fresh real translator lane from Phase05 baseline."
+    },
+    {
+      "file": "src/core/mtproto/TLDialogs.ets",
+      "risk_level": "medium",
+      "verification_mode": "phase05-real-translator+real-compile",
+      "notes": "Phase05 first massive sweep: dialog and entity definitions. Fresh real translator lane from Phase05 baseline."
+    },
+    {
+      "file": "src/core/mtproto/MTProtoTransport.ets",
+      "risk_level": "high",
+      "verification_mode": "phase05-real-translator+real-compile",
+      "notes": "Phase05 first massive sweep: transport layer. Fresh real translator lane from Phase05 baseline."
+    },
+    {
+      "file": "src/core/mtproto/AuthKeyCreator.ets",
+      "risk_level": "high",
+      "verification_mode": "phase05-real-translator+real-compile",
+      "notes": "Phase05 first massive sweep: auth and key creation flow. Fresh real translator lane from Phase05 baseline."
+    },
+    {
+      "file": "src/core/mtproto/Inflate.ets",
+      "risk_level": "medium",
+      "verification_mode": "phase05-real-translator+real-compile",
+      "notes": "Phase05 first massive sweep: compression support. Fresh real translator lane from Phase05 baseline."
+    },
+    {
+      "file": "src/core/mtproto/MTProtoClient.ets",
+      "risk_level": "high",
+      "verification_mode": "phase05-real-translator+real-compile",
+      "notes": "Phase05 first massive sweep: async client control point. Fresh real translator lane from Phase05 baseline."
+    },
+    {
+      "file": "src/services/RealMessageService.ets",
+      "risk_level": "control",
+      "verification_mode": "phase05-control-baseline",
+      "count_toward_kpi": false,
+      "notes": "Control baseline only. The 10 compile warnings in RealMessageService.cj are Accepted Staged Contract Noise; exit=0 is sufficient. Fresh real translator lane from Phase05 baseline."
+    }
+  ]
+}

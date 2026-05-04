@@ -1,0 +1,250 @@
+{
+  "manifest_name": "phase06-ui-exception-file-manifest",
+  "manifest_version": 1,
+  "created_at": "2026-04-10T15:45:44Z",
+  "phase": "Phase 06 UI Source Slicing / File-Level Workset",
+  "status": "draft-ready",
+  "source_corpus_manifest": "phase06_ui_source_corpus_exception.json",
+  "source_manifest": "phase06_ui_sample_manifest.json",
+  "few_shot_pack": "phase06_ui_few_shot_pack.json",
+  "intended_consumer": [
+    "human-review",
+    "future-phase06-prompt-pilot",
+    "future-phase06-batch-curator"
+  ],
+  "notes": [
+    "Expands the selected frozen source corpus into file-level slices with explicit ui_prompt_tags.",
+    "This manifest is not consumed directly by scripts/pipeline_batch_runner.py; it is a file-level workset for prompt pilots, explicit tag injection, and later batch curation.",
+    "Tag refinement is allowed at file level when a multi-file sample contains both page-shell and rich-component files."
+  ],
+  "selection_policy": {
+    "priority": "any",
+    "adoption_decision": "any",
+    "source_type": "external_repo",
+    "expansion_rule": "expand repo_local_paths into file-level slices and refine per-file target_role/ui_prompt_tags",
+    "role": "exception"
+  },
+  "summary": {
+    "sample_count": 2,
+    "slice_count": 4,
+    "role_counts": {
+      "viewmodel": 1,
+      "page": 2,
+      "component": 1
+    },
+    "structure_counts": {
+      "rich-component": 2,
+      "page-shell": 2
+    }
+  },
+  "entries": [
+    {
+      "slice_id": "phase06-ui-exception-avif-decoder-adapter",
+      "selection_rank": 1,
+      "sample_rank": 1,
+      "sample_id": "avif-ffi-native-boundary",
+      "priority": "",
+      "source_type": "external_repo",
+      "adoption_decision": "",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "avif-ffi",
+      "source_path": "avif4cj/src/main/cangjie/avif_decoder.cj",
+      "repo_local_path": "raw_docs/phase06-ui-exception/avif-ffi/avif4cj/src/main/cangjie/avif_decoder.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie-TPC/avif-ffi",
+        "branch": "develop",
+        "commit": "61dcbc64c4a95ead7d61b57f96db5b871f5a0f9d",
+        "access_date": "2026-04-06",
+        "purpose": "FFI decoder, PixelMap lifecycle, and native asset handling reference."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [
+        "ffi-exception"
+      ],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [
+          "ffi-exception"
+        ],
+        "sample_scope_tags": []
+      },
+      "staging_target": "",
+      "verification_mode": "",
+      "usage_goal": "Exception-track adapter slice for AVIF decoder lifecycle, PixelMap conversion, and FFI resource ownership behind a UI-facing image component.",
+      "notes": [
+        "Treat this as a private native-boundary support slice rather than a reusable UI contract."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class AvifDecoder {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": []
+    },
+    {
+      "slice_id": "phase06-ui-exception-avif-example-page",
+      "selection_rank": 2,
+      "sample_rank": 2,
+      "sample_id": "avif-ffi-native-boundary",
+      "priority": "",
+      "source_type": "external_repo",
+      "adoption_decision": "",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "avif-ffi",
+      "source_path": "entry/src/main/cangjie/example2.cj",
+      "repo_local_path": "raw_docs/phase06-ui-exception/avif-ffi/entry/src/main/cangjie/example2.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie-TPC/avif-ffi",
+        "branch": "develop",
+        "commit": "61dcbc64c4a95ead7d61b57f96db5b871f5a0f9d",
+        "access_date": "2026-04-06",
+        "purpose": "FFI decoder, PixelMap lifecycle, and native asset handling reference."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [
+        "ffi-exception"
+      ],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [
+          "ffi-exception"
+        ],
+        "sample_scope_tags": []
+      },
+      "staging_target": "",
+      "verification_mode": "",
+      "usage_goal": "Exception-track page slice for resource-backed AVIF loading and AvifImage host composition without leaking native decoder details into the page shell.",
+      "notes": [
+        "Keep raw-file loading and lifecycle state in the host page; decoder and PixelMap lifecycle stay behind the avif4cj boundary."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class EntryView12 {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": []
+    },
+    {
+      "slice_id": "phase06-ui-exception-svga-hybrid-component",
+      "selection_rank": 3,
+      "sample_rank": 1,
+      "sample_id": "svga-cj-hybrid-boundary",
+      "priority": "",
+      "source_type": "external_repo",
+      "adoption_decision": "",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "svga-cj",
+      "source_path": "entry/src/main/cangjie/index.cj",
+      "repo_local_path": "raw_docs/phase06-ui-exception/svga-cj/entry/src/main/cangjie/index.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie-TPC/svga-cj",
+        "branch": "develop",
+        "commit": "e1f7bb4c74084cb9970fc84e854699c48f3048fb",
+        "access_date": "2026-04-06",
+        "purpose": "Hybrid Cangjie/ETS animation bridge reference."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [
+        "hybrid-exception"
+      ],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [
+          "hybrid-exception"
+        ],
+        "sample_scope_tags": []
+      },
+      "staging_target": "",
+      "verification_mode": "",
+      "usage_goal": "Exception-track hybrid component slice for Cangjie-authored UI mounted through HybridComponentEntry without treating the ETS host as the default page pattern.",
+      "notes": [
+        "Keep the Cangjie component boundary explicit; do not collapse the CJ and ETS sides into one default prompt path."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class Index {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": []
+    },
+    {
+      "slice_id": "phase06-ui-exception-svga-ets-host-page",
+      "selection_rank": 4,
+      "sample_rank": 2,
+      "sample_id": "svga-cj-hybrid-boundary",
+      "priority": "",
+      "source_type": "external_repo",
+      "adoption_decision": "",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "svga-cj",
+      "source_path": "entry/src/main/ets/pages/index.ets",
+      "repo_local_path": "raw_docs/phase06-ui-exception/svga-cj/entry/src/main/ets/pages/index.ets",
+      "source": {
+        "url": "https://gitcode.com/Cangjie-TPC/svga-cj",
+        "branch": "develop",
+        "commit": "e1f7bb4c74084cb9970fc84e854699c48f3048fb",
+        "access_date": "2026-04-06",
+        "purpose": "Hybrid Cangjie/ETS animation bridge reference."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [
+        "hybrid-exception"
+      ],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [
+          "hybrid-exception"
+        ],
+        "sample_scope_tags": []
+      },
+      "staging_target": "",
+      "verification_mode": "",
+      "usage_goal": "Exception-track ETS host page slice for CJHybridComponentV2 mounting and hybrid runtime handoff around the Cangjie component.",
+      "notes": [
+        "This host page belongs on the hybrid-exception rail and should not be learned as a normal Cangjie page-shell baseline."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "struct Index {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": []
+    }
+  ]
+}

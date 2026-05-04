@@ -1,0 +1,704 @@
+{
+  "manifest_name": "phase06-ui-p17-file-manifest",
+  "manifest_version": 1,
+  "created_at": "2026-04-12T16:06:05Z",
+  "phase": "Phase 06 UI Source Slicing / File-Level Workset",
+  "status": "draft-ready",
+  "source_corpus_manifest": "phase06_ui_source_corpus_p17.json",
+  "source_manifest": "phase06_ui_sample_manifest.json",
+  "few_shot_pack": "phase06_ui_few_shot_pack.json",
+  "intended_consumer": [
+    "human-review",
+    "future-phase06-prompt-pilot",
+    "future-phase06-batch-curator"
+  ],
+  "notes": [
+    "Expands the selected frozen source corpus into file-level slices with explicit ui_prompt_tags.",
+    "This manifest is not consumed directly by scripts/pipeline_batch_runner.py; it is a file-level workset for prompt pilots, explicit tag injection, and later batch curation.",
+    "Tag refinement is allowed at file level when a multi-file sample contains both page-shell and rich-component files."
+  ],
+  "selection_policy": {
+    "priority": "P17",
+    "adoption_decision": "primary",
+    "source_type": "external_repo",
+    "expansion_rule": "expand repo_local_paths into file-level slices and refine per-file target_role/ui_prompt_tags"
+  },
+  "summary": {
+    "sample_count": 3,
+    "slice_count": 13,
+    "role_counts": {
+      "page": 3,
+      "viewmodel": 6,
+      "component": 4
+    },
+    "structure_counts": {
+      "page-shell": 3,
+      "rich-component": 10
+    }
+  },
+  "entries": [
+    {
+      "slice_id": "phase06-ui-p17-game2048-entry-page",
+      "selection_rank": 1,
+      "sample_rank": 1,
+      "sample_id": "harmonyos-examples-game2048-entry-shell",
+      "priority": "P17",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "Game2048/entry/src/main/cangjie/src/index.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p17/HarmonyOS-Examples/Game2048/entry/src/main/cangjie/src/index.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P17 regular candidate selected from the remaining official HarmonyOS-Examples reserve because its interactive page, puzzle core, and score widget form one honest bounded workset after the P16 checkpoint."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P17 Game2048 host page slice for swipe-direction handling, score ownership, and board-sync orchestration around explicit puzzle and score companions.",
+      "notes": [
+        "Keep touch coordinates, swipe-direction resolution, PromptAction game-over flow, and board sync source-backed in the page shell.",
+        "Treat core/puzzle.cj and widget/common.cj as explicit companions instead of pretending the game page is self-contained."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class MyView {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p17-game2048-puzzle-model",
+      "selection_rank": 2,
+      "sample_rank": 2,
+      "sample_id": "harmonyos-examples-game2048-entry-shell",
+      "priority": "P17",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "Game2048/entry/src/main/cangjie/src/core/puzzle.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p17/HarmonyOS-Examples/Game2048/entry/src/main/cangjie/src/core/puzzle.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P17 regular candidate selected from the remaining official HarmonyOS-Examples reserve because its interactive page, puzzle core, and score widget form one honest bounded workset after the P16 checkpoint."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P17 Game2048 support-model slice for board mutation, merge/reverse logic, random tile generation, and score accumulation behind the interactive host page.",
+      "notes": [
+        "Keep board ownership, move/merge helpers, and score accumulation source-backed in this support model instead of re-inventing game logic in prompts.",
+        "This file remains attached to the Game2048 controller-owned lane rather than becoming a standalone UI contract."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class Puzzle {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p17-game2048-score-component",
+      "selection_rank": 3,
+      "sample_rank": 3,
+      "sample_id": "harmonyos-examples-game2048-entry-shell",
+      "priority": "P17",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "Game2048/entry/src/main/cangjie/src/widget/common.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p17/HarmonyOS-Examples/Game2048/entry/src/main/cangjie/src/widget/common.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P17 regular candidate selected from the remaining official HarmonyOS-Examples reserve because its interactive page, puzzle core, and score widget form one honest bounded workset after the P16 checkpoint."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P17 Game2048 score-card support component slice for title-plus-score presentation over the shared @Link score state.",
+      "notes": [
+        "Keep the linked score presentation source-backed in this bounded display component instead of flattening it into the page shell.",
+        "This file is the honest reusable score companion behind the Game2048 host page."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class Score {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p17-pretty-calculator-entry-page",
+      "selection_rank": 4,
+      "sample_rank": 1,
+      "sample_id": "harmonyos-examples-pretty-calculator-home-view",
+      "priority": "P17",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "PrettyCalculator/entry/src/main/cangjie/src/index.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p17/HarmonyOS-Examples/PrettyCalculator/entry/src/main/cangjie/src/index.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P17 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the host page and four same-package companions form a bounded UI composition without reopening draft or manual lanes."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P17 PrettyCalculator host page slice for fold-aware layout branching, storage-backed theme selection, and composition around explicit calculator companions.",
+      "notes": [
+        "Keep fold-status branching, page-level layout composition, and background theme handoff source-backed in the page shell.",
+        "Treat expression/history/keyboard/theme files as explicit companions instead of collapsing the calculator into a misleading single-file pick."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class Theme {",
+          "class HomeView {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p17-pretty-calculator-expression-component",
+      "selection_rank": 5,
+      "sample_rank": 2,
+      "sample_id": "harmonyos-examples-pretty-calculator-home-view",
+      "priority": "P17",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "PrettyCalculator/entry/src/main/cangjie/src/components/expression.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p17/HarmonyOS-Examples/PrettyCalculator/entry/src/main/cangjie/src/components/expression.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P17 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the host page and four same-package companions form a bounded UI composition without reopening draft or manual lanes."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P17 PrettyCalculator expression support component slice for formatted expression display over the shared storage-backed calculator state.",
+      "notes": [
+        "Keep expression formatting and TextArea rendering source-backed in this bounded display component.",
+        "This helper stays attached to the calculator lane as an explicit render-facing companion."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class Expression {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p17-pretty-calculator-history-component",
+      "selection_rank": 6,
+      "sample_rank": 3,
+      "sample_id": "harmonyos-examples-pretty-calculator-home-view",
+      "priority": "P17",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "PrettyCalculator/entry/src/main/cangjie/src/components/history.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p17/HarmonyOS-Examples/PrettyCalculator/entry/src/main/cangjie/src/components/history.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P17 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the host page and four same-package companions form a bounded UI composition without reopening draft or manual lanes."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P17 PrettyCalculator history support component slice for list-backed expression history rendering and theme-aware item highlighting.",
+      "notes": [
+        "Keep history list rendering and theme-index-aware highlighting source-backed in this support component.",
+        "This file remains a bounded display companion behind the calculator host page."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class History {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p17-pretty-calculator-keyboard-component",
+      "selection_rank": 7,
+      "sample_rank": 4,
+      "sample_id": "harmonyos-examples-pretty-calculator-home-view",
+      "priority": "P17",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "PrettyCalculator/entry/src/main/cangjie/src/components/keyboard.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p17/HarmonyOS-Examples/PrettyCalculator/entry/src/main/cangjie/src/components/keyboard.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P17 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the host page and four same-package companions form a bounded UI composition without reopening draft or manual lanes."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P17 PrettyCalculator primary keyboard component slice for key-grid ownership, expression evaluation, and storage-backed calculator state mutation inside one interactive boundary.",
+      "notes": [
+        "Keep key definitions, expression parsing/evaluation, and storage-backed mutation source-backed inside this primary component.",
+        "This file is the main interaction-heavy companion behind the calculator host page, not a synthetic controller layer."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class Key {",
+          "public class Keyboard {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p17-pretty-calculator-theme-model",
+      "selection_rank": 8,
+      "sample_rank": 5,
+      "sample_id": "harmonyos-examples-pretty-calculator-home-view",
+      "priority": "P17",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "PrettyCalculator/entry/src/main/cangjie/src/components/theme.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p17/HarmonyOS-Examples/PrettyCalculator/entry/src/main/cangjie/src/components/theme.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P17 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the host page and four same-package companions form a bounded UI composition without reopening draft or manual lanes."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P17 PrettyCalculator theme support-model slice for theme palette ownership shared by the host page and calculator companions.",
+      "notes": [
+        "Keep Theme plus themes source-backed here instead of hard-coding palette data into page or component prompts.",
+        "This file stays attached to the calculator lane as a renderer-facing support model."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class Theme {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p17-cube-entry-page",
+      "selection_rank": 9,
+      "sample_rank": 1,
+      "sample_id": "harmonyos-examples-cube-entry-view",
+      "priority": "P17",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "03-Cube/entry/src/main/cangjie/src/index.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p17/HarmonyOS-Examples/03-Cube/entry/src/main/cangjie/src/index.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P17 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the entry page plus cube algebra helpers form a source-backed interactive workset of manageable size beyond the P16 checkpoint."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P17 Cube host page slice for sync orchestration, face-grid composition, and button-driven rotation/reset flow around explicit cube-algebra helpers.",
+      "notes": [
+        "Keep CubeFace composition, sync orchestration, and button-triggered transform/reset flow source-backed in the page shell.",
+        "Treat cube.cj plus matrix/permutation/rotation helpers as explicit companions instead of flattening the sample into a single-page demo."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "class CubeFace {",
+          "class EntryView {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p17-cube-model",
+      "selection_rank": 10,
+      "sample_rank": 2,
+      "sample_id": "harmonyos-examples-cube-entry-view",
+      "priority": "P17",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "03-Cube/entry/src/main/cangjie/src/cube/cube.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p17/HarmonyOS-Examples/03-Cube/entry/src/main/cangjie/src/cube/cube.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P17 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the entry page plus cube algebra helpers form a source-backed interactive workset of manageable size beyond the P16 checkpoint."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P17 Cube support-model slice for mutable face-matrix ownership, permutation application, and reset/transform behavior behind the interactive host page.",
+      "notes": [
+        "Keep face-matrix ownership, rotate/permute logic, and transform sequencing source-backed in this support model.",
+        "This file remains the controller-facing mutable model behind the Cube page shell."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class Cube {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p17-cube-matrix-model",
+      "selection_rank": 11,
+      "sample_rank": 3,
+      "sample_id": "harmonyos-examples-cube-entry-view",
+      "priority": "P17",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "03-Cube/entry/src/main/cangjie/src/cube/matrix.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p17/HarmonyOS-Examples/03-Cube/entry/src/main/cangjie/src/cube/matrix.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P17 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the entry page plus cube algebra helpers form a source-backed interactive workset of manageable size beyond the P16 checkpoint."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P17 Cube matrix support-model slice for face-matrix creation plus row/column index helpers consumed by the mutable cube model.",
+      "notes": [
+        "Keep matrix/index helper semantics source-backed here instead of rebuilding them inside the page or cube model prompts.",
+        "This helper stays attached to the cube-algebra lane as a renderer-facing support model."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": []
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p17-cube-permutation-model",
+      "selection_rank": 12,
+      "sample_rank": 4,
+      "sample_id": "harmonyos-examples-cube-entry-view",
+      "priority": "P17",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "03-Cube/entry/src/main/cangjie/src/cube/permutation.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p17/HarmonyOS-Examples/03-Cube/entry/src/main/cangjie/src/cube/permutation.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P17 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the entry page plus cube algebra helpers form a source-backed interactive workset of manageable size beyond the P16 checkpoint."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P17 Cube permutation support-model slice for inverse-permutation derivation over face/index tuples consumed by the cube transform engine.",
+      "notes": [
+        "Keep permutation inversion semantics source-backed here instead of inventing tuple-mutation helpers in prompts.",
+        "This helper remains an explicit algebra companion behind the Cube lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": []
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p17-cube-rotation-model",
+      "selection_rank": 13,
+      "sample_rank": 5,
+      "sample_id": "harmonyos-examples-cube-entry-view",
+      "priority": "P17",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "03-Cube/entry/src/main/cangjie/src/cube/rotation.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p17/HarmonyOS-Examples/03-Cube/entry/src/main/cangjie/src/cube/rotation.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P17 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the entry page plus cube algebra helpers form a source-backed interactive workset of manageable size beyond the P16 checkpoint."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P17 Cube rotation support-model slice for rotation algebra, composition operators, and Face typing consumed by the page and cube engine.",
+      "notes": [
+        "Keep rotation composition, exponentiation, and Face typing source-backed here instead of inventing symbolic algebra inside prompts.",
+        "This file stays attached to the cube lane as an explicit algebra support model."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": []
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "manifest_name": "phase06-ui-source-corpus-p2",
+  "manifest_version": 1,
+  "created_at": "2026-04-10T16:50:37Z",
+  "corpus_root": "../../raw_docs/phase06-ui-p2",
+  "source_manifest": "phase06_ui_sample_manifest.json",
+  "selection_policy": {
+    "priority": "P2",
+    "adoption_decision": "primary",
+    "source_type": "external_repo",
+    "sample_buckets": [
+      "ordered_samples"
+    ]
+  },
+  "sample_count": 3,
+  "file_count": 3,
+  "entries": [
+    {
+      "entry_id": "cangjiechallenge-aiatom-level-page",
+      "sample_id": "cangjiechallenge-aiatom-level-page",
+      "reference_id": "",
+      "priority": "P2",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "role": "",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/cangjiechallenge/bb40b887dcf53d1a8b72884ad862fdf9",
+        "branch": "master",
+        "commit": "c99988534078e0c0409ffb20d298b79853f013ed",
+        "access_date": "2026-04-11",
+        "purpose": "P2 game-style level page baseline with Grid composition, Router handoff, and page-owned progress state."
+      },
+      "source_paths": [
+        "cangjieApp/entry/src/main/cangjie/pages/LevelPage.cj"
+      ],
+      "repo_name": "bb40b887dcf53d1a8b72884ad862fdf9",
+      "repo_local_paths": [
+        "raw_docs/phase06-ui-p2/bb40b887dcf53d1a8b72884ad862fdf9/cangjieApp/entry/src/main/cangjie/pages/LevelPage.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Expand Phase 06 with a controller-owned level page that combines Grid layout, progress-gated navigation, and page-scoped state refresh without introducing hybrid rails.",
+      "blocking_constraints": [
+        "Needs HarmonyOS GUI host to verify Grid layout, Router transitions, and page return-state behavior."
+      ],
+      "reason": ""
+    },
+    {
+      "entry_id": "cangjiechallenge-xupt-sec1-login-page",
+      "sample_id": "cangjiechallenge-xupt-sec1-login-page",
+      "reference_id": "",
+      "priority": "P2",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "role": "",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/cangjiechallenge/d45e5bcde569dadcaf4fcc0524ac8f38",
+        "branch": "master",
+        "commit": "c18f350c6aecbeadd9b9115b739e3f3a0fa73212",
+        "access_date": "2026-04-11",
+        "purpose": "P2 login-form baseline with local page state, card selection, PIN entry, and explicit success callback handoff."
+      },
+      "source_paths": [
+        "entry/src/main/cangjie/login_page.cj"
+      ],
+      "repo_name": "d45e5bcde569dadcaf4fcc0524ac8f38",
+      "repo_local_paths": [
+        "raw_docs/phase06-ui-p2/d45e5bcde569dadcaf4fcc0524ac8f38/entry/src/main/cangjie/login_page.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Expand Phase 06 with a common login/auth page pattern that keeps transient form state and page-flow transitions inside a single page shell.",
+      "blocking_constraints": [
+        "Requires HarmonyOS GUI host to verify input focus, PIN entry flow, and visual card-state transitions."
+      ],
+      "reason": ""
+    },
+    {
+      "entry_id": "cangjiechallenge-xupt-sec1-web-demo-page",
+      "sample_id": "cangjiechallenge-xupt-sec1-web-demo-page",
+      "reference_id": "",
+      "priority": "P2",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "role": "",
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/cangjiechallenge/d45e5bcde569dadcaf4fcc0524ac8f38",
+        "branch": "master",
+        "commit": "c18f350c6aecbeadd9b9115b739e3f3a0fa73212",
+        "access_date": "2026-04-11",
+        "purpose": "P2 lightweight feature-card page baseline with Scroll composition and builder-extracted repeated card rendering."
+      },
+      "source_paths": [
+        "entry/src/main/cangjie/web_demo_page.cj"
+      ],
+      "repo_name": "d45e5bcde569dadcaf4fcc0524ac8f38",
+      "repo_local_paths": [
+        "raw_docs/phase06-ui-p2/d45e5bcde569dadcaf4fcc0524ac8f38/entry/src/main/cangjie/web_demo_page.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Add a narrow display-oriented page shell that demonstrates Scroll-based card composition and renderer-leaning builder extraction without service-heavy state coupling.",
+      "blocking_constraints": [
+        "Needs HarmonyOS GUI host to verify card spacing, scroll behavior, and page-level visual composition."
+      ],
+      "reason": ""
+    }
+  ]
+}

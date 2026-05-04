@@ -1,0 +1,708 @@
+{
+  "manifest_name": "phase06-ui-p16-file-manifest",
+  "manifest_version": 1,
+  "created_at": "2026-04-12T14:26:03Z",
+  "phase": "Phase 06 UI Source Slicing / File-Level Workset",
+  "status": "draft-ready",
+  "source_corpus_manifest": "phase06_ui_source_corpus_p16.json",
+  "source_manifest": "phase06_ui_sample_manifest.json",
+  "few_shot_pack": "phase06_ui_few_shot_pack.json",
+  "intended_consumer": [
+    "human-review",
+    "future-phase06-prompt-pilot",
+    "future-phase06-batch-curator"
+  ],
+  "notes": [
+    "Expands the selected frozen source corpus into file-level slices with explicit ui_prompt_tags.",
+    "This manifest is not consumed directly by scripts/pipeline_batch_runner.py; it is a file-level workset for prompt pilots, explicit tag injection, and later batch curation.",
+    "Tag refinement is allowed at file level when a multi-file sample contains both page-shell and rich-component files."
+  ],
+  "selection_policy": {
+    "priority": "P16",
+    "adoption_decision": "primary",
+    "source_type": "external_repo",
+    "expansion_rule": "expand repo_local_paths into file-level slices and refine per-file target_role/ui_prompt_tags"
+  },
+  "summary": {
+    "sample_count": 3,
+    "slice_count": 13,
+    "role_counts": {
+      "page": 3,
+      "component": 6,
+      "viewmodel": 4
+    },
+    "structure_counts": {
+      "page-shell": 3,
+      "rich-component": 10
+    }
+  },
+  "entries": [
+    {
+      "slice_id": "phase06-ui-p16-bankui-search-page",
+      "selection_rank": 1,
+      "sample_rank": 1,
+      "sample_id": "harmonyos-examples-bankui-search-page",
+      "priority": "P16",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "BankUI/entry/src/main/cangjie/src/Page/search.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p16/HarmonyOS-Examples/BankUI/entry/src/main/cangjie/src/Page/search.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P16 regular candidate selected from the remaining official HarmonyOS-Examples reserve by freezing the BankUI search page together with its three direct search helper components as one bounded workset."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P16 BankUI host page slice for recent-search state ownership and search-chip composition across three explicit helper components.",
+      "notes": [
+        "Keep the recent-search array and page-owned composition boundary source-backed in the host page.",
+        "Treat the three search helpers as explicit companions instead of pretending the search page is self-contained."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class Search {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p16-bankui-search-input-component",
+      "selection_rank": 2,
+      "sample_rank": 2,
+      "sample_id": "harmonyos-examples-bankui-search-page",
+      "priority": "P16",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "BankUI/entry/src/main/cangjie/src/Component/searchInput.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p16/HarmonyOS-Examples/BankUI/entry/src/main/cangjie/src/Component/searchInput.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P16 regular candidate selected from the remaining official HarmonyOS-Examples reserve by freezing the BankUI search page together with its three direct search helper components as one bounded workset."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P16 BankUI search-input component slice for SearchController binding, @Link state mutation, and Router.back handoff inside one bounded search control.",
+      "notes": [
+        "Keep SearchController usage and @Link-backed recent-search updates source-backed in the reusable input control.",
+        "This helper stays attached to the BankUI search lane as an explicit support component."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class SearchInput {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p16-bankui-search-delete-component",
+      "selection_rank": 3,
+      "sample_rank": 3,
+      "sample_id": "harmonyos-examples-bankui-search-page",
+      "priority": "P16",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "BankUI/entry/src/main/cangjie/src/Component/searchDelete.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p16/HarmonyOS-Examples/BankUI/entry/src/main/cangjie/src/Component/searchDelete.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P16 regular candidate selected from the remaining official HarmonyOS-Examples reserve by freezing the BankUI search page together with its three direct search helper components as one bounded workset."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P16 BankUI search-delete component slice for conditional empty-state rendering and shared recent-search clearing inside the host search page.",
+      "notes": [
+        "Keep the empty-state branch and shared-list clear action source-backed inside this component.",
+        "This file is a bounded search helper rather than a standalone page contract."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class SearchDelete {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p16-bankui-search-layout-component",
+      "selection_rank": 4,
+      "sample_rank": 4,
+      "sample_id": "harmonyos-examples-bankui-search-page",
+      "priority": "P16",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "BankUI/entry/src/main/cangjie/src/Component/searchLayout.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p16/HarmonyOS-Examples/BankUI/entry/src/main/cangjie/src/Component/searchLayout.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P16 regular candidate selected from the remaining official HarmonyOS-Examples reserve by freezing the BankUI search page together with its three direct search helper components as one bounded workset."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P16 BankUI search-layout component slice for wrapped search-chip rendering over the shared recent-search array.",
+      "notes": [
+        "Keep the ForEach-based chip layout and shared recent-search binding source-backed here.",
+        "This helper remains a support component behind the BankUI search host page."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class SearchLayout {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p16-canvas-poker-entry-page",
+      "selection_rank": 5,
+      "sample_rank": 1,
+      "sample_id": "harmonyos-examples-canvas-poker-card-fan",
+      "priority": "P16",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "CanvasPoker/entry/src/main/cangjie/src/index.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p16/HarmonyOS-Examples/CanvasPoker/entry/src/main/cangjie/src/index.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P16 regular candidate selected from the remaining official HarmonyOS-Examples reserve by freezing CanvasPoker entry state together with its explicit card renderer and constants helpers."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P16 CanvasPoker host page slice for slider-owned redraw state, canvas lifecycle setup, and button-triggered reshuffle orchestration.",
+      "notes": [
+        "Keep angle/basePoint state ownership and canvas redraw orchestration source-backed in the page shell.",
+        "Treat the card renderer and constants as explicit helper companions instead of flattening the sample into a fake single-file canvas page."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class EntryView {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p16-canvas-poker-card-renderer-model",
+      "selection_rank": 6,
+      "sample_rank": 2,
+      "sample_id": "harmonyos-examples-canvas-poker-card-fan",
+      "priority": "P16",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "CanvasPoker/entry/src/main/cangjie/src/card/cards.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p16/HarmonyOS-Examples/CanvasPoker/entry/src/main/cangjie/src/card/cards.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P16 regular candidate selected from the remaining official HarmonyOS-Examples reserve by freezing CanvasPoker entry state together with its explicit card renderer and constants helpers."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P16 CanvasPoker card-renderer support-model slice for drawCard canvas rendering, deck generation, and shuffle behavior behind the interactive host page.",
+      "notes": [
+        "Keep drawCard geometry, deck initialization, and shuffle behavior source-backed here instead of rebuilding canvas math inside the page shell.",
+        "This file remains a renderer-facing support-model slice attached to the CanvasPoker lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": []
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p16-canvas-poker-card-const-model",
+      "selection_rank": 7,
+      "sample_rank": 3,
+      "sample_id": "harmonyos-examples-canvas-poker-card-fan",
+      "priority": "P16",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "CanvasPoker/entry/src/main/cangjie/src/card/const.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p16/HarmonyOS-Examples/CanvasPoker/entry/src/main/cangjie/src/card/const.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P16 regular candidate selected from the remaining official HarmonyOS-Examples reserve by freezing CanvasPoker entry state together with its explicit card renderer and constants helpers."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P16 CanvasPoker constants support-model slice for suit/rank metadata, card dimensions, and color constants consumed by the canvas renderer.",
+      "notes": [
+        "Keep suit/rank naming and card-size constants source-backed here instead of hard-coding rendering metadata into prompts.",
+        "This helper stays attached to the CanvasPoker renderer lane as a support-model slice."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": []
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p16-color-picker-entry-page",
+      "selection_rank": 8,
+      "sample_rank": 1,
+      "sample_id": "harmonyos-examples-color-picker-dialog",
+      "priority": "P16",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "ColorPicker/entry/src/main/cangjie/index.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p16/HarmonyOS-Examples/ColorPicker/entry/src/main/cangjie/index.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P16 regular candidate selected from the remaining official HarmonyOS-Examples reserve by freezing the ColorPicker entry shell together with its bounded dialog, slider, palette, and HSV utility chain."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P16 ColorPicker host page slice for dialog-controller ownership and selected-color state handoff into the custom picker dialog.",
+      "notes": [
+        "Keep CustomDialogController ownership and selected-color state in the page shell.",
+        "Treat the picker, palette, slider, and HSV helpers as explicit companions instead of reducing the sample to a single entry file."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class EntryView {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p16-color-picker-component",
+      "selection_rank": 9,
+      "sample_rank": 2,
+      "sample_id": "harmonyos-examples-color-picker-dialog",
+      "priority": "P16",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "ColorPicker/entry/src/main/cangjie/color_picker/color_picker.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p16/HarmonyOS-Examples/ColorPicker/entry/src/main/cangjie/color_picker/color_picker.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P16 regular candidate selected from the remaining official HarmonyOS-Examples reserve by freezing the ColorPicker entry shell together with its bounded dialog, slider, palette, and HSV utility chain."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P16 ColorPicker primary component slice for dialog content composition, color-string hydration, and HSV-to-RGB handoff inside the bounded picker boundary.",
+      "notes": [
+        "Keep ColorPicker plus ColorPickerDialog source-backed in one primary component slice rather than splitting the dialog away from the picker state machine.",
+        "This file remains the central rich-component anchor for the ColorPicker lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class ColorPicker {",
+          "public class ColorPickerDialog {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p16-color-slider-component",
+      "selection_rank": 10,
+      "sample_rank": 3,
+      "sample_id": "harmonyos-examples-color-picker-dialog",
+      "priority": "P16",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "ColorPicker/entry/src/main/cangjie/color_picker/color_slider.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p16/HarmonyOS-Examples/ColorPicker/entry/src/main/cangjie/color_picker/color_slider.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P16 regular candidate selected from the remaining official HarmonyOS-Examples reserve by freezing the ColorPicker entry shell together with its bounded dialog, slider, palette, and HSV utility chain."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P16 ColorPicker slider support-component slice for hue-slider rendering, touch updates, and HSV mutation behind the dialog host component.",
+      "notes": [
+        "Keep the hue slider canvas layers and touch-driven HSV updates source-backed in this support component.",
+        "This helper stays attached to the ColorPicker lane as an explicit rich-component companion."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class ColorSlider {",
+          "class ColorSliderSliderLayer {",
+          "class ColorSliderBackgroundLayer {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p16-color-palette-component",
+      "selection_rank": 11,
+      "sample_rank": 4,
+      "sample_id": "harmonyos-examples-color-picker-dialog",
+      "priority": "P16",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "ColorPicker/entry/src/main/cangjie/color_picker/color_palette.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p16/HarmonyOS-Examples/ColorPicker/entry/src/main/cangjie/color_picker/color_palette.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P16 regular candidate selected from the remaining official HarmonyOS-Examples reserve by freezing the ColorPicker entry shell together with its bounded dialog, slider, palette, and HSV utility chain."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P16 ColorPicker palette support-component slice for saturation/value gesture selection and layered gradient rendering behind the dialog host component.",
+      "notes": [
+        "Keep the palette background/picker layers and touch-driven HSV updates source-backed in this support component.",
+        "This file remains an explicit companion behind the bounded ColorPicker dialog lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class ColorPalette {",
+          "class ColorPalettePickerLayer {",
+          "class ColorPaletteBackgroundLayer {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p16-color-utils-model",
+      "selection_rank": 12,
+      "sample_rank": 5,
+      "sample_id": "harmonyos-examples-color-picker-dialog",
+      "priority": "P16",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "ColorPicker/entry/src/main/cangjie/color_picker/color_utils.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p16/HarmonyOS-Examples/ColorPicker/entry/src/main/cangjie/color_picker/color_utils.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P16 regular candidate selected from the remaining official HarmonyOS-Examples reserve by freezing the ColorPicker entry shell together with its bounded dialog, slider, palette, and HSV utility chain."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P16 ColorPicker support-model slice for RGB/HSV conversion and packed-color helpers consumed by the dialog and canvas components.",
+      "notes": [
+        "Keep ColorUtils conversion logic source-backed here instead of re-inventing color math inside prompts.",
+        "This file is a renderer-facing support-model slice attached to the ColorPicker lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class ColorUtils {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p16-hsv-model",
+      "selection_rank": 13,
+      "sample_rank": 6,
+      "sample_id": "harmonyos-examples-color-picker-dialog",
+      "priority": "P16",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "ColorPicker/entry/src/main/cangjie/color_picker/hsv.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p16/HarmonyOS-Examples/ColorPicker/entry/src/main/cangjie/color_picker/hsv.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P16 regular candidate selected from the remaining official HarmonyOS-Examples reserve by freezing the ColorPicker entry shell together with its bounded dialog, slider, palette, and HSV utility chain."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P16 ColorPicker observed-state support-model slice for hue, saturation, and value ownership shared by the picker, palette, and slider components.",
+      "notes": [
+        "Keep the observed HSV state container source-backed here instead of replacing it with prompt-local tuples or map state.",
+        "This helper stays attached to the ColorPicker lane as a controller-facing support-model slice."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class HSV {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    }
+  ]
+}

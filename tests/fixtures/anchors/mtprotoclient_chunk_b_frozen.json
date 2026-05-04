@@ -1,0 +1,39 @@
+{
+  "chunk": {
+    "chunk_id": "chunk-b",
+    "label": "Auth Handshake",
+    "description": "auth handshake members only; translate present source methods and record missing directive-only members",
+    "source_text": "private async createAuthKey(): Promise<void> {\n    const transport = this.transportManager.getTransport()\n    const creator = new AuthKeyCreator(transport)\n    const result = await creator.createAuthKey()\n    this.session.authKey = result.authKey\n    this.session.authKeyId = result.authKeyId\n    this.session.serverSalt = result.serverSalt\n    this.session.authKeyState = AuthKeyState.Created\n    SessionManager.saveSession(this.session)\n  }\n",
+    "expected_members": [
+      "createAuthKey",
+      "req_pq_multi",
+      "req_DH_params",
+      "set_client_DH_params"
+    ],
+    "found_members": [
+      "createAuthKey"
+    ],
+    "missing_members": [
+      "req_pq_multi",
+      "req_DH_params",
+      "set_client_DH_params"
+    ]
+  },
+  "artifact": {
+    "attempt": 1,
+    "generated_code": "private func createAuthKey(): Future<Unit> {\n    spawn {\n      let transport = this.transportManager.getTransport()\n      let creator = AuthKeyCreator(transport)\n      let result = creator.createAuthKey().get()\n      this.session.authKey = result.authKey\n      this.session.authKeyId = result.authKeyId\n      this.session.serverSalt = result.serverSalt\n      this.session.authKeyState = AuthKeyState.Created\n      SessionManager.saveSession(this.session)\n      ()\n    }\n  }",
+    "declared_constraints": [
+      "Translation Mapping",
+      "Dependency Constraint",
+      "Execution Topology"
+    ],
+    "notes": [
+      "Curated frozen chunk-b anchor that emits only the source-aligned createAuthKey member fragment.",
+      "Dependency stubs are intentionally forbidden here; any missing AuthKeyCreator or SessionManager contract should be surfaced by later verify/compile evidence instead of hidden by translator-generated placeholders."
+    ],
+    "metadata": {
+      "target_path": "src/core/mtproto/MTProtoClient.ets",
+      "repair_thought_process": "Frozen chunk-b keeps only private createAuthKey(): Future<Unit> and forbids dependency stub expansion."
+    }
+  }
+}

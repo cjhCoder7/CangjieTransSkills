@@ -1,0 +1,32 @@
+{
+  "chunk": {
+    "chunk_id": "chunk-a-ctor",
+    "label": "Constructor",
+    "description": "constructor member only",
+    "source_text": "constructor() {\n    this.transportManager = new TransportManager()\n    this.session = SessionManager.getSession(MTProtoConfig.USE_TEST_DC ? 2 : 1)\n  }\n",
+    "expected_members": [
+      "constructor"
+    ],
+    "found_members": [
+      "constructor"
+    ],
+    "missing_members": []
+  },
+  "artifact": {
+    "attempt": 1,
+    "generated_code": "public init() {\n    this.transportManager = TransportManager()\n    let dcId = if (MTProtoConfig.USE_TEST_DC) { 2 } else { 1 }\n    this.session = SessionManager.getSession(dcId)\n}",
+    "declared_constraints": [
+      "Translation Mapping",
+      "Dependency Constraint"
+    ],
+    "notes": [
+      "repair_thought_process captured: Expanded the ArkTS ternary into a legal Cangjie if-expression and kept constructor scope limited to transportManager/session initialization. Relied on the chunk-a frozen state anchor for pendingRPCs/updateCallback defaults, so constructor output stays source-aligned and minimal.",
+      "Constructor intentionally avoids re-declaring fields already anchored in chunk-a.",
+      "No singleton tail or other methods are emitted from this chunk."
+    ],
+    "metadata": {
+      "target_path": "src/core/mtproto/MTProtoClient.ets",
+      "repair_thought_process": "Expanded the ArkTS ternary into a legal Cangjie if-expression and kept constructor scope limited to transportManager/session initialization. Relied on the chunk-a frozen state anchor for pendingRPCs/updateCallback defaults, so constructor output stays source-aligned and minimal."
+    }
+  }
+}

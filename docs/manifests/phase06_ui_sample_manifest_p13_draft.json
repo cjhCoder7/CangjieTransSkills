@@ -1,0 +1,125 @@
+{
+  "manifest_name": "phase06-ui-sample-manifest-p13-draft",
+  "manifest_version": 1,
+  "created_at": "2026-04-12T10:42:30Z",
+  "phase": "Phase06",
+  "status": "draft-candidate-scout",
+  "intended_consumer": "manual curation -> build_phase06_ui_source_corpus.py",
+  "notes": [
+    "This draft manifest is not yet promoted into the primary phase06_ui_sample_manifest.json.",
+    "Its purpose is to continue the regular Phase06 source supply after P12 closed and the formal checkpoint reached 54/54 live passed.",
+    "The selected files stay inside the remaining official HarmonyOS-Examples reserve; where a page still needs helpers, the helpers are frozen explicitly instead of relying on hidden same-package pressure."
+  ],
+  "ordered_samples": [
+    {
+      "sample_id": "harmonyos-examples-commonui-entry-page",
+      "priority": "P13",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "usage_goal": "Add the remaining official CommonUI route shell so the regular lane keeps one explicit button-driven Router menu anchor after the P12 promotion.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P13 draft candidate harvested from the remaining official HarmonyOS-Examples reserve after the regular Phase06 checkpoint reached 54/54 live passed."
+      },
+      "source_paths": [
+        "CommonUI/entry/src/main/cangjie/src/index.cj"
+      ],
+      "blocking_constraints": [
+        "Keep the extend Button.jump helper and the eight Router.push targets source-backed inside the page shell; do not invent detached route coordinators or menu helper layers."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-examples-clock-canvas-page",
+      "priority": "P13",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Add a timer-driven canvas clock sample that keeps lifecycle-owned redraw scheduling in the page shell while freezing the drawing helper explicitly as a renderer support slice.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P13 draft candidate selected from the remaining official HarmonyOS-Examples reserve to extend timer plus canvas-render coverage with one explicit helper freeze."
+      },
+      "source_paths": [
+        "11-Clock/entry/src/main/cangjie/src/index.cj",
+        "11-Clock/entry/src/main/cangjie/src/utils/clock.cj"
+      ],
+      "blocking_constraints": [
+        "Keep the page-owned Timer lifecycle, CanvasRenderingContext2D ownership, and display-size hydration in the host page, and keep dial/hand drawing logic source-backed in utils/clock.cj rather than collapsing it into a fake single-file shell."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-examples-simpledraw-geometry-shell",
+      "priority": "P13",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Add an interactive geometry playground that keeps touch-mode switching and canvas host ownership in the page shell while freezing the dynamic geometry and math helpers explicitly as support slices.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P13 draft candidate selected from the remaining official HarmonyOS-Examples reserve because its helper surface becomes acceptable once all same-package geometry dependencies are frozen transparently."
+      },
+      "source_paths": [
+        "SimpleDraw/entry/src/main/cangjie/src/index.cj",
+        "SimpleDraw/entry/src/main/cangjie/src/DGeometry.cj",
+        "SimpleDraw/entry/src/main/cangjie/src/Geometry.cj"
+      ],
+      "blocking_constraints": [
+        "Keep current mode selection, touch dispatch, point/circle host state, and Shape event wiring in the page shell; keep dynamic geometry entities plus geometric intersection math source-backed in DGeometry.cj and Geometry.cj rather than pretending the page is self-contained."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    }
+  ],
+  "control_samples": [],
+  "exception_references": [],
+  "deferred_pools": [],
+  "tag_rules": {
+    "structure_tag_required": true,
+    "structure_tags": [
+      "page-shell",
+      "rich-component"
+    ],
+    "ownership_tag_required": true,
+    "ownership_tags": [
+      "view-model-renderer",
+      "controller-owned-state"
+    ],
+    "optional_interaction_tags": [
+      "gesture-component"
+    ],
+    "optional_exception_tags": [
+      "ffi-exception",
+      "hybrid-exception"
+    ],
+    "optional_sample_scope_tags": [
+      "mixed-app-pattern"
+    ],
+    "resolution_rule": "Each file-level sample must resolve to exactly one structure_tag and one ownership_tag. interaction/exception/sample_scope tags are additive only."
+  }
+}

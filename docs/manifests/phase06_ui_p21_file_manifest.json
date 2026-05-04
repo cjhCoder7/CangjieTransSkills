@@ -1,0 +1,2921 @@
+{
+  "manifest_name": "phase06-ui-p21-file-manifest",
+  "manifest_version": 1,
+  "created_at": "2026-04-13T13:32:28Z",
+  "phase": "Phase 06 UI Source Slicing / File-Level Workset",
+  "status": "draft-ready",
+  "source_corpus_manifest": "phase06_ui_source_corpus_p21.json",
+  "source_manifest": "phase06_ui_sample_manifest.json",
+  "few_shot_pack": "phase06_ui_few_shot_pack.json",
+  "intended_consumer": [
+    "human-review",
+    "future-phase06-prompt-pilot",
+    "future-phase06-batch-curator"
+  ],
+  "notes": [
+    "Expands the selected frozen source corpus into file-level slices with explicit ui_prompt_tags.",
+    "This manifest is not consumed directly by scripts/pipeline_batch_runner.py; it is a file-level workset for prompt pilots, explicit tag injection, and later batch curation.",
+    "Tag refinement is allowed at file level when a multi-file sample contains both page-shell and rich-component files."
+  ],
+  "selection_policy": {
+    "priority": "P21",
+    "adoption_decision": "primary",
+    "source_type": "external_repo",
+    "expansion_rule": "expand repo_local_paths into file-level slices and refine per-file target_role/ui_prompt_tags"
+  },
+  "summary": {
+    "sample_count": 3,
+    "slice_count": 56,
+    "role_counts": {
+      "page": 7,
+      "component": 25,
+      "viewmodel": 24
+    },
+    "structure_counts": {
+      "page-shell": 7,
+      "rich-component": 49
+    }
+  },
+  "entries": [
+    {
+      "slice_id": "phase06-ui-p21-ui-layout-entry-page",
+      "selection_rank": 1,
+      "sample_rank": 1,
+      "sample_id": "harmonyos-examples-ui-layout-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UILayout/entry/src/main/cangjie/index.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/02-UILayout/entry/src/main/cangjie/index.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the router-backed layout gallery, same-package route-target pages, and local helper/model files form one bounded closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 UILayout entry page for the router-backed layout gallery selected by the official scout.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class EntryView {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-ui-layout-badge-view-page",
+      "selection_rank": 2,
+      "sample_rank": 2,
+      "sample_id": "harmonyos-examples-ui-layout-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UILayout/entry/src/main/cangjie/pages/BadgeView.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/02-UILayout/entry/src/main/cangjie/pages/BadgeView.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the router-backed layout gallery, same-package route-target pages, and local helper/model files form one bounded closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 UILayout route-target page for badge layout patterns, router navigation, and same-package badge components.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class BadgeView {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-ui-layout-list-view-page",
+      "selection_rank": 3,
+      "sample_rank": 3,
+      "sample_id": "harmonyos-examples-ui-layout-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UILayout/entry/src/main/cangjie/pages/ListView.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/02-UILayout/entry/src/main/cangjie/pages/ListView.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the router-backed layout gallery, same-package route-target pages, and local helper/model files form one bounded closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 UILayout route-target page for list pagination patterns and same-package list components.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class ListView {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-ui-layout-scroll-view-page",
+      "selection_rank": 4,
+      "sample_rank": 4,
+      "sample_id": "harmonyos-examples-ui-layout-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UILayout/entry/src/main/cangjie/pages/ScrollView.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/02-UILayout/entry/src/main/cangjie/pages/ScrollView.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the router-backed layout gallery, same-package route-target pages, and local helper/model files form one bounded closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 UILayout route-target page for scroll layout patterns and same-package scroll-band components.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class ScrollView {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-ui-layout-simple-layout-page",
+      "selection_rank": 5,
+      "sample_rank": 5,
+      "sample_id": "harmonyos-examples-ui-layout-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UILayout/entry/src/main/cangjie/pages/SimpleLayout.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/02-UILayout/entry/src/main/cangjie/pages/SimpleLayout.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the router-backed layout gallery, same-package route-target pages, and local helper/model files form one bounded closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 UILayout route-target page for row/column split layout patterns and same-package helper models.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class SimpleLayoutView {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-ui-layout-badge-examples-component",
+      "selection_rank": 6,
+      "sample_rank": 6,
+      "sample_id": "harmonyos-examples-ui-layout-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UILayout/entry/src/main/cangjie/components/Badge/BadgeExamp.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/02-UILayout/entry/src/main/cangjie/components/Badge/BadgeExamp.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the router-backed layout gallery, same-package route-target pages, and local helper/model files form one bounded closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 UILayout primary component file for number and position badge examples inside the selected layout gallery.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class BadgeItem {",
+          "public class BadgeLine {",
+          "public class NumberBadgeBand {",
+          "public class PositionBadgeBand {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-ui-layout-chat-avatar-component",
+      "selection_rank": 7,
+      "sample_rank": 7,
+      "sample_id": "harmonyos-examples-ui-layout-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UILayout/entry/src/main/cangjie/components/Badge/ChatAvatar.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/02-UILayout/entry/src/main/cangjie/components/Badge/ChatAvatar.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the router-backed layout gallery, same-package route-target pages, and local helper/model files form one bounded closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 UILayout badge component for avatar overlay rendering inside the badge page closure.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class ChatAvatar {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-ui-layout-pseudo-badge-component",
+      "selection_rank": 8,
+      "sample_rank": 8,
+      "sample_id": "harmonyos-examples-ui-layout-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UILayout/entry/src/main/cangjie/components/Badge/PseudoBadgeExamp.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/02-UILayout/entry/src/main/cangjie/components/Badge/PseudoBadgeExamp.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the router-backed layout gallery, same-package route-target pages, and local helper/model files form one bounded closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 UILayout primary component file for pseudo-badge variants inside the badge page closure.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class PseudoBadgeLine {",
+          "public class PseudoBadgeLineWithPad {",
+          "public class PseudoBadgeBand {",
+          "public class PseudoBadgeWithPadBand {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-ui-layout-list-bands-component",
+      "selection_rank": 9,
+      "sample_rank": 9,
+      "sample_id": "harmonyos-examples-ui-layout-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UILayout/entry/src/main/cangjie/components/List/ListBands.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/02-UILayout/entry/src/main/cangjie/components/List/ListBands.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the router-backed layout gallery, same-package route-target pages, and local helper/model files form one bounded closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 UILayout primary component file for simple/add-more/pagination list bands with local timed state updates.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "public class SimpleList {",
+          "public class AddMoreList {",
+          "public class PaginationList {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-ui-layout-user-model",
+      "selection_rank": 10,
+      "sample_rank": 10,
+      "sample_id": "harmonyos-examples-ui-layout-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UILayout/entry/src/main/cangjie/components/List/User.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/02-UILayout/entry/src/main/cangjie/components/List/User.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the router-backed layout gallery, same-package route-target pages, and local helper/model files form one bounded closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 UILayout support model for synthetic user entities consumed by the list components.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class UserEntity {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-ui-layout-user-list-component",
+      "selection_rank": 11,
+      "sample_rank": 11,
+      "sample_id": "harmonyos-examples-ui-layout-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UILayout/entry/src/main/cangjie/components/List/UserList.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/02-UILayout/entry/src/main/cangjie/components/List/UserList.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the router-backed layout gallery, same-package route-target pages, and local helper/model files form one bounded closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 UILayout component for rendering user-list items and item-level state inside the list page closure.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "public class UserList{"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-ui-layout-house-scroll-band-component",
+      "selection_rank": 12,
+      "sample_rank": 12,
+      "sample_id": "harmonyos-examples-ui-layout-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UILayout/entry/src/main/cangjie/components/ScrollLayout/HouseScrollBand.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/02-UILayout/entry/src/main/cangjie/components/ScrollLayout/HouseScrollBand.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the router-backed layout gallery, same-package route-target pages, and local helper/model files form one bounded closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 UILayout component file for scroll-band and fixed-band carousel behavior with local timer state.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class HouseScrollItem {",
+          "public class HouseScrollBand {",
+          "public class HouseScrollFixedBand {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-ui-layout-house-model",
+      "selection_rank": 13,
+      "sample_rank": 13,
+      "sample_id": "harmonyos-examples-ui-layout-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UILayout/entry/src/main/cangjie/components/ScrollLayout/house.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/02-UILayout/entry/src/main/cangjie/components/ScrollLayout/house.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the router-backed layout gallery, same-package route-target pages, and local helper/model files form one bounded closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 UILayout support model for house card data consumed by the scroll layout components.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class House {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-ui-layout-bill-examples-component",
+      "selection_rank": 14,
+      "sample_rank": 14,
+      "sample_id": "harmonyos-examples-ui-layout-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UILayout/entry/src/main/cangjie/components/SimpleLayout/BillExamp.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/02-UILayout/entry/src/main/cangjie/components/SimpleLayout/BillExamp.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the router-backed layout gallery, same-package route-target pages, and local helper/model files form one bounded closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 UILayout primary component file for billing/card layout examples inside the simple-layout page closure.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class InfoItem {",
+          "public class InfoBand {",
+          "public class ProductItem {",
+          "public class ProductBand {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-ui-layout-column-examples-component",
+      "selection_rank": 15,
+      "sample_rank": 15,
+      "sample_id": "harmonyos-examples-ui-layout-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UILayout/entry/src/main/cangjie/components/SimpleLayout/ColumnExampBand.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/02-UILayout/entry/src/main/cangjie/components/SimpleLayout/ColumnExampBand.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the router-backed layout gallery, same-package route-target pages, and local helper/model files form one bounded closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 UILayout primary component for single-column layout examples inside the simple-layout closure.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class ColumnExampSingleBand {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-ui-layout-column-split-component",
+      "selection_rank": 16,
+      "sample_rank": 16,
+      "sample_id": "harmonyos-examples-ui-layout-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UILayout/entry/src/main/cangjie/components/SimpleLayout/ColumnSplitExampBand.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/02-UILayout/entry/src/main/cangjie/components/SimpleLayout/ColumnSplitExampBand.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the router-backed layout gallery, same-package route-target pages, and local helper/model files form one bounded closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 UILayout primary component for split-column layout examples inside the simple-layout closure.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class ColumnSplitExampItem {",
+          "public class ColumnSplitExampBand {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-ui-layout-intro-card-component",
+      "selection_rank": 17,
+      "sample_rank": 17,
+      "sample_id": "harmonyos-examples-ui-layout-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UILayout/entry/src/main/cangjie/components/SimpleLayout/IntroRecBand.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/02-UILayout/entry/src/main/cangjie/components/SimpleLayout/IntroRecBand.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the router-backed layout gallery, same-package route-target pages, and local helper/model files form one bounded closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 UILayout primary component for intro/recommendation card layout examples inside the simple-layout closure.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class RecInfo {",
+          "public class IntroRecBand {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-ui-layout-row-examples-component",
+      "selection_rank": 18,
+      "sample_rank": 18,
+      "sample_id": "harmonyos-examples-ui-layout-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UILayout/entry/src/main/cangjie/components/SimpleLayout/RowExampBand.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/02-UILayout/entry/src/main/cangjie/components/SimpleLayout/RowExampBand.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the router-backed layout gallery, same-package route-target pages, and local helper/model files form one bounded closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 UILayout primary component for row layout examples and builder-backed bands inside the simple-layout closure.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "public class RowExampSingleBand {",
+          "private class RowExampAverageItem {",
+          "public class RowExampAverageBand {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-ui-layout-row-split-component",
+      "selection_rank": 19,
+      "sample_rank": 19,
+      "sample_id": "harmonyos-examples-ui-layout-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UILayout/entry/src/main/cangjie/components/SimpleLayout/RowSplitExampBand.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/02-UILayout/entry/src/main/cangjie/components/SimpleLayout/RowSplitExampBand.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the router-backed layout gallery, same-package route-target pages, and local helper/model files form one bounded closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 UILayout primary component for split-row layout examples inside the simple-layout closure.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class RowSplitExampItem {",
+          "public class RowSplitExampBand {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-ui-layout-product-model",
+      "selection_rank": 20,
+      "sample_rank": 20,
+      "sample_id": "harmonyos-examples-ui-layout-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UILayout/entry/src/main/cangjie/components/SimpleLayout/product.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/02-UILayout/entry/src/main/cangjie/components/SimpleLayout/product.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the router-backed layout gallery, same-package route-target pages, and local helper/model files form one bounded closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 UILayout support model for product/card data consumed by the simple-layout components.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class Product {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-ui-layout-entry-item-component",
+      "selection_rank": 21,
+      "sample_rank": 21,
+      "sample_id": "harmonyos-examples-ui-layout-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UILayout/entry/src/main/cangjie/components/entry/Item.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/02-UILayout/entry/src/main/cangjie/components/entry/Item.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the router-backed layout gallery, same-package route-target pages, and local helper/model files form one bounded closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 UILayout entry component for router-backed gallery item navigation from the host page.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class EntryItem {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-ui-layout-description-text-component",
+      "selection_rank": 22,
+      "sample_rank": 22,
+      "sample_id": "harmonyos-examples-ui-layout-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UILayout/entry/src/main/cangjie/components/global/DescriptionText.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/02-UILayout/entry/src/main/cangjie/components/global/DescriptionText.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the router-backed layout gallery, same-package route-target pages, and local helper/model files form one bounded closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 UILayout shared description text component reused across the layout gallery pages.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class DescriptionText {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-ui-layout-page-header-component",
+      "selection_rank": 23,
+      "sample_rank": 23,
+      "sample_id": "harmonyos-examples-ui-layout-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UILayout/entry/src/main/cangjie/components/global/PageHeader.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/02-UILayout/entry/src/main/cangjie/components/global/PageHeader.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the router-backed layout gallery, same-package route-target pages, and local helper/model files form one bounded closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 UILayout shared page-header component for router back-navigation and header composition across the gallery pages.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class PageTitle {",
+          "public class BackIcon {",
+          "public class PageHeader {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-ui-layout-section-component",
+      "selection_rank": 24,
+      "sample_rank": 24,
+      "sample_id": "harmonyos-examples-ui-layout-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UILayout/entry/src/main/cangjie/components/global/Section.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/02-UILayout/entry/src/main/cangjie/components/global/Section.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the router-backed layout gallery, same-package route-target pages, and local helper/model files form one bounded closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 UILayout shared section-title component reused across the layout gallery pages.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "public class SectionTitle {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-ui-layout-black-divider-component",
+      "selection_rank": 25,
+      "sample_rank": 25,
+      "sample_id": "harmonyos-examples-ui-layout-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UILayout/entry/src/main/cangjie/components/utils/BlackDivider.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/02-UILayout/entry/src/main/cangjie/components/utils/BlackDivider.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the router-backed layout gallery, same-package route-target pages, and local helper/model files form one bounded closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 UILayout shared divider component reused by the layout example bands.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class BlackDivider {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-ui-layout-color-helper",
+      "selection_rank": 26,
+      "sample_rank": 26,
+      "sample_id": "harmonyos-examples-ui-layout-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UILayout/entry/src/main/cangjie/utils/color.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/02-UILayout/entry/src/main/cangjie/utils/color.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the router-backed layout gallery, same-package route-target pages, and local helper/model files form one bounded closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 UILayout helper for interpolated color utilities consumed by the simple-layout page and related components.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": []
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-ui-layout-counter-helper",
+      "selection_rank": 27,
+      "sample_rank": 27,
+      "sample_id": "harmonyos-examples-ui-layout-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UILayout/entry/src/main/cangjie/utils/counter.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/02-UILayout/entry/src/main/cangjie/utils/counter.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the router-backed layout gallery, same-package route-target pages, and local helper/model files form one bounded closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 UILayout helper for width/count calculations consumed by badge and simple-layout components.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": []
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-ui-layout-format-helper",
+      "selection_rank": 28,
+      "sample_rank": 28,
+      "sample_id": "harmonyos-examples-ui-layout-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UILayout/entry/src/main/cangjie/utils/format.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/02-UILayout/entry/src/main/cangjie/utils/format.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the router-backed layout gallery, same-package route-target pages, and local helper/model files form one bounded closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 UILayout helper for float formatting consumed by the simple-layout example components.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": []
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-stock-chart-entry-page",
+      "selection_rank": 29,
+      "sample_rank": 1,
+      "sample_id": "harmonyos-examples-stock-chart-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "16-StockChart/entry/src/main/cangjie/index.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/16-StockChart/entry/src/main/cangjie/index.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the AppStorage-backed chart shell, MainAbility avoid-area wiring, and local renderer/viewmodel stack stay inside one same-package closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 StockChart entry page for AppStorage-backed chart mode switching and renderer composition selected by the official scout.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class EntryView {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-stock-chart-main-ability-model",
+      "selection_rank": 30,
+      "sample_rank": 2,
+      "sample_id": "harmonyos-examples-stock-chart-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "16-StockChart/entry/src/main/cangjie/main_ability.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/16-StockChart/entry/src/main/cangjie/main_ability.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the AppStorage-backed chart shell, MainAbility avoid-area wiring, and local renderer/viewmodel stack stay inside one same-package closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 StockChart support model for MainAbility window avoid-area wiring and AppStorage handoff.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class MainAbility <: Ability {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-stock-chart-data-constants-model",
+      "selection_rank": 31,
+      "sample_rank": 3,
+      "sample_id": "harmonyos-examples-stock-chart-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "16-StockChart/entry/src/main/cangjie/constants/DataConstants.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/16-StockChart/entry/src/main/cangjie/constants/DataConstants.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the AppStorage-backed chart shell, MainAbility avoid-area wiring, and local renderer/viewmodel stack stay inside one same-package closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 StockChart support model for local chart dataset constants consumed across the renderer stack.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class DataConstants {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-stock-chart-style-constants-model",
+      "selection_rank": 32,
+      "sample_rank": 4,
+      "sample_id": "harmonyos-examples-stock-chart-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "16-StockChart/entry/src/main/cangjie/constants/StyleConstants.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/16-StockChart/entry/src/main/cangjie/constants/StyleConstants.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the AppStorage-backed chart shell, MainAbility avoid-area wiring, and local renderer/viewmodel stack stay inside one same-package closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 StockChart support model for shared style constants consumed across the chart renderer stack.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class StyleConstants {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-stock-chart-chart-data-model",
+      "selection_rank": 33,
+      "sample_rank": 5,
+      "sample_id": "harmonyos-examples-stock-chart-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "16-StockChart/entry/src/main/cangjie/models/ChartData.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/16-StockChart/entry/src/main/cangjie/models/ChartData.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the AppStorage-backed chart shell, MainAbility avoid-area wiring, and local renderer/viewmodel stack stay inside one same-package closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 StockChart support model for timeline and K-line data structures consumed by the viewmodels and renderers.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public struct TimeLineDataPoint {",
+          "public struct KLineDataPoint {",
+          "public class KLinePointWrapper {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-stock-chart-chart-dimensions-model",
+      "selection_rank": 34,
+      "sample_rank": 6,
+      "sample_id": "harmonyos-examples-stock-chart-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "16-StockChart/entry/src/main/cangjie/models/ChartDimensions.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/16-StockChart/entry/src/main/cangjie/models/ChartDimensions.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the AppStorage-backed chart shell, MainAbility avoid-area wiring, and local renderer/viewmodel stack stay inside one same-package closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 StockChart support model for chart dimension calculations used by the renderer stack.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class ChartDimensions {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-stock-chart-chart-draw-params-model",
+      "selection_rank": 35,
+      "sample_rank": 7,
+      "sample_id": "harmonyos-examples-stock-chart-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "16-StockChart/entry/src/main/cangjie/models/ChartDrawParams.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/16-StockChart/entry/src/main/cangjie/models/ChartDrawParams.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the AppStorage-backed chart shell, MainAbility avoid-area wiring, and local renderer/viewmodel stack stay inside one same-package closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 StockChart support model for drawing contexts and render parameters used by the renderer stack.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class KLineRenderContext {",
+          "public class TimeLineRenderContext {",
+          "public struct CandleStickDrawInfo {",
+          "public struct VolumeBarDrawInfo {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-stock-chart-display-number-model",
+      "selection_rank": 36,
+      "sample_rank": 8,
+      "sample_id": "harmonyos-examples-stock-chart-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "16-StockChart/entry/src/main/cangjie/models/DisplayNumberData.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/16-StockChart/entry/src/main/cangjie/models/DisplayNumberData.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the AppStorage-backed chart shell, MainAbility avoid-area wiring, and local renderer/viewmodel stack stay inside one same-package closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 StockChart support model for display-number state consumed by the chart header and axis components.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class DisplayNumberData {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-stock-chart-chart-data-service-model",
+      "selection_rank": 37,
+      "sample_rank": 9,
+      "sample_id": "harmonyos-examples-stock-chart-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "16-StockChart/entry/src/main/cangjie/services/ChartDataService.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/16-StockChart/entry/src/main/cangjie/services/ChartDataService.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the AppStorage-backed chart shell, MainAbility avoid-area wiring, and local renderer/viewmodel stack stay inside one same-package closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 StockChart support service for local resource-backed chart data loading inside the selected closure.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class ChartDataServices {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-stock-chart-kline-view-model",
+      "selection_rank": 38,
+      "sample_rank": 10,
+      "sample_id": "harmonyos-examples-stock-chart-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "16-StockChart/entry/src/main/cangjie/viewmodels/KLineViewModel.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/16-StockChart/entry/src/main/cangjie/viewmodels/KLineViewModel.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the AppStorage-backed chart shell, MainAbility avoid-area wiring, and local renderer/viewmodel stack stay inside one same-package closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 StockChart controller-owned view model for K-line chart state and derived render data.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class KLineViewModel {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-stock-chart-timeline-view-model",
+      "selection_rank": 39,
+      "sample_rank": 11,
+      "sample_id": "harmonyos-examples-stock-chart-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "16-StockChart/entry/src/main/cangjie/viewmodels/TimeLineViewModel.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/16-StockChart/entry/src/main/cangjie/viewmodels/TimeLineViewModel.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the AppStorage-backed chart shell, MainAbility avoid-area wiring, and local renderer/viewmodel stack stay inside one same-package closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 StockChart controller-owned view model for timeline chart state and timer-backed refresh behavior.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class TimeLineViewModel {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-stock-chart-chart-drawing-helper",
+      "selection_rank": 40,
+      "sample_rank": 12,
+      "sample_id": "harmonyos-examples-stock-chart-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "16-StockChart/entry/src/main/cangjie/views/ChartDrawingHelper.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/16-StockChart/entry/src/main/cangjie/views/ChartDrawingHelper.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the AppStorage-backed chart shell, MainAbility avoid-area wiring, and local renderer/viewmodel stack stay inside one same-package closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 StockChart helper for chart drawing geometry shared by the renderer components.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class ChartDrawingHelper {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-stock-chart-content-component",
+      "selection_rank": 41,
+      "sample_rank": 13,
+      "sample_id": "harmonyos-examples-stock-chart-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "16-StockChart/entry/src/main/cangjie/views/Content.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/16-StockChart/entry/src/main/cangjie/views/Content.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the AppStorage-backed chart shell, MainAbility avoid-area wiring, and local renderer/viewmodel stack stay inside one same-package closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 StockChart primary content component for coordinating chart mode selection, local data loading, and renderer composition.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class Content {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-stock-chart-kline-renderer-model",
+      "selection_rank": 42,
+      "sample_rank": 14,
+      "sample_id": "harmonyos-examples-stock-chart-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "16-StockChart/entry/src/main/cangjie/views/KLineRenderer.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/16-StockChart/entry/src/main/cangjie/views/KLineRenderer.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the AppStorage-backed chart shell, MainAbility avoid-area wiring, and local renderer/viewmodel stack stay inside one same-package closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 StockChart helper renderer for K-line drawing logic consumed by the chart components.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class KLineRenderer {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-stock-chart-kline-view-component",
+      "selection_rank": 43,
+      "sample_rank": 15,
+      "sample_id": "harmonyos-examples-stock-chart-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "16-StockChart/entry/src/main/cangjie/views/KLineView.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/16-StockChart/entry/src/main/cangjie/views/KLineView.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the AppStorage-backed chart shell, MainAbility avoid-area wiring, and local renderer/viewmodel stack stay inside one same-package closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 StockChart primary component for rendering the K-line chart view against the local view model.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class KLineView {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-stock-chart-numbers-component",
+      "selection_rank": 44,
+      "sample_rank": 16,
+      "sample_id": "harmonyos-examples-stock-chart-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "16-StockChart/entry/src/main/cangjie/views/Numbers.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/16-StockChart/entry/src/main/cangjie/views/Numbers.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the AppStorage-backed chart shell, MainAbility avoid-area wiring, and local renderer/viewmodel stack stay inside one same-package closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 StockChart primary component for rendering axis and display-number values against the local view model.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "public class Numbers {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-stock-chart-quotes-component",
+      "selection_rank": 45,
+      "sample_rank": 17,
+      "sample_id": "harmonyos-examples-stock-chart-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "16-StockChart/entry/src/main/cangjie/views/Quotes.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/16-StockChart/entry/src/main/cangjie/views/Quotes.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the AppStorage-backed chart shell, MainAbility avoid-area wiring, and local renderer/viewmodel stack stay inside one same-package closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 StockChart primary component for rendering quote summaries against the local chart state.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "public class Quotes {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-stock-chart-style-extensions-helper",
+      "selection_rank": 46,
+      "sample_rank": 18,
+      "sample_id": "harmonyos-examples-stock-chart-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "16-StockChart/entry/src/main/cangjie/views/StyleExtensions.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/16-StockChart/entry/src/main/cangjie/views/StyleExtensions.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the AppStorage-backed chart shell, MainAbility avoid-area wiring, and local renderer/viewmodel stack stay inside one same-package closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 StockChart helper for style and path extension logic shared by the chart renderer stack.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": []
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-stock-chart-timeline-renderer-model",
+      "selection_rank": 47,
+      "sample_rank": 19,
+      "sample_id": "harmonyos-examples-stock-chart-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "16-StockChart/entry/src/main/cangjie/views/TimeLineRenderer.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/16-StockChart/entry/src/main/cangjie/views/TimeLineRenderer.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the AppStorage-backed chart shell, MainAbility avoid-area wiring, and local renderer/viewmodel stack stay inside one same-package closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 StockChart helper renderer for timeline drawing logic consumed by the chart components.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class TimeLineRenderer {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-stock-chart-timeline-view-component",
+      "selection_rank": 48,
+      "sample_rank": 20,
+      "sample_id": "harmonyos-examples-stock-chart-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "16-StockChart/entry/src/main/cangjie/views/TimeLineView.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/16-StockChart/entry/src/main/cangjie/views/TimeLineView.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the AppStorage-backed chart shell, MainAbility avoid-area wiring, and local renderer/viewmodel stack stay inside one same-package closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 StockChart primary component for rendering the timeline chart view against the local view model.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class TimeLineView {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-stock-chart-title-component",
+      "selection_rank": 49,
+      "sample_rank": 21,
+      "sample_id": "harmonyos-examples-stock-chart-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "16-StockChart/entry/src/main/cangjie/views/Title.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/16-StockChart/entry/src/main/cangjie/views/Title.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the AppStorage-backed chart shell, MainAbility avoid-area wiring, and local renderer/viewmodel stack stay inside one same-package closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 StockChart primary component for rendering chart title and header metrics against the local chart state.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class Title {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-waterfall-entry-page",
+      "selection_rank": 50,
+      "sample_rank": 1,
+      "sample_id": "harmonyos-examples-waterfall-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "WaterFall/entry/src/main/cangjie/src/index.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/WaterFall/entry/src/main/cangjie/src/index.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the waterfall host page, event-bus/timer components, and local mock/data-source helpers stay in one same-package closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 WaterFall entry page for event-bus-driven waterfall composition, timer-backed refresh gating, and local mock data.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class IndexView {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-waterfall-cover-card-component",
+      "selection_rank": 51,
+      "sample_rank": 2,
+      "sample_id": "harmonyos-examples-waterfall-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "WaterFall/entry/src/main/cangjie/src/component/card/CoverCard.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/WaterFall/entry/src/main/cangjie/src/component/card/CoverCard.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the waterfall host page, event-bus/timer components, and local mock/data-source helpers stay in one same-package closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 WaterFall primary card component for media card rendering, delayed transitions, and local mock/video state.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class CoverCard {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-waterfall-water-column-component",
+      "selection_rank": 52,
+      "sample_rank": 3,
+      "sample_id": "harmonyos-examples-waterfall-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "WaterFall/entry/src/main/cangjie/src/component/waterfall/WaterColumn.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/WaterFall/entry/src/main/cangjie/src/component/waterfall/WaterColumn.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the waterfall host page, event-bus/timer components, and local mock/data-source helpers stay in one same-package closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 WaterFall primary component for waterfall column orchestration, event-bus coordination, and local timer state.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class WaterColumn {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-waterfall-media-model",
+      "selection_rank": 53,
+      "sample_rank": 4,
+      "sample_id": "harmonyos-examples-waterfall-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "WaterFall/entry/src/main/cangjie/src/entity/media.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/WaterFall/entry/src/main/cangjie/src/entity/media.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the waterfall host page, event-bus/timer components, and local mock/data-source helpers stay in one same-package closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 WaterFall support model for media entity data consumed by the mock layer and card components.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": []
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-waterfall-event-bus-model",
+      "selection_rank": 54,
+      "sample_rank": 5,
+      "sample_id": "harmonyos-examples-waterfall-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "WaterFall/entry/src/main/cangjie/src/event/EventBus.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/WaterFall/entry/src/main/cangjie/src/event/EventBus.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the waterfall host page, event-bus/timer components, and local mock/data-source helpers stay in one same-package closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 WaterFall controller-owned event bus for coordinating waterfall state updates across the entry page and columns.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class EventBus {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-waterfall-mock-data-model",
+      "selection_rank": 55,
+      "sample_rank": 6,
+      "sample_id": "harmonyos-examples-waterfall-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "WaterFall/entry/src/main/cangjie/src/mock/mock.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/WaterFall/entry/src/main/cangjie/src/mock/mock.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the waterfall host page, event-bus/timer components, and local mock/data-source helpers stay in one same-package closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 WaterFall support model for locally generated image/video mock data consumed by the waterfall components.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class ImageData {",
+          "public class VideoData {",
+          "public class MockData {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p21-waterfall-data-source-model",
+      "selection_rank": 56,
+      "sample_rank": 7,
+      "sample_id": "harmonyos-examples-waterfall-entry-view",
+      "priority": "P21",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "WaterFall/entry/src/main/cangjie/src/utils/DataSource.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p21/HarmonyOS-Examples/WaterFall/entry/src/main/cangjie/src/utils/DataSource.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the waterfall host page, event-bus/timer components, and local mock/data-source helpers stay in one same-package closure without network, socket, or hybrid-host dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P21 WaterFall controller-owned data-source helper for list/waterflow observer updates inside the selected closure.",
+      "notes": [
+        "Generated from the scout-selected P21 freeze set.",
+        "Keep the same-package closure source-backed for the P21 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class MyDataSource<T> <: IDataSource<T> {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    }
+  ]
+}

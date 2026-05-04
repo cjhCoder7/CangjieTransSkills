@@ -1,0 +1,16 @@
+[package]
+  cjc-version = "1.1.0"
+  name = "telegram_ui_vertical_slice_001"
+  organization = ""
+  description = "repo-local telegram ui bounded slice"
+  version = "1.0.0"
+  target-dir = ""
+  script-dir = ""
+  output-type = "executable"
+  compile-option = ""
+  override-compile-option = ""
+  link-option = ""
+  package-configuration = {}
+
+[dependencies]
+  phase07_shared_service_refresh_harness = { path = "../phase07-shared-service-refresh-harness" }

@@ -1,0 +1,194 @@
+{
+  "manifest_name": "phase06-ui-p4-draft-file-manifest",
+  "manifest_version": 1,
+  "created_at": "2026-04-11T11:02:22Z",
+  "phase": "Phase 06 UI Source Slicing / File-Level Workset",
+  "status": "draft-ready",
+  "source_corpus_manifest": "phase06_ui_source_corpus_p4_draft.json",
+  "source_manifest": "phase06_ui_sample_manifest_p4_draft.json",
+  "few_shot_pack": "phase06_ui_few_shot_pack.json",
+  "intended_consumer": [
+    "human-review",
+    "future-phase06-prompt-pilot",
+    "future-phase06-batch-curator"
+  ],
+  "notes": [
+    "Expands the selected frozen source corpus into file-level slices with explicit ui_prompt_tags.",
+    "This manifest is not consumed directly by scripts/pipeline_batch_runner.py; it is a file-level workset for prompt pilots, explicit tag injection, and later batch curation.",
+    "Tag refinement is allowed at file level when a multi-file sample contains both page-shell and rich-component files."
+  ],
+  "selection_policy": {
+    "priority": "P4",
+    "adoption_decision": "primary",
+    "source_type": "external_repo",
+    "expansion_rule": "expand repo_local_paths into file-level slices and refine per-file target_role/ui_prompt_tags"
+  },
+  "summary": {
+    "sample_count": 3,
+    "slice_count": 3,
+    "role_counts": {
+      "page": 3
+    },
+    "structure_counts": {
+      "page-shell": 3
+    }
+  },
+  "entries": [
+    {
+      "slice_id": "phase06-ui-p4-aiatom-prototype-page",
+      "selection_rank": 1,
+      "sample_rank": 1,
+      "sample_id": "cangjiechallenge-aiatom-prototype-page",
+      "priority": "P4",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "bb40b887dcf53d1a8b72884ad862fdf9",
+      "source_path": "cangjieApp/entry/src/main/cangjie/pages/PrototypePage.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p4-draft/bb40b887dcf53d1a8b72884ad862fdf9/cangjieApp/entry/src/main/cangjie/pages/PrototypePage.cj",
+      "source": {
+        "url": "https://gitcode.com/cangjiechallenge/bb40b887dcf53d1a8b72884ad862fdf9",
+        "branch": "master",
+        "commit": "c99988534078e0c0409ffb20d298b79853f013ed",
+        "access_date": "2026-04-11",
+        "purpose": "P4 draft candidate harvested from the already approved aiatom pinned repo after current regular supply exhaustion."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Draft P4 practice page slice for mode switching, input validation, and page-owned canvas host state without promoting web-bridge internals into the page contract.",
+      "notes": [
+        "Keep HanziWriterCanvas as a source-backed dependency instead of absorbing bridge details into the page shell.",
+        "Treat mode toggle, status messaging, and character input as the page-owned state boundary."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class PrototypePage {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p4-secmeet-meeting-list-page",
+      "selection_rank": 2,
+      "sample_rank": 1,
+      "sample_id": "cangjiechallenge-secmeet-meeting-list-page",
+      "priority": "P4",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "d45e5bcde569dadcaf4fcc0524ac8f38",
+      "source_path": "entry/src/main/cangjie/meeting_list_page.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p4-draft/d45e5bcde569dadcaf4fcc0524ac8f38/entry/src/main/cangjie/meeting_list_page.cj",
+      "source": {
+        "url": "https://gitcode.com/cangjiechallenge/d45e5bcde569dadcaf4fcc0524ac8f38",
+        "branch": "master",
+        "commit": "c18f350c6aecbeadd9b9115b739e3f3a0fa73212",
+        "access_date": "2026-04-11",
+        "purpose": "P4 draft candidate harvested from the already approved secmeet pinned repo after current regular supply exhaustion."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Draft P4 list page slice for stats cards, filter/search state, and detail-page routing from a single controller-owned page shell.",
+      "notes": [
+        "Preserve the source-backed render helpers and list filtering flow without inventing ArkUI-only facades.",
+        "Treat list refresh, search keyword, and route handoff as page-shell state rather than service-owned behavior."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class MeetingListPageState {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p4-secmeet-audit-log-page",
+      "selection_rank": 3,
+      "sample_rank": 1,
+      "sample_id": "cangjiechallenge-secmeet-audit-log-page",
+      "priority": "P4",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "d45e5bcde569dadcaf4fcc0524ac8f38",
+      "source_path": "entry/src/main/cangjie/audit_log_page.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p4-draft/d45e5bcde569dadcaf4fcc0524ac8f38/entry/src/main/cangjie/audit_log_page.cj",
+      "source": {
+        "url": "https://gitcode.com/cangjiechallenge/d45e5bcde569dadcaf4fcc0524ac8f38",
+        "branch": "master",
+        "commit": "c18f350c6aecbeadd9b9115b739e3f3a0fa73212",
+        "access_date": "2026-04-11",
+        "purpose": "P4 draft candidate harvested from the already approved secmeet pinned repo after current regular supply exhaustion."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Draft P4 audit-log page slice for analytics counters, filter state, and log-list rendering without leaking security-service internals into the public UI boundary.",
+      "notes": [
+        "Keep alert/log rendering semantics source-backed through the existing audit state object and render helpers.",
+        "Treat statistics refresh and filter state as page-owned orchestration instead of fabricating provider layers."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class AuditLogPageState {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    }
+  ]
+}

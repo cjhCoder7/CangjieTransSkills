@@ -1,0 +1,9 @@
+{
+  "src": [
+    "pages/ThemeSettingsPage"
+  ],
+  "window": {
+    "designWidth": 720,
+    "autoDesignWidth": false
+  }
+}

@@ -1,0 +1,677 @@
+{
+  "manifest_name": "phase06-ui-p0-file-manifest",
+  "manifest_version": 1,
+  "created_at": "2026-04-08T12:27:51.855957Z",
+  "phase": "Phase 06 UI Source Slicing / File-Level Workset",
+  "status": "draft-ready",
+  "source_corpus_manifest": "phase06_ui_source_corpus_p0.json",
+  "source_manifest": "phase06_ui_sample_manifest.json",
+  "few_shot_pack": "phase06_ui_few_shot_pack.json",
+  "intended_consumer": [
+    "human-review",
+    "future-phase06-prompt-pilot",
+    "future-phase06-batch-curator"
+  ],
+  "notes": [
+    "Expands the frozen P0 source corpus into file-level slices with explicit ui_prompt_tags.",
+    "This manifest is not consumed directly by scripts/pipeline_batch_runner.py; it is a file-level workset for prompt pilots, explicit tag injection, and later batch curation.",
+    "Tag refinement is allowed at file level when a multi-file sample contains both page-shell and rich-component files."
+  ],
+  "selection_policy": {
+    "priority": "P0",
+    "adoption_decision": "primary",
+    "source_type": "external_repo",
+    "expansion_rule": "expand repo_local_paths into file-level slices and refine per-file target_role/ui_prompt_tags"
+  },
+  "summary": {
+    "sample_count": 6,
+    "slice_count": 12,
+    "role_counts": {
+      "page": 6,
+      "component": 5,
+      "viewmodel": 1
+    },
+    "structure_counts": {
+      "page-shell": 6,
+      "rich-component": 6
+    }
+  },
+  "entries": [
+    {
+      "slice_id": "phase06-ui-p0-badgeview-page",
+      "selection_rank": 1,
+      "sample_rank": 1,
+      "sample_id": "harmonyos-examples-commonui-badgeview",
+      "priority": "P0",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "CommonUI/entry/src/main/cangjie/src/pages/badgeSample.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p0/HarmonyOS-Examples/CommonUI/entry/src/main/cangjie/src/pages/badgeSample.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-06",
+        "purpose": "Primary Phase 06 page/list/link-state baseline."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Direct page-shell seed for @State/@Link propagation, nested badge components, and grid/list composition.",
+      "notes": [
+        "Single entry file that already contains nested child components.",
+        "Treat as a direct page-shell pilot instead of splitting child badges into standalone slices."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class NumberBadge {",
+          "class TextBadge {",
+          "class BadgeView {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-ui-routing-page-shell-view-model-renderer",
+        "harmonyos-examples-badgeview-page-shell-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p0-ledger-entry-page",
+      "selection_rank": 2,
+      "sample_rank": 1,
+      "sample_id": "harmonyos-examples-ledger-page-shell",
+      "priority": "P0",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "15-Ledger/entry/src/main/cangjie/index.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p0/HarmonyOS-Examples/15-Ledger/entry/src/main/cangjie/index.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-06",
+        "purpose": "Primary Phase 06 page decomposition baseline."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Primary page-shell orchestration slice for builder-layered ledger dashboard composition.",
+      "notes": [
+        "Keep page-shell responsibilities here; supporting components are sliced separately."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "public class EntryView  {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-ui-routing-page-shell-view-model-renderer",
+        "harmonyos-examples-badgeview-page-shell-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p0-ledger-top-bar-component",
+      "selection_rank": 3,
+      "sample_rank": 2,
+      "sample_id": "harmonyos-examples-ledger-page-shell",
+      "priority": "P0",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "15-Ledger/entry/src/main/cangjie/ui/top_bar.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p0/HarmonyOS-Examples/15-Ledger/entry/src/main/cangjie/ui/top_bar.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-06",
+        "purpose": "Primary Phase 06 page decomposition baseline."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Reusable header/title component extracted from a page-shell sample.",
+      "notes": [
+        "Refines the sample-level page-shell tag into a file-level rich-component slice."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class TopBar {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p0-ledger-details-list-component",
+      "selection_rank": 4,
+      "sample_rank": 3,
+      "sample_id": "harmonyos-examples-ledger-page-shell",
+      "priority": "P0",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "15-Ledger/entry/src/main/cangjie/ui/details_list.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p0/HarmonyOS-Examples/15-Ledger/entry/src/main/cangjie/ui/details_list.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-06",
+        "purpose": "Primary Phase 06 page decomposition baseline."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Reusable list/detail component slice from the ledger page decomposition sample.",
+      "notes": [
+        "Refines the sample-level page-shell tag into a file-level rich-component slice."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class DetailsList {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p0-modal-window-page",
+      "selection_rank": 5,
+      "sample_rank": 1,
+      "sample_id": "harmonyos-cangjie-cases-modalwindow",
+      "priority": "P0",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Cangjie-Cases",
+      "source_path": "CangjieAppDevelopment/feature/modalwindow/src/main/cangjie/src/ModalWindowView.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p0/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/modalwindow/src/main/cangjie/src/ModalWindowView.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Cangjie-Cases",
+        "branch": "main",
+        "commit": "2d0662bb5c97a15d6bc459688df6c9b23275f12f",
+        "access_date": "2026-04-06",
+        "purpose": "Primary modal, @Builder, and mixed-pattern baseline."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [
+        "mixed-app-pattern"
+      ],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": [
+          "mixed-app-pattern"
+        ]
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Entry page slice for modal presentation, builder layering, and page-owned visibility state.",
+      "notes": [
+        "Mixed-app pattern stays tagged at file level because builder/modal behavior lives in this page file."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "public class ModalWindowView {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-ui-routing-page-shell-view-model-renderer",
+        "harmonyos-cangjie-cases-modalwindow-page-shell-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p0-custom-tab-bar-page",
+      "selection_rank": 6,
+      "sample_rank": 1,
+      "sample_id": "harmonyos-cangjie-cases-customtabbar",
+      "priority": "P0",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Cangjie-Cases",
+      "source_path": "CangjieAppDevelopment/feature/customtabbar/src/main/cangjie/src/view/CustomTabBarPage.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p0/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/customtabbar/src/main/cangjie/src/view/CustomTabBarPage.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Cangjie-Cases",
+        "branch": "main",
+        "commit": "2d0662bb5c97a15d6bc459688df6c9b23275f12f",
+        "access_date": "2026-04-06",
+        "purpose": "Primary TabBar and controller-owned UI state baseline."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [
+        "mixed-app-pattern"
+      ],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": [
+          "mixed-app-pattern"
+        ]
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Entry page slice for controller-owned tab state, @Provide/@Link propagation, and custom tab/page boundaries.",
+      "notes": [
+        "Nested supporting components stay inline in the same file; keep the page/controller boundary as the primary contract."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "public class CustomTabBarPage {",
+          "class CustomTabBar {",
+          "class TabItem {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p0-markdown-heading-component",
+      "selection_rank": 7,
+      "sample_rank": 1,
+      "sample_id": "markdown4cj-rich-component",
+      "priority": "P0",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "markdown4cj",
+      "source_path": "markdown/src/main/cangjie/src/components/markdown_heading_component.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p0/markdown4cj/markdown/src/main/cangjie/src/components/markdown_heading_component.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie-TPC/markdown4cj",
+        "branch": "develop",
+        "commit": "f43cfb3ae1cd3092d9a8a94332c64815fc4572f9",
+        "access_date": "2026-04-06",
+        "purpose": "Primary rich-component baseline."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Primary rich-component slice for heading rendering, configuration-driven layout, and component-local display state.",
+      "notes": [
+        "Keep parsing/config truth outside the component boundary."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "class MarkdownHeadingComponent {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p0-markdown-table-block-component",
+      "selection_rank": 8,
+      "sample_rank": 2,
+      "sample_id": "markdown4cj-rich-component",
+      "priority": "P0",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "markdown4cj",
+      "source_path": "markdown/src/main/cangjie/src/components/markdown_table_block_component.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p0/markdown4cj/markdown/src/main/cangjie/src/components/markdown_table_block_component.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie-TPC/markdown4cj",
+        "branch": "develop",
+        "commit": "f43cfb3ae1cd3092d9a8a94332c64815fc4572f9",
+        "access_date": "2026-04-06",
+        "purpose": "Primary rich-component baseline."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Primary rich-component slice for table rendering and refreshable component state.",
+      "notes": [
+        "Pairs with markdown heading component as the second rich-component anchor from markdown4cj."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class MarkdownTableBlockComponent {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p0-markdown-index-page",
+      "selection_rank": 9,
+      "sample_rank": 3,
+      "sample_id": "markdown4cj-rich-component",
+      "priority": "P0",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "markdown4cj",
+      "source_path": "entry/src/main/cangjie/src/index_page.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p0/markdown4cj/entry/src/main/cangjie/src/index_page.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie-TPC/markdown4cj",
+        "branch": "develop",
+        "commit": "f43cfb3ae1cd3092d9a8a94332c64815fc4572f9",
+        "access_date": "2026-04-06",
+        "purpose": "Primary rich-component baseline."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Host page slice for markdown component composition without absorbing parser/config ownership into the page contract.",
+      "notes": [
+        "Refines the sample-level rich-component seed into a page-shell host slice."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class IndexPage {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p0-photo-view-component",
+      "selection_rank": 10,
+      "sample_rank": 1,
+      "sample_id": "photoview4cj-gesture-component",
+      "priority": "P0",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "photoview4cj",
+      "source_path": "photoView/src/main/cangjie/photo_view.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p0/photoview4cj/photoView/src/main/cangjie/photo_view.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie-TPC/photoview4cj",
+        "branch": "develop",
+        "commit": "5da6027ebefb59aa146a1486402219a02ae69175",
+        "access_date": "2026-04-06",
+        "purpose": "Primary gesture component baseline."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [
+        "gesture-component"
+      ],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [
+          "gesture-component"
+        ],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Primary gesture component slice for transform state, zoom control, and callback-driven view updates.",
+      "notes": [
+        "This is the direct component anchor for gesture-heavy Phase06 targets."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class PhotoView {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "photoview4cj-gesture-rich-component-controller-owned-state",
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p0-photo-view-model",
+      "selection_rank": 11,
+      "sample_rank": 2,
+      "sample_id": "photoview4cj-gesture-component",
+      "priority": "P0",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "photoview4cj",
+      "source_path": "photoView/src/main/cangjie/photo_view_model.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p0/photoview4cj/photoView/src/main/cangjie/photo_view_model.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie-TPC/photoview4cj",
+        "branch": "develop",
+        "commit": "5da6027ebefb59aa146a1486402219a02ae69175",
+        "access_date": "2026-04-06",
+        "purpose": "Primary gesture component baseline."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [
+        "gesture-component"
+      ],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [
+          "gesture-component"
+        ],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Supporting model slice for transform state ownership, image source wiring, and gesture-facing controller state.",
+      "notes": [
+        "Not a direct UI component; keep it as a supporting model slice attached to the gesture-component lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class PhotoViewModel {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "photoview4cj-gesture-rich-component-controller-owned-state",
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p0-photoview-simple-sample-page",
+      "selection_rank": 12,
+      "sample_rank": 3,
+      "sample_id": "photoview4cj-gesture-component",
+      "priority": "P0",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "photoview4cj",
+      "source_path": "entry/src/main/cangjie/simple_sample.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p0/photoview4cj/entry/src/main/cangjie/simple_sample.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie-TPC/photoview4cj",
+        "branch": "develop",
+        "commit": "5da6027ebefb59aa146a1486402219a02ae69175",
+        "access_date": "2026-04-06",
+        "purpose": "Primary gesture component baseline."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [
+        "gesture-component"
+      ],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [
+          "gesture-component"
+        ],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Gesture demo page slice wiring PhotoViewModel, listener callbacks, and page-owned hosting state.",
+      "notes": [
+        "Refines the sample-level gesture component seed into a page-shell host slice."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class SimpleSample {",
+          "class MyOnPhotoTapListener <: OnPhotoTapListener {",
+          "class MyOnMatrixChangedListener <: OnMatrixChangedListener {",
+          "class CustomDialogExample2 {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    }
+  ]
+}

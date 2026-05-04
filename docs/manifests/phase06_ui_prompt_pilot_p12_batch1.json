@@ -1,0 +1,312 @@
+{
+  "manifest_name": "phase06_ui_prompt_pilot_p12_batch1",
+  "manifest_version": 1,
+  "created_at": "2026-04-12T03:36:46Z",
+  "phase": "phase06",
+  "status": "active",
+  "source_manifest": "docs/manifests/phase06_ui_p12_file_manifest.json",
+  "intended_consumer": "Phase06 prompt-pilot curator and prompt-dump runner",
+  "selection_policy": {
+    "batch_id": "phase06-ui-prompt-pilot-p12-batch1",
+    "selection_mode": "residual-workset-after-excluding-consumed-slices",
+    "track_profile": "p0-batch1",
+    "required_tracks": [],
+    "artifact_root": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1",
+    "architecture_skill_path": "docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md",
+    "notes": [
+      "Residual mode keeps every remaining slice after excluding an already-consumed pilot workset; it does not require full five-lane symmetry.",
+      "Each selected slice carries repo-local pipeline paths so prompt dumps can be regenerated without hand assembly.",
+      "Explicit ui_prompt_tags injection is still required for the final pilot prompt dump."
+    ],
+    "excluded_slice_ids": []
+  },
+  "summary": {
+    "pilot_count": 4,
+    "source_sample_count": 3,
+    "role_counts": {
+      "page": 3,
+      "component": 1
+    },
+    "track_counts": {
+      "residual-page-shell-view-model-renderer-page": 2,
+      "residual-page-shell-controller-owned-state-page": 1,
+      "residual-rich-component-controller-owned-state-component": 1
+    },
+    "coverage": {
+      "structure_tags": [
+        "page-shell",
+        "rich-component"
+      ],
+      "ownership_tags": [
+        "controller-owned-state",
+        "view-model-renderer"
+      ],
+      "interaction_tags": []
+    },
+    "selected_slice_ids": [
+      "phase06-ui-p12-silkui-calendar-page",
+      "phase06-ui-p12-deepseek-about-view-page",
+      "phase06-ui-p12-chargingui-entry-page",
+      "phase06-ui-p12-chargingui-electric-quantity-component"
+    ],
+    "excluded_slice_count": 0
+  },
+  "entries": [
+    {
+      "pilot_id": "phase06-ui-pilot-p12-batch1-phase06-ui-p12-silkui-calendar-page",
+      "pilot_order": 1,
+      "track_id": "residual-page-shell-view-model-renderer-page",
+      "slice_id": "phase06-ui-p12-silkui-calendar-page",
+      "sample_id": "harmonyos-examples-silkui-calendar-page",
+      "repo_name": "HarmonyOS-Examples",
+      "repo_local_path": "raw_docs/phase06-ui-p12/HarmonyOS-Examples/Silkui/entry/src/main/cangjie/src/pages/calendar.cj",
+      "source_path": "Silkui/entry/src/main/cangjie/src/pages/calendar.cj",
+      "priority": "P12",
+      "selection_rank": 1,
+      "sample_rank": 1,
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "usage_goal": "P12 Silkui calendar route page slice for button-driven Router.push handoff inside one lightweight render-facing page shell.",
+      "selection_reason": "Residual next-stage slice left after excluding already-curated prompt-pilot worksets.",
+      "pilot_goal": "Carry remaining Phase06 lane variance into the next prompt-pilot batch without hand-assembling repo-local pipeline paths.",
+      "recommended_few_shot_entry_ids": [
+        "local-ui-routing-page-shell-view-model-renderer",
+        "harmonyos-examples-badgeview-page-shell-view-model-renderer"
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class CalendarPage {"
+        ]
+      },
+      "notes": [
+        "Keep the three Router.push targets and stacked button layout source-backed inside the page boundary.",
+        "Treat this file as a direct route menu shell instead of inventing separate navigation coordinators or helper wrappers."
+      ],
+      "src_root": "raw_docs/phase06-ui-p12/HarmonyOS-Examples/Silkui/entry/src/main/cangjie/src",
+      "target_file": "pages/calendar.cj",
+      "artifact_root": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-silkui-calendar-page",
+      "pipeline_run_root": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-silkui-calendar-page/pipeline_run",
+      "db_path": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-silkui-calendar-page/pipeline_run/repo_index.sqlite",
+      "repo_map_path": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-silkui-calendar-page/pipeline_run/repo_map.txt",
+      "base_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-silkui-calendar-page/pipeline_run/target.tu.json",
+      "explicit_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-silkui-calendar-page/target.explicit_ui_tags.tu.json",
+      "orchestration_output_path": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-silkui-calendar-page/pipeline_run/target.orchestration.json",
+      "pipeline_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-silkui-calendar-page/pipeline_run/summary.json",
+      "failure_path": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-silkui-calendar-page/pipeline_run/failure.json",
+      "pipeline_log_path": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-silkui-calendar-page/pipeline.log",
+      "base_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-silkui-calendar-page/prompt_dump.txt",
+      "explicit_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-silkui-calendar-page/prompt_dump.explicit_ui_tags.txt",
+      "prompt_dump_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-silkui-calendar-page/pilot-summary.json",
+      "snapshot_label": "phase06-ui-p12-batch1-phase06-ui-p12-silkui-calendar-page",
+      "expected_prompt_signal": "resolution_source=explicit-target-ui-tags",
+      "pipeline_command": "python3 scripts/pipeline_runner.py --src-root raw_docs/phase06-ui-p12/HarmonyOS-Examples/Silkui/entry/src/main/cangjie/src --target-file pages/calendar.cj --run-root artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-silkui-calendar-page/pipeline_run --db-path artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-silkui-calendar-page/pipeline_run/repo_index.sqlite --repo-map-path artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-silkui-calendar-page/pipeline_run/repo_map.txt --tu-json-path artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-silkui-calendar-page/pipeline_run/target.tu.json --orchestration-output-path artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-silkui-calendar-page/pipeline_run/target.orchestration.json --summary-path artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-silkui-calendar-page/pipeline_run/summary.json --failure-path artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-silkui-calendar-page/pipeline_run/failure.json --prompt-dump-path artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-silkui-calendar-page/prompt_dump.txt --architecture-skill docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md --snapshot-label phase06-ui-p12-batch1-phase06-ui-p12-silkui-calendar-page --dump-prompt-only --extensions .cj --pattern-limit 0"
+    },
+    {
+      "pilot_id": "phase06-ui-pilot-p12-batch1-phase06-ui-p12-deepseek-about-view-page",
+      "pilot_order": 2,
+      "track_id": "residual-page-shell-view-model-renderer-page",
+      "slice_id": "phase06-ui-p12-deepseek-about-view-page",
+      "sample_id": "harmonyos-examples-deepseek-about-view-page",
+      "repo_name": "HarmonyOS-Examples",
+      "repo_local_path": "raw_docs/phase06-ui-p12/HarmonyOS-Examples/07-DeepSeek/entry/src/main/cangjie/src/pages/about_view.cj",
+      "source_path": "07-DeepSeek/entry/src/main/cangjie/src/pages/about_view.cj",
+      "priority": "P12",
+      "selection_rank": 2,
+      "sample_rank": 1,
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "usage_goal": "P12 DeepSeek about page slice for Router param hydration, back navigation, and embedded Web rendering inside one render-facing page shell.",
+      "selection_reason": "Residual next-stage slice left after excluding already-curated prompt-pilot worksets.",
+      "pilot_goal": "Carry remaining Phase06 lane variance into the next prompt-pilot batch without hand-assembling repo-local pipeline paths.",
+      "recommended_few_shot_entry_ids": [
+        "local-ui-routing-page-shell-view-model-renderer",
+        "harmonyos-examples-badgeview-page-shell-view-model-renderer"
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class aboutView {"
+        ]
+      },
+      "notes": [
+        "Keep Router.getParamsObject title/src hydration, Router.back wiring, and resource-backed icons source-backed inside the page boundary.",
+        "Treat the header row plus Web content region as one direct render-facing page-shell contract."
+      ],
+      "src_root": "raw_docs/phase06-ui-p12/HarmonyOS-Examples/07-DeepSeek/entry/src/main/cangjie/src",
+      "target_file": "pages/about_view.cj",
+      "artifact_root": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-deepseek-about-view-page",
+      "pipeline_run_root": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-deepseek-about-view-page/pipeline_run",
+      "db_path": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-deepseek-about-view-page/pipeline_run/repo_index.sqlite",
+      "repo_map_path": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-deepseek-about-view-page/pipeline_run/repo_map.txt",
+      "base_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-deepseek-about-view-page/pipeline_run/target.tu.json",
+      "explicit_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-deepseek-about-view-page/target.explicit_ui_tags.tu.json",
+      "orchestration_output_path": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-deepseek-about-view-page/pipeline_run/target.orchestration.json",
+      "pipeline_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-deepseek-about-view-page/pipeline_run/summary.json",
+      "failure_path": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-deepseek-about-view-page/pipeline_run/failure.json",
+      "pipeline_log_path": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-deepseek-about-view-page/pipeline.log",
+      "base_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-deepseek-about-view-page/prompt_dump.txt",
+      "explicit_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-deepseek-about-view-page/prompt_dump.explicit_ui_tags.txt",
+      "prompt_dump_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-deepseek-about-view-page/pilot-summary.json",
+      "snapshot_label": "phase06-ui-p12-batch1-phase06-ui-p12-deepseek-about-view-page",
+      "expected_prompt_signal": "resolution_source=explicit-target-ui-tags",
+      "pipeline_command": "python3 scripts/pipeline_runner.py --src-root raw_docs/phase06-ui-p12/HarmonyOS-Examples/07-DeepSeek/entry/src/main/cangjie/src --target-file pages/about_view.cj --run-root artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-deepseek-about-view-page/pipeline_run --db-path artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-deepseek-about-view-page/pipeline_run/repo_index.sqlite --repo-map-path artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-deepseek-about-view-page/pipeline_run/repo_map.txt --tu-json-path artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-deepseek-about-view-page/pipeline_run/target.tu.json --orchestration-output-path artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-deepseek-about-view-page/pipeline_run/target.orchestration.json --summary-path artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-deepseek-about-view-page/pipeline_run/summary.json --failure-path artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-deepseek-about-view-page/pipeline_run/failure.json --prompt-dump-path artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-deepseek-about-view-page/prompt_dump.txt --architecture-skill docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md --snapshot-label phase06-ui-p12-batch1-phase06-ui-p12-deepseek-about-view-page --dump-prompt-only --extensions .cj --pattern-limit 0"
+    },
+    {
+      "pilot_id": "phase06-ui-pilot-p12-batch1-phase06-ui-p12-chargingui-entry-page",
+      "pilot_order": 3,
+      "track_id": "residual-page-shell-controller-owned-state-page",
+      "slice_id": "phase06-ui-p12-chargingui-entry-page",
+      "sample_id": "harmonyos-examples-chargingui-battery-shell",
+      "repo_name": "HarmonyOS-Examples",
+      "repo_local_path": "raw_docs/phase06-ui-p12/HarmonyOS-Examples/ChargingUI/entry/src/main/cangjie/src/index.cj",
+      "source_path": "ChargingUI/entry/src/main/cangjie/src/index.cj",
+      "priority": "P12",
+      "selection_rank": 3,
+      "sample_rank": 1,
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "usage_goal": "P12 charging host page slice for page-owned battery percentage, charging toggle state, and slider-driven component handoff inside one controller-owned page shell.",
+      "selection_reason": "Residual next-stage slice left after excluding already-curated prompt-pilot worksets.",
+      "pilot_goal": "Carry remaining Phase06 lane variance into the next prompt-pilot batch without hand-assembling repo-local pipeline paths.",
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class EntryView {"
+        ]
+      },
+      "notes": [
+        "Keep power/isCharging state plus Slider and Toggle wiring source-backed in the page host.",
+        "Treat ElectricQuantity as an explicitly frozen companion slice rather than collapsing the sample into a fake single-file page."
+      ],
+      "src_root": "raw_docs/phase06-ui-p12/HarmonyOS-Examples/ChargingUI/entry/src/main/cangjie/src",
+      "target_file": "index.cj",
+      "artifact_root": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-chargingui-entry-page",
+      "pipeline_run_root": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-chargingui-entry-page/pipeline_run",
+      "db_path": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-chargingui-entry-page/pipeline_run/repo_index.sqlite",
+      "repo_map_path": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-chargingui-entry-page/pipeline_run/repo_map.txt",
+      "base_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-chargingui-entry-page/pipeline_run/target.tu.json",
+      "explicit_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-chargingui-entry-page/target.explicit_ui_tags.tu.json",
+      "orchestration_output_path": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-chargingui-entry-page/pipeline_run/target.orchestration.json",
+      "pipeline_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-chargingui-entry-page/pipeline_run/summary.json",
+      "failure_path": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-chargingui-entry-page/pipeline_run/failure.json",
+      "pipeline_log_path": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-chargingui-entry-page/pipeline.log",
+      "base_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-chargingui-entry-page/prompt_dump.txt",
+      "explicit_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-chargingui-entry-page/prompt_dump.explicit_ui_tags.txt",
+      "prompt_dump_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-chargingui-entry-page/pilot-summary.json",
+      "snapshot_label": "phase06-ui-p12-batch1-phase06-ui-p12-chargingui-entry-page",
+      "expected_prompt_signal": "resolution_source=explicit-target-ui-tags",
+      "pipeline_command": "python3 scripts/pipeline_runner.py --src-root raw_docs/phase06-ui-p12/HarmonyOS-Examples/ChargingUI/entry/src/main/cangjie/src --target-file index.cj --run-root artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-chargingui-entry-page/pipeline_run --db-path artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-chargingui-entry-page/pipeline_run/repo_index.sqlite --repo-map-path artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-chargingui-entry-page/pipeline_run/repo_map.txt --tu-json-path artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-chargingui-entry-page/pipeline_run/target.tu.json --orchestration-output-path artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-chargingui-entry-page/pipeline_run/target.orchestration.json --summary-path artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-chargingui-entry-page/pipeline_run/summary.json --failure-path artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-chargingui-entry-page/pipeline_run/failure.json --prompt-dump-path artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-chargingui-entry-page/prompt_dump.txt --architecture-skill docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md --snapshot-label phase06-ui-p12-batch1-phase06-ui-p12-chargingui-entry-page --dump-prompt-only --extensions .cj --pattern-limit 0"
+    },
+    {
+      "pilot_id": "phase06-ui-pilot-p12-batch1-phase06-ui-p12-chargingui-electric-quantity-component",
+      "pilot_order": 4,
+      "track_id": "residual-rich-component-controller-owned-state-component",
+      "slice_id": "phase06-ui-p12-chargingui-electric-quantity-component",
+      "sample_id": "harmonyos-examples-chargingui-battery-shell",
+      "repo_name": "HarmonyOS-Examples",
+      "repo_local_path": "raw_docs/phase06-ui-p12/HarmonyOS-Examples/ChargingUI/entry/src/main/cangjie/src/electric_quantity.cj",
+      "source_path": "ChargingUI/entry/src/main/cangjie/src/electric_quantity.cj",
+      "priority": "P12",
+      "selection_rank": 4,
+      "sample_rank": 2,
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "usage_goal": "P12 battery indicator component slice for canvas-backed fill rendering, bubble animation, and charging-state visual logic inside one rich-component boundary.",
+      "selection_reason": "Residual next-stage slice left after excluding already-curated prompt-pilot worksets.",
+      "pilot_goal": "Carry remaining Phase06 lane variance into the next prompt-pilot batch without hand-assembling repo-local pipeline paths.",
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class ElectricQuantity {",
+          "private class Bubble {"
+        ]
+      },
+      "notes": [
+        "Keep CanvasRenderingContext2D ownership, bubble animation loop, and gradient fill logic source-backed inside the component boundary.",
+        "Refines the sample-level page-shell tag into an explicit rich-component slice instead of hiding the helper behind same-package pressure."
+      ],
+      "src_root": "raw_docs/phase06-ui-p12/HarmonyOS-Examples/ChargingUI/entry/src/main/cangjie/src",
+      "target_file": "electric_quantity.cj",
+      "artifact_root": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-chargingui-electric-quantity-component",
+      "pipeline_run_root": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-chargingui-electric-quantity-component/pipeline_run",
+      "db_path": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-chargingui-electric-quantity-component/pipeline_run/repo_index.sqlite",
+      "repo_map_path": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-chargingui-electric-quantity-component/pipeline_run/repo_map.txt",
+      "base_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-chargingui-electric-quantity-component/pipeline_run/target.tu.json",
+      "explicit_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-chargingui-electric-quantity-component/target.explicit_ui_tags.tu.json",
+      "orchestration_output_path": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-chargingui-electric-quantity-component/pipeline_run/target.orchestration.json",
+      "pipeline_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-chargingui-electric-quantity-component/pipeline_run/summary.json",
+      "failure_path": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-chargingui-electric-quantity-component/pipeline_run/failure.json",
+      "pipeline_log_path": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-chargingui-electric-quantity-component/pipeline.log",
+      "base_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-chargingui-electric-quantity-component/prompt_dump.txt",
+      "explicit_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-chargingui-electric-quantity-component/prompt_dump.explicit_ui_tags.txt",
+      "prompt_dump_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-chargingui-electric-quantity-component/pilot-summary.json",
+      "snapshot_label": "phase06-ui-p12-batch1-phase06-ui-p12-chargingui-electric-quantity-component",
+      "expected_prompt_signal": "resolution_source=explicit-target-ui-tags",
+      "pipeline_command": "python3 scripts/pipeline_runner.py --src-root raw_docs/phase06-ui-p12/HarmonyOS-Examples/ChargingUI/entry/src/main/cangjie/src --target-file electric_quantity.cj --run-root artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-chargingui-electric-quantity-component/pipeline_run --db-path artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-chargingui-electric-quantity-component/pipeline_run/repo_index.sqlite --repo-map-path artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-chargingui-electric-quantity-component/pipeline_run/repo_map.txt --tu-json-path artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-chargingui-electric-quantity-component/pipeline_run/target.tu.json --orchestration-output-path artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-chargingui-electric-quantity-component/pipeline_run/target.orchestration.json --summary-path artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-chargingui-electric-quantity-component/pipeline_run/summary.json --failure-path artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-chargingui-electric-quantity-component/pipeline_run/failure.json --prompt-dump-path artifacts/ui_pilots/20260412-phase06-ui-p12-pilot-batch1/phase06-ui-p12-chargingui-electric-quantity-component/prompt_dump.txt --architecture-skill docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md --snapshot-label phase06-ui-p12-batch1-phase06-ui-p12-chargingui-electric-quantity-component --dump-prompt-only --extensions .cj --pattern-limit 0"
+    }
+  ]
+}

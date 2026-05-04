@@ -1,0 +1,309 @@
+{
+  "pack_name": "phase06-ui-few-shot-pack",
+  "pack_version": 1,
+  "created_at": "2026-04-06T00:00:00Z",
+  "phase": "Phase 06 UI Few-Shot Curation / Prompt Preparation",
+  "selection_policy": {
+    "max_examples_per_prompt": 2,
+    "primary_match": [
+      "structure_tag",
+      "ownership_tag"
+    ],
+    "filters": [
+      "exclude interaction-tagged entries when target interaction_tags are empty",
+      "exclude exception-tagged entries when target exception_tags are empty"
+    ],
+    "ranking_notes": [
+      "prefer same-role matches",
+      "prefer local_repo controls when other tags match",
+      "prefer lower selection_rank after score tie"
+    ]
+  },
+  "entries": [
+    {
+      "entry_id": "local-ui-routing-page-shell-view-model-renderer",
+      "priority": "P0",
+      "selection_rank": 1,
+      "source_type": "local_repo",
+      "target_roles": [
+        "page"
+      ],
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "repo_root": "/volume/wzhang/cky-workspace/my_projects/Cangjie",
+        "branch": "N/A (repo root has no .git)",
+        "commit": "N/A (repo root has no .git)",
+        "access_date": "2026-04-06",
+        "purpose": "Repo-local page shell and routing control baseline."
+      },
+      "source_paths": [
+        "samples/ui-routing-defining-page-layout/entry/src/main/cangjie/pages/FoodCategoryListPage.cj"
+      ],
+      "why_it_matches": "Page shell with source-aligned routing, helper extraction, and page-owned composition without invented controller shells.",
+      "prompt_hints": [
+        "Preserve page and router semantics 1:1.",
+        "Allow source-aligned helper rendering methods without flattening them away.",
+        "Do not invent extra providers or view models when the page already owns short-lived UI state."
+      ],
+      "source_excerpt": "@Entry\n@Component\nclass FoodCategoryListPage {\n    let foodItems = initializeOnStartup()\n\n    @State\n    var showList: Bool = false\n\n    @State\n    var selectedCategoryLabel: String = \"All\"\n\n    func openFoodDetail(foodItem: FoodData): Unit {\n        getUIContext().getRouter().pushUrl(url: \"FoodDetailPage\", params: foodItem.id)\n    }\n\n    func build() {\n        Column {\n            this.buildHeader()\n            this.buildCategoryBar()\n            this.buildSummaryBar()\n        }\n    }\n}\n"
+    },
+    {
+      "entry_id": "local-data-persistence-page-shell-controller-owned-state",
+      "priority": "P0",
+      "selection_rank": 1,
+      "source_type": "local_repo",
+      "target_roles": [
+        "page"
+      ],
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "repo_root": "/volume/wzhang/cky-workspace/my_projects/Cangjie",
+        "branch": "N/A (repo root has no .git)",
+        "commit": "N/A (repo root has no .git)",
+        "access_date": "2026-04-06",
+        "purpose": "Repo-local persistence and manager-owned state control baseline."
+      },
+      "source_paths": [
+        "samples/data-persistence-001/entry/src/main/cangjie/pages/ThemeSettingsPage.cj"
+      ],
+      "why_it_matches": "Page shell where manager/controller remains the durable truth owner and UI only mirrors display state.",
+      "prompt_hints": [
+        "Keep controller or manager as the single durable truth owner.",
+        "Allow lifecycle hooks to sync UI from external state.",
+        "Do not absorb persistence or repair logic into the page contract."
+      ],
+      "source_excerpt": "@Entry\n@Component\nclass ThemeSettingsPage {\n    var manager: Option<UserSettingsManager> = Option<UserSettingsManager>.None\n\n    @State\n    var currentTheme: String = \"default\"\n\n    @State\n    var notificationEnabled: Bool = true\n\n    protected override func aboutToAppear(): Unit {\n        this.attachManager()\n        this.syncFromManager()\n    }\n\n    func build() {\n        Scroll {\n            Column {\n                this.buildHeader()\n                this.buildStatusCard()\n                this.buildThemeSelector()\n            }\n        }\n    }\n}\n"
+    },
+    {
+      "entry_id": "harmonyos-examples-badgeview-page-shell-view-model-renderer",
+      "priority": "P0",
+      "selection_rank": 2,
+      "source_type": "external_repo",
+      "target_roles": [
+        "page"
+      ],
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-06",
+        "purpose": "Primary page/list/link-state baseline."
+      },
+      "source_paths": [
+        "CommonUI/entry/src/main/cangjie/src/pages/badgeSample.cj"
+      ],
+      "why_it_matches": "Page shell using source-aligned local state with child components consuming linked props rather than hidden stores.",
+      "prompt_hints": [
+        "Preserve parent page state and child component boundaries.",
+        "Let reusable child components consume props or links instead of becoming pages.",
+        "Keep list/grid composition explicit."
+      ],
+      "source_excerpt": "@Component\nclass NumberBadge {\n    @Link var count: Int32\n    @Link var pos: BadgePosition\n    func build() {\n        Badge(BadgeParams(count: count, position: pos, maxCount: 99)) {\n            Button(\"message\")\n        }\n    }\n}\n\n@Entry\n@Component\nclass BadgeView {\n    @State var count1: Int32 = 199\n    @State var count2: Int32 = 95\n    func build() {\n        Column() {\n            Grid {\n                GridItem { NumberBadge(count: count1, pos: BadgePosition.RightTop) }\n                GridItem { NumberBadge(count: count2, pos: BadgePosition.Left) }\n            }\n        }\n    }\n}\n"
+    },
+    {
+      "entry_id": "harmonyos-examples-ledger-page-shell-view-model-renderer",
+      "priority": "P0",
+      "selection_rank": 3,
+      "source_type": "external_repo",
+      "target_roles": [
+        "page"
+      ],
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-06",
+        "purpose": "Primary page decomposition and reusable component extraction baseline."
+      },
+      "source_paths": [
+        "15-Ledger/entry/src/main/cangjie/index.cj"
+      ],
+      "why_it_matches": "Entry page coordinating multiple reusable render blocks while keeping composition responsibilities in the page shell.",
+      "prompt_hints": [
+        "Page shell may orchestrate multiple source-aligned child builders or components.",
+        "Keep reusable layout blocks split instead of collapsing into one mega build body.",
+        "Do not rewrite render-model style state holders into invented services."
+      ],
+      "source_excerpt": "@Entry\n@Component\npublic class EntryView {\n    @State\n    var dynamicTime: DynamicTime = DynamicTime()\n    @State\n    var dynamicStyle: DynamicStyle = DynamicStyle()\n    @State\n    var dynamicBill: DynamicBill = DynamicBill()\n\n    @Builder\n    func mainBody() {\n        Column {\n            TopBar()\n            MonthPickerRow(dynamicTime: dynamicTime, dynamicStyle: dynamicStyle, dynamicBill: dynamicBill)\n            SummaryBar(dynamicBill: dynamicBill)\n            DetailsList(dynamicBill: dynamicBill)\n        }\n    }\n\n    public func build() {\n        Stack {\n            DatePickerComponent(dynamicStyle: dynamicStyle, dynamicTime: dynamicTime, update: update)\n            mainBody()\n        }\n    }\n}\n"
+    },
+    {
+      "entry_id": "harmonyos-cangjie-cases-modalwindow-page-shell-view-model-renderer",
+      "priority": "P0",
+      "selection_rank": 4,
+      "source_type": "external_repo",
+      "target_roles": [
+        "page"
+      ],
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [
+        "mixed-app-pattern"
+      ],
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Cangjie-Cases",
+        "branch": "main",
+        "commit": "2d0662bb5c97a15d6bc459688df6c9b23275f12f",
+        "access_date": "2026-04-06",
+        "purpose": "Modal and builder layering reference."
+      },
+      "source_paths": [
+        "CangjieAppDevelopment/feature/modalwindow/src/main/cangjie/src/ModalWindowView.cj"
+      ],
+      "why_it_matches": "Page shell with builder-layered modal content and explicit page-owned presentation state.",
+      "prompt_hints": [
+        "Keep builder layers explicit when the source already uses them.",
+        "Treat modal presentation state as page-local UI state, not controller truth.",
+        "Do not flatten mixed-app samples into a single invented runtime shell."
+      ],
+      "source_excerpt": "@Entry\n@Component\npublic class ModalWindowView {\n    @State var isPresent: Bool = false\n\n    @Builder\n    func loginBuilder() {\n        Column() {\n            DefaultLogin(isPresentInLoginView: this.isPresent)\n        }\n    }\n\n    func build() {\n        Column() {\n            Button(\"点击跳转到全屏登录页\")\n                .bindContentCover(this.isPresent, this.loginBuilder, ContentCoverOptions(modalTransition: ModalTransition.DEFAULT, onDisappear: {=> this.isPresent = false}))\n                .onClick({ event => this.isPresent = true })\n        }\n    }\n}\n"
+    },
+    {
+      "entry_id": "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state",
+      "priority": "P0",
+      "selection_rank": 2,
+      "source_type": "external_repo",
+      "target_roles": [
+        "page"
+      ],
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [
+        "mixed-app-pattern"
+      ],
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Cangjie-Cases",
+        "branch": "main",
+        "commit": "2d0662bb5c97a15d6bc459688df6c9b23275f12f",
+        "access_date": "2026-04-06",
+        "purpose": "Custom tab bar and controller-owned UI state baseline."
+      },
+      "source_paths": [
+        "CangjieAppDevelopment/feature/customtabbar/src/main/cangjie/src/view/CustomTabBarPage.cj"
+      ],
+      "why_it_matches": "Page shell using a controller plus provide/link state flow, keeping durable tab truth outside child render blocks.",
+      "prompt_hints": [
+        "Keep controller-owned state singular across page and child tab components.",
+        "Allow @Provide/@Link propagation without inventing extra stores.",
+        "Do not collapse tab child components back into the page body."
+      ],
+      "source_excerpt": "@Entry\n@Component\npublic class CustomTabBarPage {\n    @Provide var selectedIndex: Int64 = 0\n    private let controller: TabsController = TabsController()\n\n    func build() {\n        Column() {\n            Tabs(BarPosition.End, this.controller, Int32(this.selectedIndex)) {\n                TabContent() {\n                    Text(\"首页\")\n                }\n            }\n            .onChange({ index: Int32 => this.selectedIndex = Int64(index) })\n\n            CustomTabBar(selectedIndex: this.selectedIndex)\n        }\n    }\n}\n"
+    },
+    {
+      "entry_id": "markdown4cj-rich-component-controller-owned-state",
+      "priority": "P0",
+      "selection_rank": 1,
+      "source_type": "external_repo",
+      "target_roles": [
+        "component"
+      ],
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/Cangjie-TPC/markdown4cj",
+        "branch": "develop",
+        "commit": "f43cfb3ae1cd3092d9a8a94332c64815fc4572f9",
+        "access_date": "2026-04-06",
+        "purpose": "Primary rich-component baseline."
+      },
+      "source_paths": [
+        "markdown/src/main/cangjie/src/components/markdown_heading_component.cj"
+      ],
+      "why_it_matches": "Rich reusable component with substantial render logic while durable parsing and configuration truth stays outside the component contract.",
+      "prompt_hints": [
+        "Preserve reusable component boundaries even when build logic is large.",
+        "Do not promote component internals to page or router ownership.",
+        "Keep controller/configuration truth outside transient render state."
+      ],
+      "source_excerpt": "@Component\nclass MarkdownHeadingComponent {\n    var markdownConfiguration: MarkdownConfiguration\n    var nodeViews: ArrayList<NodeView>\n\n    @State\n    var level: Int64 = 1\n\n    @Prop\n    var componentWidth: Float64\n\n    @State\n    var nodeViewList: ObservedArrayList<NodeView> = ObservedArrayList<NodeView>()\n\n    func build() {\n        Column() {\n            headingTitleComponent()\n            if ((level == 1 || level == 2) && markdownConfiguration.markdownTheme.headingBreakHeight > 0.0) {\n                Divider()\n            }\n        }\n    }\n}\n"
+    },
+    {
+      "entry_id": "photoview4cj-gesture-rich-component-controller-owned-state",
+      "priority": "P0",
+      "selection_rank": 2,
+      "source_type": "external_repo",
+      "target_roles": [
+        "component"
+      ],
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [
+        "gesture-component"
+      ],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/Cangjie-TPC/photoview4cj",
+        "branch": "develop",
+        "commit": "5da6027ebefb59aa146a1486402219a02ae69175",
+        "access_date": "2026-04-06",
+        "purpose": "Primary gesture component baseline."
+      },
+      "source_paths": [
+        "photoView/src/main/cangjie/photo_view.cj"
+      ],
+      "why_it_matches": "Gesture-heavy reusable component where interaction state stays with a model/controller and does not leak page responsibilities.",
+      "prompt_hints": [
+        "Preserve gesture thresholds, callback order, and animation boundaries.",
+        "Keep interaction state attached to the component model/controller.",
+        "Do not move network or persistence work into gesture handlers."
+      ],
+      "source_excerpt": "@Component\npublic class PhotoView {\n    @State\n    var model: PhotoViewModel = PhotoViewModel()\n\n    @State\n    var currentScale: Float64 = 0.0\n\n    public func zoomTo(scale: Float64, durationMs: Int32): Unit {\n        if (scale > model.getMaximumScale()) {\n            currentScale = model.getMaximumScale()\n        } else if (scale < model.getMinimumScale()) {\n            currentScale = model.getMinimumScale()\n        } else {\n            currentScale = scale\n        }\n    }\n\n    func build() {\n        Flex(FlexParams(direction: FlexDirection.Column)) { }\n            .gesture(GestureGroup(GestureMode.Exclusive, [TapGesture(count: 2, fingers: 1)]))\n    }\n}\n"
+    },
+    {
+      "entry_id": "svg4cj-rich-component-view-model-renderer",
+      "priority": "P1",
+      "selection_rank": 1,
+      "source_type": "external_repo",
+      "target_roles": [
+        "component"
+      ],
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/Cangjie-TPC/svg4cj",
+        "branch": "develop",
+        "commit": "9b26512106db5d3963417bad2be316a99725a4a8",
+        "access_date": "2026-04-06",
+        "purpose": "Renderer/model separation reference."
+      },
+      "source_paths": [
+        "svg/src/main/cangjie/src/svg_image_view.cj"
+      ],
+      "why_it_matches": "Reusable renderer component that consumes a model and rendering context without becoming a page shell or controller owner.",
+      "prompt_hints": [
+        "Keep renderer-oriented reusable component boundaries intact.",
+        "Allow builders and render contexts without promoting page ownership.",
+        "Do not invent extra service or router layers around a renderer component."
+      ],
+      "source_excerpt": "@Component\npublic class SVGImageView {\n    @State\n    var model: SVGImageViewModel = SVGImageViewModel()\n    private var settings: RenderingContextSettings = RenderingContextSettings(antialias: true)\n    private let context2D: CanvasRenderingContext2D = CanvasRenderingContext2D(this.settings)\n\n    @Builder\n    func setSvgCanvas(b: Bool) {\n        Canvas(this.context2D).width(100.percent).height(100.percent).onReady({ =>\n            this.model.setContext2D(this.context2D)\n            this.model.doRender(this.model.context, areaChanged: true)\n        })\n    }\n\n    func build() {\n        Column {\n            setSvgCanvas(pxTovpRes())\n        }\n    }\n}\n"
+    }
+  ]
+}

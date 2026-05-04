@@ -1,0 +1,2036 @@
+{
+  "manifest_name": "phase06-ui-p20-file-manifest",
+  "manifest_version": 1,
+  "created_at": "2026-04-13T09:35:00Z",
+  "phase": "Phase 06 UI Source Slicing / File-Level Workset",
+  "status": "draft-ready",
+  "source_corpus_manifest": "phase06_ui_source_corpus_p20.json",
+  "source_manifest": "phase06_ui_sample_manifest.json",
+  "few_shot_pack": "phase06_ui_few_shot_pack.json",
+  "intended_consumer": [
+    "human-review",
+    "future-phase06-prompt-pilot",
+    "future-phase06-batch-curator"
+  ],
+  "notes": [
+    "Expands the selected frozen source corpus into file-level slices with explicit ui_prompt_tags.",
+    "This manifest is not consumed directly by scripts/pipeline_batch_runner.py; it is a file-level workset for prompt pilots, explicit tag injection, and later batch curation.",
+    "Tag refinement is allowed at file level when a multi-file sample contains both page-shell and rich-component files."
+  ],
+  "selection_policy": {
+    "priority": "P20",
+    "adoption_decision": "primary",
+    "source_type": "external_repo",
+    "expansion_rule": "expand repo_local_paths into file-level slices and refine per-file target_role/ui_prompt_tags"
+  },
+  "summary": {
+    "sample_count": 3,
+    "slice_count": 39,
+    "role_counts": {
+      "page": 6,
+      "viewmodel": 19,
+      "component": 14
+    },
+    "structure_counts": {
+      "page-shell": 6,
+      "rich-component": 33
+    }
+  },
+  "entries": [
+    {
+      "slice_id": "phase06-ui-p20-slowfeet-entry-page",
+      "selection_rank": 1,
+      "sample_rank": 1,
+      "sample_id": "harmonyos-examples-kuaishou-ui-slowfeet-entry-view",
+      "priority": "P20",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "KuaiShouUI/SlowFeet/src/main/cangjie/src/index.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p20/HarmonyOS-Examples/KuaiShouUI/SlowFeet/src/main/cangjie/src/index.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P20 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the tabbed host shell, local route-target pages, and same-package chat/video model files form one bounded closure without network, timer, event-bus, or AppStorage pressure."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P20 SlowFeet host page for the same-package tabbed shell and local route fan-out selected by the official scout.",
+      "notes": [
+        "Generated from the scout-selected P20 freeze set.",
+        "Keep the tabbed host and direct route imports source-backed instead of collapsing the sample to one visual shell."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class MyView {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-ui-routing-page-shell-view-model-renderer",
+        "harmonyos-examples-badgeview-page-shell-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p20-slowfeet-chat-route-page",
+      "selection_rank": 2,
+      "sample_rank": 2,
+      "sample_id": "harmonyos-examples-kuaishou-ui-slowfeet-entry-view",
+      "priority": "P20",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "KuaiShouUI/SlowFeet/src/main/cangjie/src/Pages/chat.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p20/HarmonyOS-Examples/KuaiShouUI/SlowFeet/src/main/cangjie/src/Pages/chat.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P20 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the tabbed host shell, local route-target pages, and same-package chat/video model files form one bounded closure without network, timer, event-bus, or AppStorage pressure."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P20 SlowFeet route-target page for chat state, back-navigation, and same-package model wiring behind the tab host.",
+      "notes": [
+        "Generated from the scout-selected P20 freeze set.",
+        "Keep the route-target page and local model contract source-backed here."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "class ChatView {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p20-slowfeet-user-route-page",
+      "selection_rank": 3,
+      "sample_rank": 3,
+      "sample_id": "harmonyos-examples-kuaishou-ui-slowfeet-entry-view",
+      "priority": "P20",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "KuaiShouUI/SlowFeet/src/main/cangjie/src/Pages/user.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p20/HarmonyOS-Examples/KuaiShouUI/SlowFeet/src/main/cangjie/src/Pages/user.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P20 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the tabbed host shell, local route-target pages, and same-package chat/video model files form one bounded closure without network, timer, event-bus, or AppStorage pressure."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P20 SlowFeet route-target page for profile rendering, collection state, and same-package model wiring behind the tab host.",
+      "notes": [
+        "Generated from the scout-selected P20 freeze set.",
+        "Keep the route-target page and local model contract source-backed here."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class UserInfo {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p20-slowfeet-video-route-page",
+      "selection_rank": 4,
+      "sample_rank": 4,
+      "sample_id": "harmonyos-examples-kuaishou-ui-slowfeet-entry-view",
+      "priority": "P20",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "KuaiShouUI/SlowFeet/src/main/cangjie/src/Pages/video.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p20/HarmonyOS-Examples/KuaiShouUI/SlowFeet/src/main/cangjie/src/Pages/video.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P20 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the tabbed host shell, local route-target pages, and same-package chat/video model files form one bounded closure without network, timer, event-bus, or AppStorage pressure."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P20 SlowFeet route-target page for video feed state and same-package model wiring behind the tab host.",
+      "notes": [
+        "Generated from the scout-selected P20 freeze set.",
+        "Keep the route-target page and local model contract source-backed here."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "public class VideoView {",
+          "class SideBars {",
+          "class Videos <: IDataSource<VideoModel> {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p20-slowfeet-chat-model",
+      "selection_rank": 5,
+      "sample_rank": 5,
+      "sample_id": "harmonyos-examples-kuaishou-ui-slowfeet-entry-view",
+      "priority": "P20",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "KuaiShouUI/SlowFeet/src/main/cangjie/src/Model/ChatModel.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p20/HarmonyOS-Examples/KuaiShouUI/SlowFeet/src/main/cangjie/src/Model/ChatModel.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P20 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the tabbed host shell, local route-target pages, and same-package chat/video model files form one bounded closure without network, timer, event-bus, or AppStorage pressure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P20 SlowFeet support model for chat item state consumed by the route-target page.",
+      "notes": [
+        "Generated from the scout-selected P20 freeze set.",
+        "Keep same-package support state files source-backed for the P20 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class ChatModel {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p20-slowfeet-video-model",
+      "selection_rank": 6,
+      "sample_rank": 6,
+      "sample_id": "harmonyos-examples-kuaishou-ui-slowfeet-entry-view",
+      "priority": "P20",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "KuaiShouUI/SlowFeet/src/main/cangjie/src/Model/VideoModel.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p20/HarmonyOS-Examples/KuaiShouUI/SlowFeet/src/main/cangjie/src/Model/VideoModel.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P20 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the tabbed host shell, local route-target pages, and same-package chat/video model files form one bounded closure without network, timer, event-bus, or AppStorage pressure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P20 SlowFeet support model for video card state consumed by the route-target page.",
+      "notes": [
+        "Generated from the scout-selected P20 freeze set.",
+        "Keep same-package support state files source-backed for the P20 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class VideoModel {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p20-adaptive-ui-entry-page",
+      "selection_rank": 7,
+      "sample_rank": 1,
+      "sample_id": "harmonyos-examples-adaptive-ui-entry-view",
+      "priority": "P20",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "08-AdaptiveUI/entry/src/main/cangjie/src/index.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p20/HarmonyOS-Examples/08-AdaptiveUI/entry/src/main/cangjie/src/index.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P20 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the timer-backed page shell, MainAbility/AppStorage handoff, and same-package component subtree stay local without network or event-bus coupling."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P20 AdaptiveUI entry page for timer-backed progress, responsive layout orchestration, and local component composition.",
+      "notes": [
+        "Generated from the scout-selected P20 freeze set.",
+        "Keep timer-driven page state and same-package component composition source-backed here."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class EntryView {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p20-adaptive-ui-main-ability-model",
+      "selection_rank": 8,
+      "sample_rank": 2,
+      "sample_id": "harmonyos-examples-adaptive-ui-entry-view",
+      "priority": "P20",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "08-AdaptiveUI/entry/src/main/cangjie/src/main_ability.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p20/HarmonyOS-Examples/08-AdaptiveUI/entry/src/main/cangjie/src/main_ability.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P20 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the timer-backed page shell, MainAbility/AppStorage handoff, and same-package component subtree stay local without network or event-bus coupling."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P20 AdaptiveUI support model for MainAbility device-type detection and AppStorage handoff.",
+      "notes": [
+        "Generated from the scout-selected P20 freeze set.",
+        "Keep MainAbility wiring source-backed instead of treating the sample as page-only."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class MainAbility <: Ability {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p20-adaptive-ui-constants-model",
+      "selection_rank": 9,
+      "sample_rank": 3,
+      "sample_id": "harmonyos-examples-adaptive-ui-entry-view",
+      "priority": "P20",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "08-AdaptiveUI/entry/src/main/cangjie/src/common/constants.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p20/HarmonyOS-Examples/08-AdaptiveUI/entry/src/main/cangjie/src/common/constants.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P20 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the timer-backed page shell, MainAbility/AppStorage handoff, and same-package component subtree stay local without network or event-bus coupling."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P20 AdaptiveUI support model for local layout and playback constants used by the entry page and components.",
+      "notes": [
+        "Generated from the scout-selected P20 freeze set.",
+        "Keep same-package constant helpers source-backed for the P20 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": []
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p20-adaptive-ui-content-component",
+      "selection_rank": 10,
+      "sample_rank": 4,
+      "sample_id": "harmonyos-examples-adaptive-ui-entry-view",
+      "priority": "P20",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "08-AdaptiveUI/entry/src/main/cangjie/src/component/content.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p20/HarmonyOS-Examples/08-AdaptiveUI/entry/src/main/cangjie/src/component/content.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P20 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the timer-backed page shell, MainAbility/AppStorage handoff, and same-package component subtree stay local without network or event-bus coupling."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P20 AdaptiveUI primary component for responsive playlist/content layout driven by AppStorage and same-package state.",
+      "notes": [
+        "Generated from the scout-selected P20 freeze set.",
+        "Keep the main responsive content component source-backed here."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "public class Content {",
+          "class PlayListCover {",
+          "class PlayerList {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p20-adaptive-ui-header-component",
+      "selection_rank": 11,
+      "sample_rank": 5,
+      "sample_id": "harmonyos-examples-adaptive-ui-entry-view",
+      "priority": "P20",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "08-AdaptiveUI/entry/src/main/cangjie/src/component/header.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p20/HarmonyOS-Examples/08-AdaptiveUI/entry/src/main/cangjie/src/component/header.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P20 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the timer-backed page shell, MainAbility/AppStorage handoff, and same-package component subtree stay local without network or event-bus coupling."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P20 AdaptiveUI support component for the local header rendering contract used by the entry page.",
+      "notes": [
+        "Generated from the scout-selected P20 freeze set.",
+        "Keep same-package rendering components source-backed for the P20 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class Head {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p20-adaptive-ui-panel-component",
+      "selection_rank": 12,
+      "sample_rank": 6,
+      "sample_id": "harmonyos-examples-adaptive-ui-entry-view",
+      "priority": "P20",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "08-AdaptiveUI/entry/src/main/cangjie/src/component/pannel.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p20/HarmonyOS-Examples/08-AdaptiveUI/entry/src/main/cangjie/src/component/pannel.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P20 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the timer-backed page shell, MainAbility/AppStorage handoff, and same-package component subtree stay local without network or event-bus coupling."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P20 AdaptiveUI primary component for playback controls and linked progress state under the timer-backed page shell.",
+      "notes": [
+        "Generated from the scout-selected P20 freeze set.",
+        "Keep the linked control component source-backed here."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class Pannel {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p20-adaptive-ui-hilog-helper",
+      "selection_rank": 13,
+      "sample_rank": 7,
+      "sample_id": "harmonyos-examples-adaptive-ui-entry-view",
+      "priority": "P20",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "08-AdaptiveUI/entry/src/main/cangjie/src/utils/hilog.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p20/HarmonyOS-Examples/08-AdaptiveUI/entry/src/main/cangjie/src/utils/hilog.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P20 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the timer-backed page shell, MainAbility/AppStorage handoff, and same-package component subtree stay local without network or event-bus coupling."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P20 AdaptiveUI helper for local logging support referenced by the ability and layout utilities.",
+      "notes": [
+        "Generated from the scout-selected P20 freeze set.",
+        "Keep same-package utility helpers source-backed for the P20 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class HiLog {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p20-adaptive-ui-window-manager-helper",
+      "selection_rank": 14,
+      "sample_rank": 8,
+      "sample_id": "harmonyos-examples-adaptive-ui-entry-view",
+      "priority": "P20",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "08-AdaptiveUI/entry/src/main/cangjie/src/utils/windows_manager.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p20/HarmonyOS-Examples/08-AdaptiveUI/entry/src/main/cangjie/src/utils/windows_manager.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P20 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the timer-backed page shell, MainAbility/AppStorage handoff, and same-package component subtree stay local without network or event-bus coupling."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P20 AdaptiveUI helper for window-size driven device classification behind the responsive page shell.",
+      "notes": [
+        "Generated from the scout-selected P20 freeze set.",
+        "Keep same-package utility helpers source-backed for the P20 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": []
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p20-order-ui-entry-page",
+      "selection_rank": 15,
+      "sample_rank": 1,
+      "sample_id": "harmonyos-examples-order-ui-entry-view",
+      "priority": "P20",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "OrderUI/entry/src/main/cangjie/src/index.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p20/HarmonyOS-Examples/OrderUI/entry/src/main/cangjie/src/index.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P20 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the host shell, MainAbility safe-area setup, same-package home-tab closure, and local mock ShopApi/model/util files form one bounded closure without network-secret dependencies."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P20 OrderUI entry page for safe-area/AppStorage shell wiring and same-package home-tab composition.",
+      "notes": [
+        "Generated from the scout-selected P20 freeze set.",
+        "Keep the host page and safe-area wiring source-backed instead of collapsing the sample to one visual shell."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class MyView {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p20-order-ui-main-ability-model",
+      "selection_rank": 16,
+      "sample_rank": 2,
+      "sample_id": "harmonyos-examples-order-ui-entry-view",
+      "priority": "P20",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "OrderUI/entry/src/main/cangjie/src/main_ability.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p20/HarmonyOS-Examples/OrderUI/entry/src/main/cangjie/src/main_ability.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P20 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the host shell, MainAbility safe-area setup, same-package home-tab closure, and local mock ShopApi/model/util files form one bounded closure without network-secret dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P20 OrderUI support model for MainAbility window setup, breakpoint updates, and avoid-area injection.",
+      "notes": [
+        "Generated from the scout-selected P20 freeze set.",
+        "Keep MainAbility window/AppStorage wiring source-backed for the P20 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class MainAbility <: Ability {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p20-order-ui-shop-api-model",
+      "selection_rank": 17,
+      "sample_rank": 3,
+      "sample_id": "harmonyos-examples-order-ui-entry-view",
+      "priority": "P20",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "OrderUI/entry/src/main/cangjie/src/api/ShopApi.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p20/HarmonyOS-Examples/OrderUI/entry/src/main/cangjie/src/api/ShopApi.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P20 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the host shell, MainAbility safe-area setup, same-package home-tab closure, and local mock ShopApi/model/util files form one bounded closure without network-secret dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P20 OrderUI support model for local mock shop data loading behind the same-package home tab flow.",
+      "notes": [
+        "Generated from the scout-selected P20 freeze set.",
+        "Keep same-package data-loader helpers source-backed for the P20 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class ShopApi {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p20-order-ui-home-tabs-component",
+      "selection_rank": 18,
+      "sample_rank": 4,
+      "sample_id": "harmonyos-examples-order-ui-entry-view",
+      "priority": "P20",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "OrderUI/entry/src/main/cangjie/src/components/home/home.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p20/HarmonyOS-Examples/OrderUI/entry/src/main/cangjie/src/components/home/home.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P20 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the host shell, MainAbility safe-area setup, same-package home-tab closure, and local mock ShopApi/model/util files form one bounded closure without network-secret dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P20 OrderUI primary component for home-tab state, tab switching, and nested same-package component composition.",
+      "notes": [
+        "Generated from the scout-selected P20 freeze set.",
+        "Keep the tab-host component source-backed here."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "public class Home {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p20-order-ui-home-banner-component",
+      "selection_rank": 19,
+      "sample_rank": 5,
+      "sample_id": "harmonyos-examples-order-ui-entry-view",
+      "priority": "P20",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "OrderUI/entry/src/main/cangjie/src/components/home/homeBanner.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p20/HarmonyOS-Examples/OrderUI/entry/src/main/cangjie/src/components/home/homeBanner.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P20 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the host shell, MainAbility safe-area setup, same-package home-tab closure, and local mock ShopApi/model/util files form one bounded closure without network-secret dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P20 OrderUI support component for responsive home banner rendering within the home tab closure.",
+      "notes": [
+        "Generated from the scout-selected P20 freeze set.",
+        "Keep same-package rendering components source-backed for the P20 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class HomeBanner {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p20-order-ui-home-content-component",
+      "selection_rank": 20,
+      "sample_rank": 6,
+      "sample_id": "harmonyos-examples-order-ui-entry-view",
+      "priority": "P20",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "OrderUI/entry/src/main/cangjie/src/components/home/homeContent.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p20/HarmonyOS-Examples/OrderUI/entry/src/main/cangjie/src/components/home/homeContent.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P20 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the host shell, MainAbility safe-area setup, same-package home-tab closure, and local mock ShopApi/model/util files form one bounded closure without network-secret dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P20 OrderUI primary component for home-content state, mock data loading, and shop list orchestration.",
+      "notes": [
+        "Generated from the scout-selected P20 freeze set.",
+        "Keep the data-loading content component source-backed here."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class HomeContent {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p20-order-ui-home-header-component",
+      "selection_rank": 21,
+      "sample_rank": 7,
+      "sample_id": "harmonyos-examples-order-ui-entry-view",
+      "priority": "P20",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "OrderUI/entry/src/main/cangjie/src/components/home/homeHeader.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p20/HarmonyOS-Examples/OrderUI/entry/src/main/cangjie/src/components/home/homeHeader.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P20 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the host shell, MainAbility safe-area setup, same-package home-tab closure, and local mock ShopApi/model/util files form one bounded closure without network-secret dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P20 OrderUI support component for responsive home header rendering within the home tab closure.",
+      "notes": [
+        "Generated from the scout-selected P20 freeze set.",
+        "Keep same-package rendering components source-backed for the P20 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class HomeHeader {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p20-order-ui-home-menu-component",
+      "selection_rank": 22,
+      "sample_rank": 8,
+      "sample_id": "harmonyos-examples-order-ui-entry-view",
+      "priority": "P20",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "OrderUI/entry/src/main/cangjie/src/components/home/homeMenu.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p20/HarmonyOS-Examples/OrderUI/entry/src/main/cangjie/src/components/home/homeMenu.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P20 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the host shell, MainAbility safe-area setup, same-package home-tab closure, and local mock ShopApi/model/util files form one bounded closure without network-secret dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P20 OrderUI support component for breakpoint-aware home menu rendering within the home tab closure.",
+      "notes": [
+        "Generated from the scout-selected P20 freeze set.",
+        "Keep same-package rendering components source-backed for the P20 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class HomeMenu {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p20-order-ui-home-position-component",
+      "selection_rank": 23,
+      "sample_rank": 9,
+      "sample_id": "harmonyos-examples-order-ui-entry-view",
+      "priority": "P20",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "OrderUI/entry/src/main/cangjie/src/components/home/homePosition.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p20/HarmonyOS-Examples/OrderUI/entry/src/main/cangjie/src/components/home/homePosition.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P20 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the host shell, MainAbility safe-area setup, same-package home-tab closure, and local mock ShopApi/model/util files form one bounded closure without network-secret dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P20 OrderUI support component for local position/header rendering within the home tab closure.",
+      "notes": [
+        "Generated from the scout-selected P20 freeze set.",
+        "Keep same-package rendering components source-backed for the P20 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class HomePosition {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p20-order-ui-home-search-component",
+      "selection_rank": 24,
+      "sample_rank": 10,
+      "sample_id": "harmonyos-examples-order-ui-entry-view",
+      "priority": "P20",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "OrderUI/entry/src/main/cangjie/src/components/home/homeSearch.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p20/HarmonyOS-Examples/OrderUI/entry/src/main/cangjie/src/components/home/homeSearch.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P20 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the host shell, MainAbility safe-area setup, same-package home-tab closure, and local mock ShopApi/model/util files form one bounded closure without network-secret dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P20 OrderUI support component for the local search bar contract within the home tab closure.",
+      "notes": [
+        "Generated from the scout-selected P20 freeze set.",
+        "Keep same-package rendering components source-backed for the P20 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class HomeSearch {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p20-order-ui-home-shop-list-component",
+      "selection_rank": 25,
+      "sample_rank": 11,
+      "sample_id": "harmonyos-examples-order-ui-entry-view",
+      "priority": "P20",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "OrderUI/entry/src/main/cangjie/src/components/home/homeShopList.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p20/HarmonyOS-Examples/OrderUI/entry/src/main/cangjie/src/components/home/homeShopList.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P20 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the host shell, MainAbility safe-area setup, same-package home-tab closure, and local mock ShopApi/model/util files form one bounded closure without network-secret dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P20 OrderUI primary component for shop-list rendering, responsive layout, and product data binding within the home tab closure.",
+      "notes": [
+        "Generated from the scout-selected P20 freeze set.",
+        "Keep the main shop-list component source-backed here."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class HomeShopList {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p20-order-ui-home-shop-recommend-component",
+      "selection_rank": 26,
+      "sample_rank": 12,
+      "sample_id": "harmonyos-examples-order-ui-entry-view",
+      "priority": "P20",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "OrderUI/entry/src/main/cangjie/src/components/home/homeShopRecommend.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p20/HarmonyOS-Examples/OrderUI/entry/src/main/cangjie/src/components/home/homeShopRecommend.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P20 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the host shell, MainAbility safe-area setup, same-package home-tab closure, and local mock ShopApi/model/util files form one bounded closure without network-secret dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P20 OrderUI primary component for recommended-shop rendering and breakpoint-aware builder composition within the home tab closure.",
+      "notes": [
+        "Generated from the scout-selected P20 freeze set.",
+        "Keep the recommendation component source-backed here."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "public class HomeShopRecommend {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p20-order-ui-me-tab-component",
+      "selection_rank": 27,
+      "sample_rank": 13,
+      "sample_id": "harmonyos-examples-order-ui-entry-view",
+      "priority": "P20",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "OrderUI/entry/src/main/cangjie/src/components/me/me.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p20/HarmonyOS-Examples/OrderUI/entry/src/main/cangjie/src/components/me/me.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P20 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the host shell, MainAbility safe-area setup, same-package home-tab closure, and local mock ShopApi/model/util files form one bounded closure without network-secret dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P20 OrderUI support component for the local Me tab content under the shared tab host.",
+      "notes": [
+        "Generated from the scout-selected P20 freeze set.",
+        "Keep same-package tab components source-backed for the P20 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "public class Me {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p20-order-ui-message-tab-component",
+      "selection_rank": 28,
+      "sample_rank": 14,
+      "sample_id": "harmonyos-examples-order-ui-entry-view",
+      "priority": "P20",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "OrderUI/entry/src/main/cangjie/src/components/message/message.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p20/HarmonyOS-Examples/OrderUI/entry/src/main/cangjie/src/components/message/message.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P20 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the host shell, MainAbility safe-area setup, same-package home-tab closure, and local mock ShopApi/model/util files form one bounded closure without network-secret dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P20 OrderUI support component for the local Message tab content under the shared tab host.",
+      "notes": [
+        "Generated from the scout-selected P20 freeze set.",
+        "Keep same-package tab components source-backed for the P20 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class Message {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p20-order-ui-base-constants-model",
+      "selection_rank": 29,
+      "sample_rank": 15,
+      "sample_id": "harmonyos-examples-order-ui-entry-view",
+      "priority": "P20",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "OrderUI/entry/src/main/cangjie/src/constants/baseConstants.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p20/HarmonyOS-Examples/OrderUI/entry/src/main/cangjie/src/constants/baseConstants.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P20 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the host shell, MainAbility safe-area setup, same-package home-tab closure, and local mock ShopApi/model/util files form one bounded closure without network-secret dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P20 OrderUI support model for shared base constants used across the home-tab closure.",
+      "notes": [
+        "Generated from the scout-selected P20 freeze set.",
+        "Keep same-package constant helpers source-backed for the P20 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class BaseConstants {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p20-order-ui-breakpoint-constants-model",
+      "selection_rank": 30,
+      "sample_rank": 16,
+      "sample_id": "harmonyos-examples-order-ui-entry-view",
+      "priority": "P20",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "OrderUI/entry/src/main/cangjie/src/constants/breakpointConstants.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p20/HarmonyOS-Examples/OrderUI/entry/src/main/cangjie/src/constants/breakpointConstants.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P20 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the host shell, MainAbility safe-area setup, same-package home-tab closure, and local mock ShopApi/model/util files form one bounded closure without network-secret dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P20 OrderUI support model for breakpoint constants used by the responsive home-tab closure.",
+      "notes": [
+        "Generated from the scout-selected P20 freeze set.",
+        "Keep same-package constant helpers source-backed for the P20 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class BreakpointConstants {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p20-order-ui-home-constants-model",
+      "selection_rank": 31,
+      "sample_rank": 17,
+      "sample_id": "harmonyos-examples-order-ui-entry-view",
+      "priority": "P20",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "OrderUI/entry/src/main/cangjie/src/constants/homeConstants.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p20/HarmonyOS-Examples/OrderUI/entry/src/main/cangjie/src/constants/homeConstants.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P20 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the host shell, MainAbility safe-area setup, same-package home-tab closure, and local mock ShopApi/model/util files form one bounded closure without network-secret dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P20 OrderUI support model for shared home-tab mock data and constants referenced by the same-package components.",
+      "notes": [
+        "Generated from the scout-selected P20 freeze set.",
+        "Keep same-package constant helpers source-backed for the P20 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class HomeConstants {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p20-order-ui-home-menu-model",
+      "selection_rank": 32,
+      "sample_rank": 18,
+      "sample_id": "harmonyos-examples-order-ui-entry-view",
+      "priority": "P20",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "OrderUI/entry/src/main/cangjie/src/models/homeMenuModel.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p20/HarmonyOS-Examples/OrderUI/entry/src/main/cangjie/src/models/homeMenuModel.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P20 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the host shell, MainAbility safe-area setup, same-package home-tab closure, and local mock ShopApi/model/util files form one bounded closure without network-secret dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P20 OrderUI support model for home menu data consumed by the responsive home-tab components.",
+      "notes": [
+        "Generated from the scout-selected P20 freeze set.",
+        "Keep same-package support state files source-backed for the P20 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class HomeMenuModel {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p20-order-ui-product-info-model",
+      "selection_rank": 33,
+      "sample_rank": 19,
+      "sample_id": "harmonyos-examples-order-ui-entry-view",
+      "priority": "P20",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "OrderUI/entry/src/main/cangjie/src/models/productInfoModel.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p20/HarmonyOS-Examples/OrderUI/entry/src/main/cangjie/src/models/productInfoModel.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P20 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the host shell, MainAbility safe-area setup, same-package home-tab closure, and local mock ShopApi/model/util files form one bounded closure without network-secret dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P20 OrderUI support model for product data consumed by the home shop list.",
+      "notes": [
+        "Generated from the scout-selected P20 freeze set.",
+        "Keep same-package support state files source-backed for the P20 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class ProductInfoModel {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p20-order-ui-shop-info-model",
+      "selection_rank": 34,
+      "sample_rank": 20,
+      "sample_id": "harmonyos-examples-order-ui-entry-view",
+      "priority": "P20",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "OrderUI/entry/src/main/cangjie/src/models/shopInfoModel.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p20/HarmonyOS-Examples/OrderUI/entry/src/main/cangjie/src/models/shopInfoModel.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P20 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the host shell, MainAbility safe-area setup, same-package home-tab closure, and local mock ShopApi/model/util files form one bounded closure without network-secret dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P20 OrderUI support model for shop data consumed by the home components and ShopApi helper.",
+      "notes": [
+        "Generated from the scout-selected P20 freeze set.",
+        "Keep same-package support state files source-backed for the P20 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class ShopInfoModel {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p20-order-ui-tab-model",
+      "selection_rank": 35,
+      "sample_rank": 21,
+      "sample_id": "harmonyos-examples-order-ui-entry-view",
+      "priority": "P20",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "OrderUI/entry/src/main/cangjie/src/models/tab.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p20/HarmonyOS-Examples/OrderUI/entry/src/main/cangjie/src/models/tab.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P20 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the host shell, MainAbility safe-area setup, same-package home-tab closure, and local mock ShopApi/model/util files form one bounded closure without network-secret dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P20 OrderUI support model for tab metadata consumed by the home-tab host component.",
+      "notes": [
+        "Generated from the scout-selected P20 freeze set.",
+        "Keep same-package support state files source-backed for the P20 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class TabBar {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p20-order-ui-temp-model",
+      "selection_rank": 36,
+      "sample_rank": 22,
+      "sample_id": "harmonyos-examples-order-ui-entry-view",
+      "priority": "P20",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "OrderUI/entry/src/main/cangjie/src/models/temp.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p20/HarmonyOS-Examples/OrderUI/entry/src/main/cangjie/src/models/temp.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P20 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the host shell, MainAbility safe-area setup, same-package home-tab closure, and local mock ShopApi/model/util files form one bounded closure without network-secret dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P20 OrderUI support model for local placeholder/tab data consumed by the home-tab host component.",
+      "notes": [
+        "Generated from the scout-selected P20 freeze set.",
+        "Keep same-package support state files source-backed for the P20 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class Temp {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p20-order-ui-breakpoint-type-helper",
+      "selection_rank": 37,
+      "sample_rank": 23,
+      "sample_id": "harmonyos-examples-order-ui-entry-view",
+      "priority": "P20",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "OrderUI/entry/src/main/cangjie/src/utils/BreakpointType.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p20/HarmonyOS-Examples/OrderUI/entry/src/main/cangjie/src/utils/BreakpointType.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P20 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the host shell, MainAbility safe-area setup, same-package home-tab closure, and local mock ShopApi/model/util files form one bounded closure without network-secret dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P20 OrderUI helper for breakpoint-aware resource selection inside the responsive home-tab closure.",
+      "notes": [
+        "Generated from the scout-selected P20 freeze set.",
+        "Keep same-package utility helpers source-backed for the P20 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class BreakpointType<T> {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p20-order-ui-resource-util-helper",
+      "selection_rank": 38,
+      "sample_rank": 24,
+      "sample_id": "harmonyos-examples-order-ui-entry-view",
+      "priority": "P20",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "OrderUI/entry/src/main/cangjie/src/utils/ResourceUtil.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p20/HarmonyOS-Examples/OrderUI/entry/src/main/cangjie/src/utils/ResourceUtil.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P20 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the host shell, MainAbility safe-area setup, same-package home-tab closure, and local mock ShopApi/model/util files form one bounded closure without network-secret dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P20 OrderUI helper for shared resource lookup used across the same-package home-tab components.",
+      "notes": [
+        "Generated from the scout-selected P20 freeze set.",
+        "Keep same-package utility helpers source-backed for the P20 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class ResourceUtil {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p20-order-ui-window-util-helper",
+      "selection_rank": 39,
+      "sample_rank": 25,
+      "sample_id": "harmonyos-examples-order-ui-entry-view",
+      "priority": "P20",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "OrderUI/entry/src/main/cangjie/src/utils/WindowUtil.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p20/HarmonyOS-Examples/OrderUI/entry/src/main/cangjie/src/utils/WindowUtil.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P20 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the host shell, MainAbility safe-area setup, same-package home-tab closure, and local mock ShopApi/model/util files form one bounded closure without network-secret dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P20 OrderUI helper for window stage, safe-area, and breakpoint state updates behind the host shell.",
+      "notes": [
+        "Generated from the scout-selected P20 freeze set.",
+        "Keep same-package utility helpers source-backed for the P20 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class WindowUtil {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    }
+  ]
+}

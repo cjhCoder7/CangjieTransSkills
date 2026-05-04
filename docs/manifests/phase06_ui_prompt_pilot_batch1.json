@@ -1,0 +1,444 @@
+{
+  "manifest_name": "phase06_ui_prompt_pilot_batch1",
+  "manifest_version": 1,
+  "created_at": "2026-04-08T14:49:13Z",
+  "phase": "phase06",
+  "status": "active",
+  "source_manifest": "docs/manifests/phase06_ui_p0_file_manifest.json",
+  "intended_consumer": "Phase06 prompt-pilot curator and prompt-dump runner",
+  "selection_policy": {
+    "batch_id": "phase06-ui-prompt-pilot-batch1",
+    "selection_mode": "one deterministic slice per required prompt lane",
+    "required_tracks": [
+      {
+        "track_id": "page-shell-view-model-renderer",
+        "target_role": "page",
+        "structure_tag": "page-shell",
+        "ownership_tag": "view-model-renderer",
+        "required_interaction_tags": [],
+        "forbidden_interaction_tags": [
+          "gesture-component"
+        ],
+        "forbidden_sample_scope_tags": [
+          "mixed-app-pattern"
+        ]
+      },
+      {
+        "track_id": "rich-component-view-model-renderer",
+        "target_role": "component",
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "required_interaction_tags": [],
+        "forbidden_interaction_tags": [
+          "gesture-component"
+        ],
+        "forbidden_sample_scope_tags": [
+          "mixed-app-pattern"
+        ]
+      },
+      {
+        "track_id": "page-shell-controller-owned-state",
+        "target_role": "page",
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "required_interaction_tags": [],
+        "forbidden_interaction_tags": [
+          "gesture-component"
+        ],
+        "forbidden_sample_scope_tags": [
+          "mixed-app-pattern"
+        ]
+      },
+      {
+        "track_id": "rich-component-controller-owned-state",
+        "target_role": "component",
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "required_interaction_tags": [],
+        "forbidden_interaction_tags": [
+          "gesture-component"
+        ],
+        "forbidden_sample_scope_tags": [
+          "mixed-app-pattern"
+        ]
+      },
+      {
+        "track_id": "gesture-rich-component-controller-owned-state",
+        "target_role": "component",
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "required_interaction_tags": [
+          "gesture-component"
+        ],
+        "forbidden_interaction_tags": [],
+        "forbidden_sample_scope_tags": [
+          "mixed-app-pattern"
+        ]
+      }
+    ],
+    "artifact_root": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1",
+    "architecture_skill_path": "docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md",
+    "notes": [
+      "Batch1 is a prompt-pilot workset, not a full translation batch.",
+      "Each selected slice carries repo-local pipeline paths so prompt dumps can be regenerated without hand assembly.",
+      "Explicit ui_prompt_tags injection is still required for the final pilot prompt dump."
+    ]
+  },
+  "summary": {
+    "pilot_count": 5,
+    "source_sample_count": 4,
+    "role_counts": {
+      "page": 2,
+      "component": 3
+    },
+    "track_counts": {
+      "page-shell-view-model-renderer": 1,
+      "rich-component-view-model-renderer": 1,
+      "page-shell-controller-owned-state": 1,
+      "rich-component-controller-owned-state": 1,
+      "gesture-rich-component-controller-owned-state": 1
+    },
+    "coverage": {
+      "structure_tags": [
+        "page-shell",
+        "rich-component"
+      ],
+      "ownership_tags": [
+        "controller-owned-state",
+        "view-model-renderer"
+      ],
+      "interaction_tags": [
+        "gesture-component"
+      ]
+    },
+    "selected_slice_ids": [
+      "phase06-ui-p0-badgeview-page",
+      "phase06-ui-p0-ledger-top-bar-component",
+      "phase06-ui-p0-markdown-index-page",
+      "phase06-ui-p0-markdown-heading-component",
+      "phase06-ui-p0-photo-view-component"
+    ]
+  },
+  "entries": [
+    {
+      "pilot_id": "phase06-ui-pilot-batch1-phase06-ui-p0-badgeview-page",
+      "pilot_order": 1,
+      "track_id": "page-shell-view-model-renderer",
+      "slice_id": "phase06-ui-p0-badgeview-page",
+      "sample_id": "harmonyos-examples-commonui-badgeview",
+      "repo_name": "HarmonyOS-Examples",
+      "repo_local_path": "raw_docs/phase06-ui-p0/HarmonyOS-Examples/CommonUI/entry/src/main/cangjie/src/pages/badgeSample.cj",
+      "source_path": "CommonUI/entry/src/main/cangjie/src/pages/badgeSample.cj",
+      "priority": "P0",
+      "selection_rank": 1,
+      "sample_rank": 1,
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "usage_goal": "Direct page-shell seed for @State/@Link propagation, nested badge components, and grid/list composition.",
+      "selection_reason": "Direct page-shell seed for nested composition and @State/@Link propagation before branching into component-only lanes.",
+      "pilot_goal": "Establish the first prompt-dump anchor for page-shell + view-model-renderer UI targets.",
+      "recommended_few_shot_entry_ids": [
+        "local-ui-routing-page-shell-view-model-renderer",
+        "harmonyos-examples-badgeview-page-shell-view-model-renderer"
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class NumberBadge {",
+          "class TextBadge {",
+          "class BadgeView {"
+        ]
+      },
+      "notes": [
+        "Single entry file that already contains nested child components.",
+        "Treat as a direct page-shell pilot instead of splitting child badges into standalone slices."
+      ],
+      "src_root": "raw_docs/phase06-ui-p0/HarmonyOS-Examples/CommonUI/entry/src/main/cangjie/src",
+      "target_file": "pages/badgeSample.cj",
+      "artifact_root": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-badgeview-page",
+      "pipeline_run_root": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-badgeview-page/pipeline_run",
+      "db_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-badgeview-page/pipeline_run/repo_index.sqlite",
+      "repo_map_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-badgeview-page/pipeline_run/repo_map.txt",
+      "base_tu_json_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-badgeview-page/pipeline_run/target.tu.json",
+      "explicit_tu_json_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-badgeview-page/target.explicit_ui_tags.tu.json",
+      "orchestration_output_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-badgeview-page/pipeline_run/target.orchestration.json",
+      "pipeline_summary_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-badgeview-page/pipeline_run/summary.json",
+      "failure_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-badgeview-page/pipeline_run/failure.json",
+      "pipeline_log_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-badgeview-page/pipeline.log",
+      "base_prompt_dump_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-badgeview-page/prompt_dump.txt",
+      "explicit_prompt_dump_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-badgeview-page/prompt_dump.explicit_ui_tags.txt",
+      "prompt_dump_summary_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-badgeview-page/pilot-summary.json",
+      "snapshot_label": "phase06-ui-batch1-phase06-ui-p0-badgeview-page",
+      "expected_prompt_signal": "resolution_source=explicit-target-ui-tags",
+      "pipeline_command": "python3 scripts/pipeline_runner.py --src-root raw_docs/phase06-ui-p0/HarmonyOS-Examples/CommonUI/entry/src/main/cangjie/src --target-file pages/badgeSample.cj --run-root artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-badgeview-page/pipeline_run --db-path artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-badgeview-page/pipeline_run/repo_index.sqlite --repo-map-path artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-badgeview-page/pipeline_run/repo_map.txt --tu-json-path artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-badgeview-page/pipeline_run/target.tu.json --orchestration-output-path artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-badgeview-page/pipeline_run/target.orchestration.json --summary-path artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-badgeview-page/pipeline_run/summary.json --failure-path artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-badgeview-page/pipeline_run/failure.json --prompt-dump-path artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-badgeview-page/prompt_dump.txt --architecture-skill docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md --snapshot-label phase06-ui-batch1-phase06-ui-p0-badgeview-page --dump-prompt-only --extensions .cj --pattern-limit 0"
+    },
+    {
+      "pilot_id": "phase06-ui-pilot-batch1-phase06-ui-p0-ledger-top-bar-component",
+      "pilot_order": 2,
+      "track_id": "rich-component-view-model-renderer",
+      "slice_id": "phase06-ui-p0-ledger-top-bar-component",
+      "sample_id": "harmonyos-examples-ledger-page-shell",
+      "repo_name": "HarmonyOS-Examples",
+      "repo_local_path": "raw_docs/phase06-ui-p0/HarmonyOS-Examples/15-Ledger/entry/src/main/cangjie/ui/top_bar.cj",
+      "source_path": "15-Ledger/entry/src/main/cangjie/ui/top_bar.cj",
+      "priority": "P0",
+      "selection_rank": 3,
+      "sample_rank": 2,
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "usage_goal": "Reusable header/title component extracted from a page-shell sample.",
+      "selection_reason": "Pairs a reusable component slice with the page-shell lane without dragging in gesture or mixed-app variance.",
+      "pilot_goal": "Cover reusable rich-component translation under the same ownership model as the first page-shell anchor.",
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class TopBar {"
+        ]
+      },
+      "notes": [
+        "Refines the sample-level page-shell tag into a file-level rich-component slice."
+      ],
+      "src_root": "raw_docs/phase06-ui-p0/HarmonyOS-Examples/15-Ledger/entry/src/main/cangjie",
+      "target_file": "ui/top_bar.cj",
+      "artifact_root": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-ledger-top-bar-component",
+      "pipeline_run_root": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-ledger-top-bar-component/pipeline_run",
+      "db_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-ledger-top-bar-component/pipeline_run/repo_index.sqlite",
+      "repo_map_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-ledger-top-bar-component/pipeline_run/repo_map.txt",
+      "base_tu_json_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-ledger-top-bar-component/pipeline_run/target.tu.json",
+      "explicit_tu_json_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-ledger-top-bar-component/target.explicit_ui_tags.tu.json",
+      "orchestration_output_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-ledger-top-bar-component/pipeline_run/target.orchestration.json",
+      "pipeline_summary_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-ledger-top-bar-component/pipeline_run/summary.json",
+      "failure_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-ledger-top-bar-component/pipeline_run/failure.json",
+      "pipeline_log_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-ledger-top-bar-component/pipeline.log",
+      "base_prompt_dump_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-ledger-top-bar-component/prompt_dump.txt",
+      "explicit_prompt_dump_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-ledger-top-bar-component/prompt_dump.explicit_ui_tags.txt",
+      "prompt_dump_summary_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-ledger-top-bar-component/pilot-summary.json",
+      "snapshot_label": "phase06-ui-batch1-phase06-ui-p0-ledger-top-bar-component",
+      "expected_prompt_signal": "resolution_source=explicit-target-ui-tags",
+      "pipeline_command": "python3 scripts/pipeline_runner.py --src-root raw_docs/phase06-ui-p0/HarmonyOS-Examples/15-Ledger/entry/src/main/cangjie --target-file ui/top_bar.cj --run-root artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-ledger-top-bar-component/pipeline_run --db-path artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-ledger-top-bar-component/pipeline_run/repo_index.sqlite --repo-map-path artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-ledger-top-bar-component/pipeline_run/repo_map.txt --tu-json-path artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-ledger-top-bar-component/pipeline_run/target.tu.json --orchestration-output-path artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-ledger-top-bar-component/pipeline_run/target.orchestration.json --summary-path artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-ledger-top-bar-component/pipeline_run/summary.json --failure-path artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-ledger-top-bar-component/pipeline_run/failure.json --prompt-dump-path artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-ledger-top-bar-component/prompt_dump.txt --architecture-skill docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md --snapshot-label phase06-ui-batch1-phase06-ui-p0-ledger-top-bar-component --dump-prompt-only --extensions .cj --pattern-limit 0"
+    },
+    {
+      "pilot_id": "phase06-ui-pilot-batch1-phase06-ui-p0-markdown-index-page",
+      "pilot_order": 3,
+      "track_id": "page-shell-controller-owned-state",
+      "slice_id": "phase06-ui-p0-markdown-index-page",
+      "sample_id": "markdown4cj-rich-component",
+      "repo_name": "markdown4cj",
+      "repo_local_path": "raw_docs/phase06-ui-p0/markdown4cj/entry/src/main/cangjie/src/index_page.cj",
+      "source_path": "entry/src/main/cangjie/src/index_page.cj",
+      "priority": "P0",
+      "selection_rank": 9,
+      "sample_rank": 3,
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "usage_goal": "Host page slice for markdown component composition without absorbing parser/config ownership into the page contract.",
+      "selection_reason": "Host-page anchor for controller-owned state is needed before we try mixed-app or gesture-heavy pages.",
+      "pilot_goal": "Introduce page-shell + controller-owned-state coverage with the lowest extra variance.",
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class IndexPage {"
+        ]
+      },
+      "notes": [
+        "Refines the sample-level rich-component seed into a page-shell host slice."
+      ],
+      "src_root": "raw_docs/phase06-ui-p0/markdown4cj/entry/src/main/cangjie/src",
+      "target_file": "index_page.cj",
+      "artifact_root": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-markdown-index-page",
+      "pipeline_run_root": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-markdown-index-page/pipeline_run",
+      "db_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-markdown-index-page/pipeline_run/repo_index.sqlite",
+      "repo_map_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-markdown-index-page/pipeline_run/repo_map.txt",
+      "base_tu_json_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-markdown-index-page/pipeline_run/target.tu.json",
+      "explicit_tu_json_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-markdown-index-page/target.explicit_ui_tags.tu.json",
+      "orchestration_output_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-markdown-index-page/pipeline_run/target.orchestration.json",
+      "pipeline_summary_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-markdown-index-page/pipeline_run/summary.json",
+      "failure_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-markdown-index-page/pipeline_run/failure.json",
+      "pipeline_log_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-markdown-index-page/pipeline.log",
+      "base_prompt_dump_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-markdown-index-page/prompt_dump.txt",
+      "explicit_prompt_dump_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-markdown-index-page/prompt_dump.explicit_ui_tags.txt",
+      "prompt_dump_summary_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-markdown-index-page/pilot-summary.json",
+      "snapshot_label": "phase06-ui-batch1-phase06-ui-p0-markdown-index-page",
+      "expected_prompt_signal": "resolution_source=explicit-target-ui-tags",
+      "pipeline_command": "python3 scripts/pipeline_runner.py --src-root raw_docs/phase06-ui-p0/markdown4cj/entry/src/main/cangjie/src --target-file index_page.cj --run-root artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-markdown-index-page/pipeline_run --db-path artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-markdown-index-page/pipeline_run/repo_index.sqlite --repo-map-path artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-markdown-index-page/pipeline_run/repo_map.txt --tu-json-path artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-markdown-index-page/pipeline_run/target.tu.json --orchestration-output-path artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-markdown-index-page/pipeline_run/target.orchestration.json --summary-path artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-markdown-index-page/pipeline_run/summary.json --failure-path artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-markdown-index-page/pipeline_run/failure.json --prompt-dump-path artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-markdown-index-page/prompt_dump.txt --architecture-skill docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md --snapshot-label phase06-ui-batch1-phase06-ui-p0-markdown-index-page --dump-prompt-only --extensions .cj --pattern-limit 0"
+    },
+    {
+      "pilot_id": "phase06-ui-pilot-batch1-phase06-ui-p0-markdown-heading-component",
+      "pilot_order": 4,
+      "track_id": "rich-component-controller-owned-state",
+      "slice_id": "phase06-ui-p0-markdown-heading-component",
+      "sample_id": "markdown4cj-rich-component",
+      "repo_name": "markdown4cj",
+      "repo_local_path": "raw_docs/phase06-ui-p0/markdown4cj/markdown/src/main/cangjie/src/components/markdown_heading_component.cj",
+      "source_path": "markdown/src/main/cangjie/src/components/markdown_heading_component.cj",
+      "priority": "P0",
+      "selection_rank": 7,
+      "sample_rank": 1,
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "usage_goal": "Primary rich-component slice for heading rendering, configuration-driven layout, and component-local display state.",
+      "selection_reason": "Primary rich-component/controller-owned-state anchor should stay non-gesture for the first controlled comparison against the host-page lane.",
+      "pilot_goal": "Cover the main controller-owned rich-component lane before adding gesture complexity.",
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "class MarkdownHeadingComponent {"
+        ]
+      },
+      "notes": [
+        "Keep parsing/config truth outside the component boundary."
+      ],
+      "src_root": "raw_docs/phase06-ui-p0/markdown4cj/markdown/src/main/cangjie/src",
+      "target_file": "components/markdown_heading_component.cj",
+      "artifact_root": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-markdown-heading-component",
+      "pipeline_run_root": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-markdown-heading-component/pipeline_run",
+      "db_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-markdown-heading-component/pipeline_run/repo_index.sqlite",
+      "repo_map_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-markdown-heading-component/pipeline_run/repo_map.txt",
+      "base_tu_json_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-markdown-heading-component/pipeline_run/target.tu.json",
+      "explicit_tu_json_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-markdown-heading-component/target.explicit_ui_tags.tu.json",
+      "orchestration_output_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-markdown-heading-component/pipeline_run/target.orchestration.json",
+      "pipeline_summary_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-markdown-heading-component/pipeline_run/summary.json",
+      "failure_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-markdown-heading-component/pipeline_run/failure.json",
+      "pipeline_log_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-markdown-heading-component/pipeline.log",
+      "base_prompt_dump_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-markdown-heading-component/prompt_dump.txt",
+      "explicit_prompt_dump_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-markdown-heading-component/prompt_dump.explicit_ui_tags.txt",
+      "prompt_dump_summary_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-markdown-heading-component/pilot-summary.json",
+      "snapshot_label": "phase06-ui-batch1-phase06-ui-p0-markdown-heading-component",
+      "expected_prompt_signal": "resolution_source=explicit-target-ui-tags",
+      "pipeline_command": "python3 scripts/pipeline_runner.py --src-root raw_docs/phase06-ui-p0/markdown4cj/markdown/src/main/cangjie/src --target-file components/markdown_heading_component.cj --run-root artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-markdown-heading-component/pipeline_run --db-path artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-markdown-heading-component/pipeline_run/repo_index.sqlite --repo-map-path artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-markdown-heading-component/pipeline_run/repo_map.txt --tu-json-path artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-markdown-heading-component/pipeline_run/target.tu.json --orchestration-output-path artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-markdown-heading-component/pipeline_run/target.orchestration.json --summary-path artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-markdown-heading-component/pipeline_run/summary.json --failure-path artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-markdown-heading-component/pipeline_run/failure.json --prompt-dump-path artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-markdown-heading-component/prompt_dump.txt --architecture-skill docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md --snapshot-label phase06-ui-batch1-phase06-ui-p0-markdown-heading-component --dump-prompt-only --extensions .cj --pattern-limit 0"
+    },
+    {
+      "pilot_id": "phase06-ui-pilot-batch1-phase06-ui-p0-photo-view-component",
+      "pilot_order": 5,
+      "track_id": "gesture-rich-component-controller-owned-state",
+      "slice_id": "phase06-ui-p0-photo-view-component",
+      "sample_id": "photoview4cj-gesture-component",
+      "repo_name": "photoview4cj",
+      "repo_local_path": "raw_docs/phase06-ui-p0/photoview4cj/photoView/src/main/cangjie/photo_view.cj",
+      "source_path": "photoView/src/main/cangjie/photo_view.cj",
+      "priority": "P0",
+      "selection_rank": 10,
+      "sample_rank": 1,
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [
+        "gesture-component"
+      ],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [
+          "gesture-component"
+        ],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "usage_goal": "Primary gesture component slice for transform state, zoom control, and callback-driven view updates.",
+      "selection_reason": "Gesture-heavy component is the most distinct Phase06 lane and needs a dedicated prompt-dump pilot instead of being inferred from non-gesture samples.",
+      "pilot_goal": "Add gesture-component evidence on top of the base rich-component/controller-owned-state lane.",
+      "recommended_few_shot_entry_ids": [
+        "photoview4cj-gesture-rich-component-controller-owned-state",
+        "markdown4cj-rich-component-controller-owned-state"
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class PhotoView {"
+        ]
+      },
+      "notes": [
+        "This is the direct component anchor for gesture-heavy Phase06 targets."
+      ],
+      "src_root": "raw_docs/phase06-ui-p0/photoview4cj/photoView/src/main/cangjie",
+      "target_file": "photo_view.cj",
+      "artifact_root": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-photo-view-component",
+      "pipeline_run_root": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-photo-view-component/pipeline_run",
+      "db_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-photo-view-component/pipeline_run/repo_index.sqlite",
+      "repo_map_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-photo-view-component/pipeline_run/repo_map.txt",
+      "base_tu_json_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-photo-view-component/pipeline_run/target.tu.json",
+      "explicit_tu_json_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-photo-view-component/target.explicit_ui_tags.tu.json",
+      "orchestration_output_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-photo-view-component/pipeline_run/target.orchestration.json",
+      "pipeline_summary_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-photo-view-component/pipeline_run/summary.json",
+      "failure_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-photo-view-component/pipeline_run/failure.json",
+      "pipeline_log_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-photo-view-component/pipeline.log",
+      "base_prompt_dump_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-photo-view-component/prompt_dump.txt",
+      "explicit_prompt_dump_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-photo-view-component/prompt_dump.explicit_ui_tags.txt",
+      "prompt_dump_summary_path": "artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-photo-view-component/pilot-summary.json",
+      "snapshot_label": "phase06-ui-batch1-phase06-ui-p0-photo-view-component",
+      "expected_prompt_signal": "resolution_source=explicit-target-ui-tags",
+      "pipeline_command": "python3 scripts/pipeline_runner.py --src-root raw_docs/phase06-ui-p0/photoview4cj/photoView/src/main/cangjie --target-file photo_view.cj --run-root artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-photo-view-component/pipeline_run --db-path artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-photo-view-component/pipeline_run/repo_index.sqlite --repo-map-path artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-photo-view-component/pipeline_run/repo_map.txt --tu-json-path artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-photo-view-component/pipeline_run/target.tu.json --orchestration-output-path artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-photo-view-component/pipeline_run/target.orchestration.json --summary-path artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-photo-view-component/pipeline_run/summary.json --failure-path artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-photo-view-component/pipeline_run/failure.json --prompt-dump-path artifacts/ui_pilots/20260408-phase06-ui-pilot-batch1/phase06-ui-p0-photo-view-component/prompt_dump.txt --architecture-skill docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md --snapshot-label phase06-ui-batch1-phase06-ui-p0-photo-view-component --dump-prompt-only --extensions .cj --pattern-limit 0"
+    }
+  ]
+}

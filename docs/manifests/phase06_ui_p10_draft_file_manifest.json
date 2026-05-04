@@ -1,0 +1,194 @@
+{
+  "manifest_name": "phase06-ui-p10-draft-file-manifest",
+  "manifest_version": 1,
+  "created_at": "2026-04-12T01:55:36Z",
+  "phase": "Phase 06 UI Source Slicing / File-Level Workset",
+  "status": "draft-ready",
+  "source_corpus_manifest": "phase06_ui_source_corpus_p10_draft.json",
+  "source_manifest": "phase06_ui_sample_manifest_p10_draft.json",
+  "few_shot_pack": "phase06_ui_few_shot_pack.json",
+  "intended_consumer": [
+    "human-review",
+    "future-phase06-prompt-pilot",
+    "future-phase06-batch-curator"
+  ],
+  "notes": [
+    "Expands the selected frozen source corpus into file-level slices with explicit ui_prompt_tags.",
+    "This manifest is not consumed directly by scripts/pipeline_batch_runner.py; it is a file-level workset for prompt pilots, explicit tag injection, and later batch curation.",
+    "Tag refinement is allowed at file level when a multi-file sample contains both page-shell and rich-component files."
+  ],
+  "selection_policy": {
+    "priority": "P10",
+    "adoption_decision": "primary",
+    "source_type": "external_repo",
+    "expansion_rule": "expand repo_local_paths into file-level slices and refine per-file target_role/ui_prompt_tags"
+  },
+  "summary": {
+    "sample_count": 3,
+    "slice_count": 3,
+    "role_counts": {
+      "page": 3
+    },
+    "structure_counts": {
+      "page-shell": 3
+    }
+  },
+  "entries": [
+    {
+      "slice_id": "phase06-ui-p10-browser-about-page",
+      "selection_rank": 1,
+      "sample_rank": 1,
+      "sample_id": "harmonyos-examples-browser-about-page",
+      "priority": "P10",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "Browser/entry/src/main/cangjie/src/about.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p10-draft/HarmonyOS-Examples/Browser/entry/src/main/cangjie/src/about.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P10 draft candidate harvested from the remaining official HarmonyOS-Examples reserve after the regular Phase06 checkpoint reached 44/44 live passed."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Draft P10 browser about page slice for Router.back navigation, resource-backed branding, and simple two-column layout composition inside one render-facing page shell.",
+      "notes": [
+        "Keep Router.back wiring and resource-backed branding content source-backed inside the page boundary.",
+        "Treat the back-row plus centered branding column as one direct render-facing page-shell contract."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class About {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-ui-routing-page-shell-view-model-renderer",
+        "harmonyos-examples-badgeview-page-shell-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p10-browser-main-page",
+      "selection_rank": 2,
+      "sample_rank": 1,
+      "sample_id": "harmonyos-examples-browser-main-page",
+      "priority": "P10",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "Browser/entry/src/main/cangjie/src/index.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p10-draft/HarmonyOS-Examples/Browser/entry/src/main/cangjie/src/index.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P10 draft candidate harvested from the remaining official HarmonyOS-Examples reserve after the regular Phase06 checkpoint reached 44/44 live passed."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Draft P10 browser main page slice for WebviewController ownership, dark-mode script injection, search/url state, and same-file settings menu builders inside one controller-owned page shell.",
+      "notes": [
+        "Keep webviewController, darkmodeScript, Search.onSubmit flow, and builder menus source-backed inside the page boundary.",
+        "Treat the browser shell as one controller-owned contract instead of fabricating services or detached menu layers."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "class MainView {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p10-webviewgame-snake-page",
+      "selection_rank": 3,
+      "sample_rank": 1,
+      "sample_id": "harmonyos-examples-webviewgame-snake-page",
+      "priority": "P10",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "18-WebViewGame/entry/src/main/cangjie/index.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p10-draft/HarmonyOS-Examples/18-WebViewGame/entry/src/main/cangjie/index.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P10 draft candidate drawn from the remaining official HarmonyOS-Examples reserve to extend source-backed WebView callback and builder coverage after the P9 promotion."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Draft P10 webview game page slice for score state, JavaScript bridge callbacks, and same-file control builders inside one controller-owned page shell.",
+      "notes": [
+        "Keep webController ownership, JavaScript proxy registration, and score/game state source-backed inside the page boundary.",
+        "Treat DirectionBtn, ControlBtn, and WebPlayground builders as one page-shell contract instead of splitting bridge wrappers."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "class SnakeGame {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    }
+  ]
+}

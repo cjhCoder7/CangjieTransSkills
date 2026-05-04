@@ -1,0 +1,62 @@
+{
+  "app": {
+    // 当前不写死本地签名文件路径，避免在没有真实证书与设备环境时制造无效配置。
+    // 首次导入后请在 DevEco Studio 的 Signing Configs 中使用 Automatically generate signature 或替换为本地签名。
+    "signingConfigs": [],
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default",
+        // 这里保留 HarmonyOS NEXT 常见产品位，便于 IDE 首次识别项目。
+        // 若本地安装的 SDK 推荐其他 API 版本，请接受 IDE 的 Update / Sync 建议。
+        "compatibleSdkVersion": "5.0.0(12)",
+        "targetSdkVersion": "5.0.0(12)",
+        "runtimeOS": "HarmonyOS",
+        "buildOption": {
+          "strictMode": {
+            "caseSensitiveCheck": true
+          }
+        }
+      },
+      {
+        "name": "ohos",
+        "signingConfig": "default",
+        // 这里保留 OpenHarmony 仓颉快速入门文档中的常见值，便于后续切到 OpenHarmony 目标产品。
+        // 如果本地 IDE / SDK 给出其他 compileSdkVersion / compatibleSdkVersion，请以 IDE 自动适配结果为准。
+        "compatibleSdkVersion": 22,
+        "compileSdkVersion": 22,
+        "runtimeOS": "OpenHarmony",
+        "buildOption": {
+          "strictMode": {
+            "caseSensitiveCheck": true
+          }
+        }
+      }
+    ],
+    "buildModeSet": [
+      {
+        "name": "debug"
+      },
+      {
+        "name": "release"
+      }
+    ]
+  },
+  "modules": [
+    {
+      "name": "entry",
+      "srcPath": "./entry",
+      "targets": [
+        {
+          "name": "default",
+          // `default` 对应 HarmonyOS NEXT 常见产品位，`ohos` 对应 OpenHarmony 目标产品位。
+          // 首次导入后如果 IDE 提示 target 与 product 绑定需要更新，请直接点击 Update 或 Sync Now。
+          "applyToProducts": [
+            "default",
+            "ohos"
+          ]
+        }
+      ]
+    }
+  ]
+}

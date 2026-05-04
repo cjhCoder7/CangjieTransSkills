@@ -1,0 +1,166 @@
+package ohos_app_cangjie_entry
+
+import std.collection.*
+
+enum Category {
+    | Fruit
+    | Vegetable
+    | Nut
+    | Seafood
+    | Dessert
+}
+
+class FoodData {
+    let id: String
+    let name: String
+    let imageRef: String
+    let category: Category
+    let calories: Int64
+    let protein: Float64
+    let fat: Float64
+    let carbohydrates: Float64
+    let vitaminC: Float64
+
+    public init(
+        id: String,
+        name: String,
+        imageRef: String,
+        category: Category,
+        calories: Int64,
+        protein: Float64,
+        fat: Float64,
+        carbohydrates: Float64,
+        vitaminC: Float64
+    ) {
+        this.id = id
+        this.name = name
+        this.imageRef = imageRef
+        this.category = category
+        this.calories = calories
+        this.protein = protein
+        this.fat = fat
+        this.carbohydrates = carbohydrates
+        this.vitaminC = vitaminC
+    }
+
+    public func caloriesLabel(): String {
+        return "${this.calories} kcal"
+    }
+
+    public func compactCaloriesLabel(): String {
+        return "${this.calories}kcal"
+    }
+
+    public func nutritionLines(): ArrayList<String> {
+        let lines = ArrayList<String>()
+        lines.append("Calories: ${this.calories}kcal")
+        lines.append("Protein: ${this.protein}g")
+        lines.append("Fat: ${this.fat}g")
+        lines.append("Carbohydrates: ${this.carbohydrates}g")
+        lines.append("VitaminC: ${this.vitaminC}mg")
+        return lines
+    }
+}
+
+func emptyFoodData(): FoodData {
+    return FoodData(
+        id: "-1",
+        name: "Unknown",
+        imageRef: "app.media.Placeholder",
+        category: Category.Fruit,
+        calories: 0,
+        protein: 0.0,
+        fat: 0.0,
+        carbohydrates: 0.0,
+        vitaminC: 0.0
+    )
+}
+
+func initializeOnStartup(): ArrayList<FoodData> {
+    let foods = ArrayList<FoodData>()
+    foods.append(FoodData("0", "Tomato", "app.media.Tomato", Category.Vegetable, 17, 0.9, 0.2, 3.9, 17.8))
+    foods.append(FoodData("1", "Walnut", "app.media.Walnut", Category.Nut, 654, 15.0, 65.0, 14.0, 1.3))
+    foods.append(FoodData("2", "Cucumber", "app.media.Cucumber", Category.Vegetable, 30, 3.0, 0.0, 1.9, 2.1))
+    foods.append(FoodData("3", "Blueberry", "app.media.Blueberry", Category.Fruit, 57, 0.7, 0.3, 14.0, 9.7))
+    foods.append(FoodData("4", "Crab", "app.media.Crab", Category.Seafood, 97, 19.0, 1.5, 0.0, 7.6))
+    foods.append(FoodData("5", "IceCream", "app.media.IceCream", Category.Dessert, 207, 3.5, 11.0, 24.0, 0.6))
+    foods.append(FoodData("6", "Onion", "app.media.Onion", Category.Vegetable, 39, 1.1, 0.1, 9.0, 7.4))
+    foods.append(FoodData("7", "Mushroom", "app.media.Mushroom", Category.Vegetable, 22, 3.1, 0.3, 3.3, 2.1))
+    foods.append(FoodData("8", "Kiwi", "app.media.Kiwi", Category.Fruit, 60, 1.1, 0.5, 15.0, 20.5))
+    foods.append(FoodData("9", "Pitaya", "app.media.Pitaya", Category.Fruit, 60, 1.2, 0.0, 10.0, 60.9))
+    foods.append(FoodData("10", "Avocado", "app.media.Avocado", Category.Fruit, 160, 2.0, 15.0, 9.0, 10.0))
+    foods.append(FoodData("11", "Strawberry", "app.media.Strawberry", Category.Fruit, 32, 0.7, 0.3, 8.0, 58.8))
+    return foods
+}
+
+func categoryLabels(): ArrayList<String> {
+    let labels = ArrayList<String>()
+    labels.append("All")
+    labels.append("Vegetable")
+    labels.append("Fruit")
+    labels.append("Nut")
+    labels.append("Seafood")
+    labels.append("Dessert")
+    return labels
+}
+
+func categoryLabel(category: Category): String {
+    if (category == Category.Vegetable) {
+        return "Vegetable"
+    }
+    if (category == Category.Fruit) {
+        return "Fruit"
+    }
+    if (category == Category.Nut) {
+        return "Nut"
+    }
+    if (category == Category.Seafood) {
+        return "Seafood"
+    }
+    return "Dessert"
+}
+
+func filterFoodsByCategory(items: ArrayList<FoodData>, label: String): ArrayList<FoodData> {
+    if (label == "All") {
+        return items
+    }
+    let selected = ArrayList<FoodData>()
+    for (item in items) {
+        if (label == "Vegetable" && item.category == Category.Vegetable) {
+            selected.append(item)
+        } else if (label == "Fruit" && item.category == Category.Fruit) {
+            selected.append(item)
+        } else if (label == "Nut" && item.category == Category.Nut) {
+            selected.append(item)
+        } else if (label == "Seafood" && item.category == Category.Seafood) {
+            selected.append(item)
+        } else if (label == "Dessert" && item.category == Category.Dessert) {
+            selected.append(item)
+        }
+    }
+    return selected
+}
+
+func buildGridRows(items: ArrayList<FoodData>): ArrayList<ArrayList<FoodData>> {
+    let rows = ArrayList<ArrayList<FoodData>>()
+    var index: Int64 = 0
+    while (index < items.size) {
+        let row = ArrayList<FoodData>()
+        row.append(items[index])
+        if (index + 1 < items.size) {
+            row.append(items[index + 1])
+        }
+        rows.append(row)
+        index = index + 2
+    }
+    return rows
+}
+
+func findFoodById(items: ArrayList<FoodData>, foodId: String): FoodData {
+    for (item in items) {
+        if (item.id == foodId) {
+            return item
+        }
+    }
+    return emptyFoodData()
+}

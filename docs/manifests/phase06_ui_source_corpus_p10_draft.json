@@ -1,0 +1,124 @@
+{
+  "manifest_name": "phase06-ui-source-corpus-p10-draft",
+  "manifest_version": 1,
+  "created_at": "2026-04-12T01:55:36Z",
+  "corpus_root": "../../raw_docs/phase06-ui-p10-draft",
+  "source_manifest": "phase06_ui_sample_manifest_p10_draft.json",
+  "selection_policy": {
+    "priority": "P10",
+    "adoption_decision": "primary",
+    "source_type": "external_repo",
+    "sample_buckets": [
+      "ordered_samples"
+    ]
+  },
+  "sample_count": 3,
+  "file_count": 3,
+  "entries": [
+    {
+      "entry_id": "harmonyos-examples-browser-about-page",
+      "sample_id": "harmonyos-examples-browser-about-page",
+      "reference_id": "",
+      "priority": "P10",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "role": "",
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P10 draft candidate harvested from the remaining official HarmonyOS-Examples reserve after the regular Phase06 checkpoint reached 44/44 live passed."
+      },
+      "source_paths": [
+        "Browser/entry/src/main/cangjie/src/about.cj"
+      ],
+      "repo_name": "HarmonyOS-Examples",
+      "repo_local_paths": [
+        "raw_docs/phase06-ui-p10-draft/HarmonyOS-Examples/Browser/entry/src/main/cangjie/src/about.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Add a self-contained browser about page that keeps Router.back navigation, resource-backed branding, and simple two-column layout composition inside one render-facing page shell.",
+      "blocking_constraints": [
+        "Keep Router.back wiring, resource-backed branding content, and same-file layout composition source-backed inside the page boundary; do not invent helper coordinators."
+      ],
+      "reason": ""
+    },
+    {
+      "entry_id": "harmonyos-examples-browser-main-page",
+      "sample_id": "harmonyos-examples-browser-main-page",
+      "reference_id": "",
+      "priority": "P10",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "role": "",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P10 draft candidate harvested from the remaining official HarmonyOS-Examples reserve after the regular Phase06 checkpoint reached 44/44 live passed."
+      },
+      "source_paths": [
+        "Browser/entry/src/main/cangjie/src/index.cj"
+      ],
+      "repo_name": "HarmonyOS-Examples",
+      "repo_local_paths": [
+        "raw_docs/phase06-ui-p10-draft/HarmonyOS-Examples/Browser/entry/src/main/cangjie/src/index.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Add a self-contained browser host page that keeps WebviewController ownership, dark-mode script injection, search/url state, and settings menu builders inside one controller-owned page shell.",
+      "blocking_constraints": [
+        "Keep WebviewController ownership, darkmodeScript injection, Search.onSubmit flow, and same-file menu builders source-backed inside the page boundary; do not fabricate browser services or detached menu layers."
+      ],
+      "reason": ""
+    },
+    {
+      "entry_id": "harmonyos-examples-webviewgame-snake-page",
+      "sample_id": "harmonyos-examples-webviewgame-snake-page",
+      "reference_id": "",
+      "priority": "P10",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "role": "",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P10 draft candidate drawn from the remaining official HarmonyOS-Examples reserve to extend source-backed WebView callback and builder coverage after the P9 promotion."
+      },
+      "source_paths": [
+        "18-WebViewGame/entry/src/main/cangjie/index.cj"
+      ],
+      "repo_name": "HarmonyOS-Examples",
+      "repo_local_paths": [
+        "raw_docs/phase06-ui-p10-draft/HarmonyOS-Examples/18-WebViewGame/entry/src/main/cangjie/index.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Add a self-contained webview game page that keeps score state, JavaScript bridge callbacks, and control builders inside one controller-owned page shell.",
+      "blocking_constraints": [
+        "Keep WebviewController ownership, JavaScript proxy registration, score/game state, and same-file builder callbacks source-backed inside the page shell; do not introduce detached bridge wrappers."
+      ],
+      "reason": ""
+    }
+  ]
+}

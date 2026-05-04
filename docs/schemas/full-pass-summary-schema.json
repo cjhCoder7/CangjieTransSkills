@@ -1,0 +1,435 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "docs/schemas/full-pass-summary-schema.json",
+  "title": "Phase 3C Full Pass Summary Schema",
+  "description": "用于规范 HarmonyOS 真机 / Emulator Full Pass 验证结果的唯一指定收单格式。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "label",
+    "phase_major",
+    "phase_substage",
+    "promotion_candidate",
+    "overall_status",
+    "captured_at_utc",
+    "module",
+    "environment",
+    "target",
+    "build",
+    "runtime_log_capture",
+    "assertions"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "label": {
+      "type": "string",
+      "minLength": 1
+    },
+    "phase_major": {
+      "type": "string",
+      "minLength": 1
+    },
+    "phase_substage": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scenario_mode": {
+      "type": "string",
+      "enum": [
+        "bcm",
+        "smoke"
+      ],
+      "default": "bcm"
+    },
+    "promotion_candidate": {
+      "type": "string",
+      "enum": [
+        "staging-full"
+      ]
+    },
+    "overall_status": {
+      "$ref": "#/$defs/status"
+    },
+    "captured_at_utc": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "module": {
+      "$ref": "#/$defs/module"
+    },
+    "environment": {
+      "$ref": "#/$defs/environment"
+    },
+    "target": {
+      "$ref": "#/$defs/target"
+    },
+    "build": {
+      "$ref": "#/$defs/build"
+    },
+    "runtime_log_capture": {
+      "$ref": "#/$defs/runtimeLogCapture"
+    },
+    "assertions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/assertionResult"
+      }
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    }
+  },
+  "$defs": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "passed",
+        "failed",
+        "blocked",
+        "partial",
+        "skipped"
+      ]
+    },
+    "threadContext": {
+      "type": "string",
+      "enum": [
+        "main",
+        "worker",
+        "unknown"
+      ]
+    },
+    "module": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "source_file",
+        "candidate_file"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_file": {
+          "type": "string",
+          "minLength": 1
+        },
+        "candidate_file": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ui_route": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "peer_scope": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "environment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "host_os",
+        "host_arch",
+        "node_mode",
+        "deveco_studio_home",
+        "harmony_sdk_home",
+        "hdc_path"
+      ],
+      "properties": {
+        "host_os": {
+          "type": "string",
+          "minLength": 1
+        },
+        "host_arch": {
+          "type": "string",
+          "minLength": 1
+        },
+        "node_mode": {
+          "type": "string",
+          "enum": [
+            "gui-host",
+            "headless-host",
+            "remote-runner"
+          ]
+        },
+        "deveco_studio_home": {
+          "type": "string",
+          "minLength": 1
+        },
+        "harmony_sdk_home": {
+          "type": "string",
+          "minLength": 1
+        },
+        "hdc_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "host_probe_json": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target_type",
+        "target_id",
+        "target_name"
+      ],
+      "properties": {
+        "target_type": {
+          "type": "string",
+          "enum": [
+            "emulator",
+            "device"
+          ]
+        },
+        "target_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target_os_version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "target_serial_redacted": {
+          "type": "boolean"
+        }
+      }
+    },
+    "build": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "build_id",
+        "bundle_name",
+        "install_status",
+        "launch_status"
+      ],
+      "properties": {
+        "build_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "bundle_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "artifact_path": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "install_status": {
+          "$ref": "#/$defs/status"
+        },
+        "launch_status": {
+          "$ref": "#/$defs/status"
+        }
+      }
+    },
+    "runtimeLogEvent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "timestamp",
+        "thread_id",
+        "log_level",
+        "tag",
+        "event_name",
+        "message",
+        "thread_context"
+      ],
+      "properties": {
+        "timestamp": {
+          "type": "string",
+          "minLength": 1,
+          "description": "建议为归一化后的 UTC 时间戳；若保留原始 Hilog 时间，也必须是可排序字符串。"
+        },
+        "thread_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "thread_name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "log_level": {
+          "type": "string",
+          "enum": [
+            "DEBUG",
+            "INFO",
+            "WARN",
+            "ERROR",
+            "FATAL"
+          ]
+        },
+        "tag": {
+          "type": "string",
+          "minLength": 1
+        },
+        "event_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "message": {
+          "type": "string"
+        },
+        "thread_context": {
+          "$ref": "#/$defs/threadContext"
+        },
+        "assertion_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        }
+      }
+    },
+    "runtimeLogCapture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "log_source",
+        "log_capture_command",
+        "raw_log_path",
+        "redaction_applied",
+        "main_thread_refresh_seen",
+        "worker_fetch_seen",
+        "worker_send_seen",
+        "refresh_delivery_context",
+        "parsed_events"
+      ],
+      "properties": {
+        "log_source": {
+          "type": "string",
+          "enum": [
+            "hilog",
+            "logcat",
+            "file",
+            "unknown"
+          ]
+        },
+        "log_capture_command": {
+          "type": "string",
+          "minLength": 1
+        },
+        "raw_log_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "redaction_applied": {
+          "type": "boolean"
+        },
+        "main_thread_refresh_seen": {
+          "type": "boolean"
+        },
+        "worker_fetch_seen": {
+          "type": "boolean"
+        },
+        "worker_send_seen": {
+          "type": "boolean"
+        },
+        "refresh_delivery_context": {
+          "$ref": "#/$defs/threadContext"
+        },
+        "parsed_events": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/runtimeLogEvent"
+          }
+        }
+      }
+    },
+    "assertionResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "assertion_id",
+        "description",
+        "status",
+        "evidence"
+      ],
+      "properties": {
+        "assertion_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "$ref": "#/$defs/status"
+        },
+        "evidence": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "matched_event_names",
+            "matched_thread_ids",
+            "raw_log_refs"
+          ],
+          "properties": {
+            "matched_event_names": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "matched_thread_ids": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "raw_log_refs": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "failure_reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}

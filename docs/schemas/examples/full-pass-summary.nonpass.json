@@ -1,0 +1,130 @@
+{
+  "schema_version": "1.0.0",
+  "label": "phase03-full-pass-nonpass-example",
+  "phase_major": "Phase 3C",
+  "phase_substage": "Full Pass",
+  "promotion_candidate": "staging-full",
+  "overall_status": "failed",
+  "captured_at_utc": "2026-03-30T13:15:00Z",
+  "module": {
+    "name": "RealMessageService",
+    "source_file": "src/services/RealMessageService.ets",
+    "candidate_file": "src/services/RealMessageService.cj",
+    "ui_route": "/chat/detail",
+    "peer_scope": "dialog:42"
+  },
+  "environment": {
+    "host_os": "Windows 11",
+    "host_arch": "x86_64",
+    "node_mode": "gui-host",
+    "deveco_studio_home": "C:/DevEco-Studio",
+    "harmony_sdk_home": "C:/Huawei/HarmonySDK",
+    "hdc_path": "C:/Huawei/HarmonySDK/toolchains/hdc.exe",
+    "host_probe_json": "artifacts/environment/full-pass-host-profile.json"
+  },
+  "target": {
+    "target_type": "emulator",
+    "target_id": "emulator-5554",
+    "target_name": "Harmony Emulator",
+    "target_os_version": "5.0.0",
+    "target_serial_redacted": true
+  },
+  "build": {
+    "build_id": "build-20260330-001",
+    "bundle_name": "org.example.rms",
+    "artifact_path": "artifacts/builds/real-message-service.hap",
+    "install_status": "passed",
+    "launch_status": "passed"
+  },
+  "runtime_log_capture": {
+    "log_source": "hilog",
+    "log_capture_command": "hdc shell hilog -x",
+    "raw_log_path": "full-pass-runtime.nonpass.log",
+    "redaction_applied": true,
+    "main_thread_refresh_seen": false,
+    "worker_fetch_seen": true,
+    "worker_send_seen": true,
+    "refresh_delivery_context": "main",
+    "parsed_events": [
+      {
+        "timestamp": "2026-03-30T13:15:01Z",
+        "thread_id": "2001",
+        "thread_name": "worker-1",
+        "log_level": "INFO",
+        "tag": "RMS",
+        "event_name": "RMS_FETCH_BEGIN",
+        "message": "worker fetch begin BCM-CONC-001",
+        "thread_context": "worker",
+        "assertion_refs": [
+          "BCM-CONC-001"
+        ]
+      },
+      {
+        "timestamp": "2026-03-30T13:15:02Z",
+        "thread_id": "2001",
+        "thread_name": "worker-1",
+        "log_level": "INFO",
+        "tag": "RMS",
+        "event_name": "RMS_SEND_END",
+        "message": "worker send end BCM-STATE-001 BCM-CONC-001",
+        "thread_context": "worker",
+        "assertion_refs": [
+          "BCM-STATE-001",
+          "BCM-CONC-001"
+        ]
+      }
+    ]
+  },
+  "assertions": [
+    {
+      "assertion_id": "BCM-CONC-001",
+      "description": "worker fetch/send 全程不阻塞主线程",
+      "status": "passed",
+      "evidence": {
+        "matched_event_names": [
+          "RMS_FETCH_BEGIN",
+          "RMS_SEND_END"
+        ],
+        "matched_thread_ids": [
+          "2001"
+        ],
+        "raw_log_refs": [
+          "raw_log:1",
+          "raw_log:2"
+        ]
+      },
+      "failure_reason": null
+    },
+    {
+      "assertion_id": "BCM-STATE-001",
+      "description": "缓存写入后状态一致",
+      "status": "passed",
+      "evidence": {
+        "matched_event_names": [
+          "RMS_SEND_END"
+        ],
+        "matched_thread_ids": [
+          "2001"
+        ],
+        "raw_log_refs": [
+          "raw_log:2"
+        ]
+      },
+      "failure_reason": null
+    },
+    {
+      "assertion_id": "BCM-ASYNC-003",
+      "description": "刷新通知回到主线程交付",
+      "status": "failed",
+      "evidence": {
+        "matched_event_names": [],
+        "matched_thread_ids": [],
+        "raw_log_refs": []
+      },
+      "failure_reason": "UI refresh event missing on main thread"
+    }
+  ],
+  "notes": [
+    "example for full-pass-summary-validate.py"
+  ]
+}

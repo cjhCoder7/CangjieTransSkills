@@ -1,0 +1,10 @@
+{
+  "src": [
+    "pages/FoodCategoryListPage",
+    "pages/FoodDetailPage"
+  ],
+  "window": {
+    "designWidth": 720,
+    "autoDesignWidth": false
+  }
+}

@@ -1,0 +1,1217 @@
+{
+  "manifest_name": "phase06-ui-p23-file-manifest",
+  "manifest_version": 1,
+  "created_at": "2026-04-14T06:35:50Z",
+  "phase": "Phase 06 UI Source Slicing / File-Level Workset",
+  "status": "draft-ready",
+  "source_corpus_manifest": "phase06_ui_source_corpus_p23.json",
+  "source_manifest": "phase06_ui_sample_manifest.json",
+  "few_shot_pack": "phase06_ui_few_shot_pack.json",
+  "intended_consumer": [
+    "human-review",
+    "future-phase06-prompt-pilot",
+    "future-phase06-batch-curator"
+  ],
+  "notes": [
+    "Expands the selected frozen source corpus into file-level slices with explicit ui_prompt_tags.",
+    "This manifest is not consumed directly by scripts/pipeline_batch_runner.py; it is a file-level workset for prompt pilots, explicit tag injection, and later batch curation.",
+    "Tag refinement is allowed at file level when a multi-file sample contains both page-shell and rich-component files."
+  ],
+  "selection_policy": {
+    "priority": "P23",
+    "adoption_decision": "primary",
+    "source_type": "external_repo",
+    "expansion_rule": "expand repo_local_paths into file-level slices and refine per-file target_role/ui_prompt_tags"
+  },
+  "summary": {
+    "sample_count": 3,
+    "slice_count": 23,
+    "role_counts": {
+      "page": 3,
+      "component": 12,
+      "viewmodel": 8
+    },
+    "structure_counts": {
+      "page-shell": 3,
+      "rich-component": 20
+    }
+  },
+  "entries": [
+    {
+      "slice_id": "phase06-ui-p23-bankui-home-page",
+      "selection_rank": 1,
+      "sample_rank": 1,
+      "sample_id": "harmonyos-examples-bankui-home-page",
+      "priority": "P23",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "BankUI/entry/src/main/cangjie/src/Page/home.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p23/HarmonyOS-Examples/BankUI/entry/src/main/cangjie/src/Page/home.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P23 regular candidate selected from the remaining official HarmonyOS-Examples reserve by freezing the BankUI home page together with its eight direct home helpers and local homeDataModel as one bounded workset."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P23 BankUI home host page for scroller-owned opacity state, home feed composition, and top-header routing affordances inside one bounded closure.",
+      "notes": [
+        "Generated from the scout-selected P23 freeze set.",
+        "Keep the BankUI home workflow source-backed without reopening the promoted search lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class Home {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p23-bankui-home-advertisement-component",
+      "selection_rank": 2,
+      "sample_rank": 2,
+      "sample_id": "harmonyos-examples-bankui-home-page",
+      "priority": "P23",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "BankUI/entry/src/main/cangjie/src/Component/homeAdvertisement.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p23/HarmonyOS-Examples/BankUI/entry/src/main/cangjie/src/Component/homeAdvertisement.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P23 regular candidate selected from the remaining official HarmonyOS-Examples reserve by freezing the BankUI home page together with its eight direct home helpers and local homeDataModel as one bounded workset."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P23 BankUI support component for the local advertisement strip reused inside the selected home closure.",
+      "notes": [
+        "Generated from the scout-selected P23 freeze set.",
+        "Keep the BankUI home composition source-backed for the P23 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class HomeAdvertisement{"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p23-bankui-home-banner-component",
+      "selection_rank": 3,
+      "sample_rank": 3,
+      "sample_id": "harmonyos-examples-bankui-home-page",
+      "priority": "P23",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "BankUI/entry/src/main/cangjie/src/Component/homeBanner.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p23/HarmonyOS-Examples/BankUI/entry/src/main/cangjie/src/Component/homeBanner.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P23 regular candidate selected from the remaining official HarmonyOS-Examples reserve by freezing the BankUI home page together with its eight direct home helpers and local homeDataModel as one bounded workset."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P23 BankUI support component for the banner icon row and local action tiles inside the selected home closure.",
+      "notes": [
+        "Generated from the scout-selected P23 freeze set.",
+        "Keep the BankUI home composition source-backed for the P23 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class HomeBanner {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p23-bankui-home-entrance-component",
+      "selection_rank": 4,
+      "sample_rank": 4,
+      "sample_id": "harmonyos-examples-bankui-home-page",
+      "priority": "P23",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "BankUI/entry/src/main/cangjie/src/Component/homeEntrance.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p23/HarmonyOS-Examples/BankUI/entry/src/main/cangjie/src/Component/homeEntrance.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P23 regular candidate selected from the remaining official HarmonyOS-Examples reserve by freezing the BankUI home page together with its eight direct home helpers and local homeDataModel as one bounded workset."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P23 BankUI primary component for the multi-entry home icon grid and local menu-data rendering inside the selected closure.",
+      "notes": [
+        "Generated from the scout-selected P23 freeze set.",
+        "Keep the BankUI home composition source-backed for the P23 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class HomeEntrance {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p23-bankui-home-header-component",
+      "selection_rank": 5,
+      "sample_rank": 5,
+      "sample_id": "harmonyos-examples-bankui-home-page",
+      "priority": "P23",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "BankUI/entry/src/main/cangjie/src/Component/homeHeader.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p23/HarmonyOS-Examples/BankUI/entry/src/main/cangjie/src/Component/homeHeader.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P23 regular candidate selected from the remaining official HarmonyOS-Examples reserve by freezing the BankUI home page together with its eight direct home helpers and local homeDataModel as one bounded workset."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P23 BankUI primary component for opacity-aware top-header rendering, login-state branching, and search/login route affordances inside the selected home closure.",
+      "notes": [
+        "Generated from the scout-selected P23 freeze set.",
+        "Keep the BankUI home composition source-backed for the P23 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class HomeHeader {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p23-bankui-home-location-component",
+      "selection_rank": 6,
+      "sample_rank": 6,
+      "sample_id": "harmonyos-examples-bankui-home-page",
+      "priority": "P23",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "BankUI/entry/src/main/cangjie/src/Component/homeLocation.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p23/HarmonyOS-Examples/BankUI/entry/src/main/cangjie/src/Component/homeLocation.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P23 regular candidate selected from the remaining official HarmonyOS-Examples reserve by freezing the BankUI home page together with its eight direct home helpers and local homeDataModel as one bounded workset."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P23 BankUI support component for the local location/status section reused by the selected home closure.",
+      "notes": [
+        "Generated from the scout-selected P23 freeze set.",
+        "Keep the BankUI home composition source-backed for the P23 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class HomeLocation{"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p23-bankui-home-news-component",
+      "selection_rank": 7,
+      "sample_rank": 7,
+      "sample_id": "harmonyos-examples-bankui-home-page",
+      "priority": "P23",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "BankUI/entry/src/main/cangjie/src/Component/homeNews.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p23/HarmonyOS-Examples/BankUI/entry/src/main/cangjie/src/Component/homeNews.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P23 regular candidate selected from the remaining official HarmonyOS-Examples reserve by freezing the BankUI home page together with its eight direct home helpers and local homeDataModel as one bounded workset."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P23 BankUI primary component for the home news card row and local content iteration inside the selected home closure.",
+      "notes": [
+        "Generated from the scout-selected P23 freeze set.",
+        "Keep the BankUI home composition source-backed for the P23 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class HomeNews{"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p23-bankui-home-recommend-component",
+      "selection_rank": 8,
+      "sample_rank": 8,
+      "sample_id": "harmonyos-examples-bankui-home-page",
+      "priority": "P23",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "BankUI/entry/src/main/cangjie/src/Component/homeRecommend.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p23/HarmonyOS-Examples/BankUI/entry/src/main/cangjie/src/Component/homeRecommend.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P23 regular candidate selected from the remaining official HarmonyOS-Examples reserve by freezing the BankUI home page together with its eight direct home helpers and local homeDataModel as one bounded workset."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P23 BankUI primary component for the recommended market cards and sub-card rendering inside the selected home closure.",
+      "notes": [
+        "Generated from the scout-selected P23 freeze set.",
+        "Keep the BankUI home composition source-backed for the P23 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class HomeRecommend{"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p23-bankui-home-swiper-component",
+      "selection_rank": 9,
+      "sample_rank": 9,
+      "sample_id": "harmonyos-examples-bankui-home-page",
+      "priority": "P23",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "BankUI/entry/src/main/cangjie/src/Component/homeSwiper.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p23/HarmonyOS-Examples/BankUI/entry/src/main/cangjie/src/Component/homeSwiper.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P23 regular candidate selected from the remaining official HarmonyOS-Examples reserve by freezing the BankUI home page together with its eight direct home helpers and local homeDataModel as one bounded workset."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P23 BankUI support component for the local image swiper and bounded carousel state inside the selected home closure.",
+      "notes": [
+        "Generated from the scout-selected P23 freeze set.",
+        "Keep the BankUI home composition source-backed for the P23 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class HomeSwiper {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p23-bankui-home-data-model",
+      "selection_rank": 10,
+      "sample_rank": 10,
+      "sample_id": "harmonyos-examples-bankui-home-page",
+      "priority": "P23",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "BankUI/entry/src/main/cangjie/src/Model/homeDataModel.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p23/HarmonyOS-Examples/BankUI/entry/src/main/cangjie/src/Model/homeDataModel.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P23 regular candidate selected from the remaining official HarmonyOS-Examples reserve by freezing the BankUI home page together with its eight direct home helpers and local homeDataModel as one bounded workset."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P23 BankUI helper model file for local icon, recommendation, and section data constants reused by the selected home closure.",
+      "notes": [
+        "Generated from the scout-selected P23 freeze set.",
+        "Keep the BankUI home composition source-backed for the P23 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class iconItem{",
+          "public class itemsValue{",
+          "public class recommendSubItem{"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p23-date-selection-calendar-page",
+      "selection_rank": 11,
+      "sample_rank": 1,
+      "sample_id": "harmonyos-examples-date-selection-calendar-page",
+      "priority": "P23",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "14-DateSelection/entry/src/main/cangjie/pages/CalendarPage.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p23/HarmonyOS-Examples/14-DateSelection/entry/src/main/cangjie/pages/CalendarPage.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P23 regular candidate selected from the remaining official HarmonyOS-Examples reserve by freezing CalendarPage together with the local DayDataType, GetDate, and MonthDataType helpers as one bounded workset."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P23 DateSelection calendar page for date-range state ownership, grid rendering, and Router return handoff inside one bounded calendar closure.",
+      "notes": [
+        "Generated from the scout-selected P23 freeze set.",
+        "Keep the DateSelection calendar workflow source-backed for the P23 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "class CalendarPage {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p23-date-selection-day-model",
+      "selection_rank": 12,
+      "sample_rank": 2,
+      "sample_id": "harmonyos-examples-date-selection-calendar-page",
+      "priority": "P23",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "14-DateSelection/entry/src/main/cangjie/model/DayDataType.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p23/HarmonyOS-Examples/14-DateSelection/entry/src/main/cangjie/model/DayDataType.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P23 regular candidate selected from the remaining official HarmonyOS-Examples reserve by freezing CalendarPage together with the local DayDataType, GetDate, and MonthDataType helpers as one bounded workset."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P23 DateSelection helper model for day-based date arithmetic reused by the selected calendar page.",
+      "notes": [
+        "Generated from the scout-selected P23 freeze set.",
+        "Keep the DateSelection calendar workflow source-backed for the P23 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public  class MyDay {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p23-date-selection-get-date-helper",
+      "selection_rank": 13,
+      "sample_rank": 3,
+      "sample_id": "harmonyos-examples-date-selection-calendar-page",
+      "priority": "P23",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "14-DateSelection/entry/src/main/cangjie/model/GetDate.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p23/HarmonyOS-Examples/14-DateSelection/entry/src/main/cangjie/model/GetDate.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P23 regular candidate selected from the remaining official HarmonyOS-Examples reserve by freezing CalendarPage together with the local DayDataType, GetDate, and MonthDataType helpers as one bounded workset."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P23 DateSelection helper for local date-list generation reused by the selected calendar page.",
+      "notes": [
+        "Generated from the scout-selected P23 freeze set.",
+        "Keep the DateSelection calendar workflow source-backed for the P23 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": []
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p23-date-selection-month-model",
+      "selection_rank": 14,
+      "sample_rank": 4,
+      "sample_id": "harmonyos-examples-date-selection-calendar-page",
+      "priority": "P23",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "14-DateSelection/entry/src/main/cangjie/model/MonthDataType.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p23/HarmonyOS-Examples/14-DateSelection/entry/src/main/cangjie/model/MonthDataType.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P23 regular candidate selected from the remaining official HarmonyOS-Examples reserve by freezing CalendarPage together with the local DayDataType, GetDate, and MonthDataType helpers as one bounded workset."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P23 DateSelection helper model for month-range and week-boundary calculations reused by the selected calendar page.",
+      "notes": [
+        "Generated from the scout-selected P23 freeze set.",
+        "Keep the DateSelection calendar workflow source-backed for the P23 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class MyMonth {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p23-roulette-ui-home-tab-entry-page",
+      "selection_rank": 15,
+      "sample_rank": 1,
+      "sample_id": "harmonyos-examples-roulette-ui-home-tab-workflow",
+      "priority": "P23",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "RouletteUI/entry/src/main/cangjie/src/index.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p23/HarmonyOS-Examples/RouletteUI/entry/src/main/cangjie/src/index.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P23 regular candidate selected from the remaining official HarmonyOS-Examples reserve by freezing the RouletteUI entry tab host, local home subtree, tab metadata, and turntable helpers as one bounded workset."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P23 RouletteUI entry page for the home-tab workflow, tab selection ownership, and local tab-shell composition inside one bounded closure.",
+      "notes": [
+        "Generated from the scout-selected P23 freeze set.",
+        "Keep the RouletteUI home-tab workflow source-backed for the P23 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class MyView {",
+          "public class CustomTabBar {",
+          "public class TabItem {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p23-roulette-ui-tab-item-model",
+      "selection_rank": 16,
+      "sample_rank": 2,
+      "sample_id": "harmonyos-examples-roulette-ui-home-tab-workflow",
+      "priority": "P23",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "RouletteUI/entry/src/main/cangjie/src/model/tabItemData.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p23/HarmonyOS-Examples/RouletteUI/entry/src/main/cangjie/src/model/tabItemData.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P23 regular candidate selected from the remaining official HarmonyOS-Examples reserve by freezing the RouletteUI entry tab host, local home subtree, tab metadata, and turntable helpers as one bounded workset."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P23 RouletteUI helper model for local tab metadata and static tab-list definitions reused by the selected home-tab workflow.",
+      "notes": [
+        "Generated from the scout-selected P23 freeze set.",
+        "Keep the RouletteUI home-tab workflow source-backed for the P23 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class TabItemData {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p23-roulette-ui-home-root-component",
+      "selection_rank": 17,
+      "sample_rank": 3,
+      "sample_id": "harmonyos-examples-roulette-ui-home-tab-workflow",
+      "priority": "P23",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "RouletteUI/entry/src/main/cangjie/src/page/home/Home.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p23/HarmonyOS-Examples/RouletteUI/entry/src/main/cangjie/src/page/home/Home.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P23 regular candidate selected from the remaining official HarmonyOS-Examples reserve by freezing the RouletteUI entry tab host, local home subtree, tab metadata, and turntable helpers as one bounded workset."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P23 RouletteUI primary component for the home-tab root that composes top and body sections inside the selected workflow.",
+      "notes": [
+        "Generated from the scout-selected P23 freeze set.",
+        "Keep the RouletteUI home-tab workflow source-backed for the P23 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class Home {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p23-roulette-ui-home-global-helper",
+      "selection_rank": 18,
+      "sample_rank": 4,
+      "sample_id": "harmonyos-examples-roulette-ui-home-tab-workflow",
+      "priority": "P23",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "RouletteUI/entry/src/main/cangjie/src/page/home/global.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p23/HarmonyOS-Examples/RouletteUI/entry/src/main/cangjie/src/page/home/global.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P23 regular candidate selected from the remaining official HarmonyOS-Examples reserve by freezing the RouletteUI entry tab host, local home subtree, tab metadata, and turntable helpers as one bounded workset."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P23 RouletteUI helper for home-page extension methods, shared style shortcuts, and route-button wiring reused by the selected workflow.",
+      "notes": [
+        "Generated from the scout-selected P23 freeze set.",
+        "Keep the RouletteUI home-tab workflow source-backed for the P23 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": []
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p23-roulette-ui-home-body-component",
+      "selection_rank": 19,
+      "sample_rank": 5,
+      "sample_id": "harmonyos-examples-roulette-ui-home-tab-workflow",
+      "priority": "P23",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "RouletteUI/entry/src/main/cangjie/src/page/home/homeBody.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p23/HarmonyOS-Examples/RouletteUI/entry/src/main/cangjie/src/page/home/homeBody.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P23 regular candidate selected from the remaining official HarmonyOS-Examples reserve by freezing the RouletteUI entry tab host, local home subtree, tab metadata, and turntable helpers as one bounded workset."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P23 RouletteUI primary component for turntable-result state ownership and edit-button composition inside the selected home-tab workflow.",
+      "notes": [
+        "Generated from the scout-selected P23 freeze set.",
+        "Keep the RouletteUI home-tab workflow source-backed for the P23 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class homeBody {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p23-roulette-ui-home-top-component",
+      "selection_rank": 20,
+      "sample_rank": 6,
+      "sample_id": "harmonyos-examples-roulette-ui-home-tab-workflow",
+      "priority": "P23",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "RouletteUI/entry/src/main/cangjie/src/page/home/homeTop.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p23/HarmonyOS-Examples/RouletteUI/entry/src/main/cangjie/src/page/home/homeTop.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P23 regular candidate selected from the remaining official HarmonyOS-Examples reserve by freezing the RouletteUI entry tab host, local home subtree, tab metadata, and turntable helpers as one bounded workset."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P23 RouletteUI support component for the bounded home-tab top bar and local icon composition inside the selected workflow.",
+      "notes": [
+        "Generated from the scout-selected P23 freeze set.",
+        "Keep the RouletteUI home-tab workflow source-backed for the P23 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class homeTop {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p23-roulette-ui-turntable-component",
+      "selection_rank": 21,
+      "sample_rank": 7,
+      "sample_id": "harmonyos-examples-roulette-ui-home-tab-workflow",
+      "priority": "P23",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "RouletteUI/entry/src/main/cangjie/src/page/home/turntable.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p23/HarmonyOS-Examples/RouletteUI/entry/src/main/cangjie/src/page/home/turntable.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P23 regular candidate selected from the remaining official HarmonyOS-Examples reserve by freezing the RouletteUI entry tab host, local home subtree, tab metadata, and turntable helpers as one bounded workset."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P23 RouletteUI primary component for timer-driven turntable animation, random-angle selection, and local result handoff inside the selected workflow.",
+      "notes": [
+        "Generated from the scout-selected P23 freeze set.",
+        "Keep the RouletteUI home-tab workflow source-backed for the P23 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class turntable {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p23-roulette-ui-circle-model",
+      "selection_rank": 22,
+      "sample_rank": 8,
+      "sample_id": "harmonyos-examples-roulette-ui-home-tab-workflow",
+      "priority": "P23",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "RouletteUI/entry/src/main/cangjie/src/model/circleModel.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p23/HarmonyOS-Examples/RouletteUI/entry/src/main/cangjie/src/model/circleModel.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P23 regular candidate selected from the remaining official HarmonyOS-Examples reserve by freezing the RouletteUI entry tab host, local home subtree, tab metadata, and turntable helpers as one bounded workset."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P23 RouletteUI helper model for turntable circle geometry reused by the selected home-tab workflow.",
+      "notes": [
+        "Generated from the scout-selected P23 freeze set.",
+        "Keep the RouletteUI home-tab workflow source-backed for the P23 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class CircleModel {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p23-roulette-ui-circle-util-helper",
+      "selection_rank": 23,
+      "sample_rank": 9,
+      "sample_id": "harmonyos-examples-roulette-ui-home-tab-workflow",
+      "priority": "P23",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "RouletteUI/entry/src/main/cangjie/src/util/circleUtil.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p23/HarmonyOS-Examples/RouletteUI/entry/src/main/cangjie/src/util/circleUtil.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P23 regular candidate selected from the remaining official HarmonyOS-Examples reserve by freezing the RouletteUI entry tab host, local home subtree, tab metadata, and turntable helpers as one bounded workset."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P23 RouletteUI helper for canvas drawing, arc text layout, and local random-result decoding reused by the selected home-tab workflow.",
+      "notes": [
+        "Generated from the scout-selected P23 freeze set.",
+        "Keep the RouletteUI home-tab workflow source-backed for the P23 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class CircleUtil {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "string": [
+    {
+      "name": "app_name",
+      "value": "Preferences Persistence Sample"
+    },
+    {
+      "name": "app_desc",
+      "value": "ArkTS Preferences 到仓颉持久化设置页的独立样本工程"
+    },
+    {
+      "name": "module_desc",
+      "value": "Preferences 持久化样本模块"
+    },
+    {
+      "name": "entry_ability_label",
+      "value": "Persistence Sample"
+    },
+    {
+      "name": "entry_ability_desc",
+      "value": "启动 ThemeSettingsPage 并注入真实 Preferences 存储的入口 Ability"
+    }
+  ]
+}

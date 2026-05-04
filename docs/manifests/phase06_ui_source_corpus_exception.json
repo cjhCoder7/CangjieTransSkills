@@ -1,0 +1,94 @@
+{
+  "manifest_name": "phase06-ui-source-corpus-exception",
+  "manifest_version": 1,
+  "created_at": "2026-04-10T15:45:44Z",
+  "corpus_root": "../../raw_docs/phase06-ui-exception",
+  "source_manifest": "phase06_ui_sample_manifest.json",
+  "selection_policy": {
+    "priority": "any",
+    "adoption_decision": "any",
+    "source_type": "external_repo",
+    "sample_buckets": [
+      "exception_references"
+    ],
+    "role": "exception"
+  },
+  "sample_count": 2,
+  "file_count": 4,
+  "entries": [
+    {
+      "entry_id": "avif-ffi-native-boundary",
+      "sample_id": "avif-ffi-native-boundary",
+      "reference_id": "avif-ffi-native-boundary",
+      "priority": "",
+      "source_type": "external_repo",
+      "adoption_decision": "",
+      "role": "exception",
+      "structure_tag": "",
+      "ownership_tag": "",
+      "interaction_tags": [],
+      "exception_tags": [
+        "ffi-exception"
+      ],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/Cangjie-TPC/avif-ffi",
+        "branch": "develop",
+        "commit": "61dcbc64c4a95ead7d61b57f96db5b871f5a0f9d",
+        "access_date": "2026-04-06",
+        "purpose": "FFI decoder, PixelMap lifecycle, and native asset handling reference."
+      },
+      "source_paths": [
+        "avif4cj/src/main/cangjie/avif_decoder.cj",
+        "entry/src/main/cangjie/example2.cj"
+      ],
+      "repo_name": "avif-ffi",
+      "repo_local_paths": [
+        "raw_docs/phase06-ui-exception/avif-ffi/avif4cj/src/main/cangjie/avif_decoder.cj",
+        "raw_docs/phase06-ui-exception/avif-ffi/entry/src/main/cangjie/example2.cj"
+      ],
+      "staging_target": "",
+      "verification_mode": "",
+      "usage_goal": "",
+      "blocking_constraints": [],
+      "reason": "Native boundary, decoder lifecycle, and PixelMap ownership must stay in an exception rail instead of polluting general UI translation prompt."
+    },
+    {
+      "entry_id": "svga-cj-hybrid-boundary",
+      "sample_id": "svga-cj-hybrid-boundary",
+      "reference_id": "svga-cj-hybrid-boundary",
+      "priority": "",
+      "source_type": "external_repo",
+      "adoption_decision": "",
+      "role": "exception",
+      "structure_tag": "",
+      "ownership_tag": "",
+      "interaction_tags": [],
+      "exception_tags": [
+        "hybrid-exception"
+      ],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/Cangjie-TPC/svga-cj",
+        "branch": "develop",
+        "commit": "e1f7bb4c74084cb9970fc84e854699c48f3048fb",
+        "access_date": "2026-04-06",
+        "purpose": "Hybrid Cangjie/ETS animation bridge reference."
+      },
+      "source_paths": [
+        "entry/src/main/cangjie/index.cj",
+        "entry/src/main/ets/pages/index.ets"
+      ],
+      "repo_name": "svga-cj",
+      "repo_local_paths": [
+        "raw_docs/phase06-ui-exception/svga-cj/entry/src/main/cangjie/index.cj",
+        "raw_docs/phase06-ui-exception/svga-cj/entry/src/main/ets/pages/index.ets"
+      ],
+      "staging_target": "",
+      "verification_mode": "",
+      "usage_goal": "",
+      "blocking_constraints": [],
+      "reason": "Hybrid runtime and ETS bridge must be isolated into a dedicated exception rail rather than learned as the default UI translation path."
+    }
+  ]
+}

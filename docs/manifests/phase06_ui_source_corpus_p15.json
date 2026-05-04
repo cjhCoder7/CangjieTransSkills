@@ -1,0 +1,134 @@
+{
+  "manifest_name": "phase06-ui-source-corpus-p15",
+  "manifest_version": 1,
+  "created_at": "2026-04-12T13:15:13Z",
+  "corpus_root": "../../raw_docs/phase06-ui-p15",
+  "source_manifest": "phase06_ui_sample_manifest.json",
+  "selection_policy": {
+    "priority": "P15",
+    "adoption_decision": "primary",
+    "source_type": "external_repo",
+    "sample_buckets": [
+      "ordered_samples"
+    ]
+  },
+  "sample_count": 3,
+  "file_count": 8,
+  "entries": [
+    {
+      "entry_id": "harmonyos-examples-pinwheel-entry-shell",
+      "sample_id": "harmonyos-examples-pinwheel-entry-shell",
+      "reference_id": "",
+      "priority": "P15",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "role": "",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P15 regular candidate selected from the remaining official HarmonyOS-Examples reserve after the regular Phase06 checkpoint reached 69/69 live passed."
+      },
+      "source_paths": [
+        "12-Pinwheel/entry/src/main/cangjie/index.cj",
+        "12-Pinwheel/entry/src/main/cangjie/common/Constants.cj",
+        "12-Pinwheel/entry/src/main/cangjie/view/PanelComponent.cj"
+      ],
+      "repo_name": "HarmonyOS-Examples",
+      "repo_local_paths": [
+        "raw_docs/phase06-ui-p15/HarmonyOS-Examples/12-Pinwheel/entry/src/main/cangjie/index.cj",
+        "raw_docs/phase06-ui-p15/HarmonyOS-Examples/12-Pinwheel/entry/src/main/cangjie/common/Constants.cj",
+        "raw_docs/phase06-ui-p15/HarmonyOS-Examples/12-Pinwheel/entry/src/main/cangjie/view/PanelComponent.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Add an official animation-control page that keeps timer-owned rotation and size state in the page shell while freezing the slider panel and constants explicitly as support slices.",
+      "blocking_constraints": [
+        "Keep Timer.repeat-driven rotation, image scale state, and slider callback ownership source-backed in the page shell, and keep PanelComponent.cj plus common/Constants.cj explicitly frozen instead of pretending the sample is single-file."
+      ],
+      "reason": ""
+    },
+    {
+      "entry_id": "harmonyos-cangjie-cases-search-component",
+      "sample_id": "harmonyos-cangjie-cases-search-component",
+      "reference_id": "",
+      "priority": "P15",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "role": "",
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Cangjie-Cases",
+        "branch": "main",
+        "commit": "2d0662bb5c97a15d6bc459688df6c9b23275f12f",
+        "access_date": "2026-04-12",
+        "purpose": "P15 regular candidate selected from the remaining official HarmonyOS-Cangjie-Cases reserve because SearchComponent.cj is a self-contained rich-component sample with explicit foldable and geometry-transition behavior."
+      },
+      "source_paths": [
+        "CangjieAppDevelopment/feature/searchcomponent/src/main/cangjie/src/SearchComponent.cj"
+      ],
+      "repo_name": "HarmonyOS-Cangjie-Cases",
+      "repo_local_paths": [
+        "raw_docs/phase06-ui-p15/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/searchcomponent/src/main/cangjie/src/SearchComponent.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Add an official foldable-aware search component that keeps geometryTransition, foldable-width branching, and toast interaction inside one narrow rich-component boundary.",
+      "blocking_constraints": [
+        "Keep geometryTransition, AppStorage-backed foldable branching, and PromptAction toast wiring source-backed inside the component boundary instead of wrapping the sample in a fake page shell."
+      ],
+      "reason": ""
+    },
+    {
+      "entry_id": "harmonyos-cangjie-cases-functional-scenes-component",
+      "sample_id": "harmonyos-cangjie-cases-functional-scenes-component",
+      "reference_id": "",
+      "priority": "P15",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "role": "",
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Cangjie-Cases",
+        "branch": "main",
+        "commit": "2d0662bb5c97a15d6bc459688df6c9b23275f12f",
+        "access_date": "2026-04-12",
+        "purpose": "P15 regular candidate selected from the remaining official HarmonyOS-Cangjie-Cases reserve by freezing FunctionalScenes together with its data-source and tab-model helpers as an honest bounded workset."
+      },
+      "source_paths": [
+        "CangjieAppDevelopment/feature/functionalscenes/src/main/cangjie/src/FunctionalScenes.cj",
+        "CangjieAppDevelopment/feature/functionalscenes/src/main/cangjie/src/model/ListDataSource.cj",
+        "CangjieAppDevelopment/feature/functionalscenes/src/main/cangjie/src/model/SceneModuleInfo.cj",
+        "CangjieAppDevelopment/feature/functionalscenes/src/main/cangjie/src/model/TabsData.cj"
+      ],
+      "repo_name": "HarmonyOS-Cangjie-Cases",
+      "repo_local_paths": [
+        "raw_docs/phase06-ui-p15/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/functionalscenes/src/main/cangjie/src/FunctionalScenes.cj",
+        "raw_docs/phase06-ui-p15/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/functionalscenes/src/main/cangjie/src/model/ListDataSource.cj",
+        "raw_docs/phase06-ui-p15/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/functionalscenes/src/main/cangjie/src/model/SceneModuleInfo.cj",
+        "raw_docs/phase06-ui-p15/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/functionalscenes/src/main/cangjie/src/model/TabsData.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Add an official tabs-and-list orchestration component that keeps TabsController, LazyForEach filtering, and menu/list coordination in the host component while freezing the model helpers explicitly.",
+      "blocking_constraints": [
+        "Keep TabsController ownership, ListDataSource behavior, TAB_DATA filtering, and Router-facing item selection source-backed in the component, and freeze the model files explicitly instead of reducing the sample to a misleading single-file pick."
+      ],
+      "reason": ""
+    }
+  ]
+}

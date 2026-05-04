@@ -1,0 +1,124 @@
+{
+  "manifest_name": "phase06-ui-source-corpus-p3",
+  "manifest_version": 1,
+  "created_at": "2026-04-11T07:55:36Z",
+  "corpus_root": "../../raw_docs/phase06-ui-p3",
+  "source_manifest": "phase06_ui_sample_manifest.json",
+  "selection_policy": {
+    "priority": "P3",
+    "adoption_decision": "primary",
+    "source_type": "external_repo",
+    "sample_buckets": [
+      "ordered_samples"
+    ]
+  },
+  "sample_count": 3,
+  "file_count": 3,
+  "entries": [
+    {
+      "entry_id": "cangjiechallenge-aiatom-home-page",
+      "sample_id": "cangjiechallenge-aiatom-home-page",
+      "reference_id": "",
+      "priority": "P3",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "role": "",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/cangjiechallenge/bb40b887dcf53d1a8b72884ad862fdf9",
+        "branch": "master",
+        "commit": "c99988534078e0c0409ffb20d298b79853f013ed",
+        "access_date": "2026-04-11",
+        "purpose": "P3 home dashboard baseline with progress-backed level cards, completion overlay, and page-owned router handoff."
+      },
+      "source_paths": [
+        "cangjieApp/entry/src/main/cangjie/pages/HomePage.cj"
+      ],
+      "repo_name": "bb40b887dcf53d1a8b72884ad862fdf9",
+      "repo_local_paths": [
+        "raw_docs/phase06-ui-p3/bb40b887dcf53d1a8b72884ad862fdf9/cangjieApp/entry/src/main/cangjie/pages/HomePage.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Expand Phase 06 with a dashboard-style home page that owns progress refresh, completion overlay state, and level-entry routing inside one page shell without dragging splash/web bridge internals into the default rail.",
+      "blocking_constraints": [
+        "Needs HarmonyOS GUI host to verify overlay timing, level-card layout, and Router push/back behavior."
+      ],
+      "reason": ""
+    },
+    {
+      "entry_id": "cangjiechallenge-aiatom-listen-page",
+      "sample_id": "cangjiechallenge-aiatom-listen-page",
+      "reference_id": "",
+      "priority": "P3",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "role": "",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/cangjiechallenge/bb40b887dcf53d1a8b72884ad862fdf9",
+        "branch": "master",
+        "commit": "c99988534078e0c0409ffb20d298b79853f013ed",
+        "access_date": "2026-04-11",
+        "purpose": "P3 audio-quiz page baseline with timer-driven answer flow, speech playback callbacks, and level-derived question state."
+      },
+      "source_paths": [
+        "cangjieApp/entry/src/main/cangjie/pages/ListenPage.cj"
+      ],
+      "repo_name": "bb40b887dcf53d1a8b72884ad862fdf9",
+      "repo_local_paths": [
+        "raw_docs/phase06-ui-p3/bb40b887dcf53d1a8b72884ad862fdf9/cangjieApp/entry/src/main/cangjie/pages/ListenPage.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Add a quiz-style page shell that coordinates transient answer state, timer callbacks, and page-local speech playback without introducing hybrid rails or hidden controller facades.",
+      "blocking_constraints": [
+        "Needs HarmonyOS GUI host to verify playback trigger timing, answer feedback transitions, and router back-state restoration."
+      ],
+      "reason": ""
+    },
+    {
+      "entry_id": "cangjiechallenge-secmeet-transcription-component",
+      "sample_id": "cangjiechallenge-secmeet-transcription-component",
+      "reference_id": "",
+      "priority": "P3",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "role": "",
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/cangjiechallenge/d45e5bcde569dadcaf4fcc0524ac8f38",
+        "branch": "master",
+        "commit": "c18f350c6aecbeadd9b9115b739e3f3a0fa73212",
+        "access_date": "2026-04-11",
+        "purpose": "P3 callback-driven transcription panel baseline with builder-composed status regions and component-owned volatile workflow state."
+      },
+      "source_paths": [
+        "entry/src/main/cangjie/transcription_page.cj"
+      ],
+      "repo_name": "d45e5bcde569dadcaf4fcc0524ac8f38",
+      "repo_local_paths": [
+        "raw_docs/phase06-ui-p3/d45e5bcde569dadcaf4fcc0524ac8f38/entry/src/main/cangjie/transcription_page.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Add a large rich-component slice that exposes host callbacks while keeping recording, transcript, and risk-alert workflow state inside the component boundary.",
+      "blocking_constraints": [
+        "Needs HarmonyOS GUI host to verify control-button state transitions, transcript scrolling, and callback-driven completion/cancel handoff."
+      ],
+      "reason": ""
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "string": [
+    {
+      "name": "app_name",
+      "value": "UI Routing Sample"
+    },
+    {
+      "name": "app_desc",
+      "value": "ArkTS 到仓颉的 UI 与路由首个样本工程骨架"
+    },
+    {
+      "name": "module_desc",
+      "value": "UI 路由样本模块"
+    },
+    {
+      "name": "entry_ability_label",
+      "value": "UI Routing Sample"
+    },
+    {
+      "name": "entry_ability_desc",
+      "value": "加载 FoodCategoryListPage 作为首页的入口 Ability"
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "manifest_name": "phase06-ui-source-corpus-p9-draft",
+  "manifest_version": 1,
+  "created_at": "2026-04-12T01:32:47Z",
+  "corpus_root": "../../raw_docs/phase06-ui-p9-draft",
+  "source_manifest": "phase06_ui_sample_manifest_p9_draft.json",
+  "selection_policy": {
+    "priority": "P9",
+    "adoption_decision": "primary",
+    "source_type": "external_repo",
+    "sample_buckets": [
+      "ordered_samples"
+    ]
+  },
+  "sample_count": 3,
+  "file_count": 3,
+  "entries": [
+    {
+      "entry_id": "harmonyos-examples-commonui-swiper-page",
+      "sample_id": "harmonyos-examples-commonui-swiper-page",
+      "reference_id": "",
+      "priority": "P9",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "role": "",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P9 draft candidate harvested from the remaining official HarmonyOS-Examples reserve after the regular Phase06 checkpoint reached 41/41 live passed."
+      },
+      "source_paths": [
+        "CommonUI/entry/src/main/cangjie/src/pages/swiperSample.cj"
+      ],
+      "repo_name": "HarmonyOS-Examples",
+      "repo_local_paths": [
+        "raw_docs/phase06-ui-p9-draft/HarmonyOS-Examples/CommonUI/entry/src/main/cangjie/src/pages/swiperSample.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Add a self-contained swiper demo page that keeps dual SwiperController ownership, autoplay variants, and same-file prev/next navigation inside one controller-owned page shell.",
+      "blocking_constraints": [
+        "Keep SwiperController ownership, onChange callbacks, and prev/next navigation source-backed inside the page boundary; do not invent detached carousel coordinators."
+      ],
+      "reason": ""
+    },
+    {
+      "entry_id": "harmonyos-examples-commonui-text-input-page",
+      "sample_id": "harmonyos-examples-commonui-text-input-page",
+      "reference_id": "",
+      "priority": "P9",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "role": "",
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P9 draft candidate harvested from the remaining official HarmonyOS-Examples reserve after the regular Phase06 checkpoint reached 41/41 live passed."
+      },
+      "source_paths": [
+        "CommonUI/entry/src/main/cangjie/src/pages/textInputSample.cj"
+      ],
+      "repo_name": "HarmonyOS-Examples",
+      "repo_local_paths": [
+        "raw_docs/phase06-ui-p9-draft/HarmonyOS-Examples/CommonUI/entry/src/main/cangjie/src/pages/textInputSample.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Add a self-contained text-input demo page that keeps placeholder styling, caret/font configuration, and echoed @State text inside one narrow render-facing page shell.",
+      "blocking_constraints": [
+        "Keep @State text, TextInput.onChange, and same-file echo rendering source-backed inside the page boundary; do not introduce synthetic form models."
+      ],
+      "reason": ""
+    },
+    {
+      "entry_id": "harmonyos-examples-helloword-entry-page",
+      "sample_id": "harmonyos-examples-helloword-entry-page",
+      "reference_id": "",
+      "priority": "P9",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "role": "",
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P9 draft candidate drawn from the remaining official HarmonyOS-Examples reserve to extend low-coupling layout and collection coverage after the P8 promotion."
+      },
+      "source_paths": [
+        "01-HelloWord/entry/src/main/cangjie/src/index.cj"
+      ],
+      "repo_name": "HarmonyOS-Examples",
+      "repo_local_paths": [
+        "raw_docs/phase06-ui-p9-draft/HarmonyOS-Examples/01-HelloWord/entry/src/main/cangjie/src/index.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Add a self-contained hello-word page that keeps display-derived typography, random rune generation, and Scroll/ForEach layout composition inside one direct render-facing page shell.",
+      "blocking_constraints": [
+        "Keep random rune generation, display-width sizing, and ForEach layout placement source-backed inside the page shell; do not fabricate helper providers or detached layout services."
+      ],
+      "reason": ""
+    }
+  ]
+}

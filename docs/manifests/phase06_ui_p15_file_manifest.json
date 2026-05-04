@@ -1,0 +1,454 @@
+{
+  "manifest_name": "phase06-ui-p15-file-manifest",
+  "manifest_version": 1,
+  "created_at": "2026-04-12T13:15:13Z",
+  "phase": "Phase 06 UI Source Slicing / File-Level Workset",
+  "status": "draft-ready",
+  "source_corpus_manifest": "phase06_ui_source_corpus_p15.json",
+  "source_manifest": "phase06_ui_sample_manifest.json",
+  "few_shot_pack": "phase06_ui_few_shot_pack.json",
+  "intended_consumer": [
+    "human-review",
+    "future-phase06-prompt-pilot",
+    "future-phase06-batch-curator"
+  ],
+  "notes": [
+    "Expands the selected frozen source corpus into file-level slices with explicit ui_prompt_tags.",
+    "This manifest is not consumed directly by scripts/pipeline_batch_runner.py; it is a file-level workset for prompt pilots, explicit tag injection, and later batch curation.",
+    "Tag refinement is allowed at file level when a multi-file sample contains both page-shell and rich-component files."
+  ],
+  "selection_policy": {
+    "priority": "P15",
+    "adoption_decision": "primary",
+    "source_type": "external_repo",
+    "expansion_rule": "expand repo_local_paths into file-level slices and refine per-file target_role/ui_prompt_tags"
+  },
+  "summary": {
+    "sample_count": 3,
+    "slice_count": 8,
+    "role_counts": {
+      "page": 1,
+      "viewmodel": 4,
+      "component": 3
+    },
+    "structure_counts": {
+      "page-shell": 1,
+      "rich-component": 7
+    }
+  },
+  "entries": [
+    {
+      "slice_id": "phase06-ui-p15-pinwheel-entry-page",
+      "selection_rank": 1,
+      "sample_rank": 1,
+      "sample_id": "harmonyos-examples-pinwheel-entry-shell",
+      "priority": "P15",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "12-Pinwheel/entry/src/main/cangjie/index.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p15/HarmonyOS-Examples/12-Pinwheel/entry/src/main/cangjie/index.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P15 regular candidate selected from the remaining official HarmonyOS-Examples reserve after the regular Phase06 checkpoint reached 69/69 live passed."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P15 animation-control page slice for timer-driven rotation, slider callback ownership, and page-hosted image scale state inside one controller-owned shell.",
+      "notes": [
+        "Keep Timer.repeat scheduling, Main-thread angle updates, and slider callback handoff source-backed in the page shell.",
+        "Treat PanelComponent.cj plus common/Constants.cj as explicitly frozen companions instead of pretending the pinwheel sample is single-file."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class EntryView {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p15-pinwheel-constants-model",
+      "selection_rank": 2,
+      "sample_rank": 2,
+      "sample_id": "harmonyos-examples-pinwheel-entry-shell",
+      "priority": "P15",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "12-Pinwheel/entry/src/main/cangjie/common/Constants.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p15/HarmonyOS-Examples/12-Pinwheel/entry/src/main/cangjie/common/Constants.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P15 regular candidate selected from the remaining official HarmonyOS-Examples reserve after the regular Phase06 checkpoint reached 69/69 live passed."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P15 pinwheel support-model slice for shared slider, rotate-position, and panel layout constants behind the animated host page and slider component.",
+      "notes": [
+        "Keep RotatePosition, SliderMode, SliderSpeed, and layout constants source-backed here instead of scattering them across page or component prompts.",
+        "This file remains a renderer-facing support-model slice rather than a standalone UI component boundary."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class RotatePosition {",
+          "public class SliderSpeed {",
+          "public class SliderMode {",
+          "public class Constants {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p15-pinwheel-panel-component",
+      "selection_rank": 3,
+      "sample_rank": 3,
+      "sample_id": "harmonyos-examples-pinwheel-entry-shell",
+      "priority": "P15",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "12-Pinwheel/entry/src/main/cangjie/view/PanelComponent.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p15/HarmonyOS-Examples/12-Pinwheel/entry/src/main/cangjie/view/PanelComponent.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P15 regular candidate selected from the remaining official HarmonyOS-Examples reserve after the regular Phase06 checkpoint reached 69/69 live passed."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P15 interactive slider component slice for speed/scale control, callback dispatch, and component-owned display state behind the pinwheel page shell.",
+      "notes": [
+        "Keep Slider.onChange handling, outSetValue display state, and mode-specific slider presentation source-backed in this component.",
+        "This file is the direct reusable interaction anchor for the pinwheel reserve sample."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class PanelComponent {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p15-search-component",
+      "selection_rank": 4,
+      "sample_rank": 1,
+      "sample_id": "harmonyos-cangjie-cases-search-component",
+      "priority": "P15",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Cangjie-Cases",
+      "source_path": "CangjieAppDevelopment/feature/searchcomponent/src/main/cangjie/src/SearchComponent.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p15/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/searchcomponent/src/main/cangjie/src/SearchComponent.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Cangjie-Cases",
+        "branch": "main",
+        "commit": "2d0662bb5c97a15d6bc459688df6c9b23275f12f",
+        "access_date": "2026-04-12",
+        "purpose": "P15 regular candidate selected from the remaining official HarmonyOS-Cangjie-Cases reserve because SearchComponent.cj is a self-contained rich-component sample with explicit foldable and geometry-transition behavior."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P15 foldable-aware search component slice for geometryTransition, disabled keyboard focus semantics, and toast-backed click interaction inside one narrow component boundary.",
+      "notes": [
+        "Keep AppStorage-backed foldable branching, geometryTransition usage, and PromptAction.showToast source-backed inside the component.",
+        "Do not wrap this self-contained reserve sample in a fake page shell or invent extra controller layers."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class SearchComponent {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p15-functional-scenes-component",
+      "selection_rank": 5,
+      "sample_rank": 1,
+      "sample_id": "harmonyos-cangjie-cases-functional-scenes-component",
+      "priority": "P15",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Cangjie-Cases",
+      "source_path": "CangjieAppDevelopment/feature/functionalscenes/src/main/cangjie/src/FunctionalScenes.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p15/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/functionalscenes/src/main/cangjie/src/FunctionalScenes.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Cangjie-Cases",
+        "branch": "main",
+        "commit": "2d0662bb5c97a15d6bc459688df6c9b23275f12f",
+        "access_date": "2026-04-12",
+        "purpose": "P15 regular candidate selected from the remaining official HarmonyOS-Cangjie-Cases reserve by freezing FunctionalScenes together with its data-source and tab-model helpers as an honest bounded workset."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P15 tabs-and-list orchestration component slice for TabsController ownership, menu/list coordination, and LazyForEach category filtering inside one controller-owned host component.",
+      "notes": [
+        "Keep tabsIndex ownership, scrollController coordination, and Router.push-facing item selection source-backed in the host component.",
+        "Treat the model files as explicit companions instead of pretending FunctionalScenes.cj is self-contained."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "public class FunctionalScenes {",
+          "class MethodPoints {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p15-functional-scenes-data-source-model",
+      "selection_rank": 6,
+      "sample_rank": 2,
+      "sample_id": "harmonyos-cangjie-cases-functional-scenes-component",
+      "priority": "P15",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Cangjie-Cases",
+      "source_path": "CangjieAppDevelopment/feature/functionalscenes/src/main/cangjie/src/model/ListDataSource.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p15/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/functionalscenes/src/main/cangjie/src/model/ListDataSource.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Cangjie-Cases",
+        "branch": "main",
+        "commit": "2d0662bb5c97a15d6bc459688df6c9b23275f12f",
+        "access_date": "2026-04-12",
+        "purpose": "P15 regular candidate selected from the remaining official HarmonyOS-Cangjie-Cases reserve by freezing FunctionalScenes together with its data-source and tab-model helpers as an honest bounded workset."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P15 functional-scenes data-source support-model slice for IDataSource ownership and list-data adaptation behind the host component.",
+      "notes": [
+        "Keep IDataSource plumbing and SceneModuleInfo list adaptation source-backed here instead of moving data-source behavior into the component shell.",
+        "This file stays attached to the functional-scenes lane as a support-model slice."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class ListDataSource <: IDataSource<SceneModuleInfo> {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p15-functional-scenes-scene-module-model",
+      "selection_rank": 7,
+      "sample_rank": 3,
+      "sample_id": "harmonyos-cangjie-cases-functional-scenes-component",
+      "priority": "P15",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Cangjie-Cases",
+      "source_path": "CangjieAppDevelopment/feature/functionalscenes/src/main/cangjie/src/model/SceneModuleInfo.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p15/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/functionalscenes/src/main/cangjie/src/model/SceneModuleInfo.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Cangjie-Cases",
+        "branch": "main",
+        "commit": "2d0662bb5c97a15d6bc459688df6c9b23275f12f",
+        "access_date": "2026-04-12",
+        "purpose": "P15 regular candidate selected from the remaining official HarmonyOS-Cangjie-Cases reserve by freezing FunctionalScenes together with its data-source and tab-model helpers as an honest bounded workset."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P15 functional-scenes support-model slice for route metadata, image resource ownership, and category payloads consumed by the host component.",
+      "notes": [
+        "Keep SceneModuleInfo payload shape source-backed here instead of re-inventing DTOs inside the component prompt context.",
+        "This is a renderer-facing support-model slice rather than a standalone page/component boundary."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class SceneModuleInfo {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p15-functional-scenes-tabs-model",
+      "selection_rank": 8,
+      "sample_rank": 4,
+      "sample_id": "harmonyos-cangjie-cases-functional-scenes-component",
+      "priority": "P15",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Cangjie-Cases",
+      "source_path": "CangjieAppDevelopment/feature/functionalscenes/src/main/cangjie/src/model/TabsData.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p15/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/functionalscenes/src/main/cangjie/src/model/TabsData.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Cangjie-Cases",
+        "branch": "main",
+        "commit": "2d0662bb5c97a15d6bc459688df6c9b23275f12f",
+        "access_date": "2026-04-12",
+        "purpose": "P15 regular candidate selected from the remaining official HarmonyOS-Cangjie-Cases reserve by freezing FunctionalScenes together with its data-source and tab-model helpers as an honest bounded workset."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P15 functional-scenes tabs support-model slice for tab id/label ownership and category filter definitions behind the host component.",
+      "notes": [
+        "Keep TabDataModel plus TAB_DATA source-backed here instead of hard-coding category metadata into the component shell.",
+        "This file remains a controller-facing support-model slice attached to the functional-scenes lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class TabDataModel {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    }
+  ]
+}

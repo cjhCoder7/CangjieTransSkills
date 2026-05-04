@@ -1,0 +1,28 @@
+{
+  "chunk": {
+    "chunk_id": "module",
+    "label": "TL Serialization",
+    "description": "translate the full TL serialization module as a single frozen-anchor chunk",
+    "expected_members": [
+      "TLConstructors",
+      "TLSerializer",
+      "TLDeserializer"
+    ]
+  },
+  "artifact": {
+    "attempt": 1,
+    "generated_code": "package core.mtproto\n\npublic class TLConstructors {\n    public static let VECTOR: Int32 = 0x1cb5c415\n    public static let RPC_RESULT: Int32 = -212046591\n    public static let RPC_ERROR: Int32 = 0x2144ca19\n}\n\npublic class TLSerializer {\n    private var bytes: Array<UInt8> = []\n\n    public func writeInt32(value: Int32): Unit {\n        this.bytes = appendByte(this.bytes, UInt8(value & 0xff))\n    }\n\n    public func writeInt64(value: Int64): Unit {\n        this.bytes = appendByte(this.bytes, UInt8(value & 0xff))\n    }\n\n    public func writeBytes(value: Array<UInt8>): Unit {\n        for (item in value) {\n            this.bytes = appendByte(this.bytes, item)\n        }\n    }\n\n    public func writeString(value: String): Unit {\n        let encoded = value.toArray()\n        this.bytes = appendByte(this.bytes, UInt8(Int64(encoded.size) & 0xff))\n        for (item in encoded) {\n            this.bytes = appendByte(this.bytes, item)\n        }\n    }\n\n    public func getBuffer(): Array<UInt8> {\n        this.bytes\n    }\n}\n\nfunc appendByte(arr: Array<UInt8>, b: UInt8): Array<UInt8> {\n    let newSize = arr.size + 1\n    Array<UInt8>(newSize, { i: Int64 =>\n        if (i < arr.size) {\n            arr[i]\n        } else {\n            b\n        }\n    })\n}\n\npublic class TLDeserializer {\n    private var offset: Int64 = 0\n    private let data: Array<UInt8>\n\n    public init(data: Array<UInt8>) {\n        this.data = cloneDeserializerBytes(data)\n    }\n\n    public func readInt32(): Int32 {\n        if (this.offset >= this.data.size) {\n            return 0\n        }\n        let value = Int32(this.data[this.offset])\n        this.offset = this.offset + 1\n        value\n    }\n\n    public func readInt64(): Int64 {\n        Int64(readInt32())\n    }\n\n    public func readBytes(): Array<UInt8> {\n        let length = Int64(readInt32())\n        let available = remainingBytesCount(this.data, this.offset)\n        let actualLength = if (length < available) { length } else { available }\n        let start = this.offset\n        this.offset = this.offset + actualLength\n        Array<UInt8>(actualLength, { index: Int64 => this.data[start + index] })\n    }\n\n    public func readString(): String {\n        String.fromUtf8(readBytes())\n    }\n}\n\nfunc cloneDeserializerBytes(data: Array<UInt8>): Array<UInt8> {\n    Array<UInt8>(data.size, { index: Int64 => data[index] })\n}\n\nfunc remainingBytesCount(data: Array<UInt8>, offset: Int64): Int64 {\n    if (offset < data.size) {\n        data.size - offset\n    } else {\n        0\n    }\n}\n",
+    "declared_constraints": [
+      "Translation Mapping",
+      "Verification Matrix"
+    ],
+    "notes": [
+      "Curated frozen TLSerialization anchor materializes length-prefixed UTF-8 write/read behavior and byte-slice decoding.",
+      "This anchor stabilizes the verifier behavior harness against LLM regressions back to placeholder deserializers."
+    ],
+    "metadata": {
+      "target_path": "src/core/mtproto/TLSerialization.ets",
+      "repair_thought_process": "Frozen from the validated staged implementation so real pipeline runs can execute the TL serialization harness deterministically."
+    }
+  }
+}

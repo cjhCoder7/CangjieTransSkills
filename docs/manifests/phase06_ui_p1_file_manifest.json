@@ -1,0 +1,516 @@
+{
+  "manifest_name": "phase06-ui-p1-file-manifest",
+  "manifest_version": 1,
+  "created_at": "2026-04-09T17:14:27Z",
+  "phase": "Phase 06 UI Source Slicing / File-Level Workset",
+  "status": "draft-ready",
+  "source_corpus_manifest": "phase06_ui_source_corpus_p1.json",
+  "source_manifest": "phase06_ui_sample_manifest.json",
+  "few_shot_pack": "phase06_ui_few_shot_pack.json",
+  "intended_consumer": [
+    "human-review",
+    "future-phase06-prompt-pilot",
+    "future-phase06-batch-curator"
+  ],
+  "notes": [
+    "Expands the selected frozen source corpus into file-level slices with explicit ui_prompt_tags.",
+    "This manifest is not consumed directly by scripts/pipeline_batch_runner.py; it is a file-level workset for prompt pilots, explicit tag injection, and later batch curation.",
+    "Tag refinement is allowed at file level when a multi-file sample contains both page-shell and rich-component files."
+  ],
+  "selection_policy": {
+    "priority": "P1",
+    "adoption_decision": "primary",
+    "source_type": "external_repo",
+    "expansion_rule": "expand repo_local_paths into file-level slices and refine per-file target_role/ui_prompt_tags"
+  },
+  "summary": {
+    "sample_count": 4,
+    "slice_count": 9,
+    "role_counts": {
+      "component": 3,
+      "page": 5,
+      "viewmodel": 1
+    },
+    "structure_counts": {
+      "rich-component": 3,
+      "page-shell": 6
+    }
+  },
+  "entries": [
+    {
+      "slice_id": "phase06-ui-p1-svg-image-view-component",
+      "selection_rank": 1,
+      "sample_rank": 1,
+      "sample_id": "svg4cj-view-model-renderer",
+      "priority": "P1",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "svg4cj",
+      "source_path": "svg/src/main/cangjie/src/svg_image_view.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p1/svg4cj/svg/src/main/cangjie/src/svg_image_view.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie-TPC/svg4cj",
+        "branch": "develop",
+        "commit": "9b26512106db5d3963417bad2be316a99725a4a8",
+        "access_date": "2026-04-06",
+        "purpose": "P1 renderer/model separation reference."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Primary renderer/component slice for SVGImageView plus the embedded observed model contract that drives render state.",
+      "notes": [
+        "The same file contains both SVGImageView and SVGImageViewModel; keep the render-facing component boundary as the primary slice."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "public class SVGImageView {",
+          "public class SVGImageViewModel {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p1-svg-render-merman-page",
+      "selection_rank": 2,
+      "sample_rank": 2,
+      "sample_id": "svg4cj-view-model-renderer",
+      "priority": "P1",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "svg4cj",
+      "source_path": "entry/src/main/cangjie/src/render_merman.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p1/svg4cj/entry/src/main/cangjie/src/render_merman.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie-TPC/svg4cj",
+        "branch": "develop",
+        "commit": "9b26512106db5d3963417bad2be316a99725a4a8",
+        "access_date": "2026-04-06",
+        "purpose": "P1 renderer/model separation reference."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Entry page slice hosting SVGImageView and page-owned model state for renderer-backed asset display.",
+      "notes": [
+        "Use this file as the page-shell host; renderer internals stay in the paired component slice."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class RenderMerman {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-ui-routing-page-shell-view-model-renderer",
+        "harmonyos-examples-badgeview-page-shell-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p1-editor-kit-component",
+      "selection_rank": 3,
+      "sample_rank": 1,
+      "sample_id": "editor4cj-controller-owned-state",
+      "priority": "P1",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "editor4cj",
+      "source_path": "entry/src/main/cangjie/src/editor_kit/editorText.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p1/editor4cj/entry/src/main/cangjie/src/editor_kit/editorText.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie-TPC/editor4cj",
+        "branch": "master",
+        "commit": "4f9a3b9551899ea5aaa6aec740cbb403dd0c8294",
+        "access_date": "2026-04-06",
+        "purpose": "P1 heavy controller-driven component reference."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Primary editor component slice covering controller binding, layout measurement, and large rich-text editing state.",
+      "notes": [
+        "Controller and component live in one file; keep the direct EditorKit component contract as the slice boundary."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class EditorKitController {",
+          "public class EditorKit {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p1-editor-kit-host-page",
+      "selection_rank": 4,
+      "sample_rank": 2,
+      "sample_id": "editor4cj-controller-owned-state",
+      "priority": "P1",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "editor4cj",
+      "source_path": "entry/src/main/cangjie/src/index.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p1/editor4cj/entry/src/main/cangjie/src/index.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie-TPC/editor4cj",
+        "branch": "master",
+        "commit": "4f9a3b9551899ea5aaa6aec740cbb403dd0c8294",
+        "access_date": "2026-04-06",
+        "purpose": "P1 heavy controller-driven component reference."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Entry page slice that wires EditorKitController into a host page without pulling editor internals into the page contract.",
+      "notes": [
+        "Algorithm demo helpers remain incidental noise; the page-shell to controller handoff is the contract to keep."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class MyView {",
+          "class Solution {",
+          "class Solution {",
+          "class Solution {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p1-httpnews-index-page",
+      "selection_rank": 5,
+      "sample_rank": 1,
+      "sample_id": "httpnews-integrated-client",
+      "priority": "P1",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HttpNewsApp-Cangjie",
+      "source_path": "entry/src/main/cangjie/src/index.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p1/HttpNewsApp-Cangjie/entry/src/main/cangjie/src/index.cj",
+      "source": {
+        "url": "https://gitcode.com/szLilyWu/HttpNewsApp-Cangjie",
+        "branch": "main",
+        "commit": "9e02e67764a13281ec1c0d413700f878ba55c3c3",
+        "access_date": "2026-04-06",
+        "purpose": "P1 integrated network+page client reference."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [
+        "mixed-app-pattern"
+      ],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": [
+          "mixed-app-pattern"
+        ]
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+external-server+manual-ui-smoke",
+      "usage_goal": "Integrated client page slice for list/search/swiper composition, Router navigation, and page-owned HTTP-backed state.",
+      "notes": [
+        "Keep the mixed-app-pattern tag because routing, async loading, and page composition all live in this file."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class MyDataSource <: IDataSource<CJResource> {",
+          "class EntryView {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p1-httpnews-news-model",
+      "selection_rank": 6,
+      "sample_rank": 2,
+      "sample_id": "httpnews-integrated-client",
+      "priority": "P1",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HttpNewsApp-Cangjie",
+      "source_path": "entry/src/main/cangjie/src/news.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p1/HttpNewsApp-Cangjie/entry/src/main/cangjie/src/news.cj",
+      "source": {
+        "url": "https://gitcode.com/szLilyWu/HttpNewsApp-Cangjie",
+        "branch": "main",
+        "commit": "9e02e67764a13281ec1c0d413700f878ba55c3c3",
+        "access_date": "2026-04-06",
+        "purpose": "P1 integrated network+page client reference."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [
+        "mixed-app-pattern"
+      ],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": [
+          "mixed-app-pattern"
+        ]
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+external-server+manual-ui-smoke",
+      "usage_goal": "Supporting model slice for News DTOs and NewsManager request/state ownership behind the integrated client pages.",
+      "notes": [
+        "No @Entry or @Component lives here; keep it attached to the integrated page-shell lane as a support-model slice."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class News <: ToString & Serializable<News> {",
+          "public class NewsManager {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p1-httpnews-detail-page",
+      "selection_rank": 7,
+      "sample_rank": 3,
+      "sample_id": "httpnews-integrated-client",
+      "priority": "P1",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HttpNewsApp-Cangjie",
+      "source_path": "entry/src/main/cangjie/src/news_detail.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p1/HttpNewsApp-Cangjie/entry/src/main/cangjie/src/news_detail.cj",
+      "source": {
+        "url": "https://gitcode.com/szLilyWu/HttpNewsApp-Cangjie",
+        "branch": "main",
+        "commit": "9e02e67764a13281ec1c0d413700f878ba55c3c3",
+        "access_date": "2026-04-06",
+        "purpose": "P1 integrated network+page client reference."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [
+        "mixed-app-pattern"
+      ],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": [
+          "mixed-app-pattern"
+        ]
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+external-server+manual-ui-smoke",
+      "usage_goal": "Detail page slice for Router param handoff, async detail loading, and page-local news presentation state.",
+      "notes": [
+        "Use as the detail-page companion to the integrated index page instead of absorbing NewsManager logic into the page slice."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class NewsDetailView {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p1-title-bar-component",
+      "selection_rank": 8,
+      "sample_rank": 1,
+      "sample_id": "titlebar4cj-narrow-component",
+      "priority": "P1",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "titlebar4cj",
+      "source_path": "titlebar/src/titlebar.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p1/titlebar4cj/titlebar/src/titlebar.cj",
+      "source": {
+        "url": "https://gitcode.com/MakerStudio/titlebar4cj",
+        "branch": "main",
+        "commit": "630893a5c34bcd25e261d5adf6d8ea1830d8523f",
+        "access_date": "2026-04-06",
+        "purpose": "P1 narrow reusable title bar component reference."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Primary reusable title bar component slice for @Link-driven model rendering and builder-composed slot layout.",
+      "notes": [
+        "Treat this as the narrow reusable widget anchor; hosting page concerns stay in the paired entry page."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "public class TitleBar {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p1-title-bar-index-page",
+      "selection_rank": 9,
+      "sample_rank": 2,
+      "sample_id": "titlebar4cj-narrow-component",
+      "priority": "P1",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "titlebar4cj",
+      "source_path": "entry/src/main/cangjie/index_page.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p1/titlebar4cj/entry/src/main/cangjie/index_page.cj",
+      "source": {
+        "url": "https://gitcode.com/MakerStudio/titlebar4cj",
+        "branch": "main",
+        "commit": "630893a5c34bcd25e261d5adf6d8ea1830d8523f",
+        "access_date": "2026-04-06",
+        "purpose": "P1 narrow reusable title bar component reference."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Entry page slice that hosts TitleBarModel state and composes the narrow reusable title bar component.",
+      "notes": [
+        "Keep the page-shell host separate from the reusable widget so later pilots can target either boundary independently."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "class IndexPage {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-ui-routing-page-shell-view-model-renderer",
+        "harmonyos-examples-badgeview-page-shell-view-model-renderer"
+      ]
+    }
+  ]
+}

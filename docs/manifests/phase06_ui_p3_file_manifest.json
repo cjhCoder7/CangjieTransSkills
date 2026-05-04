@@ -1,0 +1,199 @@
+{
+  "manifest_name": "phase06-ui-p3-file-manifest",
+  "manifest_version": 1,
+  "created_at": "2026-04-11T07:55:36Z",
+  "phase": "Phase 06 UI Source Slicing / File-Level Workset",
+  "status": "draft-ready",
+  "source_corpus_manifest": "phase06_ui_source_corpus_p3.json",
+  "source_manifest": "phase06_ui_sample_manifest.json",
+  "few_shot_pack": "phase06_ui_few_shot_pack.json",
+  "intended_consumer": [
+    "human-review",
+    "future-phase06-prompt-pilot",
+    "future-phase06-batch-curator"
+  ],
+  "notes": [
+    "Expands the selected frozen source corpus into file-level slices with explicit ui_prompt_tags.",
+    "This manifest is not consumed directly by scripts/pipeline_batch_runner.py; it is a file-level workset for prompt pilots, explicit tag injection, and later batch curation.",
+    "Tag refinement is allowed at file level when a multi-file sample contains both page-shell and rich-component files."
+  ],
+  "selection_policy": {
+    "priority": "P3",
+    "adoption_decision": "primary",
+    "source_type": "external_repo",
+    "expansion_rule": "expand repo_local_paths into file-level slices and refine per-file target_role/ui_prompt_tags"
+  },
+  "summary": {
+    "sample_count": 3,
+    "slice_count": 3,
+    "role_counts": {
+      "page": 2,
+      "component": 1
+    },
+    "structure_counts": {
+      "page-shell": 2,
+      "rich-component": 1
+    }
+  },
+  "entries": [
+    {
+      "slice_id": "phase06-ui-p3-aiatom-home-page",
+      "selection_rank": 1,
+      "sample_rank": 1,
+      "sample_id": "cangjiechallenge-aiatom-home-page",
+      "priority": "P3",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "bb40b887dcf53d1a8b72884ad862fdf9",
+      "source_path": "cangjieApp/entry/src/main/cangjie/pages/HomePage.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p3/bb40b887dcf53d1a8b72884ad862fdf9/cangjieApp/entry/src/main/cangjie/pages/HomePage.cj",
+      "source": {
+        "url": "https://gitcode.com/cangjiechallenge/bb40b887dcf53d1a8b72884ad862fdf9",
+        "branch": "master",
+        "commit": "c99988534078e0c0409ffb20d298b79853f013ed",
+        "access_date": "2026-04-11",
+        "purpose": "P3 home dashboard baseline with progress-backed level cards, completion overlay, and page-owned router handoff."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P3 home dashboard page slice for progress-backed level composition, completion overlay state, and Router handoff from a single page shell.",
+      "notes": [
+        "Keep the splash-screen web bridge and study subpages outside this page-shell slice.",
+        "Treat GameState as the controller-owned source of truth while the page mirrors only display and routing state."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class LevelItemView {",
+          "class VerifiedCompletionOverlay {",
+          "class HomePage {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p3-aiatom-listen-page",
+      "selection_rank": 2,
+      "sample_rank": 1,
+      "sample_id": "cangjiechallenge-aiatom-listen-page",
+      "priority": "P3",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "bb40b887dcf53d1a8b72884ad862fdf9",
+      "source_path": "cangjieApp/entry/src/main/cangjie/pages/ListenPage.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p3/bb40b887dcf53d1a8b72884ad862fdf9/cangjieApp/entry/src/main/cangjie/pages/ListenPage.cj",
+      "source": {
+        "url": "https://gitcode.com/cangjiechallenge/bb40b887dcf53d1a8b72884ad862fdf9",
+        "branch": "master",
+        "commit": "c99988534078e0c0409ffb20d298b79853f013ed",
+        "access_date": "2026-04-11",
+        "purpose": "P3 audio-quiz page baseline with timer-driven answer flow, speech playback callbacks, and level-derived question state."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P3 quiz page slice for timer-driven answer progression, speech-playback callbacks, and page-owned listening-practice state.",
+      "notes": [
+        "Keep text-to-speech service coordination inside the page boundary without inventing extra mediator layers.",
+        "Treat question generation and answer feedback as page-shell state instead of leaking hidden controller facades into the prompt rail."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class ListenOption {",
+          "class ListenQuestion {",
+          "class ListenPage {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p3-secmeet-transcription-component",
+      "selection_rank": 3,
+      "sample_rank": 1,
+      "sample_id": "cangjiechallenge-secmeet-transcription-component",
+      "priority": "P3",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "d45e5bcde569dadcaf4fcc0524ac8f38",
+      "source_path": "entry/src/main/cangjie/transcription_page.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p3/d45e5bcde569dadcaf4fcc0524ac8f38/entry/src/main/cangjie/transcription_page.cj",
+      "source": {
+        "url": "https://gitcode.com/cangjiechallenge/d45e5bcde569dadcaf4fcc0524ac8f38",
+        "branch": "master",
+        "commit": "c18f350c6aecbeadd9b9115b739e3f3a0fa73212",
+        "access_date": "2026-04-11",
+        "purpose": "P3 callback-driven transcription panel baseline with builder-composed status regions and component-owned volatile workflow state."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P3 callback-driven transcription panel slice for recording controls, transcript display, and component-owned volatile workflow state.",
+      "notes": [
+        "Preserve the callback-style host integration instead of collapsing it into a page-shell or service-owned facade.",
+        "Keep risk alert, transcript list, and recording status as component-local display state anchored to the existing builders."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "class TranscriptionPage {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    }
+  ]
+}

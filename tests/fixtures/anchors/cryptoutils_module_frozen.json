@@ -1,0 +1,30 @@
+{
+  "chunk": {
+    "chunk_id": "module",
+    "label": "Crypto Helpers",
+    "description": "translate the full crypto utils module as a single frozen-anchor chunk",
+    "expected_members": [
+      "ByteUtils",
+      "SHA1",
+      "SHA256",
+      "MTProtoCrypto",
+      "EncryptedMessage"
+    ]
+  },
+  "artifact": {
+    "attempt": 1,
+    "generated_code": "package core.mtproto\n\npublic class ByteUtils {\n    public static func toHex(_bytes: Array<UInt8>): String {\n        var result = \"\"\n        for (byte in _bytes) {\n            let value = Int64(byte) & 0xff\n            result = result + hexDigit((value >> 4) & 0x0f) + hexDigit(value & 0x0f)\n        }\n        result\n    }\n}\n\npublic class SHA1 {}\n\npublic class SHA256 {}\n\npublic class MTProtoCrypto {}\n\npublic interface EncryptedMessage {\n    prop payload: Array<UInt8>\n}\n\nfunc hexDigit(value: Int64): String {\n    match (value) {\n        case 0 => \"0\"\n        case 1 => \"1\"\n        case 2 => \"2\"\n        case 3 => \"3\"\n        case 4 => \"4\"\n        case 5 => \"5\"\n        case 6 => \"6\"\n        case 7 => \"7\"\n        case 8 => \"8\"\n        case 9 => \"9\"\n        case 10 => \"a\"\n        case 11 => \"b\"\n        case 12 => \"c\"\n        case 13 => \"d\"\n        case 14 => \"e\"\n        case _ => \"f\"\n    }\n}\n",
+    "declared_constraints": [
+      "Translation Mapping",
+      "Verification Matrix"
+    ],
+    "notes": [
+      "Curated frozen crypto-utils anchor replaces the old constant toHex placeholder with real lower-hex byte encoding.",
+      "This anchor exists to stabilize real behavior verification in pipeline runs and avoid regressing to unused _bytes placeholders."
+    ],
+    "metadata": {
+      "target_path": "src/core/mtproto/CryptoUtils.ets",
+      "repair_thought_process": "Frozen from the validated staged implementation so verifier behavior harness can assert toHex behavior against a stable candidate."
+    }
+  }
+}

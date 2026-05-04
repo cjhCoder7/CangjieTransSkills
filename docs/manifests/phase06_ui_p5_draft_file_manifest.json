@@ -1,0 +1,146 @@
+{
+  "manifest_name": "phase06-ui-p5-draft-file-manifest",
+  "manifest_version": 1,
+  "created_at": "2026-04-11T12:13:30Z",
+  "phase": "Phase 06 UI Source Slicing / File-Level Workset",
+  "status": "draft-ready",
+  "source_corpus_manifest": "phase06_ui_source_corpus_p5_draft.json",
+  "source_manifest": "phase06_ui_sample_manifest_p5_draft.json",
+  "few_shot_pack": "phase06_ui_few_shot_pack.json",
+  "intended_consumer": [
+    "human-review",
+    "future-phase06-prompt-pilot",
+    "future-phase06-batch-curator"
+  ],
+  "notes": [
+    "Expands the selected frozen source corpus into file-level slices with explicit ui_prompt_tags.",
+    "This manifest is not consumed directly by scripts/pipeline_batch_runner.py; it is a file-level workset for prompt pilots, explicit tag injection, and later batch curation.",
+    "Tag refinement is allowed at file level when a multi-file sample contains both page-shell and rich-component files."
+  ],
+  "selection_policy": {
+    "priority": "P5",
+    "adoption_decision": "primary",
+    "source_type": "external_repo",
+    "expansion_rule": "expand repo_local_paths into file-level slices and refine per-file target_role/ui_prompt_tags"
+  },
+  "summary": {
+    "sample_count": 2,
+    "slice_count": 2,
+    "role_counts": {
+      "page": 2
+    },
+    "structure_counts": {
+      "page-shell": 2
+    }
+  },
+  "entries": [
+    {
+      "slice_id": "phase06-ui-p5-makerizon-history-page",
+      "selection_rank": 1,
+      "sample_rank": 1,
+      "sample_id": "cangjiechallenge-makerizon-history-page",
+      "priority": "P5",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "6a27783ce2bf2047bab996b3994d601d",
+      "source_path": "MeetingAssistant/entry/src/main/cangjie/history.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p5-draft/6a27783ce2bf2047bab996b3994d601d/MeetingAssistant/entry/src/main/cangjie/history.cj",
+      "source": {
+        "url": "https://gitcode.com/cangjiechallenge/6a27783ce2bf2047bab996b3994d601d",
+        "branch": "master",
+        "commit": "6993ef734acb2929e46b322b8120efb94595b5ba",
+        "access_date": "2026-04-11",
+        "purpose": "P5 draft candidate harvested from the public Makerizon pinned repo after the regular Phase06 supply reached 18/18 live passed."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Draft P5 history page slice for search, quick filters, and meeting-list rendering from a self-contained page shell without inventing service facades.",
+      "notes": [
+        "Keep the source-backed hybrid-entry imports intact, but do not invent extra ETS or runtime bridge layers absent from this file.",
+        "Treat activeFilter and searchText as the page-owned state boundary while the record card rendering stays local to the page shell."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class MeetingRecord {",
+          "class History {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p5-makerizon-mine-page",
+      "selection_rank": 2,
+      "sample_rank": 1,
+      "sample_id": "cangjiechallenge-makerizon-mine-page",
+      "priority": "P5",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "6a27783ce2bf2047bab996b3994d601d",
+      "source_path": "MeetingAssistant/entry/src/main/cangjie/mine.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p5-draft/6a27783ce2bf2047bab996b3994d601d/MeetingAssistant/entry/src/main/cangjie/mine.cj",
+      "source": {
+        "url": "https://gitcode.com/cangjiechallenge/6a27783ce2bf2047bab996b3994d601d",
+        "branch": "master",
+        "commit": "6993ef734acb2929e46b322b8120efb94595b5ba",
+        "access_date": "2026-04-11",
+        "purpose": "P5 draft candidate harvested from the public Makerizon pinned repo after the regular Phase06 supply reached 18/18 live passed."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Draft P5 profile/settings page slice for user-summary cards, grouped menu rows, and page-local display state inside a single shell.",
+      "notes": [
+        "Keep the source-backed hybrid-entry imports intact, but do not fabricate host-runtime adapters or extra provider layers.",
+        "Treat the profile summary, stats cards, and grouped settings/help sections as one page-shell composition instead of splitting invented subpages."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class AppColors {",
+          "class AppSizes {",
+          "class MenuItem {",
+          "class SupportItem {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,571 @@
+{
+  "manifest_name": "phase06_ui_prompt_pilot_p15_batch1",
+  "manifest_version": 1,
+  "created_at": "2026-04-12T13:15:13Z",
+  "phase": "phase06",
+  "status": "active",
+  "source_manifest": "docs/manifests/phase06_ui_p15_file_manifest.json",
+  "intended_consumer": "Phase06 prompt-pilot curator and prompt-dump runner",
+  "selection_policy": {
+    "batch_id": "phase06-ui-prompt-pilot-p15-batch1",
+    "selection_mode": "residual-workset-after-excluding-consumed-slices",
+    "track_profile": "p0-batch1",
+    "required_tracks": [],
+    "artifact_root": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1",
+    "architecture_skill_path": "docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md",
+    "notes": [
+      "Residual mode keeps every remaining slice after excluding an already-consumed pilot workset; it does not require full five-lane symmetry.",
+      "Each selected slice carries repo-local pipeline paths so prompt dumps can be regenerated without hand assembly.",
+      "Explicit ui_prompt_tags injection is still required for the final pilot prompt dump."
+    ],
+    "excluded_slice_ids": []
+  },
+  "summary": {
+    "pilot_count": 8,
+    "source_sample_count": 3,
+    "role_counts": {
+      "page": 1,
+      "viewmodel": 4,
+      "component": 3
+    },
+    "track_counts": {
+      "residual-page-shell-controller-owned-state-page": 1,
+      "residual-rich-component-view-model-renderer-viewmodel": 3,
+      "residual-rich-component-controller-owned-state-component": 3,
+      "residual-rich-component-controller-owned-state-viewmodel": 1
+    },
+    "coverage": {
+      "structure_tags": [
+        "page-shell",
+        "rich-component"
+      ],
+      "ownership_tags": [
+        "controller-owned-state",
+        "view-model-renderer"
+      ],
+      "interaction_tags": []
+    },
+    "selected_slice_ids": [
+      "phase06-ui-p15-pinwheel-entry-page",
+      "phase06-ui-p15-pinwheel-constants-model",
+      "phase06-ui-p15-pinwheel-panel-component",
+      "phase06-ui-p15-search-component",
+      "phase06-ui-p15-functional-scenes-component",
+      "phase06-ui-p15-functional-scenes-data-source-model",
+      "phase06-ui-p15-functional-scenes-scene-module-model",
+      "phase06-ui-p15-functional-scenes-tabs-model"
+    ],
+    "excluded_slice_count": 0
+  },
+  "entries": [
+    {
+      "pilot_id": "phase06-ui-pilot-p15-batch1-phase06-ui-p15-pinwheel-entry-page",
+      "pilot_order": 1,
+      "track_id": "residual-page-shell-controller-owned-state-page",
+      "slice_id": "phase06-ui-p15-pinwheel-entry-page",
+      "sample_id": "harmonyos-examples-pinwheel-entry-shell",
+      "repo_name": "HarmonyOS-Examples",
+      "repo_local_path": "raw_docs/phase06-ui-p15/HarmonyOS-Examples/12-Pinwheel/entry/src/main/cangjie/index.cj",
+      "source_path": "12-Pinwheel/entry/src/main/cangjie/index.cj",
+      "priority": "P15",
+      "selection_rank": 1,
+      "sample_rank": 1,
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "usage_goal": "P15 animation-control page slice for timer-driven rotation, slider callback ownership, and page-hosted image scale state inside one controller-owned shell.",
+      "selection_reason": "Residual next-stage slice left after excluding already-curated prompt-pilot worksets.",
+      "pilot_goal": "Carry remaining Phase06 lane variance into the next prompt-pilot batch without hand-assembling repo-local pipeline paths.",
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class EntryView {"
+        ]
+      },
+      "notes": [
+        "Keep Timer.repeat scheduling, Main-thread angle updates, and slider callback handoff source-backed in the page shell.",
+        "Treat PanelComponent.cj plus common/Constants.cj as explicitly frozen companions instead of pretending the pinwheel sample is single-file."
+      ],
+      "src_root": "raw_docs/phase06-ui-p15/HarmonyOS-Examples/12-Pinwheel/entry/src/main/cangjie",
+      "target_file": "index.cj",
+      "artifact_root": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-entry-page",
+      "pipeline_run_root": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-entry-page/pipeline_run",
+      "db_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-entry-page/pipeline_run/repo_index.sqlite",
+      "repo_map_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-entry-page/pipeline_run/repo_map.txt",
+      "base_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-entry-page/pipeline_run/target.tu.json",
+      "explicit_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-entry-page/target.explicit_ui_tags.tu.json",
+      "orchestration_output_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-entry-page/pipeline_run/target.orchestration.json",
+      "pipeline_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-entry-page/pipeline_run/summary.json",
+      "failure_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-entry-page/pipeline_run/failure.json",
+      "pipeline_log_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-entry-page/pipeline.log",
+      "base_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-entry-page/prompt_dump.txt",
+      "explicit_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-entry-page/prompt_dump.explicit_ui_tags.txt",
+      "prompt_dump_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-entry-page/pilot-summary.json",
+      "snapshot_label": "phase06-ui-p15-batch1-phase06-ui-p15-pinwheel-entry-page",
+      "expected_prompt_signal": "resolution_source=explicit-target-ui-tags",
+      "pipeline_command": "python3 scripts/pipeline_runner.py --src-root raw_docs/phase06-ui-p15/HarmonyOS-Examples/12-Pinwheel/entry/src/main/cangjie --target-file index.cj --run-root artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-entry-page/pipeline_run --db-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-entry-page/pipeline_run/repo_index.sqlite --repo-map-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-entry-page/pipeline_run/repo_map.txt --tu-json-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-entry-page/pipeline_run/target.tu.json --orchestration-output-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-entry-page/pipeline_run/target.orchestration.json --summary-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-entry-page/pipeline_run/summary.json --failure-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-entry-page/pipeline_run/failure.json --prompt-dump-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-entry-page/prompt_dump.txt --architecture-skill docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md --snapshot-label phase06-ui-p15-batch1-phase06-ui-p15-pinwheel-entry-page --dump-prompt-only --extensions .cj --pattern-limit 0"
+    },
+    {
+      "pilot_id": "phase06-ui-pilot-p15-batch1-phase06-ui-p15-pinwheel-constants-model",
+      "pilot_order": 2,
+      "track_id": "residual-rich-component-view-model-renderer-viewmodel",
+      "slice_id": "phase06-ui-p15-pinwheel-constants-model",
+      "sample_id": "harmonyos-examples-pinwheel-entry-shell",
+      "repo_name": "HarmonyOS-Examples",
+      "repo_local_path": "raw_docs/phase06-ui-p15/HarmonyOS-Examples/12-Pinwheel/entry/src/main/cangjie/common/Constants.cj",
+      "source_path": "12-Pinwheel/entry/src/main/cangjie/common/Constants.cj",
+      "priority": "P15",
+      "selection_rank": 2,
+      "sample_rank": 2,
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "usage_goal": "P15 pinwheel support-model slice for shared slider, rotate-position, and panel layout constants behind the animated host page and slider component.",
+      "selection_reason": "Residual next-stage slice left after excluding already-curated prompt-pilot worksets.",
+      "pilot_goal": "Carry remaining Phase06 lane variance into the next prompt-pilot batch without hand-assembling repo-local pipeline paths.",
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class RotatePosition {",
+          "public class SliderSpeed {",
+          "public class SliderMode {",
+          "public class Constants {"
+        ]
+      },
+      "notes": [
+        "Keep RotatePosition, SliderMode, SliderSpeed, and layout constants source-backed here instead of scattering them across page or component prompts.",
+        "This file remains a renderer-facing support-model slice rather than a standalone UI component boundary."
+      ],
+      "src_root": "raw_docs/phase06-ui-p15/HarmonyOS-Examples/12-Pinwheel/entry/src/main/cangjie",
+      "target_file": "common/Constants.cj",
+      "artifact_root": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-constants-model",
+      "pipeline_run_root": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-constants-model/pipeline_run",
+      "db_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-constants-model/pipeline_run/repo_index.sqlite",
+      "repo_map_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-constants-model/pipeline_run/repo_map.txt",
+      "base_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-constants-model/pipeline_run/target.tu.json",
+      "explicit_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-constants-model/target.explicit_ui_tags.tu.json",
+      "orchestration_output_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-constants-model/pipeline_run/target.orchestration.json",
+      "pipeline_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-constants-model/pipeline_run/summary.json",
+      "failure_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-constants-model/pipeline_run/failure.json",
+      "pipeline_log_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-constants-model/pipeline.log",
+      "base_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-constants-model/prompt_dump.txt",
+      "explicit_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-constants-model/prompt_dump.explicit_ui_tags.txt",
+      "prompt_dump_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-constants-model/pilot-summary.json",
+      "snapshot_label": "phase06-ui-p15-batch1-phase06-ui-p15-pinwheel-constants-model",
+      "expected_prompt_signal": "resolution_source=explicit-target-ui-tags",
+      "pipeline_command": "python3 scripts/pipeline_runner.py --src-root raw_docs/phase06-ui-p15/HarmonyOS-Examples/12-Pinwheel/entry/src/main/cangjie --target-file common/Constants.cj --run-root artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-constants-model/pipeline_run --db-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-constants-model/pipeline_run/repo_index.sqlite --repo-map-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-constants-model/pipeline_run/repo_map.txt --tu-json-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-constants-model/pipeline_run/target.tu.json --orchestration-output-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-constants-model/pipeline_run/target.orchestration.json --summary-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-constants-model/pipeline_run/summary.json --failure-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-constants-model/pipeline_run/failure.json --prompt-dump-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-constants-model/prompt_dump.txt --architecture-skill docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md --snapshot-label phase06-ui-p15-batch1-phase06-ui-p15-pinwheel-constants-model --dump-prompt-only --extensions .cj --pattern-limit 0"
+    },
+    {
+      "pilot_id": "phase06-ui-pilot-p15-batch1-phase06-ui-p15-pinwheel-panel-component",
+      "pilot_order": 3,
+      "track_id": "residual-rich-component-controller-owned-state-component",
+      "slice_id": "phase06-ui-p15-pinwheel-panel-component",
+      "sample_id": "harmonyos-examples-pinwheel-entry-shell",
+      "repo_name": "HarmonyOS-Examples",
+      "repo_local_path": "raw_docs/phase06-ui-p15/HarmonyOS-Examples/12-Pinwheel/entry/src/main/cangjie/view/PanelComponent.cj",
+      "source_path": "12-Pinwheel/entry/src/main/cangjie/view/PanelComponent.cj",
+      "priority": "P15",
+      "selection_rank": 3,
+      "sample_rank": 3,
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "usage_goal": "P15 interactive slider component slice for speed/scale control, callback dispatch, and component-owned display state behind the pinwheel page shell.",
+      "selection_reason": "Residual next-stage slice left after excluding already-curated prompt-pilot worksets.",
+      "pilot_goal": "Carry remaining Phase06 lane variance into the next prompt-pilot batch without hand-assembling repo-local pipeline paths.",
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class PanelComponent {"
+        ]
+      },
+      "notes": [
+        "Keep Slider.onChange handling, outSetValue display state, and mode-specific slider presentation source-backed in this component.",
+        "This file is the direct reusable interaction anchor for the pinwheel reserve sample."
+      ],
+      "src_root": "raw_docs/phase06-ui-p15/HarmonyOS-Examples/12-Pinwheel/entry/src/main/cangjie",
+      "target_file": "view/PanelComponent.cj",
+      "artifact_root": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-panel-component",
+      "pipeline_run_root": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-panel-component/pipeline_run",
+      "db_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-panel-component/pipeline_run/repo_index.sqlite",
+      "repo_map_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-panel-component/pipeline_run/repo_map.txt",
+      "base_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-panel-component/pipeline_run/target.tu.json",
+      "explicit_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-panel-component/target.explicit_ui_tags.tu.json",
+      "orchestration_output_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-panel-component/pipeline_run/target.orchestration.json",
+      "pipeline_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-panel-component/pipeline_run/summary.json",
+      "failure_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-panel-component/pipeline_run/failure.json",
+      "pipeline_log_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-panel-component/pipeline.log",
+      "base_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-panel-component/prompt_dump.txt",
+      "explicit_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-panel-component/prompt_dump.explicit_ui_tags.txt",
+      "prompt_dump_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-panel-component/pilot-summary.json",
+      "snapshot_label": "phase06-ui-p15-batch1-phase06-ui-p15-pinwheel-panel-component",
+      "expected_prompt_signal": "resolution_source=explicit-target-ui-tags",
+      "pipeline_command": "python3 scripts/pipeline_runner.py --src-root raw_docs/phase06-ui-p15/HarmonyOS-Examples/12-Pinwheel/entry/src/main/cangjie --target-file view/PanelComponent.cj --run-root artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-panel-component/pipeline_run --db-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-panel-component/pipeline_run/repo_index.sqlite --repo-map-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-panel-component/pipeline_run/repo_map.txt --tu-json-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-panel-component/pipeline_run/target.tu.json --orchestration-output-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-panel-component/pipeline_run/target.orchestration.json --summary-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-panel-component/pipeline_run/summary.json --failure-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-panel-component/pipeline_run/failure.json --prompt-dump-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-pinwheel-panel-component/prompt_dump.txt --architecture-skill docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md --snapshot-label phase06-ui-p15-batch1-phase06-ui-p15-pinwheel-panel-component --dump-prompt-only --extensions .cj --pattern-limit 0"
+    },
+    {
+      "pilot_id": "phase06-ui-pilot-p15-batch1-phase06-ui-p15-search-component",
+      "pilot_order": 4,
+      "track_id": "residual-rich-component-controller-owned-state-component",
+      "slice_id": "phase06-ui-p15-search-component",
+      "sample_id": "harmonyos-cangjie-cases-search-component",
+      "repo_name": "HarmonyOS-Cangjie-Cases",
+      "repo_local_path": "raw_docs/phase06-ui-p15/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/searchcomponent/src/main/cangjie/src/SearchComponent.cj",
+      "source_path": "CangjieAppDevelopment/feature/searchcomponent/src/main/cangjie/src/SearchComponent.cj",
+      "priority": "P15",
+      "selection_rank": 4,
+      "sample_rank": 1,
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "usage_goal": "P15 foldable-aware search component slice for geometryTransition, disabled keyboard focus semantics, and toast-backed click interaction inside one narrow component boundary.",
+      "selection_reason": "Residual next-stage slice left after excluding already-curated prompt-pilot worksets.",
+      "pilot_goal": "Carry remaining Phase06 lane variance into the next prompt-pilot batch without hand-assembling repo-local pipeline paths.",
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class SearchComponent {"
+        ]
+      },
+      "notes": [
+        "Keep AppStorage-backed foldable branching, geometryTransition usage, and PromptAction.showToast source-backed inside the component.",
+        "Do not wrap this self-contained reserve sample in a fake page shell or invent extra controller layers."
+      ],
+      "src_root": "raw_docs/phase06-ui-p15/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/searchcomponent/src/main/cangjie/src",
+      "target_file": "SearchComponent.cj",
+      "artifact_root": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-search-component",
+      "pipeline_run_root": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-search-component/pipeline_run",
+      "db_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-search-component/pipeline_run/repo_index.sqlite",
+      "repo_map_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-search-component/pipeline_run/repo_map.txt",
+      "base_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-search-component/pipeline_run/target.tu.json",
+      "explicit_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-search-component/target.explicit_ui_tags.tu.json",
+      "orchestration_output_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-search-component/pipeline_run/target.orchestration.json",
+      "pipeline_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-search-component/pipeline_run/summary.json",
+      "failure_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-search-component/pipeline_run/failure.json",
+      "pipeline_log_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-search-component/pipeline.log",
+      "base_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-search-component/prompt_dump.txt",
+      "explicit_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-search-component/prompt_dump.explicit_ui_tags.txt",
+      "prompt_dump_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-search-component/pilot-summary.json",
+      "snapshot_label": "phase06-ui-p15-batch1-phase06-ui-p15-search-component",
+      "expected_prompt_signal": "resolution_source=explicit-target-ui-tags",
+      "pipeline_command": "python3 scripts/pipeline_runner.py --src-root raw_docs/phase06-ui-p15/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/searchcomponent/src/main/cangjie/src --target-file SearchComponent.cj --run-root artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-search-component/pipeline_run --db-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-search-component/pipeline_run/repo_index.sqlite --repo-map-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-search-component/pipeline_run/repo_map.txt --tu-json-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-search-component/pipeline_run/target.tu.json --orchestration-output-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-search-component/pipeline_run/target.orchestration.json --summary-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-search-component/pipeline_run/summary.json --failure-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-search-component/pipeline_run/failure.json --prompt-dump-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-search-component/prompt_dump.txt --architecture-skill docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md --snapshot-label phase06-ui-p15-batch1-phase06-ui-p15-search-component --dump-prompt-only --extensions .cj --pattern-limit 0"
+    },
+    {
+      "pilot_id": "phase06-ui-pilot-p15-batch1-phase06-ui-p15-functional-scenes-component",
+      "pilot_order": 5,
+      "track_id": "residual-rich-component-controller-owned-state-component",
+      "slice_id": "phase06-ui-p15-functional-scenes-component",
+      "sample_id": "harmonyos-cangjie-cases-functional-scenes-component",
+      "repo_name": "HarmonyOS-Cangjie-Cases",
+      "repo_local_path": "raw_docs/phase06-ui-p15/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/functionalscenes/src/main/cangjie/src/FunctionalScenes.cj",
+      "source_path": "CangjieAppDevelopment/feature/functionalscenes/src/main/cangjie/src/FunctionalScenes.cj",
+      "priority": "P15",
+      "selection_rank": 5,
+      "sample_rank": 1,
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "usage_goal": "P15 tabs-and-list orchestration component slice for TabsController ownership, menu/list coordination, and LazyForEach category filtering inside one controller-owned host component.",
+      "selection_reason": "Residual next-stage slice left after excluding already-curated prompt-pilot worksets.",
+      "pilot_goal": "Carry remaining Phase06 lane variance into the next prompt-pilot batch without hand-assembling repo-local pipeline paths.",
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "public class FunctionalScenes {",
+          "class MethodPoints {"
+        ]
+      },
+      "notes": [
+        "Keep tabsIndex ownership, scrollController coordination, and Router.push-facing item selection source-backed in the host component.",
+        "Treat the model files as explicit companions instead of pretending FunctionalScenes.cj is self-contained."
+      ],
+      "src_root": "raw_docs/phase06-ui-p15/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/functionalscenes/src/main/cangjie/src",
+      "target_file": "FunctionalScenes.cj",
+      "artifact_root": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-component",
+      "pipeline_run_root": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-component/pipeline_run",
+      "db_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-component/pipeline_run/repo_index.sqlite",
+      "repo_map_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-component/pipeline_run/repo_map.txt",
+      "base_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-component/pipeline_run/target.tu.json",
+      "explicit_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-component/target.explicit_ui_tags.tu.json",
+      "orchestration_output_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-component/pipeline_run/target.orchestration.json",
+      "pipeline_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-component/pipeline_run/summary.json",
+      "failure_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-component/pipeline_run/failure.json",
+      "pipeline_log_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-component/pipeline.log",
+      "base_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-component/prompt_dump.txt",
+      "explicit_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-component/prompt_dump.explicit_ui_tags.txt",
+      "prompt_dump_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-component/pilot-summary.json",
+      "snapshot_label": "phase06-ui-p15-batch1-phase06-ui-p15-functional-scenes-component",
+      "expected_prompt_signal": "resolution_source=explicit-target-ui-tags",
+      "pipeline_command": "python3 scripts/pipeline_runner.py --src-root raw_docs/phase06-ui-p15/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/functionalscenes/src/main/cangjie/src --target-file FunctionalScenes.cj --run-root artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-component/pipeline_run --db-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-component/pipeline_run/repo_index.sqlite --repo-map-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-component/pipeline_run/repo_map.txt --tu-json-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-component/pipeline_run/target.tu.json --orchestration-output-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-component/pipeline_run/target.orchestration.json --summary-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-component/pipeline_run/summary.json --failure-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-component/pipeline_run/failure.json --prompt-dump-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-component/prompt_dump.txt --architecture-skill docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md --snapshot-label phase06-ui-p15-batch1-phase06-ui-p15-functional-scenes-component --dump-prompt-only --extensions .cj --pattern-limit 0"
+    },
+    {
+      "pilot_id": "phase06-ui-pilot-p15-batch1-phase06-ui-p15-functional-scenes-data-source-model",
+      "pilot_order": 6,
+      "track_id": "residual-rich-component-controller-owned-state-viewmodel",
+      "slice_id": "phase06-ui-p15-functional-scenes-data-source-model",
+      "sample_id": "harmonyos-cangjie-cases-functional-scenes-component",
+      "repo_name": "HarmonyOS-Cangjie-Cases",
+      "repo_local_path": "raw_docs/phase06-ui-p15/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/functionalscenes/src/main/cangjie/src/model/ListDataSource.cj",
+      "source_path": "CangjieAppDevelopment/feature/functionalscenes/src/main/cangjie/src/model/ListDataSource.cj",
+      "priority": "P15",
+      "selection_rank": 6,
+      "sample_rank": 2,
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "usage_goal": "P15 functional-scenes data-source support-model slice for IDataSource ownership and list-data adaptation behind the host component.",
+      "selection_reason": "Residual next-stage slice left after excluding already-curated prompt-pilot worksets.",
+      "pilot_goal": "Carry remaining Phase06 lane variance into the next prompt-pilot batch without hand-assembling repo-local pipeline paths.",
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class ListDataSource <: IDataSource<SceneModuleInfo> {"
+        ]
+      },
+      "notes": [
+        "Keep IDataSource plumbing and SceneModuleInfo list adaptation source-backed here instead of moving data-source behavior into the component shell.",
+        "This file stays attached to the functional-scenes lane as a support-model slice."
+      ],
+      "src_root": "raw_docs/phase06-ui-p15/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/functionalscenes/src/main/cangjie/src",
+      "target_file": "model/ListDataSource.cj",
+      "artifact_root": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-data-source-model",
+      "pipeline_run_root": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-data-source-model/pipeline_run",
+      "db_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-data-source-model/pipeline_run/repo_index.sqlite",
+      "repo_map_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-data-source-model/pipeline_run/repo_map.txt",
+      "base_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-data-source-model/pipeline_run/target.tu.json",
+      "explicit_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-data-source-model/target.explicit_ui_tags.tu.json",
+      "orchestration_output_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-data-source-model/pipeline_run/target.orchestration.json",
+      "pipeline_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-data-source-model/pipeline_run/summary.json",
+      "failure_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-data-source-model/pipeline_run/failure.json",
+      "pipeline_log_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-data-source-model/pipeline.log",
+      "base_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-data-source-model/prompt_dump.txt",
+      "explicit_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-data-source-model/prompt_dump.explicit_ui_tags.txt",
+      "prompt_dump_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-data-source-model/pilot-summary.json",
+      "snapshot_label": "phase06-ui-p15-batch1-phase06-ui-p15-functional-scenes-data-source-model",
+      "expected_prompt_signal": "resolution_source=explicit-target-ui-tags",
+      "pipeline_command": "python3 scripts/pipeline_runner.py --src-root raw_docs/phase06-ui-p15/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/functionalscenes/src/main/cangjie/src --target-file model/ListDataSource.cj --run-root artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-data-source-model/pipeline_run --db-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-data-source-model/pipeline_run/repo_index.sqlite --repo-map-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-data-source-model/pipeline_run/repo_map.txt --tu-json-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-data-source-model/pipeline_run/target.tu.json --orchestration-output-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-data-source-model/pipeline_run/target.orchestration.json --summary-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-data-source-model/pipeline_run/summary.json --failure-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-data-source-model/pipeline_run/failure.json --prompt-dump-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-data-source-model/prompt_dump.txt --architecture-skill docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md --snapshot-label phase06-ui-p15-batch1-phase06-ui-p15-functional-scenes-data-source-model --dump-prompt-only --extensions .cj --pattern-limit 0"
+    },
+    {
+      "pilot_id": "phase06-ui-pilot-p15-batch1-phase06-ui-p15-functional-scenes-scene-module-model",
+      "pilot_order": 7,
+      "track_id": "residual-rich-component-view-model-renderer-viewmodel",
+      "slice_id": "phase06-ui-p15-functional-scenes-scene-module-model",
+      "sample_id": "harmonyos-cangjie-cases-functional-scenes-component",
+      "repo_name": "HarmonyOS-Cangjie-Cases",
+      "repo_local_path": "raw_docs/phase06-ui-p15/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/functionalscenes/src/main/cangjie/src/model/SceneModuleInfo.cj",
+      "source_path": "CangjieAppDevelopment/feature/functionalscenes/src/main/cangjie/src/model/SceneModuleInfo.cj",
+      "priority": "P15",
+      "selection_rank": 7,
+      "sample_rank": 3,
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "usage_goal": "P15 functional-scenes support-model slice for route metadata, image resource ownership, and category payloads consumed by the host component.",
+      "selection_reason": "Residual next-stage slice left after excluding already-curated prompt-pilot worksets.",
+      "pilot_goal": "Carry remaining Phase06 lane variance into the next prompt-pilot batch without hand-assembling repo-local pipeline paths.",
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class SceneModuleInfo {"
+        ]
+      },
+      "notes": [
+        "Keep SceneModuleInfo payload shape source-backed here instead of re-inventing DTOs inside the component prompt context.",
+        "This is a renderer-facing support-model slice rather than a standalone page/component boundary."
+      ],
+      "src_root": "raw_docs/phase06-ui-p15/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/functionalscenes/src/main/cangjie/src",
+      "target_file": "model/SceneModuleInfo.cj",
+      "artifact_root": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-scene-module-model",
+      "pipeline_run_root": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-scene-module-model/pipeline_run",
+      "db_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-scene-module-model/pipeline_run/repo_index.sqlite",
+      "repo_map_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-scene-module-model/pipeline_run/repo_map.txt",
+      "base_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-scene-module-model/pipeline_run/target.tu.json",
+      "explicit_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-scene-module-model/target.explicit_ui_tags.tu.json",
+      "orchestration_output_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-scene-module-model/pipeline_run/target.orchestration.json",
+      "pipeline_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-scene-module-model/pipeline_run/summary.json",
+      "failure_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-scene-module-model/pipeline_run/failure.json",
+      "pipeline_log_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-scene-module-model/pipeline.log",
+      "base_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-scene-module-model/prompt_dump.txt",
+      "explicit_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-scene-module-model/prompt_dump.explicit_ui_tags.txt",
+      "prompt_dump_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-scene-module-model/pilot-summary.json",
+      "snapshot_label": "phase06-ui-p15-batch1-phase06-ui-p15-functional-scenes-scene-module-model",
+      "expected_prompt_signal": "resolution_source=explicit-target-ui-tags",
+      "pipeline_command": "python3 scripts/pipeline_runner.py --src-root raw_docs/phase06-ui-p15/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/functionalscenes/src/main/cangjie/src --target-file model/SceneModuleInfo.cj --run-root artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-scene-module-model/pipeline_run --db-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-scene-module-model/pipeline_run/repo_index.sqlite --repo-map-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-scene-module-model/pipeline_run/repo_map.txt --tu-json-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-scene-module-model/pipeline_run/target.tu.json --orchestration-output-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-scene-module-model/pipeline_run/target.orchestration.json --summary-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-scene-module-model/pipeline_run/summary.json --failure-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-scene-module-model/pipeline_run/failure.json --prompt-dump-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-scene-module-model/prompt_dump.txt --architecture-skill docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md --snapshot-label phase06-ui-p15-batch1-phase06-ui-p15-functional-scenes-scene-module-model --dump-prompt-only --extensions .cj --pattern-limit 0"
+    },
+    {
+      "pilot_id": "phase06-ui-pilot-p15-batch1-phase06-ui-p15-functional-scenes-tabs-model",
+      "pilot_order": 8,
+      "track_id": "residual-rich-component-view-model-renderer-viewmodel",
+      "slice_id": "phase06-ui-p15-functional-scenes-tabs-model",
+      "sample_id": "harmonyos-cangjie-cases-functional-scenes-component",
+      "repo_name": "HarmonyOS-Cangjie-Cases",
+      "repo_local_path": "raw_docs/phase06-ui-p15/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/functionalscenes/src/main/cangjie/src/model/TabsData.cj",
+      "source_path": "CangjieAppDevelopment/feature/functionalscenes/src/main/cangjie/src/model/TabsData.cj",
+      "priority": "P15",
+      "selection_rank": 8,
+      "sample_rank": 4,
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "usage_goal": "P15 functional-scenes tabs support-model slice for tab id/label ownership and category filter definitions behind the host component.",
+      "selection_reason": "Residual next-stage slice left after excluding already-curated prompt-pilot worksets.",
+      "pilot_goal": "Carry remaining Phase06 lane variance into the next prompt-pilot batch without hand-assembling repo-local pipeline paths.",
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class TabDataModel {"
+        ]
+      },
+      "notes": [
+        "Keep TabDataModel plus TAB_DATA source-backed here instead of hard-coding category metadata into the component shell.",
+        "This file remains a controller-facing support-model slice attached to the functional-scenes lane."
+      ],
+      "src_root": "raw_docs/phase06-ui-p15/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/functionalscenes/src/main/cangjie/src",
+      "target_file": "model/TabsData.cj",
+      "artifact_root": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-tabs-model",
+      "pipeline_run_root": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-tabs-model/pipeline_run",
+      "db_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-tabs-model/pipeline_run/repo_index.sqlite",
+      "repo_map_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-tabs-model/pipeline_run/repo_map.txt",
+      "base_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-tabs-model/pipeline_run/target.tu.json",
+      "explicit_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-tabs-model/target.explicit_ui_tags.tu.json",
+      "orchestration_output_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-tabs-model/pipeline_run/target.orchestration.json",
+      "pipeline_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-tabs-model/pipeline_run/summary.json",
+      "failure_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-tabs-model/pipeline_run/failure.json",
+      "pipeline_log_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-tabs-model/pipeline.log",
+      "base_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-tabs-model/prompt_dump.txt",
+      "explicit_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-tabs-model/prompt_dump.explicit_ui_tags.txt",
+      "prompt_dump_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-tabs-model/pilot-summary.json",
+      "snapshot_label": "phase06-ui-p15-batch1-phase06-ui-p15-functional-scenes-tabs-model",
+      "expected_prompt_signal": "resolution_source=explicit-target-ui-tags",
+      "pipeline_command": "python3 scripts/pipeline_runner.py --src-root raw_docs/phase06-ui-p15/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/functionalscenes/src/main/cangjie/src --target-file model/TabsData.cj --run-root artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-tabs-model/pipeline_run --db-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-tabs-model/pipeline_run/repo_index.sqlite --repo-map-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-tabs-model/pipeline_run/repo_map.txt --tu-json-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-tabs-model/pipeline_run/target.tu.json --orchestration-output-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-tabs-model/pipeline_run/target.orchestration.json --summary-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-tabs-model/pipeline_run/summary.json --failure-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-tabs-model/pipeline_run/failure.json --prompt-dump-path artifacts/ui_pilots/20260412-phase06-ui-p15-pilot-batch1/phase06-ui-p15-functional-scenes-tabs-model/prompt_dump.txt --architecture-skill docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md --snapshot-label phase06-ui-p15-batch1-phase06-ui-p15-functional-scenes-tabs-model --dump-prompt-only --extensions .cj --pattern-limit 0"
+    }
+  ]
+}

@@ -1,0 +1,1821 @@
+{
+  "manifest_name": "phase06-ui-p22-file-manifest",
+  "manifest_version": 1,
+  "created_at": "2026-04-14T04:30:23Z",
+  "phase": "Phase 06 UI Source Slicing / File-Level Workset",
+  "status": "draft-ready",
+  "source_corpus_manifest": "phase06_ui_source_corpus_p22.json",
+  "source_manifest": "phase06_ui_sample_manifest.json",
+  "few_shot_pack": "phase06_ui_few_shot_pack.json",
+  "intended_consumer": [
+    "human-review",
+    "future-phase06-prompt-pilot",
+    "future-phase06-batch-curator"
+  ],
+  "notes": [
+    "Expands the selected frozen source corpus into file-level slices with explicit ui_prompt_tags.",
+    "This manifest is not consumed directly by scripts/pipeline_batch_runner.py; it is a file-level workset for prompt pilots, explicit tag injection, and later batch curation.",
+    "Tag refinement is allowed at file level when a multi-file sample contains both page-shell and rich-component files."
+  ],
+  "selection_policy": {
+    "priority": "P22",
+    "adoption_decision": "primary",
+    "source_type": "external_repo",
+    "expansion_rule": "expand repo_local_paths into file-level slices and refine per-file target_role/ui_prompt_tags"
+  },
+  "summary": {
+    "sample_count": 3,
+    "slice_count": 35,
+    "role_counts": {
+      "page": 3,
+      "component": 23,
+      "viewmodel": 9
+    },
+    "structure_counts": {
+      "page-shell": 3,
+      "rich-component": 32
+    }
+  },
+  "entries": [
+    {
+      "slice_id": "phase06-ui-p22-ui-component-gallery-entry-page",
+      "selection_rank": 1,
+      "sample_rank": 1,
+      "sample_id": "harmonyos-examples-ui-component-gallery-entry-view",
+      "priority": "P22",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UIComponent/entry/src/main/cangjie/src/index.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/index.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P22 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the UIComponent gallery shell stays local, router-backed, and bounded to the same-package index cards without reopening the route-target playground pages."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P22 UIComponent gallery entry page for the router-backed card host selected by the official reserve scout.",
+      "notes": [
+        "Generated from the scout-selected P22 freeze set.",
+        "Keep the same-package gallery closure source-backed for the P22 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class IndexView {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-ui-routing-page-shell-view-model-renderer",
+        "harmonyos-examples-badgeview-page-shell-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p22-ui-component-image-card-component",
+      "selection_rank": 2,
+      "sample_rank": 2,
+      "sample_id": "harmonyos-examples-ui-component-gallery-entry-view",
+      "priority": "P22",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UIComponent/entry/src/main/cangjie/src/components/index/IndexImage.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/index/IndexImage.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P22 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the UIComponent gallery shell stays local, router-backed, and bounded to the same-package index cards without reopening the route-target playground pages."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P22 UIComponent gallery card for image preview and route dispatch inside the selected index closure.",
+      "notes": [
+        "Generated from the scout-selected P22 freeze set.",
+        "Keep the same-package gallery closure source-backed for the P22 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class IndexImage {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p22-ui-component-index-global-helper",
+      "selection_rank": 3,
+      "sample_rank": 3,
+      "sample_id": "harmonyos-examples-ui-component-gallery-entry-view",
+      "priority": "P22",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UIComponent/entry/src/main/cangjie/src/components/index/global.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/index/global.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P22 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the UIComponent gallery shell stays local, router-backed, and bounded to the same-package index cards without reopening the route-target playground pages."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P22 UIComponent helper for gallery-card styling and router redirect extensions reused across the selected index cards.",
+      "notes": [
+        "Generated from the scout-selected P22 freeze set.",
+        "Keep the same-package gallery closure source-backed for the P22 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": []
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p22-ui-component-badge-card-component",
+      "selection_rank": 4,
+      "sample_rank": 4,
+      "sample_id": "harmonyos-examples-ui-component-gallery-entry-view",
+      "priority": "P22",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UIComponent/entry/src/main/cangjie/src/components/index/indexBadge.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/index/indexBadge.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P22 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the UIComponent gallery shell stays local, router-backed, and bounded to the same-package index cards without reopening the route-target playground pages."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P22 UIComponent gallery card for badge previews and route dispatch inside the selected index closure.",
+      "notes": [
+        "Generated from the scout-selected P22 freeze set.",
+        "Keep the same-package gallery closure source-backed for the P22 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class IndexBadge {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p22-ui-component-button-card-component",
+      "selection_rank": 5,
+      "sample_rank": 5,
+      "sample_id": "harmonyos-examples-ui-component-gallery-entry-view",
+      "priority": "P22",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UIComponent/entry/src/main/cangjie/src/components/index/indexButton.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/index/indexButton.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P22 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the UIComponent gallery shell stays local, router-backed, and bounded to the same-package index cards without reopening the route-target playground pages."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P22 UIComponent gallery card for button previews and route dispatch inside the selected index closure.",
+      "notes": [
+        "Generated from the scout-selected P22 freeze set.",
+        "Keep the same-package gallery closure source-backed for the P22 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class IndexButton {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p22-ui-component-checkbox-card-component",
+      "selection_rank": 6,
+      "sample_rank": 6,
+      "sample_id": "harmonyos-examples-ui-component-gallery-entry-view",
+      "priority": "P22",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UIComponent/entry/src/main/cangjie/src/components/index/indexCheckBox.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/index/indexCheckBox.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P22 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the UIComponent gallery shell stays local, router-backed, and bounded to the same-package index cards without reopening the route-target playground pages."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P22 UIComponent gallery card for checkbox previews and route dispatch inside the selected index closure.",
+      "notes": [
+        "Generated from the scout-selected P22 freeze set.",
+        "Keep the same-package gallery closure source-backed for the P22 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class IndexCheckBox {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p22-ui-component-music-player-card-component",
+      "selection_rank": 7,
+      "sample_rank": 7,
+      "sample_id": "harmonyos-examples-ui-component-gallery-entry-view",
+      "priority": "P22",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UIComponent/entry/src/main/cangjie/src/components/index/indexMusicPlayer.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/index/indexMusicPlayer.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P22 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the UIComponent gallery shell stays local, router-backed, and bounded to the same-package index cards without reopening the route-target playground pages."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P22 UIComponent gallery card for timer-backed slider and playback state inside the selected index closure.",
+      "notes": [
+        "Generated from the scout-selected P22 freeze set.",
+        "Keep the same-package gallery closure source-backed for the P22 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class IndexMusicPlayer {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p22-ui-component-swiper-card-component",
+      "selection_rank": 8,
+      "sample_rank": 8,
+      "sample_id": "harmonyos-examples-ui-component-gallery-entry-view",
+      "priority": "P22",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UIComponent/entry/src/main/cangjie/src/components/index/indexSwiper.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/index/indexSwiper.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P22 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the UIComponent gallery shell stays local, router-backed, and bounded to the same-package index cards without reopening the route-target playground pages."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P22 UIComponent gallery card for swiper previews and route dispatch inside the selected index closure.",
+      "notes": [
+        "Generated from the scout-selected P22 freeze set.",
+        "Keep the same-package gallery closure source-backed for the P22 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class IndexSwiper {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p22-ui-component-tab-card-component",
+      "selection_rank": 9,
+      "sample_rank": 9,
+      "sample_id": "harmonyos-examples-ui-component-gallery-entry-view",
+      "priority": "P22",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UIComponent/entry/src/main/cangjie/src/components/index/indexTab.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/index/indexTab.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P22 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the UIComponent gallery shell stays local, router-backed, and bounded to the same-package index cards without reopening the route-target playground pages."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P22 UIComponent gallery card for tab previews and route dispatch inside the selected index closure.",
+      "notes": [
+        "Generated from the scout-selected P22 freeze set.",
+        "Keep the same-package gallery closure source-backed for the P22 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class IndexTab {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p22-ui-component-text-card-component",
+      "selection_rank": 10,
+      "sample_rank": 10,
+      "sample_id": "harmonyos-examples-ui-component-gallery-entry-view",
+      "priority": "P22",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UIComponent/entry/src/main/cangjie/src/components/index/indexText.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/index/indexText.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P22 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the UIComponent gallery shell stays local, router-backed, and bounded to the same-package index cards without reopening the route-target playground pages."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P22 UIComponent gallery card for text previews and route dispatch inside the selected index closure.",
+      "notes": [
+        "Generated from the scout-selected P22 freeze set.",
+        "Keep the same-package gallery closure source-backed for the P22 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class IndexText {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p22-ui-component-text-input-card-component",
+      "selection_rank": 11,
+      "sample_rank": 11,
+      "sample_id": "harmonyos-examples-ui-component-gallery-entry-view",
+      "priority": "P22",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UIComponent/entry/src/main/cangjie/src/components/index/indextTextInput.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/index/indextTextInput.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P22 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the UIComponent gallery shell stays local, router-backed, and bounded to the same-package index cards without reopening the route-target playground pages."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P22 UIComponent gallery card for text-input previews and route dispatch inside the selected index closure.",
+      "notes": [
+        "Generated from the scout-selected P22 freeze set.",
+        "Keep the same-package gallery closure source-backed for the P22 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class IndexTextInput {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p22-ui-component-data-source-helper",
+      "selection_rank": 12,
+      "sample_rank": 12,
+      "sample_id": "harmonyos-examples-ui-component-gallery-entry-view",
+      "priority": "P22",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UIComponent/entry/src/main/cangjie/src/utils/dataSource.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/utils/dataSource.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P22 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the UIComponent gallery shell stays local, router-backed, and bounded to the same-package index cards without reopening the route-target playground pages."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P22 UIComponent helper for local IDataSource scaffolding imported by the selected gallery cards.",
+      "notes": [
+        "Generated from the scout-selected P22 freeze set.",
+        "Keep the same-package gallery closure source-backed for the P22 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class MyDataSource<T> <: IDataSource<T> {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p22-ui-component-text-playground-page",
+      "selection_rank": 13,
+      "sample_rank": 1,
+      "sample_id": "harmonyos-examples-ui-component-text-playground-page",
+      "priority": "P22",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UIComponent/entry/src/main/cangjie/src/pages/textSample.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/pages/textSample.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P22 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the UIComponent text playground stays local, route-target bounded, and free of network, socket, or hybrid-host dependencies while providing a same-package control-panel closure."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P22 UIComponent text playground page for stateful text rendering and local control-panel composition inside the selected reserve closure.",
+      "notes": [
+        "Generated from the scout-selected P22 freeze set.",
+        "Keep the same-package text playground closure source-backed for the P22 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class TextView {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p22-ui-component-text-page-global-helper",
+      "selection_rank": 14,
+      "sample_rank": 2,
+      "sample_id": "harmonyos-examples-ui-component-text-playground-page",
+      "priority": "P22",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UIComponent/entry/src/main/cangjie/src/pages/global.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/pages/global.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P22 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the UIComponent text playground stays local, route-target bounded, and free of network, socket, or hybrid-host dependencies while providing a same-package control-panel closure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P22 UIComponent helper for text-page container, section, and playground layout extensions reused by the selected reserve closure.",
+      "notes": [
+        "Generated from the scout-selected P22 freeze set.",
+        "Keep the same-package text playground closure source-backed for the P22 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": []
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p22-ui-component-text-shared-components",
+      "selection_rank": 15,
+      "sample_rank": 3,
+      "sample_id": "harmonyos-examples-ui-component-text-playground-page",
+      "priority": "P22",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UIComponent/entry/src/main/cangjie/src/components/text.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/text.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P22 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the UIComponent text playground stays local, route-target bounded, and free of network, socket, or hybrid-host dependencies while providing a same-package control-panel closure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P22 UIComponent shared text-page components for page titles, descriptions, section headers, and code blocks inside the selected reserve closure.",
+      "notes": [
+        "Generated from the scout-selected P22 freeze set.",
+        "Keep the same-package text playground closure source-backed for the P22 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class PageTitle{",
+          "public class PageDescription{",
+          "public class SectionTitle{",
+          "public class CodeBlock{"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p22-ui-component-font-style-bar-component",
+      "selection_rank": 16,
+      "sample_rank": 4,
+      "sample_id": "harmonyos-examples-ui-component-text-playground-page",
+      "priority": "P22",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UIComponent/entry/src/main/cangjie/src/components/playground/font/fontStyle.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/playground/font/fontStyle.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P22 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the UIComponent text playground stays local, route-target bounded, and free of network, socket, or hybrid-host dependencies while providing a same-package control-panel closure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P22 UIComponent support component for font-style selection and local state handoff inside the selected text playground closure.",
+      "notes": [
+        "Generated from the scout-selected P22 freeze set.",
+        "Keep the same-package text playground closure source-backed for the P22 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class FontStyleBar {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p22-ui-component-font-weight-bar-component",
+      "selection_rank": 17,
+      "sample_rank": 5,
+      "sample_id": "harmonyos-examples-ui-component-text-playground-page",
+      "priority": "P22",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UIComponent/entry/src/main/cangjie/src/components/playground/font/fontWeight.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/playground/font/fontWeight.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P22 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the UIComponent text playground stays local, route-target bounded, and free of network, socket, or hybrid-host dependencies while providing a same-package control-panel closure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P22 UIComponent support component for font-weight slider state and local text-preview control inside the selected text playground closure.",
+      "notes": [
+        "Generated from the scout-selected P22 freeze set.",
+        "Keep the same-package text playground closure source-backed for the P22 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class FontWeightBar {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p22-ui-component-text-align-bar-component",
+      "selection_rank": 18,
+      "sample_rank": 6,
+      "sample_id": "harmonyos-examples-ui-component-text-playground-page",
+      "priority": "P22",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UIComponent/entry/src/main/cangjie/src/components/playground/font/textAlign.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/playground/font/textAlign.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P22 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the UIComponent text playground stays local, route-target bounded, and free of network, socket, or hybrid-host dependencies while providing a same-package control-panel closure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P22 UIComponent support component for text-alignment selection and local state handoff inside the selected text playground closure.",
+      "notes": [
+        "Generated from the scout-selected P22 freeze set.",
+        "Keep the same-package text playground closure source-backed for the P22 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class TextAlignBar {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p22-ui-component-text-case-bar-component",
+      "selection_rank": 19,
+      "sample_rank": 7,
+      "sample_id": "harmonyos-examples-ui-component-text-playground-page",
+      "priority": "P22",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UIComponent/entry/src/main/cangjie/src/components/playground/font/textCase.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/playground/font/textCase.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P22 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the UIComponent text playground stays local, route-target bounded, and free of network, socket, or hybrid-host dependencies while providing a same-package control-panel closure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P22 UIComponent support component for text-case selection and local preview-state control inside the selected text playground closure.",
+      "notes": [
+        "Generated from the scout-selected P22 freeze set.",
+        "Keep the same-package text playground closure source-backed for the P22 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class TextCaseBar {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p22-ui-component-text-decoration-bar-component",
+      "selection_rank": 20,
+      "sample_rank": 8,
+      "sample_id": "harmonyos-examples-ui-component-text-playground-page",
+      "priority": "P22",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UIComponent/entry/src/main/cangjie/src/components/playground/font/textDecoration.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/playground/font/textDecoration.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P22 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the UIComponent text playground stays local, route-target bounded, and free of network, socket, or hybrid-host dependencies while providing a same-package control-panel closure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P22 UIComponent support component for decoration-type and decoration-color control inside the selected text playground closure.",
+      "notes": [
+        "Generated from the scout-selected P22 freeze set.",
+        "Keep the same-package text playground closure source-backed for the P22 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class TextDecorationBar {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p22-ui-component-playground-animation-helper",
+      "selection_rank": 21,
+      "sample_rank": 9,
+      "sample_id": "harmonyos-examples-ui-component-text-playground-page",
+      "priority": "P22",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UIComponent/entry/src/main/cangjie/src/components/playground/utils/animations.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/playground/utils/animations.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P22 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the UIComponent text playground stays local, route-target bounded, and free of network, socket, or hybrid-host dependencies while providing a same-package control-panel closure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P22 UIComponent helper for animation parameter constants reused across the selected text playground controls.",
+      "notes": [
+        "Generated from the scout-selected P22 freeze set.",
+        "Keep the same-package text playground closure source-backed for the P22 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": []
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p22-ui-component-color-picker-controls-component",
+      "selection_rank": 22,
+      "sample_rank": 10,
+      "sample_id": "harmonyos-examples-ui-component-text-playground-page",
+      "priority": "P22",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UIComponent/entry/src/main/cangjie/src/components/playground/utils/colorpicker.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/playground/utils/colorpicker.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P22 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the UIComponent text playground stays local, route-target bounded, and free of network, socket, or hybrid-host dependencies while providing a same-package control-panel closure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P22 UIComponent primary control component for swatch display, color-band toggling, and timer-backed color-picker visibility inside the selected text playground closure.",
+      "notes": [
+        "Generated from the scout-selected P22 freeze set.",
+        "Keep the same-package text playground closure source-backed for the P22 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "public class SwatchBlock {",
+          "public class ColorBand {",
+          "public class ColorPicker {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p22-ui-component-playground-global-helper",
+      "selection_rank": 23,
+      "sample_rank": 11,
+      "sample_id": "harmonyos-examples-ui-component-text-playground-page",
+      "priority": "P22",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UIComponent/entry/src/main/cangjie/src/components/playground/utils/global.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/playground/utils/global.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P22 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the UIComponent text playground stays local, route-target bounded, and free of network, socket, or hybrid-host dependencies while providing a same-package control-panel closure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P22 UIComponent helper for selected playground container, slider, toggle, label, and divider extensions reused across local controls.",
+      "notes": [
+        "Generated from the scout-selected P22 freeze set.",
+        "Keep the same-package text playground closure source-backed for the P22 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": true,
+        "declared_types_head": []
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p22-ui-component-select-bar-component",
+      "selection_rank": 24,
+      "sample_rank": 12,
+      "sample_id": "harmonyos-examples-ui-component-text-playground-page",
+      "priority": "P22",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UIComponent/entry/src/main/cangjie/src/components/playground/utils/selectBand.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/playground/utils/selectBand.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P22 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the UIComponent text playground stays local, route-target bounded, and free of network, socket, or hybrid-host dependencies while providing a same-package control-panel closure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P22 UIComponent support component for horizontal option selection, menu expansion, and callback dispatch inside the selected text playground closure.",
+      "notes": [
+        "Generated from the scout-selected P22 freeze set.",
+        "Keep the same-package text playground closure source-backed for the P22 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "public class SelectBar {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p22-ui-component-slider-bar-component",
+      "selection_rank": 25,
+      "sample_rank": 13,
+      "sample_id": "harmonyos-examples-ui-component-text-playground-page",
+      "priority": "P22",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UIComponent/entry/src/main/cangjie/src/components/playground/utils/sliderBar.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/playground/utils/sliderBar.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P22 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the UIComponent text playground stays local, route-target bounded, and free of network, socket, or hybrid-host dependencies while providing a same-package control-panel closure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P22 UIComponent support component for value-slider expansion and bound numeric state updates inside the selected text playground closure.",
+      "notes": [
+        "Generated from the scout-selected P22 freeze set.",
+        "Keep the same-package text playground closure source-backed for the P22 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public struct SliderParams {",
+          "public class SliderBar {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p22-ui-component-toggle-bar-component",
+      "selection_rank": 26,
+      "sample_rank": 14,
+      "sample_id": "harmonyos-examples-ui-component-text-playground-page",
+      "priority": "P22",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UIComponent/entry/src/main/cangjie/src/components/playground/utils/toggleBar.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/playground/utils/toggleBar.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P22 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the UIComponent text playground stays local, route-target bounded, and free of network, socket, or hybrid-host dependencies while providing a same-package control-panel closure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P22 UIComponent support component for bound toggle state and label composition inside the selected text playground closure.",
+      "notes": [
+        "Generated from the scout-selected P22 freeze set.",
+        "Keep the same-package text playground closure source-backed for the P22 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class ToggleBar {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p22-ui-component-value-slider-builder",
+      "selection_rank": 27,
+      "sample_rank": 15,
+      "sample_id": "harmonyos-examples-ui-component-text-playground-page",
+      "priority": "P22",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UIComponent/entry/src/main/cangjie/src/components/playground/utils/valueSlider.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/playground/utils/valueSlider.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P22 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the UIComponent text playground stays local, route-target bounded, and free of network, socket, or hybrid-host dependencies while providing a same-package control-panel closure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P22 UIComponent helper for overloaded slider builders reused across the selected text playground controls.",
+      "notes": [
+        "Generated from the scout-selected P22 freeze set.",
+        "Keep the same-package text playground closure source-backed for the P22 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": true,
+        "declared_types_head": []
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p22-ui-component-playground-variables-helper",
+      "selection_rank": 28,
+      "sample_rank": 16,
+      "sample_id": "harmonyos-examples-ui-component-text-playground-page",
+      "priority": "P22",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UIComponent/entry/src/main/cangjie/src/components/playground/utils/variables.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/playground/utils/variables.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P22 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the UIComponent text playground stays local, route-target bounded, and free of network, socket, or hybrid-host dependencies while providing a same-package control-panel closure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P22 UIComponent helper for local playground layout constants reused across the selected text playground controls.",
+      "notes": [
+        "Generated from the scout-selected P22 freeze set.",
+        "Keep the same-package text playground closure source-backed for the P22 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": []
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p22-ui-component-text-variables-helper",
+      "selection_rank": 29,
+      "sample_rank": 17,
+      "sample_id": "harmonyos-examples-ui-component-text-playground-page",
+      "priority": "P22",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "02-UIComponent/entry/src/main/cangjie/src/utils/variables.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/utils/variables.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P22 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the UIComponent text playground stays local, route-target bounded, and free of network, socket, or hybrid-host dependencies while providing a same-package control-panel closure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P22 UIComponent helper for shared text-page colors, spacing, and card-style constants reused by the selected reserve closure.",
+      "notes": [
+        "Generated from the scout-selected P22 freeze set.",
+        "Keep the same-package text playground closure source-backed for the P22 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": []
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p22-roulette-ui-public-page",
+      "selection_rank": 30,
+      "sample_rank": 1,
+      "sample_id": "harmonyos-examples-roulette-ui-public-page-workflow",
+      "priority": "P22",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "RouletteUI/entry/src/main/cangjie/src/public_page.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p22/HarmonyOS-Examples/RouletteUI/entry/src/main/cangjie/src/public_page.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P22 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the routed PublicPage workflow, same-package turntable list, and edit form helpers stay local and bounded without reopening the home-shell or ability wiring lanes."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P22 RouletteUI routed public page for AppStorage-backed list/edit workflow selection inside the official reserve closure.",
+      "notes": [
+        "Generated from the scout-selected P22 freeze set.",
+        "Keep the same-package public-page closure source-backed for the P22 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class PublicPage {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p22-roulette-ui-public-page-top-component",
+      "selection_rank": 31,
+      "sample_rank": 2,
+      "sample_id": "harmonyos-examples-roulette-ui-public-page-workflow",
+      "priority": "P22",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "RouletteUI/entry/src/main/cangjie/src/common/component/public_page_top.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p22/HarmonyOS-Examples/RouletteUI/entry/src/main/cangjie/src/common/component/public_page_top.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P22 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the routed PublicPage workflow, same-package turntable list, and edit form helpers stay local and bounded without reopening the home-shell or ability wiring lanes."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P22 RouletteUI support component for back/confirm routing controls inside the selected PublicPage workflow.",
+      "notes": [
+        "Generated from the scout-selected P22 freeze set.",
+        "Keep the same-package public-page closure source-backed for the P22 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class PublicPageTop {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p22-roulette-ui-public-page-body-component",
+      "selection_rank": 32,
+      "sample_rank": 3,
+      "sample_id": "harmonyos-examples-roulette-ui-public-page-workflow",
+      "priority": "P22",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "RouletteUI/entry/src/main/cangjie/src/common/component/public_page_body.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p22/HarmonyOS-Examples/RouletteUI/entry/src/main/cangjie/src/common/component/public_page_body.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P22 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the routed PublicPage workflow, same-package turntable list, and edit form helpers stay local and bounded without reopening the home-shell or ability wiring lanes."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P22 RouletteUI support component for list-vs-edit body switching inside the selected PublicPage workflow.",
+      "notes": [
+        "Generated from the scout-selected P22 freeze set.",
+        "Keep the same-package public-page closure source-backed for the P22 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class PublicPageBody {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p22-roulette-ui-public-page-global-helper",
+      "selection_rank": 33,
+      "sample_rank": 4,
+      "sample_id": "harmonyos-examples-roulette-ui-public-page-workflow",
+      "priority": "P22",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "RouletteUI/entry/src/main/cangjie/src/common/component/global.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p22/HarmonyOS-Examples/RouletteUI/entry/src/main/cangjie/src/common/component/global.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P22 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the routed PublicPage workflow, same-package turntable list, and edit form helpers stay local and bounded without reopening the home-shell or ability wiring lanes."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P22 RouletteUI helper for PublicPage back/redirect image extensions reused by the selected workflow.",
+      "notes": [
+        "Generated from the scout-selected P22 freeze set.",
+        "Keep the same-package public-page closure source-backed for the P22 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": []
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p22-roulette-ui-found-edit-component",
+      "selection_rank": 34,
+      "sample_rank": 5,
+      "sample_id": "harmonyos-examples-roulette-ui-public-page-workflow",
+      "priority": "P22",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "RouletteUI/entry/src/main/cangjie/src/common/component/found_and_edit.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p22/HarmonyOS-Examples/RouletteUI/entry/src/main/cangjie/src/common/component/found_and_edit.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P22 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the routed PublicPage workflow, same-package turntable list, and edit form helpers stay local and bounded without reopening the home-shell or ability wiring lanes."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P22 RouletteUI primary component for the create/edit workflow, AppStorage handoff, and option-list editing inside the selected PublicPage closure.",
+      "notes": [
+        "Generated from the scout-selected P22 freeze set.",
+        "Keep the same-package public-page closure source-backed for the P22 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "public class FoundAndEdit {",
+          "class Options {",
+          "class OptionItem {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p22-roulette-ui-turntable-list-component",
+      "selection_rank": 35,
+      "sample_rank": 6,
+      "sample_id": "harmonyos-examples-roulette-ui-public-page-workflow",
+      "priority": "P22",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "RouletteUI/entry/src/main/cangjie/src/common/component/turntable_list.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p22/HarmonyOS-Examples/RouletteUI/entry/src/main/cangjie/src/common/component/turntable_list.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P22 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the routed PublicPage workflow, same-package turntable list, and edit form helpers stay local and bounded without reopening the home-shell or ability wiring lanes."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P22 RouletteUI primary component for local turntable-history/template list switching inside the selected PublicPage closure.",
+      "notes": [
+        "Generated from the scout-selected P22 freeze set.",
+        "Keep the same-package public-page closure source-backed for the P22 lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "public class TurnTableList {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    }
+  ]
+}

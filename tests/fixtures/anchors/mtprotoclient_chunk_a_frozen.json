@@ -1,0 +1,37 @@
+{
+  "chunk": {
+    "chunk_id": "chunk-a",
+    "label": "State Skeleton",
+    "description": "imports, helper declarations, MTProtoClient class header, and state fields only",
+    "source_text": "/**\n * MTProtoClient - MTProto 协议客户端\n * Excerpted from ForestBook/TelegramHarmony@31af11b6\n */\n\nimport { MTProtoConfig, SessionInfo, SessionManager, AuthKeyState } from './MTProtoConfig'\nimport { ByteUtils, EncryptedMessage } from './CryptoUtils'\nimport { TLDeserializer, TLSerializer } from './TLSerialization'\nimport { TransportCallback, TransportManager } from './MTProtoTransport'\nimport { InitConnection, InvokeWithLayer, HelpGetConfig } from './TLMethods'\nimport { AuthKeyCreator } from './AuthKeyCreator'\nimport { decompress } from './Inflate'\n\nclass RPCCallback {\n  resolve: (result: Uint8Array) => void\n  reject: (error: Error) => void\n  timeoutId: number\n\n  constructor(resolve: (result: Uint8Array) => void, reject: (error: Error) => void, timeoutId: number) {\n    this.resolve = resolve\n    this.reject = reject\n    this.timeoutId = timeoutId\n  }\n}\n\nexport class MTProtoClient implements TransportCallback {\n  private transportManager: TransportManager\n  private session: SessionInfo\n  private pendingRPCs: Map<string, RPCCallback> = new Map()\n  private updateCallback: ((update: Uint8Array) => void) | null = null\n  private connectionInitialized: boolean = false\n",
+    "expected_members": [],
+    "found_members": [],
+    "missing_members": []
+  },
+  "artifact": {
+    "attempt": 1,
+    "generated_code": "package core.mtproto\n\nimport std.sync.*\nimport std.collection.*\n\nclass RPCCallback {\n    public var resolve: (Array<UInt8>) -> Unit\n    public var reject: (Error) -> Unit\n    public var timeoutId: Int64\n\n    public init(resolve: (Array<UInt8>) -> Unit, reject: (Error) -> Unit, timeoutId: Int64) {\n        this.resolve = resolve\n        this.reject = reject\n        this.timeoutId = timeoutId\n    }\n}\n\npublic class MTProtoClient <: TransportCallback {\n    private var transportManager: TransportManager\n    private var session: SessionInfo\n    private var pendingRPCs: HashMap<String, RPCCallback> = HashMap<String, RPCCallback>()\n    private var updateCallback: ?((Array<UInt8>) -> Unit) = None\n    private var connectionInitialized: Bool = false",
+    "declared_constraints": [
+      "Translation Mapping",
+      "Dependency Constraint"
+    ],
+    "notes": [
+      "repair_thought_process captured: Mapped ArkTS imports to Cangjie standard library (`std.sync.*`, `std.collection.*`) and omitted local imports per same-package rules. Added `package core.mtproto` to keep the assembled candidate in the same package as staged dependencies. Translated RPCCallback and MTProtoClient state fields using direct type equivalents: Uint8Array -> Array<UInt8>, Map -> HashMap, number -> Int64, boolean -> Bool. Preserved field names and visibility modifiers to maintain source alignment.",
+      "Class body left open for subsequent chunks (constructor/methods).",
+      "Used Array<UInt8> for Uint8Array and HashMap for Map as per simplest valid Cangjie equivalents.",
+      "Omitted local imports (MTProtoConfig, CryptoUtils, etc.) per same-package directive."
+    ],
+    "metadata": {
+      "raw_text": "{\n  \"repair_thought_process\": \"Mapped ArkTS imports to Cangjie standard library (`std.sync.*`, `std.collection.*`) and omitted local imports per same-package rules. Added `package core.mtproto` to keep the assembled candidate in the same package as staged dependencies. Translated RPCCallback and MTProtoClient state fields using direct type equivalents: Uint8Array -> Array<UInt8>, Map -> HashMap, number -> Int64, boolean -> Bool. Preserved field names and visibility modifiers to maintain source alignment.\",\n  \"code\": \"package core.mtproto\\n\\nimport std.sync.*\\nimport std.collection.*\\n\\nclass RPCCallback {\\n    public var resolve: (Array<UInt8>) -> Unit\\n    public var reject: (Error) -> Unit\\n    public var timeoutId: Int64\\n\\n    public init(resolve: (Array<UInt8>) -> Unit, reject: (Error) -> Unit, timeoutId: Int64) {\\n        this.resolve = resolve\\n        this.reject = reject\\n        this.timeoutId = timeoutId\\n    }\\n}\\n\\npublic class MTProtoClient <: TransportCallback {\\n    private var transportManager: TransportManager\\n    private var session: SessionInfo\\n    private var pendingRPCs: HashMap<String, RPCCallback> = HashMap<String, RPCCallback>()\\n    private var updateCallback: ?((Array<UInt8>) -> Unit) = None\\n    private var connectionInitialized: Bool = false\\n\",\n  \"declared_constraints\": [\n    \"Translation Mapping\",\n    \"Dependency Constraint\"\n  ],\n  \"notes\": [\n    \"Class body left open for subsequent chunks (constructor/methods).\",\n    \"Used Array<UInt8> for Uint8Array and HashMap for Map as per simplest valid Cangjie equivalents.\",\n    \"Omitted local imports (MTProtoConfig, CryptoUtils, etc.) per same-package directive.\"\n  ]\n}",
+      "target_path": "src/core/mtproto/MTProtoClient.ets",
+      "repair_thought_process": "Mapped ArkTS imports to Cangjie standard library (`std.sync.*`, `std.collection.*`) and omitted local imports per same-package rules. Added `package core.mtproto` to keep the assembled candidate in the same package as staged dependencies. Translated RPCCallback and MTProtoClient state fields using direct type equivalents: Uint8Array -> Array<UInt8>, Map -> HashMap, number -> Int64, boolean -> Bool. Preserved field names and visibility modifiers to maintain source alignment.",
+      "chunked_translation": true,
+      "chunk_strategy": "mtprotoclient-method-boundary-v4",
+      "chunk_id": "chunk-a",
+      "chunk_label": "State Skeleton",
+      "expected_members": [],
+      "found_members": [],
+      "missing_members": []
+    }
+  }
+}

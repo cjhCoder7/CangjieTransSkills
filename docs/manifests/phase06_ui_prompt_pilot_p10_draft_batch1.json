@@ -1,0 +1,244 @@
+{
+  "manifest_name": "phase06_ui_prompt_pilot_p10_draft_batch1",
+  "manifest_version": 1,
+  "created_at": "2026-04-12T01:55:37Z",
+  "phase": "phase06",
+  "status": "active",
+  "source_manifest": "docs/manifests/phase06_ui_p10_draft_file_manifest.json",
+  "intended_consumer": "Phase06 prompt-pilot curator and prompt-dump runner",
+  "selection_policy": {
+    "batch_id": "phase06-ui-prompt-pilot-p10-draft-batch1",
+    "selection_mode": "residual-workset-after-excluding-consumed-slices",
+    "track_profile": "p0-batch1",
+    "required_tracks": [],
+    "artifact_root": "artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1",
+    "architecture_skill_path": "docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md",
+    "notes": [
+      "Residual mode keeps every remaining slice after excluding an already-consumed pilot workset; it does not require full five-lane symmetry.",
+      "Each selected slice carries repo-local pipeline paths so prompt dumps can be regenerated without hand assembly.",
+      "Explicit ui_prompt_tags injection is still required for the final pilot prompt dump."
+    ],
+    "excluded_slice_ids": []
+  },
+  "summary": {
+    "pilot_count": 3,
+    "source_sample_count": 3,
+    "role_counts": {
+      "page": 3
+    },
+    "track_counts": {
+      "residual-page-shell-view-model-renderer-page": 1,
+      "residual-page-shell-controller-owned-state-page": 2
+    },
+    "coverage": {
+      "structure_tags": [
+        "page-shell"
+      ],
+      "ownership_tags": [
+        "controller-owned-state",
+        "view-model-renderer"
+      ],
+      "interaction_tags": []
+    },
+    "selected_slice_ids": [
+      "phase06-ui-p10-browser-about-page",
+      "phase06-ui-p10-browser-main-page",
+      "phase06-ui-p10-webviewgame-snake-page"
+    ],
+    "excluded_slice_count": 0
+  },
+  "entries": [
+    {
+      "pilot_id": "phase06-ui-pilot-p10-draft-batch1-phase06-ui-p10-browser-about-page",
+      "pilot_order": 1,
+      "track_id": "residual-page-shell-view-model-renderer-page",
+      "slice_id": "phase06-ui-p10-browser-about-page",
+      "sample_id": "harmonyos-examples-browser-about-page",
+      "repo_name": "HarmonyOS-Examples",
+      "repo_local_path": "raw_docs/phase06-ui-p10-draft/HarmonyOS-Examples/Browser/entry/src/main/cangjie/src/about.cj",
+      "source_path": "Browser/entry/src/main/cangjie/src/about.cj",
+      "priority": "P10",
+      "selection_rank": 1,
+      "sample_rank": 1,
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "usage_goal": "Draft P10 browser about page slice for Router.back navigation, resource-backed branding, and simple two-column layout composition inside one render-facing page shell.",
+      "selection_reason": "Residual next-stage slice left after excluding already-curated prompt-pilot worksets.",
+      "pilot_goal": "Carry remaining Phase06 lane variance into the next prompt-pilot batch without hand-assembling repo-local pipeline paths.",
+      "recommended_few_shot_entry_ids": [
+        "local-ui-routing-page-shell-view-model-renderer",
+        "harmonyos-examples-badgeview-page-shell-view-model-renderer"
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class About {"
+        ]
+      },
+      "notes": [
+        "Keep Router.back wiring and resource-backed branding content source-backed inside the page boundary.",
+        "Treat the back-row plus centered branding column as one direct render-facing page-shell contract."
+      ],
+      "src_root": "raw_docs/phase06-ui-p10-draft/HarmonyOS-Examples/Browser/entry/src/main/cangjie/src",
+      "target_file": "about.cj",
+      "artifact_root": "artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-browser-about-page",
+      "pipeline_run_root": "artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-browser-about-page/pipeline_run",
+      "db_path": "artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-browser-about-page/pipeline_run/repo_index.sqlite",
+      "repo_map_path": "artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-browser-about-page/pipeline_run/repo_map.txt",
+      "base_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-browser-about-page/pipeline_run/target.tu.json",
+      "explicit_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-browser-about-page/target.explicit_ui_tags.tu.json",
+      "orchestration_output_path": "artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-browser-about-page/pipeline_run/target.orchestration.json",
+      "pipeline_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-browser-about-page/pipeline_run/summary.json",
+      "failure_path": "artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-browser-about-page/pipeline_run/failure.json",
+      "pipeline_log_path": "artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-browser-about-page/pipeline.log",
+      "base_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-browser-about-page/prompt_dump.txt",
+      "explicit_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-browser-about-page/prompt_dump.explicit_ui_tags.txt",
+      "prompt_dump_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-browser-about-page/pilot-summary.json",
+      "snapshot_label": "phase06-ui-p10-draft-batch1-phase06-ui-p10-browser-about-page",
+      "expected_prompt_signal": "resolution_source=explicit-target-ui-tags",
+      "pipeline_command": "python3 scripts/pipeline_runner.py --src-root raw_docs/phase06-ui-p10-draft/HarmonyOS-Examples/Browser/entry/src/main/cangjie/src --target-file about.cj --run-root artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-browser-about-page/pipeline_run --db-path artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-browser-about-page/pipeline_run/repo_index.sqlite --repo-map-path artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-browser-about-page/pipeline_run/repo_map.txt --tu-json-path artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-browser-about-page/pipeline_run/target.tu.json --orchestration-output-path artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-browser-about-page/pipeline_run/target.orchestration.json --summary-path artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-browser-about-page/pipeline_run/summary.json --failure-path artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-browser-about-page/pipeline_run/failure.json --prompt-dump-path artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-browser-about-page/prompt_dump.txt --architecture-skill docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md --snapshot-label phase06-ui-p10-draft-batch1-phase06-ui-p10-browser-about-page --dump-prompt-only --extensions .cj --pattern-limit 0"
+    },
+    {
+      "pilot_id": "phase06-ui-pilot-p10-draft-batch1-phase06-ui-p10-browser-main-page",
+      "pilot_order": 2,
+      "track_id": "residual-page-shell-controller-owned-state-page",
+      "slice_id": "phase06-ui-p10-browser-main-page",
+      "sample_id": "harmonyos-examples-browser-main-page",
+      "repo_name": "HarmonyOS-Examples",
+      "repo_local_path": "raw_docs/phase06-ui-p10-draft/HarmonyOS-Examples/Browser/entry/src/main/cangjie/src/index.cj",
+      "source_path": "Browser/entry/src/main/cangjie/src/index.cj",
+      "priority": "P10",
+      "selection_rank": 2,
+      "sample_rank": 1,
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "usage_goal": "Draft P10 browser main page slice for WebviewController ownership, dark-mode script injection, search/url state, and same-file settings menu builders inside one controller-owned page shell.",
+      "selection_reason": "Residual next-stage slice left after excluding already-curated prompt-pilot worksets.",
+      "pilot_goal": "Carry remaining Phase06 lane variance into the next prompt-pilot batch without hand-assembling repo-local pipeline paths.",
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "class MainView {"
+        ]
+      },
+      "notes": [
+        "Keep webviewController, darkmodeScript, Search.onSubmit flow, and builder menus source-backed inside the page boundary.",
+        "Treat the browser shell as one controller-owned contract instead of fabricating services or detached menu layers."
+      ],
+      "src_root": "raw_docs/phase06-ui-p10-draft/HarmonyOS-Examples/Browser/entry/src/main/cangjie/src",
+      "target_file": "index.cj",
+      "artifact_root": "artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-browser-main-page",
+      "pipeline_run_root": "artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-browser-main-page/pipeline_run",
+      "db_path": "artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-browser-main-page/pipeline_run/repo_index.sqlite",
+      "repo_map_path": "artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-browser-main-page/pipeline_run/repo_map.txt",
+      "base_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-browser-main-page/pipeline_run/target.tu.json",
+      "explicit_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-browser-main-page/target.explicit_ui_tags.tu.json",
+      "orchestration_output_path": "artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-browser-main-page/pipeline_run/target.orchestration.json",
+      "pipeline_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-browser-main-page/pipeline_run/summary.json",
+      "failure_path": "artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-browser-main-page/pipeline_run/failure.json",
+      "pipeline_log_path": "artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-browser-main-page/pipeline.log",
+      "base_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-browser-main-page/prompt_dump.txt",
+      "explicit_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-browser-main-page/prompt_dump.explicit_ui_tags.txt",
+      "prompt_dump_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-browser-main-page/pilot-summary.json",
+      "snapshot_label": "phase06-ui-p10-draft-batch1-phase06-ui-p10-browser-main-page",
+      "expected_prompt_signal": "resolution_source=explicit-target-ui-tags",
+      "pipeline_command": "python3 scripts/pipeline_runner.py --src-root raw_docs/phase06-ui-p10-draft/HarmonyOS-Examples/Browser/entry/src/main/cangjie/src --target-file index.cj --run-root artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-browser-main-page/pipeline_run --db-path artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-browser-main-page/pipeline_run/repo_index.sqlite --repo-map-path artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-browser-main-page/pipeline_run/repo_map.txt --tu-json-path artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-browser-main-page/pipeline_run/target.tu.json --orchestration-output-path artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-browser-main-page/pipeline_run/target.orchestration.json --summary-path artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-browser-main-page/pipeline_run/summary.json --failure-path artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-browser-main-page/pipeline_run/failure.json --prompt-dump-path artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-browser-main-page/prompt_dump.txt --architecture-skill docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md --snapshot-label phase06-ui-p10-draft-batch1-phase06-ui-p10-browser-main-page --dump-prompt-only --extensions .cj --pattern-limit 0"
+    },
+    {
+      "pilot_id": "phase06-ui-pilot-p10-draft-batch1-phase06-ui-p10-webviewgame-snake-page",
+      "pilot_order": 3,
+      "track_id": "residual-page-shell-controller-owned-state-page",
+      "slice_id": "phase06-ui-p10-webviewgame-snake-page",
+      "sample_id": "harmonyos-examples-webviewgame-snake-page",
+      "repo_name": "HarmonyOS-Examples",
+      "repo_local_path": "raw_docs/phase06-ui-p10-draft/HarmonyOS-Examples/18-WebViewGame/entry/src/main/cangjie/index.cj",
+      "source_path": "18-WebViewGame/entry/src/main/cangjie/index.cj",
+      "priority": "P10",
+      "selection_rank": 3,
+      "sample_rank": 1,
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "usage_goal": "Draft P10 webview game page slice for score state, JavaScript bridge callbacks, and same-file control builders inside one controller-owned page shell.",
+      "selection_reason": "Residual next-stage slice left after excluding already-curated prompt-pilot worksets.",
+      "pilot_goal": "Carry remaining Phase06 lane variance into the next prompt-pilot batch without hand-assembling repo-local pipeline paths.",
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "class SnakeGame {"
+        ]
+      },
+      "notes": [
+        "Keep webController ownership, JavaScript proxy registration, and score/game state source-backed inside the page boundary.",
+        "Treat DirectionBtn, ControlBtn, and WebPlayground builders as one page-shell contract instead of splitting bridge wrappers."
+      ],
+      "src_root": "raw_docs/phase06-ui-p10-draft/HarmonyOS-Examples/18-WebViewGame/entry/src/main/cangjie",
+      "target_file": "index.cj",
+      "artifact_root": "artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-webviewgame-snake-page",
+      "pipeline_run_root": "artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-webviewgame-snake-page/pipeline_run",
+      "db_path": "artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-webviewgame-snake-page/pipeline_run/repo_index.sqlite",
+      "repo_map_path": "artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-webviewgame-snake-page/pipeline_run/repo_map.txt",
+      "base_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-webviewgame-snake-page/pipeline_run/target.tu.json",
+      "explicit_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-webviewgame-snake-page/target.explicit_ui_tags.tu.json",
+      "orchestration_output_path": "artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-webviewgame-snake-page/pipeline_run/target.orchestration.json",
+      "pipeline_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-webviewgame-snake-page/pipeline_run/summary.json",
+      "failure_path": "artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-webviewgame-snake-page/pipeline_run/failure.json",
+      "pipeline_log_path": "artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-webviewgame-snake-page/pipeline.log",
+      "base_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-webviewgame-snake-page/prompt_dump.txt",
+      "explicit_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-webviewgame-snake-page/prompt_dump.explicit_ui_tags.txt",
+      "prompt_dump_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-webviewgame-snake-page/pilot-summary.json",
+      "snapshot_label": "phase06-ui-p10-draft-batch1-phase06-ui-p10-webviewgame-snake-page",
+      "expected_prompt_signal": "resolution_source=explicit-target-ui-tags",
+      "pipeline_command": "python3 scripts/pipeline_runner.py --src-root raw_docs/phase06-ui-p10-draft/HarmonyOS-Examples/18-WebViewGame/entry/src/main/cangjie --target-file index.cj --run-root artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-webviewgame-snake-page/pipeline_run --db-path artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-webviewgame-snake-page/pipeline_run/repo_index.sqlite --repo-map-path artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-webviewgame-snake-page/pipeline_run/repo_map.txt --tu-json-path artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-webviewgame-snake-page/pipeline_run/target.tu.json --orchestration-output-path artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-webviewgame-snake-page/pipeline_run/target.orchestration.json --summary-path artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-webviewgame-snake-page/pipeline_run/summary.json --failure-path artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-webviewgame-snake-page/pipeline_run/failure.json --prompt-dump-path artifacts/ui_pilots/20260412-phase06-ui-p10-draft-pilot-batch1/phase06-ui-p10-webviewgame-snake-page/prompt_dump.txt --architecture-skill docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md --snapshot-label phase06-ui-p10-draft-batch1-phase06-ui-p10-webviewgame-snake-page --dump-prompt-only --extensions .cj --pattern-limit 0"
+    }
+  ]
+}

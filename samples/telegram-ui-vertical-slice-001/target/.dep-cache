@@ -1,0 +1,377 @@
+{
+  "bin": {},
+  "pkg-build": {},
+  "pkg-test": {
+    "/volume/wzhang/cky-workspace/my_projects/Cangjie/samples/telegram-ui-vertical-slice-001/src": {
+      "package": "telegram_ui_vertical_slice_001",
+      "isMacro": false,
+      "accessLevel": "public",
+      "timeStamp": 1776740310,
+      "dependencies": [
+        {
+          "orPackage": "",
+          "package": "phase07_shared_service_refresh_harness",
+          "isStd": false,
+          "imports": [
+            {
+              "file": "/volume/wzhang/cky-workspace/my_projects/Cangjie/samples/telegram-ui-vertical-slice-001/src/telegram_app_shell.cj"
+            },
+            {
+              "file": "/volume/wzhang/cky-workspace/my_projects/Cangjie/samples/telegram-ui-vertical-slice-001/src/telegram_message_service_harness.cj"
+            },
+            {
+              "file": "/volume/wzhang/cky-workspace/my_projects/Cangjie/samples/telegram-ui-vertical-slice-001/src/telegram_ui_slice.cj"
+            },
+            {
+              "file": "/volume/wzhang/cky-workspace/my_projects/Cangjie/samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "",
+          "package": "std.collection",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/volume/wzhang/cky-workspace/my_projects/Cangjie/samples/telegram-ui-vertical-slice-001/src/telegram_message_service_harness.cj"
+            },
+            {
+              "file": "/volume/wzhang/cky-workspace/my_projects/Cangjie/samples/telegram-ui-vertical-slice-001/src/telegram_ui_slice.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "",
+          "package": "std.sync",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/volume/wzhang/cky-workspace/my_projects/Cangjie/samples/telegram-ui-vertical-slice-001/src/telegram_ui_slice.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "",
+          "package": "std.unittest",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/volume/wzhang/cky-workspace/my_projects/Cangjie/samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "",
+          "package": "std.unittest.testmacro",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/volume/wzhang/cky-workspace/my_projects/Cangjie/samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj"
+            }
+          ]
+        }
+      ],
+      "std-dependencies": [
+        {
+          "std.ast": [
+            "std.collection",
+            "std.core"
+          ]
+        },
+        {
+          "std.binary": [
+            "std.core"
+          ]
+        },
+        {
+          "std.collection": [
+            "std.core",
+            "std.math"
+          ]
+        },
+        {
+          "std.collection.concurrent": [
+            "std.collection",
+            "std.core",
+            "std.sync",
+            "std.time"
+          ]
+        },
+        {
+          "std.convert": [
+            "std.core"
+          ]
+        },
+        {
+          "std.core": []
+        },
+        {
+          "std.env": [
+            "std.collection",
+            "std.core",
+            "std.fs",
+            "std.io",
+            "std.sync"
+          ]
+        },
+        {
+          "std.fs": [
+            "std.collection",
+            "std.core",
+            "std.io",
+            "std.time"
+          ]
+        },
+        {
+          "std.io": [
+            "std.core"
+          ]
+        },
+        {
+          "std.math": [
+            "std.core"
+          ]
+        },
+        {
+          "std.net": [
+            "std.binary",
+            "std.collection",
+            "std.convert",
+            "std.core",
+            "std.io",
+            "std.math",
+            "std.overflow",
+            "std.sort",
+            "std.sync",
+            "std.time"
+          ]
+        },
+        {
+          "std.overflow": [
+            "std.core"
+          ]
+        },
+        {
+          "std.process": [
+            "std.collection",
+            "std.core",
+            "std.fs",
+            "std.io",
+            "std.sync",
+            "std.time"
+          ]
+        },
+        {
+          "std.random": [
+            "std.core",
+            "std.math"
+          ]
+        },
+        {
+          "std.regex": [
+            "std.collection",
+            "std.core",
+            "std.sync"
+          ]
+        },
+        {
+          "std.runtime": [
+            "std.collection",
+            "std.core",
+            "std.fs",
+            "std.sync"
+          ]
+        },
+        {
+          "std.sort": [
+            "std.collection",
+            "std.core",
+            "std.math"
+          ]
+        },
+        {
+          "std.sync": [
+            "std.core",
+            "std.time"
+          ]
+        },
+        {
+          "std.time": [
+            "std.binary",
+            "std.collection",
+            "std.convert",
+            "std.core",
+            "std.io"
+          ]
+        },
+        {
+          "std.unicode": [
+            "std.collection",
+            "std.core"
+          ]
+        },
+        {
+          "std.unittest": [
+            "std.binary",
+            "std.collection",
+            "std.collection.concurrent",
+            "std.convert",
+            "std.core",
+            "std.env",
+            "std.fs",
+            "std.io",
+            "std.math",
+            "std.net",
+            "std.process",
+            "std.random",
+            "std.regex",
+            "std.runtime",
+            "std.sort",
+            "std.sync",
+            "std.time",
+            "std.unicode",
+            "std.unittest.common",
+            "std.unittest.diff",
+            "std.unittest.mock",
+            "std.unittest.prop_test"
+          ]
+        },
+        {
+          "std.unittest.common": [
+            "std.collection",
+            "std.convert",
+            "std.core",
+            "std.sync"
+          ]
+        },
+        {
+          "std.unittest.diff": [
+            "std.collection",
+            "std.convert",
+            "std.core",
+            "std.math",
+            "std.unittest.common"
+          ]
+        },
+        {
+          "std.unittest.mock": [
+            "std.collection",
+            "std.core",
+            "std.fs",
+            "std.sync",
+            "std.unittest.common",
+            "std.unittest.mock.internal"
+          ]
+        },
+        {
+          "std.unittest.mock.internal": [
+            "std.collection",
+            "std.core"
+          ]
+        },
+        {
+          "std.unittest.prop_test": [
+            "std.collection",
+            "std.core",
+            "std.math",
+            "std.random",
+            "std.unittest.common"
+          ]
+        },
+        {
+          "std.unittest.testmacro": [
+            "std.ast",
+            "std.collection",
+            "std.collection.concurrent",
+            "std.core",
+            "std.sync",
+            "std.unicode",
+            "std.unittest.common"
+          ]
+        }
+      ],
+      "features": [],
+      "product": true,
+      "testUsed": true,
+      "mockUsed": false
+    },
+    "/volume/wzhang/cky-workspace/my_projects/Cangjie/samples/phase07-shared-service-refresh-harness/src": {
+      "package": "phase07_shared_service_refresh_harness",
+      "isMacro": false,
+      "accessLevel": "public",
+      "timeStamp": 1776360674,
+      "dependencies": [
+        {
+          "orPackage": "",
+          "package": "std.collection",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/volume/wzhang/cky-workspace/my_projects/Cangjie/samples/phase07-shared-service-refresh-harness/src/phase07_shared_service_refresh_harness.cj"
+            }
+          ]
+        },
+        {
+          "orPackage": "",
+          "package": "std.sync",
+          "isStd": true,
+          "imports": [
+            {
+              "file": "/volume/wzhang/cky-workspace/my_projects/Cangjie/samples/phase07-shared-service-refresh-harness/src/phase07_shared_service_refresh_harness.cj"
+            }
+          ]
+        }
+      ],
+      "std-dependencies": [
+        {
+          "std.binary": [
+            "std.core"
+          ]
+        },
+        {
+          "std.collection": [
+            "std.core",
+            "std.math"
+          ]
+        },
+        {
+          "std.convert": [
+            "std.core"
+          ]
+        },
+        {
+          "std.core": []
+        },
+        {
+          "std.io": [
+            "std.core"
+          ]
+        },
+        {
+          "std.math": [
+            "std.core"
+          ]
+        },
+        {
+          "std.sync": [
+            "std.core",
+            "std.time"
+          ]
+        },
+        {
+          "std.time": [
+            "std.binary",
+            "std.collection",
+            "std.convert",
+            "std.core",
+            "std.io"
+          ]
+        }
+      ],
+      "features": [],
+      "product": true,
+      "testUsed": false,
+      "mockUsed": false
+    }
+  }
+}

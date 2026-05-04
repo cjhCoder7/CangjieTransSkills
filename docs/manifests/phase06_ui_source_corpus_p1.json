@@ -1,0 +1,155 @@
+{
+  "manifest_name": "phase06-ui-source-corpus-p1",
+  "manifest_version": 1,
+  "created_at": "2026-04-09T17:14:27Z",
+  "corpus_root": "../../raw_docs/phase06-ui-p1",
+  "source_manifest": "phase06_ui_sample_manifest.json",
+  "selection_policy": {
+    "priority": "P1",
+    "adoption_decision": "primary",
+    "source_type": "external_repo",
+    "sample_buckets": [
+      "ordered_samples"
+    ]
+  },
+  "sample_count": 4,
+  "file_count": 9,
+  "entries": [
+    {
+      "sample_id": "svg4cj-view-model-renderer",
+      "priority": "P1",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/Cangjie-TPC/svg4cj",
+        "branch": "develop",
+        "commit": "9b26512106db5d3963417bad2be316a99725a4a8",
+        "access_date": "2026-04-06",
+        "purpose": "P1 renderer/model separation reference."
+      },
+      "source_paths": [
+        "svg/src/main/cangjie/src/svg_image_view.cj",
+        "entry/src/main/cangjie/src/render_merman.cj"
+      ],
+      "repo_name": "svg4cj",
+      "repo_local_paths": [
+        "raw_docs/phase06-ui-p1/svg4cj/svg/src/main/cangjie/src/svg_image_view.cj",
+        "raw_docs/phase06-ui-p1/svg4cj/entry/src/main/cangjie/src/render_merman.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Seed renderer/model separation and asset-backed view model usage without treating renderer internals as page logic.",
+      "blocking_constraints": [
+        "SVG fidelity needs GUI rendering validation."
+      ]
+    },
+    {
+      "sample_id": "editor4cj-controller-owned-state",
+      "priority": "P1",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/Cangjie-TPC/editor4cj",
+        "branch": "master",
+        "commit": "4f9a3b9551899ea5aaa6aec740cbb403dd0c8294",
+        "access_date": "2026-04-06",
+        "purpose": "P1 heavy controller-driven component reference."
+      },
+      "source_paths": [
+        "entry/src/main/cangjie/src/editor_kit/editorText.cj",
+        "entry/src/main/cangjie/src/index.cj"
+      ],
+      "repo_name": "editor4cj",
+      "repo_local_paths": [
+        "raw_docs/phase06-ui-p1/editor4cj/entry/src/main/cangjie/src/editor_kit/editorText.cj",
+        "raw_docs/phase06-ui-p1/editor4cj/entry/src/main/cangjie/src/index.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Seed controller-owned state and large component boundary rules; do not use as first-wave few-shot due to size and lexer/runtime complexity.",
+      "blocking_constraints": [
+        "Not suitable for first-wave few-shot; requires selective slicing."
+      ]
+    },
+    {
+      "sample_id": "httpnews-integrated-client",
+      "priority": "P1",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [
+        "mixed-app-pattern"
+      ],
+      "source": {
+        "url": "https://gitcode.com/szLilyWu/HttpNewsApp-Cangjie",
+        "branch": "main",
+        "commit": "9e02e67764a13281ec1c0d413700f878ba55c3c3",
+        "access_date": "2026-04-06",
+        "purpose": "P1 integrated network+page client reference."
+      },
+      "source_paths": [
+        "entry/src/main/cangjie/src/index.cj",
+        "entry/src/main/cangjie/src/news.cj",
+        "entry/src/main/cangjie/src/news_detail.cj"
+      ],
+      "repo_name": "HttpNewsApp-Cangjie",
+      "repo_local_paths": [
+        "raw_docs/phase06-ui-p1/HttpNewsApp-Cangjie/entry/src/main/cangjie/src/index.cj",
+        "raw_docs/phase06-ui-p1/HttpNewsApp-Cangjie/entry/src/main/cangjie/src/news.cj",
+        "raw_docs/phase06-ui-p1/HttpNewsApp-Cangjie/entry/src/main/cangjie/src/news_detail.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+external-server+manual-ui-smoke",
+      "usage_goal": "Seed list/detail/page-routing plus HTTP manager separation for future Telegram client-side page translation.",
+      "blocking_constraints": [
+        "Depends on external HTTP server and HarmonyOS app environment."
+      ]
+    },
+    {
+      "sample_id": "titlebar4cj-narrow-component",
+      "priority": "P1",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/MakerStudio/titlebar4cj",
+        "branch": "main",
+        "commit": "630893a5c34bcd25e261d5adf6d8ea1830d8523f",
+        "access_date": "2026-04-06",
+        "purpose": "P1 narrow reusable title bar component reference."
+      },
+      "source_paths": [
+        "titlebar/src/titlebar.cj",
+        "entry/src/main/cangjie/index_page.cj"
+      ],
+      "repo_name": "titlebar4cj",
+      "repo_local_paths": [
+        "raw_docs/phase06-ui-p1/titlebar4cj/titlebar/src/titlebar.cj",
+        "raw_docs/phase06-ui-p1/titlebar4cj/entry/src/main/cangjie/index_page.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Seed narrow reusable component boundaries and @Link-based model ownership for simple reusable widgets.",
+      "blocking_constraints": [
+        "Useful as a narrow component reference; not broad enough to replace main Phase 06 seeds."
+      ]
+    }
+  ]
+}

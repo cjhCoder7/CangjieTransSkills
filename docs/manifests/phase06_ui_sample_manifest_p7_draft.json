@@ -1,0 +1,122 @@
+{
+  "manifest_name": "phase06-ui-sample-manifest-p7-draft",
+  "manifest_version": 1,
+  "created_at": "2026-04-12T01:40:00Z",
+  "phase": "Phase06",
+  "status": "draft-candidate-scout",
+  "intended_consumer": "manual curation -> build_phase06_ui_source_corpus.py",
+  "notes": [
+    "This draft manifest is not yet promoted into the primary phase06_ui_sample_manifest.json.",
+    "Its purpose is to extend the regular Phase06 source supply beyond the exhausted current public cangjiechallenge pool while the regular checkpoint holds at 35/35 live passed.",
+    "The official HarmonyOS-Examples repo still contains multiple unconsumed single-file CommonUI pages at commit f29257acc564b5daedaba4c32b0f9530b3fc0c31; this draft freezes three low-coupling ArkUI page-shell candidates with no hybrid/web/bridge dependency pressure."
+  ],
+  "ordered_samples": [
+    {
+      "sample_id": "harmonyos-examples-commonui-text-page",
+      "priority": "P7",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "usage_goal": "Add a self-contained typography controls page that keeps text content, font size, weight, and style toggles inside one page-owned render state boundary.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P7 draft candidate harvested from the already approved HarmonyOS-Examples pinned repo after the regular Phase06 supply reached 35/35 live passed and the public cangjiechallenge pool was exhausted."
+      },
+      "source_paths": [
+        "CommonUI/entry/src/main/cangjie/src/pages/textSample.cj"
+      ],
+      "blocking_constraints": [
+        "Keep text/font state and button plus checkbox event wiring source-backed inside the page boundary; do not invent detached controllers or helper layers."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-examples-commonui-slider-page",
+      "priority": "P7",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "usage_goal": "Add a self-contained slider demo page that keeps four slider values, orientation variants, and readback labels inside one render-facing page boundary.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P7 draft candidate harvested from the already approved HarmonyOS-Examples pinned repo after the regular Phase06 supply reached 35/35 live passed and the public cangjiechallenge pool was exhausted."
+      },
+      "source_paths": [
+        "CommonUI/entry/src/main/cangjie/src/pages/sliderSample.cj"
+      ],
+      "blocking_constraints": [
+        "Keep slider value ownership and onChange readback inside the same page shell instead of introducing synthetic view models or controller wrappers."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-examples-commonui-tabs-page",
+      "priority": "P7",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Add a self-contained vertical tabs page that keeps the TabsController host and tab content boundary inside one controller-owned page shell.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P7 draft candidate harvested from the already approved HarmonyOS-Examples pinned repo after the regular Phase06 supply reached 35/35 live passed and the public cangjiechallenge pool was exhausted."
+      },
+      "source_paths": [
+        "CommonUI/entry/src/main/cangjie/src/pages/tabsSample.cj"
+      ],
+      "blocking_constraints": [
+        "Keep TabsController usage and tab host structure source-backed inside the page boundary; do not replace the tab shell with invented router or coordinator layers."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    }
+  ],
+  "control_samples": [],
+  "exception_references": [],
+  "deferred_pools": [],
+  "tag_rules": {
+    "structure_tag_required": true,
+    "structure_tags": [
+      "page-shell",
+      "rich-component"
+    ],
+    "ownership_tag_required": true,
+    "ownership_tags": [
+      "view-model-renderer",
+      "controller-owned-state"
+    ],
+    "optional_interaction_tags": [
+      "gesture-component"
+    ],
+    "optional_exception_tags": [
+      "ffi-exception",
+      "hybrid-exception"
+    ],
+    "optional_sample_scope_tags": [
+      "mixed-app-pattern"
+    ],
+    "resolution_rule": "Each file-level sample must resolve to exactly one structure_tag and one ownership_tag. interaction/exception/sample_scope tags are additive only."
+  }
+}

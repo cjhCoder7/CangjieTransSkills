@@ -1,0 +1,242 @@
+{
+  "manifest_name": "phase06_ui_prompt_pilot_p8_draft_batch1",
+  "manifest_version": 1,
+  "created_at": "2026-04-12T01:06:10Z",
+  "phase": "phase06",
+  "status": "active",
+  "source_manifest": "docs/manifests/phase06_ui_p8_draft_file_manifest.json",
+  "intended_consumer": "Phase06 prompt-pilot curator and prompt-dump runner",
+  "selection_policy": {
+    "batch_id": "phase06-ui-prompt-pilot-p8-draft-batch1",
+    "selection_mode": "residual-workset-after-excluding-consumed-slices",
+    "track_profile": "p0-batch1",
+    "required_tracks": [],
+    "artifact_root": "artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1",
+    "architecture_skill_path": "docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md",
+    "notes": [
+      "Residual mode keeps every remaining slice after excluding an already-consumed pilot workset; it does not require full five-lane symmetry.",
+      "Each selected slice carries repo-local pipeline paths so prompt dumps can be regenerated without hand assembly.",
+      "Explicit ui_prompt_tags injection is still required for the final pilot prompt dump."
+    ],
+    "excluded_slice_ids": []
+  },
+  "summary": {
+    "pilot_count": 3,
+    "source_sample_count": 3,
+    "role_counts": {
+      "page": 3
+    },
+    "track_counts": {
+      "residual-page-shell-view-model-renderer-page": 3
+    },
+    "coverage": {
+      "structure_tags": [
+        "page-shell"
+      ],
+      "ownership_tags": [
+        "view-model-renderer"
+      ],
+      "interaction_tags": []
+    },
+    "selected_slice_ids": [
+      "phase06-ui-p8-commonui-button-page",
+      "phase06-ui-p8-commonui-checkbox-page",
+      "phase06-ui-p8-address-exchange-page"
+    ],
+    "excluded_slice_count": 0
+  },
+  "entries": [
+    {
+      "pilot_id": "phase06-ui-pilot-p8-draft-batch1-phase06-ui-p8-commonui-button-page",
+      "pilot_order": 1,
+      "track_id": "residual-page-shell-view-model-renderer-page",
+      "slice_id": "phase06-ui-p8-commonui-button-page",
+      "sample_id": "harmonyos-examples-commonui-button-page",
+      "repo_name": "HarmonyOS-Examples",
+      "repo_local_path": "raw_docs/phase06-ui-p8-draft/HarmonyOS-Examples/CommonUI/entry/src/main/cangjie/src/pages/buttonSample.cj",
+      "source_path": "CommonUI/entry/src/main/cangjie/src/pages/buttonSample.cj",
+      "priority": "P8",
+      "selection_rank": 1,
+      "sample_rank": 1,
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "usage_goal": "Draft P8 button demo page slice for same-file button composition, style extensions, and shape-based builder reuse without inventing detached helper layers.",
+      "selection_reason": "Residual next-stage slice left after excluding already-curated prompt-pilot worksets.",
+      "pilot_goal": "Carry remaining Phase06 lane variance into the next prompt-pilot batch without hand-assembling repo-local pipeline paths.",
+      "recommended_few_shot_entry_ids": [
+        "local-ui-routing-page-shell-view-model-renderer",
+        "harmonyos-examples-badgeview-page-shell-view-model-renderer"
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "class ButtonView {"
+        ]
+      },
+      "notes": [
+        "Keep Text/Button extend helpers and buttonGroup builder source-backed inside the page boundary.",
+        "Treat common/capsule/circle button presentation as one direct render-facing page-shell contract."
+      ],
+      "src_root": "raw_docs/phase06-ui-p8-draft/HarmonyOS-Examples/CommonUI/entry/src/main/cangjie/src",
+      "target_file": "pages/buttonSample.cj",
+      "artifact_root": "artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-commonui-button-page",
+      "pipeline_run_root": "artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-commonui-button-page/pipeline_run",
+      "db_path": "artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-commonui-button-page/pipeline_run/repo_index.sqlite",
+      "repo_map_path": "artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-commonui-button-page/pipeline_run/repo_map.txt",
+      "base_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-commonui-button-page/pipeline_run/target.tu.json",
+      "explicit_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-commonui-button-page/target.explicit_ui_tags.tu.json",
+      "orchestration_output_path": "artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-commonui-button-page/pipeline_run/target.orchestration.json",
+      "pipeline_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-commonui-button-page/pipeline_run/summary.json",
+      "failure_path": "artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-commonui-button-page/pipeline_run/failure.json",
+      "pipeline_log_path": "artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-commonui-button-page/pipeline.log",
+      "base_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-commonui-button-page/prompt_dump.txt",
+      "explicit_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-commonui-button-page/prompt_dump.explicit_ui_tags.txt",
+      "prompt_dump_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-commonui-button-page/pilot-summary.json",
+      "snapshot_label": "phase06-ui-p8-draft-batch1-phase06-ui-p8-commonui-button-page",
+      "expected_prompt_signal": "resolution_source=explicit-target-ui-tags",
+      "pipeline_command": "python3 scripts/pipeline_runner.py --src-root raw_docs/phase06-ui-p8-draft/HarmonyOS-Examples/CommonUI/entry/src/main/cangjie/src --target-file pages/buttonSample.cj --run-root artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-commonui-button-page/pipeline_run --db-path artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-commonui-button-page/pipeline_run/repo_index.sqlite --repo-map-path artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-commonui-button-page/pipeline_run/repo_map.txt --tu-json-path artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-commonui-button-page/pipeline_run/target.tu.json --orchestration-output-path artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-commonui-button-page/pipeline_run/target.orchestration.json --summary-path artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-commonui-button-page/pipeline_run/summary.json --failure-path artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-commonui-button-page/pipeline_run/failure.json --prompt-dump-path artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-commonui-button-page/prompt_dump.txt --architecture-skill docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md --snapshot-label phase06-ui-p8-draft-batch1-phase06-ui-p8-commonui-button-page --dump-prompt-only --extensions .cj --pattern-limit 0"
+    },
+    {
+      "pilot_id": "phase06-ui-pilot-p8-draft-batch1-phase06-ui-p8-commonui-checkbox-page",
+      "pilot_order": 2,
+      "track_id": "residual-page-shell-view-model-renderer-page",
+      "slice_id": "phase06-ui-p8-commonui-checkbox-page",
+      "sample_id": "harmonyos-examples-commonui-checkbox-page",
+      "repo_name": "HarmonyOS-Examples",
+      "repo_local_path": "raw_docs/phase06-ui-p8-draft/HarmonyOS-Examples/CommonUI/entry/src/main/cangjie/src/pages/checkBoxSample.cj",
+      "source_path": "CommonUI/entry/src/main/cangjie/src/pages/checkBoxSample.cj",
+      "priority": "P8",
+      "selection_rank": 2,
+      "sample_rank": 1,
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "usage_goal": "Draft P8 checkbox demo page slice for grouped checkbox presentation and same-file onChange event wiring without introducing synthetic state holders.",
+      "selection_reason": "Residual next-stage slice left after excluding already-curated prompt-pilot worksets.",
+      "pilot_goal": "Carry remaining Phase06 lane variance into the next prompt-pilot batch without hand-assembling repo-local pipeline paths.",
+      "recommended_few_shot_entry_ids": [
+        "local-ui-routing-page-shell-view-model-renderer",
+        "harmonyos-examples-badgeview-page-shell-view-model-renderer"
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class CheckBoxView {"
+        ]
+      },
+      "notes": [
+        "Keep checkbox group membership, selected colors, and onChange logging source-backed inside the page boundary.",
+        "Treat the dual-checkbox row as a narrow event-driven page-shell example rather than splitting invented child components."
+      ],
+      "src_root": "raw_docs/phase06-ui-p8-draft/HarmonyOS-Examples/CommonUI/entry/src/main/cangjie/src",
+      "target_file": "pages/checkBoxSample.cj",
+      "artifact_root": "artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-commonui-checkbox-page",
+      "pipeline_run_root": "artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-commonui-checkbox-page/pipeline_run",
+      "db_path": "artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-commonui-checkbox-page/pipeline_run/repo_index.sqlite",
+      "repo_map_path": "artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-commonui-checkbox-page/pipeline_run/repo_map.txt",
+      "base_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-commonui-checkbox-page/pipeline_run/target.tu.json",
+      "explicit_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-commonui-checkbox-page/target.explicit_ui_tags.tu.json",
+      "orchestration_output_path": "artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-commonui-checkbox-page/pipeline_run/target.orchestration.json",
+      "pipeline_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-commonui-checkbox-page/pipeline_run/summary.json",
+      "failure_path": "artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-commonui-checkbox-page/pipeline_run/failure.json",
+      "pipeline_log_path": "artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-commonui-checkbox-page/pipeline.log",
+      "base_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-commonui-checkbox-page/prompt_dump.txt",
+      "explicit_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-commonui-checkbox-page/prompt_dump.explicit_ui_tags.txt",
+      "prompt_dump_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-commonui-checkbox-page/pilot-summary.json",
+      "snapshot_label": "phase06-ui-p8-draft-batch1-phase06-ui-p8-commonui-checkbox-page",
+      "expected_prompt_signal": "resolution_source=explicit-target-ui-tags",
+      "pipeline_command": "python3 scripts/pipeline_runner.py --src-root raw_docs/phase06-ui-p8-draft/HarmonyOS-Examples/CommonUI/entry/src/main/cangjie/src --target-file pages/checkBoxSample.cj --run-root artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-commonui-checkbox-page/pipeline_run --db-path artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-commonui-checkbox-page/pipeline_run/repo_index.sqlite --repo-map-path artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-commonui-checkbox-page/pipeline_run/repo_map.txt --tu-json-path artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-commonui-checkbox-page/pipeline_run/target.tu.json --orchestration-output-path artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-commonui-checkbox-page/pipeline_run/target.orchestration.json --summary-path artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-commonui-checkbox-page/pipeline_run/summary.json --failure-path artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-commonui-checkbox-page/pipeline_run/failure.json --prompt-dump-path artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-commonui-checkbox-page/prompt_dump.txt --architecture-skill docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md --snapshot-label phase06-ui-p8-draft-batch1-phase06-ui-p8-commonui-checkbox-page --dump-prompt-only --extensions .cj --pattern-limit 0"
+    },
+    {
+      "pilot_id": "phase06-ui-pilot-p8-draft-batch1-phase06-ui-p8-address-exchange-page",
+      "pilot_order": 3,
+      "track_id": "residual-page-shell-view-model-renderer-page",
+      "slice_id": "phase06-ui-p8-address-exchange-page",
+      "sample_id": "harmonyos-cangjie-cases-address-exchange-page",
+      "repo_name": "HarmonyOS-Cangjie-Cases",
+      "repo_local_path": "raw_docs/phase06-ui-p8-draft/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/addressexchange/src/main/cangjie/src/view/AddressExchangeView.cj",
+      "source_path": "CangjieAppDevelopment/feature/addressexchange/src/main/cangjie/src/view/AddressExchangeView.cj",
+      "priority": "P8",
+      "selection_rank": 3,
+      "sample_rank": 1,
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "usage_goal": "Draft P8 address exchange page slice for same-file swap animation, translate/rotate state, and toast-backed click affordances inside one page shell.",
+      "selection_reason": "Residual next-stage slice left after excluding already-curated prompt-pilot worksets.",
+      "pilot_goal": "Carry remaining Phase06 lane variance into the next prompt-pilot batch without hand-assembling repo-local pipeline paths.",
+      "recommended_few_shot_entry_ids": [
+        "local-ui-routing-page-shell-view-model-renderer",
+        "harmonyos-examples-badgeview-page-shell-view-model-renderer"
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class AddressExchangeView {"
+        ]
+      },
+      "notes": [
+        "Keep rotateAngle, translateX, and swap as direct page-owned state instead of inventing controller facades.",
+        "Preserve the source-backed animateTo and PromptAction usage rather than collapsing the page into a static card example."
+      ],
+      "src_root": "raw_docs/phase06-ui-p8-draft/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/addressexchange/src/main/cangjie/src",
+      "target_file": "view/AddressExchangeView.cj",
+      "artifact_root": "artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-address-exchange-page",
+      "pipeline_run_root": "artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-address-exchange-page/pipeline_run",
+      "db_path": "artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-address-exchange-page/pipeline_run/repo_index.sqlite",
+      "repo_map_path": "artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-address-exchange-page/pipeline_run/repo_map.txt",
+      "base_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-address-exchange-page/pipeline_run/target.tu.json",
+      "explicit_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-address-exchange-page/target.explicit_ui_tags.tu.json",
+      "orchestration_output_path": "artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-address-exchange-page/pipeline_run/target.orchestration.json",
+      "pipeline_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-address-exchange-page/pipeline_run/summary.json",
+      "failure_path": "artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-address-exchange-page/pipeline_run/failure.json",
+      "pipeline_log_path": "artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-address-exchange-page/pipeline.log",
+      "base_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-address-exchange-page/prompt_dump.txt",
+      "explicit_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-address-exchange-page/prompt_dump.explicit_ui_tags.txt",
+      "prompt_dump_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-address-exchange-page/pilot-summary.json",
+      "snapshot_label": "phase06-ui-p8-draft-batch1-phase06-ui-p8-address-exchange-page",
+      "expected_prompt_signal": "resolution_source=explicit-target-ui-tags",
+      "pipeline_command": "python3 scripts/pipeline_runner.py --src-root raw_docs/phase06-ui-p8-draft/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/addressexchange/src/main/cangjie/src --target-file view/AddressExchangeView.cj --run-root artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-address-exchange-page/pipeline_run --db-path artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-address-exchange-page/pipeline_run/repo_index.sqlite --repo-map-path artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-address-exchange-page/pipeline_run/repo_map.txt --tu-json-path artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-address-exchange-page/pipeline_run/target.tu.json --orchestration-output-path artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-address-exchange-page/pipeline_run/target.orchestration.json --summary-path artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-address-exchange-page/pipeline_run/summary.json --failure-path artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-address-exchange-page/pipeline_run/failure.json --prompt-dump-path artifacts/ui_pilots/20260412-phase06-ui-p8-draft-pilot-batch1/phase06-ui-p8-address-exchange-page/prompt_dump.txt --architecture-skill docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md --snapshot-label phase06-ui-p8-draft-batch1-phase06-ui-p8-address-exchange-page --dump-prompt-only --extensions .cj --pattern-limit 0"
+    }
+  ]
+}

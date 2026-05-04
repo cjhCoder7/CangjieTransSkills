@@ -1,0 +1,1422 @@
+{
+  "manifest_name": "phase06-ui-p18-file-manifest",
+  "manifest_version": 1,
+  "created_at": "2026-04-13T03:21:35Z",
+  "phase": "Phase 06 UI Source Slicing / File-Level Workset",
+  "status": "draft-ready",
+  "source_corpus_manifest": "phase06_ui_source_corpus_p18.json",
+  "source_manifest": "phase06_ui_sample_manifest.json",
+  "few_shot_pack": "phase06_ui_few_shot_pack.json",
+  "intended_consumer": [
+    "human-review",
+    "future-phase06-prompt-pilot",
+    "future-phase06-batch-curator"
+  ],
+  "notes": [
+    "Expands the selected frozen source corpus into file-level slices with explicit ui_prompt_tags.",
+    "This manifest is not consumed directly by scripts/pipeline_batch_runner.py; it is a file-level workset for prompt pilots, explicit tag injection, and later batch curation.",
+    "Tag refinement is allowed at file level when a multi-file sample contains both page-shell and rich-component files."
+  ],
+  "selection_policy": {
+    "priority": "P18",
+    "adoption_decision": "primary",
+    "source_type": "external_repo",
+    "expansion_rule": "expand repo_local_paths into file-level slices and refine per-file target_role/ui_prompt_tags"
+  },
+  "summary": {
+    "sample_count": 3,
+    "slice_count": 27,
+    "role_counts": {
+      "page": 3,
+      "viewmodel": 16,
+      "component": 8
+    },
+    "structure_counts": {
+      "page-shell": 3,
+      "rich-component": 24
+    }
+  },
+  "entries": [
+    {
+      "slice_id": "phase06-ui-p18-calculator-entry-page",
+      "selection_rank": 1,
+      "sample_rank": 1,
+      "sample_id": "harmonyos-examples-calculator-entry-view",
+      "priority": "P18",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "04-Calculator/entry/src/main/cangjie/src/index.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p18/HarmonyOS-Examples/04-Calculator/entry/src/main/cangjie/src/index.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P18 regular candidate selected from the remaining official HarmonyOS-Examples reserve because its keypad page, observed state model, button entities, and local evaluator helpers form one bounded deterministic workset without timer or display-side pressure."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P18 Calculator host page slice for keypad-grid composition and DynamicParam-backed input orchestration around explicit button and evaluator helpers.",
+      "notes": [
+        "Keep keypad layout plus expression/result ownership source-backed in the page shell.",
+        "Treat button/entity and evaluator files as explicit companions instead of flattening the sample into one page."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class EntryView {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p18-calculator-dynamic-param-model",
+      "selection_rank": 2,
+      "sample_rank": 2,
+      "sample_id": "harmonyos-examples-calculator-entry-view",
+      "priority": "P18",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "04-Calculator/entry/src/main/cangjie/src/service/dynamic_param.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p18/HarmonyOS-Examples/04-Calculator/entry/src/main/cangjie/src/service/dynamic_param.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P18 regular candidate selected from the remaining official HarmonyOS-Examples reserve because its keypad page, observed state model, button entities, and local evaluator helpers form one bounded deterministic workset without timer or display-side pressure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P18 Calculator observed-state model for expression/result ownership, text-size mutation, and derived evaluation updates behind the host page.",
+      "notes": [
+        "Keep @Observed and @Publish state mutation source-backed here.",
+        "This file remains the controller-facing state companion behind the calculator page shell."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class DynamicParam {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p18-calculator-button-entity-model",
+      "selection_rank": 3,
+      "sample_rank": 3,
+      "sample_id": "harmonyos-examples-calculator-entry-view",
+      "priority": "P18",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "04-Calculator/entry/src/main/cangjie/src/entity/button_entity.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p18/HarmonyOS-Examples/04-Calculator/entry/src/main/cangjie/src/entity/button_entity.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P18 regular candidate selected from the remaining official HarmonyOS-Examples reserve because its keypad page, observed state model, button entities, and local evaluator helpers form one bounded deterministic workset without timer or display-side pressure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P18 Calculator base button model for shared press hooks, text payload ownership, and button color styling behind the keypad page.",
+      "notes": [
+        "Keep beforePush/afterPush/onPress behavior source-backed in the base button type.",
+        "This file is a controller-facing input model, not a standalone UI component contract."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public open class ButtonEntity {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p18-calculator-ac-button-model",
+      "selection_rank": 4,
+      "sample_rank": 4,
+      "sample_id": "harmonyos-examples-calculator-entry-view",
+      "priority": "P18",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "04-Calculator/entry/src/main/cangjie/src/entity/ac_button_entity.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p18/HarmonyOS-Examples/04-Calculator/entry/src/main/cangjie/src/entity/ac_button_entity.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P18 regular candidate selected from the remaining official HarmonyOS-Examples reserve because its keypad page, observed state model, button entities, and local evaluator helpers form one bounded deterministic workset without timer or display-side pressure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P18 Calculator clear-button model for reset behavior and AC styling over the shared DynamicParam state.",
+      "notes": [
+        "Keep clear-action semantics source-backed here instead of reconstructing AC behavior from prompt heuristics.",
+        "This subtype stays attached to the calculator input lane as a bounded button model."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class AcButtonEntity <:ButtonEntity {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p18-calculator-eval-button-model",
+      "selection_rank": 5,
+      "sample_rank": 5,
+      "sample_id": "harmonyos-examples-calculator-entry-view",
+      "priority": "P18",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "04-Calculator/entry/src/main/cangjie/src/entity/eval_button_entity.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p18/HarmonyOS-Examples/04-Calculator/entry/src/main/cangjie/src/entity/eval_button_entity.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P18 regular candidate selected from the remaining official HarmonyOS-Examples reserve because its keypad page, observed state model, button entities, and local evaluator helpers form one bounded deterministic workset without timer or display-side pressure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P18 Calculator evaluate-button model for equals-button styling and result-size handoff against the shared DynamicParam state.",
+      "notes": [
+        "Keep equals-button mutation semantics source-backed here.",
+        "This file remains a controller-facing button subtype behind the calculator page shell."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class EvalButtonEntity <: ButtonEntity {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p18-calculator-number-button-model",
+      "selection_rank": 6,
+      "sample_rank": 6,
+      "sample_id": "harmonyos-examples-calculator-entry-view",
+      "priority": "P18",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "04-Calculator/entry/src/main/cangjie/src/entity/number_button_entity.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p18/HarmonyOS-Examples/04-Calculator/entry/src/main/cangjie/src/entity/number_button_entity.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P18 regular candidate selected from the remaining official HarmonyOS-Examples reserve because its keypad page, observed state model, button entities, and local evaluator helpers form one bounded deterministic workset without timer or display-side pressure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P18 Calculator number-button model for numeric input styling and expression/result size reset after successful pushes.",
+      "notes": [
+        "Keep numeric-button post-push behavior source-backed here.",
+        "This subtype stays attached to the calculator controller-owned input lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class NumberButtonEntity <: ButtonEntity {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p18-calculator-operation-button-model",
+      "selection_rank": 7,
+      "sample_rank": 7,
+      "sample_id": "harmonyos-examples-calculator-entry-view",
+      "priority": "P18",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "04-Calculator/entry/src/main/cangjie/src/entity/operation_button_entity.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p18/HarmonyOS-Examples/04-Calculator/entry/src/main/cangjie/src/entity/operation_button_entity.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P18 regular candidate selected from the remaining official HarmonyOS-Examples reserve because its keypad page, observed state model, button entities, and local evaluator helpers form one bounded deterministic workset without timer or display-side pressure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P18 Calculator operator-button model for operator styling and expression/result size reset across the shared calculator state.",
+      "notes": [
+        "Keep operator-button mutation and styling source-backed in this subtype.",
+        "This file remains a controller-facing companion behind the calculator host page."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class OperationButtonEntity <:ButtonEntity {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p18-calculator-keyboards-model",
+      "selection_rank": 8,
+      "sample_rank": 8,
+      "sample_id": "harmonyos-examples-calculator-entry-view",
+      "priority": "P18",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "04-Calculator/entry/src/main/cangjie/src/entity/keyboards.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p18/HarmonyOS-Examples/04-Calculator/entry/src/main/cangjie/src/entity/keyboards.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P18 regular candidate selected from the remaining official HarmonyOS-Examples reserve because its keypad page, observed state model, button entities, and local evaluator helpers form one bounded deterministic workset without timer or display-side pressure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P18 Calculator keypad-definition model for explicit key ordering and concrete button-entity instantiation behind the page shell.",
+      "notes": [
+        "Keep keypad ordering and concrete button construction source-backed here.",
+        "This file stays attached to the controller-facing calculator input lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class Keyboards {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p18-calculator-calculate-utils-model",
+      "selection_rank": 9,
+      "sample_rank": 9,
+      "sample_id": "harmonyos-examples-calculator-entry-view",
+      "priority": "P18",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "04-Calculator/entry/src/main/cangjie/src/utils/calculate_utils.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p18/HarmonyOS-Examples/04-Calculator/entry/src/main/cangjie/src/utils/calculate_utils.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P18 regular candidate selected from the remaining official HarmonyOS-Examples reserve because its keypad page, observed state model, button entities, and local evaluator helpers form one bounded deterministic workset without timer or display-side pressure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P18 Calculator evaluator model for tokenization, infix/postfix conversion, and arithmetic evaluation consumed by DynamicParam.",
+      "notes": [
+        "Keep expression parsing and evaluation helpers source-backed here.",
+        "This file remains a renderer-facing utility companion behind the calculator lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class CalculateUtils {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p18-calculator-stack-model",
+      "selection_rank": 10,
+      "sample_rank": 10,
+      "sample_id": "harmonyos-examples-calculator-entry-view",
+      "priority": "P18",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "04-Calculator/entry/src/main/cangjie/src/utils/collections.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p18/HarmonyOS-Examples/04-Calculator/entry/src/main/cangjie/src/utils/collections.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P18 regular candidate selected from the remaining official HarmonyOS-Examples reserve because its keypad page, observed state model, button entities, and local evaluator helpers form one bounded deterministic workset without timer or display-side pressure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P18 Calculator stack model for bounded push/pop/peek collection behavior consumed by the evaluator helpers.",
+      "notes": [
+        "Keep stack semantics source-backed here instead of replacing postfix evaluation with prompt-local assumptions.",
+        "This helper stays attached to the evaluator lane as a renderer-facing support model."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class Stack<T> {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p18-calculator-string-utils-model",
+      "selection_rank": 11,
+      "sample_rank": 11,
+      "sample_id": "harmonyos-examples-calculator-entry-view",
+      "priority": "P18",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "04-Calculator/entry/src/main/cangjie/src/utils/string_utils.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p18/HarmonyOS-Examples/04-Calculator/entry/src/main/cangjie/src/utils/string_utils.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P18 regular candidate selected from the remaining official HarmonyOS-Examples reserve because its keypad page, observed state model, button entities, and local evaluator helpers form one bounded deterministic workset without timer or display-side pressure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P18 Calculator string helper model for float formatting, trim behavior, digit checks, and numeric parsing behind the evaluator flow.",
+      "notes": [
+        "Keep number-formatting helpers source-backed here.",
+        "This file remains an explicit utility companion behind the calculator evaluator lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class StringUtils {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p18-schedule-entry-page",
+      "selection_rank": 12,
+      "sample_rank": 1,
+      "sample_id": "harmonyos-examples-schedule-entry-view",
+      "priority": "P18",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "10-Schedule/entry/src/main/cangjie/index.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p18/HarmonyOS-Examples/10-Schedule/entry/src/main/cangjie/index.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P18 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the schedule page, direct MainAbility context dependency, grid components, and course data helpers stay inside one bounded resource-backed subtree."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P18 Schedule host page slice for TabsController ownership, resource-backed schedule loading, and synchronized scroller composition around explicit course-grid companions.",
+      "notes": [
+        "Keep page-owned scroller wiring, tab state, and MainAbility context usage source-backed in the host page.",
+        "Treat grid/header/data files as explicit companions instead of pretending the schedule is a standalone entry shell."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class EntryView {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p18-schedule-back-row-component",
+      "selection_rank": 13,
+      "sample_rank": 2,
+      "sample_id": "harmonyos-examples-schedule-entry-view",
+      "priority": "P18",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "10-Schedule/entry/src/main/cangjie/components/BackRow.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p18/HarmonyOS-Examples/10-Schedule/entry/src/main/cangjie/components/BackRow.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P18 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the schedule page, direct MainAbility context dependency, grid components, and course data helpers stay inside one bounded resource-backed subtree."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P18 Schedule back-row support component for week-label and back-icon presentation above the timetable grid.",
+      "notes": [
+        "Keep the bounded header rendering source-backed in this component instead of absorbing it into the page shell.",
+        "This file is the narrow display companion behind the schedule lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class BackRow {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p18-schedule-course-component",
+      "selection_rank": 14,
+      "sample_rank": 3,
+      "sample_id": "harmonyos-examples-schedule-entry-view",
+      "priority": "P18",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "10-Schedule/entry/src/main/cangjie/components/Course.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p18/HarmonyOS-Examples/10-Schedule/entry/src/main/cangjie/components/Course.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P18 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the schedule page, direct MainAbility context dependency, grid components, and course data helpers stay inside one bounded resource-backed subtree."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P18 Schedule primary course-grid component for builder-backed course-cell rendering and synchronized horizontal/vertical scroller orchestration.",
+      "notes": [
+        "Keep courseBuilder plus scroll-sync callbacks source-backed in this primary grid component.",
+        "This file is the main interactive companion behind the schedule host page."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "public class Course {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p18-schedule-section-row-component",
+      "selection_rank": 15,
+      "sample_rank": 4,
+      "sample_id": "harmonyos-examples-schedule-entry-view",
+      "priority": "P18",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "10-Schedule/entry/src/main/cangjie/components/SectionRow.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p18/HarmonyOS-Examples/10-Schedule/entry/src/main/cangjie/components/SectionRow.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P18 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the schedule page, direct MainAbility context dependency, grid components, and course data helpers stay inside one bounded resource-backed subtree."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P18 Schedule section-row support component for weekday header rendering and horizontal scroller alignment above the course grid.",
+      "notes": [
+        "Keep weekday-header layout and linked scroller behavior source-backed in this support component.",
+        "This file remains a controller-facing grid companion rather than a free-floating display snippet."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class SectionRow {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p18-schedule-section-time-component",
+      "selection_rank": 16,
+      "sample_rank": 5,
+      "sample_id": "harmonyos-examples-schedule-entry-view",
+      "priority": "P18",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "10-Schedule/entry/src/main/cangjie/components/SectionTime.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p18/HarmonyOS-Examples/10-Schedule/entry/src/main/cangjie/components/SectionTime.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P18 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the schedule page, direct MainAbility context dependency, grid components, and course data helpers stay inside one bounded resource-backed subtree."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P18 Schedule section-time support component for linked time/index column rendering and vertical scroller synchronization beside the course grid.",
+      "notes": [
+        "Keep the paired scroller callbacks and time/index column composition source-backed in this support component.",
+        "This file stays attached to the schedule controller-owned grid lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class SectionTime {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p18-schedule-course-entity-model",
+      "selection_rank": 17,
+      "sample_rank": 6,
+      "sample_id": "harmonyos-examples-schedule-entry-view",
+      "priority": "P18",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "10-Schedule/entry/src/main/cangjie/dataModel/CourseEntity.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p18/HarmonyOS-Examples/10-Schedule/entry/src/main/cangjie/dataModel/CourseEntity.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P18 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the schedule page, direct MainAbility context dependency, grid components, and course data helpers stay inside one bounded resource-backed subtree."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P18 Schedule course-table model for course matrix ownership and deterministic row/column expansion consumed by the grid component.",
+      "notes": [
+        "Keep course-table construction and index-matrix semantics source-backed here.",
+        "This file remains a renderer-facing model companion behind the schedule lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class CourseEntity {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p18-schedule-course-item-model",
+      "selection_rank": 18,
+      "sample_rank": 7,
+      "sample_id": "harmonyos-examples-schedule-entry-view",
+      "priority": "P18",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "10-Schedule/entry/src/main/cangjie/dataModel/CourseItem.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p18/HarmonyOS-Examples/10-Schedule/entry/src/main/cangjie/dataModel/CourseItem.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P18 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the schedule page, direct MainAbility context dependency, grid components, and course data helpers stay inside one bounded resource-backed subtree."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P18 Schedule course-item model for resource-name and background-color ownership consumed by the timetable renderer.",
+      "notes": [
+        "Keep CJResource plus Color pairing source-backed here instead of flattening course metadata into the UI layer.",
+        "This file stays attached to the renderer-facing schedule model lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class CourseItem{"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p18-schedule-main-ability-model",
+      "selection_rank": 19,
+      "sample_rank": 8,
+      "sample_id": "harmonyos-examples-schedule-entry-view",
+      "priority": "P18",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "10-Schedule/entry/src/main/cangjie/main_ability.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p18/HarmonyOS-Examples/10-Schedule/entry/src/main/cangjie/main_ability.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P18 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the schedule page, direct MainAbility context dependency, grid components, and course data helpers stay inside one bounded resource-backed subtree."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P18 Schedule ability-context model for fullscreen window setup and exported abilityContext consumed by the schedule host page.",
+      "notes": [
+        "Keep MainAbility window-stage setup and static abilityContext source-backed here.",
+        "This file remains the controller-facing runtime companion behind the schedule page shell."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class MainAbility <: Ability {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p18-custom-keyboard-entry-page",
+      "selection_rank": 20,
+      "sample_rank": 1,
+      "sample_id": "harmonyos-examples-custom-keyboard-entry-view",
+      "priority": "P18",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "17-CustomKeyboard/entry/src/main/cangjie/index.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p18/HarmonyOS-Examples/17-CustomKeyboard/entry/src/main/cangjie/index.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P18 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the AppStorage-backed entry page, local builder components, constants, and keyboard model form one bounded custom-keyboard flow without cross-feature imports."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P18 CustomKeyboard host page slice for AppStorage-backed license-plate flow and page-level builder orchestration around explicit keyboard companions.",
+      "notes": [
+        "Keep AppStorage/StorageLink wiring and top-level builder composition source-backed in the page shell.",
+        "Treat builder components, constants, and keyboard model as explicit companions instead of flattening the flow into one page file."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class EntryView {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p18-custom-keyboard-footer-component",
+      "selection_rank": 21,
+      "sample_rank": 2,
+      "sample_id": "harmonyos-examples-custom-keyboard-entry-view",
+      "priority": "P18",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "17-CustomKeyboard/entry/src/main/cangjie/components/FooterBuilder.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p18/HarmonyOS-Examples/17-CustomKeyboard/entry/src/main/cangjie/components/FooterBuilder.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P18 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the AppStorage-backed entry page, local builder components, constants, and keyboard model form one bounded custom-keyboard flow without cross-feature imports."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P18 CustomKeyboard footer support component for payment-summary actions, dialog-controller ownership, and success-dialog presentation.",
+      "notes": [
+        "Keep CustomDialogController usage and detail-visibility state source-backed in this support component.",
+        "This file remains a controller-facing payment footer companion behind the host page."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class FooterBuilder {",
+          "class MyDialog {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p18-custom-keyboard-license-plate-component",
+      "selection_rank": 22,
+      "sample_rank": 3,
+      "sample_id": "harmonyos-examples-custom-keyboard-entry-view",
+      "priority": "P18",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "17-CustomKeyboard/entry/src/main/cangjie/components/LicensePlateInputBuilder.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p18/HarmonyOS-Examples/17-CustomKeyboard/entry/src/main/cangjie/components/LicensePlateInputBuilder.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P18 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the AppStorage-backed entry page, local builder components, constants, and keyboard model form one bounded custom-keyboard flow without cross-feature imports."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P18 CustomKeyboard primary input component for focused license-plate editing, custom keyboard ownership, and builder-backed key-grid mutation.",
+      "notes": [
+        "Keep StorageLink state, focused input index, and keyboardBuilder mutation flow source-backed inside this primary component.",
+        "This file is the main interaction-heavy companion behind the custom-keyboard host page."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "public class LicensePlateInputBuilder {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p18-custom-keyboard-payment-info-component",
+      "selection_rank": 23,
+      "sample_rank": 4,
+      "sample_id": "harmonyos-examples-custom-keyboard-entry-view",
+      "priority": "P18",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "17-CustomKeyboard/entry/src/main/cangjie/components/PaymentInfoBuilder.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p18/HarmonyOS-Examples/17-CustomKeyboard/entry/src/main/cangjie/components/PaymentInfoBuilder.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P18 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the AppStorage-backed entry page, local builder components, constants, and keyboard model form one bounded custom-keyboard flow without cross-feature imports."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P18 CustomKeyboard payment-info support component for display-only license-plate and total-cost presentation over shared AppStorage state.",
+      "notes": [
+        "Keep the bounded summary rendering source-backed in this support component instead of duplicating payment display logic inside the page shell.",
+        "This file remains a render-facing companion behind the custom-keyboard lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class PaymentInfoBuilder {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p18-custom-keyboard-title-component",
+      "selection_rank": 24,
+      "sample_rank": 5,
+      "sample_id": "harmonyos-examples-custom-keyboard-entry-view",
+      "priority": "P18",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "17-CustomKeyboard/entry/src/main/cangjie/components/TitleBuilder.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p18/HarmonyOS-Examples/17-CustomKeyboard/entry/src/main/cangjie/components/TitleBuilder.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P18 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the AppStorage-backed entry page, local builder components, constants, and keyboard model form one bounded custom-keyboard flow without cross-feature imports."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P18 CustomKeyboard title-bar support component for header icon and title presentation above the payment workflow.",
+      "notes": [
+        "Keep the bounded title/header rendering source-backed in this component rather than absorbing it into the page shell.",
+        "This file is the narrow display companion behind the custom-keyboard host page."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class TitleBuilder {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p18-custom-keyboard-keyboard-constants-model",
+      "selection_rank": 25,
+      "sample_rank": 6,
+      "sample_id": "harmonyos-examples-custom-keyboard-entry-view",
+      "priority": "P18",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "17-CustomKeyboard/entry/src/main/cangjie/constants/KeyboardConstants.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p18/HarmonyOS-Examples/17-CustomKeyboard/entry/src/main/cangjie/constants/KeyboardConstants.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P18 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the AppStorage-backed entry page, local builder components, constants, and keyboard model form one bounded custom-keyboard flow without cross-feature imports."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P18 CustomKeyboard keyboard-constants model for key sizing, spacing, and layout constants consumed by the interactive input builder.",
+      "notes": [
+        "Keep keyboard sizing constants source-backed here instead of scattering numeric literals across prompts.",
+        "This file remains a renderer-facing constants companion behind the custom-keyboard lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class KeyboardConstants {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p18-custom-keyboard-style-constants-model",
+      "selection_rank": 26,
+      "sample_rank": 7,
+      "sample_id": "harmonyos-examples-custom-keyboard-entry-view",
+      "priority": "P18",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "17-CustomKeyboard/entry/src/main/cangjie/constants/StyleConstants.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p18/HarmonyOS-Examples/17-CustomKeyboard/entry/src/main/cangjie/constants/StyleConstants.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P18 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the AppStorage-backed entry page, local builder components, constants, and keyboard model form one bounded custom-keyboard flow without cross-feature imports."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P18 CustomKeyboard style-constants model for shared layout, typography, divider, and dialog measurements across the page and builder companions.",
+      "notes": [
+        "Keep shared layout and typography constants source-backed here instead of re-inventing visual measurements inside prompts.",
+        "This file stays attached to the render-facing custom-keyboard utility lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class StyleConstants {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p18-custom-keyboard-keyboard-model",
+      "selection_rank": 27,
+      "sample_rank": 8,
+      "sample_id": "harmonyos-examples-custom-keyboard-entry-view",
+      "priority": "P18",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "17-CustomKeyboard/entry/src/main/cangjie/model/Keyboard.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p18/HarmonyOS-Examples/17-CustomKeyboard/entry/src/main/cangjie/model/Keyboard.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P18 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the AppStorage-backed entry page, local builder components, constants, and keyboard model form one bounded custom-keyboard flow without cross-feature imports."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P18 CustomKeyboard keyboard-state model for keyboard-type selection, row/column template ownership, and key-array switching behind the input builder.",
+      "notes": [
+        "Keep KeyboardType branching and derived layout template state source-backed in this support model.",
+        "This file remains the controller-facing model companion behind the custom-keyboard interaction lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class KeyBoard {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    }
+  ]
+}

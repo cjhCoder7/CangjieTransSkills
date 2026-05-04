@@ -1,0 +1,124 @@
+{
+  "manifest_name": "phase06-ui-source-corpus-p11",
+  "manifest_version": 1,
+  "created_at": "2026-04-12T02:23:17Z",
+  "corpus_root": "../../raw_docs/phase06-ui-p11",
+  "source_manifest": "phase06_ui_sample_manifest.json",
+  "selection_policy": {
+    "priority": "P11",
+    "adoption_decision": "primary",
+    "source_type": "external_repo",
+    "sample_buckets": [
+      "ordered_samples"
+    ]
+  },
+  "sample_count": 3,
+  "file_count": 3,
+  "entries": [
+    {
+      "entry_id": "harmonyos-examples-opdsclient-entry-page",
+      "sample_id": "harmonyos-examples-opdsclient-entry-page",
+      "reference_id": "",
+      "priority": "P11",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "role": "",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P11 draft candidate harvested from the remaining official HarmonyOS-Examples reserve after the regular Phase06 checkpoint reached 47/47 live passed."
+      },
+      "source_paths": [
+        "OPDSClient/entry/src/main/cangjie/src/index.cj"
+      ],
+      "repo_name": "HarmonyOS-Examples",
+      "repo_local_paths": [
+        "raw_docs/phase06-ui-p11/HarmonyOS-Examples/OPDSClient/entry/src/main/cangjie/src/index.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Add a self-contained OPDS landing page that keeps inline style extensions, credential toggle state, AppStorage handoff, and Router push flow inside one controller-owned page shell.",
+      "blocking_constraints": [
+        "Keep inline style/password helpers, AppStorage writes, verify toggle state, and Router.push flow source-backed inside the page boundary; do not fabricate auth helpers or detached style layers."
+      ],
+      "reason": ""
+    },
+    {
+      "entry_id": "harmonyos-examples-particle-emission-page",
+      "sample_id": "harmonyos-examples-particle-emission-page",
+      "reference_id": "",
+      "priority": "P11",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "role": "",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P11 draft candidate harvested from the remaining official HarmonyOS-Examples reserve after the P10 promotion to extend same-file canvas/timer interaction coverage."
+      },
+      "source_paths": [
+        "ParticleEmission/entry/src/main/cangjie/index.cj"
+      ],
+      "repo_name": "HarmonyOS-Examples",
+      "repo_local_paths": [
+        "raw_docs/phase06-ui-p11/HarmonyOS-Examples/ParticleEmission/entry/src/main/cangjie/index.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Add a self-contained particle emission page that keeps canvas animation state, inspector-derived coordinates, and TextTimer-driven particle updates inside one controller-owned page shell.",
+      "blocking_constraints": [
+        "Keep CanvasRenderingContext2D ownership, getInspectorByKey usage, particle update loop, and TextTimer callbacks source-backed inside the page boundary; do not introduce detached animation services."
+      ],
+      "reason": ""
+    },
+    {
+      "entry_id": "harmonyos-examples-date-selection-main-page",
+      "sample_id": "harmonyos-examples-date-selection-main-page",
+      "reference_id": "",
+      "priority": "P11",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "role": "",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P11 draft candidate drawn from the remaining official HarmonyOS-Examples reserve to extend Router param hydration and builder-heavy page composition after the P10 promotion."
+      },
+      "source_paths": [
+        "14-DateSelection/entry/src/main/cangjie/pages/MainPage.cj"
+      ],
+      "repo_name": "HarmonyOS-Examples",
+      "repo_local_paths": [
+        "raw_docs/phase06-ui-p11/HarmonyOS-Examples/14-DateSelection/entry/src/main/cangjie/pages/MainPage.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Add a self-contained date-selection home page that keeps Router param hydration, TabsController ownership, and same-file booking builders inside one controller-owned page shell.",
+      "blocking_constraints": [
+        "Keep Router.getParamsObject hydration, start/end date state, tab controller ownership, and builder-defined booking sections source-backed inside the page shell; do not extract booking coordinators or calendar adapters."
+      ],
+      "reason": ""
+    }
+  ]
+}

@@ -1,0 +1,2636 @@
+{
+  "manifest_name": "phase06-ui-p19-file-manifest",
+  "manifest_version": 1,
+  "created_at": "2026-04-13T05:07:24Z",
+  "phase": "Phase 06 UI Source Slicing / File-Level Workset",
+  "status": "draft-ready",
+  "source_corpus_manifest": "phase06_ui_source_corpus_p19.json",
+  "source_manifest": "phase06_ui_sample_manifest.json",
+  "few_shot_pack": "phase06_ui_few_shot_pack.json",
+  "intended_consumer": [
+    "human-review",
+    "future-phase06-prompt-pilot",
+    "future-phase06-batch-curator"
+  ],
+  "notes": [
+    "Expands the selected frozen source corpus into file-level slices with explicit ui_prompt_tags.",
+    "This manifest is not consumed directly by scripts/pipeline_batch_runner.py; it is a file-level workset for prompt pilots, explicit tag injection, and later batch curation.",
+    "Tag refinement is allowed at file level when a multi-file sample contains both page-shell and rich-component files."
+  ],
+  "selection_policy": {
+    "priority": "P19",
+    "adoption_decision": "primary",
+    "source_type": "external_repo",
+    "expansion_rule": "expand repo_local_paths into file-level slices and refine per-file target_role/ui_prompt_tags"
+  },
+  "summary": {
+    "sample_count": 3,
+    "slice_count": 51,
+    "role_counts": {
+      "page": 4,
+      "viewmodel": 19,
+      "component": 28
+    },
+    "structure_counts": {
+      "page-shell": 4,
+      "rich-component": 47
+    }
+  },
+  "entries": [
+    {
+      "slice_id": "phase06-ui-p19-slide-ui-entry-page",
+      "selection_rank": 1,
+      "sample_rank": 1,
+      "sample_id": "harmonyos-examples-slide-ui-entry-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "09-SlideUI/entry/src/main/cangjie/index.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/09-SlideUI/entry/src/main/cangjie/index.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the slide UI entry page, direct globalAbilityContext dependency, local component subtree, and local data providers form one bounded same-package closure without timer or network pressure."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 SlideUI host page slice for gesture-driven panel ownership, ability-context handoff, and same-package component/data composition.",
+      "notes": [
+        "Keep panel open/close state and ability-context acquisition source-backed in the host page.",
+        "Treat component and data files as explicit companions behind the SlideUI page shell."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class EntryView {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-slide-ui-main-ability-model",
+      "selection_rank": 2,
+      "sample_rank": 2,
+      "sample_id": "harmonyos-examples-slide-ui-entry-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "09-SlideUI/entry/src/main/cangjie/main_ability.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/09-SlideUI/entry/src/main/cangjie/main_ability.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the slide UI entry page, direct globalAbilityContext dependency, local component subtree, and local data providers form one bounded same-package closure without timer or network pressure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 SlideUI ability model for globalAbilityContext capture and fullscreen window-stage setup behind the host page.",
+      "notes": [
+        "Keep globalAbilityContext lifecycle wiring source-backed here.",
+        "This file remains the controller-facing ability companion behind the SlideUI lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class MainAbility <: Ability {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-slide-ui-bottom-tab-component",
+      "selection_rank": 3,
+      "sample_rank": 3,
+      "sample_id": "harmonyos-examples-slide-ui-entry-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "09-SlideUI/entry/src/main/cangjie/components/BottomTab.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/09-SlideUI/entry/src/main/cangjie/components/BottomTab.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the slide UI entry page, direct globalAbilityContext dependency, local component subtree, and local data providers form one bounded same-package closure without timer or network pressure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 SlideUI component slice for bottom-tab builder composition inside the same-package panel flow.",
+      "notes": [
+        "Keep this component source-backed inside the SlideUI same-package closure.",
+        "This file remains an explicit UI companion behind the SlideUI page shell."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "public class BottomTab {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-slide-ui-group-item-component",
+      "selection_rank": 4,
+      "sample_rank": 4,
+      "sample_id": "harmonyos-examples-slide-ui-entry-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "09-SlideUI/entry/src/main/cangjie/components/GroupItem.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/09-SlideUI/entry/src/main/cangjie/components/GroupItem.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the slide UI entry page, direct globalAbilityContext dependency, local component subtree, and local data providers form one bounded same-package closure without timer or network pressure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 SlideUI component slice for group card rendering inside the same-package panel flow.",
+      "notes": [
+        "Keep this component source-backed inside the SlideUI same-package closure.",
+        "This file remains an explicit UI companion behind the SlideUI page shell."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class GroupItem {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-slide-ui-msg-item-component",
+      "selection_rank": 5,
+      "sample_rank": 5,
+      "sample_id": "harmonyos-examples-slide-ui-entry-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "09-SlideUI/entry/src/main/cangjie/components/MsgItem.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/09-SlideUI/entry/src/main/cangjie/components/MsgItem.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the slide UI entry page, direct globalAbilityContext dependency, local component subtree, and local data providers form one bounded same-package closure without timer or network pressure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 SlideUI component slice for message card list rendering inside the same-package panel flow.",
+      "notes": [
+        "Keep this component source-backed inside the SlideUI same-package closure.",
+        "This file remains an explicit UI companion behind the SlideUI page shell."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class MsgItem {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-slide-ui-my-top-component",
+      "selection_rank": 6,
+      "sample_rank": 6,
+      "sample_id": "harmonyos-examples-slide-ui-entry-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "09-SlideUI/entry/src/main/cangjie/components/MyTop.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/09-SlideUI/entry/src/main/cangjie/components/MyTop.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the slide UI entry page, direct globalAbilityContext dependency, local component subtree, and local data providers form one bounded same-package closure without timer or network pressure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 SlideUI component slice for top bar interaction and terminate-self affordance inside the same-package panel flow.",
+      "notes": [
+        "Keep this component source-backed inside the SlideUI same-package closure.",
+        "This file remains an explicit UI companion behind the SlideUI page shell."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "public class MyTop {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-slide-ui-ship-direction-component",
+      "selection_rank": 7,
+      "sample_rank": 7,
+      "sample_id": "harmonyos-examples-slide-ui-entry-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "09-SlideUI/entry/src/main/cangjie/components/ShipDirection.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/09-SlideUI/entry/src/main/cangjie/components/ShipDirection.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the slide UI entry page, direct globalAbilityContext dependency, local component subtree, and local data providers form one bounded same-package closure without timer or network pressure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 SlideUI component slice for ship direction rendering inside the same-package panel flow.",
+      "notes": [
+        "Keep this component source-backed inside the SlideUI same-package closure.",
+        "This file remains an explicit UI companion behind the SlideUI page shell."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class ShipDirection {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-slide-ui-ship-fact-component",
+      "selection_rank": 8,
+      "sample_rank": 8,
+      "sample_id": "harmonyos-examples-slide-ui-entry-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "09-SlideUI/entry/src/main/cangjie/components/ShipFact.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/09-SlideUI/entry/src/main/cangjie/components/ShipFact.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the slide UI entry page, direct globalAbilityContext dependency, local component subtree, and local data providers form one bounded same-package closure without timer or network pressure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 SlideUI component slice for fact-panel rendering inside the same-package panel flow.",
+      "notes": [
+        "Keep this component source-backed inside the SlideUI same-package closure.",
+        "This file remains an explicit UI companion behind the SlideUI page shell."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "public class ShipFact {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-slide-ui-ship-img-component",
+      "selection_rank": 9,
+      "sample_rank": 9,
+      "sample_id": "harmonyos-examples-slide-ui-entry-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "09-SlideUI/entry/src/main/cangjie/components/ShipImg.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/09-SlideUI/entry/src/main/cangjie/components/ShipImg.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the slide UI entry page, direct globalAbilityContext dependency, local component subtree, and local data providers form one bounded same-package closure without timer or network pressure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 SlideUI component slice for ship image and slide-trigger presentation inside the same-package panel flow.",
+      "notes": [
+        "Keep this component source-backed inside the SlideUI same-package closure.",
+        "This file remains an explicit UI companion behind the SlideUI page shell."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class ShipImg {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-slide-ui-status-head-component",
+      "selection_rank": 10,
+      "sample_rank": 10,
+      "sample_id": "harmonyos-examples-slide-ui-entry-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "09-SlideUI/entry/src/main/cangjie/components/StatusHead.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/09-SlideUI/entry/src/main/cangjie/components/StatusHead.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the slide UI entry page, direct globalAbilityContext dependency, local component subtree, and local data providers form one bounded same-package closure without timer or network pressure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 SlideUI component slice for status header rendering inside the same-package panel flow.",
+      "notes": [
+        "Keep this component source-backed inside the SlideUI same-package closure.",
+        "This file remains an explicit UI companion behind the SlideUI page shell."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class StatusHead {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-slide-ui-mini-data-model",
+      "selection_rank": 11,
+      "sample_rank": 11,
+      "sample_id": "harmonyos-examples-slide-ui-entry-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "09-SlideUI/entry/src/main/cangjie/datas/MiniData.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/09-SlideUI/entry/src/main/cangjie/datas/MiniData.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the slide UI entry page, direct globalAbilityContext dependency, local component subtree, and local data providers form one bounded same-package closure without timer or network pressure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 SlideUI data model slice for mini data items consumed by the panel cards.",
+      "notes": [
+        "Keep same-package data payloads source-backed here.",
+        "This file remains a renderer-facing data companion behind the SlideUI page shell."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class MiniData {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-slide-ui-msg-data-model",
+      "selection_rank": 12,
+      "sample_rank": 12,
+      "sample_id": "harmonyos-examples-slide-ui-entry-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "09-SlideUI/entry/src/main/cangjie/datas/MsgData.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/09-SlideUI/entry/src/main/cangjie/datas/MsgData.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the slide UI entry page, direct globalAbilityContext dependency, local component subtree, and local data providers form one bounded same-package closure without timer or network pressure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 SlideUI data model slice for msg data items consumed by the panel cards.",
+      "notes": [
+        "Keep same-package data payloads source-backed here.",
+        "This file remains a renderer-facing data companion behind the SlideUI page shell."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class MsgData {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-slide-ui-weather-data-model",
+      "selection_rank": 13,
+      "sample_rank": 13,
+      "sample_id": "harmonyos-examples-slide-ui-entry-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "09-SlideUI/entry/src/main/cangjie/datas/WeatherData.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/09-SlideUI/entry/src/main/cangjie/datas/WeatherData.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the slide UI entry page, direct globalAbilityContext dependency, local component subtree, and local data providers form one bounded same-package closure without timer or network pressure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 SlideUI data model slice for weather data items consumed by the panel cards.",
+      "notes": [
+        "Keep same-package data payloads source-backed here.",
+        "This file remains a renderer-facing data companion behind the SlideUI page shell."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class WeatherData {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-seat-selection-entry-page",
+      "selection_rank": 14,
+      "sample_rank": 1,
+      "sample_id": "harmonyos-examples-seat-selection-entry-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "13-SeatSelection/entry/src/main/cangjie/index.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/13-SeatSelection/entry/src/main/cangjie/index.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the entry page, MainAbility AppStorage handoff, seat-map components, constants, and SeatSelection view-model state stay inside one bounded same-package closure."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 SeatSelection host page slice for topRectHeight padding, seat-map composition, and same-package component wiring.",
+      "notes": [
+        "Keep AppStorage-backed top padding and seat-map composition source-backed in the host page.",
+        "Treat component, constant, and view-model files as explicit companions behind the seat-selection page shell."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class EntryView {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-seat-selection-main-ability-model",
+      "selection_rank": 15,
+      "sample_rank": 2,
+      "sample_id": "harmonyos-examples-seat-selection-entry-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "13-SeatSelection/entry/src/main/cangjie/MainAbility.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/13-SeatSelection/entry/src/main/cangjie/MainAbility.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the entry page, MainAbility AppStorage handoff, seat-map components, constants, and SeatSelection view-model state stay inside one bounded same-package closure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 SeatSelection ability model for fullscreen layout and AppStorage topRectHeight injection behind the entry page.",
+      "notes": [
+        "Keep AppStorage.setOrCreate topRectHeight source-backed here.",
+        "This file remains the controller-facing ability companion behind the seat-selection lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class MainAbility <: Ability {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-seat-selection-movie-info-component",
+      "selection_rank": 16,
+      "sample_rank": 3,
+      "sample_id": "harmonyos-examples-seat-selection-entry-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "13-SeatSelection/entry/src/main/cangjie/components/MovieInfo.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/13-SeatSelection/entry/src/main/cangjie/components/MovieInfo.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the entry page, MainAbility AppStorage handoff, seat-map components, constants, and SeatSelection view-model state stay inside one bounded same-package closure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 SeatSelection component slice for movie header rendering within the bounded same-package seat-selection flow.",
+      "notes": [
+        "Keep this component source-backed inside the seat-selection closure.",
+        "This file remains an explicit UI companion behind the seat-selection page shell."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class MovieInfo {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-seat-selection-dialog-component",
+      "selection_rank": 17,
+      "sample_rank": 4,
+      "sample_id": "harmonyos-examples-seat-selection-entry-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "13-SeatSelection/entry/src/main/cangjie/components/MyDialog.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/13-SeatSelection/entry/src/main/cangjie/components/MyDialog.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the entry page, MainAbility AppStorage handoff, seat-map components, constants, and SeatSelection view-model state stay inside one bounded same-package closure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 SeatSelection component slice for seat-confirm dialog state and LocalStorageLink interaction within the bounded same-package seat-selection flow.",
+      "notes": [
+        "Keep this component source-backed inside the seat-selection closure.",
+        "This file remains an explicit UI companion behind the seat-selection page shell."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class MyDialog {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-seat-selection-seat-canvas-component",
+      "selection_rank": 18,
+      "sample_rank": 5,
+      "sample_id": "harmonyos-examples-seat-selection-entry-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "13-SeatSelection/entry/src/main/cangjie/components/SeatCanvas.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/13-SeatSelection/entry/src/main/cangjie/components/SeatCanvas.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the entry page, MainAbility AppStorage handoff, seat-map components, constants, and SeatSelection view-model state stay inside one bounded same-package closure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 SeatSelection component slice for seat canvas rendering and local seat selection interaction within the bounded same-package seat-selection flow.",
+      "notes": [
+        "Keep this component source-backed inside the seat-selection closure.",
+        "This file remains an explicit UI companion behind the seat-selection page shell."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class SeatCanvas {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-seat-selection-seat-map-component",
+      "selection_rank": 19,
+      "sample_rank": 6,
+      "sample_id": "harmonyos-examples-seat-selection-entry-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "13-SeatSelection/entry/src/main/cangjie/components/SeatMap.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/13-SeatSelection/entry/src/main/cangjie/components/SeatMap.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the entry page, MainAbility AppStorage handoff, seat-map components, constants, and SeatSelection view-model state stay inside one bounded same-package closure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 SeatSelection component slice for seat map host composition within the bounded same-package seat-selection flow.",
+      "notes": [
+        "Keep this component source-backed inside the seat-selection closure.",
+        "This file remains an explicit UI companion behind the seat-selection page shell."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class SeatMap {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-seat-selection-seat-selection-bar-component",
+      "selection_rank": 20,
+      "sample_rank": 7,
+      "sample_id": "harmonyos-examples-seat-selection-entry-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "13-SeatSelection/entry/src/main/cangjie/components/SeatSelectionBar.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/13-SeatSelection/entry/src/main/cangjie/components/SeatSelectionBar.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the entry page, MainAbility AppStorage handoff, seat-map components, constants, and SeatSelection view-model state stay inside one bounded same-package closure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 SeatSelection component slice for bottom selection bar interaction within the bounded same-package seat-selection flow.",
+      "notes": [
+        "Keep this component source-backed inside the seat-selection closure.",
+        "This file remains an explicit UI companion behind the seat-selection page shell."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class SeatSelectionBar {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-seat-selection-selected-seat-component",
+      "selection_rank": 21,
+      "sample_rank": 8,
+      "sample_id": "harmonyos-examples-seat-selection-entry-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "13-SeatSelection/entry/src/main/cangjie/components/SelectedSeat.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/13-SeatSelection/entry/src/main/cangjie/components/SelectedSeat.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the entry page, MainAbility AppStorage handoff, seat-map components, constants, and SeatSelection view-model state stay inside one bounded same-package closure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 SeatSelection component slice for selected-seat chip rendering within the bounded same-package seat-selection flow.",
+      "notes": [
+        "Keep this component source-backed inside the seat-selection closure.",
+        "This file remains an explicit UI companion behind the seat-selection page shell."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class SelectedSeat {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-seat-selection-card-component",
+      "selection_rank": 22,
+      "sample_rank": 9,
+      "sample_id": "harmonyos-examples-seat-selection-entry-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "13-SeatSelection/entry/src/main/cangjie/components/card.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/13-SeatSelection/entry/src/main/cangjie/components/card.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the entry page, MainAbility AppStorage handoff, seat-map components, constants, and SeatSelection view-model state stay inside one bounded same-package closure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 SeatSelection component slice for movie card and selected seat summary rendering within the bounded same-package seat-selection flow.",
+      "notes": [
+        "Keep this component source-backed inside the seat-selection closure.",
+        "This file remains an explicit UI companion behind the seat-selection page shell."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class Card {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-seat-selection-tag-component",
+      "selection_rank": 23,
+      "sample_rank": 10,
+      "sample_id": "harmonyos-examples-seat-selection-entry-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "13-SeatSelection/entry/src/main/cangjie/components/tag.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/13-SeatSelection/entry/src/main/cangjie/components/tag.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the entry page, MainAbility AppStorage handoff, seat-map components, constants, and SeatSelection view-model state stay inside one bounded same-package closure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 SeatSelection component slice for tag rendering within the bounded same-package seat-selection flow.",
+      "notes": [
+        "Keep this component source-backed inside the seat-selection closure.",
+        "This file remains an explicit UI companion behind the seat-selection page shell."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class Tag {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-seat-selection-title-component",
+      "selection_rank": 24,
+      "sample_rank": 11,
+      "sample_id": "harmonyos-examples-seat-selection-entry-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "13-SeatSelection/entry/src/main/cangjie/components/title.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/13-SeatSelection/entry/src/main/cangjie/components/title.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the entry page, MainAbility AppStorage handoff, seat-map components, constants, and SeatSelection view-model state stay inside one bounded same-package closure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 SeatSelection component slice for title/header rendering within the bounded same-package seat-selection flow.",
+      "notes": [
+        "Keep this component source-backed inside the seat-selection closure.",
+        "This file remains an explicit UI companion behind the seat-selection page shell."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class Title {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-seat-selection-area-info-model",
+      "selection_rank": 25,
+      "sample_rank": 12,
+      "sample_id": "harmonyos-examples-seat-selection-entry-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "13-SeatSelection/entry/src/main/cangjie/constants/AreaInfo.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/13-SeatSelection/entry/src/main/cangjie/constants/AreaInfo.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the entry page, MainAbility AppStorage handoff, seat-map components, constants, and SeatSelection view-model state stay inside one bounded same-package closure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 SeatSelection support model for area info consumed by the seat-map components.",
+      "notes": [
+        "Keep constants and static seat metadata source-backed here.",
+        "This file remains a renderer-facing support model behind the seat-selection lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class AreaInfo {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-seat-selection-data-constants-model",
+      "selection_rank": 26,
+      "sample_rank": 13,
+      "sample_id": "harmonyos-examples-seat-selection-entry-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "13-SeatSelection/entry/src/main/cangjie/constants/DataConstants.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/13-SeatSelection/entry/src/main/cangjie/constants/DataConstants.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the entry page, MainAbility AppStorage handoff, seat-map components, constants, and SeatSelection view-model state stay inside one bounded same-package closure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 SeatSelection support model for data constants consumed by the seat-map components.",
+      "notes": [
+        "Keep constants and static seat metadata source-backed here.",
+        "This file remains a renderer-facing support model behind the seat-selection lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class DataConstants {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-seat-selection-seat-info-model",
+      "selection_rank": 27,
+      "sample_rank": 14,
+      "sample_id": "harmonyos-examples-seat-selection-entry-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "13-SeatSelection/entry/src/main/cangjie/constants/SeatInfo.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/13-SeatSelection/entry/src/main/cangjie/constants/SeatInfo.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the entry page, MainAbility AppStorage handoff, seat-map components, constants, and SeatSelection view-model state stay inside one bounded same-package closure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 SeatSelection support model for seat info consumed by the seat-map components.",
+      "notes": [
+        "Keep constants and static seat metadata source-backed here.",
+        "This file remains a renderer-facing support model behind the seat-selection lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public struct SeatInfo <: ToString & Hashable & Equatable<SeatInfo> {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-seat-selection-seat-type-model",
+      "selection_rank": 28,
+      "sample_rank": 15,
+      "sample_id": "harmonyos-examples-seat-selection-entry-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "13-SeatSelection/entry/src/main/cangjie/constants/SeatType.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/13-SeatSelection/entry/src/main/cangjie/constants/SeatType.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the entry page, MainAbility AppStorage handoff, seat-map components, constants, and SeatSelection view-model state stay inside one bounded same-package closure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 SeatSelection support model for seat type consumed by the seat-map components.",
+      "notes": [
+        "Keep constants and static seat metadata source-backed here.",
+        "This file remains a renderer-facing support model behind the seat-selection lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": []
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-seat-selection-style-constants-model",
+      "selection_rank": 29,
+      "sample_rank": 16,
+      "sample_id": "harmonyos-examples-seat-selection-entry-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "13-SeatSelection/entry/src/main/cangjie/constants/StyleConstants.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/13-SeatSelection/entry/src/main/cangjie/constants/StyleConstants.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the entry page, MainAbility AppStorage handoff, seat-map components, constants, and SeatSelection view-model state stay inside one bounded same-package closure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 SeatSelection support model for style constants consumed by the seat-map components.",
+      "notes": [
+        "Keep constants and static seat metadata source-backed here.",
+        "This file remains a renderer-facing support model behind the seat-selection lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class StyleConstants {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-seat-selection-view-model",
+      "selection_rank": 30,
+      "sample_rank": 17,
+      "sample_id": "harmonyos-examples-seat-selection-entry-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "13-SeatSelection/entry/src/main/cangjie/view_model/SeatSelection.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/13-SeatSelection/entry/src/main/cangjie/view_model/SeatSelection.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the entry page, MainAbility AppStorage handoff, seat-map components, constants, and SeatSelection view-model state stay inside one bounded same-package closure."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 SeatSelection state model for selected-seat ownership, availability checks, and LocalStorageLink-backed interaction state.",
+      "notes": [
+        "Keep seat-selection mutation and derived availability state source-backed here.",
+        "This file remains the controller-facing state companion behind the seat-selection page shell."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class SeatSelection {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-chat-ui-entry-page",
+      "selection_rank": 31,
+      "sample_rank": 1,
+      "sample_id": "harmonyos-examples-chat-ui-index-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "05-ChatUI/entry/src/main/cangjie/src/index.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/05-ChatUI/entry/src/main/cangjie/src/index.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the index page, route-target ChatView page, same-package component tree, entity/store/mock helpers, and local util files form one explicit 21-file closure without draft-lane or exception-rail dependencies."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 ChatUI host page slice for active tab ownership, page-shell composition, and same-package chat/friend/dynamic wiring.",
+      "notes": [
+        "Keep active tab state and page-shell composition source-backed in the host page.",
+        "Treat route-target pages, components, store, entity, mock, and util files as explicit companions behind the ChatUI lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class IndexView {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-chat-ui-avatar-component",
+      "selection_rank": 32,
+      "sample_rank": 2,
+      "sample_id": "harmonyos-examples-chat-ui-index-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "05-ChatUI/entry/src/main/cangjie/src/components/avatar/Avatar.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/05-ChatUI/entry/src/main/cangjie/src/components/avatar/Avatar.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the index page, route-target ChatView page, same-package component tree, entity/store/mock helpers, and local util files form one explicit 21-file closure without draft-lane or exception-rail dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 ChatUI component slice for avatar rendering inside the bounded chat-route same-package closure.",
+      "notes": [
+        "Keep this component source-backed inside the ChatUI closure.",
+        "This file remains an explicit UI companion behind the ChatUI page shells."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": true,
+        "declared_types_head": []
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-chat-ui-badge-component",
+      "selection_rank": 33,
+      "sample_rank": 3,
+      "sample_id": "harmonyos-examples-chat-ui-index-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "05-ChatUI/entry/src/main/cangjie/src/components/badge/Badge.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/05-ChatUI/entry/src/main/cangjie/src/components/badge/Badge.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the index page, route-target ChatView page, same-package component tree, entity/store/mock helpers, and local util files form one explicit 21-file closure without draft-lane or exception-rail dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 ChatUI component slice for badge/count rendering inside the bounded chat-route same-package closure.",
+      "notes": [
+        "Keep this component source-backed inside the ChatUI closure.",
+        "This file remains an explicit UI companion behind the ChatUI page shells."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": true,
+        "declared_types_head": []
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-chat-ui-chat-line-component",
+      "selection_rank": 34,
+      "sample_rank": 4,
+      "sample_id": "harmonyos-examples-chat-ui-index-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "05-ChatUI/entry/src/main/cangjie/src/components/chat/ChatLine.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/05-ChatUI/entry/src/main/cangjie/src/components/chat/ChatLine.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the index page, route-target ChatView page, same-package component tree, entity/store/mock helpers, and local util files form one explicit 21-file closure without draft-lane or exception-rail dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 ChatUI component slice for chat line rendering inside the bounded chat-route same-package closure.",
+      "notes": [
+        "Keep this component source-backed inside the ChatUI closure.",
+        "This file remains an explicit UI companion behind the ChatUI page shells."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class ChatLine {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-chat-ui-chat-list-component",
+      "selection_rank": 35,
+      "sample_rank": 5,
+      "sample_id": "harmonyos-examples-chat-ui-index-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "05-ChatUI/entry/src/main/cangjie/src/components/chat/ChatList.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/05-ChatUI/entry/src/main/cangjie/src/components/chat/ChatList.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the index page, route-target ChatView page, same-package component tree, entity/store/mock helpers, and local util files form one explicit 21-file closure without draft-lane or exception-rail dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 ChatUI component slice for chat list ownership and Router.push handoff inside the bounded chat-route same-package closure.",
+      "notes": [
+        "Keep this component source-backed inside the ChatUI closure.",
+        "This file remains an explicit UI companion behind the ChatUI page shells."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class ChatList {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-chat-ui-chat-list-item-component",
+      "selection_rank": 36,
+      "sample_rank": 6,
+      "sample_id": "harmonyos-examples-chat-ui-index-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "05-ChatUI/entry/src/main/cangjie/src/components/chat/ChatListItem.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/05-ChatUI/entry/src/main/cangjie/src/components/chat/ChatListItem.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the index page, route-target ChatView page, same-package component tree, entity/store/mock helpers, and local util files form one explicit 21-file closure without draft-lane or exception-rail dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 ChatUI component slice for chat list item rendering inside the bounded chat-route same-package closure.",
+      "notes": [
+        "Keep this component source-backed inside the ChatUI closure.",
+        "This file remains an explicit UI companion behind the ChatUI page shells."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": true,
+        "declared_types_head": []
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-chat-ui-dynamic-list-component",
+      "selection_rank": 37,
+      "sample_rank": 7,
+      "sample_id": "harmonyos-examples-chat-ui-index-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "05-ChatUI/entry/src/main/cangjie/src/components/dynamic/DynamicList.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/05-ChatUI/entry/src/main/cangjie/src/components/dynamic/DynamicList.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the index page, route-target ChatView page, same-package component tree, entity/store/mock helpers, and local util files form one explicit 21-file closure without draft-lane or exception-rail dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 ChatUI component slice for dynamic feed composition inside the bounded chat-route same-package closure.",
+      "notes": [
+        "Keep this component source-backed inside the ChatUI closure.",
+        "This file remains an explicit UI companion behind the ChatUI page shells."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "public class DynamicList {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-chat-ui-friend-bar-component",
+      "selection_rank": 38,
+      "sample_rank": 8,
+      "sample_id": "harmonyos-examples-chat-ui-index-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "05-ChatUI/entry/src/main/cangjie/src/components/friend/FriendBar.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/05-ChatUI/entry/src/main/cangjie/src/components/friend/FriendBar.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the index page, route-target ChatView page, same-package component tree, entity/store/mock helpers, and local util files form one explicit 21-file closure without draft-lane or exception-rail dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 ChatUI component slice for friend bar rendering inside the bounded chat-route same-package closure.",
+      "notes": [
+        "Keep this component source-backed inside the ChatUI closure.",
+        "This file remains an explicit UI companion behind the ChatUI page shells."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "public class FriendBar {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-chat-ui-friend-list-component",
+      "selection_rank": 39,
+      "sample_rank": 9,
+      "sample_id": "harmonyos-examples-chat-ui-index-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "05-ChatUI/entry/src/main/cangjie/src/components/friend/FriendList.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/05-ChatUI/entry/src/main/cangjie/src/components/friend/FriendList.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the index page, route-target ChatView page, same-package component tree, entity/store/mock helpers, and local util files form one explicit 21-file closure without draft-lane or exception-rail dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 ChatUI component slice for friend list composition inside the bounded chat-route same-package closure.",
+      "notes": [
+        "Keep this component source-backed inside the ChatUI closure.",
+        "This file remains an explicit UI companion behind the ChatUI page shells."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "public class FriendList {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-chat-ui-friend-list-item-component",
+      "selection_rank": 40,
+      "sample_rank": 10,
+      "sample_id": "harmonyos-examples-chat-ui-index-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "05-ChatUI/entry/src/main/cangjie/src/components/friend/FriendListItem.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/05-ChatUI/entry/src/main/cangjie/src/components/friend/FriendListItem.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the index page, route-target ChatView page, same-package component tree, entity/store/mock helpers, and local util files form one explicit 21-file closure without draft-lane or exception-rail dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 ChatUI component slice for friend list item rendering inside the bounded chat-route same-package closure.",
+      "notes": [
+        "Keep this component source-backed inside the ChatUI closure.",
+        "This file remains an explicit UI companion behind the ChatUI page shells."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class FriendListItem {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-chat-ui-friend-tab-component",
+      "selection_rank": 41,
+      "sample_rank": 11,
+      "sample_id": "harmonyos-examples-chat-ui-index-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "05-ChatUI/entry/src/main/cangjie/src/components/friend/FriendTab.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/05-ChatUI/entry/src/main/cangjie/src/components/friend/FriendTab.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the index page, route-target ChatView page, same-package component tree, entity/store/mock helpers, and local util files form one explicit 21-file closure without draft-lane or exception-rail dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 ChatUI component slice for friend tab list composition inside the bounded chat-route same-package closure.",
+      "notes": [
+        "Keep this component source-backed inside the ChatUI closure.",
+        "This file remains an explicit UI companion behind the ChatUI page shells."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "public class FriendTab {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-chat-ui-tab-bar-component",
+      "selection_rank": 42,
+      "sample_rank": 12,
+      "sample_id": "harmonyos-examples-chat-ui-index-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "support-component",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "05-ChatUI/entry/src/main/cangjie/src/components/index/TabBar.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/05-ChatUI/entry/src/main/cangjie/src/components/index/TabBar.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the index page, route-target ChatView page, same-package component tree, entity/store/mock helpers, and local util files form one explicit 21-file closure without draft-lane or exception-rail dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 ChatUI component slice for tab bar interaction and tab switching affordance inside the bounded chat-route same-package closure.",
+      "notes": [
+        "Keep this component source-backed inside the ChatUI closure.",
+        "This file remains an explicit UI companion behind the ChatUI page shells."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class TabData {",
+          "public class TabBtn{",
+          "public class TabBar {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-chat-ui-chat-model",
+      "selection_rank": 43,
+      "sample_rank": 13,
+      "sample_id": "harmonyos-examples-chat-ui-index-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "05-ChatUI/entry/src/main/cangjie/src/entity/Chat.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/05-ChatUI/entry/src/main/cangjie/src/entity/Chat.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the index page, route-target ChatView page, same-package component tree, entity/store/mock helpers, and local util files form one explicit 21-file closure without draft-lane or exception-rail dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 ChatUI support model for chat entity ownership behind the page shells and component set.",
+      "notes": [
+        "Keep same-package data/store/helper files source-backed here.",
+        "This file remains a support model companion behind the ChatUI lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class Chat {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-chat-ui-group-model",
+      "selection_rank": 44,
+      "sample_rank": 14,
+      "sample_id": "harmonyos-examples-chat-ui-index-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "05-ChatUI/entry/src/main/cangjie/src/entity/Group.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/05-ChatUI/entry/src/main/cangjie/src/entity/Group.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the index page, route-target ChatView page, same-package component tree, entity/store/mock helpers, and local util files form one explicit 21-file closure without draft-lane or exception-rail dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 ChatUI support model for group entity ownership behind the page shells and component set.",
+      "notes": [
+        "Keep same-package data/store/helper files source-backed here.",
+        "This file remains a support model companion behind the ChatUI lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class Group {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-chat-ui-message-model",
+      "selection_rank": 45,
+      "sample_rank": 15,
+      "sample_id": "harmonyos-examples-chat-ui-index-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "05-ChatUI/entry/src/main/cangjie/src/entity/Message.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/05-ChatUI/entry/src/main/cangjie/src/entity/Message.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the index page, route-target ChatView page, same-package component tree, entity/store/mock helpers, and local util files form one explicit 21-file closure without draft-lane or exception-rail dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 ChatUI support model for message entity ownership behind the page shells and component set.",
+      "notes": [
+        "Keep same-package data/store/helper files source-backed here.",
+        "This file remains a support model companion behind the ChatUI lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class Message {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-chat-ui-user-model",
+      "selection_rank": 46,
+      "sample_rank": 16,
+      "sample_id": "harmonyos-examples-chat-ui-index-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "05-ChatUI/entry/src/main/cangjie/src/entity/User.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/05-ChatUI/entry/src/main/cangjie/src/entity/User.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the index page, route-target ChatView page, same-package component tree, entity/store/mock helpers, and local util files form one explicit 21-file closure without draft-lane or exception-rail dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 ChatUI support model for user entity ownership behind the page shells and component set.",
+      "notes": [
+        "Keep same-package data/store/helper files source-backed here.",
+        "This file remains a support model companion behind the ChatUI lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class User {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-chat-ui-store-model",
+      "selection_rank": 47,
+      "sample_rank": 17,
+      "sample_id": "harmonyos-examples-chat-ui-index-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "05-ChatUI/entry/src/main/cangjie/src/global/store.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/05-ChatUI/entry/src/main/cangjie/src/global/store.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the index page, route-target ChatView page, same-package component tree, entity/store/mock helpers, and local util files form one explicit 21-file closure without draft-lane or exception-rail dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 ChatUI support model for CURRENT_CHAT/TARGET_USER store ownership behind the page shells and component set.",
+      "notes": [
+        "Keep same-package data/store/helper files source-backed here.",
+        "This file remains a support model companion behind the ChatUI lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class DataStore<T> {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-chat-ui-data-mock-model",
+      "selection_rank": 48,
+      "sample_rank": 18,
+      "sample_id": "harmonyos-examples-chat-ui-index-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "05-ChatUI/entry/src/main/cangjie/src/mock/dataMock.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/05-ChatUI/entry/src/main/cangjie/src/mock/dataMock.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the index page, route-target ChatView page, same-package component tree, entity/store/mock helpers, and local util files form one explicit 21-file closure without draft-lane or exception-rail dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 ChatUI support model for mock chat/friend/group fixture data behind the page shells and component set.",
+      "notes": [
+        "Keep same-package data/store/helper files source-backed here.",
+        "This file remains a support model companion behind the ChatUI lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": []
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-chat-ui-chat-view-page",
+      "selection_rank": 49,
+      "sample_rank": 19,
+      "sample_id": "harmonyos-examples-chat-ui-index-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "05-ChatUI/entry/src/main/cangjie/src/pages/ChatView.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/05-ChatUI/entry/src/main/cangjie/src/pages/ChatView.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the index page, route-target ChatView page, same-package component tree, entity/store/mock helpers, and local util files form one explicit 21-file closure without draft-lane or exception-rail dependencies."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 ChatUI route-target page slice for message-list ownership, CURRENT_CHAT/TARGET_USER handoff, and chat input composition.",
+      "notes": [
+        "Keep route-target page behavior source-backed instead of leaving Router.push without its destination page.",
+        "This file remains an explicit page companion inside the ChatUI same-package closure."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "public class ChatView {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-chat-ui-data-source-model",
+      "selection_rank": 50,
+      "sample_rank": 20,
+      "sample_id": "harmonyos-examples-chat-ui-index-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "05-ChatUI/entry/src/main/cangjie/src/util/dataSource.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/05-ChatUI/entry/src/main/cangjie/src/util/dataSource.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the index page, route-target ChatView page, same-package component tree, entity/store/mock helpers, and local util files form one explicit 21-file closure without draft-lane or exception-rail dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 ChatUI support model for lazy data source support behind the page shells and component set.",
+      "notes": [
+        "Keep same-package data/store/helper files source-backed here.",
+        "This file remains a support model companion behind the ChatUI lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class MyDataSource<T> <: IDataSource<T> {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p19-chat-ui-variable-model",
+      "selection_rank": 51,
+      "sample_rank": 21,
+      "sample_id": "harmonyos-examples-chat-ui-index-view",
+      "priority": "P19",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "05-ChatUI/entry/src/main/cangjie/src/util/variable.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p19/HarmonyOS-Examples/05-ChatUI/entry/src/main/cangjie/src/util/variable.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the index page, route-target ChatView page, same-package component tree, entity/store/mock helpers, and local util files form one explicit 21-file closure without draft-lane or exception-rail dependencies."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P19 ChatUI support model for shared visual constants and variables behind the page shells and component set.",
+      "notes": [
+        "Keep same-package data/store/helper files source-backed here.",
+        "This file remains a support model companion behind the ChatUI lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": []
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    }
+  ]
+}

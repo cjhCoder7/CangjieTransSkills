@@ -1,0 +1,18 @@
+{
+  "corpus_name": "phase06-ui-p0",
+  "corpus_version": 1,
+  "frozen_at_utc": "2026-04-08T12:27:51.855590Z",
+  "source_manifest": "docs/manifests/phase06_ui_sample_manifest.json",
+  "selection_policy": {
+    "priority": "P0",
+    "adoption_decision": "primary",
+    "source_type": "external_repo"
+  },
+  "repo_count": 4,
+  "sample_count": 6,
+  "file_count": 12,
+  "notes": [
+    "Repo-local frozen Phase06 UI P0 corpus for next-stage manifest construction.",
+    "All files are copied from the exact commits pinned by docs/manifests/phase06_ui_sample_manifest.json to avoid upstream drift."
+  ]
+}

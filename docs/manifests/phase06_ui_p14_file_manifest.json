@@ -1,0 +1,535 @@
+{
+  "manifest_name": "phase06-ui-p14-file-manifest",
+  "manifest_version": 1,
+  "created_at": "2026-04-12T12:18:04Z",
+  "phase": "Phase 06 UI Source Slicing / File-Level Workset",
+  "status": "draft-ready",
+  "source_corpus_manifest": "phase06_ui_source_corpus_p14.json",
+  "source_manifest": "phase06_ui_sample_manifest.json",
+  "few_shot_pack": "phase06_ui_few_shot_pack.json",
+  "intended_consumer": [
+    "human-review",
+    "future-phase06-prompt-pilot",
+    "future-phase06-batch-curator"
+  ],
+  "notes": [
+    "Expands the selected frozen source corpus into file-level slices with explicit ui_prompt_tags.",
+    "This manifest is not consumed directly by scripts/pipeline_batch_runner.py; it is a file-level workset for prompt pilots, explicit tag injection, and later batch curation.",
+    "Tag refinement is allowed at file level when a multi-file sample contains both page-shell and rich-component files."
+  ],
+  "selection_policy": {
+    "priority": "P14",
+    "adoption_decision": "primary",
+    "source_type": "external_repo",
+    "expansion_rule": "expand repo_local_paths into file-level slices and refine per-file target_role/ui_prompt_tags"
+  },
+  "summary": {
+    "sample_count": 3,
+    "slice_count": 9,
+    "role_counts": {
+      "page": 3,
+      "viewmodel": 4,
+      "component": 2
+    },
+    "structure_counts": {
+      "page-shell": 3,
+      "rich-component": 6
+    }
+  },
+  "entries": [
+    {
+      "slice_id": "phase06-ui-p14-calendar-manager-entry-page",
+      "selection_rank": 1,
+      "sample_rank": 1,
+      "sample_id": "harmonyos-examples-calendar-manager-entry-view",
+      "priority": "P14",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "19-CangjiexArkTS/CalendarManager/entry/src/main/cangjie/views/EntryView.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p14/HarmonyOS-Examples/19-CangjiexArkTS/CalendarManager/entry/src/main/cangjie/views/EntryView.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P14 regular candidate harvested from the remaining official HarmonyOS-Examples reserve after the regular Phase06 checkpoint reached 60/60 live passed."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P14 calendar-manager entry page slice for button-driven Hilog handoff inside one lightweight render-facing page shell.",
+      "notes": [
+        "Keep the button host, onClick callback, and appLog.info handoff source-backed inside the page boundary.",
+        "Treat applog/Applog.cj as the explicitly frozen support helper instead of inlining logging behavior or inventing detached controller layers."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class EntryView {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-ui-routing-page-shell-view-model-renderer",
+        "harmonyos-examples-badgeview-page-shell-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p14-calendar-manager-applog-helper",
+      "selection_rank": 2,
+      "sample_rank": 2,
+      "sample_id": "harmonyos-examples-calendar-manager-entry-view",
+      "priority": "P14",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "19-CangjiexArkTS/CalendarManager/entry/src/main/cangjie/applog/Applog.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p14/HarmonyOS-Examples/19-CangjiexArkTS/CalendarManager/entry/src/main/cangjie/applog/Applog.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P14 regular candidate harvested from the remaining official HarmonyOS-Examples reserve after the regular Phase06 checkpoint reached 60/60 live passed."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P14 calendar-manager applog helper slice for Hilog channel ownership behind the lightweight entry page shell.",
+      "notes": [
+        "Keep the HilogChannel construction source-backed in this helper instead of turning logging into prompt-invented globals.",
+        "This file stays attached to the page shell as a narrow support-model slice rather than a standalone UI contract."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": []
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p14-secondary-linkage-page",
+      "selection_rank": 3,
+      "sample_rank": 1,
+      "sample_id": "harmonyos-cangjie-cases-secondary-linkage-page",
+      "priority": "P14",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Cangjie-Cases",
+      "source_path": "CangjieAppDevelopment/feature/secondarylinkage/src/main/cangjie/src/SecondaryLinkageExample.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p14/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/secondarylinkage/src/main/cangjie/src/SecondaryLinkageExample.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Cangjie-Cases",
+        "branch": "main",
+        "commit": "2d0662bb5c97a15d6bc459688df6c9b23275f12f",
+        "access_date": "2026-04-12",
+        "purpose": "P14 regular candidate selected from the remaining official HarmonyOS-Cangjie-Cases reserve once the page, data-source, and shared FunctionDescription helper are frozen transparently."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [
+        "mixed-app-pattern"
+      ],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": [
+          "mixed-app-pattern"
+        ]
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P14 secondary-linkage page slice for dual Scroller ownership, LazyForEach coordination, and page-owned linkage state inside one controller-owned shell.",
+      "notes": [
+        "Keep the dual-list linkage flow, scroll index callbacks, and currentTagIndex ownership source-backed in the page shell.",
+        "Treat DataType.cj plus the cross-module FunctionDescription component as explicitly frozen companions instead of pretending the page is self-contained."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "public class SecondaryLinkageExample {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p14-secondary-linkage-data-model",
+      "selection_rank": 4,
+      "sample_rank": 2,
+      "sample_id": "harmonyos-cangjie-cases-secondary-linkage-page",
+      "priority": "P14",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Cangjie-Cases",
+      "source_path": "CangjieAppDevelopment/feature/secondarylinkage/src/main/cangjie/src/DataType.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p14/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/secondarylinkage/src/main/cangjie/src/DataType.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Cangjie-Cases",
+        "branch": "main",
+        "commit": "2d0662bb5c97a15d6bc459688df6c9b23275f12f",
+        "access_date": "2026-04-12",
+        "purpose": "P14 regular candidate selected from the remaining official HarmonyOS-Cangjie-Cases reserve once the page, data-source, and shared FunctionDescription helper are frozen transparently."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [
+        "mixed-app-pattern"
+      ],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": [
+          "mixed-app-pattern"
+        ]
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P14 secondary-linkage data-source model slice for CustomDataType payloads, LazyForEach listener plumbing, and list-layout constants behind the linkage page.",
+      "notes": [
+        "Keep BasicDataSource and MyDataSource source-backed here instead of moving data-listener behavior into the page shell.",
+        "This file remains a support-model slice attached to the mixed-app linkage lane, not a standalone page/component boundary."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class CustomDataType {",
+          "public class ListIndexPosition {",
+          "public open class BasicDataSource <: IDataSource<CustomDataType> {",
+          "public class MyDataSource <: BasicDataSource {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p14-secondary-linkage-function-description-component",
+      "selection_rank": 5,
+      "sample_rank": 3,
+      "sample_id": "harmonyos-cangjie-cases-secondary-linkage-page",
+      "priority": "P14",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Cangjie-Cases",
+      "source_path": "CangjieAppDevelopment/common/utils/src/main/cangjie/src/component/FunctionDescription.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p14/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/common/utils/src/main/cangjie/src/component/FunctionDescription.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Cangjie-Cases",
+        "branch": "main",
+        "commit": "2d0662bb5c97a15d6bc459688df6c9b23275f12f",
+        "access_date": "2026-04-12",
+        "purpose": "P14 regular candidate selected from the remaining official HarmonyOS-Cangjie-Cases reserve once the page, data-source, and shared FunctionDescription helper are frozen transparently."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [
+        "mixed-app-pattern"
+      ],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": [
+          "mixed-app-pattern"
+        ]
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P14 shared FunctionDescription component slice for title-plus-content presentation reused by the secondary-linkage page.",
+      "notes": [
+        "Keep the shared description card source-backed as a reusable component instead of flattening it into the page prompt context.",
+        "This cross-module helper is the honest mixed-app companion for the linkage sample."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class FunctionDescription {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p14-pending-items-todo-list-page",
+      "selection_rank": 6,
+      "sample_rank": 1,
+      "sample_id": "harmonyos-cangjie-cases-pending-items-todo-list",
+      "priority": "P14",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Cangjie-Cases",
+      "source_path": "CangjieAppDevelopment/feature/pendingitems/src/main/cangjie/src/pages/ToDoList.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p14/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/pendingitems/src/main/cangjie/src/pages/ToDoList.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Cangjie-Cases",
+        "branch": "main",
+        "commit": "2d0662bb5c97a15d6bc459688df6c9b23275f12f",
+        "access_date": "2026-04-12",
+        "purpose": "P14 regular candidate selected from the remaining official HarmonyOS-Cangjie-Cases reserve by freezing the page together with its list-item and model companions instead of stopping at a misleading single-file scout."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [
+        "gesture-component"
+      ],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [
+          "gesture-component"
+        ],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P14 pending-items host page slice for dialog-driven item creation, swipe-action list ownership, and pending/completed state transitions inside one controller-owned shell.",
+      "notes": [
+        "Keep the dialogController flow, ObservedArrayList ownership, and swipeAction wiring source-backed in the page shell.",
+        "Treat ToDoListItem.cj plus the model files as explicitly frozen companions instead of collapsing the sample into a fake single-file todo page."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "public class MyTextPickerDialog {",
+          "public class ToDoList {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p14-pending-items-list-item-component",
+      "selection_rank": 7,
+      "sample_rank": 2,
+      "sample_id": "harmonyos-cangjie-cases-pending-items-todo-list",
+      "priority": "P14",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "repo_name": "HarmonyOS-Cangjie-Cases",
+      "source_path": "CangjieAppDevelopment/feature/pendingitems/src/main/cangjie/src/pages/ToDoListItem.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p14/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/pendingitems/src/main/cangjie/src/pages/ToDoListItem.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Cangjie-Cases",
+        "branch": "main",
+        "commit": "2d0662bb5c97a15d6bc459688df6c9b23275f12f",
+        "access_date": "2026-04-12",
+        "purpose": "P14 regular candidate selected from the remaining official HarmonyOS-Cangjie-Cases reserve by freezing the page together with its list-item and model companions instead of stopping at a misleading single-file scout."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [
+        "gesture-component"
+      ],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [
+          "gesture-component"
+        ],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P14 pending-items list-item component slice for edit-state toggling, checkbox completion flow, and swipe-afforded task presentation.",
+      "notes": [
+        "Keep the @Link-backed task movement and edit-state UI source-backed inside this component.",
+        "This file is the direct interaction-heavy component anchor behind the todo page shell."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class ToDoListItem {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "photoview4cj-gesture-rich-component-controller-owned-state",
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p14-pending-items-style-config-model",
+      "selection_rank": 8,
+      "sample_rank": 3,
+      "sample_id": "harmonyos-cangjie-cases-pending-items-todo-list",
+      "priority": "P14",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Cangjie-Cases",
+      "source_path": "CangjieAppDevelopment/feature/pendingitems/src/main/cangjie/src/model/ConstData.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p14/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/pendingitems/src/main/cangjie/src/model/ConstData.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Cangjie-Cases",
+        "branch": "main",
+        "commit": "2d0662bb5c97a15d6bc459688df6c9b23275f12f",
+        "access_date": "2026-04-12",
+        "purpose": "P14 regular candidate selected from the remaining official HarmonyOS-Cangjie-Cases reserve by freezing the page together with its list-item and model companions instead of stopping at a misleading single-file scout."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [
+        "gesture-component"
+      ],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [
+          "gesture-component"
+        ],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P14 pending-items style-config support-model slice for layout constants, image sizing, and animation timing behind the todo page and list item.",
+      "notes": [
+        "Keep StyleConfig source-backed here instead of scattering renderer constants into page or component prompts.",
+        "This file remains a renderer-facing support-model slice attached to the gesture-heavy todo lane."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class StyleConfig {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p14-pending-items-todo-model",
+      "selection_rank": 9,
+      "sample_rank": 4,
+      "sample_id": "harmonyos-cangjie-cases-pending-items-todo-list",
+      "priority": "P14",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Cangjie-Cases",
+      "source_path": "CangjieAppDevelopment/feature/pendingitems/src/main/cangjie/src/model/ToDo.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p14/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/pendingitems/src/main/cangjie/src/model/ToDo.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Cangjie-Cases",
+        "branch": "main",
+        "commit": "2d0662bb5c97a15d6bc459688df6c9b23275f12f",
+        "access_date": "2026-04-12",
+        "purpose": "P14 regular candidate selected from the remaining official HarmonyOS-Cangjie-Cases reserve by freezing the page together with its list-item and model companions instead of stopping at a misleading single-file scout."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [
+        "gesture-component"
+      ],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [
+          "gesture-component"
+        ],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P14 pending-items task model slice for observed todo identity, published completion state, and task-name ownership behind the todo page shell.",
+      "notes": [
+        "Keep the observed ToDo state source-backed here instead of re-inventing DTO or state-holder scaffolding in page/component prompts.",
+        "This file stays attached to the todo lane as a support-model slice rather than a standalone UI component."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class ToDo {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "photoview4cj-gesture-rich-component-controller-owned-state",
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "manifest_name": "phase06-ui-sample-manifest-p5-draft",
+  "manifest_version": 1,
+  "created_at": "2026-04-11T12:12:33Z",
+  "phase": "Phase06",
+  "status": "draft-candidate-scout",
+  "intended_consumer": "manual curation -> build_phase06_ui_source_corpus.py",
+  "notes": [
+    "This draft manifest is not yet promoted into the primary phase06_ui_sample_manifest.json.",
+    "Its purpose is to freeze and validate the next regular-source candidate chain after the current P0/P1/P2/P3/P4 supply reached 18/18 live passed and 19/19 regular samples consumed.",
+    "The public cangjiechallenge org scout only yielded two self-contained Makerizon page files that stay page-local enough for a regular-lane draft. MakerOne begin.cj remains deferred because it depends on sibling globalJSFunction bridge registration in index.cj, and TaskGenie a_i.cj remains deferred because magic.dsl / agent.chat / spawn coupling is too special for the current regular rail."
+  ],
+  "ordered_samples": [
+    {
+      "sample_id": "cangjiechallenge-makerizon-history-page",
+      "priority": "P5",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Extend Phase06 with a history/list page shell that keeps quick filters, search text, and meeting-card rendering inside one page boundary without inventing service facades.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/cangjiechallenge/6a27783ce2bf2047bab996b3994d601d",
+        "branch": "master",
+        "commit": "6993ef734acb2929e46b322b8120efb94595b5ba",
+        "access_date": "2026-04-11",
+        "purpose": "P5 draft candidate harvested from the public Makerizon pinned repo after the regular Phase06 supply reached 18/18 live passed."
+      },
+      "source_paths": [
+        "MeetingAssistant/entry/src/main/cangjie/history.cj"
+      ],
+      "blocking_constraints": [
+        "Keep source-backed HybridComponentEntry / hybrid_base imports intact; do not invent extra ETS host pages or runtime bridge layers absent from this file."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "cangjiechallenge-makerizon-mine-page",
+      "priority": "P5",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Add a profile/settings page shell that keeps user summary, stats cards, and grouped settings/help rows inside one page boundary without inventing provider layers.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/cangjiechallenge/6a27783ce2bf2047bab996b3994d601d",
+        "branch": "master",
+        "commit": "6993ef734acb2929e46b322b8120efb94595b5ba",
+        "access_date": "2026-04-11",
+        "purpose": "P5 draft candidate harvested from the public Makerizon pinned repo after the regular Phase06 supply reached 18/18 live passed."
+      },
+      "source_paths": [
+        "MeetingAssistant/entry/src/main/cangjie/mine.cj"
+      ],
+      "blocking_constraints": [
+        "Keep source-backed HybridComponentEntry / hybrid_base imports intact; do not fabricate host-runtime adapters or extra provider layers."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    }
+  ],
+  "control_samples": [],
+  "exception_references": [],
+  "deferred_pools": [],
+  "tag_rules": {
+    "structure_tag_required": true,
+    "structure_tags": [
+      "page-shell",
+      "rich-component"
+    ],
+    "ownership_tag_required": true,
+    "ownership_tags": [
+      "view-model-renderer",
+      "controller-owned-state"
+    ],
+    "optional_interaction_tags": [
+      "gesture-component"
+    ],
+    "optional_exception_tags": [
+      "ffi-exception",
+      "hybrid-exception"
+    ],
+    "optional_sample_scope_tags": [
+      "mixed-app-pattern"
+    ],
+    "resolution_rule": "Each file-level sample must resolve to exactly one structure_tag and one ownership_tag. interaction/exception/sample_scope tags are additive only."
+  }
+}

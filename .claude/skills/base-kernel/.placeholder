@@ -1,0 +1,19 @@
+# Phase 2 Kernel Admission Status
+
+这里是 `cangjie-kernel` 吸收后的目标目录，也是 L1 的受控入口层。
+
+当前状态：
+- `Option` 已作为首个 admission 样本接入：`.claude/skills/base-kernel/option.md`
+- 其来源镜像位于：`research/external-baselines/CangjieTransSkills/option/README.md`
+- 其结构化证据位于：`artifacts/knowledge_admission/`
+
+准入规则：
+- 外来 kernel 文档不能直接进入主知识层
+- 必须通过 `verifier.py` 驱动的体检流程
+- 若 L3 证明某段示例已过期，必须打上 `[L3-DEPRECATED]`
+- 若语言层成立但项目层禁用，必须打上 `[L2-RESTRICTED]`
+- 若命中高危污染模式，必须阻断并回写原因，不得伪装成已验证知识
+
+后续 Phase 2 扩展：
+- 下一个 kernel 单元继续沿用 `scripts/sync/kernel_admission.py`
+- 优先顺序：`Option -> Atomic / collections / CFFI`，按难度逐步升级

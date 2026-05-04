@@ -1,0 +1,14 @@
+{
+  "packageInformation": {
+    "real_message_service_cache_001": {
+      "rootPackageName": "real_message_service_cache_001",
+      "fileNameHash": "-5951538683886253293",
+      "timeStamp": 1776435992,
+      "isBuilt": true,
+      "exeName": "main",
+      "hasSubPkgs": true
+    }
+  },
+  "jsonHash": "6893324136128664922",
+  "rootPackageName": "real_message_service_cache_001"
+}

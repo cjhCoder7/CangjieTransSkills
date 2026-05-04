@@ -1,0 +1,172 @@
+{
+  "manifest_name": "phase06-ui-source-corpus-p18",
+  "manifest_version": 1,
+  "created_at": "2026-04-13T03:21:35Z",
+  "corpus_root": "../../raw_docs/phase06-ui-p18",
+  "source_manifest": "phase06_ui_sample_manifest.json",
+  "selection_policy": {
+    "priority": "P18",
+    "adoption_decision": "primary",
+    "source_type": "external_repo",
+    "sample_buckets": [
+      "ordered_samples"
+    ]
+  },
+  "sample_count": 3,
+  "file_count": 27,
+  "entries": [
+    {
+      "entry_id": "harmonyos-examples-calculator-entry-view",
+      "sample_id": "harmonyos-examples-calculator-entry-view",
+      "reference_id": "",
+      "priority": "P18",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "role": "",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P18 regular candidate selected from the remaining official HarmonyOS-Examples reserve because its keypad page, observed state model, button entities, and local evaluator helpers form one bounded deterministic workset without timer or display-side pressure."
+      },
+      "source_paths": [
+        "04-Calculator/entry/src/main/cangjie/src/index.cj",
+        "04-Calculator/entry/src/main/cangjie/src/service/dynamic_param.cj",
+        "04-Calculator/entry/src/main/cangjie/src/entity/button_entity.cj",
+        "04-Calculator/entry/src/main/cangjie/src/entity/ac_button_entity.cj",
+        "04-Calculator/entry/src/main/cangjie/src/entity/eval_button_entity.cj",
+        "04-Calculator/entry/src/main/cangjie/src/entity/number_button_entity.cj",
+        "04-Calculator/entry/src/main/cangjie/src/entity/operation_button_entity.cj",
+        "04-Calculator/entry/src/main/cangjie/src/entity/keyboards.cj",
+        "04-Calculator/entry/src/main/cangjie/src/utils/calculate_utils.cj",
+        "04-Calculator/entry/src/main/cangjie/src/utils/collections.cj",
+        "04-Calculator/entry/src/main/cangjie/src/utils/string_utils.cj"
+      ],
+      "repo_name": "HarmonyOS-Examples",
+      "repo_local_paths": [
+        "raw_docs/phase06-ui-p18/HarmonyOS-Examples/04-Calculator/entry/src/main/cangjie/src/index.cj",
+        "raw_docs/phase06-ui-p18/HarmonyOS-Examples/04-Calculator/entry/src/main/cangjie/src/service/dynamic_param.cj",
+        "raw_docs/phase06-ui-p18/HarmonyOS-Examples/04-Calculator/entry/src/main/cangjie/src/entity/button_entity.cj",
+        "raw_docs/phase06-ui-p18/HarmonyOS-Examples/04-Calculator/entry/src/main/cangjie/src/entity/ac_button_entity.cj",
+        "raw_docs/phase06-ui-p18/HarmonyOS-Examples/04-Calculator/entry/src/main/cangjie/src/entity/eval_button_entity.cj",
+        "raw_docs/phase06-ui-p18/HarmonyOS-Examples/04-Calculator/entry/src/main/cangjie/src/entity/number_button_entity.cj",
+        "raw_docs/phase06-ui-p18/HarmonyOS-Examples/04-Calculator/entry/src/main/cangjie/src/entity/operation_button_entity.cj",
+        "raw_docs/phase06-ui-p18/HarmonyOS-Examples/04-Calculator/entry/src/main/cangjie/src/entity/keyboards.cj",
+        "raw_docs/phase06-ui-p18/HarmonyOS-Examples/04-Calculator/entry/src/main/cangjie/src/utils/calculate_utils.cj",
+        "raw_docs/phase06-ui-p18/HarmonyOS-Examples/04-Calculator/entry/src/main/cangjie/src/utils/collections.cj",
+        "raw_docs/phase06-ui-p18/HarmonyOS-Examples/04-Calculator/entry/src/main/cangjie/src/utils/string_utils.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Add an official deterministic calculator page that keeps keypad-grid orchestration and expression/result ownership in the page shell while freezing dynamic state, button entities, and evaluator helpers explicitly.",
+      "blocking_constraints": [
+        "Keep DynamicParam mutation, keypad definitions, button press semantics, and local evaluator helpers source-backed instead of collapsing the sample into a deceptive single entry file."
+      ],
+      "reason": ""
+    },
+    {
+      "entry_id": "harmonyos-examples-schedule-entry-view",
+      "sample_id": "harmonyos-examples-schedule-entry-view",
+      "reference_id": "",
+      "priority": "P18",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "role": "",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P18 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the schedule page, direct MainAbility context dependency, grid components, and course data helpers stay inside one bounded resource-backed subtree."
+      },
+      "source_paths": [
+        "10-Schedule/entry/src/main/cangjie/index.cj",
+        "10-Schedule/entry/src/main/cangjie/components/BackRow.cj",
+        "10-Schedule/entry/src/main/cangjie/components/Course.cj",
+        "10-Schedule/entry/src/main/cangjie/components/SectionRow.cj",
+        "10-Schedule/entry/src/main/cangjie/components/SectionTime.cj",
+        "10-Schedule/entry/src/main/cangjie/dataModel/CourseEntity.cj",
+        "10-Schedule/entry/src/main/cangjie/dataModel/CourseItem.cj",
+        "10-Schedule/entry/src/main/cangjie/main_ability.cj"
+      ],
+      "repo_name": "HarmonyOS-Examples",
+      "repo_local_paths": [
+        "raw_docs/phase06-ui-p18/HarmonyOS-Examples/10-Schedule/entry/src/main/cangjie/index.cj",
+        "raw_docs/phase06-ui-p18/HarmonyOS-Examples/10-Schedule/entry/src/main/cangjie/components/BackRow.cj",
+        "raw_docs/phase06-ui-p18/HarmonyOS-Examples/10-Schedule/entry/src/main/cangjie/components/Course.cj",
+        "raw_docs/phase06-ui-p18/HarmonyOS-Examples/10-Schedule/entry/src/main/cangjie/components/SectionRow.cj",
+        "raw_docs/phase06-ui-p18/HarmonyOS-Examples/10-Schedule/entry/src/main/cangjie/components/SectionTime.cj",
+        "raw_docs/phase06-ui-p18/HarmonyOS-Examples/10-Schedule/entry/src/main/cangjie/dataModel/CourseEntity.cj",
+        "raw_docs/phase06-ui-p18/HarmonyOS-Examples/10-Schedule/entry/src/main/cangjie/dataModel/CourseItem.cj",
+        "raw_docs/phase06-ui-p18/HarmonyOS-Examples/10-Schedule/entry/src/main/cangjie/main_ability.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Add an official schedule page that keeps TabsController/scroller synchronization and resource-backed course composition in the page shell while freezing the direct MainAbility, grid components, and course data helpers explicitly.",
+      "blocking_constraints": [
+        "Keep MainAbility.abilityContext, scroller synchronization, builder-backed course grid composition, and course data helpers source-backed instead of treating the sample as a standalone index.cj shell."
+      ],
+      "reason": ""
+    },
+    {
+      "entry_id": "harmonyos-examples-custom-keyboard-entry-view",
+      "sample_id": "harmonyos-examples-custom-keyboard-entry-view",
+      "reference_id": "",
+      "priority": "P18",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "role": "",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P18 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the AppStorage-backed entry page, local builder components, constants, and keyboard model form one bounded custom-keyboard flow without cross-feature imports."
+      },
+      "source_paths": [
+        "17-CustomKeyboard/entry/src/main/cangjie/index.cj",
+        "17-CustomKeyboard/entry/src/main/cangjie/components/FooterBuilder.cj",
+        "17-CustomKeyboard/entry/src/main/cangjie/components/LicensePlateInputBuilder.cj",
+        "17-CustomKeyboard/entry/src/main/cangjie/components/PaymentInfoBuilder.cj",
+        "17-CustomKeyboard/entry/src/main/cangjie/components/TitleBuilder.cj",
+        "17-CustomKeyboard/entry/src/main/cangjie/constants/KeyboardConstants.cj",
+        "17-CustomKeyboard/entry/src/main/cangjie/constants/StyleConstants.cj",
+        "17-CustomKeyboard/entry/src/main/cangjie/model/Keyboard.cj"
+      ],
+      "repo_name": "HarmonyOS-Examples",
+      "repo_local_paths": [
+        "raw_docs/phase06-ui-p18/HarmonyOS-Examples/17-CustomKeyboard/entry/src/main/cangjie/index.cj",
+        "raw_docs/phase06-ui-p18/HarmonyOS-Examples/17-CustomKeyboard/entry/src/main/cangjie/components/FooterBuilder.cj",
+        "raw_docs/phase06-ui-p18/HarmonyOS-Examples/17-CustomKeyboard/entry/src/main/cangjie/components/LicensePlateInputBuilder.cj",
+        "raw_docs/phase06-ui-p18/HarmonyOS-Examples/17-CustomKeyboard/entry/src/main/cangjie/components/PaymentInfoBuilder.cj",
+        "raw_docs/phase06-ui-p18/HarmonyOS-Examples/17-CustomKeyboard/entry/src/main/cangjie/components/TitleBuilder.cj",
+        "raw_docs/phase06-ui-p18/HarmonyOS-Examples/17-CustomKeyboard/entry/src/main/cangjie/constants/KeyboardConstants.cj",
+        "raw_docs/phase06-ui-p18/HarmonyOS-Examples/17-CustomKeyboard/entry/src/main/cangjie/constants/StyleConstants.cj",
+        "raw_docs/phase06-ui-p18/HarmonyOS-Examples/17-CustomKeyboard/entry/src/main/cangjie/model/Keyboard.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Add an official custom-keyboard payment page that keeps AppStorage/StorageLink-driven license-plate flow in the page shell while freezing the builder components, constants, and keyboard model explicitly.",
+      "blocking_constraints": [
+        "Keep AppStorage/StorageLink state, custom keyboard builder flow, dialog/footer interactions, and keyboard/constants helpers source-backed instead of reducing the sample to a single page shell."
+      ],
+      "reason": ""
+    }
+  ]
+}

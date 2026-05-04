@@ -1,0 +1,1249 @@
+# Phase07 Telegram UI Incubation Tasks
+
+# Implementation Plan
+
+- [x] P0-1. 定义 bounded-slice shared harness / module boundary
+  - 从 `samples/telegram-ui-vertical-slice-001` 与 `samples/real-message-service-cache-001` 列出可复用的共享类型、refresh bridge、service/harness 接口与 Telegram-specific UI 边界。
+  - 明确哪些能力应沉淀为 shared harness，哪些能力必须留在 Telegram UI skeleton 层。
+  - 产出实现前的模块边界清单，避免后续继续复制 seed sample 内嵌逻辑。
+  - 已落地产物：
+    - `docs/reports/2026-04-15-phase07-shared-harness-module-boundary.md`
+    - `docs/reports/2026-04-15-phase07-p0-1-runtime-gate-clarification.md`
+  - _Requirement: REQ-3, REQ-4, REQ-6_
+
+- [x] P0-2. 设计最小 repo-local app-shell prototype 的 consume boundary
+  - 以 `samples/ui-routing-defining-page-layout` 的 router / page-shell 模式为参考，定义 Telegram session list、detail placeholder、router state 的最小 consume contract。
+  - 明确 prototype 只承接 repo-local UI skeleton，不承接 IDE/DevEco、`entry/` 装配层或更宽的非 repo-local 运行语义。
+  - 明确 `samples/telegram-ui-vertical-slice-001` 仍是 exploratory seed input，而不是 prototype 本体的 broader repo basis。
+  - 已落地产物：
+    - `docs/reports/2026-04-15-phase07-app-shell-consume-boundary.md`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_app_shell.cj`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj`
+  - _Requirement: REQ-3, REQ-5, REQ-7_
+
+- [x] P0-3. 设计 regression 验证面与命令合同
+  - 为 shared harness、Telegram UI skeleton、repo-local app-shell prototype 分别定义 compile / unit / behavior 的最小验证面。
+  - 约定 Linux `Staging-Core` 默认命令、预期证据路径和失败分类口径，保证 test-first rail 先于 UI 扩展。
+  - 明确任何结果都不得写成 broader non-repo-local rollout、full-pass outcome 或 `Phase06 regular` continuation claim。
+  - 原始合同先将 shell refresh loop 暂时留在 defer 状态；该缺口现已由 `P1-5` 收口为 shell-level refresh consume slice 与 mandatory regression gate。
+  - 已落地产物：
+    - `docs/reports/2026-04-15-phase07-p0-3-verification-contract.md`
+  - _Requirement: REQ-2, REQ-6, REQ-7_
+
+- [x] P0-4. 收口 cache sample controlled-shell 5s gate 的 verification-contract 决策
+  - 只围绕 `samples/real-message-service-cache-001` 的 controlled-shell `5s` gate 做分类收口，不重开 `P1-6` 实现。
+  - 明确 cache sample 的 canonical build gate、runtime/no-deadlock gate、以及 mixed `5s` wrapper 的决策语义。
+  - 若 `timeout 5s ... cjpm test` 继续报 `124`，必须明确它是否仍允许 continuation lane 前进。
+  - 已落地产物：
+    - `docs/reports/2026-04-15-phase07-p0-4-cache-sample-5s-gate-decision.md`
+    - `artifacts/verification_contracts/20260415-phase07-cache-sample-5s-gate/`
+  - _Requirement: REQ-2, REQ-6, REQ-7_
+
+- [x] P1-4. 启动 shared harness 抽取的首个实现切片
+  - 基于 P0 边界清单，选择一组最小共享接口与 harness 辅助对象作为首个实现切片。
+  - 保持 `samples/telegram-ui-vertical-slice-001` 原位不升级，只让后续实现消费它已暴露的 seed boundary。
+  - 以最小 compile / test 闭环为交付目标，而不是 UI 能力铺开。
+  - 已落地产物：
+    - `docs/reports/2026-04-15-phase07-p1-4-first-shared-harness-slice.md`
+    - `samples/phase07-shared-service-refresh-harness/src/phase07_shared_service_refresh_harness.cj`
+  - _Requirement: REQ-3, REQ-4, REQ-6_
+
+- [x] P1-5. 启动 repo-local Telegram app-shell prototype 的首个 consume 切片
+  - 在 shared harness 边界稳定后，实现一个只覆盖 session list -> detail placeholder -> refresh loop 的最小 consume 切片。
+  - 保持 prototype 仅面向 Linux `Staging-Core` compile / test / behavior 验证，不引入更宽的非 repo-local claim。
+  - 回归项优先锁定 router、refresh、placeholder data contract，而不是视觉完成度。
+  - 已落地产物：
+    - `docs/reports/2026-04-15-phase07-p1-5-shell-refresh-consume-slice.md`
+    - `docs/reports/2026-04-15-phase07-app-shell-consume-boundary.md`
+    - `docs/reports/2026-04-15-phase07-p0-3-verification-contract.md`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_app_shell.cj`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj`
+  - _Requirement: REQ-5, REQ-6, REQ-7_
+
+- [x] P1-6. 启动 second-consumer compatibility slice
+  - 将 `Phase07` shared service / refresh surface 从 Telegram-only landing 推进为 repo-local shared package。
+  - 优先让 `samples/real-message-service-cache-001` 以最小 `cjpm` path dependency 与 import 调整接上 shared harness，只覆盖 service / refresh surface。
+  - 受控 shell 下若 5 秒窗口出现超时，必须区分 packaging blocker、compile-budget risk 与 runtime deadlock，不得误报。
+  - 已落地产物：
+    - `docs/reports/2026-04-15-phase07-p1-6-second-consumer-compatibility-slice.md`
+    - `samples/phase07-shared-service-refresh-harness/src/phase07_shared_service_refresh_harness.cj`
+    - `samples/real-message-service-cache-001/src/phase07_second_consumer_compatibility_test.cj`
+    - `samples/telegram-ui-vertical-slice-001/cjpm.toml`
+    - `samples/real-message-service-cache-001/cjpm.toml`
+  - _Requirement: REQ-3, REQ-4, REQ-6, REQ-7_
+
+- [x] P1-7. 启动 Telegram detail-route retarget consume slice
+  - 只在 `samples/telegram-ui-vertical-slice-001` 内扩展 app-shell / router consume contract，允许 shell 在已进入 detail route 后切换到另一条会话而不继续膨胀路由历史。
+  - 保持实现仍为 repo-local Telegram sample bounded slice，不重开 shared harness relocation、cache sample gate、`P1-6` second-consumer wiring 或任何 `Phase06 regular` / `P23` 方向。
+  - 回归项优先锁定 detail-route reuse、active conversation retarget 与 post-build runtime no-deadlock，而不是继续扩展 service / refresh 语义。
+  - 已落地产物：
+    - `docs/reports/2026-04-15-phase07-p1-7-detail-route-retarget-consume-slice.md`
+    - `docs/reports/2026-04-15-phase07-app-shell-consume-boundary.md`
+    - `docs/reports/2026-04-15-phase07-p0-3-verification-contract.md`
+    - `artifacts/verification_contracts/20260415-phase07-telegram-p1-7-detail-route-retarget/`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_app_shell.cj`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_slice.cj`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj`
+  - _Requirement: REQ-3, REQ-5, REQ-6, REQ-7_
+
+- [x] P1-8. 启动 Telegram retarget-back stability consume slice
+  - 只在 `samples/telegram-ui-vertical-slice-001` 内继续扩展 app-shell / router consume contract，锁定 detail route 经一次或多次 retarget 后执行 back 的稳定返回语义。
+  - 保持实现仍为 repo-local Telegram sample bounded slice，不重开 shared harness、cache sample gate、`P1-6` second-consumer wiring、`P23` 或任何 `Phase06 regular` 方向。
+  - 回归项优先锁定 back 后回到 session list 的稳定落点、history 保持 `2`、以及 back 后下一次 list selection 不得因为 stale forward tail 膨胀到 `3`。
+  - 已落地产物：
+    - `docs/reports/2026-04-15-phase07-p1-8-back-stability-consume-slice.md`
+    - `docs/reports/2026-04-15-phase07-app-shell-consume-boundary.md`
+    - `docs/reports/2026-04-15-phase07-p0-3-verification-contract.md`
+    - `artifacts/verification_contracts/20260415-phase07-telegram-p1-8-back-stability/`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_slice.cj`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj`
+  - _Requirement: REQ-3, REQ-5, REQ-6, REQ-7_
+
+- [x] P1-9. 启动 Telegram detail-projection reset consume slice
+  - 只在 `samples/telegram-ui-vertical-slice-001` 内继续扩展 app-shell / detail consume contract，锁定 detail route 执行 back 返回 session list 后不得继续泄漏旧 detail title / peer label / placeholder body。
+  - 保持实现仍为 repo-local Telegram sample bounded slice，不重开 shared harness、cache sample gate、`P1-6` second-consumer wiring、`P23` 或任何 `Phase06 regular` 方向。
+  - 回归项优先锁定 back 后 detail 投影清空、current route 仍稳定回到 session list、以及 post-build runtime no-deadlock，而不是扩展新的 service / router framework。
+  - 已落地产物：
+    - `docs/reports/2026-04-15-phase07-p1-9-detail-projection-reset-consume-slice.md`
+    - `docs/reports/2026-04-15-phase07-app-shell-consume-boundary.md`
+    - `docs/reports/2026-04-15-phase07-p0-3-verification-contract.md`
+    - `artifacts/verification_contracts/20260415-phase07-telegram-p1-9-detail-projection-reset/`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_slice.cj`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj`
+  - _Requirement: REQ-3, REQ-5, REQ-6, REQ-7_
+
+- [x] P1-10. 启动 Telegram back-to-list refresh isolation consume slice
+  - 只在 `samples/telegram-ui-vertical-slice-001` 内继续扩展 app-shell consume contract，锁定 detail route 执行 back 回到 session list 后再执行 `refreshConversation(...)` 时，目标 summary 可以刷新，但 route / detail projection / bounded history 继续保持隔离。
+  - 保持实现仍为 repo-local Telegram sample bounded slice，不重开 shared harness、cache sample gate、`P1-6` second-consumer wiring、`P23` 或任何 `Phase06 regular` 方向。
+  - 回归项优先锁定 back-to-list refresh isolation、非目标 summary 稳定、以及 post-build runtime no-deadlock；若现有实现已满足语义，则只新增 shell-level regression 与 evidence，不扩宽代码边界。
+  - 已落地产物：
+    - `docs/reports/2026-04-15-phase07-p1-10-back-to-list-refresh-isolation-consume-slice.md`
+    - `docs/reports/2026-04-15-phase07-app-shell-consume-boundary.md`
+    - `docs/reports/2026-04-15-phase07-p0-3-verification-contract.md`
+    - `artifacts/verification_contracts/20260415-phase07-telegram-p1-10-back-to-list-refresh-isolation/`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj`
+  - _Requirement: REQ-3, REQ-5, REQ-6, REQ-7_
+
+- [x] P1-11. 启动 Telegram refresh-then-reopen coherence consume slice
+  - 只在 `samples/telegram-ui-vertical-slice-001` 内继续扩展 app-shell consume contract，锁定 detail -> back -> `refreshConversation(...)` -> reopen refreshed conversation 的闭环：重新打开后 route 必须回到 detail，bounded history 继续保持为 `2`，detail projection 必须重新绑定到刷新后的目标会话，且列表上已刷新的 target summary 不得丢失。
+  - 保持实现仍为 repo-local Telegram sample bounded slice，不重开 shared harness、cache sample gate、`P1-6` second-consumer wiring、`P23` 或任何 `Phase06 regular` 方向。
+  - 回归项优先锁定 refresh-then-reopen coherence、已刷新 target summary 的 list/detail 一致性、非目标 summary 稳定、以及 post-build runtime no-deadlock；若现有实现已满足语义，则只新增 shell-level regression 与 evidence，不扩宽代码边界。
+  - 已落地产物：
+    - `docs/reports/2026-04-15-phase07-p1-11-refresh-then-reopen-coherence-consume-slice.md`
+    - `docs/reports/2026-04-15-phase07-app-shell-consume-boundary.md`
+    - `docs/reports/2026-04-15-phase07-p0-3-verification-contract.md`
+    - `artifacts/verification_contracts/20260415-phase07-telegram-p1-11-refresh-then-reopen-coherence/`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj`
+  - _Requirement: REQ-3, REQ-5, REQ-6, REQ-7_
+
+- [x] P1-12. 启动 Telegram refresh-reopen-retarget coherence consume slice
+  - 只在 `samples/telegram-ui-vertical-slice-001` 内继续扩展 app-shell consume contract，锁定 `refreshConversation(...)` -> reopen refreshed conversation -> retarget to another visible conversation 的闭环：retarget 后 route 必须仍停在 detail，bounded history 继续保持为 `2`，detail projection 必须切到新目标会话，同时已刷新的原目标 summary 必须继续保留在 list surface。
+  - 保持实现仍为 repo-local Telegram sample bounded slice，不重开 shared harness、cache sample gate、`P1-6` second-consumer wiring、`P23` 或任何 `Phase06 regular` 方向。
+  - 回归项优先锁定 refresh-reopen-retarget coherence、retarget 后 detail/list 一致性、原目标 refreshed summary 保持、非目标 summary 稳定、以及 post-build runtime no-deadlock；若现有实现已满足语义，则只新增 shell-level regression 与 evidence，不扩宽代码边界。
+  - 已落地产物：
+    - `docs/reports/2026-04-15-phase07-p1-12-refresh-reopen-retarget-coherence-consume-slice.md`
+    - `docs/reports/2026-04-15-phase07-app-shell-consume-boundary.md`
+    - `docs/reports/2026-04-15-phase07-p0-3-verification-contract.md`
+    - `artifacts/verification_contracts/20260415-phase07-telegram-p1-12-refresh-reopen-retarget-coherence/`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj`
+  - _Requirement: REQ-3, REQ-5, REQ-6, REQ-7_
+
+- [x] P1-13. 启动 Telegram round-trip stability consume slice
+  - 只在 `samples/telegram-ui-vertical-slice-001` 内继续扩展 app-shell consume contract，锁定 `refreshConversation(target)` -> reopen refreshed target -> retarget(other visible conversation) -> `backFromDetail()` -> reopen original refreshed target` 的闭环：最终重新打开原 refreshed target 后 route 必须回到 detail，bounded history 继续保持为 `2`，detail projection 必须重新绑定到原 refreshed target，同时原刷新摘要不得丢失，retarget/back 不得污染非目标 summary。
+  - 保持实现仍为 repo-local Telegram sample bounded slice，不重开 shared harness、cache sample gate、`P1-6` second-consumer wiring、`P23` 或任何 `Phase06 regular` 方向。
+  - 回归项优先锁定 round-trip stability、original refreshed target 的 detail/list 一致性、retarget/back 后非目标 summary 稳定、以及 post-build runtime no-deadlock；若现有实现已满足语义，则只新增 shell-level regression 与 evidence，不扩宽代码边界。
+  - 已落地产物：
+    - `docs/reports/2026-04-15-phase07-p1-13-round-trip-stability-consume-slice.md`
+    - `docs/reports/2026-04-15-phase07-app-shell-consume-boundary.md`
+    - `docs/reports/2026-04-15-phase07-p0-3-verification-contract.md`
+    - `artifacts/verification_contracts/20260415-phase07-telegram-p1-13-round-trip-stability/`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj`
+  - _Requirement: REQ-3, REQ-5, REQ-6, REQ-7_
+
+- [x] P1-14. 启动 Telegram alternating-reopen bounded stability consume slice
+  - 只在 `samples/telegram-ui-vertical-slice-001` 内继续扩展 app-shell consume contract，锁定 `refreshConversation(target)` -> reopen refreshed target -> retarget(other visible conversation) -> `backFromDetail()` -> reopen original refreshed target -> `backFromDetail()` -> reopen other visible conversation 的闭环：最终交替 reopen 到另一个 visible conversation 后 route 必须回到 detail，bounded history 继续保持为 `2`，detail projection 必须切换到最后 reopen 的目标会话，同时原 refreshed target 与另一个 visible conversation 的 summary 都不得被污染。
+  - 保持实现仍为 repo-local Telegram sample bounded slice，不重开 shared harness、cache sample gate、`P1-6` second-consumer wiring、`P23` 或任何 `Phase06 regular` 方向。
+  - 回归项优先锁定 alternating-reopen bounded stability、两条 visible conversation 的 detail/list ownership 稳定、original refreshed target summary 保持、other visible summary 稳定、以及 post-build runtime no-deadlock；若现有实现已满足语义，则只新增 shell-level regression 与 evidence，不扩宽代码边界。
+  - 已落地产物：
+    - `docs/reports/2026-04-15-phase07-p1-14-alternating-reopen-bounded-stability-consume-slice.md`
+    - `docs/reports/2026-04-15-phase07-app-shell-consume-boundary.md`
+    - `docs/reports/2026-04-15-phase07-p0-3-verification-contract.md`
+    - `artifacts/verification_contracts/20260415-phase07-telegram-p1-14-alternating-reopen-bounded-stability/`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj`
+  - _Requirement: REQ-3, REQ-5, REQ-6, REQ-7_
+
+- [x] P1-15. 启动 Telegram active-detail target refresh-back-reopen consume slice
+  - 只在 `samples/telegram-ui-vertical-slice-001` 内继续收口 app-shell consume contract，锁定 active-detail target `refreshConversation(target)` -> `backFromDetail()` -> reopen same refreshed target 的闭环：refresh 期间 route 必须继续停在 detail，detail projection 必须保持绑定到当前 active target；back 后 route 必须回到 session list 且 detail projection 清空；随后 reopen same refreshed target 后 route 必须回到 detail，bounded history 继续保持为 `2`，detail projection 必须重新绑定到同一个 refreshed target，同时 refreshed target 与 non-target summary 都不得被污染。
+  - 与 `P1-11` 的边界：`P1-11` 锁定的是 list-route `back -> refresh -> reopen refreshed target`；`P1-15` 锁定的是 active-detail target `refresh -> back -> reopen same refreshed target`，不要求 retarget 或 alternating reopen。
+  - 保持实现仍为 repo-local Telegram sample bounded slice，不重开 shared harness、cache sample gate、`P1-6` second-consumer wiring、`P23` 或任何 `Phase06 regular` 方向。
+  - 回归项优先锁定 active-detail refresh-back-reopen coherence、active target refresh in-place 稳定、back 后 refreshed summary 保持、reopen same refreshed target 的 detail/list 一致性、以及 post-build runtime no-deadlock；若现有实现已满足语义，则只做 contract-lock、report 与 evidence refresh，不扩宽代码边界。
+  - 已落地产物：
+    - `docs/reports/2026-04-16-phase07-p1-15-active-detail-target-refresh-back-reopen-consume-slice.md`
+    - `docs/reports/2026-04-15-phase07-app-shell-consume-boundary.md`
+    - `docs/reports/2026-04-15-phase07-p0-3-verification-contract.md`
+    - `docs/current_state.v2.md`
+    - `docs/runtime_contract.v2.md`
+    - `docs/status/current_task_handoff.md`
+    - `artifacts/verification_contracts/20260416-phase07-telegram-p1-15-active-detail-target-refresh-back-reopen/`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj`
+  - _Requirement: REQ-3, REQ-5, REQ-6, REQ-7_
+
+- [x] P1-16. 启动 Telegram active-detail target refresh-retarget coherence consume slice
+  - 只在 `samples/telegram-ui-vertical-slice-001` 内继续收口 app-shell consume contract，锁定 active-detail target `refreshConversation(target)` -> retarget(other visible conversation) 的闭环：refresh 期间 route 必须继续停在 detail，detail projection 必须保持绑定到当前 active target；随后直接 retarget 到另一个 visible conversation 时 route 必须继续停在 detail，bounded history 继续保持为 `2`，detail projection 必须切到新目标会话，同时原 refreshed target summary 必须继续保留在 list surface，other visible summary 不得被污染，且 retarget 不得新增额外 service-history pull。
+  - 与 `P1-15` 的边界：`P1-15` 锁定的是 active-detail target `refresh -> back -> reopen same refreshed target`；`P1-16` 锁定的是 active-detail target `refresh -> retarget other visible conversation`，不要求 back / reopen。
+  - 与 `P1-12` 的边界：`P1-12` 锁定的是 list-route `refresh -> reopen refreshed target -> retarget other visible conversation`；`P1-16` 锁定的是 detail-route `refresh -> direct retarget other visible conversation`。
+  - 保持实现仍为 repo-local Telegram sample bounded slice，不重开 shared harness、cache sample gate、`P1-6` second-consumer wiring、`P23` 或任何 `Phase06 regular` 方向。
+  - 回归项优先锁定 active-detail refresh-retarget coherence、refresh 期间 active target detail ownership 稳定、retarget 后新目标 detail ownership 稳定、原 refreshed target summary 保持、other visible summary 稳定、以及 post-build runtime no-deadlock；若现有实现已满足语义，则只做 contract-lock、report 与 evidence refresh，不扩宽代码边界。
+  - 已落地产物：
+    - `docs/reports/2026-04-16-phase07-p1-16-active-detail-target-refresh-retarget-coherence-consume-slice.md`
+    - `docs/reports/2026-04-15-phase07-app-shell-consume-boundary.md`
+    - `docs/reports/2026-04-15-phase07-p0-3-verification-contract.md`
+    - `docs/current_state.v2.md`
+    - `docs/runtime_contract.v2.md`
+    - `docs/status/current_task_handoff.md`
+    - `artifacts/verification_contracts/20260416-phase07-telegram-p1-16-active-detail-target-refresh-retarget-coherence/`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj`
+  - _Requirement: REQ-3, REQ-5, REQ-6, REQ-7_
+
+- [x] P1-17. 启动 Telegram active-detail target refresh-retarget-back-reopen original refreshed target consume slice
+  - 只在 `samples/telegram-ui-vertical-slice-001` 内继续收口 app-shell consume contract，锁定 active-detail target `refreshConversation(target)` -> retarget(other visible conversation) -> `backFromDetail()` -> reopen original refreshed target 的闭环：refresh 期间 route 必须继续停在 detail，detail projection 必须保持绑定到当前 active target；direct retarget 后 route 必须继续停在 detail 且 detail projection 必须切到另一个 visible conversation；随后 back 后 route 必须回到 session list 且 detail projection 清空；最后 reopen original refreshed target 后 route 必须回到 detail，bounded history 继续保持为 `2`，detail projection 必须重新绑定到原 refreshed target，同时原 refreshed target 与 non-target summary 都不得被污染。
+  - 与 `P1-16` 的边界：`P1-16` 锁定的是 active-detail target `refresh -> retarget other visible conversation`；`P1-17` 在此基础上继续锁定 `back -> reopen original refreshed target` 的最小 round-trip，不要求第二次 back 或 alternating reopen。
+  - 与 `P1-13` 的边界：`P1-13` 锁定的是 list-route `refresh -> reopen refreshed target -> retarget -> back -> reopen original refreshed target`；`P1-17` 锁定的是 active-detail target `refresh -> direct retarget -> back -> reopen original refreshed target`。
+  - 保持实现仍为 repo-local Telegram sample bounded slice，不重开 shared harness、cache sample gate、`P1-6` second-consumer wiring、`P23` 或任何 `Phase06 regular` 方向。
+  - 回归项优先锁定 active-detail refresh-retarget-back-reopen original-target round-trip stability、retarget 后 back 的 list/detail 清空语义、reopen original refreshed target 的 detail/list 一致性、以及 post-build runtime no-deadlock；若现有实现已满足语义，则只做 contract-lock、report 与 evidence refresh，不扩宽代码边界。
+  - 已落地产物：
+    - `docs/reports/2026-04-17-phase07-p1-17-active-detail-target-refresh-retarget-back-reopen-original-target-consume-slice.md`
+    - `docs/reports/2026-04-15-phase07-app-shell-consume-boundary.md`
+    - `docs/reports/2026-04-15-phase07-p0-3-verification-contract.md`
+    - `docs/status/INDEX.md`
+    - `docs/current_state.v2.md`
+    - `docs/runtime_contract.v2.md`
+    - `docs/status/current_task_handoff.md`
+    - `artifacts/verification_contracts/20260417-phase07-telegram-p1-17-active-detail-target-refresh-retarget-back-reopen-original-target/`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj`
+  - _Requirement: REQ-3, REQ-5, REQ-6, REQ-7_
+
+- [x] P1-18. 启动 Telegram active-detail refresh-retarget alternating-reopen bounded stability consume slice
+  - 只在 `samples/telegram-ui-vertical-slice-001` 内继续收口 app-shell consume contract，锁定 active-detail target `refreshConversation(target)` -> retarget(other visible conversation) -> `backFromDetail()` -> reopen original refreshed target -> `backFromDetail()` -> reopen other visible conversation 的闭环：refresh 期间 route 必须继续停在 detail，detail projection 必须保持绑定到当前 active target；direct retarget 后 route 必须继续停在 detail 且 detail projection 必须切到另一个 visible conversation；第一次 back 后 route 必须回到 session list 且 detail projection 清空；reopen original refreshed target 后 route 必须回到 detail 且 detail projection 必须重新绑定到原 refreshed target；第二次 back 后 route 必须再次回到 session list 且 detail projection 清空；最终 reopen other visible conversation 后 route 必须停在 detail，bounded history 继续保持为 `2`，detail projection 必须切到最后 reopen 的 other visible conversation，同时原 refreshed target summary 必须继续保留在 list surface、messageCount 不漂移、other visible summary 前后都不得被污染，且整条链路不得新增额外 service-history pull。
+  - 与 `P1-17` 的边界：`P1-17` 锁定的是 active-detail target `refresh -> direct retarget -> back -> reopen original refreshed target`；`P1-18` 在此基础上继续锁定第二次 `back -> reopen other visible conversation` 的 alternating reopen bounded stability，不重开前序 round-trip 之外的 shared/package 方向。
+  - 与 `P1-14` 的边界：`P1-14` 锁定的是 list-route `refresh -> reopen refreshed target -> retarget other visible conversation -> back -> reopen other visible conversation`；`P1-18` 锁定的是 active-detail target 起点上的 `refresh -> direct retarget -> back -> reopen original refreshed target -> back -> reopen other visible conversation`。
+  - 保持实现仍为 repo-local Telegram sample bounded slice，不重开 shared harness、cache sample gate、`P1-6` second-consumer wiring、`P23` 或任何 `Phase06 regular` 方向。
+  - 回归项优先锁定 active-detail refresh-retarget alternating-reopen bounded stability、第二次 back 的 list/detail 清空语义、最终 reopen other visible conversation 的 detail ownership 切换、原 refreshed target summary/messageCount 保持、other visible summary 前后稳定、以及 post-build runtime no-deadlock；若现有实现已满足语义，则只做 contract-lock、report 与 evidence refresh，不扩宽代码边界。
+  - 已落地产物：
+    - `docs/reports/2026-04-17-phase07-p1-18-active-detail-refresh-retarget-alternating-reopen-bounded-stability-consume-slice.md`
+    - `docs/reports/2026-04-15-phase07-p0-3-verification-contract.md`
+    - `docs/status/INDEX.md`
+    - `docs/current_state.v2.md`
+    - `docs/runtime_contract.v2.md`
+    - `docs/status/current_task_handoff.md`
+    - `artifacts/verification_contracts/20260417-phase07-telegram-p1-18-active-detail-refresh-retarget-alternating-reopen-bounded-stability/`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj`
+  - _Requirement: REQ-3, REQ-5, REQ-6, REQ-7_
+
+- [x] P1-19. 启动 shared worker-fetch helper unification slice
+  - 只在 `samples/phase07-shared-service-refresh-harness` 与两个现有 consumer 的最小消费点内，收口 duplicated 的 worker-side `RealMessageService.getMessages(...) -> debugDrainPromiseResolutions() -> signal.currentSnapshot()` idiom，把它提升为 shared package 的单一 public helper。
+  - 与 `P1-6` 的边界：`P1-6` 锁定的是 dual-consumer compatibility 与 repo-local shared-harness landing；`P1-19` 在不重开 packaging 的前提下，继续收口 worker fetch/drain/snapshot helper 的统一消费面。
+  - 与 `P0-1` 的边界：`P0-1` 明确把 Telegram local `runWorkerGetMessages` 留在 defer；`P1-19` 只消化这个 defer，不扩大 shared service 语义，也不扩 app-shell/router/page/controller 行为面。
+  - 保持实现仍为 repo-local shared-harness bounded slice，不触碰 `telegram_app_shell.cj`、`telegram_ui_slice.cj`、router/page/controller，不重开 cache compile-budget、`P23`、任何 `Phase06 regular` 方向，也不把 cache sample 里的 legacy local-harness tests 一并卷入。
+  - 回归项优先锁定 shared helper public export、Telegram consumer 侧不再保留本地 `runWorkerGetMessages(...)` 实现、Phase07 second-consumer compatibility test 不再保留本地 `runSharedWorkerGetMessages(...)` 实现、以及 canonical Telegram build/runtime gate 与 cache sample build gate 继续闭合；若现有行为 contract 已满足，则只做最小 helper refactor、report/state sync 与 evidence refresh。
+  - 已落地产物：
+    - `docs/reports/2026-04-17-phase07-p1-19-shared-worker-fetch-helper-unification-slice.md`
+    - `docs/reports/2026-04-15-phase07-p0-3-verification-contract.md`
+    - `docs/status/INDEX.md`
+    - `docs/current_state.v2.md`
+    - `docs/runtime_contract.v2.md`
+    - `docs/status/current_task_handoff.md`
+    - `artifacts/verification_contracts/20260417-phase07-shared-p1-19-worker-fetch-helper-unification/`
+    - `samples/phase07-shared-service-refresh-harness/src/phase07_shared_service_refresh_harness.cj`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_message_service_harness.cj`
+    - `samples/real-message-service-cache-001/src/phase07_second_consumer_compatibility_test.cj`
+  - _Requirement: REQ-3, REQ-4, REQ-6, REQ-7_
+
+- [x] P1-20. 启动 shared second-consumer send-refresh dispatch parity slice
+  - 只在 `samples/real-message-service-cache-001/src/phase07_second_consumer_compatibility_test.cj` 内补一个最小 bounded regression，锁定 shared second consumer 完成 `warmup fetch / drain -> worker send -> main-context drain` 后的 dataset refresh dispatch parity。
+  - 与 `P1-19` 的边界：`P1-19` 锁定的是 shared worker fetch/drain/snapshot helper 的统一消费面；`P1-20` 在不新增 shared worker-send helper 的前提下，只补 second consumer 的 send-refresh dispatch parity contract。
+  - 与 `P1-6` 的边界：`P1-6` 锁定的是 second-consumer compatibility 基线；`P1-20` 只证明第二 consumer 不只支持 fetch/drain path，也支持最小 worker send -> main-context dataset refresh dispatch，不重开 packaging。
+  - 保持实现仍为 repo-local shared-harness regression-first slice，不触碰 `telegram_app_shell.cj`、`telegram_ui_slice.cj`、router/page/controller，不改写 cache sample mixed `5s` wrapper 语义，不触碰 `P23` 或任何 `Phase06 regular` 方向。
+  - 回归项优先锁定 warmup fetch/drain、worker send、main drain、observer notification count、pending queue、last message text、delivery context；若现有 shared service contract 已满足，则只新增最小 second-consumer regression、report/state sync 与 evidence refresh，不扩大 shared API / service semantics。
+  - 已落地产物：
+    - `docs/reports/2026-04-17-phase07-p1-20-shared-second-consumer-send-refresh-dispatch-parity-slice.md`
+    - `docs/reports/2026-04-15-phase07-p0-3-verification-contract.md`
+    - `docs/status/INDEX.md`
+    - `docs/current_state.v2.md`
+    - `docs/runtime_contract.v2.md`
+    - `docs/status/current_task_handoff.md`
+    - `artifacts/verification_contracts/20260417-phase07-shared-p1-20-second-consumer-send-refresh-dispatch-parity/`
+    - `samples/real-message-service-cache-001/src/phase07_second_consumer_compatibility_test.cj`
+  - _Requirement: REQ-3, REQ-4, REQ-6, REQ-7_
+
+- [x] P1-21. 启动 shared second-consumer optimistic-signal parity slice
+  - 只在 `samples/real-message-service-cache-001/src/phase07_second_consumer_compatibility_test.cj` 内补一个最小 bounded regression，锁定 second consumer 在既有 shared `MessageSignal` 已建立并完成 warmup fetch/drain 后，`worker send` 必须在 `main-context drain` 之前先反映到 signal snapshot。
+  - 与 `P1-20` 的边界：`P1-20` 锁定的是 `worker send -> main-context dataset refresh dispatch` parity；`P1-21` 在不新增 shared helper/API 的前提下，只补 `worker send -> optimistic signal snapshot before main drain` parity。
+  - 与 `source_semantics_v9` / `promise_runtime_v11` 的边界：那些测试属于 cache sample local harness；`P1-21` 只证明其中最小的 signal optimism contract 已经能通过当前 shared second consumer surface 表达，不把 legacy local-harness tests 整包卷入 write set。
+  - 保持实现仍为 repo-local shared-harness regression-first slice，不触碰 `telegram_app_shell.cj`、`telegram_ui_slice.cj`、router/page/controller，不改写 cache sample mixed `5s` wrapper 语义，不触碰 `P23` 或任何 `Phase06 regular` 方向。
+  - 回归项优先锁定 fetch promise drain 前初始空快照、warmup 后既有 signal、worker send 后 main drain 前 optimistic signal snapshot、observer notification count、pending queue、last message text、delivery context；若现有 shared service contract 已满足，则只新增最小 second-consumer regression、report/state sync 与 evidence refresh，不扩大 shared API / service semantics。
+  - 已落地产物：
+    - `docs/reports/2026-04-17-phase07-p1-21-shared-second-consumer-optimistic-signal-parity-slice.md`
+    - `docs/reports/2026-04-15-phase07-p0-3-verification-contract.md`
+    - `docs/status/INDEX.md`
+    - `docs/current_state.v2.md`
+    - `docs/runtime_contract.v2.md`
+    - `docs/status/current_task_handoff.md`
+    - `artifacts/verification_contracts/20260417-phase07-shared-p1-21-second-consumer-optimistic-signal-parity/`
+    - `samples/real-message-service-cache-001/src/phase07_second_consumer_compatibility_test.cj`
+  - _Requirement: REQ-3, REQ-4, REQ-6, REQ-7_
+
+- [x] P1-22. 启动 shared second-consumer invalidate/refetch parity slice
+  - 只在 `samples/real-message-service-cache-001/src/phase07_second_consumer_compatibility_test.cj` 内补一个最小 bounded regression，锁定 second consumer 能基于现有 public `debugInvalidateCache(...)` surface 失效一个已 warmup 的 shared cache/signal，并重新拉取 replacement history。
+  - 与 `P1-21` 的边界：`P1-21` 锁定的是 `worker send -> optimistic signal snapshot before main drain` parity；`P1-22` 在不新增 shared helper/API 的前提下，只补 `invalidate -> replacement signal -> refetch -> main-context delivery` parity。
+  - 与 `double_fetch_invalidation` / `signal_runtime_v10` 的边界：那些测试属于 cache sample local harness；`P1-22` 只证明其中最小的 invalidate/refetch contract 已经能通过当前 shared second consumer surface 表达，不把 debug dispatch log、runtimeId 或 legacy local-harness tests 整包卷入 write set。
+  - 保持实现仍为 repo-local shared-harness regression-first slice，不触碰 `telegram_app_shell.cj`、`telegram_ui_slice.cj`、router/page/controller，不改写 cache sample mixed `5s` wrapper 语义，不触碰 `P23` 或任何 `Phase06 regular` 方向。
+  - 回归项优先锁定 warmup fetch/drain、invalidate 前旧 signal、replacement signal 空快照、refetch 后新历史、observer main-context delivery、pending queue 清空；若现有 shared service contract 已满足，则只新增最小 second-consumer regression、report/state sync 与 evidence refresh，不扩大 shared API / service semantics。
+  - 已落地产物：
+    - `docs/reports/2026-04-17-phase07-p1-22-shared-second-consumer-invalidate-refetch-parity-slice.md`
+    - `docs/reports/2026-04-15-phase07-p0-3-verification-contract.md`
+    - `docs/status/INDEX.md`
+    - `docs/current_state.v2.md`
+    - `docs/runtime_contract.v2.md`
+    - `docs/status/current_task_handoff.md`
+    - `artifacts/verification_contracts/20260417-phase07-shared-p1-22-second-consumer-invalidate-refetch-parity/`
+    - `samples/real-message-service-cache-001/src/phase07_second_consumer_compatibility_test.cj`
+  - _Requirement: REQ-3, REQ-4, REQ-6, REQ-7_
+
+- [x] P1-23. 启动 shared second-consumer pre-drain invalidate discard parity slice
+  - 只在 `samples/real-message-service-cache-001/src/phase07_second_consumer_compatibility_test.cj` 内补一个最小 bounded regression，锁定 second consumer 在 first fetch 已触发但 `debugDrainPromiseResolutions()` 尚未执行时，执行现有 public `debugInvalidateCache(...)` 后必须丢弃旧 pending fetch，并只允许 replacement refetch 成为后续唯一有效 handoff。
+  - 与 `P1-22` 的边界：`P1-22` 锁定的是 warmup drain 完成后的 invalidate/refetch parity；`P1-23` 在不新增 shared helper/API 的前提下，只补 pre-drain invalidate discard parity。
+  - 与 `double_fetch_invalidation` / `promise_runtime_v11` / `source_semantics_v9` 的边界：那些测试属于 cache sample local harness；`P1-23` 只证明其中最小的 pre-drain discard contract 已经能通过当前 shared second consumer surface 表达，不把 delayed handoff control、dispatch log、runtimeId、updateVersion、observeRuntime 或 legacy local-harness tests 整包卷入 write set。
+  - 保持实现仍为 repo-local shared-harness regression-first slice，不触碰 `telegram_app_shell.cj`、`telegram_ui_slice.cj`、router/page/controller，不改写 cache sample mixed `5s` wrapper 语义，不触碰 `P23` 或任何 `Phase06 regular` 方向。
+  - 回归项优先锁定 pre-drain 首次空 signal、invalidate 后旧 pending fetch 丢弃、replacement signal pre-drain 空快照、replacement drain 后仅 replacement payload 生效、old held signal 无反向污染、observer main-gated delivery、pending queue 清空；若现有 shared service contract 已满足，则只新增最小 second-consumer regression、report/state sync 与 evidence refresh，不扩大 shared API / service semantics。
+  - 已落地产物：
+    - `docs/reports/2026-04-17-phase07-p1-23-shared-second-consumer-pre-drain-invalidate-discard-parity-slice.md`
+    - `docs/reports/2026-04-15-phase07-p0-3-verification-contract.md`
+    - `docs/status/INDEX.md`
+    - `docs/current_state.v2.md`
+    - `docs/runtime_contract.v2.md`
+    - `docs/status/current_task_handoff.md`
+    - `artifacts/verification_contracts/20260417-phase07-shared-p1-23-second-consumer-pre-drain-invalidate-discard-parity/`
+    - `samples/real-message-service-cache-001/src/phase07_second_consumer_compatibility_test.cj`
+  - _Requirement: REQ-3, REQ-4, REQ-6, REQ-7_
+
+- [x] P1-24. 启动 shared second-consumer cold-send seeded pre-drain fetch parity slice
+  - 只在 `samples/real-message-service-cache-001/src/phase07_second_consumer_compatibility_test.cj` 内补一个最小 bounded regression，锁定 second consumer 在 cold `sendMessage(...)` 先 seed cache 后，首次 `getMessages(...)` 仍会触发一次共享 `adapter.getHistory(...)`，但在 `debugDrainPromiseResolutions()` 前 `MessageSignal.currentSnapshot()` 必须先暴露 seeded local snapshot，而不是空快照或远端历史。
+  - 与 `P1-23` 的边界：`P1-23` 锁定的是 pre-drain invalidate discard parity；`P1-24` 在不新增 shared helper/API 的前提下，只补 cold-send seeded pre-drain first-fetch parity。
+  - 与 `promise_runtime_v11` / `source_semantics_v9` 的边界：那些测试属于 cache sample local harness；`P1-24` 只证明其中最小的 cold-send seeded pre-drain fetch contract 已经能通过当前 shared second consumer surface 表达，不把 runtimeId、updateVersion、observeRuntime、delayed handoff、dispatch log 或 legacy local-harness tests 整包卷入 write set。
+  - 保持实现仍为 repo-local shared-harness regression-first slice，不触碰 `samples/phase07-shared-service-refresh-harness/src/phase07_shared_service_refresh_harness.cj`、不触碰 `telegram_app_shell.cj`、`telegram_ui_slice.cj`、router/page/controller，不改写 cache sample mixed `5s` wrapper 语义，不触碰 `P23` 或任何 `Phase06 regular` 方向。
+  - 回归项优先锁定 cold send seeded cache、首次 get 的单次远端拉取、pre-drain seeded local snapshot、post-drain remote history 切换、observer main-gated delivery 与 pending queue 清空；若现有 shared service contract 已满足，则只新增最小 second-consumer regression、report/state sync 与 evidence refresh，不扩大 shared API / service semantics。
+  - 已落地产物：
+    - `docs/reports/2026-04-17-phase07-p1-24-shared-second-consumer-cold-send-seeded-pre-drain-fetch-parity-slice.md`
+    - `docs/reports/2026-04-15-phase07-p0-3-verification-contract.md`
+    - `docs/status/INDEX.md`
+    - `docs/current_state.v2.md`
+    - `docs/runtime_contract.v2.md`
+    - `docs/status/current_task_handoff.md`
+    - `artifacts/verification_contracts/20260417-phase07-shared-p1-24-second-consumer-cold-send-seeded-pre-drain-fetch-parity/`
+    - `samples/real-message-service-cache-001/src/phase07_second_consumer_compatibility_test.cj`
+  - _Requirement: REQ-3, REQ-4, REQ-6, REQ-7_
+
+- [x] P1-25. 启动 shared second-consumer same-peer repeated get reuse-no-refetch parity slice
+  - 只在 `samples/real-message-service-cache-001/src/phase07_second_consumer_compatibility_test.cj` 内补一个最小 bounded regression，锁定 second consumer 在同一 `peerId` 上完成首次 `getMessages(...)` warmup fetch/drain 之后，再次 `getMessages(...)` 读取时必须复用已 warmup 的 shared signal/cache，而不是再次触发共享 `adapter.getHistory(...)`。
+  - 与 `P1-24` 的边界：`P1-24` 锁定的是 cold-send seeded pre-drain first-fetch parity；`P1-25` 在不新增 shared helper/API 的前提下，只补 same-peer repeated get reuse/no-refetch parity。
+  - 与 `cache_behavior_test` 的边界：`cache_behavior_test` 属于 cache sample local harness；`P1-25` 只证明其中最小的 same-peer repeated get no-refetch contract 已经能通过当前 shared second consumer + refresh bridge public surface 表达，不把 runtimeId、updateVersion、observeRuntime、delayed handoff、dispatch log 或 legacy local-harness tests 整包卷入 write set。
+  - 保持实现仍为 repo-local shared-harness regression-first slice，不触碰 `samples/phase07-shared-service-refresh-harness/src/phase07_shared_service_refresh_harness.cj`、不触碰 `telegram_app_shell.cj`、`telegram_ui_slice.cj`、router/page/controller，不改写 cache sample mixed `5s` wrapper 语义，不触碰 `P23` 或任何 `Phase06 regular` 方向。
+  - 回归项优先锁定 same-peer 首次 get 的单次远端拉取、warmup 后 remote history 可见、第二次 get 不重拉取、第二次 snapshot 继续暴露同一份 warm history、observer count 不增加、pending queue 保持为空；若现有 shared service contract 已满足，则只新增最小 second-consumer regression、report/state sync 与 evidence refresh，不扩大 shared API / service semantics。
+  - 已落地产物：
+    - `docs/reports/2026-04-17-phase07-p1-25-shared-second-consumer-same-peer-repeated-get-reuse-no-refetch-parity-slice.md`
+    - `docs/reports/2026-04-15-phase07-p0-3-verification-contract.md`
+    - `docs/status/INDEX.md`
+    - `docs/current_state.v2.md`
+    - `docs/runtime_contract.v2.md`
+    - `docs/status/current_task_handoff.md`
+    - `artifacts/verification_contracts/20260417-phase07-shared-p1-25-second-consumer-same-peer-repeated-get-reuse-no-refetch-parity/`
+    - `samples/real-message-service-cache-001/src/phase07_second_consumer_compatibility_test.cj`
+  - _Requirement: REQ-3, REQ-4, REQ-6, REQ-7_
+
+- [x] P1-26. 启动 shared second-consumer warm-send append-without-refetch parity slice
+  - 只在 `samples/real-message-service-cache-001/src/phase07_second_consumer_compatibility_test.cj` 内补一个最小 bounded regression，锁定 second consumer 在同一 `peerId` 上完成首次 `getMessages(...)` warmup fetch/drain 后执行 warm `sendMessage(...)` 时，不得再次触发共享 `adapter.getHistory(...)`，而是只把已 warmup 的 signal/cache 追加到 append 后 payload。
+  - 与 `P1-25` 的边界：`P1-25` 锁定的是 same-peer repeated get reuse/no-refetch parity；`P1-26` 在不新增 shared helper/API 的前提下，只补 warm send append-without-refetch parity，不把第二次 `getMessages(...)` 变成本 slice 主 contract。
+  - 与 `P1-20` / `P1-21` 的边界：`P1-20` 锁定的是 send-refresh dispatch parity，`P1-21` 锁定的是 optimistic-signal parity；`P1-26` 只证明 warm send 不会触发第二次 history pull，并且已 warmup 的 signal/cache 只表现为 append 后 payload。
+  - 与 `cache_behavior_test` 的边界：`cache_behavior_test` 属于 cache sample local harness；`P1-26` 只证明其中最小的 warm send append-without-refetch contract 已经能通过当前 shared second consumer + refresh bridge public surface 表达，不把 runtimeId、updateVersion、observeRuntime、delayed handoff、dispatch log 或 legacy local-harness tests 整包卷入 write set。
+  - 保持实现仍为 repo-local shared-harness regression-first slice，不触碰 `samples/phase07-shared-service-refresh-harness/src/phase07_shared_service_refresh_harness.cj`、不触碰 `telegram_app_shell.cj`、`telegram_ui_slice.cj`、router/page/controller，不改写 cache sample mixed `5s` wrapper 语义，不触碰 `P23` 或任何 `Phase06 regular` 方向。
+  - 回归项优先锁定 warmup 首次 get 的单次远端拉取、warmup 后 remote history 可见、warm send 不重拉取 history、signal/cache 只追加 send payload、observer 继续 main-gated、pending queue 清空；若现有 shared service contract 已满足，则只新增最小 second-consumer regression、report/state sync 与 evidence refresh，不扩大 shared API / service semantics。
+  - 已落地产物：
+    - `docs/reports/2026-04-17-phase07-p1-26-shared-second-consumer-warm-send-append-without-refetch-parity-slice.md`
+    - `docs/reports/2026-04-15-phase07-p0-3-verification-contract.md`
+    - `docs/status/INDEX.md`
+    - `docs/current_state.v2.md`
+    - `docs/runtime_contract.v2.md`
+    - `docs/status/current_task_handoff.md`
+    - `artifacts/verification_contracts/20260417-phase07-shared-p1-26-second-consumer-warm-send-append-without-refetch-parity/`
+    - `samples/real-message-service-cache-001/src/phase07_second_consumer_compatibility_test.cj`
+  - _Requirement: REQ-3, REQ-4, REQ-6, REQ-7_
+
+- [x] P1-27. 启动 shared second-consumer warm-send repeated-get reuse-no-refetch parity slice
+  - 只在 `samples/real-message-service-cache-001/src/phase07_second_consumer_compatibility_test.cj` 内补一个最小 bounded regression，锁定 second consumer 在同一 `peerId` 上完成首次 `getMessages(...)` warmup fetch/drain、执行 warm `sendMessage(...)`、且 send refresh 尚未 main drain 时，再次执行 same-peer `getMessages(...)` 必须继续复用 append 后的 shared signal/cache，而不是再次触发共享 `adapter.getHistory(...)` 或新增 refresh delivery。
+  - 与 `P1-26` 的边界：`P1-26` 锁定的是 warm send append-without-refetch parity，并明确不把第二次 `getMessages(...)` 变成本 slice 主 contract；`P1-27` 只冻结这一个被刻意留出的 repeated-get reuse/no-refetch edge。
+  - 与 `P1-25` 的边界：`P1-25` 锁定的是 warmup 后、send 之前的 same-peer repeated get reuse/no-refetch parity；`P1-27` 只证明 warm send 已经 append payload 之后，same-peer repeated get 仍继续复用这份已 append 的 signal/cache。
+  - 保持实现仍为 repo-local shared-harness regression-first slice，不触碰 `samples/phase07-shared-service-refresh-harness/src/phase07_shared_service_refresh_harness.cj`、不触碰 `telegram_app_shell.cj`、`telegram_ui_slice.cj`、router/page/controller，不改写 cache sample mixed `5s` wrapper 语义，不触碰 `P23`、任何 `Phase06 regular` 方向，也不引入 `debugDispatchLog`、`runtimeId`、`updateVersion`、`observeRuntime`、delayed handoff control 或 stale-dispatch probe-only API。
+  - 回归项优先锁定 warmup 首次 get 的单次远端拉取、warm send 后 append payload、same-peer 第二次 get 继续暴露 append 后 payload、observer count 在 main drain 前保持不增加、pending queue 仅保留 send 产生的单个 refresh 且最终清空；若现有 shared service contract 已满足，则只新增最小 second-consumer regression、report/state sync 与 evidence refresh，不扩大 shared API / service semantics。
+  - 已落地产物：
+    - `docs/reports/2026-04-17-phase07-p1-27-shared-second-consumer-warm-send-repeated-get-reuse-no-refetch-parity-slice.md`
+    - `docs/reports/2026-04-15-phase07-p0-3-verification-contract.md`
+    - `docs/status/INDEX.md`
+    - `docs/current_state.v2.md`
+    - `docs/runtime_contract.v2.md`
+    - `docs/status/current_task_handoff.md`
+    - `artifacts/verification_contracts/20260417-phase07-shared-p1-27-second-consumer-warm-send-repeated-get-reuse-no-refetch-parity/`
+    - `samples/real-message-service-cache-001/src/phase07_second_consumer_compatibility_test.cj`
+  - _Requirement: REQ-3, REQ-4, REQ-6, REQ-7_
+
+- [x] P1-28. 启动 Telegram active-detail warm-send summary coherence consume slice
+  - 只在 `samples/telegram-ui-vertical-slice-001` 内补一个最小 bounded regression，锁定目标 conversation 已经 active 于 `TelegramChatDetailPage` 时，Telegram app-shell 首次消费已经冻结的 shared `sendMessage(...)` 能力后，same-peer warm-send 仍保持 detail route / bounded history 稳定，同时只回灌 target summary coherence。
+  - 与 `P1-26` 的边界：`P1-26` 锁定的是 shared second consumer 的 warm-send append-without-refetch parity；`P1-28` 不重开 shared harness，只把这条已冻结的 shared `sendMessage(...)` public surface 首次消费回 Telegram app-shell。
+  - 与 `P1-27` 的边界：`P1-27` 锁定的是 shared second consumer 的 warm-send repeated-get reuse/no-refetch edge；`P1-28` 不追加 repeated-get contract，只锁定 active-detail same-peer warm-send 后 list/detail coherence、non-target stability 与 no-refetch。
+  - 与 `P1-18` 的边界：`P1-18` 锁定的是 active-detail refresh-retarget alternating-reopen bounded stability；`P1-28` 则切到 active-detail same-peer warm-send summary coherence，不重开 refresh/retarget/back/reopen 链路。
+  - 保持实现仍为 repo-local Telegram sample bounded slice，只允许触碰 `telegram_app_shell.cj`、`telegram_ui_slice.cj` 与 `telegram_ui_vertical_slice_test.cj` 的最小消费点，不触碰 `samples/phase07-shared-service-refresh-harness/**`、`samples/real-message-service-cache-001/**`、cache compile-budget、`P23` 或任何 `Phase06 regular` 方向，也不新增 shared helper/API。
+  - 回归项优先锁定 active detail same-peer send 后 route 继续停在 `TelegramChatDetailPage`、history 保持 `2`、detail title / peer label / placeholder body 不漂移、target summary `previewText` 更新为 sent text 且 `messageCount` 从 `2` 变 `3`、non-target summary 保持不变、`adapter.getHistoryCallCount()` 不因 send 增长、`adapter.sendMessageCallCount()` 为 `1`；若现有共享 send surface 已满足，则只补最小 Telegram shell-level regression、consume path、report/state sync 与 evidence refresh，不扩大 shared 语义。
+  - 已落地产物：
+    - `docs/reports/2026-04-17-phase07-p1-28-telegram-active-detail-warm-send-summary-coherence-consume-slice.md`
+    - `docs/status/current_committed_plan.md`
+    - `docs/status/INDEX.md`
+    - `docs/current_state.v2.md`
+    - `docs/runtime_contract.v2.md`
+    - `docs/status/current_task_handoff.md`
+    - `AGENTS.md`
+    - `artifacts/verification_contracts/20260417-phase07-telegram-p1-28-active-detail-warm-send-summary-coherence/`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_app_shell.cj`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_slice.cj`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj`
+  - _Requirement: REQ-3, REQ-5, REQ-6, REQ-7_
+
+- [x] P1-29. 启动 Telegram active-detail warm-send-retarget coherence consume slice
+  - 只在 `samples/telegram-ui-vertical-slice-001` 内补一个最小 bounded regression，锁定目标 conversation 已经 active 于 `TelegramChatDetailPage` 时，Telegram app-shell 先执行 same-peer warm `sendMessageToActiveConversation(sentText)`，再直接 `openConversation(otherVisibleConversation)` 后，仍保持 bounded detail/list coherence。
+  - 与 `P1-28` 的边界：`P1-28` 锁定的是 active-detail same-peer warm-send summary coherence；`P1-29` 在不扩 generic send API 的前提下，只冻结 warm-send 之后 direct retarget 的最小闭环。
+  - 与 `P1-16` / `P1-18` 的边界：`P1-16` / `P1-18` 锁定的是 refresh 起点上的 active-detail retarget coherence；`P1-29` 则切到 warm-send 起点上的 active-detail retarget coherence，不重开 refresh/back/reopen 链路。
+  - 保持实现仍为 repo-local Telegram sample bounded slice，不触碰 `samples/phase07-shared-service-refresh-harness/**`、`samples/real-message-service-cache-001/**`、cache compile-budget、`P23` 或任何 `Phase06 regular` 方向，也不新增 shared helper/API 或 generic send abstraction。
+  - 回归项优先锁定 active detail target warm-send 后 direct retarget 仍停在 `TelegramChatDetailPage`、history 保持 `2`、retarget 后 detail title / peer label 切到新目标、placeholder body 不漂移、原 target summary 保留 sent text 与 `messageCount = 3`、新 retarget 目标 summary 前后不被污染、`adapter.getHistoryCallCount()` 保持 initial-load 值、`adapter.sendMessageCallCount()` 为 `1`；若现有 Telegram consume contract 已满足，则只新增最小 shell-level regression、report/state sync 与 evidence refresh，不扩大代码边界。
+  - 已落地产物：
+    - `docs/reports/2026-04-17-phase07-p1-29-telegram-active-detail-warm-send-retarget-coherence-consume-slice.md`
+    - `docs/reports/2026-04-15-phase07-app-shell-consume-boundary.md`
+    - `docs/status/current_committed_plan.md`
+    - `docs/status/INDEX.md`
+    - `docs/current_state.v2.md`
+    - `docs/runtime_contract.v2.md`
+    - `docs/status/current_task_handoff.md`
+    - `AGENTS.md`
+    - `artifacts/verification_contracts/20260417-phase07-telegram-p1-29-active-detail-warm-send-retarget-coherence/`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj`
+  - _Requirement: REQ-3, REQ-5, REQ-6, REQ-7_
+
+- [x] P1-30. 启动 Telegram active-detail warm-send-retarget-back-reopen original-sent-target consume slice
+  - 只在 `samples/telegram-ui-vertical-slice-001` 内补一个最小 bounded regression，锁定目标 conversation 已经 active 于 `TelegramChatDetailPage` 时，Telegram app-shell 先执行 same-peer warm `sendMessageToActiveConversation(sentText)`，再直接 `openConversation(otherVisibleConversation)`、`backFromDetail()`，最后 reopen 原 sent target 后，仍保持 bounded detail/list coherence。
+  - 与 `P1-29` 的边界：`P1-29` 锁定的是 warm-send 后 direct retarget 的最小闭环；`P1-30` 在不扩 generic send API 的前提下，只再延长一步，冻结 retarget 后的 back-to-list reset 与 reopen 原 sent target 的最小 round-trip。
+  - 与 `P1-17` / `P1-18` 的边界：`P1-17` / `P1-18` 锁定的是 refresh 起点上的 retarget-back-reopen round-trip；`P1-30` 则切到 warm-send 起点上的 retarget-back-reopen original-target coherence，不重开 refresh 或 alternating-reopen 链路。
+  - 保持实现仍为 repo-local Telegram sample bounded slice，不触碰 `samples/phase07-shared-service-refresh-harness/**`、`samples/real-message-service-cache-001/**`、cache compile-budget、`P23` 或任何 `Phase06 regular` 方向，也不新增 shared helper/API 或 generic send abstraction。
+  - 回归项优先锁定 active detail target warm-send 后 direct retarget、back 回到 `TelegramSessionListPage` 且清空 detail getters、reopen 原 sent target 后重新绑定 detail title / peer label / placeholder body、history 全程保持 `2`、原 sent target summary 保留 sent text 与 `messageCount = 3`、另一条 visible conversation summary 前后不被污染、`adapter.getHistoryCallCount()` 保持 initial-load 值、`adapter.sendMessageCallCount()` 为 `1`；若现有 Telegram consume contract 已满足，则只新增最小 shell-level regression、report/state sync 与 evidence refresh，不扩大代码边界。
+  - 已落地产物：
+    - `docs/reports/2026-04-17-phase07-p1-30-telegram-active-detail-warm-send-retarget-back-reopen-original-sent-target-consume-slice.md`
+    - `docs/reports/2026-04-15-phase07-app-shell-consume-boundary.md`
+    - `docs/status/current_committed_plan.md`
+    - `docs/status/INDEX.md`
+    - `docs/current_state.v2.md`
+    - `docs/runtime_contract.v2.md`
+    - `docs/status/current_task_handoff.md`
+    - `AGENTS.md`
+    - `artifacts/verification_contracts/20260417-phase07-telegram-p1-30-active-detail-warm-send-retarget-back-reopen-original-sent-target/`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj`
+  - _Requirement: REQ-3, REQ-5, REQ-6, REQ-7_
+
+- [x] P1-31. 启动 Telegram active-detail warm-send-retarget alternating-reopen bounded stability consume slice
+  - 只在 `samples/telegram-ui-vertical-slice-001` 内补一个最小 bounded regression，锁定目标 conversation 已经 active 于 `TelegramChatDetailPage` 时，Telegram app-shell 先执行 same-peer warm `sendMessageToActiveConversation(sentText)`，再直接 `openConversation(otherVisibleConversation)`、`backFromDetail()`、reopen 原 sent target、再次 `backFromDetail()`，最后 reopen 另一条 visible conversation 后，仍保持 bounded detail/list coherence。
+  - 与 `P1-30` 的边界：`P1-30` 锁定的是 warm-send 后 retarget-back-reopen 原 sent target 的最小 round-trip；`P1-31` 在不扩 generic send API 的前提下，只再延长一步，冻结第二次 back-to-list reset 与最终 reopen 另一条 visible conversation 的最小 alternating-reopen 闭环。
+  - 与 `P1-18` 的边界：`P1-18` 锁定的是 refresh 起点上的 active-detail refresh-retarget alternating-reopen bounded stability；`P1-31` 则切到 warm-send 起点上的 alternating-reopen bounded stability，不重开 refresh 链路。
+  - 保持实现仍为 repo-local Telegram sample bounded slice，不触碰 `samples/phase07-shared-service-refresh-harness/**`、`samples/real-message-service-cache-001/**`、cache compile-budget、`P23` 或任何 `Phase06 regular` 方向，也不新增 shared helper/API 或 generic send abstraction。
+  - 回归项优先锁定 active detail target warm-send 后 direct retarget、第一次 back 回到 `TelegramSessionListPage` 且清空 detail getters、reopen 原 sent target、第二次 back 再次回到 `TelegramSessionListPage` 且 detail getters 仍清空、最终 reopen 另一条 visible conversation 后重新绑定 detail title / peer label / placeholder body、history 全程保持 `2`、原 sent target summary 全程保留 sent text 与 `messageCount = 3`、另一条 visible conversation summary 在 retarget 前后、两次 back 后、最终 reopen 后都不被污染、`adapter.getHistoryCallCount()` 保持 initial-load 值、`adapter.sendMessageCallCount()` 为 `1`；若现有 Telegram consume contract 已满足，则只新增最小 shell-level regression、report/state sync 与 evidence refresh，不扩大代码边界。
+  - 已落地产物：
+    - `docs/reports/2026-04-17-phase07-p1-31-telegram-active-detail-warm-send-retarget-alternating-reopen-bounded-stability-consume-slice.md`
+    - `docs/reports/2026-04-15-phase07-app-shell-consume-boundary.md`
+    - `docs/status/current_committed_plan.md`
+    - `docs/status/INDEX.md`
+    - `docs/current_state.v2.md`
+    - `docs/runtime_contract.v2.md`
+    - `docs/status/current_task_handoff.md`
+    - `AGENTS.md`
+    - `artifacts/verification_contracts/20260417-phase07-telegram-p1-31-active-detail-warm-send-retarget-alternating-reopen-bounded-stability/`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj`
+  - _Requirement: REQ-3, REQ-5, REQ-6, REQ-7_
+
+- [x] P1-32. 启动 Telegram active-detail warm-send-back-reopen sent-target coherence consume slice
+  - 只在 `samples/telegram-ui-vertical-slice-001` 内补一个最小 bounded regression，锁定目标 conversation 已经 active 于 `TelegramChatDetailPage` 时，Telegram app-shell 先执行 same-peer warm `sendMessageToActiveConversation(sentText)`，再直接 `backFromDetail()`，最后 reopen 同一个 sent target 后，仍保持 bounded detail/list coherence。
+  - 与 `P1-28` 的边界：`P1-28` 锁定的是 active-detail same-peer warm-send summary coherence；`P1-32` 在不扩 generic send API 的前提下，只再延长一步，冻结 send 后直接 back-to-list reset 与 reopen 同一个 sent target 的最小 round-trip。
+  - 与 `P1-30` 的边界：`P1-30` 锁定的是 warm-send 后 retarget-back-reopen 原 sent target 的 round-trip；`P1-32` 则只覆盖不经过 retarget 的 warm-send-back-reopen same-target coherence，不引入 retarget / alternating-reopen 新链路。
+  - 保持实现仍为 repo-local Telegram sample bounded slice，不触碰 `samples/phase07-shared-service-refresh-harness/**`、`samples/real-message-service-cache-001/**`、cache compile-budget、`P23` 或任何 `Phase06 regular` 方向，也不新增 shared helper/API 或 generic send abstraction。
+  - 回归项优先锁定 active detail target warm-send 后当前页仍停在 `TelegramChatDetailPage`、history 保持 `2`、detail title / peer label / placeholder body 不漂移、直接 back 回到 `TelegramSessionListPage` 且清空 detail getters、原 sent target summary 在 list surface 保留 sent text 与 `messageCount = 3`、其他 visible summary 不被污染、reopen 同一个 sent target 后重新绑定 detail title / peer label / placeholder body、`adapter.getHistoryCallCount()` 保持 initial-load 值、`adapter.sendMessageCallCount()` 为 `1`；若现有 Telegram consume contract 已满足，则只新增最小 shell-level regression、report/state sync 与 evidence refresh，不扩大代码边界。
+  - 已落地产物：
+    - `docs/reports/2026-04-17-phase07-p1-32-telegram-active-detail-warm-send-back-reopen-sent-target-coherence-consume-slice.md`
+    - `docs/reports/2026-04-15-phase07-app-shell-consume-boundary.md`
+    - `docs/status/current_committed_plan.md`
+    - `docs/status/INDEX.md`
+    - `docs/current_state.v2.md`
+    - `docs/runtime_contract.v2.md`
+    - `docs/status/current_task_handoff.md`
+    - `AGENTS.md`
+    - `artifacts/verification_contracts/20260417-phase07-telegram-p1-32-active-detail-warm-send-back-reopen-sent-target-coherence/`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj`
+  - _Requirement: REQ-3, REQ-5, REQ-6, REQ-7_
+
+- [x] P1-33. 启动 Telegram active-detail warm-send-back list-route send-noop boundary consume slice
+  - 只在 `samples/telegram-ui-vertical-slice-001` 内补一个最小 bounded regression，锁定目标 conversation 已经 active 于 `TelegramChatDetailPage` 时，Telegram app-shell 先执行 same-peer warm `sendMessageToActiveConversation(sentText)`，再直接 `backFromDetail()` 回到 `TelegramSessionListPage`，随后在 list route 上再调用 `sendMessageToActiveConversation("should-not-send")` 时必须 no-op，不得借旧 active peer 继续发送。
+  - 与 `P1-32` 的边界：`P1-32` 锁定的是 warm-send 后直接 back-to-list reset 与 reopen 同一个 sent target 的最小 round-trip；`P1-33` 则不再进入 reopen，只在不扩 generic send API 的前提下补锁 list-route `sendMessageToActiveConversation(...)` 必须 no-op 的边界。
+  - 与 `P1-28` 的边界：`P1-28` 锁定的是 active-detail same-peer warm-send summary coherence；`P1-33` 则进一步证明 warm-send 后一旦已经 back 到 list route，shell-level send 入口不会沿旧 active peer 继续写入。
+  - 保持实现仍为 repo-local Telegram sample bounded slice，不触碰 `samples/phase07-shared-service-refresh-harness/**`、`samples/real-message-service-cache-001/**`、cache compile-budget、`P23` 或任何 `Phase06 regular` 方向，也不新增 shared helper/API 或 generic send abstraction。
+  - 回归项优先锁定 active detail target warm-send 后 back 回到 `TelegramSessionListPage` 且清空 detail getters、list route 上再次调用 `sendMessageToActiveConversation("should-not-send")` 后当前页仍为 `TelegramSessionListPage`、history 仍为 `2`、原 sent target summary 继续保留 `team-warm-send-3` 与 `messageCount = 3`、其他 visible summary 不被污染、`adapter.sendMessageCallCount()` 保持 `1`、`adapter.getHistoryCallCount()` 保持 initial-load 值；若现有 Telegram consume contract 已满足，则只新增最小 shell-level regression、report/state sync 与 evidence refresh，不扩大代码边界。
+  - 已落地产物：
+    - `docs/reports/2026-04-18-phase07-p1-33-telegram-active-detail-warm-send-back-list-route-send-noop-boundary-consume-slice.md`
+    - `docs/reports/2026-04-15-phase07-app-shell-consume-boundary.md`
+    - `docs/status/current_committed_plan.md`
+    - `docs/status/INDEX.md`
+    - `docs/current_state.v2.md`
+    - `docs/runtime_contract.v2.md`
+    - `docs/status/current_task_handoff.md`
+    - `AGENTS.md`
+    - `artifacts/verification_contracts/20260418-phase07-telegram-p1-33-active-detail-warm-send-back-list-route-send-noop-boundary/`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj`
+  - _Requirement: REQ-3, REQ-5, REQ-6, REQ-7_
+
+- [x] P1-34. 启动 Telegram active-detail warm-send-back list-route send-noop then reopen same-sent-target coherence consume slice
+  - 只在 `samples/telegram-ui-vertical-slice-001` 内补一个最小 bounded regression，锁定目标 conversation 已经 active 于 `TelegramChatDetailPage` 时，Telegram app-shell 先执行 same-peer warm `sendMessageToActiveConversation(sentText)`，再直接 `backFromDetail()` 回到 `TelegramSessionListPage`，随后在 list route 上调用 `sendMessageToActiveConversation("should-not-send")` 必须 no-op，最后 reopen 同一个 sent target 后，仍保持 bounded detail/list coherence。
+  - 与 `P1-33` 的边界：`P1-33` 锁定的是 warm-send 后 back-to-list 再触发 list-route send 必须 no-op；`P1-34` 在不扩 generic send API 的前提下，只再延长一步，冻结 no-op 之后 reopen 同一个 sent target 的最小 round-trip。
+  - 与 `P1-32` 的边界：`P1-32` 锁定的是 warm-send 后 back-to-list 再 reopen 同一个 sent target；`P1-34` 则显式把中间的 list-route `sendMessageToActiveConversation("should-not-send")` no-op 边界纳入 round-trip，不允许 stale active peer 泄漏后再 reopen。
+  - 保持实现仍为 repo-local Telegram sample bounded slice，不触碰 `samples/phase07-shared-service-refresh-harness/**`、`samples/real-message-service-cache-001/**`、cache compile-budget、`P23` 或任何 `Phase06 regular` 方向，也不新增 shared helper/API 或 generic send abstraction。
+  - 回归项优先锁定 active detail target warm-send 后 back 回到 `TelegramSessionListPage` 且清空 detail getters、list route 上再次调用 `sendMessageToActiveConversation("should-not-send")` 仍保持 no-op、随后 reopen 同一个 sent target 后回到 `TelegramChatDetailPage` 并重新绑定 detail title / peer label / placeholder body、原 sent target summary 全程继续保留 `team-warm-send-3` 与 `messageCount = 3`、其他 visible summary 全程不被污染、`adapter.sendMessageCallCount()` 保持 `1`、`adapter.getHistoryCallCount()` 保持 initial-load 值；若现有 Telegram consume contract 已满足，则只新增最小 shell-level regression、report/state sync 与 evidence refresh，不扩大代码边界。
+  - 已落地产物：
+    - `docs/reports/2026-04-18-phase07-p1-34-telegram-active-detail-warm-send-back-list-route-send-noop-then-reopen-same-sent-target-coherence-consume-slice.md`
+    - `docs/reports/2026-04-15-phase07-app-shell-consume-boundary.md`
+    - `docs/status/current_committed_plan.md`
+    - `docs/status/INDEX.md`
+    - `docs/current_state.v2.md`
+    - `docs/runtime_contract.v2.md`
+    - `docs/status/current_task_handoff.md`
+    - `AGENTS.md`
+    - `artifacts/verification_contracts/20260418-phase07-telegram-p1-34-active-detail-warm-send-back-list-route-send-noop-then-reopen-same-sent-target-coherence/`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj`
+  - _Requirement: REQ-3, REQ-5, REQ-6, REQ-7_
+
+- [x] P1-35. 启动 Telegram warm-send-back list-route send-noop then reopen other visible conversation stability consume slice
+  - 只在 `samples/telegram-ui-vertical-slice-001` 内补一个最小 bounded regression，锁定目标 conversation 已经 active 于 `TelegramChatDetailPage` 时，Telegram app-shell 先执行 same-peer warm `sendMessageToActiveConversation(sentText)`，再直接 `backFromDetail()` 回到 `TelegramSessionListPage`，随后在 list route 上调用 `sendMessageToActiveConversation("should-not-send")` 必须 no-op，最后 reopen 另一条 visible conversation 后，仍保持 bounded stability。
+  - 与 `P1-34` 的边界：`P1-34` 锁定的是 warm-send 后 back-to-list send-noop 再 reopen 同一个 sent target；`P1-35` 在不扩 generic send API 的前提下，只改成 reopen 另一条 visible conversation，冻结 no-op 之后切往 other visible conversation 的最小恢复分支。
+  - 与 `P1-31` 的边界：`P1-31` 锁定的是 warm-send 后 direct retarget 的 alternating-reopen bounded stability；`P1-35` 则停留在 back-to-list send-noop recovery rail，只证明 no-op 之后仍可稳定 reopen other visible conversation，而不重开 direct retarget。
+  - 保持实现仍为 repo-local Telegram sample bounded slice，不触碰 `samples/phase07-shared-service-refresh-harness/**`、`samples/real-message-service-cache-001/**`、cache compile-budget、`P23` 或任何 `Phase06 regular` 方向，也不新增 shared helper/API、shared rail expansion 或 generic send abstraction。
+  - 回归项优先锁定 active detail target warm-send 后 back 回到 `TelegramSessionListPage` 且清空 detail getters、list route 上再次调用 `sendMessageToActiveConversation("should-not-send")` 仍保持 no-op、随后 reopen 另一条 visible conversation 后回到 `TelegramChatDetailPage` 并重新绑定该 visible conversation 的 detail title / peer label / placeholder body、原 sent target summary 全程继续保留 `team-warm-send-3` 与 `messageCount = 3`、最终 reopened visible conversation 的 summary 前后不被污染、`adapter.sendMessageCallCount()` 保持 `1`、`adapter.getHistoryCallCount()` 保持 initial-load 值；若现有 Telegram consume contract 已满足，则只新增最小 shell-level regression、report/state sync 与 evidence refresh，不扩大代码边界。
+  - 已落地产物：
+    - `docs/reports/2026-04-18-phase07-m1-telegram-warm-send-recovery-closure.md`
+    - `docs/reports/2026-04-15-phase07-app-shell-consume-boundary.md`
+    - `docs/status/current_committed_plan.md`
+    - `docs/status/INDEX.md`
+    - `docs/current_state.v2.md`
+    - `docs/runtime_contract.v2.md`
+    - `docs/status/current_task_handoff.md`
+    - `AGENTS.md`
+    - `artifacts/verification_contracts/20260418-phase07-telegram-m1-warm-send-recovery-closure/`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj`
+  - _Requirement: REQ-3, REQ-5, REQ-6, REQ-7_
+
+- [x] P1-36. 启动 Telegram warm-send-back list-route send-noop reopen same sent target then direct retarget other visible conversation coherence consume slice
+  - 只在 `samples/telegram-ui-vertical-slice-001` 内补一个最小 bounded regression，锁定目标 conversation 已经 active 于 `TelegramChatDetailPage` 时，Telegram app-shell 先执行 same-peer warm `sendMessageToActiveConversation(sentText)`，再直接 `backFromDetail()` 回到 `TelegramSessionListPage`，随后在 list route 上调用 `sendMessageToActiveConversation("should-not-send")` 必须 no-op、reopen 同一个 sent target、再 direct retarget 到另一条 visible conversation 后，仍保持 bounded coherence。
+  - 与 `P1-34` 的边界：`P1-34` 锁定的是 warm-send 后 back-to-list send-noop 再 reopen 同一个 sent target；`P1-36` 在不扩 generic send API 的前提下，只再延长一步，冻结 same-target recovery reopen 之后的 direct retarget other visible conversation。
+  - 与 `P1-29` 的边界：`P1-29` 锁定的是 warm-send 后 direct retarget other visible conversation 的最小闭环；`P1-36` 则明确要求这次 retarget 发生在 back-to-list send-noop 与 same-target recovery reopen 之后，不重开 warm-send 起点上的 direct-retarget 原始分支。
+  - 保持实现仍为 repo-local Telegram sample bounded slice，不触碰 `samples/phase07-shared-service-refresh-harness/**`、`samples/real-message-service-cache-001/**`、cache compile-budget、`P23` 或任何 `Phase06 regular` 方向，也不新增 shared helper/API、shared rail expansion 或 generic send abstraction。
+  - 回归项优先锁定 active detail target warm-send 后 back 回到 `TelegramSessionListPage` 且清空 detail getters、list route 上再次调用 `sendMessageToActiveConversation("should-not-send")` 仍保持 no-op、reopen 同一个 sent target 后重新绑定 detail、随后 direct retarget 到另一条 visible conversation 后当前页仍停在 `TelegramChatDetailPage`、history 全程保持 `2`、原 sent target summary 全程继续保留 `team-warm-send-3` 与 `messageCount = 3`、retarget 目标的 summary 前后不被污染、`adapter.sendMessageCallCount()` 保持 `1`、`adapter.getHistoryCallCount()` 保持 initial-load 值；若现有 Telegram consume contract 已满足，则只新增最小 shell-level regression、report/state sync 与 evidence refresh，不扩大代码边界。
+  - 已落地产物：
+    - `docs/reports/2026-04-18-phase07-m1-telegram-warm-send-recovery-closure.md`
+    - `docs/reports/2026-04-15-phase07-app-shell-consume-boundary.md`
+    - `docs/status/current_committed_plan.md`
+    - `docs/status/INDEX.md`
+    - `docs/current_state.v2.md`
+    - `docs/runtime_contract.v2.md`
+    - `docs/status/current_task_handoff.md`
+    - `AGENTS.md`
+    - `artifacts/verification_contracts/20260418-phase07-telegram-m1-warm-send-recovery-closure/`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj`
+  - _Requirement: REQ-3, REQ-5, REQ-6, REQ-7_
+
+- [x] P1-37. 启动 Telegram warm-send-back list-route send-noop reopen same sent target back then reopen other visible conversation alternating stability consume slice
+  - 只在 `samples/telegram-ui-vertical-slice-001` 内补一个最小 bounded regression，锁定目标 conversation 已经 active 于 `TelegramChatDetailPage` 时，Telegram app-shell 先执行 same-peer warm `sendMessageToActiveConversation(sentText)`，再直接 `backFromDetail()` 回到 `TelegramSessionListPage`，随后在 list route 上调用 `sendMessageToActiveConversation("should-not-send")` 必须 no-op、reopen 同一个 sent target、再执行一次 `backFromDetail()`，最后 reopen 另一条 visible conversation 后，仍保持 alternating bounded stability。
+  - 与 `P1-36` 的边界：`P1-36` 锁定的是 same-target recovery reopen 之后的 direct retarget other visible conversation；`P1-37` 则不走 direct retarget，而是在不扩 generic send API 的前提下，只再延长一步，冻结 same-target recovery reopen 之后的第二次 back-to-list reset 与最终 reopen other visible conversation。
+  - 与 `P1-35` 的边界：`P1-35` 锁定的是第一次 back-to-list send-noop 之后直接 reopen other visible conversation；`P1-37` 则显式要求先完成 same-target recovery reopen，再通过第二次 back-to-list reset 进入 alternating reopen，证明恢复后的 sent target 仍能稳定让位给 other visible conversation。
+  - 保持实现仍为 repo-local Telegram sample bounded slice，不触碰 `samples/phase07-shared-service-refresh-harness/**`、`samples/real-message-service-cache-001/**`、cache compile-budget、`P23` 或任何 `Phase06 regular` 方向，也不新增 shared helper/API、shared rail expansion 或 generic send abstraction。
+  - 回归项优先锁定 active detail target warm-send 后 back 回到 `TelegramSessionListPage` 且清空 detail getters、list route 上再次调用 `sendMessageToActiveConversation("should-not-send")` 仍保持 no-op、reopen 同一个 sent target 后重新绑定 detail、第二次 back 再次回到 `TelegramSessionListPage` 且 detail getters 仍清空、最终 reopen 另一条 visible conversation 后回到 `TelegramChatDetailPage` 并重新绑定该 visible conversation、history 全程保持 `2`、原 sent target summary 全程继续保留 `team-warm-send-3` 与 `messageCount = 3`、另一条 visible conversation 的 summary 在最终 reopen 前后不被污染、`adapter.sendMessageCallCount()` 保持 `1`、`adapter.getHistoryCallCount()` 保持 initial-load 值；若现有 Telegram consume contract 已满足，则只新增最小 shell-level regression、report/state sync 与 evidence refresh，不扩大代码边界。
+  - 已落地产物：
+    - `docs/reports/2026-04-18-phase07-m1-telegram-warm-send-recovery-closure.md`
+    - `docs/reports/2026-04-15-phase07-app-shell-consume-boundary.md`
+    - `docs/status/current_committed_plan.md`
+    - `docs/status/INDEX.md`
+    - `docs/current_state.v2.md`
+    - `docs/runtime_contract.v2.md`
+    - `docs/status/current_task_handoff.md`
+    - `AGENTS.md`
+    - `artifacts/verification_contracts/20260418-phase07-telegram-m1-warm-send-recovery-closure/`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj`
+  - _Requirement: REQ-3, REQ-5, REQ-6, REQ-7_
+
+- [x] P1-38. 启动 Telegram active-detail warm-send-back-reopen same sent target then direct retarget other visible conversation coherence consume slice
+  - 只在 `samples/telegram-ui-vertical-slice-001` 内补一个最小 bounded regression，锁定目标 conversation 已经 active 于 `TelegramChatDetailPage` 时，Telegram app-shell 先执行 same-peer warm `sendMessageToActiveConversation(sentText)`，再直接 `backFromDetail()` 回到 `TelegramSessionListPage`、reopen 同一个 sent target、最后 direct retarget 到另一条 visible conversation 后，仍保持 bounded coherence。
+  - 与 `P1-32` 的边界：`P1-32` 锁定的是 warm-send 后 back-to-list 再 reopen 同一个 sent target 的最小 round-trip；`P1-38` 在不扩 generic send API 的前提下，只再延长一步，冻结 same-target recovery reopen 之后的 direct retarget other visible conversation。
+  - 与 `P1-29` 的边界：`P1-29` 锁定的是 warm-send 后立即 direct retarget other visible conversation 的最小闭环；`P1-38` 则明确要求这次 retarget 发生在 `backFromDetail()` 与 same-target recovery reopen 之后，不重开 warm-send 起点上的 direct-retarget 原始分支。
+  - 与 `P1-36` 的边界：`P1-36` 锁定的是 warm-send 后 back-to-list list-route send-noop、reopen 同一个 sent target、再 direct retarget other visible conversation；`P1-38` 不引入 list-route send-noop，只冻结 back-reopen same-target 之后的 direct retarget recovery 分支。
+  - 保持实现仍为 repo-local Telegram sample bounded slice，不触碰 `samples/phase07-shared-service-refresh-harness/**`、`samples/real-message-service-cache-001/**`、cache compile-budget、`P23` 或任何 `Phase06 regular` 方向，也不新增 shared helper/API、shared rail expansion 或 generic send abstraction；若现有 Telegram consume contract 已满足，则只新增最小 shell-level regression、report/state sync 与 evidence refresh，不扩大代码边界，且 `telegram_app_shell.cj` / `telegram_ui_slice.cj` 无可观察到的 `P1-38` 专属 widening。
+  - 回归项优先锁定 active detail target warm-send 后仍停在 `TelegramChatDetailPage`、history 保持 `2`、back 后回到 `TelegramSessionListPage` 且清空 detail getters、reopen 同一个 sent target 后重新绑定 detail、随后 direct retarget 到另一条 visible conversation 后当前页仍停在 `TelegramChatDetailPage`、history 全程保持 `2`、原 sent target summary 全程继续保留 `team-warm-send-3` 与 `messageCount = 3`、retarget 目标的 summary 前后不被污染、`adapter.sendMessageCallCount()` 保持 `1`、`adapter.getHistoryCallCount()` 保持 initial-load 值；若现有 Telegram consume contract 已满足，则只新增最小 shell-level regression、report/state sync 与 evidence refresh，不扩大代码边界。
+  - 已落地产物：
+    - `docs/reports/2026-04-18-phase07-p1-38-telegram-active-detail-warm-send-back-reopen-same-sent-target-then-direct-retarget-other-visible-conversation-coherence-consume-slice.md`
+    - `docs/reports/2026-04-15-phase07-app-shell-consume-boundary.md`
+    - `docs/status/current_committed_plan.md`
+    - `docs/status/INDEX.md`
+    - `docs/current_state.v2.md`
+    - `docs/runtime_contract.v2.md`
+    - `docs/status/current_task_handoff.md`
+    - `AGENTS.md`
+    - `artifacts/verification_contracts/20260418-phase07-telegram-p1-38-active-detail-warm-send-back-reopen-same-sent-target-then-direct-retarget-other-visible-conversation-coherence/`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj`
+  - _Requirement: REQ-3, REQ-5, REQ-6, REQ-7_
+
+- [x] P1-39. 启动 Telegram active-detail warm-send-back-reopen other visible conversation stability consume slice
+  - 只在 `samples/telegram-ui-vertical-slice-001` 内补一个最小 bounded regression，锁定目标 conversation 已经 active 于 `TelegramChatDetailPage` 时，Telegram app-shell 先执行 same-peer warm `sendMessageToActiveConversation(sentText)`，再直接 `backFromDetail()` 回到 `TelegramSessionListPage`，最后 reopen 另一条 visible conversation 后，仍保持 bounded stability。
+  - 与 `P1-32` 的边界：`P1-32` 锁定的是 warm-send 后 back-to-list 再 reopen 同一个 sent target 的最小 round-trip；`P1-39` 在不扩 generic send API 的前提下，改为冻结第一次 back 之后直接 reopen 另一条 visible conversation。
+  - 与 `P1-35` 的边界：`P1-35` 锁定的是 warm-send 后 back-to-list list-route send-noop，再 reopen 另一条 visible conversation；`P1-39` 不引入 list-route `sendMessageToActiveConversation("should-not-send")` no-op 分支，只冻结 direct reopen other visible conversation 的 sibling recovery branch。
+  - 与 `P1-37` 的边界：`P1-37` 锁定的是 warm-send 后 back-to-list list-route send-noop、reopen 同一个 sent target、第二次 back、再 reopen 另一条 visible conversation；`P1-39` 不引入 same-target recovery reopen，也不延长出第二次 back-to-list reset。
+  - 保持实现仍为 repo-local Telegram sample bounded slice，不触碰 `samples/phase07-shared-service-refresh-harness/**`、`samples/real-message-service-cache-001/**`、cache compile-budget、`P23` 或任何 `Phase06 regular` 方向，也不新增 shared helper/API、shared rail expansion 或 generic send abstraction；若现有 Telegram consume contract 已满足，则只新增最小 shell-level regression、report/state sync 与 evidence refresh，不扩大代码边界，且 `telegram_app_shell.cj` / `telegram_ui_slice.cj` 无可观察到的 `P1-39` 专属 widening。
+  - 回归项优先锁定 active detail target warm-send 后仍停在 `TelegramChatDetailPage`、history 保持 `2`、back 后回到 `TelegramSessionListPage` 且清空 detail getters、reopen 另一条 visible conversation 后当前页回到 `TelegramChatDetailPage` 并重新绑定该 visible conversation、history 全程保持 `2`、原 sent target summary 全程继续保留 `team-warm-send-3` 与 `messageCount = 3`、reopened visible conversation 的 summary 前后不被污染、`adapter.sendMessageCallCount()` 保持 `1`、`adapter.getHistoryCallCount()` 保持 initial-load 值 `2`；若现有 Telegram consume contract 已满足，则只新增最小 shell-level regression、report/state sync 与 evidence refresh，不扩大代码边界。
+  - 已落地产物：
+    - `docs/reports/2026-04-18-phase07-p1-39-telegram-active-detail-warm-send-back-reopen-other-visible-conversation-stability-consume-slice.md`
+    - `docs/reports/2026-04-15-phase07-app-shell-consume-boundary.md`
+    - `docs/status/current_committed_plan.md`
+    - `docs/status/INDEX.md`
+    - `docs/current_state.v2.md`
+    - `docs/runtime_contract.v2.md`
+    - `docs/status/current_task_handoff.md`
+    - `AGENTS.md`
+    - `artifacts/verification_contracts/20260418-phase07-telegram-p1-39-active-detail-warm-send-back-reopen-other-visible-conversation-stability/`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj`
+  - _Requirement: REQ-3, REQ-5, REQ-6, REQ-7_
+
+- [x] P1-40. 启动 Telegram active-detail warm-send-back-reopen other visible conversation then direct retarget original sent target coherence consume slice
+  - 只在 `samples/telegram-ui-vertical-slice-001` 内补一个最小 bounded regression，锁定目标 conversation 已经 active 于 `TelegramChatDetailPage` 时，Telegram app-shell 先执行 same-peer warm `sendMessageToActiveConversation(sentText)`，再直接 `backFromDetail()` 回到 `TelegramSessionListPage`、reopen 另一条 visible conversation、最后 direct retarget 回原 sent target 后，仍保持 bounded coherence。
+  - 与 `P1-39` 的边界：`P1-39` 锁定的是 warm-send 后 back-to-list 再 reopen 另一条 visible conversation 的 sibling recovery branch；`P1-40` 在不扩 generic send API 的前提下，只再延长一步，冻结 other-visible recovery reopen 之后 direct retarget 回原 sent target 的最小闭环。
+  - 与 `P1-38` 的边界：`P1-38` 锁定的是 warm-send 后 back-to-list、reopen 同一个 sent target、再 direct retarget 到另一条 visible conversation；`P1-40` 则明确要求先 reopen 另一条 visible conversation，再 direct retarget 回原 sent target，不引入 same-target recovery reopen。
+  - 与 `P1-37` 的边界：`P1-37` 锁定的是 warm-send 后 back-to-list list-route send-noop、reopen 同一个 sent target、第二次 back、再 reopen 另一条 visible conversation；`P1-40` 不引入 list-route send-noop、same-target recovery reopen 或第二次 back-to-list reset。
+  - 保持实现仍为 same-package repo-local Telegram sample bounded slice，不触碰 `samples/phase07-shared-service-refresh-harness/**`、`samples/real-message-service-cache-001/**`、cache compile-budget、`P23` 或任何 `Phase06 regular` 方向，也不新增 shared helper/API、shared rail expansion 或 generic send abstraction；若现有 Telegram consume contract 已满足，则只新增最小 shell-level regression、report/state sync 与 evidence refresh，不扩大代码边界，且 `telegram_app_shell.cj` / `telegram_ui_slice.cj` 无可观察到的 `P1-40` 专属 widening。
+  - 回归项优先锁定 active detail target warm-send 后仍停在 `TelegramChatDetailPage`、第一次 back 后回到 `TelegramSessionListPage` 且清空 detail getters、reopen 另一条 visible conversation 后当前页回到 `TelegramChatDetailPage`、随后 direct retarget 回原 sent target 后当前页仍停在 `TelegramChatDetailPage`、history 全程保持 `2`、detail title / peer label / placeholder body 最终重新绑定回原 sent target、原 sent target summary 全程继续保留 `team-warm-send-3` 与 `messageCount = 3`、中间 reopened other visible conversation 的 summary 前后不被污染、`adapter.sendMessageCallCount()` 保持 `1`、`adapter.getHistoryCallCount()` 保持 initial-load 值 `2`；若现有 Telegram consume contract 已满足，则只新增最小 shell-level regression、report/state sync 与 evidence refresh，不扩大代码边界。
+  - 已落地产物：
+    - `docs/reports/2026-04-18-phase07-p1-40-telegram-active-detail-warm-send-back-reopen-other-visible-conversation-then-direct-retarget-original-sent-target-coherence-consume-slice.md`
+    - `docs/reports/2026-04-15-phase07-app-shell-consume-boundary.md`
+    - `docs/status/current_committed_plan.md`
+    - `docs/status/INDEX.md`
+    - `docs/current_state.v2.md`
+    - `docs/runtime_contract.v2.md`
+    - `docs/status/current_task_handoff.md`
+    - `AGENTS.md`
+    - `artifacts/verification_contracts/20260418-phase07-telegram-p1-40-active-detail-warm-send-back-reopen-other-visible-conversation-then-direct-retarget-original-sent-target-coherence/`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj`
+  - _Requirement: REQ-3, REQ-5, REQ-6, REQ-7_
+
+- [x] P1-41. 启动 Telegram active-detail warm-send-direct-retarget other visible conversation then direct retarget original sent target coherence consume slice
+  - 只在 `samples/telegram-ui-vertical-slice-001` 内补一个最小 bounded regression，锁定目标 conversation 已经 active 于 `TelegramChatDetailPage` 时，Telegram app-shell 先执行 same-peer warm `sendMessageToActiveConversation(sentText)`、再 direct retarget 到另一条 visible conversation、最后再 direct retarget 回原 sent target 后，仍保持 bounded coherence。
+  - 与 `P1-29` 的边界：`P1-29` 锁定的是 warm-send 后 direct retarget 到另一条 visible conversation；`P1-41` 在不扩 generic send API 的前提下，只再延长一步，冻结第一次 direct retarget 之后再 direct retarget 回原 sent target 的最小闭环。
+  - 与 `P1-40` 的边界：`P1-40` 锁定的是 warm-send 后 back-to-list、reopen 另一条 visible conversation、再 direct retarget 回原 sent target；`P1-41` 则明确要求整个 send 与两次 retarget 全程留在 detail route，不引入 back/reopen recovery branch。
+  - 与 `P1-30` 的边界：`P1-30` 锁定的是 warm-send 后 direct retarget 到另一条 visible conversation、再 back-to-list 然后 reopen 原 sent target；`P1-41` 用第二次 direct retarget 取代 back/reopen round trip。
+  - 保持实现仍为 same-package repo-local Telegram sample bounded slice，不触碰 `samples/phase07-shared-service-refresh-harness/**`、`samples/real-message-service-cache-001/**`、cache compile-budget、`P23` 或任何 `Phase06 regular` 方向，也不新增 shared helper/API、shared rail expansion 或 generic send abstraction；若现有 Telegram consume contract 已满足，则只新增最小 shell-level regression、report/state sync 与 evidence refresh，不扩大代码边界，且 git tracked baseline 不可用时从当前 verification surface 看 `telegram_app_shell.cj` / `telegram_ui_slice.cj` 无可观察到的 `P1-41` 专属 widening。
+  - 回归项优先锁定 active detail target warm-send 后仍停在 `TelegramChatDetailPage`、第一次 direct retarget 到另一条 visible conversation 后当前页仍为 `TelegramChatDetailPage`、第二次 direct retarget 回原 sent target 后当前页仍为 `TelegramChatDetailPage`、historySize() 全程保持 `2`、detail title / peer label / placeholder body 最终重新绑定回原 sent target、原 sent target summary 全程继续保留 `team-warm-send-3` 与 `messageCount = 3`、other visible conversation summary 在 send 与两次 retarget 前后都不被污染、`adapter.sendMessageCallCount()` 保持 `1`、`adapter.getHistoryCallCount()` 保持 `2`；若现有 Telegram consume contract 已满足，则只新增最小 shell-level regression、report/state sync 与 evidence refresh，不扩大代码边界。
+  - 已落地产物：
+    - `docs/reports/2026-04-18-phase07-p1-41-telegram-active-detail-warm-send-direct-retarget-other-visible-conversation-then-direct-retarget-original-sent-target-coherence-consume-slice.md`
+    - `docs/reports/2026-04-15-phase07-app-shell-consume-boundary.md`
+    - `docs/status/current_committed_plan.md`
+    - `docs/status/INDEX.md`
+    - `docs/current_state.v2.md`
+    - `docs/runtime_contract.v2.md`
+    - `docs/status/current_task_handoff.md`
+    - `AGENTS.md`
+    - `artifacts/verification_contracts/20260418-phase07-telegram-p1-41-active-detail-warm-send-direct-retarget-other-visible-conversation-then-direct-retarget-original-sent-target-coherence/`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj`
+  - _Requirement: REQ-3, REQ-5, REQ-6, REQ-7_
+
+- [x] P1-42. 启动 Telegram active-detail warm-send-direct-retarget other visible conversation then direct-retarget original sent target back-reopen other visible conversation bounded stability consume slice
+  - 只在 `samples/telegram-ui-vertical-slice-001` 内补一个最小 bounded regression，锁定目标 conversation 已经 active 于 `TelegramChatDetailPage` 时，Telegram app-shell 先执行 same-peer warm `sendMessageToActiveConversation(sentText)`、再 direct retarget 到另一条 visible conversation、再 direct retarget 回原 sent target，最后执行 `backFromDetail()` 并 reopen 另一条 visible conversation 后，仍保持 bounded stability。
+  - 与 `P1-41` 的边界：`P1-41` 锁定的是 warm-send 后 direct retarget 到另一条 visible conversation、再 direct retarget 回原 sent target；`P1-42` 在不扩 generic send API 的前提下，只再延长一步，冻结第二次 direct retarget 回原 sent target 之后再 `back -> reopen other visible conversation` 的最小尾闭环。
+  - 与 `P1-40` 的边界：`P1-40` 锁定的是 warm-send 后 back-to-list、reopen 另一条 visible conversation、再 direct retarget 回原 sent target；`P1-42` 则明确要求 send 与两次 retarget 先全程留在 detail route，直到第二次 direct retarget 已回到原 sent target 后才执行 final `back -> reopen other visible conversation`。
+  - 与 `P1-31` 的边界：`P1-31` 锁定的是 warm-send 后 direct retarget 到另一条 visible conversation、再 back-to-list、reopen 原 sent target、第二次 back、再 reopen 另一条 visible conversation；`P1-42` 用第二次 direct retarget 回原 sent target 取代中间的 recovery reopen original-sent-target 分支，并且只保留一个 bounded `back -> reopen other visible conversation` 尾步骤。
+  - 保持实现仍为 same-package repo-local Telegram sample bounded slice，不触碰 `samples/phase07-shared-service-refresh-harness/**`、`samples/real-message-service-cache-001/**`、cache compile-budget、`P23` 或任何 `Phase06 regular` 方向，也不新增 shared helper/API、shared rail expansion 或 generic send abstraction；若现有 Telegram consume contract 已满足，则只新增最小 shell-level regression、report/state sync 与 evidence refresh，不扩大代码边界，且 git tracked baseline 不可用时从当前 verification surface 看 `telegram_app_shell.cj` / `telegram_ui_slice.cj` 无可观察到的 `P1-42` 专属 widening。
+  - 回归项优先锁定 warm-send 与两次 direct retarget 后当前页仍为 `TelegramChatDetailPage`、第二次 direct retarget 后 `backFromDetail()` 必须回到 `TelegramSessionListPage` 且 detail getters 清空、最终 reopen 另一条 visible conversation 后必须重新回到 `TelegramChatDetailPage`、historySize() 全程保持 `2`、原 sent target summary 全程继续保留 `team-warm-send-3` 与 `messageCount = 3`、other visible conversation summary 在最终 reopen 前后都不被污染、`adapter.sendMessageCallCount()` 保持 `1`、`adapter.getHistoryCallCount()` 保持 `2`；若现有 Telegram consume contract 已满足，则只新增最小 shell-level regression、report/state sync 与 evidence refresh，不扩大代码边界。
+  - 已落地产物：
+    - `docs/reports/2026-04-18-phase07-p1-42-telegram-active-detail-warm-send-direct-retarget-other-visible-conversation-then-direct-retarget-original-sent-target-back-reopen-other-visible-conversation-bounded-stability-consume-slice.md`
+    - `docs/reports/2026-04-15-phase07-app-shell-consume-boundary.md`
+    - `docs/status/current_committed_plan.md`
+    - `docs/status/INDEX.md`
+    - `docs/current_state.v2.md`
+    - `docs/runtime_contract.v2.md`
+    - `docs/status/current_task_handoff.md`
+    - `docs/agent_system/execution_routing.md`
+    - `artifacts/verification_contracts/20260418-phase07-telegram-p1-42-active-detail-warm-send-direct-retarget-other-visible-conversation-then-direct-retarget-original-sent-target-back-reopen-other-visible-conversation-bounded-stability/`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj`
+  - _Requirement: REQ-3, REQ-5, REQ-6, REQ-7_
+
+- [x] P1-43. 启动 Telegram active-detail warm-send-direct-retarget other visible conversation then direct-retarget original sent target back-reopen original sent target coherence consume slice
+  - 只在 `samples/telegram-ui-vertical-slice-001` 内补一个最小 bounded regression，锁定目标 conversation 已经 active 于 `TelegramChatDetailPage` 时，Telegram app-shell 先执行 same-peer warm `sendMessageToActiveConversation(sentText)`、再 direct retarget 到另一条 visible conversation、再 direct retarget 回原 sent target，最后执行 `backFromDetail()` 并 reopen 原 sent target 后，仍保持 bounded coherence。
+  - 与 `P1-42` 的边界：`P1-42` 锁定的是 warm-send 后 direct retarget 到另一条 visible conversation、再 direct retarget 回原 sent target、然后 `back -> reopen other visible conversation`；`P1-43` 在不扩 generic send API 的前提下，只改冻结 sibling tail，要求第二次 direct retarget 已回到原 sent target 之后执行 `back -> reopen original sent target`。
+  - 与 `P1-41` 的边界：`P1-41` 锁定的是 warm-send 后 direct retarget 到另一条 visible conversation、再 direct retarget 回原 sent target；`P1-43` 只在这条 twin-retarget detail-route 闭环之后，再冻结一个 bounded `back -> reopen original sent target` 尾步骤。
+  - 与 `P1-30` 的边界：`P1-30` 锁定的是 warm-send 后 direct retarget 到另一条 visible conversation、再 back-to-list、然后 reopen 原 sent target；`P1-43` 则明确要求在离开 detail 之前，先通过第二次 direct retarget 已回到原 sent target，再执行 final `back -> reopen original sent target`。
+  - 保持实现仍为 same-package repo-local Telegram sample bounded slice，不触碰 `samples/phase07-shared-service-refresh-harness/**`、`samples/real-message-service-cache-001/**`、cache compile-budget、`P23` 或任何 `Phase06 regular` 方向，也不新增 shared helper/API、shared rail expansion 或 generic send abstraction；若现有 Telegram consume contract 已满足，则只新增最小 shell-level regression、report/state sync 与 evidence refresh，不扩大代码边界，且 git tracked baseline 不可用时从当前 verification surface 看 `telegram_app_shell.cj` / `telegram_ui_slice.cj` 无可观察到的 `P1-43` 专属 widening。
+  - 回归项优先锁定 warm-send 与两次 direct retarget 后当前页仍为 `TelegramChatDetailPage`、第二次 direct retarget 后 `backFromDetail()` 必须回到 `TelegramSessionListPage` 且 detail getters 清空、最终 reopen 原 sent target 后必须重新回到 `TelegramChatDetailPage`、historySize() 全程保持 `2`、原 sent target summary 全程继续保留 `team-warm-send-3` 与 `messageCount = 3`、other visible conversation summary 在第二次 retarget 后、back 后与最终 reopen original sent target 后都不被污染、`adapter.sendMessageCallCount()` 保持 `1`、`adapter.getHistoryCallCount()` 保持 `2`；若现有 Telegram consume contract 已满足，则只新增最小 shell-level regression、report/state sync 与 evidence refresh，不扩大代码边界。
+  - 已落地产物：
+    - `docs/reports/2026-04-18-phase07-p1-43-telegram-active-detail-warm-send-direct-retarget-other-visible-conversation-then-direct-retarget-original-sent-target-back-reopen-original-sent-target-coherence-consume-slice.md`
+    - `docs/reports/2026-04-15-phase07-app-shell-consume-boundary.md`
+    - `docs/status/current_committed_plan.md`
+    - `docs/status/INDEX.md`
+    - `docs/current_state.v2.md`
+    - `docs/runtime_contract.v2.md`
+    - `docs/status/current_task_handoff.md`
+    - `docs/agent_system/execution_routing.md`
+    - `AGENTS.md`
+    - `artifacts/verification_contracts/20260418-phase07-telegram-p1-43-active-detail-warm-send-direct-retarget-other-visible-conversation-then-direct-retarget-original-sent-target-back-reopen-original-sent-target-coherence/`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj`
+  - _Requirement: REQ-3, REQ-5, REQ-6, REQ-7_
+
+- [x] M2. 冻结 Telegram Active-Detail Usable Thread Slice
+  - 只在 `samples/telegram-ui-vertical-slice-001` 内把 `TelegramChatDetailPage` 从 placeholder-only detail 提升为 real-history projection：打开 active detail 后，页面必须投影当前会话线程消息，而不再只有标题 / peer / placeholder body。
+  - 最小回归锁定：
+    - `appShellOpenDetailShouldProjectRealHistoryForActiveConversation`
+    - `appShellActiveDetailSendShouldAppendIntoProjectedThreadWithoutBreakingSummaryCoherence`
+    - `appShellRetargetBackReopenShouldKeepProjectedThreadOwnershipCoherent`
+  - 允许并实际落地 same-package production edits，优先集中在：
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_slice.cj`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_app_shell.cj`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj`
+  - 与 `P1-43` 的边界：`P1-43` 只冻结 twin-retarget + back-reopen original sent target 的 bounded route / summary coherence；`M2` 不再继续 warm-send/back/reopen sibling permutation，而是把同包 Telegram detail 提升到更接近可用 UI 的 real thread projection 里程碑。
+  - 线程投影合同：
+    - open detail 后必须投影 active conversation 当前消息列表；
+    - active-detail `sendMessageToActiveConversation(...)` 后 detail 线程必须立即追加新消息，同时 list summary 继续保持 sent text / `messageCount` 同步；
+    - direct retarget 到另一条 visible conversation 后 detail 线程必须切到新目标；
+    - `backFromDetail()` 后 detail projection 必须清空；reopen 任一会话后 detail 线程必须恢复正确 ownership。
+  - 保持实现仍为 same-package repo-local Telegram sample usable-thread slice，不触碰 `samples/phase07-shared-service-refresh-harness/**`、`samples/real-message-service-cache-001/**`、`P23`、shared helper/API、generic send abstraction，也不做更宽 UI 重设计；`P1-43` 保留为已落地 checkpoint，但不是本轮最终交付。
+  - 已落地产物：
+    - `docs/reports/2026-04-18-phase07-m2-telegram-active-detail-usable-thread-slice.md`
+    - `docs/reports/2026-04-15-phase07-app-shell-consume-boundary.md`
+    - `docs/status/current_committed_plan.md`
+    - `docs/status/INDEX.md`
+    - `docs/current_state.v2.md`
+    - `docs/runtime_contract.v2.md`
+    - `docs/status/current_task_handoff.md`
+    - `docs/agent_system/execution_routing.md`
+    - `AGENTS.md`
+    - `artifacts/verification_contracts/20260418-phase07-telegram-m2-active-detail-usable-thread-slice/`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_slice.cj`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_app_shell.cj`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj`
+  - _Requirement: REQ-3, REQ-5, REQ-6, REQ-7_
+
+- [x] M3. 冻结 Telegram Active-Detail Composer Slice
+  - 只在 `samples/telegram-ui-vertical-slice-001` 内把已落地的 active-detail usable-thread 提升为 same-package composer slice：detail page 必须暴露 local draft，允许 shell 侧更新/发送 draft，并在发送后立即清空 draft。
+  - 最小回归锁定：
+    - `appShellActiveDetailComposerShouldTrackDraftAndClearAfterSend`
+    - `appShellDetailComposerShouldNoopWithoutActiveConversation`
+    - `appShellDetailComposerShouldResetAcrossRetargetBackReopen`
+  - 允许并实际落地 same-package production edits，优先集中在：
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_slice.cj`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_app_shell.cj`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj`
+  - 与 `M2` 的边界：`M2` 只把 detail 从 placeholder 提升为 usable-thread projection；`M3` 不再继续 route permutation，而是在不新增 shared helper/API 或 generic send abstraction 的前提下，把 active-detail composer/draft 这条更接近可用 UI 的最小链路冻结下来。
+  - composer 合同：
+    - active detail 下 `currentDetailDraft()` 初始为空，`updateDetailDraft(...)` 后必须暴露最新 draft；
+    - `sendDetailDraft()` 必须复用现有 same-package send 路径，把 draft 文本追加到当前投影线程、继续同步 target summary 的 sent text / `messageCount`，并在发送后清空 draft；
+    - list-route `updateDetailDraft(...)` / `sendDetailDraft()` 必须 no-op；
+    - direct retarget、`backFromDetail()` 与 reopen 任一会话后 draft 必须重置为 empty，同时 detail thread ownership 保持正确。
+  - 保持实现仍为 same-package repo-local Telegram sample composer slice，不触碰 `samples/phase07-shared-service-refresh-harness/**`、`samples/real-message-service-cache-001/**`、`P23`、shared helper/API、generic send abstraction，也不做 per-peer draft persistence rollout 或更宽 UI 重设计；`M2` 与 `P1-43` 保留为已落地 checkpoint，但不是本轮最终交付。
+  - 已落地产物：
+    - `docs/reports/2026-04-18-phase07-m3-telegram-active-detail-composer-slice.md`
+    - `docs/reports/2026-04-15-phase07-app-shell-consume-boundary.md`
+    - `docs/status/current_committed_plan.md`
+    - `docs/status/INDEX.md`
+    - `docs/current_state.v2.md`
+    - `docs/runtime_contract.v2.md`
+    - `docs/status/current_task_handoff.md`
+    - `docs/agent_system/execution_routing.md`
+    - `AGENTS.md`
+    - `artifacts/verification_contracts/20260418-phase07-telegram-m3-active-detail-composer-slice/`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_slice.cj`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_app_shell.cj`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj`
+  - _Requirement: REQ-3, REQ-5, REQ-6, REQ-7_
+
+- [x] M4. 冻结 Telegram Active-Detail Same-Peer Draft Recovery Slice
+  - 只在 `samples/telegram-ui-vertical-slice-001` 内落地一个更窄的 composer recovery 例外：当 active detail 存在未发送 draft 时，`backFromDetail()` -> reopen same visible conversation 后允许恢复 draft；与此同时，`sendDetailDraft()` 后仍必须清空，切到其他 peer 仍必须清空旧 draft / slot，list-route composer API 仍必须保持严格 no-op，且对 recovery slot 没有副作用。
+  - 最小回归锁定：
+    - `appShellDetailDraftShouldRecoverAfterBackAndReopenSameConversation`
+    - `appShellRecoveredDetailDraftShouldStillClearAfterSend`
+    - `appShellRecoveredDetailDraftShouldDropOnOtherPeerAndListRouteNoop`
+  - 允许并实际落地的 same-package production edits 只落在：
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_slice.cj`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_app_shell.cj`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj`
+  - 与 `M3` 的边界：`M3` 冻结的是 composer draft 在 send、retarget、back、reopen 路径上的保守清空边界；`M4` 不扩成 per-peer persistence rollout，只重新打开其中一个被刻意留白的 sibling edge：`backFromDetail()` 返回 list 后 reopen same visible conversation 的未发送 draft recovery。
+  - recovery 合同：
+    - recovery slot 只允许在 active detail 持有未发送 draft 且用户执行 `backFromDetail()` 返回 list route 时写入；active detail edit 本身不得直接写入 slot；
+    - active detail 下的未发送 draft 经 `backFromDetail()` 返回 list route 后，不应直接暴露在 list-route surface；
+    - 只有随后首次 reopen 同一条仍可见会话时，draft 才允许恢复；
+    - recovery slot is consumed on the first same-peer reopen restore and does not survive that restore unless a new unsent draft is edited and backed out again.
+    - 恢复后的 `sendDetailDraft()` 仍必须复用现有 same-package send 路径，把 draft 文本追加到当前投影线程、同步 target summary 的 sent text / `messageCount`，并在发送后清空 draft / slot；
+    - `sendDetailDraft()` 成功发送后、direct retarget 到其他 peer、或 `backFromDetail()` 后 reopen 另一条 visible conversation，都必须清空旧 draft / slot，不得形成 generic/per-peer persistence；
+    - list-route `updateDetailDraft(...)` / `sendDetailDraft()` 仍必须 pure no-op，不得激活 detail route；
+    - list-route composer API remains a pure no-op and must not mutate recovery-slot state；
+    - 该 no-op 不得创建、恢复、消费、泄漏或清空 recovery slot；
+    - `currentPageName()`、`historySize()`、detail thread ownership 与 summary coherence 继续遵守 `M3` 边界。
+  - 已落地产物：
+    - `docs/reports/2026-04-20-phase07-m4-telegram-active-detail-same-peer-draft-recovery-slice.md`
+    - `docs/reports/2026-04-20-phase07-m4-telegram-active-detail-same-peer-draft-recovery-slice-freeze-draft.md`
+    - `docs/reports/2026-04-15-phase07-app-shell-consume-boundary.md`
+    - `docs/runtime_contract.v2.md`
+    - `docs/status/current_committed_plan.md`
+    - `docs/current_state.v2.md`
+    - `docs/status/INDEX.md`
+    - `docs/status/current_task_handoff.md`
+    - `docs/agent_system/execution_routing.md`
+    - `AGENTS.md`
+    - `artifacts/verification_contracts/20260420-phase07-telegram-m4-active-detail-same-peer-draft-recovery-slice/`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_slice.cj`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_app_shell.cj`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj`
+  - _Requirement: REQ-3, REQ-5, REQ-6, REQ-7, M4-REQ-1, M4-REQ-2, M4-REQ-3, M4-REQ-4_
+
+- [x] M5. 落地 Telegram Active-Detail Same-Peer Draft Recovery Refresh-Before-Reopen Coherence Slice
+  - 只落地一个比 `M4` 略进一步、但仍很窄的 sibling edge：active detail 持有未发送 draft，`backFromDetail()` 已按 `M4` 合同武装 same-peer recovery slot，shell 仍停在 list route，用户对同一条 peer 执行 `refreshConversation(peer, limit)`，随后首次 reopen 同一条 refreshed visible conversation；在这条 edge 中 draft 仍允许恢复，但 recovery slot 仍必须在该次 restore 后立即消费。
+  - 与 `M4` 的边界：`M4` 只锁定 `back -> first same-peer reopen`；`M5` 只在两者之间插入一次 list-route same-peer refresh，不改写 `M4` 的 slot write / restore / consume / clear 语义。
+  - 与 `P1-11` 的边界：`P1-11` 锁定的是 list-route `back -> refresh -> reopen refreshed target` 的 summary / detail coherence；`M5` 只在这条已落地 refresh rail 上新增“armed same-peer recovery slot 仍可恢复 draft”的语义。
+  - 与 `P1-15` 的边界：`P1-15` 锁定的是 active-detail target `refresh -> back -> reopen same refreshed target`；`M5` 不从 detail 内 refresh 起步，而是从 `M4` 已经 back 到 list 且 slot 已 armed 的状态起步。
+  - 最小回归锁定：
+    - `appShellDraftRecoverySlotShouldSurviveSamePeerRefreshBeforeReopen`
+    - `appShellRecoveredDraftAfterSamePeerRefreshShouldStillClearAfterSend`
+    - `appShellListRouteSamePeerRefreshWhileRecoveryArmedShouldKeepDraftHiddenAndBounded`
+  - 实际 write set 继续限制在：
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_slice.cj`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_app_shell.cj`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj`
+  - 从当前 verification surface 看，`M4` 已有 same-package production code 已满足该更窄的 M5 contract；因此本轮无需继续扩大 `telegram_ui_slice.cj` / `telegram_app_shell.cj`，实际新增的是 M5 regression locks、landed report、evidence bundle 与 repo-level pointer sync。
+  - in-scope：
+    - `samples/telegram-ui-vertical-slice-001` 的 same-package app-shell / detail / tests
+    - `specs/phase07-telegram-ui-incubation/{requirements,design,tasks}.md` 中与 `M5` 对应的 landed 定义
+    - `docs/reports/2026-04-20-phase07-m5-telegram-active-detail-same-peer-draft-recovery-refresh-before-reopen-coherence-slice.md`
+    - `artifacts/verification_contracts/20260420-phase07-telegram-m5-active-detail-same-peer-draft-recovery-refresh-before-reopen-coherence-slice/`
+  - out-of-scope：
+    - `samples/phase07-shared-service-refresh-harness/**`
+    - `samples/real-message-service-cache-001/**`
+    - `P23`
+    - refresh other peer while slot armed
+    - direct retarget after refreshed same-peer recovery
+    - any broader refresh permutation
+    - shared helper/API
+    - generic send abstraction
+    - broader UI redesign
+    - 完整 per-peer draft persistence rollout
+  - landed contract：
+    - list-route same-peer refresh 不得暴露 draft
+    - list-route same-peer refresh 不得创建、恢复、消费、清空或改写 same-peer recovery slot
+    - first same-peer reopen 仍应恢复 draft，并立即消费 slot
+    - reopen 后 detail thread ownership 必须绑定到 refreshed target
+    - refreshed target summary 与 bounded history 继续沿用既有 refresh / reopen rail
+    - `sendDetailDraft()` after recovery 仍必须复用现有 same-package send path，并在发送成功后清空 draft / slot
+    - list-route `updateDetailDraft(...)` / `sendDetailDraft()` 仍必须 strict pure no-op，不得创建、恢复、消费、泄漏或清空 recovery slot
+  - canonical proof：
+    - `cd samples/telegram-ui-vertical-slice-001 && cjpm test`
+    - `cd samples/telegram-ui-vertical-slice-001 && timeout 5s ./target/release/unittest_bin/telegram_ui_vertical_slice_001`
+    - `docs/reports/2026-04-20-phase07-m5-telegram-active-detail-same-peer-draft-recovery-refresh-before-reopen-coherence-slice.md`
+    - `artifacts/verification_contracts/20260420-phase07-telegram-m5-active-detail-same-peer-draft-recovery-refresh-before-reopen-coherence-slice/`
+    - `docs/status/current_committed_plan.md`
+    - `docs/current_state.v2.md`
+    - `docs/status/INDEX.md`
+    - `docs/status/current_task_handoff.md`
+    - `docs/agent_system/execution_routing.md`
+    - `AGENTS.md`
+  - _Requirement: REQ-3, REQ-5, REQ-6, REQ-7, M5-REQ-1, M5-REQ-2, M5-REQ-3, M5-REQ-4_
+
+- [x] M6. 落地 Telegram Active-Detail Same-Peer Draft Recovery Other-Peer Refresh Drop Boundary Slice
+  - 只冻结一个比 `M5` 更窄、且仍严格 bounded 的 sibling edge：active detail 持有未发送 draft，`backFromDetail()` 已按 `M4` / `M5` 合同武装 same-peer recovery slot，shell 仍停在 list route，用户对另一条 visible peer 执行 `refreshConversation(peer, limit)`；在这条 edge 中 draft 仍不得暴露，other-peer refresh 不得 restore slot，但它必须使旧 recovery candidate 失效并丢弃，因此后续任何 reopen 都不得恢复 old draft。
+  - 与 `M5` 的边界：`M5` 锁定的是 armed slot 遇到 same-peer refresh 时仍可恢复 draft；`M6` 只在 sibling 的 other-peer refresh 分支上增加 drop boundary，不改写 `M4` / `M5` 的 slot write / restore / consume / clear 语义。
+  - 与 `P1-11` 的边界：`P1-11` 锁定的是 list-route `back -> refresh -> reopen refreshed target` 的 summary / detail coherence；`M6` 只在这条已落地 refresh rail 上新增“armed same-peer recovery slot 在 other-peer refresh 后必须失效”的语义。
+  - 与 `P1-15` 的边界：`P1-15` 锁定的是 active-detail target `refresh -> back -> reopen same refreshed target`；`M6` 不从 detail 内 refresh 起步，而是从 `M4` / `M5` 已经 back 到 list 且 slot 已 armed 的状态起步。
+  - 最小回归锁定并已落地：
+    - `appShellRecoverySlotShouldDropAfterOtherPeerRefreshBeforeReopen`
+    - `appShellDroppedRecoveryAfterOtherPeerRefreshShouldNotRestoreOnOriginalReopen`
+    - `appShellOtherPeerRefreshWhileRecoveryArmedShouldKeepDraftHiddenAndListComposerNoop`
+  - 实际 write set 继续限制在：
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_slice.cj`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_app_shell.cj`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj`
+  - in-scope：
+    - `samples/telegram-ui-vertical-slice-001` 的 same-package app-shell / detail / tests
+    - `specs/phase07-telegram-ui-incubation/{requirements,design,tasks}.md` 中与 `M6` 对应的 landed 定义
+    - `docs/reports/2026-04-20-phase07-m6-telegram-active-detail-same-peer-draft-recovery-other-peer-refresh-drop-boundary-slice.md`
+    - `artifacts/verification_contracts/20260420-phase07-telegram-m6-active-detail-same-peer-draft-recovery-other-peer-refresh-drop-boundary-slice/`
+  - out-of-scope：
+    - `samples/phase07-shared-service-refresh-harness/**`
+    - `samples/real-message-service-cache-001/**`
+    - `P23`
+    - multiple refresh chain
+    - other-peer refresh 后 direct retarget
+    - same-peer refresh 与 other-peer refresh 混合序列
+    - any broader refresh permutation
+    - shared helper/API
+    - generic send abstraction
+    - broader UI redesign
+    - 完整 per-peer draft persistence rollout
+  - landed contract：
+    - list-route other-peer refresh 不得暴露 draft
+    - list-route other-peer refresh 不得 restore slot
+    - list-route other-peer refresh 必须使旧 recovery candidate 失效并丢弃 armed slot
+    - invalidation 发生后，reopen 原 peer 或 reopen refreshed other peer 都不得恢复 old draft
+    - detail thread ownership、summary coherence、`historySize()` 与 `currentPageName()` 继续沿用既有 refresh / reopen rail
+    - list-route `updateDetailDraft(...)` / `sendDetailDraft()` 仍必须 strict pure no-op，不得创建、恢复、消费、泄漏或清空 recovery state，也不得创建 recovery model 之外的新隐含状态
+  - canonical proof：
+    - `cd samples/telegram-ui-vertical-slice-001 && cjpm test`
+    - `cd samples/telegram-ui-vertical-slice-001 && timeout 5s ./target/release/unittest_bin/telegram_ui_vertical_slice_001`
+    - `docs/reports/2026-04-20-phase07-m6-telegram-active-detail-same-peer-draft-recovery-other-peer-refresh-drop-boundary-slice.md`
+    - `artifacts/verification_contracts/20260420-phase07-telegram-m6-active-detail-same-peer-draft-recovery-other-peer-refresh-drop-boundary-slice/`
+    - `docs/status/current_committed_plan.md`
+    - `docs/current_state.v2.md`
+    - `docs/status/INDEX.md`
+    - `docs/status/current_task_handoff.md`
+    - `docs/runtime_contract.v2.md`
+    - `AGENTS.md`
+  - _Requirement: REQ-3, REQ-5, REQ-6, REQ-7, M6-REQ-1, M6-REQ-2, M6-REQ-3, M6-REQ-4_
+
+- [x] M7. 落地 Telegram Active-Detail Same-Peer Draft Recovery Same-Peer Refresh Then Other-Peer Drop Slice
+  - 只落地一个比 broader mixed-refresh family 更窄、且仍严格 bounded 的二步 list-route mixed-refresh 组合边：active detail 持有未发送 draft，`backFromDetail()` 已按 `M4` / `M5` / `M6` 合同武装 same-peer recovery slot，shell 仍停在 list route，用户先对同一条 peer 执行一次 `refreshConversation(peer, limit)` 以保持 slot，再在任何 reopen 之前对另一条 visible peer 执行一次 `refreshConversation(peer, limit)`；第二步 other-peer refresh 必须使此前仍存活的 recovery candidate 失效并丢弃，因此此后任何 later reopen 都不得恢复 old draft。
+  - 与 `M5` 的边界：`M5` 锁定的是 armed slot 遇到一次 same-peer refresh 时仍可在 first same-peer reopen 恢复 draft；`M7` 只复用其中“same-peer refresh preserves slot”这一半，不重写 `M5` 的 restore edge。
+  - 与 `M6` 的边界：`M6` 锁定的是 armed slot 直接遇到一次 other-peer refresh 时必须丢弃 old recovery candidate；`M7` 只复用其中“other-peer refresh drops slot”这一半，并把它严格放在 `M5` preserve 之后。
+  - 与 broader mixed family 的边界：
+    - 只落地 exactly one same-peer refresh followed by exactly one other-peer refresh
+    - 不冻结 reverse order
+    - 不冻结 reopen 插在两次 refresh 之间
+    - 不冻结 repeated same-peer / repeated other-peer / third-peer refresh
+    - 不冻结 any broader mixed refresh chain
+    - 不冻结 other-peer refresh 后 direct retarget
+  - 最小 landed 回归锁：
+    - `appShellRecoverySlotShouldSurviveSamePeerRefreshThenDropAfterOtherPeerRefreshBeforeReopen`
+    - `appShellDroppedRecoveryAfterMixedRefreshShouldNotRestoreOnAnyLaterReopen`
+    - `appShellMixedRefreshWhileRecoveryArmedShouldKeepDraftHiddenAndListComposerNoop`
+  - 若测试暴露缺口，production write set 仍只允许落在：
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_slice.cj`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_app_shell.cj`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj`
+  - in-scope：
+    - `samples/telegram-ui-vertical-slice-001` 的 same-package app-shell / detail / tests
+    - `specs/phase07-telegram-ui-incubation/{requirements,design,tasks}.md` 中与 `M7` 对应的 landed 定义
+    - `docs/reports/2026-04-20-phase07-m7-telegram-active-detail-same-peer-draft-recovery-same-peer-refresh-then-other-peer-drop-slice.md`
+    - `artifacts/verification_contracts/20260420-phase07-telegram-m7-active-detail-same-peer-draft-recovery-same-peer-refresh-then-other-peer-drop-slice/`
+  - out-of-scope：
+    - `samples/phase07-shared-service-refresh-harness/**`
+    - `samples/real-message-service-cache-001/**`
+    - `P23`
+    - arbitrary mixed refresh chain
+    - reverse-order mixed refresh
+    - reopen 插在两次 refresh 之间
+    - repeated same-peer / repeated other-peer / third-peer refresh
+    - other-peer refresh 后 direct retarget
+    - shared helper/API
+    - generic send abstraction
+    - broader UI redesign
+    - 完整 per-peer draft persistence rollout
+  - landed contract：
+    - 第一步 list-route same-peer refresh 不得暴露 draft，且必须保持 armed slot 存活
+    - 第二步 list-route other-peer refresh 不得暴露 draft，且必须使此前仍存活的 old recovery candidate 失效并丢弃
+    - 第二步发生后，later reopen 不得恢复 old draft
+    - detail thread ownership、summary coherence、`historySize()` 与 `currentPageName()` 继续沿用既有 refresh / reopen rail
+    - list-route `updateDetailDraft(...)` / `sendDetailDraft()` 仍必须 strict pure no-op，不得创建、恢复、消费、泄漏或清空 recovery state，也不得创建 recovery model 之外的新隐含状态
+  - landed proof：
+    - 三条 `M7` 回归已纳入 `samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj`
+    - 当前 verification surface 说明现有 `M5/M6` production 行为已满足 `M7`，因此本轮不扩大 `telegram_ui_slice.cj` / `telegram_app_shell.cj` 的行为面
+    - `cd samples/telegram-ui-vertical-slice-001 && cjpm test` 已通过，`TOTAL: 52`、`PASSED: 52`、`FAILED: 0`
+    - `cd samples/telegram-ui-vertical-slice-001 && timeout 5s ./target/release/unittest_bin/telegram_ui_vertical_slice_001` 已通过，`TOTAL: 52`、`PASSED: 52`、`FAILED: 0`
+    - landed report：`docs/reports/2026-04-20-phase07-m7-telegram-active-detail-same-peer-draft-recovery-same-peer-refresh-then-other-peer-drop-slice.md`
+    - evidence bundle：`artifacts/verification_contracts/20260420-phase07-telegram-m7-active-detail-same-peer-draft-recovery-same-peer-refresh-then-other-peer-drop-slice/`
+    - live truth surfaces 已切到 `M7 landed / latest_report = M7 / raw_log_root = M7`
+  - _Requirement: REQ-3, REQ-5, REQ-6, REQ-7, M7-REQ-1, M7-REQ-2, M7-REQ-3, M7-REQ-4_
+
+- [x] M8. 落地 Telegram Active-Detail Same-Peer Draft Recovery Other-Peer Refresh Then Same-Peer Refresh No-Restore Slice
+  - 只落地一个比 broader mixed-refresh family 更窄、且仍严格 bounded 的 reverse-order sibling 组合边：active detail 持有未发送 draft，`backFromDetail()` 已按 `M4` / `M5` / `M6` / `M7` 合同武装 same-peer recovery slot，shell 仍停在 list route，用户先对另一条 visible peer 执行一次 `refreshConversation(peer, limit)` 以 drop slot，再在任何 reopen 之前对原 recovery peer 执行一次 `refreshConversation(peer, limit)`；第二步 same-peer refresh 不得让已被丢弃的 old recovery candidate 重新变成可 later reopen 的 restore 来源。
+  - 与 `M6` 的边界：`M6` 锁定的是 first-step other-peer refresh direct-drop；`M8` 只在这之后补一跳 same-peer refresh no-resurrect。
+  - 与 `M7` 的边界：`M7` 锁定的是 `same-peer refresh -> other-peer refresh`；`M8` 只交换顺序，锁定 `other-peer refresh -> same-peer refresh`。
+  - 与 broader mixed family 的边界：
+    - 只落地 exactly one other-peer refresh followed by exactly one same-peer refresh
+    - 不冻结 repeated refresh
+    - 不冻结 reopen 插在两次 refresh 之间
+    - 不冻结 third-peer refresh
+    - 不冻结 any broader mixed refresh chain
+    - 不冻结 other-peer refresh 后 direct retarget
+  - 最小 landed 回归锁：
+    - `appShellRecoverySlotShouldDropBeforeSamePeerRefreshCanRearmOrRestore`
+    - `appShellDroppedRecoveryAfterReverseOrderMixedRefreshShouldNotRestoreOnAnyLaterReopen`
+    - `appShellReverseOrderMixedRefreshWhileRecoveryArmedShouldKeepDraftHiddenAndListComposerNoop`
+  - 若测试暴露缺口，production write set 仍只允许落在：
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_slice.cj`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_app_shell.cj`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj`
+  - in-scope：
+    - `samples/telegram-ui-vertical-slice-001` 的 same-package app-shell / detail / tests
+    - `specs/phase07-telegram-ui-incubation/{requirements,design,tasks}.md` 中与 `M8` 对应的 landed 定义
+    - `docs/reports/2026-04-20-phase07-m8-telegram-active-detail-same-peer-draft-recovery-other-peer-refresh-then-same-peer-refresh-no-restore-slice.md`
+    - `artifacts/verification_contracts/20260420-phase07-telegram-m8-active-detail-same-peer-draft-recovery-other-peer-refresh-then-same-peer-refresh-no-restore-slice/`
+  - out-of-scope：
+    - `samples/phase07-shared-service-refresh-harness/**`
+    - `samples/real-message-service-cache-001/**`
+    - `P23`
+    - repeated refresh
+    - reopen 插在两次 refresh 之间
+    - third-peer refresh
+    - arbitrary mixed refresh chain
+    - other-peer refresh 后 direct retarget
+    - shared helper/API
+    - generic send abstraction
+    - broader UI redesign
+    - 完整 per-peer draft persistence rollout
+  - landed contract：
+    - 第一步 list-route other-peer refresh 不得暴露 draft，且必须使 armed slot 立即失效并丢弃
+    - 第二步 list-route same-peer refresh 不得暴露 draft，且不得让已被丢弃的 old recovery candidate 重新变成可恢复状态
+    - 第二步发生后，later reopen 原 recovery peer 或 first-step refreshed other peer 都不得恢复 old draft
+    - detail thread ownership、summary coherence、`historySize()` 与 `currentPageName()` 继续沿用既有 refresh / reopen rail
+    - list-route `updateDetailDraft(...)` / `sendDetailDraft()` 仍必须 strict pure no-op，不得创建、恢复、消费、泄漏或清空 recovery state，也不得创建 recovery model 之外的新隐含状态
+  - landed proof：
+    - 三条 `M8` 回归已纳入 `samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj`
+    - 当前 verification surface 说明现有 `M5/M6/M7` production 行为已满足 `M8`，因此本轮不扩大 `telegram_ui_slice.cj` / `telegram_app_shell.cj` 的行为面
+    - `cd samples/telegram-ui-vertical-slice-001 && cjpm test` 已通过，`TOTAL: 55`、`PASSED: 55`、`FAILED: 0`
+    - `cd samples/telegram-ui-vertical-slice-001 && timeout 5s ./target/release/unittest_bin/telegram_ui_vertical_slice_001` 已通过，`TOTAL: 55`、`PASSED: 55`、`FAILED: 0`
+    - 这次总数从 `52` 增长到 `55`，差异来源仅为上述三条 `M8` 新回归
+    - landed report：`docs/reports/2026-04-20-phase07-m8-telegram-active-detail-same-peer-draft-recovery-other-peer-refresh-then-same-peer-refresh-no-restore-slice.md`
+    - evidence bundle：`artifacts/verification_contracts/20260420-phase07-telegram-m8-active-detail-same-peer-draft-recovery-other-peer-refresh-then-same-peer-refresh-no-restore-slice/`
+    - evidence bundle 至少包含：
+      - `cjpm-test.log`
+      - `timeout-unittest.log`
+      - `case-existence.log`
+      - `git-scope-check.log`
+      - `pointer-consistency.log`
+    - 当前 repo `git status --short` 仍是整仓 untracked，因此 scope 证据继续依赖 evidence log，而不是常规 git diff 基线
+    - live truth surfaces 已从 `M7 landed` 切到 `M8 landed / latest_report = M8 / raw_log_root = M8`
+  - _Requirement: REQ-3, REQ-5, REQ-6, REQ-7, M8-REQ-1, M8-REQ-2, M8-REQ-3, M8-REQ-4_
+
+- [x] M9. 已落地 Telegram Active-Detail Same-Peer Draft Recovery Refresh-Reopen Then Direct-Retarget Other-Peer Drop Slice
+  - 只落地一个比 generic retarget family 更窄、且仍严格 bounded 的 post-recovery direct-retarget sibling edge：active detail 持有未发送 draft，`backFromDetail()` 已按 `M4` / `M5` 合同武装 same-peer recovery slot，shell 仍停在 list route，用户先对同一条 peer 执行一次 `refreshConversation(peer, limit)`，随后首次 reopen 同一条 refreshed visible conversation 以 restore and consume draft，再从该 detail 直接 retarget 到一条 other visible peer；这次 retarget 必须 drop old recovered draft，且不得泄漏到新目标，也不得在 later reopen original peer 时 ghost-restore。
+  - 与 `M5` 的边界：`M5` 锁定的是 `same-peer refresh -> first same-peer reopen restore/consume`；`M9` 只消费这条 edge，并在其后追加 exactly one `direct retarget(other peer)` 的 drop/no-leak/no-ghost-restore。
+  - 与 `M8` 的边界：`M8` 锁定的是 restore 之前的 `other-peer refresh -> same-peer refresh` no-resurrect；`M9` 不重开这条 pre-reopen mixed-refresh family，只处理 restore/consume 已完成之后的一跳 direct retarget drop boundary。
+  - 与 `P1-12` 的边界：`P1-12` 锁定的是 list-route `refresh -> reopen -> retarget` 的 route / summary coherence；`M9` 只借用这条 rail 的 ownership / bounded-history 语义，并额外加上 recovered draft drop/no-leak/no-ghost-restore。
+  - 与 `P1-16` 的边界：`P1-16` 锁定的是 active-detail target `refresh -> direct retarget`；`M9` 只借用其中 direct-retarget 的 detail ownership / bounded-history rail，不把 active-detail refresh 重新扩写成 generic retarget family。
+  - 与 broader family 的边界：
+    - 只落地 exactly one same-peer refresh、one first same-peer reopen restore/consume、and exactly one direct retarget to one other visible peer
+    - 不冻结 repeated refresh
+    - 不冻结 third-peer refresh
+    - 不冻结除定义链路所需 first same-peer reopen restore/consume 之外的 additional reopen-in-between permutation
+    - 不冻结第二次 direct retarget
+    - 不冻结 broader back/reopen tail expansion
+  - 最小 landed 回归锁：
+    - `appShellRecoveredDraftAfterSamePeerRefreshReopenShouldDropOnDirectRetargetToOtherPeer`
+    - `appShellDirectRetargetAfterRecoveredDraftShouldNotGhostRestoreOnLaterOriginalPeerReopen`
+    - `appShellRefreshReopenRetargetAfterRecoveryShouldKeepOtherPeerOwnershipAndBoundedHistory`
+  - 若测试暴露缺口，production write set 仍只允许落在：
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_slice.cj`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_app_shell.cj`
+    - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj`
+  - in-scope：
+    - `samples/telegram-ui-vertical-slice-001` 的 same-package app-shell / detail / tests
+    - `specs/phase07-telegram-ui-incubation/{requirements,design,tasks}.md` 中与 `M9` 对应的 landed 定义
+  - out-of-scope：
+    - `samples/phase07-shared-service-refresh-harness/**`
+    - `samples/real-message-service-cache-001/**`
+    - `P23`
+    - repeated refresh
+    - third-peer refresh
+    - additional reopen-in-between permutation
+    - 第二次 direct retarget
+    - broader back/reopen tail expansion
+    - generic retarget family
+    - shared helper/API
+    - generic send abstraction
+    - broader UI redesign
+    - 完整 per-peer draft persistence rollout
+    - repo-level promotion
+  - landed contract：
+    - list-route same-peer refresh 继续 preserve armed slot，first same-peer reopen 继续 restore and consume draft
+    - direct retarget 到 other peer 后，old recovered draft 必须 drop，且不得泄漏到新目标的 draft / send state / summary surface
+    - 上述 direct retarget 之后，later reopen original peer 不得 ghost-restore old recovered draft
+    - detail ownership、summary coherence、`historySize()` 与 `currentPageName()` 继续沿用既有 same-package refresh / reopen / retarget rail
+  - landed proof：
+    - 三条 `M9` 回归已纳入 `samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj`
+    - 当前 verification surface 说明现有 same-package `M4/M5/P1-12/P1-16` production 行为已满足 `M9`，因此本轮不扩大 `telegram_ui_slice.cj` / `telegram_app_shell.cj` 的行为面
+    - `cd samples/telegram-ui-vertical-slice-001 && cjpm test` 已通过，`TOTAL: 58`、`PASSED: 58`、`FAILED: 0`
+    - `cd samples/telegram-ui-vertical-slice-001 && timeout 5s ./target/release/unittest_bin/telegram_ui_vertical_slice_001` 已通过，`TOTAL: 58`、`PASSED: 58`、`FAILED: 0`
+    - 这次总数从 `55` 增长到 `58`，差异来源仅为上述三条 `M9` 新回归
+    - landed report：`docs/reports/2026-04-20-phase07-m9-telegram-active-detail-same-peer-draft-recovery-refresh-reopen-then-direct-retarget-other-peer-drop-slice.md`
+    - evidence bundle：`artifacts/verification_contracts/20260420-phase07-telegram-m9-active-detail-same-peer-draft-recovery-refresh-reopen-then-direct-retarget-other-peer-drop-slice/`
+    - evidence bundle 至少包含：
+      - `cjpm-test.log`
+      - `timeout-unittest.log`
+      - `case-existence.log`
+      - `git-scope-check.log`
+      - `pointer-consistency.log`
+    - 当前 repo `git status --short` 仍是整仓 untracked，因此 scope 证据继续依赖 evidence log，而不是常规 git diff 基线
+    - live truth surfaces 已从 `M8 landed` 切到 `M9 landed / latest_report = M9 / raw_log_root = M9`
+  - _Requirement: REQ-3, REQ-5, REQ-6, REQ-7, M9-REQ-1, M9-REQ-2, M9-REQ-3, M9-REQ-4_
+
+- [x] M10. 已落地 Telegram Active-Detail Same-Peer Draft Recovery Repeated Same-Peer Refresh Before First-Reopen Preserve Slice
+  - 当前已落地一个 same-package landed slice：active detail 持有未发送 draft，`backFromDetail()` 已按 `M4` / `M5` 合同武装 same-peer recovery slot，shell 仍停在 list route，用户先对同一条 recovery peer 执行一次 `refreshConversation(peer, limit)`，再在任何 reopen 之前对同一条 recovery peer 追加 exactly one additional `refreshConversation(peer, limit)`；这两次 same-peer refresh 都必须继续 preserve 同一个 armed slot，draft 仍不得暴露，随后首次 reopen 同一条 refreshed visible conversation 时，draft 仍只允许 restore and consume exactly once。
+  - 与 `M5` 的边界：`M5` 锁定的是 one-hop `same-peer refresh -> first same-peer reopen restore/consume`；`M10` 只在这条 one-hop preserve 上，再追加 exactly one additional same-peer refresh。
+  - 与 `M9` 的边界：`M9` 锁定的是 `same-peer refresh -> first same-peer reopen restore/consume -> exactly one direct retarget(other peer)`；`M10` 不重开 direct-retarget tail，只停留在 first reopen 之前的 repeated same-peer refresh preserve 问题。
+  - landed boundary：
+    - 只围绕 `M5` 的 one-hop same-peer refresh preserve 上，再追加 exactly one additional same-peer refresh
+    - 总计两次 same-peer refresh before first reopen
+    - 当时 live truth surfaces 已切到 `M10 landed`，并由 `M10` landed report + `M10` proof-round bundle 承载
+    - 后续 approved step 已继续前移到 `M11 landed`
+  - in-scope：
+    - `specs/phase07-telegram-ui-incubation/{requirements,design,tasks}.md`
+    - `docs/reports/2026-04-21-phase07-m10-telegram-active-detail-same-peer-draft-recovery-repeated-same-peer-refresh-before-first-reopen-preserve-slice.md`
+    - 当前 landed-step live truth surfaces：
+      - `AGENTS.md`
+      - `docs/status/current_committed_plan.md`
+      - `docs/current_state.v2.md`
+      - `docs/status/INDEX.md`
+      - `docs/status/current_task_handoff.md`
+      - `docs/agent_system/execution_routing.md`
+      - `docs/runtime_contract.v2.md`
+  - out-of-scope：
+    - `samples/phase07-shared-service-refresh-harness/**`
+    - `samples/real-message-service-cache-001/**`
+    - `P23`
+    - other-peer refresh
+    - repeated other-peer refresh
+    - third-peer refresh
+    - direct retarget
+    - second direct retarget
+    - additional reopen-in-between permutation
+    - broader back/reopen tail
+    - broader mixed-refresh family
+    - shared helper/API
+    - generic send abstraction
+    - broader UI redesign
+    - 完整 per-peer draft persistence rollout
+    - repo-level promotion
+  - done_when：
+    - `M10` 在 `requirements/design/tasks` 中被统一表述为 landed same-package slice
+    - 三处 spec 都反复绑定到“在 `M5` 的 one-hop same-peer refresh preserve 上，再追加 exactly one additional same-peer refresh；总计两次 same-peer refresh before first reopen”
+    - landed report 已落盘，并明确声明直接复用已闭合的 proof-round gates
+    - 当时 `M10 landed` 的 truth sync 已切到对应 landed report 与现有 `M10` proof-round evidence bundle
+    - 后续 approved step / latest landed consume entry 已进一步前移到 `M11 landed`
+  - proof / evidence：
+    - 当前 landed truth 直接复用 `samples/telegram-ui-vertical-slice-001` 上已经闭合的 same-package proof surface
+    - 最小回归锁：
+      - `appShellRecoverySlotShouldStayHiddenAcrossRepeatedSamePeerRefreshes`
+      - `appShellRepeatedSamePeerRefreshBeforeFirstReopenShouldStillRestoreAndConsumeExactlyOnce`
+      - `appShellRepeatedSamePeerRefreshWhileRecoveryArmedShouldKeepSummaryBoundedAndListComposerNoop`
+    - reused canonical gates：
+      - `cd samples/telegram-ui-vertical-slice-001 && cjpm test`
+      - `cd samples/telegram-ui-vertical-slice-001 && timeout 5s ./target/release/unittest_bin/telegram_ui_vertical_slice_001`
+    - reused proof result：
+      - `cjpm test`：`exit 0 / TOTAL: 61 / PASSED: 61 / FAILED: 0`
+      - `timeout 5s ./target/release/unittest_bin/telegram_ui_vertical_slice_001`：`exit 0 / TOTAL: 61 / PASSED: 61 / FAILED: 0`
+      - landed report：`docs/reports/2026-04-21-phase07-m10-telegram-active-detail-same-peer-draft-recovery-repeated-same-peer-refresh-before-first-reopen-preserve-slice.md`
+      - supporting proof report：`docs/reports/2026-04-21-phase07-m10-telegram-active-detail-same-peer-draft-recovery-repeated-same-peer-refresh-before-first-reopen-preserve-slice-proof-round.md`
+      - evidence bundle：`artifacts/verification_contracts/20260421-phase07-telegram-m10-active-detail-same-peer-draft-recovery-repeated-same-peer-refresh-before-first-reopen-preserve-slice-proof-round/`
+  - minimal_write_set：
+    - 本轮 landed truth sync 的实际 write set 只限于：
+      - `specs/phase07-telegram-ui-incubation/{requirements,design,tasks}.md`
+      - `docs/reports/2026-04-21-phase07-m10-telegram-active-detail-same-peer-draft-recovery-repeated-same-peer-refresh-before-first-reopen-preserve-slice.md`
+      - live plan/state surfaces
+    - 本轮不触碰：
+      - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_slice.cj`
+      - `samples/telegram-ui-vertical-slice-001/src/telegram_app_shell.cj`
+      - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj`
+  - risk：
+    - 若措辞漂移，`M10` 很容易被误写成 generic repeated refresh family，而不再是 total-two same-peer refresh before first reopen 的最窄 sibling edge
+    - 若在当前 landed round 中引入 retarget、other-peer refresh 或 additional reopen tail，scope 会立刻超出 `M10 landed` 定义边界
+    - 若错误切换 `latest_report` / `raw_log_root`，会把 `M10 landed`、supporting proof surface 与下一 bounded continuation slice 的 authority boundary 混写
+  - _Requirement: REQ-3, REQ-5, REQ-6, REQ-7, M10-REQ-1, M10-REQ-2, M10-REQ-3, M10-REQ-4_
+
+- [x] M11. 已落地 Telegram Active-Detail Same-Peer Draft Recovery Third Same-Peer Refresh Before First-Reopen Preserve Slice
+  - 当前 landed same-package slice：active detail 持有未发送 draft，`backFromDetail()` 已按 `M4` / `M5` / `M10` 合同武装 same-peer recovery slot，shell 仍停在 list route，用户先完成 `M10` 已冻结的两次 same-peer `refreshConversation(peer, limit)`，再在任何 reopen 之前对同一条 recovery peer 追加 exactly one same-peer `refreshConversation(peer, limit)`；这三次 same-peer refresh 都必须继续 preserve 同一个 armed slot，draft 仍不得暴露，随后首次 reopen 同一条 refreshed visible conversation 时，draft 仍只允许 restore and consume exactly once。
+  - 与 `M10` 的边界：`M10` 锁定的是 exact two total same-peer refreshes before first reopen；`M11` 只在这条 exact two-refresh preserve 上，再追加 exactly one same-peer refresh。
+  - 与 `M9` 的边界：`M9` 锁定的是 `same-peer refresh -> first same-peer reopen restore/consume -> exactly one direct retarget(other peer)`；`M11` 不重开 direct-retarget tail，只停留在 first reopen 之前的 exact third same-peer refresh preserve 问题。
+  - landed boundary：
+    - 只围绕 `M10` 的 exact two-refresh same-peer preserve chain 上，再追加 exactly one same-peer refresh
+    - 总计三次 same-peer refresh before first reopen
+    - 当前 approved step 已切到 `M11 landed`
+    - `latest_report` 已切到 `M11` landed report，`raw_log_root` 已切到现有 `M11` proof-round evidence bundle
+  - in-scope：
+    - `specs/phase07-telegram-ui-incubation/{requirements,design,tasks}.md`
+    - 当前 landed live truth surfaces：
+      - `AGENTS.md`
+      - `docs/status/current_committed_plan.md`
+      - `docs/current_state.v2.md`
+      - `docs/status/INDEX.md`
+      - `docs/status/current_task_handoff.md`
+      - `docs/agent_system/execution_routing.md`
+      - `docs/runtime_contract.v2.md`
+    - `docs/reports/2026-04-21-phase07-m11-telegram-active-detail-same-peer-draft-recovery-third-same-peer-refresh-before-first-reopen-preserve-slice.md`
+    - `docs/reports/2026-04-21-phase07-m11-telegram-active-detail-same-peer-draft-recovery-third-same-peer-refresh-before-first-reopen-preserve-slice-proof-round.md`
+    - `artifacts/verification_contracts/20260421-phase07-telegram-m11-active-detail-same-peer-draft-recovery-third-same-peer-refresh-before-first-reopen-preserve-slice-proof-round/pointer-consistency.log`
+  - out-of-scope：
+    - `samples/phase07-shared-service-refresh-harness/**`
+    - `samples/real-message-service-cache-001/**`
+    - `P23`
+    - arbitrary repeated-refresh family beyond the exact third same-peer refresh
+    - other-peer refresh
+    - repeated other-peer refresh
+    - third-peer refresh
+    - direct retarget
+    - second direct retarget
+    - additional reopen-in-between permutation
+    - broader back/reopen tail
+    - broader mixed-refresh family
+    - shared helper/API
+    - generic send abstraction
+    - broader UI redesign
+    - 完整 per-peer draft persistence rollout
+    - repo-level promotion
+  - done_when：
+    - `M11` 在 `requirements/design/tasks` 中被统一表述为 landed same-package slice
+    - 三处 spec 都反复绑定到“在 `M10` 的 exact two-refresh chain 上，再追加 exactly one same-peer refresh；总计三次 same-peer refresh before first reopen”
+    - 当前 landed truth sync 直接复用已闭合的 `M11` proof report / proof-round evidence bundle，不重跑测试，也不生成第二套 evidence bundle
+    - `AGENTS.md`、`current_committed_plan`、`current_state`、`INDEX`、`current_task_handoff`、`execution_routing` 与 `runtime_contract` 全部收口到 `M11 landed`
+    - `latest_report` 已切到 `M11` landed report，`raw_log_root` 已切到现有 `M11` proof-round evidence bundle
+    - `next bounded continuation slice pending reviewer approval` 继续保持不变
+  - proof / evidence：
+    - 复用的最小回归锁：
+      - `appShellRecoverySlotShouldStayHiddenAcrossThirdSamePeerRefreshBeforeFirstReopen`
+      - `appShellThirdSamePeerRefreshBeforeFirstReopenShouldStillRestoreAndConsumeExactlyOnce`
+      - `appShellThirdSamePeerRefreshWhileRecoveryArmedShouldKeepSummaryBoundedAndListComposerNoop`
+    - 复用的 canonical gates：
+      - `cd samples/telegram-ui-vertical-slice-001 && cjpm test`
+      - `cd samples/telegram-ui-vertical-slice-001 && timeout 5s ./target/release/unittest_bin/telegram_ui_vertical_slice_001`
+    - 现有 evidence：
+      - `case-existence.log`
+      - `cjpm-test.log`
+      - `timeout-unittest.log`
+      - `git-scope-check.log`
+      - `pointer-consistency.log`
+  - minimal_write_set：
+    - 当前 landed-truth-sync 的实际 write set 只限于：
+      - `AGENTS.md`
+      - `docs/status/current_committed_plan.md`
+      - `docs/current_state.v2.md`
+      - `docs/status/INDEX.md`
+      - `docs/status/current_task_handoff.md`
+      - `docs/runtime_contract.v2.md`
+      - `docs/agent_system/execution_routing.md`
+      - `specs/phase07-telegram-ui-incubation/{requirements,design,tasks}.md`
+      - `docs/reports/2026-04-21-phase07-m11-telegram-active-detail-same-peer-draft-recovery-third-same-peer-refresh-before-first-reopen-preserve-slice.md`
+      - `docs/reports/2026-04-21-phase07-m11-telegram-active-detail-same-peer-draft-recovery-third-same-peer-refresh-before-first-reopen-preserve-slice-proof-round.md`
+      - `artifacts/verification_contracts/20260421-phase07-telegram-m11-active-detail-same-peer-draft-recovery-third-same-peer-refresh-before-first-reopen-preserve-slice-proof-round/pointer-consistency.log`
+    - 本轮未触碰：
+      - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_vertical_slice_test.cj`
+      - `samples/telegram-ui-vertical-slice-001/src/telegram_ui_slice.cj`
+      - `samples/telegram-ui-vertical-slice-001/src/telegram_app_shell.cj`
+  - risk：
+    - 若措辞漂移，`M11` 很容易被误写成 arbitrary repeated refresh family，而不再是 total-three same-peer refresh before first reopen 的最窄 sibling edge
+    - 若在当前 landed round 中引入 retarget、other-peer refresh 或 additional reopen tail，scope 会立刻超出 `M11 landed` 定义边界
+    - 若错误切换 `latest_report` / `raw_log_root`，会把 `M11 landed` 与未来 landed surface 的 authority boundary 混写
+  - _Requirement: REQ-3, REQ-5, REQ-6, REQ-7, M11-REQ-1, M11-REQ-2, M11-REQ-3, M11-REQ-4_

@@ -1,0 +1,194 @@
+{
+  "manifest_name": "phase06-ui-p9-draft-file-manifest",
+  "manifest_version": 1,
+  "created_at": "2026-04-12T01:32:47Z",
+  "phase": "Phase 06 UI Source Slicing / File-Level Workset",
+  "status": "draft-ready",
+  "source_corpus_manifest": "phase06_ui_source_corpus_p9_draft.json",
+  "source_manifest": "phase06_ui_sample_manifest_p9_draft.json",
+  "few_shot_pack": "phase06_ui_few_shot_pack.json",
+  "intended_consumer": [
+    "human-review",
+    "future-phase06-prompt-pilot",
+    "future-phase06-batch-curator"
+  ],
+  "notes": [
+    "Expands the selected frozen source corpus into file-level slices with explicit ui_prompt_tags.",
+    "This manifest is not consumed directly by scripts/pipeline_batch_runner.py; it is a file-level workset for prompt pilots, explicit tag injection, and later batch curation.",
+    "Tag refinement is allowed at file level when a multi-file sample contains both page-shell and rich-component files."
+  ],
+  "selection_policy": {
+    "priority": "P9",
+    "adoption_decision": "primary",
+    "source_type": "external_repo",
+    "expansion_rule": "expand repo_local_paths into file-level slices and refine per-file target_role/ui_prompt_tags"
+  },
+  "summary": {
+    "sample_count": 3,
+    "slice_count": 3,
+    "role_counts": {
+      "page": 3
+    },
+    "structure_counts": {
+      "page-shell": 3
+    }
+  },
+  "entries": [
+    {
+      "slice_id": "phase06-ui-p9-commonui-swiper-page",
+      "selection_rank": 1,
+      "sample_rank": 1,
+      "sample_id": "harmonyos-examples-commonui-swiper-page",
+      "priority": "P9",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "CommonUI/entry/src/main/cangjie/src/pages/swiperSample.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p9-draft/HarmonyOS-Examples/CommonUI/entry/src/main/cangjie/src/pages/swiperSample.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P9 draft candidate harvested from the remaining official HarmonyOS-Examples reserve after the regular Phase06 checkpoint reached 41/41 live passed."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Draft P9 swiper demo page slice for dual SwiperController ownership, autoplay variants, and same-file prev/next navigation inside one controller-owned page shell.",
+      "notes": [
+        "Keep SwiperController ownership and onChange callbacks source-backed inside the page boundary.",
+        "Treat the dual vertical swiper sections as one controller-owned page-shell contract instead of fabricating carousel helpers."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class SwiperView {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p9-commonui-text-input-page",
+      "selection_rank": 2,
+      "sample_rank": 1,
+      "sample_id": "harmonyos-examples-commonui-text-input-page",
+      "priority": "P9",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "CommonUI/entry/src/main/cangjie/src/pages/textInputSample.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p9-draft/HarmonyOS-Examples/CommonUI/entry/src/main/cangjie/src/pages/textInputSample.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P9 draft candidate harvested from the remaining official HarmonyOS-Examples reserve after the regular Phase06 checkpoint reached 41/41 live passed."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Draft P9 text-input demo page slice for placeholder/caret styling and same-file @State echo without inventing detached form models.",
+      "notes": [
+        "Keep @State text and TextInput.onChange wiring source-backed inside the page boundary.",
+        "Treat placeholder/font styling and echoed text as one direct render-facing page-shell contract."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class TextInputView {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-ui-routing-page-shell-view-model-renderer",
+        "harmonyos-examples-badgeview-page-shell-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p9-helloword-entry-page",
+      "selection_rank": 3,
+      "sample_rank": 1,
+      "sample_id": "harmonyos-examples-helloword-entry-page",
+      "priority": "P9",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "01-HelloWord/entry/src/main/cangjie/src/index.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p9-draft/HarmonyOS-Examples/01-HelloWord/entry/src/main/cangjie/src/index.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P9 draft candidate drawn from the remaining official HarmonyOS-Examples reserve to extend low-coupling layout and collection coverage after the P8 promotion."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Draft P9 hello-word entry page slice for display-derived typography, random rune generation, and Scroll/ForEach layout composition inside one page shell.",
+      "notes": [
+        "Keep random rune generation and display-width sizing source-backed instead of inventing providers or layout services.",
+        "Treat the Scroll + Stack + ForEach composition as one direct render-facing page-shell contract."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class EntryView {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-ui-routing-page-shell-view-model-renderer",
+        "harmonyos-examples-badgeview-page-shell-view-model-renderer"
+      ]
+    }
+  ]
+}

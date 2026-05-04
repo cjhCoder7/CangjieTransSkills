@@ -1,0 +1,26 @@
+{
+  "name": "Cangjie Agent Workspace",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  
+  "remoteUser": "vscode",
+  
+  "mounts": [
+    "source=/volume/wzhang/cky-workspace/.claude_global.json,target=/home/vscode/.claude.json,type=bind,consistency=cached"
+  ],
+
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python"
+      },
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "charliermarsh.ruff"
+      ]
+    }
+  }
+}

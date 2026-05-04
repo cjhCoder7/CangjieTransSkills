@@ -1,0 +1,194 @@
+{
+  "manifest_name": "phase06-ui-p8-draft-file-manifest",
+  "manifest_version": 1,
+  "created_at": "2026-04-12T01:06:10Z",
+  "phase": "Phase 06 UI Source Slicing / File-Level Workset",
+  "status": "draft-ready",
+  "source_corpus_manifest": "phase06_ui_source_corpus_p8_draft.json",
+  "source_manifest": "phase06_ui_sample_manifest_p8_draft.json",
+  "few_shot_pack": "phase06_ui_few_shot_pack.json",
+  "intended_consumer": [
+    "human-review",
+    "future-phase06-prompt-pilot",
+    "future-phase06-batch-curator"
+  ],
+  "notes": [
+    "Expands the selected frozen source corpus into file-level slices with explicit ui_prompt_tags.",
+    "This manifest is not consumed directly by scripts/pipeline_batch_runner.py; it is a file-level workset for prompt pilots, explicit tag injection, and later batch curation.",
+    "Tag refinement is allowed at file level when a multi-file sample contains both page-shell and rich-component files."
+  ],
+  "selection_policy": {
+    "priority": "P8",
+    "adoption_decision": "primary",
+    "source_type": "external_repo",
+    "expansion_rule": "expand repo_local_paths into file-level slices and refine per-file target_role/ui_prompt_tags"
+  },
+  "summary": {
+    "sample_count": 3,
+    "slice_count": 3,
+    "role_counts": {
+      "page": 3
+    },
+    "structure_counts": {
+      "page-shell": 3
+    }
+  },
+  "entries": [
+    {
+      "slice_id": "phase06-ui-p8-commonui-button-page",
+      "selection_rank": 1,
+      "sample_rank": 1,
+      "sample_id": "harmonyos-examples-commonui-button-page",
+      "priority": "P8",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "CommonUI/entry/src/main/cangjie/src/pages/buttonSample.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p8-draft/HarmonyOS-Examples/CommonUI/entry/src/main/cangjie/src/pages/buttonSample.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P8 draft candidate harvested from the remaining official HarmonyOS-Examples reserve after the regular Phase06 checkpoint reached 38/38 live passed."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Draft P8 button demo page slice for same-file button composition, style extensions, and shape-based builder reuse without inventing detached helper layers.",
+      "notes": [
+        "Keep Text/Button extend helpers and buttonGroup builder source-backed inside the page boundary.",
+        "Treat common/capsule/circle button presentation as one direct render-facing page-shell contract."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "class ButtonView {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-ui-routing-page-shell-view-model-renderer",
+        "harmonyos-examples-badgeview-page-shell-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p8-commonui-checkbox-page",
+      "selection_rank": 2,
+      "sample_rank": 1,
+      "sample_id": "harmonyos-examples-commonui-checkbox-page",
+      "priority": "P8",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "CommonUI/entry/src/main/cangjie/src/pages/checkBoxSample.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p8-draft/HarmonyOS-Examples/CommonUI/entry/src/main/cangjie/src/pages/checkBoxSample.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P8 draft candidate harvested from the remaining official HarmonyOS-Examples reserve after the regular Phase06 checkpoint reached 38/38 live passed."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Draft P8 checkbox demo page slice for grouped checkbox presentation and same-file onChange event wiring without introducing synthetic state holders.",
+      "notes": [
+        "Keep checkbox group membership, selected colors, and onChange logging source-backed inside the page boundary.",
+        "Treat the dual-checkbox row as a narrow event-driven page-shell example rather than splitting invented child components."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class CheckBoxView {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-ui-routing-page-shell-view-model-renderer",
+        "harmonyos-examples-badgeview-page-shell-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p8-address-exchange-page",
+      "selection_rank": 3,
+      "sample_rank": 1,
+      "sample_id": "harmonyos-cangjie-cases-address-exchange-page",
+      "priority": "P8",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Cangjie-Cases",
+      "source_path": "CangjieAppDevelopment/feature/addressexchange/src/main/cangjie/src/view/AddressExchangeView.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p8-draft/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/addressexchange/src/main/cangjie/src/view/AddressExchangeView.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Cangjie-Cases",
+        "branch": "main",
+        "commit": "2d0662bb5c97a15d6bc459688df6c9b23275f12f",
+        "access_date": "2026-04-12",
+        "purpose": "P8 draft candidate drawn from the remaining official HarmonyOS-Cangjie-Cases reserve that stayed unconsumed after the P7 official-page promotion."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Draft P8 address exchange page slice for same-file swap animation, translate/rotate state, and toast-backed click affordances inside one page shell.",
+      "notes": [
+        "Keep rotateAngle, translateX, and swap as direct page-owned state instead of inventing controller facades.",
+        "Preserve the source-backed animateTo and PromptAction usage rather than collapsing the page into a static card example."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class AddressExchangeView {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-ui-routing-page-shell-view-model-renderer",
+        "harmonyos-examples-badgeview-page-shell-view-model-renderer"
+      ]
+    }
+  ]
+}

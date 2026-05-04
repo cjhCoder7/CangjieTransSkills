@@ -1,0 +1,29 @@
+{
+  "chunk": {
+    "chunk_id": "module",
+    "label": "MTProto Config",
+    "description": "translate the full config/session module as a single frozen-anchor chunk",
+    "expected_members": [
+      "AuthKeyState",
+      "SessionInfo",
+      "MTProtoConfig",
+      "SessionManager"
+    ]
+  },
+  "artifact": {
+    "attempt": 1,
+    "generated_code": "package core.mtproto\n\nimport std.collection.*\n\npublic enum AuthKeyState {\n    | None\n    | Created\n}\n\npublic class SessionInfo {\n    public let dcId: Int32\n    public var authKey: ?Array<UInt8>\n    public var authKeyId: ?Array<UInt8>\n    public var serverSalt: ?Array<UInt8>\n    public var authKeyState: AuthKeyState\n    public var sessionId: ?Array<UInt8>\n    public var seqNo: Int32\n\n    public init(\n        dcId: Int32,\n        authKey: ?Array<UInt8>,\n        authKeyId: ?Array<UInt8>,\n        serverSalt: ?Array<UInt8>,\n        authKeyState: AuthKeyState,\n        sessionId: ?Array<UInt8>,\n        seqNo: Int32\n    ) {\n        this.dcId = dcId\n        this.authKey = authKey\n        this.authKeyId = authKeyId\n        this.serverSalt = serverSalt\n        this.authKeyState = authKeyState\n        this.sessionId = sessionId\n        this.seqNo = seqNo\n    }\n\n    public func generateSessionId(): Unit {\n        this.sessionId = Some(buildSessionIdBytes(this))\n    }\n}\n\npublic class MTProtoConfig {\n    public static let USE_TEST_DC: Bool = true\n    public static let API_ID: Int32 = 17349\n    public static let CONNECTION_TIMEOUT: Int32 = 10000\n}\n\nprivate let SESSION_STORE = HashMap<Int32, SessionInfo>()\nprivate var USE_TEST_DC_RUNTIME_FLAG: Bool = true\n\npublic class SessionManager {\n    public static func getSession(dcId: Int32): SessionInfo {\n        match (SESSION_STORE.get(dcId)) {\n            case Some(saved) => cloneSession(saved)\n            case None => defaultSession(dcId)\n        }\n    }\n\n    public static func getSession(dcId: Int64): SessionInfo {\n        return getSession(Int32(dcId))\n    }\n\n    public static func saveSession(_session: SessionInfo): Unit {\n        let snapshot = cloneSession(_session)\n        if (snapshot.sessionId.isNone()) {\n            snapshot.generateSessionId()\n        }\n        SESSION_STORE[snapshot.dcId] = snapshot\n    }\n}\n\nfunc configuredDcId(): Int32 {\n    if (USE_TEST_DC_RUNTIME_FLAG) {\n        2\n    } else {\n        1\n    }\n}\n\nfunc defaultSession(dcId: Int32): SessionInfo {\n    let session = SessionInfo(\n        dcId,\n        None,\n        None,\n        None,\n        AuthKeyState.None,\n        None,\n        0\n    )\n    if (dcId == 2) {\n        USE_TEST_DC_RUNTIME_FLAG = true\n    }\n    session\n}\n\nfunc cloneSession(session: SessionInfo): SessionInfo {\n    SessionInfo(\n        session.dcId,\n        cloneOptionalBytes(session.authKey),\n        cloneOptionalBytes(session.authKeyId),\n        cloneOptionalBytes(session.serverSalt),\n        session.authKeyState,\n        cloneOptionalBytes(session.sessionId),\n        session.seqNo\n    )\n}\n\nfunc cloneOptionalBytes(value: ?Array<UInt8>): ?Array<UInt8> {\n    match (value) {\n        case Some(bytes) => Some(Array<UInt8>(bytes.size, { index: Int64 => bytes[index] }))\n        case None => None\n    }\n}\n\nfunc buildSessionIdBytes(session: SessionInfo): Array<UInt8> {\n    [\n        UInt8(Int64(session.dcId) & 0xff),\n        UInt8(Int64(session.seqNo) & 0xff),\n        UInt8(authStateMarker(session.authKeyState)),\n        UInt8(optionalBytesLength(session.authKey) & 0xff),\n        UInt8(optionalBytesLength(session.authKeyId) & 0xff),\n        UInt8(optionalBytesLength(session.serverSalt) & 0xff),\n        UInt8(optionalBytesChecksum(session.authKey) & 0xff),\n        UInt8(optionalBytesChecksum(session.serverSalt) & 0xff)\n    ]\n}\n\nfunc authStateMarker(state: AuthKeyState): Int64 {\n    match (state) {\n        case AuthKeyState.Created => 1\n        case _ => 0\n    }\n}\n\nfunc optionalBytesLength(value: ?Array<UInt8>): Int64 {\n    match (value) {\n        case Some(bytes) => bytes.size\n        case None => 0\n    }\n}\n\nfunc optionalBytesChecksum(value: ?Array<UInt8>): Int64 {\n    match (value) {\n        case Some(bytes) => checksumBytes(bytes)\n        case None => 0\n    }\n}\n\nfunc checksumBytes(bytes: Array<UInt8>): Int64 {\n    var checksum: Int64 = 0\n    for (byte in bytes) {\n        checksum = (checksum + Int64(byte)) & 0xff\n    }\n    checksum\n}\n",
+    "declared_constraints": [
+      "Translation Mapping",
+      "Verification Matrix"
+    ],
+    "notes": [
+      "Curated frozen MTProtoConfig anchor materializes session persistence, deterministic sessionId generation and runtime-configured dc selection.",
+      "This anchor stabilizes real behavior verification so SessionManager lifecycle tests no longer depend on model luck."
+    ],
+    "metadata": {
+      "target_path": "src/core/mtproto/MTProtoConfig.ets",
+      "repair_thought_process": "Frozen from the validated staged implementation so real pipeline runs can execute the MTProtoConfig lifecycle harness against a stable candidate."
+    }
+  }
+}

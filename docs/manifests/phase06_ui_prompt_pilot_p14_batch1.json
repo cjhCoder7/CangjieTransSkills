@@ -1,0 +1,672 @@
+{
+  "manifest_name": "phase06_ui_prompt_pilot_p14_batch1",
+  "manifest_version": 1,
+  "created_at": "2026-04-12T12:18:04Z",
+  "phase": "phase06",
+  "status": "active",
+  "source_manifest": "docs/manifests/phase06_ui_p14_file_manifest.json",
+  "intended_consumer": "Phase06 prompt-pilot curator and prompt-dump runner",
+  "selection_policy": {
+    "batch_id": "phase06-ui-prompt-pilot-p14-batch1",
+    "selection_mode": "residual-workset-after-excluding-consumed-slices",
+    "track_profile": "p0-batch1",
+    "required_tracks": [],
+    "artifact_root": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1",
+    "architecture_skill_path": "docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md",
+    "notes": [
+      "Residual mode keeps every remaining slice after excluding an already-consumed pilot workset; it does not require full five-lane symmetry.",
+      "Each selected slice carries repo-local pipeline paths so prompt dumps can be regenerated without hand assembly.",
+      "Explicit ui_prompt_tags injection is still required for the final pilot prompt dump."
+    ],
+    "excluded_slice_ids": []
+  },
+  "summary": {
+    "pilot_count": 9,
+    "source_sample_count": 3,
+    "role_counts": {
+      "page": 3,
+      "viewmodel": 4,
+      "component": 2
+    },
+    "track_counts": {
+      "residual-page-shell-view-model-renderer-page": 1,
+      "residual-rich-component-view-model-renderer-viewmodel": 1,
+      "residual-mixed-app-pattern-page-shell-controller-owned-state-page": 1,
+      "residual-mixed-app-pattern-rich-component-controller-owned-state-viewmodel": 1,
+      "residual-mixed-app-pattern-rich-component-view-model-renderer-component": 1,
+      "residual-gesture-component-page-shell-controller-owned-state-page": 1,
+      "residual-gesture-component-rich-component-controller-owned-state-component": 1,
+      "residual-gesture-component-rich-component-view-model-renderer-viewmodel": 1,
+      "residual-gesture-component-rich-component-controller-owned-state-viewmodel": 1
+    },
+    "coverage": {
+      "structure_tags": [
+        "page-shell",
+        "rich-component"
+      ],
+      "ownership_tags": [
+        "controller-owned-state",
+        "view-model-renderer"
+      ],
+      "interaction_tags": [
+        "gesture-component"
+      ]
+    },
+    "selected_slice_ids": [
+      "phase06-ui-p14-calendar-manager-entry-page",
+      "phase06-ui-p14-calendar-manager-applog-helper",
+      "phase06-ui-p14-secondary-linkage-page",
+      "phase06-ui-p14-secondary-linkage-data-model",
+      "phase06-ui-p14-secondary-linkage-function-description-component",
+      "phase06-ui-p14-pending-items-todo-list-page",
+      "phase06-ui-p14-pending-items-list-item-component",
+      "phase06-ui-p14-pending-items-style-config-model",
+      "phase06-ui-p14-pending-items-todo-model"
+    ],
+    "excluded_slice_count": 0
+  },
+  "entries": [
+    {
+      "pilot_id": "phase06-ui-pilot-p14-batch1-phase06-ui-p14-calendar-manager-entry-page",
+      "pilot_order": 1,
+      "track_id": "residual-page-shell-view-model-renderer-page",
+      "slice_id": "phase06-ui-p14-calendar-manager-entry-page",
+      "sample_id": "harmonyos-examples-calendar-manager-entry-view",
+      "repo_name": "HarmonyOS-Examples",
+      "repo_local_path": "raw_docs/phase06-ui-p14/HarmonyOS-Examples/19-CangjiexArkTS/CalendarManager/entry/src/main/cangjie/views/EntryView.cj",
+      "source_path": "19-CangjiexArkTS/CalendarManager/entry/src/main/cangjie/views/EntryView.cj",
+      "priority": "P14",
+      "selection_rank": 1,
+      "sample_rank": 1,
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "usage_goal": "P14 calendar-manager entry page slice for button-driven Hilog handoff inside one lightweight render-facing page shell.",
+      "selection_reason": "Residual next-stage slice left after excluding already-curated prompt-pilot worksets.",
+      "pilot_goal": "Carry remaining Phase06 lane variance into the next prompt-pilot batch without hand-assembling repo-local pipeline paths.",
+      "recommended_few_shot_entry_ids": [
+        "local-ui-routing-page-shell-view-model-renderer",
+        "harmonyos-examples-badgeview-page-shell-view-model-renderer"
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class EntryView {"
+        ]
+      },
+      "notes": [
+        "Keep the button host, onClick callback, and appLog.info handoff source-backed inside the page boundary.",
+        "Treat applog/Applog.cj as the explicitly frozen support helper instead of inlining logging behavior or inventing detached controller layers."
+      ],
+      "src_root": "raw_docs/phase06-ui-p14/HarmonyOS-Examples/19-CangjiexArkTS/CalendarManager/entry/src/main/cangjie",
+      "target_file": "views/EntryView.cj",
+      "artifact_root": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-calendar-manager-entry-page",
+      "pipeline_run_root": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-calendar-manager-entry-page/pipeline_run",
+      "db_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-calendar-manager-entry-page/pipeline_run/repo_index.sqlite",
+      "repo_map_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-calendar-manager-entry-page/pipeline_run/repo_map.txt",
+      "base_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-calendar-manager-entry-page/pipeline_run/target.tu.json",
+      "explicit_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-calendar-manager-entry-page/target.explicit_ui_tags.tu.json",
+      "orchestration_output_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-calendar-manager-entry-page/pipeline_run/target.orchestration.json",
+      "pipeline_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-calendar-manager-entry-page/pipeline_run/summary.json",
+      "failure_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-calendar-manager-entry-page/pipeline_run/failure.json",
+      "pipeline_log_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-calendar-manager-entry-page/pipeline.log",
+      "base_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-calendar-manager-entry-page/prompt_dump.txt",
+      "explicit_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-calendar-manager-entry-page/prompt_dump.explicit_ui_tags.txt",
+      "prompt_dump_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-calendar-manager-entry-page/pilot-summary.json",
+      "snapshot_label": "phase06-ui-p14-batch1-phase06-ui-p14-calendar-manager-entry-page",
+      "expected_prompt_signal": "resolution_source=explicit-target-ui-tags",
+      "pipeline_command": "python3 scripts/pipeline_runner.py --src-root raw_docs/phase06-ui-p14/HarmonyOS-Examples/19-CangjiexArkTS/CalendarManager/entry/src/main/cangjie --target-file views/EntryView.cj --run-root artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-calendar-manager-entry-page/pipeline_run --db-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-calendar-manager-entry-page/pipeline_run/repo_index.sqlite --repo-map-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-calendar-manager-entry-page/pipeline_run/repo_map.txt --tu-json-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-calendar-manager-entry-page/pipeline_run/target.tu.json --orchestration-output-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-calendar-manager-entry-page/pipeline_run/target.orchestration.json --summary-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-calendar-manager-entry-page/pipeline_run/summary.json --failure-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-calendar-manager-entry-page/pipeline_run/failure.json --prompt-dump-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-calendar-manager-entry-page/prompt_dump.txt --architecture-skill docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md --snapshot-label phase06-ui-p14-batch1-phase06-ui-p14-calendar-manager-entry-page --dump-prompt-only --extensions .cj --pattern-limit 0"
+    },
+    {
+      "pilot_id": "phase06-ui-pilot-p14-batch1-phase06-ui-p14-calendar-manager-applog-helper",
+      "pilot_order": 2,
+      "track_id": "residual-rich-component-view-model-renderer-viewmodel",
+      "slice_id": "phase06-ui-p14-calendar-manager-applog-helper",
+      "sample_id": "harmonyos-examples-calendar-manager-entry-view",
+      "repo_name": "HarmonyOS-Examples",
+      "repo_local_path": "raw_docs/phase06-ui-p14/HarmonyOS-Examples/19-CangjiexArkTS/CalendarManager/entry/src/main/cangjie/applog/Applog.cj",
+      "source_path": "19-CangjiexArkTS/CalendarManager/entry/src/main/cangjie/applog/Applog.cj",
+      "priority": "P14",
+      "selection_rank": 2,
+      "sample_rank": 2,
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "usage_goal": "P14 calendar-manager applog helper slice for Hilog channel ownership behind the lightweight entry page shell.",
+      "selection_reason": "Residual next-stage slice left after excluding already-curated prompt-pilot worksets.",
+      "pilot_goal": "Carry remaining Phase06 lane variance into the next prompt-pilot batch without hand-assembling repo-local pipeline paths.",
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": []
+      },
+      "notes": [
+        "Keep the HilogChannel construction source-backed in this helper instead of turning logging into prompt-invented globals.",
+        "This file stays attached to the page shell as a narrow support-model slice rather than a standalone UI contract."
+      ],
+      "src_root": "raw_docs/phase06-ui-p14/HarmonyOS-Examples/19-CangjiexArkTS/CalendarManager/entry/src/main/cangjie",
+      "target_file": "applog/Applog.cj",
+      "artifact_root": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-calendar-manager-applog-helper",
+      "pipeline_run_root": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-calendar-manager-applog-helper/pipeline_run",
+      "db_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-calendar-manager-applog-helper/pipeline_run/repo_index.sqlite",
+      "repo_map_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-calendar-manager-applog-helper/pipeline_run/repo_map.txt",
+      "base_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-calendar-manager-applog-helper/pipeline_run/target.tu.json",
+      "explicit_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-calendar-manager-applog-helper/target.explicit_ui_tags.tu.json",
+      "orchestration_output_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-calendar-manager-applog-helper/pipeline_run/target.orchestration.json",
+      "pipeline_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-calendar-manager-applog-helper/pipeline_run/summary.json",
+      "failure_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-calendar-manager-applog-helper/pipeline_run/failure.json",
+      "pipeline_log_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-calendar-manager-applog-helper/pipeline.log",
+      "base_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-calendar-manager-applog-helper/prompt_dump.txt",
+      "explicit_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-calendar-manager-applog-helper/prompt_dump.explicit_ui_tags.txt",
+      "prompt_dump_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-calendar-manager-applog-helper/pilot-summary.json",
+      "snapshot_label": "phase06-ui-p14-batch1-phase06-ui-p14-calendar-manager-applog-helper",
+      "expected_prompt_signal": "resolution_source=explicit-target-ui-tags",
+      "pipeline_command": "python3 scripts/pipeline_runner.py --src-root raw_docs/phase06-ui-p14/HarmonyOS-Examples/19-CangjiexArkTS/CalendarManager/entry/src/main/cangjie --target-file applog/Applog.cj --run-root artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-calendar-manager-applog-helper/pipeline_run --db-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-calendar-manager-applog-helper/pipeline_run/repo_index.sqlite --repo-map-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-calendar-manager-applog-helper/pipeline_run/repo_map.txt --tu-json-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-calendar-manager-applog-helper/pipeline_run/target.tu.json --orchestration-output-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-calendar-manager-applog-helper/pipeline_run/target.orchestration.json --summary-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-calendar-manager-applog-helper/pipeline_run/summary.json --failure-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-calendar-manager-applog-helper/pipeline_run/failure.json --prompt-dump-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-calendar-manager-applog-helper/prompt_dump.txt --architecture-skill docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md --snapshot-label phase06-ui-p14-batch1-phase06-ui-p14-calendar-manager-applog-helper --dump-prompt-only --extensions .cj --pattern-limit 0"
+    },
+    {
+      "pilot_id": "phase06-ui-pilot-p14-batch1-phase06-ui-p14-secondary-linkage-page",
+      "pilot_order": 3,
+      "track_id": "residual-mixed-app-pattern-page-shell-controller-owned-state-page",
+      "slice_id": "phase06-ui-p14-secondary-linkage-page",
+      "sample_id": "harmonyos-cangjie-cases-secondary-linkage-page",
+      "repo_name": "HarmonyOS-Cangjie-Cases",
+      "repo_local_path": "raw_docs/phase06-ui-p14/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/secondarylinkage/src/main/cangjie/src/SecondaryLinkageExample.cj",
+      "source_path": "CangjieAppDevelopment/feature/secondarylinkage/src/main/cangjie/src/SecondaryLinkageExample.cj",
+      "priority": "P14",
+      "selection_rank": 3,
+      "sample_rank": 1,
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [
+        "mixed-app-pattern"
+      ],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": [
+          "mixed-app-pattern"
+        ]
+      },
+      "usage_goal": "P14 secondary-linkage page slice for dual Scroller ownership, LazyForEach coordination, and page-owned linkage state inside one controller-owned shell.",
+      "selection_reason": "Residual next-stage slice left after excluding already-curated prompt-pilot worksets.",
+      "pilot_goal": "Carry remaining Phase06 lane variance into the next prompt-pilot batch without hand-assembling repo-local pipeline paths.",
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "public class SecondaryLinkageExample {"
+        ]
+      },
+      "notes": [
+        "Keep the dual-list linkage flow, scroll index callbacks, and currentTagIndex ownership source-backed in the page shell.",
+        "Treat DataType.cj plus the cross-module FunctionDescription component as explicitly frozen companions instead of pretending the page is self-contained."
+      ],
+      "src_root": "raw_docs/phase06-ui-p14/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/secondarylinkage/src/main/cangjie/src",
+      "target_file": "SecondaryLinkageExample.cj",
+      "artifact_root": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-page",
+      "pipeline_run_root": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-page/pipeline_run",
+      "db_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-page/pipeline_run/repo_index.sqlite",
+      "repo_map_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-page/pipeline_run/repo_map.txt",
+      "base_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-page/pipeline_run/target.tu.json",
+      "explicit_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-page/target.explicit_ui_tags.tu.json",
+      "orchestration_output_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-page/pipeline_run/target.orchestration.json",
+      "pipeline_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-page/pipeline_run/summary.json",
+      "failure_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-page/pipeline_run/failure.json",
+      "pipeline_log_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-page/pipeline.log",
+      "base_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-page/prompt_dump.txt",
+      "explicit_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-page/prompt_dump.explicit_ui_tags.txt",
+      "prompt_dump_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-page/pilot-summary.json",
+      "snapshot_label": "phase06-ui-p14-batch1-phase06-ui-p14-secondary-linkage-page",
+      "expected_prompt_signal": "resolution_source=explicit-target-ui-tags",
+      "pipeline_command": "python3 scripts/pipeline_runner.py --src-root raw_docs/phase06-ui-p14/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/secondarylinkage/src/main/cangjie/src --target-file SecondaryLinkageExample.cj --run-root artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-page/pipeline_run --db-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-page/pipeline_run/repo_index.sqlite --repo-map-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-page/pipeline_run/repo_map.txt --tu-json-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-page/pipeline_run/target.tu.json --orchestration-output-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-page/pipeline_run/target.orchestration.json --summary-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-page/pipeline_run/summary.json --failure-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-page/pipeline_run/failure.json --prompt-dump-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-page/prompt_dump.txt --architecture-skill docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md --snapshot-label phase06-ui-p14-batch1-phase06-ui-p14-secondary-linkage-page --dump-prompt-only --extensions .cj --pattern-limit 0"
+    },
+    {
+      "pilot_id": "phase06-ui-pilot-p14-batch1-phase06-ui-p14-secondary-linkage-data-model",
+      "pilot_order": 4,
+      "track_id": "residual-mixed-app-pattern-rich-component-controller-owned-state-viewmodel",
+      "slice_id": "phase06-ui-p14-secondary-linkage-data-model",
+      "sample_id": "harmonyos-cangjie-cases-secondary-linkage-page",
+      "repo_name": "HarmonyOS-Cangjie-Cases",
+      "repo_local_path": "raw_docs/phase06-ui-p14/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/secondarylinkage/src/main/cangjie/src/DataType.cj",
+      "source_path": "CangjieAppDevelopment/feature/secondarylinkage/src/main/cangjie/src/DataType.cj",
+      "priority": "P14",
+      "selection_rank": 4,
+      "sample_rank": 2,
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [
+        "mixed-app-pattern"
+      ],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": [
+          "mixed-app-pattern"
+        ]
+      },
+      "usage_goal": "P14 secondary-linkage data-source model slice for CustomDataType payloads, LazyForEach listener plumbing, and list-layout constants behind the linkage page.",
+      "selection_reason": "Residual next-stage slice left after excluding already-curated prompt-pilot worksets.",
+      "pilot_goal": "Carry remaining Phase06 lane variance into the next prompt-pilot batch without hand-assembling repo-local pipeline paths.",
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class CustomDataType {",
+          "public class ListIndexPosition {",
+          "public open class BasicDataSource <: IDataSource<CustomDataType> {",
+          "public class MyDataSource <: BasicDataSource {"
+        ]
+      },
+      "notes": [
+        "Keep BasicDataSource and MyDataSource source-backed here instead of moving data-listener behavior into the page shell.",
+        "This file remains a support-model slice attached to the mixed-app linkage lane, not a standalone page/component boundary."
+      ],
+      "src_root": "raw_docs/phase06-ui-p14/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/secondarylinkage/src/main/cangjie/src",
+      "target_file": "DataType.cj",
+      "artifact_root": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-data-model",
+      "pipeline_run_root": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-data-model/pipeline_run",
+      "db_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-data-model/pipeline_run/repo_index.sqlite",
+      "repo_map_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-data-model/pipeline_run/repo_map.txt",
+      "base_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-data-model/pipeline_run/target.tu.json",
+      "explicit_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-data-model/target.explicit_ui_tags.tu.json",
+      "orchestration_output_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-data-model/pipeline_run/target.orchestration.json",
+      "pipeline_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-data-model/pipeline_run/summary.json",
+      "failure_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-data-model/pipeline_run/failure.json",
+      "pipeline_log_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-data-model/pipeline.log",
+      "base_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-data-model/prompt_dump.txt",
+      "explicit_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-data-model/prompt_dump.explicit_ui_tags.txt",
+      "prompt_dump_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-data-model/pilot-summary.json",
+      "snapshot_label": "phase06-ui-p14-batch1-phase06-ui-p14-secondary-linkage-data-model",
+      "expected_prompt_signal": "resolution_source=explicit-target-ui-tags",
+      "pipeline_command": "python3 scripts/pipeline_runner.py --src-root raw_docs/phase06-ui-p14/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/secondarylinkage/src/main/cangjie/src --target-file DataType.cj --run-root artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-data-model/pipeline_run --db-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-data-model/pipeline_run/repo_index.sqlite --repo-map-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-data-model/pipeline_run/repo_map.txt --tu-json-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-data-model/pipeline_run/target.tu.json --orchestration-output-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-data-model/pipeline_run/target.orchestration.json --summary-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-data-model/pipeline_run/summary.json --failure-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-data-model/pipeline_run/failure.json --prompt-dump-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-data-model/prompt_dump.txt --architecture-skill docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md --snapshot-label phase06-ui-p14-batch1-phase06-ui-p14-secondary-linkage-data-model --dump-prompt-only --extensions .cj --pattern-limit 0"
+    },
+    {
+      "pilot_id": "phase06-ui-pilot-p14-batch1-phase06-ui-p14-secondary-linkage-function-description-component",
+      "pilot_order": 5,
+      "track_id": "residual-mixed-app-pattern-rich-component-view-model-renderer-component",
+      "slice_id": "phase06-ui-p14-secondary-linkage-function-description-component",
+      "sample_id": "harmonyos-cangjie-cases-secondary-linkage-page",
+      "repo_name": "HarmonyOS-Cangjie-Cases",
+      "repo_local_path": "raw_docs/phase06-ui-p14/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/common/utils/src/main/cangjie/src/component/FunctionDescription.cj",
+      "source_path": "CangjieAppDevelopment/common/utils/src/main/cangjie/src/component/FunctionDescription.cj",
+      "priority": "P14",
+      "selection_rank": 5,
+      "sample_rank": 3,
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [
+        "mixed-app-pattern"
+      ],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": [
+          "mixed-app-pattern"
+        ]
+      },
+      "usage_goal": "P14 shared FunctionDescription component slice for title-plus-content presentation reused by the secondary-linkage page.",
+      "selection_reason": "Residual next-stage slice left after excluding already-curated prompt-pilot worksets.",
+      "pilot_goal": "Carry remaining Phase06 lane variance into the next prompt-pilot batch without hand-assembling repo-local pipeline paths.",
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class FunctionDescription {"
+        ]
+      },
+      "notes": [
+        "Keep the shared description card source-backed as a reusable component instead of flattening it into the page prompt context.",
+        "This cross-module helper is the honest mixed-app companion for the linkage sample."
+      ],
+      "src_root": "raw_docs/phase06-ui-p14/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/common/utils/src/main/cangjie/src",
+      "target_file": "component/FunctionDescription.cj",
+      "artifact_root": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-function-description-component",
+      "pipeline_run_root": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-function-description-component/pipeline_run",
+      "db_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-function-description-component/pipeline_run/repo_index.sqlite",
+      "repo_map_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-function-description-component/pipeline_run/repo_map.txt",
+      "base_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-function-description-component/pipeline_run/target.tu.json",
+      "explicit_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-function-description-component/target.explicit_ui_tags.tu.json",
+      "orchestration_output_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-function-description-component/pipeline_run/target.orchestration.json",
+      "pipeline_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-function-description-component/pipeline_run/summary.json",
+      "failure_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-function-description-component/pipeline_run/failure.json",
+      "pipeline_log_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-function-description-component/pipeline.log",
+      "base_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-function-description-component/prompt_dump.txt",
+      "explicit_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-function-description-component/prompt_dump.explicit_ui_tags.txt",
+      "prompt_dump_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-function-description-component/pilot-summary.json",
+      "snapshot_label": "phase06-ui-p14-batch1-phase06-ui-p14-secondary-linkage-function-description-component",
+      "expected_prompt_signal": "resolution_source=explicit-target-ui-tags",
+      "pipeline_command": "python3 scripts/pipeline_runner.py --src-root raw_docs/phase06-ui-p14/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/common/utils/src/main/cangjie/src --target-file component/FunctionDescription.cj --run-root artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-function-description-component/pipeline_run --db-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-function-description-component/pipeline_run/repo_index.sqlite --repo-map-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-function-description-component/pipeline_run/repo_map.txt --tu-json-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-function-description-component/pipeline_run/target.tu.json --orchestration-output-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-function-description-component/pipeline_run/target.orchestration.json --summary-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-function-description-component/pipeline_run/summary.json --failure-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-function-description-component/pipeline_run/failure.json --prompt-dump-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-secondary-linkage-function-description-component/prompt_dump.txt --architecture-skill docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md --snapshot-label phase06-ui-p14-batch1-phase06-ui-p14-secondary-linkage-function-description-component --dump-prompt-only --extensions .cj --pattern-limit 0"
+    },
+    {
+      "pilot_id": "phase06-ui-pilot-p14-batch1-phase06-ui-p14-pending-items-todo-list-page",
+      "pilot_order": 6,
+      "track_id": "residual-gesture-component-page-shell-controller-owned-state-page",
+      "slice_id": "phase06-ui-p14-pending-items-todo-list-page",
+      "sample_id": "harmonyos-cangjie-cases-pending-items-todo-list",
+      "repo_name": "HarmonyOS-Cangjie-Cases",
+      "repo_local_path": "raw_docs/phase06-ui-p14/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/pendingitems/src/main/cangjie/src/pages/ToDoList.cj",
+      "source_path": "CangjieAppDevelopment/feature/pendingitems/src/main/cangjie/src/pages/ToDoList.cj",
+      "priority": "P14",
+      "selection_rank": 6,
+      "sample_rank": 1,
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [
+        "gesture-component"
+      ],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [
+          "gesture-component"
+        ],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "usage_goal": "P14 pending-items host page slice for dialog-driven item creation, swipe-action list ownership, and pending/completed state transitions inside one controller-owned shell.",
+      "selection_reason": "Residual next-stage slice left after excluding already-curated prompt-pilot worksets.",
+      "pilot_goal": "Carry remaining Phase06 lane variance into the next prompt-pilot batch without hand-assembling repo-local pipeline paths.",
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": true,
+        "declared_types_head": [
+          "public class MyTextPickerDialog {",
+          "public class ToDoList {"
+        ]
+      },
+      "notes": [
+        "Keep the dialogController flow, ObservedArrayList ownership, and swipeAction wiring source-backed in the page shell.",
+        "Treat ToDoListItem.cj plus the model files as explicitly frozen companions instead of collapsing the sample into a fake single-file todo page."
+      ],
+      "src_root": "raw_docs/phase06-ui-p14/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/pendingitems/src/main/cangjie/src",
+      "target_file": "pages/ToDoList.cj",
+      "artifact_root": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-todo-list-page",
+      "pipeline_run_root": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-todo-list-page/pipeline_run",
+      "db_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-todo-list-page/pipeline_run/repo_index.sqlite",
+      "repo_map_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-todo-list-page/pipeline_run/repo_map.txt",
+      "base_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-todo-list-page/pipeline_run/target.tu.json",
+      "explicit_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-todo-list-page/target.explicit_ui_tags.tu.json",
+      "orchestration_output_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-todo-list-page/pipeline_run/target.orchestration.json",
+      "pipeline_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-todo-list-page/pipeline_run/summary.json",
+      "failure_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-todo-list-page/pipeline_run/failure.json",
+      "pipeline_log_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-todo-list-page/pipeline.log",
+      "base_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-todo-list-page/prompt_dump.txt",
+      "explicit_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-todo-list-page/prompt_dump.explicit_ui_tags.txt",
+      "prompt_dump_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-todo-list-page/pilot-summary.json",
+      "snapshot_label": "phase06-ui-p14-batch1-phase06-ui-p14-pending-items-todo-list-page",
+      "expected_prompt_signal": "resolution_source=explicit-target-ui-tags",
+      "pipeline_command": "python3 scripts/pipeline_runner.py --src-root raw_docs/phase06-ui-p14/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/pendingitems/src/main/cangjie/src --target-file pages/ToDoList.cj --run-root artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-todo-list-page/pipeline_run --db-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-todo-list-page/pipeline_run/repo_index.sqlite --repo-map-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-todo-list-page/pipeline_run/repo_map.txt --tu-json-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-todo-list-page/pipeline_run/target.tu.json --orchestration-output-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-todo-list-page/pipeline_run/target.orchestration.json --summary-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-todo-list-page/pipeline_run/summary.json --failure-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-todo-list-page/pipeline_run/failure.json --prompt-dump-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-todo-list-page/prompt_dump.txt --architecture-skill docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md --snapshot-label phase06-ui-p14-batch1-phase06-ui-p14-pending-items-todo-list-page --dump-prompt-only --extensions .cj --pattern-limit 0"
+    },
+    {
+      "pilot_id": "phase06-ui-pilot-p14-batch1-phase06-ui-p14-pending-items-list-item-component",
+      "pilot_order": 7,
+      "track_id": "residual-gesture-component-rich-component-controller-owned-state-component",
+      "slice_id": "phase06-ui-p14-pending-items-list-item-component",
+      "sample_id": "harmonyos-cangjie-cases-pending-items-todo-list",
+      "repo_name": "HarmonyOS-Cangjie-Cases",
+      "repo_local_path": "raw_docs/phase06-ui-p14/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/pendingitems/src/main/cangjie/src/pages/ToDoListItem.cj",
+      "source_path": "CangjieAppDevelopment/feature/pendingitems/src/main/cangjie/src/pages/ToDoListItem.cj",
+      "priority": "P14",
+      "selection_rank": 7,
+      "sample_rank": 2,
+      "target_role": "component",
+      "slice_kind": "primary-component",
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [
+        "gesture-component"
+      ],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [
+          "gesture-component"
+        ],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "usage_goal": "P14 pending-items list-item component slice for edit-state toggling, checkbox completion flow, and swipe-afforded task presentation.",
+      "selection_reason": "Residual next-stage slice left after excluding already-curated prompt-pilot worksets.",
+      "pilot_goal": "Carry remaining Phase06 lane variance into the next prompt-pilot batch without hand-assembling repo-local pipeline paths.",
+      "recommended_few_shot_entry_ids": [
+        "photoview4cj-gesture-rich-component-controller-owned-state",
+        "markdown4cj-rich-component-controller-owned-state"
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class ToDoListItem {"
+        ]
+      },
+      "notes": [
+        "Keep the @Link-backed task movement and edit-state UI source-backed inside this component.",
+        "This file is the direct interaction-heavy component anchor behind the todo page shell."
+      ],
+      "src_root": "raw_docs/phase06-ui-p14/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/pendingitems/src/main/cangjie/src",
+      "target_file": "pages/ToDoListItem.cj",
+      "artifact_root": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-list-item-component",
+      "pipeline_run_root": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-list-item-component/pipeline_run",
+      "db_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-list-item-component/pipeline_run/repo_index.sqlite",
+      "repo_map_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-list-item-component/pipeline_run/repo_map.txt",
+      "base_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-list-item-component/pipeline_run/target.tu.json",
+      "explicit_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-list-item-component/target.explicit_ui_tags.tu.json",
+      "orchestration_output_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-list-item-component/pipeline_run/target.orchestration.json",
+      "pipeline_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-list-item-component/pipeline_run/summary.json",
+      "failure_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-list-item-component/pipeline_run/failure.json",
+      "pipeline_log_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-list-item-component/pipeline.log",
+      "base_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-list-item-component/prompt_dump.txt",
+      "explicit_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-list-item-component/prompt_dump.explicit_ui_tags.txt",
+      "prompt_dump_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-list-item-component/pilot-summary.json",
+      "snapshot_label": "phase06-ui-p14-batch1-phase06-ui-p14-pending-items-list-item-component",
+      "expected_prompt_signal": "resolution_source=explicit-target-ui-tags",
+      "pipeline_command": "python3 scripts/pipeline_runner.py --src-root raw_docs/phase06-ui-p14/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/pendingitems/src/main/cangjie/src --target-file pages/ToDoListItem.cj --run-root artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-list-item-component/pipeline_run --db-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-list-item-component/pipeline_run/repo_index.sqlite --repo-map-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-list-item-component/pipeline_run/repo_map.txt --tu-json-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-list-item-component/pipeline_run/target.tu.json --orchestration-output-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-list-item-component/pipeline_run/target.orchestration.json --summary-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-list-item-component/pipeline_run/summary.json --failure-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-list-item-component/pipeline_run/failure.json --prompt-dump-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-list-item-component/prompt_dump.txt --architecture-skill docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md --snapshot-label phase06-ui-p14-batch1-phase06-ui-p14-pending-items-list-item-component --dump-prompt-only --extensions .cj --pattern-limit 0"
+    },
+    {
+      "pilot_id": "phase06-ui-pilot-p14-batch1-phase06-ui-p14-pending-items-style-config-model",
+      "pilot_order": 8,
+      "track_id": "residual-gesture-component-rich-component-view-model-renderer-viewmodel",
+      "slice_id": "phase06-ui-p14-pending-items-style-config-model",
+      "sample_id": "harmonyos-cangjie-cases-pending-items-todo-list",
+      "repo_name": "HarmonyOS-Cangjie-Cases",
+      "repo_local_path": "raw_docs/phase06-ui-p14/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/pendingitems/src/main/cangjie/src/model/ConstData.cj",
+      "source_path": "CangjieAppDevelopment/feature/pendingitems/src/main/cangjie/src/model/ConstData.cj",
+      "priority": "P14",
+      "selection_rank": 8,
+      "sample_rank": 3,
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [
+        "gesture-component"
+      ],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [
+          "gesture-component"
+        ],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "usage_goal": "P14 pending-items style-config support-model slice for layout constants, image sizing, and animation timing behind the todo page and list item.",
+      "selection_reason": "Residual next-stage slice left after excluding already-curated prompt-pilot worksets.",
+      "pilot_goal": "Carry remaining Phase06 lane variance into the next prompt-pilot batch without hand-assembling repo-local pipeline paths.",
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class StyleConfig {"
+        ]
+      },
+      "notes": [
+        "Keep StyleConfig source-backed here instead of scattering renderer constants into page or component prompts.",
+        "This file remains a renderer-facing support-model slice attached to the gesture-heavy todo lane."
+      ],
+      "src_root": "raw_docs/phase06-ui-p14/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/pendingitems/src/main/cangjie/src",
+      "target_file": "model/ConstData.cj",
+      "artifact_root": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-style-config-model",
+      "pipeline_run_root": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-style-config-model/pipeline_run",
+      "db_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-style-config-model/pipeline_run/repo_index.sqlite",
+      "repo_map_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-style-config-model/pipeline_run/repo_map.txt",
+      "base_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-style-config-model/pipeline_run/target.tu.json",
+      "explicit_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-style-config-model/target.explicit_ui_tags.tu.json",
+      "orchestration_output_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-style-config-model/pipeline_run/target.orchestration.json",
+      "pipeline_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-style-config-model/pipeline_run/summary.json",
+      "failure_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-style-config-model/pipeline_run/failure.json",
+      "pipeline_log_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-style-config-model/pipeline.log",
+      "base_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-style-config-model/prompt_dump.txt",
+      "explicit_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-style-config-model/prompt_dump.explicit_ui_tags.txt",
+      "prompt_dump_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-style-config-model/pilot-summary.json",
+      "snapshot_label": "phase06-ui-p14-batch1-phase06-ui-p14-pending-items-style-config-model",
+      "expected_prompt_signal": "resolution_source=explicit-target-ui-tags",
+      "pipeline_command": "python3 scripts/pipeline_runner.py --src-root raw_docs/phase06-ui-p14/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/pendingitems/src/main/cangjie/src --target-file model/ConstData.cj --run-root artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-style-config-model/pipeline_run --db-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-style-config-model/pipeline_run/repo_index.sqlite --repo-map-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-style-config-model/pipeline_run/repo_map.txt --tu-json-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-style-config-model/pipeline_run/target.tu.json --orchestration-output-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-style-config-model/pipeline_run/target.orchestration.json --summary-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-style-config-model/pipeline_run/summary.json --failure-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-style-config-model/pipeline_run/failure.json --prompt-dump-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-style-config-model/prompt_dump.txt --architecture-skill docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md --snapshot-label phase06-ui-p14-batch1-phase06-ui-p14-pending-items-style-config-model --dump-prompt-only --extensions .cj --pattern-limit 0"
+    },
+    {
+      "pilot_id": "phase06-ui-pilot-p14-batch1-phase06-ui-p14-pending-items-todo-model",
+      "pilot_order": 9,
+      "track_id": "residual-gesture-component-rich-component-controller-owned-state-viewmodel",
+      "slice_id": "phase06-ui-p14-pending-items-todo-model",
+      "sample_id": "harmonyos-cangjie-cases-pending-items-todo-list",
+      "repo_name": "HarmonyOS-Cangjie-Cases",
+      "repo_local_path": "raw_docs/phase06-ui-p14/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/pendingitems/src/main/cangjie/src/model/ToDo.cj",
+      "source_path": "CangjieAppDevelopment/feature/pendingitems/src/main/cangjie/src/model/ToDo.cj",
+      "priority": "P14",
+      "selection_rank": 9,
+      "sample_rank": 4,
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [
+        "gesture-component"
+      ],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [
+          "gesture-component"
+        ],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "usage_goal": "P14 pending-items task model slice for observed todo identity, published completion state, and task-name ownership behind the todo page shell.",
+      "selection_reason": "Residual next-stage slice left after excluding already-curated prompt-pilot worksets.",
+      "pilot_goal": "Carry remaining Phase06 lane variance into the next prompt-pilot batch without hand-assembling repo-local pipeline paths.",
+      "recommended_few_shot_entry_ids": [
+        "photoview4cj-gesture-rich-component-controller-owned-state",
+        "markdown4cj-rich-component-controller-owned-state"
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class ToDo {"
+        ]
+      },
+      "notes": [
+        "Keep the observed ToDo state source-backed here instead of re-inventing DTO or state-holder scaffolding in page/component prompts.",
+        "This file stays attached to the todo lane as a support-model slice rather than a standalone UI component."
+      ],
+      "src_root": "raw_docs/phase06-ui-p14/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/pendingitems/src/main/cangjie/src",
+      "target_file": "model/ToDo.cj",
+      "artifact_root": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-todo-model",
+      "pipeline_run_root": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-todo-model/pipeline_run",
+      "db_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-todo-model/pipeline_run/repo_index.sqlite",
+      "repo_map_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-todo-model/pipeline_run/repo_map.txt",
+      "base_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-todo-model/pipeline_run/target.tu.json",
+      "explicit_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-todo-model/target.explicit_ui_tags.tu.json",
+      "orchestration_output_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-todo-model/pipeline_run/target.orchestration.json",
+      "pipeline_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-todo-model/pipeline_run/summary.json",
+      "failure_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-todo-model/pipeline_run/failure.json",
+      "pipeline_log_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-todo-model/pipeline.log",
+      "base_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-todo-model/prompt_dump.txt",
+      "explicit_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-todo-model/prompt_dump.explicit_ui_tags.txt",
+      "prompt_dump_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-todo-model/pilot-summary.json",
+      "snapshot_label": "phase06-ui-p14-batch1-phase06-ui-p14-pending-items-todo-model",
+      "expected_prompt_signal": "resolution_source=explicit-target-ui-tags",
+      "pipeline_command": "python3 scripts/pipeline_runner.py --src-root raw_docs/phase06-ui-p14/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/pendingitems/src/main/cangjie/src --target-file model/ToDo.cj --run-root artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-todo-model/pipeline_run --db-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-todo-model/pipeline_run/repo_index.sqlite --repo-map-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-todo-model/pipeline_run/repo_map.txt --tu-json-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-todo-model/pipeline_run/target.tu.json --orchestration-output-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-todo-model/pipeline_run/target.orchestration.json --summary-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-todo-model/pipeline_run/summary.json --failure-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-todo-model/pipeline_run/failure.json --prompt-dump-path artifacts/ui_pilots/20260412-phase06-ui-p14-pilot-batch1/phase06-ui-p14-pending-items-todo-model/prompt_dump.txt --architecture-skill docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md --snapshot-label phase06-ui-p14-batch1-phase06-ui-p14-pending-items-todo-model --dump-prompt-only --extensions .cj --pattern-limit 0"
+    }
+  ]
+}

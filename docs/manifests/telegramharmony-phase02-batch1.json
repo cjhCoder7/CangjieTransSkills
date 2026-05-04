@@ -1,0 +1,48 @@
+{
+  "batch_name": "telegramharmony-phase02-batch1",
+  "src_root": "../../raw_docs/telegramharmony-phase02",
+  "pipeline_defaults": {
+    "mock_mode": true,
+    "verify_dry_run": true,
+    "max_rounds": 3,
+    "parser_mode": "hybrid",
+    "repair_anchor_file": "../../samples/real-message-service-cache-001/src/real_message_service_cache_harness.cj"
+  },
+  "entries": [
+    {
+      "target_file": "src/core/mtproto/MTProtoConfig.ets",
+      "risk_level": "low",
+      "verification_mode": "dry-run",
+      "count_toward_kpi": true,
+      "notes": "配置与常量层，适合作为首轮协议工具类翻译样本。"
+    },
+    {
+      "target_file": "src/core/mtproto/CryptoUtils.ets",
+      "risk_level": "low",
+      "verification_mode": "dry-run",
+      "count_toward_kpi": true,
+      "notes": "纯工具函数，适合作为工具类模式沉淀样本。"
+    },
+    {
+      "target_file": "src/core/mtproto/TLMethods.ets",
+      "risk_level": "medium",
+      "verification_mode": "dry-run",
+      "count_toward_kpi": true,
+      "notes": "协议方法定义层，验证二进制方法壳的 source-aligned 映射。"
+    },
+    {
+      "target_file": "src/core/mtproto/TLSerialization.ets",
+      "risk_level": "medium",
+      "verification_mode": "dry-run",
+      "count_toward_kpi": true,
+      "notes": "序列化/反序列化层，验证 bytes 工具链翻译质量。"
+    },
+    {
+      "target_file": "src/services/RealMessageService.ets",
+      "risk_level": "control",
+      "verification_mode": "harness-only",
+      "count_toward_kpi": false,
+      "notes": "冻结控制样板，仅作为 repair anchor / 对照样本，不计入首批 KPI。"
+    }
+  ]
+}

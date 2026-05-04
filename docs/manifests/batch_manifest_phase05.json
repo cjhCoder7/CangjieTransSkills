@@ -1,0 +1,119 @@
+{
+  "batch_name": "telegramharmony-phase05-mass-translation-initialization",
+  "src_root": "../../raw_docs/telegramharmony-phase02",
+  "pipeline_defaults": {
+    "mock_mode": false,
+    "llm_model": "Pro/zai-org/GLM-5",
+    "timeout_seconds": 600,
+    "llm_max_retries": 2,
+    "verify_dry_run": false,
+    "verify_mock_compiler": false,
+    "verify_mock_unit_test": true,
+    "verify_mock_behavior": true,
+    "max_rounds": 1,
+    "prefer_tree_sitter": true
+  },
+  "ordered_targets": [
+    {
+      "file": "src/core/mtproto/MTProtoConfig.ets",
+      "risk_level": "low",
+      "verification_mode": "phase05-real-translator+real-compile",
+      "notes": "Phase05 first massive sweep: configuration and constant layer.",
+      "pipeline_overrides": {
+        "frozen_candidate_file": "../../artifacts/batch_runs/telegramharmony-phase05-mass-translation-initialization/runs/src-core-mtproto-MTProtoConfig.ets/temp_workspace/20260407T064328Z-tu-pipeline-mtprotoconfig-src-core-mtproto-mtprotoconfig.ets/attempt-01/src/core/mtproto/MTProtoConfig.cj",
+        "frozen_candidate_label": "20260407T064328Z-phase05-frozen-batch-baseline"
+      }
+    },
+    {
+      "file": "src/core/mtproto/CryptoUtils.ets",
+      "risk_level": "low",
+      "verification_mode": "phase05-real-translator+real-compile",
+      "notes": "Phase05 first massive sweep: utility layer.",
+      "pipeline_overrides": {
+        "frozen_candidate_file": "../../artifacts/batch_runs/telegramharmony-phase05-mass-translation-initialization/runs/src-core-mtproto-CryptoUtils.ets/temp_workspace/20260407T064331Z-tu-pipeline-cryptoutils-src-core-mtproto-cryptoutils.ets/attempt-01/src/core/mtproto/CryptoUtils.cj",
+        "frozen_candidate_label": "20260407T064331Z-phase05-frozen-batch-baseline"
+      }
+    },
+    {
+      "file": "src/core/mtproto/TLMethods.ets",
+      "risk_level": "medium",
+      "verification_mode": "phase05-real-translator+real-compile",
+      "notes": "Phase05 first massive sweep: protocol method declarations.",
+      "pipeline_overrides": {
+        "frozen_candidate_file": "../../artifacts/batch_runs/telegramharmony-phase05-mass-translation-initialization/runs/src-core-mtproto-TLMethods.ets/temp_workspace/20260407T064332Z-tu-pipeline-tlmethods-src-core-mtproto-tlmethods.ets/attempt-01/src/core/mtproto/TLMethods.cj",
+        "frozen_candidate_label": "20260407T064332Z-phase05-frozen-batch-baseline"
+      }
+    },
+    {
+      "file": "src/core/mtproto/TLSerialization.ets",
+      "risk_level": "medium",
+      "verification_mode": "phase05-real-translator+real-compile",
+      "notes": "Phase05 first massive sweep: serializer and deserializer layer.",
+      "pipeline_overrides": {
+        "frozen_candidate_file": "../../artifacts/batch_runs/telegramharmony-phase05-mass-translation-initialization/runs/src-core-mtproto-TLSerialization.ets/temp_workspace/20260407T064604Z-tu-pipeline-tlserialization-src-core-mtproto-tlserialization.ets/attempt-01/src/core/mtproto/TLSerialization.cj",
+        "frozen_candidate_label": "20260407T064604Z-phase05-frozen-batch-baseline"
+      }
+    },
+    {
+      "file": "src/core/mtproto/TLDialogs.ets",
+      "risk_level": "medium",
+      "verification_mode": "phase05-real-translator+real-compile",
+      "notes": "Phase05 first massive sweep: dialog and entity definitions.",
+      "pipeline_overrides": {
+        "frozen_candidate_file": "../../artifacts/batch_runs/telegramharmony-phase05-mass-translation-initialization/runs/src-core-mtproto-TLDialogs.ets/temp_workspace/20260407T064605Z-tu-pipeline-tldialogs-src-core-mtproto-tldialogs.ets/attempt-01/src/core/mtproto/TLDialogs.cj",
+        "frozen_candidate_label": "20260407T064605Z-phase05-frozen-batch-baseline"
+      }
+    },
+    {
+      "file": "src/core/mtproto/MTProtoTransport.ets",
+      "risk_level": "high",
+      "verification_mode": "phase05-real-translator+real-compile",
+      "notes": "Phase05 first massive sweep: transport layer.",
+      "pipeline_overrides": {
+        "frozen_candidate_file": "../../artifacts/batch_runs/telegramharmony-phase05-mass-translation-initialization/runs/src-core-mtproto-MTProtoTransport.ets/temp_workspace/20260407T064728Z-tu-pipeline-mtprototransport-src-core-mtproto-mtprototransport.ets/attempt-01/src/core/mtproto/MTProtoTransport.cj",
+        "frozen_candidate_label": "20260407T064728Z-phase05-frozen-batch-baseline"
+      }
+    },
+    {
+      "file": "src/core/mtproto/AuthKeyCreator.ets",
+      "risk_level": "high",
+      "verification_mode": "phase05-real-translator+real-compile",
+      "notes": "Phase05 first massive sweep: auth and key creation flow.",
+      "pipeline_overrides": {
+        "frozen_candidate_file": "../../artifacts/batch_runs/telegramharmony-phase05-mass-translation-initialization/runs/src-core-mtproto-AuthKeyCreator.ets/temp_workspace/20260407T064730Z-tu-pipeline-authkeycreator-src-core-mtproto-authkeycreator.ets/attempt-01/src/core/mtproto/AuthKeyCreator.cj",
+        "frozen_candidate_label": "20260407T064730Z-phase05-frozen-batch-baseline"
+      }
+    },
+    {
+      "file": "src/core/mtproto/Inflate.ets",
+      "risk_level": "medium",
+      "verification_mode": "phase05-real-translator+real-compile",
+      "notes": "Phase05 first massive sweep: compression support.",
+      "pipeline_overrides": {
+        "frozen_candidate_file": "../../artifacts/batch_runs/telegramharmony-phase05-mass-translation-initialization/runs/src-core-mtproto-Inflate.ets/temp_workspace/20260407T064731Z-tu-pipeline-inflate-src-core-mtproto-inflate.ets/attempt-01/src/core/mtproto/Inflate.cj",
+        "frozen_candidate_label": "20260407T064731Z-phase05-frozen-batch-baseline"
+      }
+    },
+    {
+      "file": "src/core/mtproto/MTProtoClient.ets",
+      "risk_level": "high",
+      "verification_mode": "phase05-real-translator+real-compile",
+      "notes": "Phase05 first massive sweep: async client control point. Frozen candidate currently compiles with 2 Accepted Baseline Compiler Noise warnings (unused std.sync import; source-backed USE_TEST_DC constant-fold branch); exit=0 is sufficient unless MTProtoClient/MTProtoConfig anchors are intentionally restaged.",
+      "pipeline_overrides": {
+        "frozen_candidate_file": "../../artifacts/batch_runs/telegramharmony-phase05-mass-translation-initialization/runs/src-core-mtproto-MTProtoClient.ets/temp_workspace/20260407T064732Z-tu-pipeline-mtprotoclient-src-core-mtproto-mtprotoclient.ets/attempt-01/src/core/mtproto/MTProtoClient.cj",
+        "frozen_candidate_label": "20260407T064732Z-phase05-frozen-batch-baseline"
+      }
+    },
+    {
+      "file": "src/services/RealMessageService.ets",
+      "risk_level": "control",
+      "verification_mode": "phase05-control-baseline",
+      "count_toward_kpi": false,
+      "notes": "Control baseline only. The 10 compile warnings in RealMessageService.cj are Accepted Staged Contract Noise; exit=0 is sufficient.",
+      "pipeline_overrides": {
+        "frozen_candidate_file": "../../artifacts/batch_runs/telegramharmony-phase05-mass-translation-initialization/runs/src-services-RealMessageService.ets/temp_workspace/20260407T064746Z-tu-pipeline-realmessageservice-src-services-realmessageservice.ets/attempt-01/src/services/RealMessageService.cj",
+        "frozen_candidate_label": "20260407T064746Z-phase05-frozen-control-baseline"
+      }
+    }
+  ]
+}

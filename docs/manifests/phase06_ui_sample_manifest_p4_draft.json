@@ -1,0 +1,121 @@
+{
+  "manifest_name": "phase06-ui-sample-manifest-p4-draft",
+  "manifest_version": 1,
+  "created_at": "2026-04-11T11:02:22Z",
+  "phase": "Phase06",
+  "status": "draft-candidate-scout",
+  "intended_consumer": "manual curation -> build_phase06_ui_source_corpus.py",
+  "notes": [
+    "This draft manifest is not yet promoted into the primary phase06_ui_sample_manifest.json.",
+    "Its purpose is to freeze and validate the next regular-source candidate chain after the current P0/P1/P2/P3 supply reached 15/15 live passed and 16/16 regular samples consumed."
+  ],
+  "ordered_samples": [
+    {
+      "sample_id": "cangjiechallenge-aiatom-prototype-page",
+      "priority": "P4",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Extend Phase06 with a medium-sized ArkUI practice page that keeps character input, mode switching, and canvas-ready state inside one page shell without dragging web bridge internals into the public UI contract.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/cangjiechallenge/bb40b887dcf53d1a8b72884ad862fdf9",
+        "branch": "master",
+        "commit": "c99988534078e0c0409ffb20d298b79853f013ed",
+        "access_date": "2026-04-11",
+        "purpose": "P4 draft candidate harvested from the already approved aiatom pinned repo after current regular supply exhaustion."
+      },
+      "source_paths": [
+        "cangjieApp/entry/src/main/cangjie/pages/PrototypePage.cj"
+      ],
+      "blocking_constraints": [
+        "Keep HanziWriterCanvas bridge behavior source-backed; do not promote bridge internals into the default page contract."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "cangjiechallenge-secmeet-meeting-list-page",
+      "priority": "P4",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Extend Phase06 with a list-and-filter page shell that coordinates stats cards, search/filter state, and detail-page routing inside one controller-owned page boundary.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/cangjiechallenge/d45e5bcde569dadcaf4fcc0524ac8f38",
+        "branch": "master",
+        "commit": "c18f350c6aecbeadd9b9115b739e3f3a0fa73212",
+        "access_date": "2026-04-11",
+        "purpose": "P4 draft candidate harvested from the already approved secmeet pinned repo after current regular supply exhaustion."
+      },
+      "source_paths": [
+        "entry/src/main/cangjie/meeting_list_page.cj"
+      ],
+      "blocking_constraints": [
+        "Keep command-line render helpers as source-backed UI scaffolding; do not invent ArkUI-only facades that bypass the page-state contract."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "cangjiechallenge-secmeet-audit-log-page",
+      "priority": "P4",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Add a compact audit-log page shell that renders statistics, filter state, and a log list while keeping audit-state orchestration inside the page boundary.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/cangjiechallenge/d45e5bcde569dadcaf4fcc0524ac8f38",
+        "branch": "master",
+        "commit": "c18f350c6aecbeadd9b9115b739e3f3a0fa73212",
+        "access_date": "2026-04-11",
+        "purpose": "P4 draft candidate harvested from the already approved secmeet pinned repo after current regular supply exhaustion."
+      },
+      "source_paths": [
+        "entry/src/main/cangjie/audit_log_page.cj"
+      ],
+      "blocking_constraints": [
+        "Preserve alert/log rendering semantics and filter state flow from source-backed helpers; do not fabricate provider layers."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    }
+  ],
+  "control_samples": [],
+  "exception_references": [],
+  "deferred_pools": [],
+  "tag_rules": {
+    "structure_tag_required": true,
+    "structure_tags": [
+      "page-shell",
+      "rich-component"
+    ],
+    "ownership_tag_required": true,
+    "ownership_tags": [
+      "view-model-renderer",
+      "controller-owned-state"
+    ],
+    "optional_interaction_tags": [
+      "gesture-component"
+    ],
+    "optional_exception_tags": [
+      "ffi-exception",
+      "hybrid-exception"
+    ],
+    "optional_sample_scope_tags": [
+      "mixed-app-pattern"
+    ],
+    "resolution_rule": "Each file-level sample must resolve to exactly one structure_tag and one ownership_tag. interaction/exception/sample_scope tags are additive only."
+  }
+}

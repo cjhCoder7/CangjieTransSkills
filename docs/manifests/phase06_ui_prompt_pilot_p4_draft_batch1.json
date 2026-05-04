@@ -1,0 +1,242 @@
+{
+  "manifest_name": "phase06_ui_prompt_pilot_p4_draft_batch1",
+  "manifest_version": 1,
+  "created_at": "2026-04-11T11:07:46Z",
+  "phase": "phase06",
+  "status": "active",
+  "source_manifest": "docs/manifests/phase06_ui_p4_draft_file_manifest.json",
+  "intended_consumer": "Phase06 prompt-pilot curator and prompt-dump runner",
+  "selection_policy": {
+    "batch_id": "phase06-ui-prompt-pilot-p4-draft-batch1",
+    "selection_mode": "residual-workset-after-excluding-consumed-slices",
+    "track_profile": "p0-batch1",
+    "required_tracks": [],
+    "artifact_root": "artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1",
+    "architecture_skill_path": "docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md",
+    "notes": [
+      "Residual mode keeps every remaining slice after excluding an already-consumed pilot workset; it does not require full five-lane symmetry.",
+      "Each selected slice carries repo-local pipeline paths so prompt dumps can be regenerated without hand assembly.",
+      "Explicit ui_prompt_tags injection is still required for the final pilot prompt dump."
+    ],
+    "excluded_slice_ids": []
+  },
+  "summary": {
+    "pilot_count": 3,
+    "source_sample_count": 3,
+    "role_counts": {
+      "page": 3
+    },
+    "track_counts": {
+      "residual-page-shell-controller-owned-state-page": 3
+    },
+    "coverage": {
+      "structure_tags": [
+        "page-shell"
+      ],
+      "ownership_tags": [
+        "controller-owned-state"
+      ],
+      "interaction_tags": []
+    },
+    "selected_slice_ids": [
+      "phase06-ui-p4-aiatom-prototype-page",
+      "phase06-ui-p4-secmeet-meeting-list-page",
+      "phase06-ui-p4-secmeet-audit-log-page"
+    ],
+    "excluded_slice_count": 0
+  },
+  "entries": [
+    {
+      "pilot_id": "phase06-ui-pilot-p4-draft-batch1-phase06-ui-p4-aiatom-prototype-page",
+      "pilot_order": 1,
+      "track_id": "residual-page-shell-controller-owned-state-page",
+      "slice_id": "phase06-ui-p4-aiatom-prototype-page",
+      "sample_id": "cangjiechallenge-aiatom-prototype-page",
+      "repo_name": "bb40b887dcf53d1a8b72884ad862fdf9",
+      "repo_local_path": "raw_docs/phase06-ui-p4-draft/bb40b887dcf53d1a8b72884ad862fdf9/cangjieApp/entry/src/main/cangjie/pages/PrototypePage.cj",
+      "source_path": "cangjieApp/entry/src/main/cangjie/pages/PrototypePage.cj",
+      "priority": "P4",
+      "selection_rank": 1,
+      "sample_rank": 1,
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "usage_goal": "Draft P4 practice page slice for mode switching, input validation, and page-owned canvas host state without promoting web-bridge internals into the page contract.",
+      "selection_reason": "Residual next-stage slice left after excluding already-curated prompt-pilot worksets.",
+      "pilot_goal": "Carry remaining Phase06 lane variance into the next prompt-pilot batch without hand-assembling repo-local pipeline paths.",
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class PrototypePage {"
+        ]
+      },
+      "notes": [
+        "Keep HanziWriterCanvas as a source-backed dependency instead of absorbing bridge details into the page shell.",
+        "Treat mode toggle, status messaging, and character input as the page-owned state boundary."
+      ],
+      "src_root": "raw_docs/phase06-ui-p4-draft/bb40b887dcf53d1a8b72884ad862fdf9/cangjieApp/entry/src/main/cangjie",
+      "target_file": "pages/PrototypePage.cj",
+      "artifact_root": "artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-aiatom-prototype-page",
+      "pipeline_run_root": "artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-aiatom-prototype-page/pipeline_run",
+      "db_path": "artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-aiatom-prototype-page/pipeline_run/repo_index.sqlite",
+      "repo_map_path": "artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-aiatom-prototype-page/pipeline_run/repo_map.txt",
+      "base_tu_json_path": "artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-aiatom-prototype-page/pipeline_run/target.tu.json",
+      "explicit_tu_json_path": "artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-aiatom-prototype-page/target.explicit_ui_tags.tu.json",
+      "orchestration_output_path": "artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-aiatom-prototype-page/pipeline_run/target.orchestration.json",
+      "pipeline_summary_path": "artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-aiatom-prototype-page/pipeline_run/summary.json",
+      "failure_path": "artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-aiatom-prototype-page/pipeline_run/failure.json",
+      "pipeline_log_path": "artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-aiatom-prototype-page/pipeline.log",
+      "base_prompt_dump_path": "artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-aiatom-prototype-page/prompt_dump.txt",
+      "explicit_prompt_dump_path": "artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-aiatom-prototype-page/prompt_dump.explicit_ui_tags.txt",
+      "prompt_dump_summary_path": "artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-aiatom-prototype-page/pilot-summary.json",
+      "snapshot_label": "phase06-ui-p4-draft-batch1-phase06-ui-p4-aiatom-prototype-page",
+      "expected_prompt_signal": "resolution_source=explicit-target-ui-tags",
+      "pipeline_command": "python3 scripts/pipeline_runner.py --src-root raw_docs/phase06-ui-p4-draft/bb40b887dcf53d1a8b72884ad862fdf9/cangjieApp/entry/src/main/cangjie --target-file pages/PrototypePage.cj --run-root artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-aiatom-prototype-page/pipeline_run --db-path artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-aiatom-prototype-page/pipeline_run/repo_index.sqlite --repo-map-path artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-aiatom-prototype-page/pipeline_run/repo_map.txt --tu-json-path artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-aiatom-prototype-page/pipeline_run/target.tu.json --orchestration-output-path artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-aiatom-prototype-page/pipeline_run/target.orchestration.json --summary-path artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-aiatom-prototype-page/pipeline_run/summary.json --failure-path artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-aiatom-prototype-page/pipeline_run/failure.json --prompt-dump-path artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-aiatom-prototype-page/prompt_dump.txt --architecture-skill docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md --snapshot-label phase06-ui-p4-draft-batch1-phase06-ui-p4-aiatom-prototype-page --dump-prompt-only --extensions .cj --pattern-limit 0"
+    },
+    {
+      "pilot_id": "phase06-ui-pilot-p4-draft-batch1-phase06-ui-p4-secmeet-meeting-list-page",
+      "pilot_order": 2,
+      "track_id": "residual-page-shell-controller-owned-state-page",
+      "slice_id": "phase06-ui-p4-secmeet-meeting-list-page",
+      "sample_id": "cangjiechallenge-secmeet-meeting-list-page",
+      "repo_name": "d45e5bcde569dadcaf4fcc0524ac8f38",
+      "repo_local_path": "raw_docs/phase06-ui-p4-draft/d45e5bcde569dadcaf4fcc0524ac8f38/entry/src/main/cangjie/meeting_list_page.cj",
+      "source_path": "entry/src/main/cangjie/meeting_list_page.cj",
+      "priority": "P4",
+      "selection_rank": 2,
+      "sample_rank": 1,
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "usage_goal": "Draft P4 list page slice for stats cards, filter/search state, and detail-page routing from a single controller-owned page shell.",
+      "selection_reason": "Residual next-stage slice left after excluding already-curated prompt-pilot worksets.",
+      "pilot_goal": "Carry remaining Phase06 lane variance into the next prompt-pilot batch without hand-assembling repo-local pipeline paths.",
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class MeetingListPageState {"
+        ]
+      },
+      "notes": [
+        "Preserve the source-backed render helpers and list filtering flow without inventing ArkUI-only facades.",
+        "Treat list refresh, search keyword, and route handoff as page-shell state rather than service-owned behavior."
+      ],
+      "src_root": "raw_docs/phase06-ui-p4-draft/d45e5bcde569dadcaf4fcc0524ac8f38/entry/src/main/cangjie",
+      "target_file": "meeting_list_page.cj",
+      "artifact_root": "artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-secmeet-meeting-list-page",
+      "pipeline_run_root": "artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-secmeet-meeting-list-page/pipeline_run",
+      "db_path": "artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-secmeet-meeting-list-page/pipeline_run/repo_index.sqlite",
+      "repo_map_path": "artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-secmeet-meeting-list-page/pipeline_run/repo_map.txt",
+      "base_tu_json_path": "artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-secmeet-meeting-list-page/pipeline_run/target.tu.json",
+      "explicit_tu_json_path": "artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-secmeet-meeting-list-page/target.explicit_ui_tags.tu.json",
+      "orchestration_output_path": "artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-secmeet-meeting-list-page/pipeline_run/target.orchestration.json",
+      "pipeline_summary_path": "artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-secmeet-meeting-list-page/pipeline_run/summary.json",
+      "failure_path": "artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-secmeet-meeting-list-page/pipeline_run/failure.json",
+      "pipeline_log_path": "artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-secmeet-meeting-list-page/pipeline.log",
+      "base_prompt_dump_path": "artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-secmeet-meeting-list-page/prompt_dump.txt",
+      "explicit_prompt_dump_path": "artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-secmeet-meeting-list-page/prompt_dump.explicit_ui_tags.txt",
+      "prompt_dump_summary_path": "artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-secmeet-meeting-list-page/pilot-summary.json",
+      "snapshot_label": "phase06-ui-p4-draft-batch1-phase06-ui-p4-secmeet-meeting-list-page",
+      "expected_prompt_signal": "resolution_source=explicit-target-ui-tags",
+      "pipeline_command": "python3 scripts/pipeline_runner.py --src-root raw_docs/phase06-ui-p4-draft/d45e5bcde569dadcaf4fcc0524ac8f38/entry/src/main/cangjie --target-file meeting_list_page.cj --run-root artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-secmeet-meeting-list-page/pipeline_run --db-path artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-secmeet-meeting-list-page/pipeline_run/repo_index.sqlite --repo-map-path artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-secmeet-meeting-list-page/pipeline_run/repo_map.txt --tu-json-path artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-secmeet-meeting-list-page/pipeline_run/target.tu.json --orchestration-output-path artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-secmeet-meeting-list-page/pipeline_run/target.orchestration.json --summary-path artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-secmeet-meeting-list-page/pipeline_run/summary.json --failure-path artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-secmeet-meeting-list-page/pipeline_run/failure.json --prompt-dump-path artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-secmeet-meeting-list-page/prompt_dump.txt --architecture-skill docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md --snapshot-label phase06-ui-p4-draft-batch1-phase06-ui-p4-secmeet-meeting-list-page --dump-prompt-only --extensions .cj --pattern-limit 0"
+    },
+    {
+      "pilot_id": "phase06-ui-pilot-p4-draft-batch1-phase06-ui-p4-secmeet-audit-log-page",
+      "pilot_order": 3,
+      "track_id": "residual-page-shell-controller-owned-state-page",
+      "slice_id": "phase06-ui-p4-secmeet-audit-log-page",
+      "sample_id": "cangjiechallenge-secmeet-audit-log-page",
+      "repo_name": "d45e5bcde569dadcaf4fcc0524ac8f38",
+      "repo_local_path": "raw_docs/phase06-ui-p4-draft/d45e5bcde569dadcaf4fcc0524ac8f38/entry/src/main/cangjie/audit_log_page.cj",
+      "source_path": "entry/src/main/cangjie/audit_log_page.cj",
+      "priority": "P4",
+      "selection_rank": 3,
+      "sample_rank": 1,
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "usage_goal": "Draft P4 audit-log page slice for analytics counters, filter state, and log-list rendering without leaking security-service internals into the public UI boundary.",
+      "selection_reason": "Residual next-stage slice left after excluding already-curated prompt-pilot worksets.",
+      "pilot_goal": "Carry remaining Phase06 lane variance into the next prompt-pilot batch without hand-assembling repo-local pipeline paths.",
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class AuditLogPageState {"
+        ]
+      },
+      "notes": [
+        "Keep alert/log rendering semantics source-backed through the existing audit state object and render helpers.",
+        "Treat statistics refresh and filter state as page-owned orchestration instead of fabricating provider layers."
+      ],
+      "src_root": "raw_docs/phase06-ui-p4-draft/d45e5bcde569dadcaf4fcc0524ac8f38/entry/src/main/cangjie",
+      "target_file": "audit_log_page.cj",
+      "artifact_root": "artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-secmeet-audit-log-page",
+      "pipeline_run_root": "artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-secmeet-audit-log-page/pipeline_run",
+      "db_path": "artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-secmeet-audit-log-page/pipeline_run/repo_index.sqlite",
+      "repo_map_path": "artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-secmeet-audit-log-page/pipeline_run/repo_map.txt",
+      "base_tu_json_path": "artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-secmeet-audit-log-page/pipeline_run/target.tu.json",
+      "explicit_tu_json_path": "artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-secmeet-audit-log-page/target.explicit_ui_tags.tu.json",
+      "orchestration_output_path": "artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-secmeet-audit-log-page/pipeline_run/target.orchestration.json",
+      "pipeline_summary_path": "artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-secmeet-audit-log-page/pipeline_run/summary.json",
+      "failure_path": "artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-secmeet-audit-log-page/pipeline_run/failure.json",
+      "pipeline_log_path": "artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-secmeet-audit-log-page/pipeline.log",
+      "base_prompt_dump_path": "artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-secmeet-audit-log-page/prompt_dump.txt",
+      "explicit_prompt_dump_path": "artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-secmeet-audit-log-page/prompt_dump.explicit_ui_tags.txt",
+      "prompt_dump_summary_path": "artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-secmeet-audit-log-page/pilot-summary.json",
+      "snapshot_label": "phase06-ui-p4-draft-batch1-phase06-ui-p4-secmeet-audit-log-page",
+      "expected_prompt_signal": "resolution_source=explicit-target-ui-tags",
+      "pipeline_command": "python3 scripts/pipeline_runner.py --src-root raw_docs/phase06-ui-p4-draft/d45e5bcde569dadcaf4fcc0524ac8f38/entry/src/main/cangjie --target-file audit_log_page.cj --run-root artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-secmeet-audit-log-page/pipeline_run --db-path artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-secmeet-audit-log-page/pipeline_run/repo_index.sqlite --repo-map-path artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-secmeet-audit-log-page/pipeline_run/repo_map.txt --tu-json-path artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-secmeet-audit-log-page/pipeline_run/target.tu.json --orchestration-output-path artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-secmeet-audit-log-page/pipeline_run/target.orchestration.json --summary-path artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-secmeet-audit-log-page/pipeline_run/summary.json --failure-path artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-secmeet-audit-log-page/pipeline_run/failure.json --prompt-dump-path artifacts/ui_pilots/20260411-phase06-ui-p4-draft-pilot-batch1/phase06-ui-p4-secmeet-audit-log-page/prompt_dump.txt --architecture-skill docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md --snapshot-label phase06-ui-p4-draft-batch1-phase06-ui-p4-secmeet-audit-log-page --dump-prompt-only --extensions .cj --pattern-limit 0"
+    }
+  ]
+}

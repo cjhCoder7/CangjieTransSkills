@@ -1,0 +1,188 @@
+{
+  "manifest_name": "phase06-ui-source-corpus-p22",
+  "manifest_version": 1,
+  "created_at": "2026-04-14T04:30:23Z",
+  "corpus_root": "../../raw_docs/phase06-ui-p22",
+  "source_manifest": "phase06_ui_sample_manifest.json",
+  "selection_policy": {
+    "priority": "P22",
+    "adoption_decision": "primary",
+    "source_type": "external_repo",
+    "sample_buckets": [
+      "ordered_samples"
+    ]
+  },
+  "sample_count": 3,
+  "file_count": 35,
+  "entries": [
+    {
+      "entry_id": "harmonyos-examples-ui-component-gallery-entry-view",
+      "sample_id": "harmonyos-examples-ui-component-gallery-entry-view",
+      "reference_id": "",
+      "priority": "P22",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "role": "",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P22 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the UIComponent gallery shell stays local, router-backed, and bounded to the same-package index cards without reopening the route-target playground pages."
+      },
+      "source_paths": [
+        "02-UIComponent/entry/src/main/cangjie/src/index.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/index/IndexImage.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/index/global.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/index/indexBadge.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/index/indexButton.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/index/indexCheckBox.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/index/indexMusicPlayer.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/index/indexSwiper.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/index/indexTab.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/index/indexText.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/index/indextTextInput.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/utils/dataSource.cj"
+      ],
+      "repo_name": "HarmonyOS-Examples",
+      "repo_local_paths": [
+        "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/index.cj",
+        "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/index/IndexImage.cj",
+        "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/index/global.cj",
+        "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/index/indexBadge.cj",
+        "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/index/indexButton.cj",
+        "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/index/indexCheckBox.cj",
+        "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/index/indexMusicPlayer.cj",
+        "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/index/indexSwiper.cj",
+        "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/index/indexTab.cj",
+        "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/index/indexText.cj",
+        "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/index/indextTextInput.cj",
+        "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/utils/dataSource.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Add an official UIComponent gallery sample that keeps the index host page, same-package gallery cards, and the local data-source helper source-backed in one bounded regular closure.",
+      "blocking_constraints": [
+        "Keep the index host page, same-package gallery cards, and the local data-source helper source-backed instead of expanding the P22 freeze to the full route-target playground subtree."
+      ],
+      "reason": ""
+    },
+    {
+      "entry_id": "harmonyos-examples-ui-component-text-playground-page",
+      "sample_id": "harmonyos-examples-ui-component-text-playground-page",
+      "reference_id": "",
+      "priority": "P22",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "role": "",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P22 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the UIComponent text playground stays local, route-target bounded, and free of network, socket, or hybrid-host dependencies while providing a same-package control-panel closure."
+      },
+      "source_paths": [
+        "02-UIComponent/entry/src/main/cangjie/src/pages/textSample.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/pages/global.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/text.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/playground/font/fontStyle.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/playground/font/fontWeight.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/playground/font/textAlign.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/playground/font/textCase.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/playground/font/textDecoration.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/playground/utils/animations.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/playground/utils/colorpicker.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/playground/utils/global.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/playground/utils/selectBand.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/playground/utils/sliderBar.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/playground/utils/toggleBar.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/playground/utils/valueSlider.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/playground/utils/variables.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/utils/variables.cj"
+      ],
+      "repo_name": "HarmonyOS-Examples",
+      "repo_local_paths": [
+        "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/pages/textSample.cj",
+        "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/pages/global.cj",
+        "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/text.cj",
+        "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/playground/font/fontStyle.cj",
+        "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/playground/font/fontWeight.cj",
+        "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/playground/font/textAlign.cj",
+        "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/playground/font/textCase.cj",
+        "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/playground/font/textDecoration.cj",
+        "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/playground/utils/animations.cj",
+        "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/playground/utils/colorpicker.cj",
+        "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/playground/utils/global.cj",
+        "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/playground/utils/selectBand.cj",
+        "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/playground/utils/sliderBar.cj",
+        "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/playground/utils/toggleBar.cj",
+        "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/playground/utils/valueSlider.cj",
+        "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/components/playground/utils/variables.cj",
+        "raw_docs/phase06-ui-p22/HarmonyOS-Examples/02-UIComponent/entry/src/main/cangjie/src/utils/variables.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Add an official UIComponent text-playground sample that keeps the text demo page, same-package text scaffolds, and local playground font/control helpers source-backed in one bounded regular closure.",
+      "blocking_constraints": [
+        "Keep the text demo page, same-package text scaffolds, and local playground font/control helpers source-backed instead of expanding P22 to the full UIComponent route-target playground set."
+      ],
+      "reason": ""
+    },
+    {
+      "entry_id": "harmonyos-examples-roulette-ui-public-page-workflow",
+      "sample_id": "harmonyos-examples-roulette-ui-public-page-workflow",
+      "reference_id": "",
+      "priority": "P22",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "role": "",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P22 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the routed PublicPage workflow, same-package turntable list, and edit form helpers stay local and bounded without reopening the home-shell or ability wiring lanes."
+      },
+      "source_paths": [
+        "RouletteUI/entry/src/main/cangjie/src/public_page.cj",
+        "RouletteUI/entry/src/main/cangjie/src/common/component/public_page_top.cj",
+        "RouletteUI/entry/src/main/cangjie/src/common/component/public_page_body.cj",
+        "RouletteUI/entry/src/main/cangjie/src/common/component/global.cj",
+        "RouletteUI/entry/src/main/cangjie/src/common/component/found_and_edit.cj",
+        "RouletteUI/entry/src/main/cangjie/src/common/component/turntable_list.cj"
+      ],
+      "repo_name": "HarmonyOS-Examples",
+      "repo_local_paths": [
+        "raw_docs/phase06-ui-p22/HarmonyOS-Examples/RouletteUI/entry/src/main/cangjie/src/public_page.cj",
+        "raw_docs/phase06-ui-p22/HarmonyOS-Examples/RouletteUI/entry/src/main/cangjie/src/common/component/public_page_top.cj",
+        "raw_docs/phase06-ui-p22/HarmonyOS-Examples/RouletteUI/entry/src/main/cangjie/src/common/component/public_page_body.cj",
+        "raw_docs/phase06-ui-p22/HarmonyOS-Examples/RouletteUI/entry/src/main/cangjie/src/common/component/global.cj",
+        "raw_docs/phase06-ui-p22/HarmonyOS-Examples/RouletteUI/entry/src/main/cangjie/src/common/component/found_and_edit.cj",
+        "raw_docs/phase06-ui-p22/HarmonyOS-Examples/RouletteUI/entry/src/main/cangjie/src/common/component/turntable_list.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Add an official RouletteUI public-page workflow sample that keeps the routed PublicPage host plus same-package list/edit helpers source-backed in one bounded regular closure.",
+      "blocking_constraints": [
+        "Keep PublicPage plus the same-package list/edit helper closure source-backed instead of merging it back into the RouletteUI home shell or expanding to unused ability/package scaffold files."
+      ],
+      "reason": ""
+    }
+  ]
+}

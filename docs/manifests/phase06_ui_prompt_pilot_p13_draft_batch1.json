@@ -1,0 +1,445 @@
+{
+  "manifest_name": "phase06_ui_prompt_pilot_p13_draft_batch1",
+  "manifest_version": 1,
+  "created_at": "2026-04-12T10:54:05Z",
+  "phase": "phase06",
+  "status": "active",
+  "source_manifest": "docs/manifests/phase06_ui_p13_draft_file_manifest.json",
+  "intended_consumer": "Phase06 prompt-pilot curator and prompt-dump runner",
+  "selection_policy": {
+    "batch_id": "phase06-ui-prompt-pilot-p13-draft-batch1",
+    "selection_mode": "residual-workset-after-excluding-consumed-slices",
+    "track_profile": "p0-batch1",
+    "required_tracks": [],
+    "artifact_root": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1",
+    "architecture_skill_path": "docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md",
+    "notes": [
+      "Residual mode keeps every remaining slice after excluding an already-consumed pilot workset; it does not require full five-lane symmetry.",
+      "Each selected slice carries repo-local pipeline paths so prompt dumps can be regenerated without hand assembly.",
+      "Explicit ui_prompt_tags injection is still required for the final pilot prompt dump."
+    ],
+    "excluded_slice_ids": []
+  },
+  "summary": {
+    "pilot_count": 6,
+    "source_sample_count": 3,
+    "role_counts": {
+      "page": 3,
+      "viewmodel": 3
+    },
+    "track_counts": {
+      "residual-page-shell-view-model-renderer-page": 1,
+      "residual-page-shell-controller-owned-state-page": 2,
+      "residual-rich-component-view-model-renderer-viewmodel": 2,
+      "residual-rich-component-controller-owned-state-viewmodel": 1
+    },
+    "coverage": {
+      "structure_tags": [
+        "page-shell",
+        "rich-component"
+      ],
+      "ownership_tags": [
+        "controller-owned-state",
+        "view-model-renderer"
+      ],
+      "interaction_tags": []
+    },
+    "selected_slice_ids": [
+      "phase06-ui-p13-commonui-entry-page",
+      "phase06-ui-p13-clock-entry-page",
+      "phase06-ui-p13-clock-renderer-helper",
+      "phase06-ui-p13-simpledraw-entry-page",
+      "phase06-ui-p13-simpledraw-dgeometry-model",
+      "phase06-ui-p13-simpledraw-geometry-math-model"
+    ],
+    "excluded_slice_count": 0
+  },
+  "entries": [
+    {
+      "pilot_id": "phase06-ui-pilot-p13-draft-batch1-phase06-ui-p13-commonui-entry-page",
+      "pilot_order": 1,
+      "track_id": "residual-page-shell-view-model-renderer-page",
+      "slice_id": "phase06-ui-p13-commonui-entry-page",
+      "sample_id": "harmonyos-examples-commonui-entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "repo_local_path": "raw_docs/phase06-ui-p13-draft/HarmonyOS-Examples/CommonUI/entry/src/main/cangjie/src/index.cj",
+      "source_path": "CommonUI/entry/src/main/cangjie/src/index.cj",
+      "priority": "P13",
+      "selection_rank": 1,
+      "sample_rank": 1,
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "usage_goal": "Draft P13 CommonUI entry page slice for extend-based button styling and direct Router.push handoff inside one render-facing page shell.",
+      "selection_reason": "Residual next-stage slice left after excluding already-curated prompt-pilot worksets.",
+      "pilot_goal": "Carry remaining Phase06 lane variance into the next prompt-pilot batch without hand-assembling repo-local pipeline paths.",
+      "recommended_few_shot_entry_ids": [
+        "local-ui-routing-page-shell-view-model-renderer",
+        "harmonyos-examples-badgeview-page-shell-view-model-renderer"
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class EntryView {"
+        ]
+      },
+      "notes": [
+        "Keep the extend Button.jump helper and the eight Router.push targets source-backed inside the page boundary.",
+        "Treat this file as a lightweight route menu shell instead of inventing detached coordinators or helper layers."
+      ],
+      "src_root": "raw_docs/phase06-ui-p13-draft/HarmonyOS-Examples/CommonUI/entry/src/main/cangjie/src",
+      "target_file": "index.cj",
+      "artifact_root": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-commonui-entry-page",
+      "pipeline_run_root": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-commonui-entry-page/pipeline_run",
+      "db_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-commonui-entry-page/pipeline_run/repo_index.sqlite",
+      "repo_map_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-commonui-entry-page/pipeline_run/repo_map.txt",
+      "base_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-commonui-entry-page/pipeline_run/target.tu.json",
+      "explicit_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-commonui-entry-page/target.explicit_ui_tags.tu.json",
+      "orchestration_output_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-commonui-entry-page/pipeline_run/target.orchestration.json",
+      "pipeline_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-commonui-entry-page/pipeline_run/summary.json",
+      "failure_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-commonui-entry-page/pipeline_run/failure.json",
+      "pipeline_log_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-commonui-entry-page/pipeline.log",
+      "base_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-commonui-entry-page/prompt_dump.txt",
+      "explicit_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-commonui-entry-page/prompt_dump.explicit_ui_tags.txt",
+      "prompt_dump_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-commonui-entry-page/pilot-summary.json",
+      "snapshot_label": "phase06-ui-p13-draft-batch1-phase06-ui-p13-commonui-entry-page",
+      "expected_prompt_signal": "resolution_source=explicit-target-ui-tags",
+      "pipeline_command": "python3 scripts/pipeline_runner.py --src-root raw_docs/phase06-ui-p13-draft/HarmonyOS-Examples/CommonUI/entry/src/main/cangjie/src --target-file index.cj --run-root artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-commonui-entry-page/pipeline_run --db-path artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-commonui-entry-page/pipeline_run/repo_index.sqlite --repo-map-path artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-commonui-entry-page/pipeline_run/repo_map.txt --tu-json-path artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-commonui-entry-page/pipeline_run/target.tu.json --orchestration-output-path artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-commonui-entry-page/pipeline_run/target.orchestration.json --summary-path artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-commonui-entry-page/pipeline_run/summary.json --failure-path artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-commonui-entry-page/pipeline_run/failure.json --prompt-dump-path artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-commonui-entry-page/prompt_dump.txt --architecture-skill docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md --snapshot-label phase06-ui-p13-draft-batch1-phase06-ui-p13-commonui-entry-page --dump-prompt-only --extensions .cj --pattern-limit 0"
+    },
+    {
+      "pilot_id": "phase06-ui-pilot-p13-draft-batch1-phase06-ui-p13-clock-entry-page",
+      "pilot_order": 2,
+      "track_id": "residual-page-shell-controller-owned-state-page",
+      "slice_id": "phase06-ui-p13-clock-entry-page",
+      "sample_id": "harmonyos-examples-clock-canvas-page",
+      "repo_name": "HarmonyOS-Examples",
+      "repo_local_path": "raw_docs/phase06-ui-p13-draft/HarmonyOS-Examples/11-Clock/entry/src/main/cangjie/src/index.cj",
+      "source_path": "11-Clock/entry/src/main/cangjie/src/index.cj",
+      "priority": "P13",
+      "selection_rank": 2,
+      "sample_rank": 1,
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "usage_goal": "Draft P13 clock host page slice for page-owned Timer lifecycle, Canvas context ownership, and display-size hydration around a renderer helper.",
+      "selection_reason": "Residual next-stage slice left after excluding already-curated prompt-pilot worksets.",
+      "pilot_goal": "Carry remaining Phase06 lane variance into the next prompt-pilot batch without hand-assembling repo-local pipeline paths.",
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class EntryView {"
+        ]
+      },
+      "notes": [
+        "Keep Timer lifecycle, CanvasRenderingContext2D ownership, and display-size hydration source-backed in the page host.",
+        "Treat utils/clock.cj as the explicitly frozen renderer helper instead of collapsing the sample into a fake single-file canvas page."
+      ],
+      "src_root": "raw_docs/phase06-ui-p13-draft/HarmonyOS-Examples/11-Clock/entry/src/main/cangjie/src",
+      "target_file": "index.cj",
+      "artifact_root": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-clock-entry-page",
+      "pipeline_run_root": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-clock-entry-page/pipeline_run",
+      "db_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-clock-entry-page/pipeline_run/repo_index.sqlite",
+      "repo_map_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-clock-entry-page/pipeline_run/repo_map.txt",
+      "base_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-clock-entry-page/pipeline_run/target.tu.json",
+      "explicit_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-clock-entry-page/target.explicit_ui_tags.tu.json",
+      "orchestration_output_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-clock-entry-page/pipeline_run/target.orchestration.json",
+      "pipeline_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-clock-entry-page/pipeline_run/summary.json",
+      "failure_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-clock-entry-page/pipeline_run/failure.json",
+      "pipeline_log_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-clock-entry-page/pipeline.log",
+      "base_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-clock-entry-page/prompt_dump.txt",
+      "explicit_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-clock-entry-page/prompt_dump.explicit_ui_tags.txt",
+      "prompt_dump_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-clock-entry-page/pilot-summary.json",
+      "snapshot_label": "phase06-ui-p13-draft-batch1-phase06-ui-p13-clock-entry-page",
+      "expected_prompt_signal": "resolution_source=explicit-target-ui-tags",
+      "pipeline_command": "python3 scripts/pipeline_runner.py --src-root raw_docs/phase06-ui-p13-draft/HarmonyOS-Examples/11-Clock/entry/src/main/cangjie/src --target-file index.cj --run-root artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-clock-entry-page/pipeline_run --db-path artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-clock-entry-page/pipeline_run/repo_index.sqlite --repo-map-path artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-clock-entry-page/pipeline_run/repo_map.txt --tu-json-path artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-clock-entry-page/pipeline_run/target.tu.json --orchestration-output-path artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-clock-entry-page/pipeline_run/target.orchestration.json --summary-path artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-clock-entry-page/pipeline_run/summary.json --failure-path artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-clock-entry-page/pipeline_run/failure.json --prompt-dump-path artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-clock-entry-page/prompt_dump.txt --architecture-skill docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md --snapshot-label phase06-ui-p13-draft-batch1-phase06-ui-p13-clock-entry-page --dump-prompt-only --extensions .cj --pattern-limit 0"
+    },
+    {
+      "pilot_id": "phase06-ui-pilot-p13-draft-batch1-phase06-ui-p13-clock-renderer-helper",
+      "pilot_order": 3,
+      "track_id": "residual-rich-component-view-model-renderer-viewmodel",
+      "slice_id": "phase06-ui-p13-clock-renderer-helper",
+      "sample_id": "harmonyos-examples-clock-canvas-page",
+      "repo_name": "HarmonyOS-Examples",
+      "repo_local_path": "raw_docs/phase06-ui-p13-draft/HarmonyOS-Examples/11-Clock/entry/src/main/cangjie/src/utils/clock.cj",
+      "source_path": "11-Clock/entry/src/main/cangjie/src/utils/clock.cj",
+      "priority": "P13",
+      "selection_rank": 3,
+      "sample_rank": 2,
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "usage_goal": "Draft P13 clock renderer helper slice for dial, hand, and timestamp drawing logic behind the canvas host page.",
+      "selection_reason": "Residual next-stage slice left after excluding already-curated prompt-pilot worksets.",
+      "pilot_goal": "Carry remaining Phase06 lane variance into the next prompt-pilot batch without hand-assembling repo-local pipeline paths.",
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class Clock {"
+        ]
+      },
+      "notes": [
+        "Keep dial background, frame, cursor, and text drawing logic source-backed in this helper.",
+        "Treat this as a renderer support slice behind the page shell rather than a standalone page/component contract."
+      ],
+      "src_root": "raw_docs/phase06-ui-p13-draft/HarmonyOS-Examples/11-Clock/entry/src/main/cangjie/src",
+      "target_file": "utils/clock.cj",
+      "artifact_root": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-clock-renderer-helper",
+      "pipeline_run_root": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-clock-renderer-helper/pipeline_run",
+      "db_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-clock-renderer-helper/pipeline_run/repo_index.sqlite",
+      "repo_map_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-clock-renderer-helper/pipeline_run/repo_map.txt",
+      "base_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-clock-renderer-helper/pipeline_run/target.tu.json",
+      "explicit_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-clock-renderer-helper/target.explicit_ui_tags.tu.json",
+      "orchestration_output_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-clock-renderer-helper/pipeline_run/target.orchestration.json",
+      "pipeline_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-clock-renderer-helper/pipeline_run/summary.json",
+      "failure_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-clock-renderer-helper/pipeline_run/failure.json",
+      "pipeline_log_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-clock-renderer-helper/pipeline.log",
+      "base_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-clock-renderer-helper/prompt_dump.txt",
+      "explicit_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-clock-renderer-helper/prompt_dump.explicit_ui_tags.txt",
+      "prompt_dump_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-clock-renderer-helper/pilot-summary.json",
+      "snapshot_label": "phase06-ui-p13-draft-batch1-phase06-ui-p13-clock-renderer-helper",
+      "expected_prompt_signal": "resolution_source=explicit-target-ui-tags",
+      "pipeline_command": "python3 scripts/pipeline_runner.py --src-root raw_docs/phase06-ui-p13-draft/HarmonyOS-Examples/11-Clock/entry/src/main/cangjie/src --target-file utils/clock.cj --run-root artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-clock-renderer-helper/pipeline_run --db-path artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-clock-renderer-helper/pipeline_run/repo_index.sqlite --repo-map-path artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-clock-renderer-helper/pipeline_run/repo_map.txt --tu-json-path artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-clock-renderer-helper/pipeline_run/target.tu.json --orchestration-output-path artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-clock-renderer-helper/pipeline_run/target.orchestration.json --summary-path artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-clock-renderer-helper/pipeline_run/summary.json --failure-path artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-clock-renderer-helper/pipeline_run/failure.json --prompt-dump-path artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-clock-renderer-helper/prompt_dump.txt --architecture-skill docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md --snapshot-label phase06-ui-p13-draft-batch1-phase06-ui-p13-clock-renderer-helper --dump-prompt-only --extensions .cj --pattern-limit 0"
+    },
+    {
+      "pilot_id": "phase06-ui-pilot-p13-draft-batch1-phase06-ui-p13-simpledraw-entry-page",
+      "pilot_order": 4,
+      "track_id": "residual-page-shell-controller-owned-state-page",
+      "slice_id": "phase06-ui-p13-simpledraw-entry-page",
+      "sample_id": "harmonyos-examples-simpledraw-geometry-shell",
+      "repo_name": "HarmonyOS-Examples",
+      "repo_local_path": "raw_docs/phase06-ui-p13-draft/HarmonyOS-Examples/SimpleDraw/entry/src/main/cangjie/src/index.cj",
+      "source_path": "SimpleDraw/entry/src/main/cangjie/src/index.cj",
+      "priority": "P13",
+      "selection_rank": 4,
+      "sample_rank": 1,
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "usage_goal": "Draft P13 geometry host page slice for mode switching, touch dispatch, and page-owned point/circle state inside one interactive shell.",
+      "selection_reason": "Residual next-stage slice left after excluding already-curated prompt-pilot worksets.",
+      "pilot_goal": "Carry remaining Phase06 lane variance into the next prompt-pilot batch without hand-assembling repo-local pipeline paths.",
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class MyView {",
+          "class 功能按钮 {"
+        ]
+      },
+      "notes": [
+        "Keep current mode selection, touch dispatch, point/circle ownership, and Shape event wiring source-backed inside the page shell.",
+        "Treat DGeometry.cj and Geometry.cj as explicitly frozen support slices rather than pretending the page is self-contained."
+      ],
+      "src_root": "raw_docs/phase06-ui-p13-draft/HarmonyOS-Examples/SimpleDraw/entry/src/main/cangjie/src",
+      "target_file": "index.cj",
+      "artifact_root": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-entry-page",
+      "pipeline_run_root": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-entry-page/pipeline_run",
+      "db_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-entry-page/pipeline_run/repo_index.sqlite",
+      "repo_map_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-entry-page/pipeline_run/repo_map.txt",
+      "base_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-entry-page/pipeline_run/target.tu.json",
+      "explicit_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-entry-page/target.explicit_ui_tags.tu.json",
+      "orchestration_output_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-entry-page/pipeline_run/target.orchestration.json",
+      "pipeline_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-entry-page/pipeline_run/summary.json",
+      "failure_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-entry-page/pipeline_run/failure.json",
+      "pipeline_log_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-entry-page/pipeline.log",
+      "base_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-entry-page/prompt_dump.txt",
+      "explicit_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-entry-page/prompt_dump.explicit_ui_tags.txt",
+      "prompt_dump_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-entry-page/pilot-summary.json",
+      "snapshot_label": "phase06-ui-p13-draft-batch1-phase06-ui-p13-simpledraw-entry-page",
+      "expected_prompt_signal": "resolution_source=explicit-target-ui-tags",
+      "pipeline_command": "python3 scripts/pipeline_runner.py --src-root raw_docs/phase06-ui-p13-draft/HarmonyOS-Examples/SimpleDraw/entry/src/main/cangjie/src --target-file index.cj --run-root artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-entry-page/pipeline_run --db-path artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-entry-page/pipeline_run/repo_index.sqlite --repo-map-path artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-entry-page/pipeline_run/repo_map.txt --tu-json-path artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-entry-page/pipeline_run/target.tu.json --orchestration-output-path artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-entry-page/pipeline_run/target.orchestration.json --summary-path artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-entry-page/pipeline_run/summary.json --failure-path artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-entry-page/pipeline_run/failure.json --prompt-dump-path artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-entry-page/prompt_dump.txt --architecture-skill docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md --snapshot-label phase06-ui-p13-draft-batch1-phase06-ui-p13-simpledraw-entry-page --dump-prompt-only --extensions .cj --pattern-limit 0"
+    },
+    {
+      "pilot_id": "phase06-ui-pilot-p13-draft-batch1-phase06-ui-p13-simpledraw-dgeometry-model",
+      "pilot_order": 5,
+      "track_id": "residual-rich-component-controller-owned-state-viewmodel",
+      "slice_id": "phase06-ui-p13-simpledraw-dgeometry-model",
+      "sample_id": "harmonyos-examples-simpledraw-geometry-shell",
+      "repo_name": "HarmonyOS-Examples",
+      "repo_local_path": "raw_docs/phase06-ui-p13-draft/HarmonyOS-Examples/SimpleDraw/entry/src/main/cangjie/src/DGeometry.cj",
+      "source_path": "SimpleDraw/entry/src/main/cangjie/src/DGeometry.cj",
+      "priority": "P13",
+      "selection_rank": 5,
+      "sample_rank": 2,
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "usage_goal": "Draft P13 dynamic geometry support-model slice for observed point/circle entities, follow relationships, and hit-testing helpers behind the geometry host page.",
+      "selection_reason": "Residual next-stage slice left after excluding already-curated prompt-pilot worksets.",
+      "pilot_goal": "Carry remaining Phase06 lane variance into the next prompt-pilot batch without hand-assembling repo-local pipeline paths.",
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class DPoint {",
+          "public class DCircle {",
+          "public class DLine {"
+        ]
+      },
+      "notes": [
+        "Keep DPoint/DCircle ownership, follower propagation, and hit-testing helpers source-backed in this support slice.",
+        "This file stays attached to the interactive geometry lane instead of being promoted as a standalone UI component."
+      ],
+      "src_root": "raw_docs/phase06-ui-p13-draft/HarmonyOS-Examples/SimpleDraw/entry/src/main/cangjie/src",
+      "target_file": "DGeometry.cj",
+      "artifact_root": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-dgeometry-model",
+      "pipeline_run_root": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-dgeometry-model/pipeline_run",
+      "db_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-dgeometry-model/pipeline_run/repo_index.sqlite",
+      "repo_map_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-dgeometry-model/pipeline_run/repo_map.txt",
+      "base_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-dgeometry-model/pipeline_run/target.tu.json",
+      "explicit_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-dgeometry-model/target.explicit_ui_tags.tu.json",
+      "orchestration_output_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-dgeometry-model/pipeline_run/target.orchestration.json",
+      "pipeline_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-dgeometry-model/pipeline_run/summary.json",
+      "failure_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-dgeometry-model/pipeline_run/failure.json",
+      "pipeline_log_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-dgeometry-model/pipeline.log",
+      "base_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-dgeometry-model/prompt_dump.txt",
+      "explicit_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-dgeometry-model/prompt_dump.explicit_ui_tags.txt",
+      "prompt_dump_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-dgeometry-model/pilot-summary.json",
+      "snapshot_label": "phase06-ui-p13-draft-batch1-phase06-ui-p13-simpledraw-dgeometry-model",
+      "expected_prompt_signal": "resolution_source=explicit-target-ui-tags",
+      "pipeline_command": "python3 scripts/pipeline_runner.py --src-root raw_docs/phase06-ui-p13-draft/HarmonyOS-Examples/SimpleDraw/entry/src/main/cangjie/src --target-file DGeometry.cj --run-root artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-dgeometry-model/pipeline_run --db-path artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-dgeometry-model/pipeline_run/repo_index.sqlite --repo-map-path artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-dgeometry-model/pipeline_run/repo_map.txt --tu-json-path artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-dgeometry-model/pipeline_run/target.tu.json --orchestration-output-path artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-dgeometry-model/pipeline_run/target.orchestration.json --summary-path artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-dgeometry-model/pipeline_run/summary.json --failure-path artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-dgeometry-model/pipeline_run/failure.json --prompt-dump-path artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-dgeometry-model/prompt_dump.txt --architecture-skill docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md --snapshot-label phase06-ui-p13-draft-batch1-phase06-ui-p13-simpledraw-dgeometry-model --dump-prompt-only --extensions .cj --pattern-limit 0"
+    },
+    {
+      "pilot_id": "phase06-ui-pilot-p13-draft-batch1-phase06-ui-p13-simpledraw-geometry-math-model",
+      "pilot_order": 6,
+      "track_id": "residual-rich-component-view-model-renderer-viewmodel",
+      "slice_id": "phase06-ui-p13-simpledraw-geometry-math-model",
+      "sample_id": "harmonyos-examples-simpledraw-geometry-shell",
+      "repo_name": "HarmonyOS-Examples",
+      "repo_local_path": "raw_docs/phase06-ui-p13-draft/HarmonyOS-Examples/SimpleDraw/entry/src/main/cangjie/src/Geometry.cj",
+      "source_path": "SimpleDraw/entry/src/main/cangjie/src/Geometry.cj",
+      "priority": "P13",
+      "selection_rank": 6,
+      "sample_rank": 3,
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "usage_goal": "Draft P13 geometry math support-model slice for point, line, circle, and intersection calculations behind the interactive host page.",
+      "selection_reason": "Residual next-stage slice left after excluding already-curated prompt-pilot worksets.",
+      "pilot_goal": "Carry remaining Phase06 lane variance into the next prompt-pilot batch without hand-assembling repo-local pipeline paths.",
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class 点 <: ToString {",
+          "public class 直线 {",
+          "public class 圆 {"
+        ]
+      },
+      "notes": [
+        "Keep the low-level geometric primitives and intersection math source-backed in this helper instead of hiding them behind invented UI abstractions.",
+        "This file remains a renderer-facing support slice, not a standalone page/component boundary."
+      ],
+      "src_root": "raw_docs/phase06-ui-p13-draft/HarmonyOS-Examples/SimpleDraw/entry/src/main/cangjie/src",
+      "target_file": "Geometry.cj",
+      "artifact_root": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-geometry-math-model",
+      "pipeline_run_root": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-geometry-math-model/pipeline_run",
+      "db_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-geometry-math-model/pipeline_run/repo_index.sqlite",
+      "repo_map_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-geometry-math-model/pipeline_run/repo_map.txt",
+      "base_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-geometry-math-model/pipeline_run/target.tu.json",
+      "explicit_tu_json_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-geometry-math-model/target.explicit_ui_tags.tu.json",
+      "orchestration_output_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-geometry-math-model/pipeline_run/target.orchestration.json",
+      "pipeline_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-geometry-math-model/pipeline_run/summary.json",
+      "failure_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-geometry-math-model/pipeline_run/failure.json",
+      "pipeline_log_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-geometry-math-model/pipeline.log",
+      "base_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-geometry-math-model/prompt_dump.txt",
+      "explicit_prompt_dump_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-geometry-math-model/prompt_dump.explicit_ui_tags.txt",
+      "prompt_dump_summary_path": "artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-geometry-math-model/pilot-summary.json",
+      "snapshot_label": "phase06-ui-p13-draft-batch1-phase06-ui-p13-simpledraw-geometry-math-model",
+      "expected_prompt_signal": "resolution_source=explicit-target-ui-tags",
+      "pipeline_command": "python3 scripts/pipeline_runner.py --src-root raw_docs/phase06-ui-p13-draft/HarmonyOS-Examples/SimpleDraw/entry/src/main/cangjie/src --target-file Geometry.cj --run-root artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-geometry-math-model/pipeline_run --db-path artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-geometry-math-model/pipeline_run/repo_index.sqlite --repo-map-path artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-geometry-math-model/pipeline_run/repo_map.txt --tu-json-path artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-geometry-math-model/pipeline_run/target.tu.json --orchestration-output-path artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-geometry-math-model/pipeline_run/target.orchestration.json --summary-path artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-geometry-math-model/pipeline_run/summary.json --failure-path artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-geometry-math-model/pipeline_run/failure.json --prompt-dump-path artifacts/ui_pilots/20260412-phase06-ui-p13-draft-pilot-batch1/phase06-ui-p13-simpledraw-geometry-math-model/prompt_dump.txt --architecture-skill docs/strategy/phase-06-ui-sample-taxonomy-and-prompt-constraints.md --snapshot-label phase06-ui-p13-draft-batch1-phase06-ui-p13-simpledraw-geometry-math-model --dump-prompt-only --extensions .cj --pattern-limit 0"
+    }
+  ]
+}

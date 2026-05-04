@@ -1,0 +1,126 @@
+{
+  "manifest_name": "phase06-ui-source-corpus-p6",
+  "manifest_version": 1,
+  "created_at": "2026-04-11T14:21:17Z",
+  "corpus_root": "../../raw_docs/phase06-ui-p6",
+  "source_manifest": "phase06_ui_sample_manifest.json",
+  "selection_policy": {
+    "priority": "P6",
+    "adoption_decision": "primary",
+    "source_type": "external_repo",
+    "sample_buckets": [
+      "ordered_samples"
+    ]
+  },
+  "sample_count": 3,
+  "file_count": 3,
+  "entries": [
+    {
+      "entry_id": "cangjiechallenge-aiatom-speak-page",
+      "sample_id": "cangjiechallenge-aiatom-speak-page",
+      "reference_id": "",
+      "priority": "P6",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "role": "",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/cangjiechallenge/bb40b887dcf53d1a8b72884ad862fdf9",
+        "branch": "master",
+        "commit": "c99988534078e0c0409ffb20d298b79853f013ed",
+        "access_date": "2026-04-11",
+        "purpose": "P6 draft candidate harvested from the already approved AIAtom pinned repo after the regular Phase06 supply reached 20/20 live passed."
+      },
+      "source_paths": [
+        "cangjieApp/entry/src/main/cangjie/pages/SpeakPage.cj"
+      ],
+      "repo_name": "bb40b887dcf53d1a8b72884ad862fdf9",
+      "repo_local_paths": [
+        "raw_docs/phase06-ui-p6/bb40b887dcf53d1a8b72884ad862fdf9/cangjieApp/entry/src/main/cangjie/pages/SpeakPage.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Extend Phase06 with a speech-practice page shell that keeps recognition status, score state, TTS prompts, and level-derived quiz flow inside one page boundary without inventing service facades.",
+      "blocking_constraints": [
+        "Keep SpeechRecognizerService, TextToSpeechService, and GameState usage source-backed inside the page boundary; do not invent detached controller layers."
+      ],
+      "reason": ""
+    },
+    {
+      "entry_id": "cangjiechallenge-aiatom-entry-page",
+      "sample_id": "cangjiechallenge-aiatom-entry-page",
+      "reference_id": "",
+      "priority": "P6",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "role": "",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/cangjiechallenge/bb40b887dcf53d1a8b72884ad862fdf9",
+        "branch": "master",
+        "commit": "c99988534078e0c0409ffb20d298b79853f013ed",
+        "access_date": "2026-04-11",
+        "purpose": "P6 draft candidate harvested from the already approved AIAtom pinned repo after the regular Phase06 supply reached 20/20 live passed."
+      },
+      "source_paths": [
+        "cangjieApp/entry/src/main/cangjie/index.cj"
+      ],
+      "repo_name": "bb40b887dcf53d1a8b72884ad862fdf9",
+      "repo_local_paths": [
+        "raw_docs/phase06-ui-p6/bb40b887dcf53d1a8b72884ad862fdf9/cangjieApp/entry/src/main/cangjie/index.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Add a lightweight navigation hub page that keeps button-driven router handoff and minimal local state inside a self-contained page shell.",
+      "blocking_constraints": [
+        "Keep the menu page as a direct router host; do not invent nested navigation coordinators or extra presentation layers."
+      ],
+      "reason": ""
+    },
+    {
+      "entry_id": "cangjiechallenge-secmeet-app-shell-page",
+      "sample_id": "cangjiechallenge-secmeet-app-shell-page",
+      "reference_id": "",
+      "priority": "P6",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "role": "",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [
+        "mixed-app-pattern"
+      ],
+      "source": {
+        "url": "https://gitcode.com/cangjiechallenge/d45e5bcde569dadcaf4fcc0524ac8f38",
+        "branch": "master",
+        "commit": "c18f350c6aecbeadd9b9115b739e3f3a0fa73212",
+        "access_date": "2026-04-11",
+        "purpose": "P6 draft candidate harvested from the already approved SecureMeet pinned repo after the regular Phase06 supply reached 20/20 live passed."
+      },
+      "source_paths": [
+        "entry/src/main/cangjie/index.cj"
+      ],
+      "repo_name": "d45e5bcde569dadcaf4fcc0524ac8f38",
+      "repo_local_paths": [
+        "raw_docs/phase06-ui-p6/d45e5bcde569dadcaf4fcc0524ac8f38/entry/src/main/cangjie/index.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Add a large app-shell page that keeps login gating, dashboard summary state, toast/loading overlays, and meeting workflow routing inside one controller-owned boundary.",
+      "blocking_constraints": [
+        "Keep the same-file login and main-app composition source-backed instead of splitting invented subpages, providers, or coordinator layers."
+      ],
+      "reason": ""
+    }
+  ]
+}

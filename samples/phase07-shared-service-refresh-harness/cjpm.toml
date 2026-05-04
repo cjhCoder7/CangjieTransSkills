@@ -1,0 +1,15 @@
+[package]
+  cjc-version = "1.1.0"
+  name = "phase07_shared_service_refresh_harness"
+  organization = ""
+  description = "phase07 shared service refresh harness"
+  version = "1.0.0"
+  target-dir = ""
+  script-dir = ""
+  output-type = "static"
+  compile-option = ""
+  override-compile-option = ""
+  link-option = ""
+  package-configuration = {}
+
+[dependencies]

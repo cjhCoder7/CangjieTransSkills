@@ -1,0 +1,124 @@
+{
+  "manifest_name": "phase06-ui-source-corpus-p8",
+  "manifest_version": 1,
+  "created_at": "2026-04-12T01:10:06Z",
+  "corpus_root": "../../raw_docs/phase06-ui-p8",
+  "source_manifest": "phase06_ui_sample_manifest.json",
+  "selection_policy": {
+    "priority": "P8",
+    "adoption_decision": "primary",
+    "source_type": "external_repo",
+    "sample_buckets": [
+      "ordered_samples"
+    ]
+  },
+  "sample_count": 3,
+  "file_count": 3,
+  "entries": [
+    {
+      "entry_id": "harmonyos-examples-commonui-button-page",
+      "sample_id": "harmonyos-examples-commonui-button-page",
+      "reference_id": "",
+      "priority": "P8",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "role": "",
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P8 draft candidate harvested from the remaining official HarmonyOS-Examples reserve after the regular Phase06 checkpoint reached 38/38 live passed."
+      },
+      "source_paths": [
+        "CommonUI/entry/src/main/cangjie/src/pages/buttonSample.cj"
+      ],
+      "repo_name": "HarmonyOS-Examples",
+      "repo_local_paths": [
+        "raw_docs/phase06-ui-p8/HarmonyOS-Examples/CommonUI/entry/src/main/cangjie/src/pages/buttonSample.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Add a self-contained button demo page that keeps builder-composed button groups, style extensions, and same-file shape presentation inside one render-facing page boundary.",
+      "blocking_constraints": [
+        "Keep Text/Button extension helpers and buttonGroup builder source-backed inside the page boundary; do not invent detached style controllers or helper packages."
+      ],
+      "reason": ""
+    },
+    {
+      "entry_id": "harmonyos-examples-commonui-checkbox-page",
+      "sample_id": "harmonyos-examples-commonui-checkbox-page",
+      "reference_id": "",
+      "priority": "P8",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "role": "",
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P8 draft candidate harvested from the remaining official HarmonyOS-Examples reserve after the regular Phase06 checkpoint reached 38/38 live passed."
+      },
+      "source_paths": [
+        "CommonUI/entry/src/main/cangjie/src/pages/checkBoxSample.cj"
+      ],
+      "repo_name": "HarmonyOS-Examples",
+      "repo_local_paths": [
+        "raw_docs/phase06-ui-p8/HarmonyOS-Examples/CommonUI/entry/src/main/cangjie/src/pages/checkBoxSample.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Add a self-contained checkbox demo page that keeps grouped checkbox presentation and onChange callbacks inside one narrow event-driven page shell.",
+      "blocking_constraints": [
+        "Keep checkbox group membership, selected colors, and onChange wiring source-backed inside the page boundary; do not introduce synthetic state holders."
+      ],
+      "reason": ""
+    },
+    {
+      "entry_id": "harmonyos-cangjie-cases-address-exchange-page",
+      "sample_id": "harmonyos-cangjie-cases-address-exchange-page",
+      "reference_id": "",
+      "priority": "P8",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "role": "",
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Cangjie-Cases",
+        "branch": "main",
+        "commit": "2d0662bb5c97a15d6bc459688df6c9b23275f12f",
+        "access_date": "2026-04-12",
+        "purpose": "P8 draft candidate drawn from the remaining official HarmonyOS-Cangjie-Cases reserve that stayed unconsumed after the P7 official-page promotion."
+      },
+      "source_paths": [
+        "CangjieAppDevelopment/feature/addressexchange/src/main/cangjie/src/view/AddressExchangeView.cj"
+      ],
+      "repo_name": "HarmonyOS-Cangjie-Cases",
+      "repo_local_paths": [
+        "raw_docs/phase06-ui-p8/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/addressexchange/src/main/cangjie/src/view/AddressExchangeView.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Add a self-contained address exchange card page that keeps swap animation, translate/rotate state, and toast-backed click affordances inside one page-owned interaction boundary.",
+      "blocking_constraints": [
+        "Keep rotateAngle, translateX, swap, animateTo, and PromptAction usage source-backed inside the page shell; do not replace the page with invented controller facades."
+      ],
+      "reason": ""
+    }
+  ]
+}

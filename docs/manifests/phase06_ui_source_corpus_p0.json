@@ -1,0 +1,220 @@
+{
+  "manifest_name": "phase06-ui-source-corpus-p0",
+  "manifest_version": 1,
+  "created_at": "2026-04-08T12:27:51.855957Z",
+  "corpus_root": "../../raw_docs/phase06-ui-p0",
+  "source_manifest": "phase06_ui_sample_manifest.json",
+  "selection_policy": {
+    "priority": "P0",
+    "adoption_decision": "primary",
+    "source_type": "external_repo"
+  },
+  "sample_count": 6,
+  "file_count": 12,
+  "entries": [
+    {
+      "sample_id": "harmonyos-examples-commonui-badgeview",
+      "priority": "P0",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-06",
+        "purpose": "Primary Phase 06 page/list/link-state baseline."
+      },
+      "source_paths": [
+        "CommonUI/entry/src/main/cangjie/src/pages/badgeSample.cj"
+      ],
+      "repo_name": "HarmonyOS-Examples",
+      "repo_local_paths": [
+        "raw_docs/phase06-ui-p0/HarmonyOS-Examples/CommonUI/entry/src/main/cangjie/src/pages/badgeSample.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Seed page shell, nested components, @State/@Link propagation, Grid/List composition.",
+      "blocking_constraints": [
+        "Requires DevEco Studio and GUI host for physical UI validation."
+      ]
+    },
+    {
+      "sample_id": "harmonyos-examples-ledger-page-shell",
+      "priority": "P0",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-06",
+        "purpose": "Primary Phase 06 page decomposition baseline."
+      },
+      "source_paths": [
+        "15-Ledger/entry/src/main/cangjie/index.cj",
+        "15-Ledger/entry/src/main/cangjie/ui/top_bar.cj",
+        "15-Ledger/entry/src/main/cangjie/ui/details_list.cj"
+      ],
+      "repo_name": "HarmonyOS-Examples",
+      "repo_local_paths": [
+        "raw_docs/phase06-ui-p0/HarmonyOS-Examples/15-Ledger/entry/src/main/cangjie/index.cj",
+        "raw_docs/phase06-ui-p0/HarmonyOS-Examples/15-Ledger/entry/src/main/cangjie/ui/top_bar.cj",
+        "raw_docs/phase06-ui-p0/HarmonyOS-Examples/15-Ledger/entry/src/main/cangjie/ui/details_list.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Seed page decomposition, reusable component extraction, and ledger/dashboard style layout composition.",
+      "blocking_constraints": [
+        "Needs GUI host to validate visual layout and interaction fidelity."
+      ]
+    },
+    {
+      "sample_id": "harmonyos-cangjie-cases-modalwindow",
+      "priority": "P0",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [
+        "mixed-app-pattern"
+      ],
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Cangjie-Cases",
+        "branch": "main",
+        "commit": "2d0662bb5c97a15d6bc459688df6c9b23275f12f",
+        "access_date": "2026-04-06",
+        "purpose": "Primary modal, @Builder, and mixed-pattern baseline."
+      },
+      "source_paths": [
+        "CangjieAppDevelopment/feature/modalwindow/src/main/cangjie/src/ModalWindowView.cj"
+      ],
+      "repo_name": "HarmonyOS-Cangjie-Cases",
+      "repo_local_paths": [
+        "raw_docs/phase06-ui-p0/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/modalwindow/src/main/cangjie/src/ModalWindowView.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Seed @Builder usage, modal content cover, and explicit UI state ownership with source-aligned API differences.",
+      "blocking_constraints": [
+        "Requires HarmonyOS host to verify modal transitions and visual behavior."
+      ]
+    },
+    {
+      "sample_id": "harmonyos-cangjie-cases-customtabbar",
+      "priority": "P0",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [
+        "mixed-app-pattern"
+      ],
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Cangjie-Cases",
+        "branch": "main",
+        "commit": "2d0662bb5c97a15d6bc459688df6c9b23275f12f",
+        "access_date": "2026-04-06",
+        "purpose": "Primary TabBar and controller-owned UI state baseline."
+      },
+      "source_paths": [
+        "CangjieAppDevelopment/feature/customtabbar/src/main/cangjie/src/view/CustomTabBarPage.cj"
+      ],
+      "repo_name": "HarmonyOS-Cangjie-Cases",
+      "repo_local_paths": [
+        "raw_docs/phase06-ui-p0/HarmonyOS-Cangjie-Cases/CangjieAppDevelopment/feature/customtabbar/src/main/cangjie/src/view/CustomTabBarPage.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Seed TabsController, @Provide/@Link ownership, and custom tab/page boundary rules.",
+      "blocking_constraints": [
+        "Custom TabBar visuals and transitions need GUI host for proof."
+      ]
+    },
+    {
+      "sample_id": "markdown4cj-rich-component",
+      "priority": "P0",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/Cangjie-TPC/markdown4cj",
+        "branch": "develop",
+        "commit": "f43cfb3ae1cd3092d9a8a94332c64815fc4572f9",
+        "access_date": "2026-04-06",
+        "purpose": "Primary rich-component baseline."
+      },
+      "source_paths": [
+        "markdown/src/main/cangjie/src/components/markdown_heading_component.cj",
+        "markdown/src/main/cangjie/src/components/markdown_table_block_component.cj",
+        "entry/src/main/cangjie/src/index_page.cj"
+      ],
+      "repo_name": "markdown4cj",
+      "repo_local_paths": [
+        "raw_docs/phase06-ui-p0/markdown4cj/markdown/src/main/cangjie/src/components/markdown_heading_component.cj",
+        "raw_docs/phase06-ui-p0/markdown4cj/markdown/src/main/cangjie/src/components/markdown_table_block_component.cj",
+        "raw_docs/phase06-ui-p0/markdown4cj/entry/src/main/cangjie/src/index_page.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Seed reusable component composition, configuration-driven rendering, and plugin-aware component boundaries.",
+      "blocking_constraints": [
+        "Component rendering and plugin behavior require DevEco-backed validation."
+      ]
+    },
+    {
+      "sample_id": "photoview4cj-gesture-component",
+      "priority": "P0",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [
+        "gesture-component"
+      ],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/Cangjie-TPC/photoview4cj",
+        "branch": "develop",
+        "commit": "5da6027ebefb59aa146a1486402219a02ae69175",
+        "access_date": "2026-04-06",
+        "purpose": "Primary gesture component baseline."
+      },
+      "source_paths": [
+        "photoView/src/main/cangjie/photo_view.cj",
+        "photoView/src/main/cangjie/photo_view_model.cj",
+        "entry/src/main/cangjie/simple_sample.cj"
+      ],
+      "repo_name": "photoview4cj",
+      "repo_local_paths": [
+        "raw_docs/phase06-ui-p0/photoview4cj/photoView/src/main/cangjie/photo_view.cj",
+        "raw_docs/phase06-ui-p0/photoview4cj/photoView/src/main/cangjie/photo_view_model.cj",
+        "raw_docs/phase06-ui-p0/photoview4cj/entry/src/main/cangjie/simple_sample.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Seed gesture ownership, image transform state, and controller-driven gesture callbacks without service leakage.",
+      "blocking_constraints": [
+        "Touch and transform fidelity require emulator/device verification."
+      ]
+    }
+  ]
+}

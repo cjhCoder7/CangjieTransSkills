@@ -1,0 +1,354 @@
+{
+  "manifest_name": "phase06-ui-p13-file-manifest",
+  "manifest_version": 1,
+  "created_at": "2026-04-12T11:38:18Z",
+  "phase": "Phase 06 UI Source Slicing / File-Level Workset",
+  "status": "draft-ready",
+  "source_corpus_manifest": "phase06_ui_source_corpus_p13.json",
+  "source_manifest": "phase06_ui_sample_manifest.json",
+  "few_shot_pack": "phase06_ui_few_shot_pack.json",
+  "intended_consumer": [
+    "human-review",
+    "future-phase06-prompt-pilot",
+    "future-phase06-batch-curator"
+  ],
+  "notes": [
+    "Expands the selected frozen source corpus into file-level slices with explicit ui_prompt_tags.",
+    "This manifest is not consumed directly by scripts/pipeline_batch_runner.py; it is a file-level workset for prompt pilots, explicit tag injection, and later batch curation.",
+    "Tag refinement is allowed at file level when a multi-file sample contains both page-shell and rich-component files."
+  ],
+  "selection_policy": {
+    "priority": "P13",
+    "adoption_decision": "primary",
+    "source_type": "external_repo",
+    "expansion_rule": "expand repo_local_paths into file-level slices and refine per-file target_role/ui_prompt_tags"
+  },
+  "summary": {
+    "sample_count": 3,
+    "slice_count": 6,
+    "role_counts": {
+      "page": 3,
+      "viewmodel": 3
+    },
+    "structure_counts": {
+      "page-shell": 3,
+      "rich-component": 3
+    }
+  },
+  "entries": [
+    {
+      "slice_id": "phase06-ui-p13-commonui-entry-page",
+      "selection_rank": 1,
+      "sample_rank": 1,
+      "sample_id": "harmonyos-examples-commonui-entry-page",
+      "priority": "P13",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "CommonUI/entry/src/main/cangjie/src/index.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p13/HarmonyOS-Examples/CommonUI/entry/src/main/cangjie/src/index.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P13 draft candidate harvested from the remaining official HarmonyOS-Examples reserve after the regular Phase06 checkpoint reached 54/54 live passed."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P13 CommonUI entry page slice for extend-based button styling and direct Router.push handoff inside one render-facing page shell.",
+      "notes": [
+        "Keep the extend Button.jump helper and the eight Router.push targets source-backed inside the page boundary.",
+        "Treat this file as a lightweight route menu shell instead of inventing detached coordinators or helper layers."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class EntryView {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-ui-routing-page-shell-view-model-renderer",
+        "harmonyos-examples-badgeview-page-shell-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p13-clock-entry-page",
+      "selection_rank": 2,
+      "sample_rank": 1,
+      "sample_id": "harmonyos-examples-clock-canvas-page",
+      "priority": "P13",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "11-Clock/entry/src/main/cangjie/src/index.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p13/HarmonyOS-Examples/11-Clock/entry/src/main/cangjie/src/index.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P13 draft candidate selected from the remaining official HarmonyOS-Examples reserve to extend timer plus canvas-render coverage with one explicit helper freeze."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P13 clock host page slice for page-owned Timer lifecycle, Canvas context ownership, and display-size hydration around a renderer helper.",
+      "notes": [
+        "Keep Timer lifecycle, CanvasRenderingContext2D ownership, and display-size hydration source-backed in the page host.",
+        "Treat utils/clock.cj as the explicitly frozen renderer helper instead of collapsing the sample into a fake single-file canvas page."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class EntryView {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p13-clock-renderer-helper",
+      "selection_rank": 3,
+      "sample_rank": 2,
+      "sample_id": "harmonyos-examples-clock-canvas-page",
+      "priority": "P13",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "11-Clock/entry/src/main/cangjie/src/utils/clock.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p13/HarmonyOS-Examples/11-Clock/entry/src/main/cangjie/src/utils/clock.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P13 draft candidate selected from the remaining official HarmonyOS-Examples reserve to extend timer plus canvas-render coverage with one explicit helper freeze."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P13 clock renderer helper slice for dial, hand, and timestamp drawing logic behind the canvas host page.",
+      "notes": [
+        "Keep dial background, frame, cursor, and text drawing logic source-backed in this helper.",
+        "Treat this as a renderer support slice behind the page shell rather than a standalone page/component contract."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class Clock {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p13-simpledraw-entry-page",
+      "selection_rank": 4,
+      "sample_rank": 1,
+      "sample_id": "harmonyos-examples-simpledraw-geometry-shell",
+      "priority": "P13",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "page",
+      "slice_kind": "entry-page",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "SimpleDraw/entry/src/main/cangjie/src/index.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p13/HarmonyOS-Examples/SimpleDraw/entry/src/main/cangjie/src/index.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P13 draft candidate selected from the remaining official HarmonyOS-Examples reserve because its helper surface becomes acceptable once all same-package geometry dependencies are frozen transparently."
+      },
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "page-shell",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P13 geometry host page slice for mode switching, touch dispatch, and page-owned point/circle state inside one interactive shell.",
+      "notes": [
+        "Keep current mode selection, touch dispatch, point/circle ownership, and Shape event wiring source-backed inside the page shell.",
+        "Treat DGeometry.cj and Geometry.cj as explicitly frozen support slices rather than pretending the page is self-contained."
+      ],
+      "source_scan": {
+        "has_entry_decorator": true,
+        "has_component_decorator": true,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "class MyView {",
+          "class 功能按钮 {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "local-data-persistence-page-shell-controller-owned-state",
+        "harmonyos-cangjie-cases-customtabbar-page-shell-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p13-simpledraw-dgeometry-model",
+      "selection_rank": 5,
+      "sample_rank": 2,
+      "sample_id": "harmonyos-examples-simpledraw-geometry-shell",
+      "priority": "P13",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "SimpleDraw/entry/src/main/cangjie/src/DGeometry.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p13/HarmonyOS-Examples/SimpleDraw/entry/src/main/cangjie/src/DGeometry.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P13 draft candidate selected from the remaining official HarmonyOS-Examples reserve because its helper surface becomes acceptable once all same-package geometry dependencies are frozen transparently."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "controller-owned-state",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P13 dynamic geometry support-model slice for observed point/circle entities, follow relationships, and hit-testing helpers behind the geometry host page.",
+      "notes": [
+        "Keep DPoint/DCircle ownership, follower propagation, and hit-testing helpers source-backed in this support slice.",
+        "This file stays attached to the interactive geometry lane instead of being promoted as a standalone UI component."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class DPoint {",
+          "public class DCircle {",
+          "public class DLine {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "markdown4cj-rich-component-controller-owned-state"
+      ]
+    },
+    {
+      "slice_id": "phase06-ui-p13-simpledraw-geometry-math-model",
+      "selection_rank": 6,
+      "sample_rank": 3,
+      "sample_id": "harmonyos-examples-simpledraw-geometry-shell",
+      "priority": "P13",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "target_role": "viewmodel",
+      "slice_kind": "support-model",
+      "repo_name": "HarmonyOS-Examples",
+      "source_path": "SimpleDraw/entry/src/main/cangjie/src/Geometry.cj",
+      "repo_local_path": "raw_docs/phase06-ui-p13/HarmonyOS-Examples/SimpleDraw/entry/src/main/cangjie/src/Geometry.cj",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P13 draft candidate selected from the remaining official HarmonyOS-Examples reserve because its helper surface becomes acceptable once all same-package geometry dependencies are frozen transparently."
+      },
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "ui_prompt_tags": {
+        "structure_tag": "rich-component",
+        "ownership_tag": "view-model-renderer",
+        "interaction_tags": [],
+        "exception_tags": [],
+        "sample_scope_tags": []
+      },
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "P13 geometry math support-model slice for point, line, circle, and intersection calculations behind the interactive host page.",
+      "notes": [
+        "Keep the low-level geometric primitives and intersection math source-backed in this helper instead of hiding them behind invented UI abstractions.",
+        "This file remains a renderer-facing support slice, not a standalone page/component boundary."
+      ],
+      "source_scan": {
+        "has_entry_decorator": false,
+        "has_component_decorator": false,
+        "has_builder_decorator": false,
+        "declared_types_head": [
+          "public class 点 <: ToString {",
+          "public class 直线 {",
+          "public class 圆 {"
+        ]
+      },
+      "recommended_few_shot_entry_ids": [
+        "svg4cj-rich-component-view-model-renderer"
+      ]
+    }
+  ]
+}

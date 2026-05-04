@@ -1,0 +1,2420 @@
+{
+  "manifest_name": "phase06-ui-sample-manifest",
+  "manifest_version": 1,
+  "created_at": "2026-04-13T05:03:37Z",
+  "phase": "Phase 06 UI Sample Curation / Prompt Preparation",
+  "intended_consumer": [
+    "human-review",
+    "future-sample-curator",
+    "future-prompt-assembler-phase06"
+  ],
+  "status": "draft-ready",
+  "notes": [
+    "This manifest is machine-readable but is not yet consumed directly by scripts/pipeline_batch_runner.py.",
+    "Headless Linux may perform source freeze, path checks, and sample slicing preflight only.",
+    "Samples that require DevEco Studio, GUI, emulator/device, hdc, or live API keys remain Staging-Full targets."
+  ],
+  "tag_rules": {
+    "structure_tag_required": true,
+    "structure_tags": [
+      "page-shell",
+      "rich-component"
+    ],
+    "ownership_tag_required": true,
+    "ownership_tags": [
+      "view-model-renderer",
+      "controller-owned-state"
+    ],
+    "optional_interaction_tags": [
+      "gesture-component"
+    ],
+    "optional_exception_tags": [
+      "ffi-exception",
+      "hybrid-exception"
+    ],
+    "optional_sample_scope_tags": [
+      "mixed-app-pattern"
+    ],
+    "resolution_rule": "Each file-level sample must resolve to exactly one structure_tag and one ownership_tag. interaction/exception/sample_scope tags are additive only."
+  },
+  "control_samples": [
+    {
+      "sample_id": "local-ui-routing-defining-page-layout",
+      "source_type": "local_repo",
+      "adoption_decision": "control",
+      "priority": "P0",
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "repo_root": "/volume/wzhang/cky-workspace/my_projects/Cangjie",
+        "branch": "N/A (repo root has no .git)",
+        "commit": "N/A (repo root has no .git)",
+        "access_date": "2026-04-06",
+        "purpose": "Repo-local UI routing control baseline."
+      },
+      "source_paths": [
+        "samples/ui-routing-defining-page-layout/entry/src/main/cangjie/pages/FoodCategoryListPage.cj",
+        "samples/ui-routing-defining-page-layout/entry/src/main/cangjie/pages/FoodDetailPage.cj"
+      ],
+      "staging_target": "staging-core",
+      "verification_mode": "repo-local-source-freeze+sample-harness",
+      "usage_goal": "Control baseline for page shell, routing, and detail navigation semantics.",
+      "blocking_constraints": [
+        "Physical Harmony UI verification still requires Staging-Full host."
+      ]
+    },
+    {
+      "sample_id": "local-data-persistence-001",
+      "source_type": "local_repo",
+      "adoption_decision": "control",
+      "priority": "P0",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "repo_root": "/volume/wzhang/cky-workspace/my_projects/Cangjie",
+        "branch": "N/A (repo root has no .git)",
+        "commit": "N/A (repo root has no .git)",
+        "access_date": "2026-04-06",
+        "purpose": "Repo-local persistence control baseline."
+      },
+      "source_paths": [
+        "samples/data-persistence-001/entry/src/main/cangjie/pages/ThemeSettingsPage.cj"
+      ],
+      "staging_target": "staging-core",
+      "verification_mode": "repo-local-source-freeze+sample-harness",
+      "usage_goal": "Control baseline for UI state, lifecycle sync, and preferences-backed state ownership.",
+      "blocking_constraints": [
+        "EntryAbility injection and full Preferences behavior still require Staging-Full host for physical proof."
+      ]
+    },
+    {
+      "sample_id": "local-ui-refresh-control",
+      "source_type": "local_repo",
+      "adoption_decision": "control",
+      "priority": "control",
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "repo_root": "/volume/wzhang/cky-workspace/my_projects/Cangjie",
+        "branch": "N/A (repo root has no .git)",
+        "commit": "N/A (repo root has no .git)",
+        "access_date": "2026-04-06",
+        "purpose": "UI refresh semantics control rail."
+      },
+      "source_paths": [
+        "samples/real-message-service-cache-001"
+      ],
+      "staging_target": "staging-core",
+      "verification_mode": "cjpm-test-control",
+      "usage_goal": "Keep main-thread UI refresh, observer, and concurrency semantics as a regression control rail.",
+      "blocking_constraints": [
+        "This sample is not a Phase 06 UI page source and does not count toward UI translation KPI."
+      ]
+    }
+  ],
+  "ordered_samples": [
+    {
+      "sample_id": "harmonyos-examples-commonui-badgeview",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "priority": "P0",
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-06",
+        "purpose": "Primary Phase 06 page/list/link-state baseline."
+      },
+      "source_paths": [
+        "CommonUI/entry/src/main/cangjie/src/pages/badgeSample.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Seed page shell, nested components, @State/@Link propagation, Grid/List composition.",
+      "blocking_constraints": [
+        "Requires DevEco Studio and GUI host for physical UI validation."
+      ]
+    },
+    {
+      "sample_id": "harmonyos-examples-ledger-page-shell",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "priority": "P0",
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-06",
+        "purpose": "Primary Phase 06 page decomposition baseline."
+      },
+      "source_paths": [
+        "15-Ledger/entry/src/main/cangjie/index.cj",
+        "15-Ledger/entry/src/main/cangjie/ui/top_bar.cj",
+        "15-Ledger/entry/src/main/cangjie/ui/details_list.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Seed page decomposition, reusable component extraction, and ledger/dashboard style layout composition.",
+      "blocking_constraints": [
+        "Needs GUI host to validate visual layout and interaction fidelity."
+      ]
+    },
+    {
+      "sample_id": "harmonyos-cangjie-cases-modalwindow",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "priority": "P0",
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [
+        "mixed-app-pattern"
+      ],
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Cangjie-Cases",
+        "branch": "main",
+        "commit": "2d0662bb5c97a15d6bc459688df6c9b23275f12f",
+        "access_date": "2026-04-06",
+        "purpose": "Primary modal, @Builder, and mixed-pattern baseline."
+      },
+      "source_paths": [
+        "CangjieAppDevelopment/feature/modalwindow/src/main/cangjie/src/ModalWindowView.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Seed @Builder usage, modal content cover, and explicit UI state ownership with source-aligned API differences.",
+      "blocking_constraints": [
+        "Requires HarmonyOS host to verify modal transitions and visual behavior."
+      ]
+    },
+    {
+      "sample_id": "harmonyos-cangjie-cases-customtabbar",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "priority": "P0",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [
+        "mixed-app-pattern"
+      ],
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Cangjie-Cases",
+        "branch": "main",
+        "commit": "2d0662bb5c97a15d6bc459688df6c9b23275f12f",
+        "access_date": "2026-04-06",
+        "purpose": "Primary TabBar and controller-owned UI state baseline."
+      },
+      "source_paths": [
+        "CangjieAppDevelopment/feature/customtabbar/src/main/cangjie/src/view/CustomTabBarPage.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Seed TabsController, @Provide/@Link ownership, and custom tab/page boundary rules.",
+      "blocking_constraints": [
+        "Custom TabBar visuals and transitions need GUI host for proof."
+      ]
+    },
+    {
+      "sample_id": "markdown4cj-rich-component",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "priority": "P0",
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/Cangjie-TPC/markdown4cj",
+        "branch": "develop",
+        "commit": "f43cfb3ae1cd3092d9a8a94332c64815fc4572f9",
+        "access_date": "2026-04-06",
+        "purpose": "Primary rich-component baseline."
+      },
+      "source_paths": [
+        "markdown/src/main/cangjie/src/components/markdown_heading_component.cj",
+        "markdown/src/main/cangjie/src/components/markdown_table_block_component.cj",
+        "entry/src/main/cangjie/src/index_page.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Seed reusable component composition, configuration-driven rendering, and plugin-aware component boundaries.",
+      "blocking_constraints": [
+        "Component rendering and plugin behavior require DevEco-backed validation."
+      ]
+    },
+    {
+      "sample_id": "photoview4cj-gesture-component",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "priority": "P0",
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [
+        "gesture-component"
+      ],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/Cangjie-TPC/photoview4cj",
+        "branch": "develop",
+        "commit": "5da6027ebefb59aa146a1486402219a02ae69175",
+        "access_date": "2026-04-06",
+        "purpose": "Primary gesture component baseline."
+      },
+      "source_paths": [
+        "photoView/src/main/cangjie/photo_view.cj",
+        "photoView/src/main/cangjie/photo_view_model.cj",
+        "entry/src/main/cangjie/simple_sample.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Seed gesture ownership, image transform state, and controller-driven gesture callbacks without service leakage.",
+      "blocking_constraints": [
+        "Touch and transform fidelity require emulator/device verification."
+      ]
+    },
+    {
+      "sample_id": "svg4cj-view-model-renderer",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "priority": "P1",
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/Cangjie-TPC/svg4cj",
+        "branch": "develop",
+        "commit": "9b26512106db5d3963417bad2be316a99725a4a8",
+        "access_date": "2026-04-06",
+        "purpose": "P1 renderer/model separation reference."
+      },
+      "source_paths": [
+        "svg/src/main/cangjie/src/svg_image_view.cj",
+        "entry/src/main/cangjie/src/render_merman.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Seed renderer/model separation and asset-backed view model usage without treating renderer internals as page logic.",
+      "blocking_constraints": [
+        "SVG fidelity needs GUI rendering validation."
+      ]
+    },
+    {
+      "sample_id": "editor4cj-controller-owned-state",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "priority": "P1",
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/Cangjie-TPC/editor4cj",
+        "branch": "master",
+        "commit": "4f9a3b9551899ea5aaa6aec740cbb403dd0c8294",
+        "access_date": "2026-04-06",
+        "purpose": "P1 heavy controller-driven component reference."
+      },
+      "source_paths": [
+        "entry/src/main/cangjie/src/editor_kit/editorText.cj",
+        "entry/src/main/cangjie/src/index.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Seed controller-owned state and large component boundary rules; do not use as first-wave few-shot due to size and lexer/runtime complexity.",
+      "blocking_constraints": [
+        "Not suitable for first-wave few-shot; requires selective slicing."
+      ]
+    },
+    {
+      "sample_id": "httpnews-integrated-client",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "priority": "P1",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [
+        "mixed-app-pattern"
+      ],
+      "source": {
+        "url": "https://gitcode.com/szLilyWu/HttpNewsApp-Cangjie",
+        "branch": "main",
+        "commit": "9e02e67764a13281ec1c0d413700f878ba55c3c3",
+        "access_date": "2026-04-06",
+        "purpose": "P1 integrated network+page client reference."
+      },
+      "source_paths": [
+        "entry/src/main/cangjie/src/index.cj",
+        "entry/src/main/cangjie/src/news.cj",
+        "entry/src/main/cangjie/src/news_detail.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+external-server+manual-ui-smoke",
+      "usage_goal": "Seed list/detail/page-routing plus HTTP manager separation for future Telegram client-side page translation.",
+      "blocking_constraints": [
+        "Depends on external HTTP server and HarmonyOS app environment."
+      ]
+    },
+    {
+      "sample_id": "titlebar4cj-narrow-component",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "priority": "P1",
+      "structure_tag": "rich-component",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/MakerStudio/titlebar4cj",
+        "branch": "main",
+        "commit": "630893a5c34bcd25e261d5adf6d8ea1830d8523f",
+        "access_date": "2026-04-06",
+        "purpose": "P1 narrow reusable title bar component reference."
+      },
+      "source_paths": [
+        "titlebar/src/titlebar.cj",
+        "entry/src/main/cangjie/index_page.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Seed narrow reusable component boundaries and @Link-based model ownership for simple reusable widgets.",
+      "blocking_constraints": [
+        "Useful as a narrow component reference; not broad enough to replace main Phase 06 seeds."
+      ]
+    },
+    {
+      "sample_id": "cangjiechallenge-aiatom-level-page",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "priority": "P2",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/cangjiechallenge/bb40b887dcf53d1a8b72884ad862fdf9",
+        "branch": "master",
+        "commit": "c99988534078e0c0409ffb20d298b79853f013ed",
+        "access_date": "2026-04-11",
+        "purpose": "P2 game-style level page baseline with Grid composition, Router handoff, and page-owned progress state."
+      },
+      "source_paths": [
+        "cangjieApp/entry/src/main/cangjie/pages/LevelPage.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Expand Phase 06 with a controller-owned level page that combines Grid layout, progress-gated navigation, and page-scoped state refresh without introducing hybrid rails.",
+      "blocking_constraints": [
+        "Needs HarmonyOS GUI host to verify Grid layout, Router transitions, and page return-state behavior."
+      ]
+    },
+    {
+      "sample_id": "cangjiechallenge-xupt-sec1-login-page",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "priority": "P2",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/cangjiechallenge/d45e5bcde569dadcaf4fcc0524ac8f38",
+        "branch": "master",
+        "commit": "c18f350c6aecbeadd9b9115b739e3f3a0fa73212",
+        "access_date": "2026-04-11",
+        "purpose": "P2 login-form baseline with local page state, card selection, PIN entry, and explicit success callback handoff."
+      },
+      "source_paths": [
+        "entry/src/main/cangjie/login_page.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Expand Phase 06 with a common login/auth page pattern that keeps transient form state and page-flow transitions inside a single page shell.",
+      "blocking_constraints": [
+        "Requires HarmonyOS GUI host to verify input focus, PIN entry flow, and visual card-state transitions."
+      ]
+    },
+    {
+      "sample_id": "cangjiechallenge-xupt-sec1-web-demo-page",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "priority": "P2",
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/cangjiechallenge/d45e5bcde569dadcaf4fcc0524ac8f38",
+        "branch": "master",
+        "commit": "c18f350c6aecbeadd9b9115b739e3f3a0fa73212",
+        "access_date": "2026-04-11",
+        "purpose": "P2 lightweight feature-card page baseline with Scroll composition and builder-extracted repeated card rendering."
+      },
+      "source_paths": [
+        "entry/src/main/cangjie/web_demo_page.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Add a narrow display-oriented page shell that demonstrates Scroll-based card composition and renderer-leaning builder extraction without service-heavy state coupling.",
+      "blocking_constraints": [
+        "Needs HarmonyOS GUI host to verify card spacing, scroll behavior, and page-level visual composition."
+      ]
+    },
+    {
+      "sample_id": "cangjiechallenge-aiatom-home-page",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "priority": "P3",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/cangjiechallenge/bb40b887dcf53d1a8b72884ad862fdf9",
+        "branch": "master",
+        "commit": "c99988534078e0c0409ffb20d298b79853f013ed",
+        "access_date": "2026-04-11",
+        "purpose": "P3 home dashboard baseline with progress-backed level cards, completion overlay, and page-owned router handoff."
+      },
+      "source_paths": [
+        "cangjieApp/entry/src/main/cangjie/pages/HomePage.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Expand Phase 06 with a dashboard-style home page that owns progress refresh, completion overlay state, and level-entry routing inside one page shell without dragging splash/web bridge internals into the default rail.",
+      "blocking_constraints": [
+        "Needs HarmonyOS GUI host to verify overlay timing, level-card layout, and Router push/back behavior."
+      ]
+    },
+    {
+      "sample_id": "cangjiechallenge-aiatom-listen-page",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "priority": "P3",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/cangjiechallenge/bb40b887dcf53d1a8b72884ad862fdf9",
+        "branch": "master",
+        "commit": "c99988534078e0c0409ffb20d298b79853f013ed",
+        "access_date": "2026-04-11",
+        "purpose": "P3 audio-quiz page baseline with timer-driven answer flow, speech playback callbacks, and level-derived question state."
+      },
+      "source_paths": [
+        "cangjieApp/entry/src/main/cangjie/pages/ListenPage.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Add a quiz-style page shell that coordinates transient answer state, timer callbacks, and page-local speech playback without introducing hybrid rails or hidden controller facades.",
+      "blocking_constraints": [
+        "Needs HarmonyOS GUI host to verify playback trigger timing, answer feedback transitions, and router back-state restoration."
+      ]
+    },
+    {
+      "sample_id": "cangjiechallenge-secmeet-transcription-component",
+      "source_type": "external_repo",
+      "adoption_decision": "primary",
+      "priority": "P3",
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [],
+      "source": {
+        "url": "https://gitcode.com/cangjiechallenge/d45e5bcde569dadcaf4fcc0524ac8f38",
+        "branch": "master",
+        "commit": "c18f350c6aecbeadd9b9115b739e3f3a0fa73212",
+        "access_date": "2026-04-11",
+        "purpose": "P3 callback-driven transcription panel baseline with builder-composed status regions and component-owned volatile workflow state."
+      },
+      "source_paths": [
+        "entry/src/main/cangjie/transcription_page.cj"
+      ],
+      "staging_target": "staging-full",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "usage_goal": "Add a large rich-component slice that exposes host callbacks while keeping recording, transcript, and risk-alert workflow state inside the component boundary.",
+      "blocking_constraints": [
+        "Needs HarmonyOS GUI host to verify control-button state transitions, transcript scrolling, and callback-driven completion/cancel handoff."
+      ]
+    },
+    {
+      "sample_id": "cangjiechallenge-aiatom-prototype-page",
+      "priority": "P4",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Extend Phase06 with a medium-sized ArkUI practice page that keeps character input, mode switching, and canvas-ready state inside one page shell without dragging web bridge internals into the public UI contract.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/cangjiechallenge/bb40b887dcf53d1a8b72884ad862fdf9",
+        "branch": "master",
+        "commit": "c99988534078e0c0409ffb20d298b79853f013ed",
+        "access_date": "2026-04-11",
+        "purpose": "P4 draft candidate harvested from the already approved aiatom pinned repo after current regular supply exhaustion."
+      },
+      "source_paths": [
+        "cangjieApp/entry/src/main/cangjie/pages/PrototypePage.cj"
+      ],
+      "blocking_constraints": [
+        "Keep HanziWriterCanvas bridge behavior source-backed; do not promote bridge internals into the default page contract."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "cangjiechallenge-secmeet-meeting-list-page",
+      "priority": "P4",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Extend Phase06 with a list-and-filter page shell that coordinates stats cards, search/filter state, and detail-page routing inside one controller-owned page boundary.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/cangjiechallenge/d45e5bcde569dadcaf4fcc0524ac8f38",
+        "branch": "master",
+        "commit": "c18f350c6aecbeadd9b9115b739e3f3a0fa73212",
+        "access_date": "2026-04-11",
+        "purpose": "P4 draft candidate harvested from the already approved secmeet pinned repo after current regular supply exhaustion."
+      },
+      "source_paths": [
+        "entry/src/main/cangjie/meeting_list_page.cj"
+      ],
+      "blocking_constraints": [
+        "Keep command-line render helpers as source-backed UI scaffolding; do not invent ArkUI-only facades that bypass the page-state contract."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "cangjiechallenge-secmeet-audit-log-page",
+      "priority": "P4",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Add a compact audit-log page shell that renders statistics, filter state, and a log list while keeping audit-state orchestration inside the page boundary.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/cangjiechallenge/d45e5bcde569dadcaf4fcc0524ac8f38",
+        "branch": "master",
+        "commit": "c18f350c6aecbeadd9b9115b739e3f3a0fa73212",
+        "access_date": "2026-04-11",
+        "purpose": "P4 draft candidate harvested from the already approved secmeet pinned repo after current regular supply exhaustion."
+      },
+      "source_paths": [
+        "entry/src/main/cangjie/audit_log_page.cj"
+      ],
+      "blocking_constraints": [
+        "Preserve alert/log rendering semantics and filter state flow from source-backed helpers; do not fabricate provider layers."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "cangjiechallenge-makerizon-history-page",
+      "priority": "P5",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Extend Phase06 with a history/list page shell that keeps quick filters, search text, and meeting-card rendering inside one page boundary without inventing service facades.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/cangjiechallenge/6a27783ce2bf2047bab996b3994d601d",
+        "branch": "master",
+        "commit": "6993ef734acb2929e46b322b8120efb94595b5ba",
+        "access_date": "2026-04-11",
+        "purpose": "P5 draft candidate harvested from the public Makerizon pinned repo after the regular Phase06 supply reached 18/18 live passed."
+      },
+      "source_paths": [
+        "MeetingAssistant/entry/src/main/cangjie/history.cj"
+      ],
+      "blocking_constraints": [
+        "Keep source-backed HybridComponentEntry / hybrid_base imports intact; do not invent extra ETS host pages or runtime bridge layers absent from this file."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "cangjiechallenge-makerizon-mine-page",
+      "priority": "P5",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Add a profile/settings page shell that keeps user summary, stats cards, and grouped settings/help rows inside one page boundary without inventing provider layers.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/cangjiechallenge/6a27783ce2bf2047bab996b3994d601d",
+        "branch": "master",
+        "commit": "6993ef734acb2929e46b322b8120efb94595b5ba",
+        "access_date": "2026-04-11",
+        "purpose": "P5 draft candidate harvested from the public Makerizon pinned repo after the regular Phase06 supply reached 18/18 live passed."
+      },
+      "source_paths": [
+        "MeetingAssistant/entry/src/main/cangjie/mine.cj"
+      ],
+      "blocking_constraints": [
+        "Keep source-backed HybridComponentEntry / hybrid_base imports intact; do not fabricate host-runtime adapters or extra provider layers."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "cangjiechallenge-aiatom-speak-page",
+      "priority": "P6",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Extend Phase06 with a speech-practice page shell that keeps recognition status, score state, TTS prompts, and level-derived quiz flow inside one page boundary without inventing service facades.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/cangjiechallenge/bb40b887dcf53d1a8b72884ad862fdf9",
+        "branch": "master",
+        "commit": "c99988534078e0c0409ffb20d298b79853f013ed",
+        "access_date": "2026-04-11",
+        "purpose": "P6 draft candidate harvested from the already approved AIAtom pinned repo after the regular Phase06 supply reached 20/20 live passed."
+      },
+      "source_paths": [
+        "cangjieApp/entry/src/main/cangjie/pages/SpeakPage.cj"
+      ],
+      "blocking_constraints": [
+        "Keep SpeechRecognizerService, TextToSpeechService, and GameState usage source-backed inside the page boundary; do not invent detached controller layers."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "cangjiechallenge-aiatom-entry-page",
+      "priority": "P6",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Add a lightweight navigation hub page that keeps button-driven router handoff and minimal local state inside a self-contained page shell.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/cangjiechallenge/bb40b887dcf53d1a8b72884ad862fdf9",
+        "branch": "master",
+        "commit": "c99988534078e0c0409ffb20d298b79853f013ed",
+        "access_date": "2026-04-11",
+        "purpose": "P6 draft candidate harvested from the already approved AIAtom pinned repo after the regular Phase06 supply reached 20/20 live passed."
+      },
+      "source_paths": [
+        "cangjieApp/entry/src/main/cangjie/index.cj"
+      ],
+      "blocking_constraints": [
+        "Keep the menu page as a direct router host; do not invent nested navigation coordinators or extra presentation layers."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "cangjiechallenge-secmeet-app-shell-page",
+      "priority": "P6",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Add a large app-shell page that keeps login gating, dashboard summary state, toast/loading overlays, and meeting workflow routing inside one controller-owned boundary.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/cangjiechallenge/d45e5bcde569dadcaf4fcc0524ac8f38",
+        "branch": "master",
+        "commit": "c18f350c6aecbeadd9b9115b739e3f3a0fa73212",
+        "access_date": "2026-04-11",
+        "purpose": "P6 draft candidate harvested from the already approved SecureMeet pinned repo after the regular Phase06 supply reached 20/20 live passed."
+      },
+      "source_paths": [
+        "entry/src/main/cangjie/index.cj"
+      ],
+      "blocking_constraints": [
+        "Keep the same-file login and main-app composition source-backed instead of splitting invented subpages, providers, or coordinator layers."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [
+        "mixed-app-pattern"
+      ]
+    },
+    {
+      "sample_id": "harmonyos-examples-commonui-text-page",
+      "priority": "P7",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "usage_goal": "Add a self-contained typography controls page that keeps text content, font size, weight, and style toggles inside one page-owned render state boundary.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P7 draft candidate harvested from the already approved HarmonyOS-Examples pinned repo after the regular Phase06 supply reached 35/35 live passed and the public cangjiechallenge pool was exhausted."
+      },
+      "source_paths": [
+        "CommonUI/entry/src/main/cangjie/src/pages/textSample.cj"
+      ],
+      "blocking_constraints": [
+        "Keep text/font state and button plus checkbox event wiring source-backed inside the page boundary; do not invent detached controllers or helper layers."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-examples-commonui-slider-page",
+      "priority": "P7",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "usage_goal": "Add a self-contained slider demo page that keeps four slider values, orientation variants, and readback labels inside one render-facing page boundary.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P7 draft candidate harvested from the already approved HarmonyOS-Examples pinned repo after the regular Phase06 supply reached 35/35 live passed and the public cangjiechallenge pool was exhausted."
+      },
+      "source_paths": [
+        "CommonUI/entry/src/main/cangjie/src/pages/sliderSample.cj"
+      ],
+      "blocking_constraints": [
+        "Keep slider value ownership and onChange readback inside the same page shell instead of introducing synthetic view models or controller wrappers."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-examples-commonui-tabs-page",
+      "priority": "P7",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Add a self-contained vertical tabs page that keeps the TabsController host and tab content boundary inside one controller-owned page shell.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P7 draft candidate harvested from the already approved HarmonyOS-Examples pinned repo after the regular Phase06 supply reached 35/35 live passed and the public cangjiechallenge pool was exhausted."
+      },
+      "source_paths": [
+        "CommonUI/entry/src/main/cangjie/src/pages/tabsSample.cj"
+      ],
+      "blocking_constraints": [
+        "Keep TabsController usage and tab host structure source-backed inside the page boundary; do not replace the tab shell with invented router or coordinator layers."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-examples-commonui-button-page",
+      "priority": "P8",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "usage_goal": "Add a self-contained button demo page that keeps builder-composed button groups, style extensions, and same-file shape presentation inside one render-facing page boundary.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P8 draft candidate harvested from the remaining official HarmonyOS-Examples reserve after the regular Phase06 checkpoint reached 38/38 live passed."
+      },
+      "source_paths": [
+        "CommonUI/entry/src/main/cangjie/src/pages/buttonSample.cj"
+      ],
+      "blocking_constraints": [
+        "Keep Text/Button extension helpers and buttonGroup builder source-backed inside the page boundary; do not invent detached style controllers or helper packages."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-examples-commonui-checkbox-page",
+      "priority": "P8",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "usage_goal": "Add a self-contained checkbox demo page that keeps grouped checkbox presentation and onChange callbacks inside one narrow event-driven page shell.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P8 draft candidate harvested from the remaining official HarmonyOS-Examples reserve after the regular Phase06 checkpoint reached 38/38 live passed."
+      },
+      "source_paths": [
+        "CommonUI/entry/src/main/cangjie/src/pages/checkBoxSample.cj"
+      ],
+      "blocking_constraints": [
+        "Keep checkbox group membership, selected colors, and onChange wiring source-backed inside the page boundary; do not introduce synthetic state holders."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-cangjie-cases-address-exchange-page",
+      "priority": "P8",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "usage_goal": "Add a self-contained address exchange card page that keeps swap animation, translate/rotate state, and toast-backed click affordances inside one page-owned interaction boundary.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Cangjie-Cases",
+        "branch": "main",
+        "commit": "2d0662bb5c97a15d6bc459688df6c9b23275f12f",
+        "access_date": "2026-04-12",
+        "purpose": "P8 draft candidate drawn from the remaining official HarmonyOS-Cangjie-Cases reserve that stayed unconsumed after the P7 official-page promotion."
+      },
+      "source_paths": [
+        "CangjieAppDevelopment/feature/addressexchange/src/main/cangjie/src/view/AddressExchangeView.cj"
+      ],
+      "blocking_constraints": [
+        "Keep rotateAngle, translateX, swap, animateTo, and PromptAction usage source-backed inside the page shell; do not replace the page with invented controller facades."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-examples-commonui-swiper-page",
+      "priority": "P9",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Add a self-contained swiper demo page that keeps dual SwiperController ownership, autoplay variants, and same-file prev/next navigation inside one controller-owned page shell.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P9 draft candidate harvested from the remaining official HarmonyOS-Examples reserve after the regular Phase06 checkpoint reached 41/41 live passed."
+      },
+      "source_paths": [
+        "CommonUI/entry/src/main/cangjie/src/pages/swiperSample.cj"
+      ],
+      "blocking_constraints": [
+        "Keep SwiperController ownership, onChange callbacks, and prev/next navigation source-backed inside the page boundary; do not invent detached carousel coordinators."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-examples-commonui-text-input-page",
+      "priority": "P9",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "usage_goal": "Add a self-contained text-input demo page that keeps placeholder styling, caret/font configuration, and echoed @State text inside one narrow render-facing page shell.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P9 draft candidate harvested from the remaining official HarmonyOS-Examples reserve after the regular Phase06 checkpoint reached 41/41 live passed."
+      },
+      "source_paths": [
+        "CommonUI/entry/src/main/cangjie/src/pages/textInputSample.cj"
+      ],
+      "blocking_constraints": [
+        "Keep @State text, TextInput.onChange, and same-file echo rendering source-backed inside the page boundary; do not introduce synthetic form models."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-examples-helloword-entry-page",
+      "priority": "P9",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "usage_goal": "Add a self-contained hello-word page that keeps display-derived typography, random rune generation, and Scroll/ForEach layout composition inside one direct render-facing page shell.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P9 draft candidate drawn from the remaining official HarmonyOS-Examples reserve to extend low-coupling layout and collection coverage after the P8 promotion."
+      },
+      "source_paths": [
+        "01-HelloWord/entry/src/main/cangjie/src/index.cj"
+      ],
+      "blocking_constraints": [
+        "Keep random rune generation, display-width sizing, and ForEach layout placement source-backed inside the page shell; do not fabricate helper providers or detached layout services."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-examples-browser-about-page",
+      "priority": "P10",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "usage_goal": "Add a self-contained browser about page that keeps Router.back navigation, resource-backed branding, and simple two-column layout composition inside one render-facing page shell.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P10 draft candidate harvested from the remaining official HarmonyOS-Examples reserve after the regular Phase06 checkpoint reached 44/44 live passed."
+      },
+      "source_paths": [
+        "Browser/entry/src/main/cangjie/src/about.cj"
+      ],
+      "blocking_constraints": [
+        "Keep Router.back wiring, resource-backed branding content, and same-file layout composition source-backed inside the page boundary; do not invent helper coordinators."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-examples-browser-main-page",
+      "priority": "P10",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Add a self-contained browser host page that keeps WebviewController ownership, dark-mode script injection, search/url state, and settings menu builders inside one controller-owned page shell.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P10 draft candidate harvested from the remaining official HarmonyOS-Examples reserve after the regular Phase06 checkpoint reached 44/44 live passed."
+      },
+      "source_paths": [
+        "Browser/entry/src/main/cangjie/src/index.cj"
+      ],
+      "blocking_constraints": [
+        "Keep WebviewController ownership, darkmodeScript injection, Search.onSubmit flow, and same-file menu builders source-backed inside the page boundary; do not fabricate browser services or detached menu layers."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-examples-webviewgame-snake-page",
+      "priority": "P10",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Add a self-contained webview game page that keeps score state, JavaScript bridge callbacks, and control builders inside one controller-owned page shell.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P10 draft candidate drawn from the remaining official HarmonyOS-Examples reserve to extend source-backed WebView callback and builder coverage after the P9 promotion."
+      },
+      "source_paths": [
+        "18-WebViewGame/entry/src/main/cangjie/index.cj"
+      ],
+      "blocking_constraints": [
+        "Keep WebviewController ownership, JavaScript proxy registration, score/game state, and same-file builder callbacks source-backed inside the page shell; do not introduce detached bridge wrappers."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-examples-opdsclient-entry-page",
+      "priority": "P11",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Add a self-contained OPDS landing page that keeps inline style extensions, credential toggle state, AppStorage handoff, and Router push flow inside one controller-owned page shell.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P11 draft candidate harvested from the remaining official HarmonyOS-Examples reserve after the regular Phase06 checkpoint reached 47/47 live passed."
+      },
+      "source_paths": [
+        "OPDSClient/entry/src/main/cangjie/src/index.cj"
+      ],
+      "blocking_constraints": [
+        "Keep inline style/password helpers, AppStorage writes, verify toggle state, and Router.push flow source-backed inside the page boundary; do not fabricate auth helpers or detached style layers."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-examples-particle-emission-page",
+      "priority": "P11",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Add a self-contained particle emission page that keeps canvas animation state, inspector-derived coordinates, and TextTimer-driven particle updates inside one controller-owned page shell.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P11 draft candidate harvested from the remaining official HarmonyOS-Examples reserve after the P10 promotion to extend same-file canvas/timer interaction coverage."
+      },
+      "source_paths": [
+        "ParticleEmission/entry/src/main/cangjie/index.cj"
+      ],
+      "blocking_constraints": [
+        "Keep CanvasRenderingContext2D ownership, getInspectorByKey usage, particle update loop, and TextTimer callbacks source-backed inside the page boundary; do not introduce detached animation services."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-examples-date-selection-main-page",
+      "priority": "P11",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Add a self-contained date-selection home page that keeps Router param hydration, TabsController ownership, and same-file booking builders inside one controller-owned page shell.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P11 draft candidate drawn from the remaining official HarmonyOS-Examples reserve to extend Router param hydration and builder-heavy page composition after the P10 promotion."
+      },
+      "source_paths": [
+        "14-DateSelection/entry/src/main/cangjie/pages/MainPage.cj"
+      ],
+      "blocking_constraints": [
+        "Keep Router.getParamsObject hydration, start/end date state, tab controller ownership, and builder-defined booking sections source-backed inside the page shell; do not extract booking coordinators or calendar adapters."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-examples-silkui-calendar-page",
+      "priority": "P12",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "usage_goal": "Add a lightweight calendar route page that keeps stacked button composition and Router.push handoff inside one render-facing page shell.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P12 draft candidate harvested from the remaining official HarmonyOS-Examples reserve after the regular Phase06 checkpoint reached 50/50 live passed."
+      },
+      "source_paths": [
+        "Silkui/entry/src/main/cangjie/src/pages/calendar.cj"
+      ],
+      "blocking_constraints": [
+        "Keep the three Router.push targets and stacked button layout source-backed inside the page shell; do not invent route coordinators or detached menu helpers."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-examples-deepseek-about-view-page",
+      "priority": "P12",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "usage_goal": "Add a parameter-driven web content page that keeps Router param hydration, back navigation, and embedded Web rendering inside one render-facing page shell.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P12 draft candidate drawn from the remaining official HarmonyOS-Examples reserve to extend Router-param web content coverage without hidden local helpers."
+      },
+      "source_paths": [
+        "07-DeepSeek/entry/src/main/cangjie/src/pages/about_view.cj"
+      ],
+      "blocking_constraints": [
+        "Keep Router.getParamsObject title/src hydration, back-button routing, resource-backed icons, and Web(src) source-backed inside the page boundary; do not fabricate separate navigation view models."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-examples-chargingui-battery-shell",
+      "priority": "P12",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Add a charging-status host sample that keeps page-owned power and charging state in the page shell while freezing the animated ElectricQuantity component explicitly as a companion slice.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P12 draft candidate selected from the remaining official HarmonyOS-Examples reserve to extend page-plus-rich-component coverage with an explicit helper freeze instead of hidden same-package dependence."
+      },
+      "source_paths": [
+        "ChargingUI/entry/src/main/cangjie/src/index.cj",
+        "ChargingUI/entry/src/main/cangjie/src/electric_quantity.cj"
+      ],
+      "blocking_constraints": [
+        "Keep power/isCharging state plus Slider and Toggle wiring in the page host, and keep the bubble animation, canvas drawing, and charging gradient logic source-backed in ElectricQuantity; do not collapse the helper into a synthetic single-file abstraction."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-examples-commonui-entry-page",
+      "priority": "P13",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "usage_goal": "Add the remaining official CommonUI route shell so the regular lane keeps one explicit button-driven Router menu anchor after the P12 promotion.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P13 draft candidate harvested from the remaining official HarmonyOS-Examples reserve after the regular Phase06 checkpoint reached 54/54 live passed."
+      },
+      "source_paths": [
+        "CommonUI/entry/src/main/cangjie/src/index.cj"
+      ],
+      "blocking_constraints": [
+        "Keep the extend Button.jump helper and the eight Router.push targets source-backed inside the page shell; do not invent detached route coordinators or menu helper layers."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-examples-clock-canvas-page",
+      "priority": "P13",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Add a timer-driven canvas clock sample that keeps lifecycle-owned redraw scheduling in the page shell while freezing the drawing helper explicitly as a renderer support slice.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P13 draft candidate selected from the remaining official HarmonyOS-Examples reserve to extend timer plus canvas-render coverage with one explicit helper freeze."
+      },
+      "source_paths": [
+        "11-Clock/entry/src/main/cangjie/src/index.cj",
+        "11-Clock/entry/src/main/cangjie/src/utils/clock.cj"
+      ],
+      "blocking_constraints": [
+        "Keep the page-owned Timer lifecycle, CanvasRenderingContext2D ownership, and display-size hydration in the host page, and keep dial/hand drawing logic source-backed in utils/clock.cj rather than collapsing it into a fake single-file shell."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-examples-simpledraw-geometry-shell",
+      "priority": "P13",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Add an interactive geometry playground that keeps touch-mode switching and canvas host ownership in the page shell while freezing the dynamic geometry and math helpers explicitly as support slices.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P13 draft candidate selected from the remaining official HarmonyOS-Examples reserve because its helper surface becomes acceptable once all same-package geometry dependencies are frozen transparently."
+      },
+      "source_paths": [
+        "SimpleDraw/entry/src/main/cangjie/src/index.cj",
+        "SimpleDraw/entry/src/main/cangjie/src/DGeometry.cj",
+        "SimpleDraw/entry/src/main/cangjie/src/Geometry.cj"
+      ],
+      "blocking_constraints": [
+        "Keep current mode selection, touch dispatch, point/circle host state, and Shape event wiring in the page shell; keep dynamic geometry entities plus geometric intersection math source-backed in DGeometry.cj and Geometry.cj rather than pretending the page is self-contained."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-examples-calendar-manager-entry-view",
+      "priority": "P14",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "view-model-renderer",
+      "usage_goal": "Add a lightweight official route shell that keeps button-driven Hilog handoff in the page while freezing the applog helper explicitly as a narrow support slice.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P14 regular candidate harvested from the remaining official HarmonyOS-Examples reserve after the regular Phase06 checkpoint reached 60/60 live passed."
+      },
+      "source_paths": [
+        "19-CangjiexArkTS/CalendarManager/entry/src/main/cangjie/views/EntryView.cj",
+        "19-CangjiexArkTS/CalendarManager/entry/src/main/cangjie/applog/Applog.cj"
+      ],
+      "blocking_constraints": [
+        "Keep the EntryView button shell source-backed and keep applog/Applog.cj as the explicit logging helper instead of inlining or inventing a detached event rail."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-cangjie-cases-secondary-linkage-page",
+      "priority": "P14",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Add an official cascading-list sample that keeps dual Scroller ownership and list coordination in the page shell while freezing its data-source and cross-module description helper explicitly.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Cangjie-Cases",
+        "branch": "main",
+        "commit": "2d0662bb5c97a15d6bc459688df6c9b23275f12f",
+        "access_date": "2026-04-12",
+        "purpose": "P14 regular candidate selected from the remaining official HarmonyOS-Cangjie-Cases reserve once the page, data-source, and shared FunctionDescription helper are frozen transparently."
+      },
+      "source_paths": [
+        "CangjieAppDevelopment/feature/secondarylinkage/src/main/cangjie/src/SecondaryLinkageExample.cj",
+        "CangjieAppDevelopment/feature/secondarylinkage/src/main/cangjie/src/DataType.cj",
+        "CangjieAppDevelopment/common/utils/src/main/cangjie/src/component/FunctionDescription.cj"
+      ],
+      "blocking_constraints": [
+        "Keep Scroller ownership, LazyForEach data-source behavior, and two-level list linkage source-backed in the page, and freeze DataType.cj plus FunctionDescription.cj explicitly instead of pretending the page is self-contained."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": [
+        "mixed-app-pattern"
+      ]
+    },
+    {
+      "sample_id": "harmonyos-cangjie-cases-pending-items-todo-list",
+      "priority": "P14",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Add an official pending-items page that keeps dialog-driven item creation and swipe-action list ownership in the page shell while freezing the item and model companions explicitly.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Cangjie-Cases",
+        "branch": "main",
+        "commit": "2d0662bb5c97a15d6bc459688df6c9b23275f12f",
+        "access_date": "2026-04-12",
+        "purpose": "P14 regular candidate selected from the remaining official HarmonyOS-Cangjie-Cases reserve by freezing the page together with its list-item and model companions instead of stopping at a misleading single-file scout."
+      },
+      "source_paths": [
+        "CangjieAppDevelopment/feature/pendingitems/src/main/cangjie/src/pages/ToDoList.cj",
+        "CangjieAppDevelopment/feature/pendingitems/src/main/cangjie/src/pages/ToDoListItem.cj",
+        "CangjieAppDevelopment/feature/pendingitems/src/main/cangjie/src/model/ConstData.cj",
+        "CangjieAppDevelopment/feature/pendingitems/src/main/cangjie/src/model/ToDo.cj"
+      ],
+      "blocking_constraints": [
+        "Keep dialogController ownership, swipeAction wiring, and pending/completed list state source-backed in the page shell, and keep ToDoListItem plus the model files explicitly frozen instead of hiding them behind manual selection."
+      ],
+      "interaction_tags": [
+        "gesture-component"
+      ],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-examples-pinwheel-entry-shell",
+      "priority": "P15",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Add an official animation-control page that keeps timer-owned rotation and size state in the page shell while freezing the slider panel and constants explicitly as support slices.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P15 regular candidate selected from the remaining official HarmonyOS-Examples reserve after the regular Phase06 checkpoint reached 69/69 live passed."
+      },
+      "source_paths": [
+        "12-Pinwheel/entry/src/main/cangjie/index.cj",
+        "12-Pinwheel/entry/src/main/cangjie/common/Constants.cj",
+        "12-Pinwheel/entry/src/main/cangjie/view/PanelComponent.cj"
+      ],
+      "blocking_constraints": [
+        "Keep Timer.repeat-driven rotation, image scale state, and slider callback ownership source-backed in the page shell, and keep PanelComponent.cj plus common/Constants.cj explicitly frozen instead of pretending the sample is single-file."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-cangjie-cases-search-component",
+      "priority": "P15",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Add an official foldable-aware search component that keeps geometryTransition, foldable-width branching, and toast interaction inside one narrow rich-component boundary.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Cangjie-Cases",
+        "branch": "main",
+        "commit": "2d0662bb5c97a15d6bc459688df6c9b23275f12f",
+        "access_date": "2026-04-12",
+        "purpose": "P15 regular candidate selected from the remaining official HarmonyOS-Cangjie-Cases reserve because SearchComponent.cj is a self-contained rich-component sample with explicit foldable and geometry-transition behavior."
+      },
+      "source_paths": [
+        "CangjieAppDevelopment/feature/searchcomponent/src/main/cangjie/src/SearchComponent.cj"
+      ],
+      "blocking_constraints": [
+        "Keep geometryTransition, AppStorage-backed foldable branching, and PromptAction toast wiring source-backed inside the component boundary instead of wrapping the sample in a fake page shell."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-cangjie-cases-functional-scenes-component",
+      "priority": "P15",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "rich-component",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Add an official tabs-and-list orchestration component that keeps TabsController, LazyForEach filtering, and menu/list coordination in the host component while freezing the model helpers explicitly.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Cangjie-Cases",
+        "branch": "main",
+        "commit": "2d0662bb5c97a15d6bc459688df6c9b23275f12f",
+        "access_date": "2026-04-12",
+        "purpose": "P15 regular candidate selected from the remaining official HarmonyOS-Cangjie-Cases reserve by freezing FunctionalScenes together with its data-source and tab-model helpers as an honest bounded workset."
+      },
+      "source_paths": [
+        "CangjieAppDevelopment/feature/functionalscenes/src/main/cangjie/src/FunctionalScenes.cj",
+        "CangjieAppDevelopment/feature/functionalscenes/src/main/cangjie/src/model/ListDataSource.cj",
+        "CangjieAppDevelopment/feature/functionalscenes/src/main/cangjie/src/model/SceneModuleInfo.cj",
+        "CangjieAppDevelopment/feature/functionalscenes/src/main/cangjie/src/model/TabsData.cj"
+      ],
+      "blocking_constraints": [
+        "Keep TabsController ownership, ListDataSource behavior, TAB_DATA filtering, and Router-facing item selection source-backed in the component, and freeze the model files explicitly instead of reducing the sample to a misleading single-file pick."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-examples-bankui-search-page",
+      "priority": "P16",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Add an official search-history page shell that keeps @Link-shared search state in the host page while freezing the three explicit search subcomponents as bounded companions.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P16 regular candidate selected from the remaining official HarmonyOS-Examples reserve by freezing the BankUI search page together with its three direct search helper components as one bounded workset."
+      },
+      "source_paths": [
+        "BankUI/entry/src/main/cangjie/src/Page/search.cj",
+        "BankUI/entry/src/main/cangjie/src/Component/searchInput.cj",
+        "BankUI/entry/src/main/cangjie/src/Component/searchDelete.cj",
+        "BankUI/entry/src/main/cangjie/src/Component/searchLayout.cj"
+      ],
+      "blocking_constraints": [
+        "Keep SearchController handoff, @Link-backed recent-search state sharing, and the three explicit search helper components source-backed instead of collapsing the sample into a misleading single-file page."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-examples-canvas-poker-card-fan",
+      "priority": "P16",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Add an official canvas card-fan page that keeps slider-owned redraw state in the page shell while freezing the card renderer and card constants as explicit renderer-facing helpers.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P16 regular candidate selected from the remaining official HarmonyOS-Examples reserve by freezing CanvasPoker entry state together with its explicit card renderer and constants helpers."
+      },
+      "source_paths": [
+        "CanvasPoker/entry/src/main/cangjie/src/index.cj",
+        "CanvasPoker/entry/src/main/cangjie/src/card/cards.cj",
+        "CanvasPoker/entry/src/main/cangjie/src/card/const.cj"
+      ],
+      "blocking_constraints": [
+        "Keep slider-driven redraw state, drawCard rendering flow, and card-face constants source-backed instead of flattening the sample into a fake single-file canvas demo."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-examples-color-picker-dialog",
+      "priority": "P16",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Add an official custom-dialog color picker page that keeps dialog controller ownership in the host page while freezing the HSV, palette, slider, and color utility helpers explicitly.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-12",
+        "purpose": "P16 regular candidate selected from the remaining official HarmonyOS-Examples reserve by freezing the ColorPicker entry shell together with its bounded dialog, slider, palette, and HSV utility chain."
+      },
+      "source_paths": [
+        "ColorPicker/entry/src/main/cangjie/index.cj",
+        "ColorPicker/entry/src/main/cangjie/color_picker/color_picker.cj",
+        "ColorPicker/entry/src/main/cangjie/color_picker/color_slider.cj",
+        "ColorPicker/entry/src/main/cangjie/color_picker/color_palette.cj",
+        "ColorPicker/entry/src/main/cangjie/color_picker/color_utils.cj",
+        "ColorPicker/entry/src/main/cangjie/color_picker/hsv.cj"
+      ],
+      "blocking_constraints": [
+        "Keep CustomDialogController ownership, HSV mutation flow, and the palette/slider/color-utils helper chain source-backed instead of treating the picker as a deceptive single-file shell."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-examples-game2048-entry-shell",
+      "priority": "P17",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Add an official swipe-driven 2048 host page that keeps touch-direction handling, score ownership, and board sync in the page shell while freezing the puzzle engine and score display companion explicitly.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P17 regular candidate selected from the remaining official HarmonyOS-Examples reserve because its interactive page, puzzle core, and score widget form one honest bounded workset after the P16 checkpoint."
+      },
+      "source_paths": [
+        "Game2048/entry/src/main/cangjie/src/index.cj",
+        "Game2048/entry/src/main/cangjie/src/core/puzzle.cj",
+        "Game2048/entry/src/main/cangjie/src/widget/common.cj"
+      ],
+      "blocking_constraints": [
+        "Keep swipe direction detection, board sync, score ownership, and PromptAction game-over handling source-backed in the page shell, and keep core/puzzle.cj plus widget/common.cj explicitly frozen instead of pretending the game is single-file."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-examples-pretty-calculator-home-view",
+      "priority": "P17",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Add an official adaptive calculator page that keeps fold-aware layout and app-level storage composition in the page shell while freezing the expression, history, keyboard, and theme companions explicitly.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P17 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the host page and four same-package companions form a bounded UI composition without reopening draft or manual lanes."
+      },
+      "source_paths": [
+        "PrettyCalculator/entry/src/main/cangjie/src/index.cj",
+        "PrettyCalculator/entry/src/main/cangjie/src/components/expression.cj",
+        "PrettyCalculator/entry/src/main/cangjie/src/components/history.cj",
+        "PrettyCalculator/entry/src/main/cangjie/src/components/keyboard.cj",
+        "PrettyCalculator/entry/src/main/cangjie/src/components/theme.cj"
+      ],
+      "blocking_constraints": [
+        "Keep fold-status branching, page-level layout composition, and AppStorage-backed host wiring source-backed in the page shell, and keep expression/history/keyboard/theme files explicitly frozen instead of collapsing the sample into an overfit single-file pick."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-examples-cube-entry-view",
+      "priority": "P17",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Add an official cube-simulation page that keeps sync orchestration and button-driven transforms in the page shell while freezing the mutable cube model and algebra helpers explicitly.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P17 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the entry page plus cube algebra helpers form a source-backed interactive workset of manageable size beyond the P16 checkpoint."
+      },
+      "source_paths": [
+        "03-Cube/entry/src/main/cangjie/src/index.cj",
+        "03-Cube/entry/src/main/cangjie/src/cube/cube.cj",
+        "03-Cube/entry/src/main/cangjie/src/cube/matrix.cj",
+        "03-Cube/entry/src/main/cangjie/src/cube/permutation.cj",
+        "03-Cube/entry/src/main/cangjie/src/cube/rotation.cj"
+      ],
+      "blocking_constraints": [
+        "Keep CubeFace composition, sync orchestration, and button-triggered transform/reset flow source-backed in the page shell, and keep cube.cj plus the matrix/permutation/rotation helpers explicitly frozen instead of flattening the sample into a misleading single-page demo."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-examples-calculator-entry-view",
+      "priority": "P18",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Add an official deterministic calculator page that keeps keypad-grid orchestration and expression/result ownership in the page shell while freezing dynamic state, button entities, and evaluator helpers explicitly.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P18 regular candidate selected from the remaining official HarmonyOS-Examples reserve because its keypad page, observed state model, button entities, and local evaluator helpers form one bounded deterministic workset without timer or display-side pressure."
+      },
+      "source_paths": [
+        "04-Calculator/entry/src/main/cangjie/src/index.cj",
+        "04-Calculator/entry/src/main/cangjie/src/service/dynamic_param.cj",
+        "04-Calculator/entry/src/main/cangjie/src/entity/button_entity.cj",
+        "04-Calculator/entry/src/main/cangjie/src/entity/ac_button_entity.cj",
+        "04-Calculator/entry/src/main/cangjie/src/entity/eval_button_entity.cj",
+        "04-Calculator/entry/src/main/cangjie/src/entity/number_button_entity.cj",
+        "04-Calculator/entry/src/main/cangjie/src/entity/operation_button_entity.cj",
+        "04-Calculator/entry/src/main/cangjie/src/entity/keyboards.cj",
+        "04-Calculator/entry/src/main/cangjie/src/utils/calculate_utils.cj",
+        "04-Calculator/entry/src/main/cangjie/src/utils/collections.cj",
+        "04-Calculator/entry/src/main/cangjie/src/utils/string_utils.cj"
+      ],
+      "blocking_constraints": [
+        "Keep DynamicParam mutation, keypad definitions, button press semantics, and local evaluator helpers source-backed instead of collapsing the sample into a deceptive single entry file."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-examples-schedule-entry-view",
+      "priority": "P18",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Add an official schedule page that keeps TabsController/scroller synchronization and resource-backed course composition in the page shell while freezing the direct MainAbility, grid components, and course data helpers explicitly.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P18 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the schedule page, direct MainAbility context dependency, grid components, and course data helpers stay inside one bounded resource-backed subtree."
+      },
+      "source_paths": [
+        "10-Schedule/entry/src/main/cangjie/index.cj",
+        "10-Schedule/entry/src/main/cangjie/components/BackRow.cj",
+        "10-Schedule/entry/src/main/cangjie/components/Course.cj",
+        "10-Schedule/entry/src/main/cangjie/components/SectionRow.cj",
+        "10-Schedule/entry/src/main/cangjie/components/SectionTime.cj",
+        "10-Schedule/entry/src/main/cangjie/dataModel/CourseEntity.cj",
+        "10-Schedule/entry/src/main/cangjie/dataModel/CourseItem.cj",
+        "10-Schedule/entry/src/main/cangjie/main_ability.cj"
+      ],
+      "blocking_constraints": [
+        "Keep MainAbility.abilityContext, scroller synchronization, builder-backed course grid composition, and course data helpers source-backed instead of treating the sample as a standalone index.cj shell."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-examples-custom-keyboard-entry-view",
+      "priority": "P18",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Add an official custom-keyboard payment page that keeps AppStorage/StorageLink-driven license-plate flow in the page shell while freezing the builder components, constants, and keyboard model explicitly.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P18 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the AppStorage-backed entry page, local builder components, constants, and keyboard model form one bounded custom-keyboard flow without cross-feature imports."
+      },
+      "source_paths": [
+        "17-CustomKeyboard/entry/src/main/cangjie/index.cj",
+        "17-CustomKeyboard/entry/src/main/cangjie/components/FooterBuilder.cj",
+        "17-CustomKeyboard/entry/src/main/cangjie/components/LicensePlateInputBuilder.cj",
+        "17-CustomKeyboard/entry/src/main/cangjie/components/PaymentInfoBuilder.cj",
+        "17-CustomKeyboard/entry/src/main/cangjie/components/TitleBuilder.cj",
+        "17-CustomKeyboard/entry/src/main/cangjie/constants/KeyboardConstants.cj",
+        "17-CustomKeyboard/entry/src/main/cangjie/constants/StyleConstants.cj",
+        "17-CustomKeyboard/entry/src/main/cangjie/model/Keyboard.cj"
+      ],
+      "blocking_constraints": [
+        "Keep AppStorage/StorageLink state, custom keyboard builder flow, dialog/footer interactions, and keyboard/constants helpers source-backed instead of reducing the sample to a single page shell."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-examples-slide-ui-entry-view",
+      "priority": "P19",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Add an official gesture-driven slide panel page that keeps ability-context access, same-package component composition, and local data cards source-backed in one bounded regular workset.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the slide UI entry page, direct globalAbilityContext dependency, local component subtree, and local data providers form one bounded same-package closure without timer or network pressure."
+      },
+      "source_paths": [
+        "09-SlideUI/entry/src/main/cangjie/index.cj",
+        "09-SlideUI/entry/src/main/cangjie/main_ability.cj",
+        "09-SlideUI/entry/src/main/cangjie/components/BottomTab.cj",
+        "09-SlideUI/entry/src/main/cangjie/components/GroupItem.cj",
+        "09-SlideUI/entry/src/main/cangjie/components/MsgItem.cj",
+        "09-SlideUI/entry/src/main/cangjie/components/MyTop.cj",
+        "09-SlideUI/entry/src/main/cangjie/components/ShipDirection.cj",
+        "09-SlideUI/entry/src/main/cangjie/components/ShipFact.cj",
+        "09-SlideUI/entry/src/main/cangjie/components/ShipImg.cj",
+        "09-SlideUI/entry/src/main/cangjie/components/StatusHead.cj",
+        "09-SlideUI/entry/src/main/cangjie/datas/MiniData.cj",
+        "09-SlideUI/entry/src/main/cangjie/datas/MsgData.cj",
+        "09-SlideUI/entry/src/main/cangjie/datas/WeatherData.cj"
+      ],
+      "blocking_constraints": [
+        "Keep globalAbilityContext, main_ability lifecycle wiring, gesture-driven panel state, and same-package data/component files source-backed instead of collapsing the sample into a deceptive single entry shell."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-examples-seat-selection-entry-view",
+      "priority": "P19",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Add an official seat-selection page that keeps AppStorage-backed layout, same-package seat-map components, constants, and seat-selection state source-backed inside one bounded workset.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the entry page, MainAbility AppStorage handoff, seat-map components, constants, and SeatSelection view-model state stay inside one bounded same-package closure."
+      },
+      "source_paths": [
+        "13-SeatSelection/entry/src/main/cangjie/index.cj",
+        "13-SeatSelection/entry/src/main/cangjie/MainAbility.cj",
+        "13-SeatSelection/entry/src/main/cangjie/components/MovieInfo.cj",
+        "13-SeatSelection/entry/src/main/cangjie/components/MyDialog.cj",
+        "13-SeatSelection/entry/src/main/cangjie/components/SeatCanvas.cj",
+        "13-SeatSelection/entry/src/main/cangjie/components/SeatMap.cj",
+        "13-SeatSelection/entry/src/main/cangjie/components/SeatSelectionBar.cj",
+        "13-SeatSelection/entry/src/main/cangjie/components/SelectedSeat.cj",
+        "13-SeatSelection/entry/src/main/cangjie/components/card.cj",
+        "13-SeatSelection/entry/src/main/cangjie/components/tag.cj",
+        "13-SeatSelection/entry/src/main/cangjie/components/title.cj",
+        "13-SeatSelection/entry/src/main/cangjie/constants/AreaInfo.cj",
+        "13-SeatSelection/entry/src/main/cangjie/constants/DataConstants.cj",
+        "13-SeatSelection/entry/src/main/cangjie/constants/SeatInfo.cj",
+        "13-SeatSelection/entry/src/main/cangjie/constants/SeatType.cj",
+        "13-SeatSelection/entry/src/main/cangjie/constants/StyleConstants.cj",
+        "13-SeatSelection/entry/src/main/cangjie/view_model/SeatSelection.cj"
+      ],
+      "blocking_constraints": [
+        "Keep AppStorage topRectHeight injection, LocalStorageLink seat state, seat-map rendering, and constants/view-model files source-backed instead of treating the sample as a standalone page shell."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-examples-chat-ui-index-view",
+      "priority": "P19",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Add an official chat UI host sample that keeps tab-owned page state, route-target ChatView behavior, same-package entities/store/mock data, and companion components source-backed in one explicit regular closure.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P19 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the index page, route-target ChatView page, same-package component tree, entity/store/mock helpers, and local util files form one explicit 21-file closure without draft-lane or exception-rail dependencies."
+      },
+      "source_paths": [
+        "05-ChatUI/entry/src/main/cangjie/src/index.cj",
+        "05-ChatUI/entry/src/main/cangjie/src/components/avatar/Avatar.cj",
+        "05-ChatUI/entry/src/main/cangjie/src/components/badge/Badge.cj",
+        "05-ChatUI/entry/src/main/cangjie/src/components/chat/ChatLine.cj",
+        "05-ChatUI/entry/src/main/cangjie/src/components/chat/ChatList.cj",
+        "05-ChatUI/entry/src/main/cangjie/src/components/chat/ChatListItem.cj",
+        "05-ChatUI/entry/src/main/cangjie/src/components/dynamic/DynamicList.cj",
+        "05-ChatUI/entry/src/main/cangjie/src/components/friend/FriendBar.cj",
+        "05-ChatUI/entry/src/main/cangjie/src/components/friend/FriendList.cj",
+        "05-ChatUI/entry/src/main/cangjie/src/components/friend/FriendListItem.cj",
+        "05-ChatUI/entry/src/main/cangjie/src/components/friend/FriendTab.cj",
+        "05-ChatUI/entry/src/main/cangjie/src/components/index/TabBar.cj",
+        "05-ChatUI/entry/src/main/cangjie/src/entity/Chat.cj",
+        "05-ChatUI/entry/src/main/cangjie/src/entity/Group.cj",
+        "05-ChatUI/entry/src/main/cangjie/src/entity/Message.cj",
+        "05-ChatUI/entry/src/main/cangjie/src/entity/User.cj",
+        "05-ChatUI/entry/src/main/cangjie/src/global/store.cj",
+        "05-ChatUI/entry/src/main/cangjie/src/mock/dataMock.cj",
+        "05-ChatUI/entry/src/main/cangjie/src/pages/ChatView.cj",
+        "05-ChatUI/entry/src/main/cangjie/src/util/dataSource.cj",
+        "05-ChatUI/entry/src/main/cangjie/src/util/variable.cj"
+      ],
+      "blocking_constraints": [
+        "Keep the ChatView route target, global store handoff, same-package chat/friend/dynamic components, and entity/mock/util files source-backed instead of under-freezing the sample to only the tab host page."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-examples-kuaishou-ui-slowfeet-entry-view",
+      "priority": "P20",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Add an official SlowFeet tabbed shell sample that keeps the host page, three direct route-target pages, and same-package chat/video models source-backed in one bounded regular closure.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P20 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the tabbed host shell, local route-target pages, and same-package chat/video model files form one bounded closure without network, timer, event-bus, or AppStorage pressure."
+      },
+      "source_paths": [
+        "KuaiShouUI/SlowFeet/src/main/cangjie/src/index.cj",
+        "KuaiShouUI/SlowFeet/src/main/cangjie/src/Pages/chat.cj",
+        "KuaiShouUI/SlowFeet/src/main/cangjie/src/Pages/user.cj",
+        "KuaiShouUI/SlowFeet/src/main/cangjie/src/Pages/video.cj",
+        "KuaiShouUI/SlowFeet/src/main/cangjie/src/Model/ChatModel.cj",
+        "KuaiShouUI/SlowFeet/src/main/cangjie/src/Model/VideoModel.cj"
+      ],
+      "blocking_constraints": [
+        "Keep the tabbed host page, direct route-target pages, and same-package chat/video model files source-backed instead of under-freezing the sample to one entry shell."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-examples-adaptive-ui-entry-view",
+      "priority": "P20",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Add an official AdaptiveUI sample that keeps the timer-backed entry page, MainAbility device-type handoff, same-package component subtree, and local utility helpers source-backed in one bounded regular closure.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P20 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the timer-backed page shell, MainAbility/AppStorage handoff, and same-package component subtree stay local without network or event-bus coupling."
+      },
+      "source_paths": [
+        "08-AdaptiveUI/entry/src/main/cangjie/src/index.cj",
+        "08-AdaptiveUI/entry/src/main/cangjie/src/main_ability.cj",
+        "08-AdaptiveUI/entry/src/main/cangjie/src/common/constants.cj",
+        "08-AdaptiveUI/entry/src/main/cangjie/src/component/content.cj",
+        "08-AdaptiveUI/entry/src/main/cangjie/src/component/header.cj",
+        "08-AdaptiveUI/entry/src/main/cangjie/src/component/pannel.cj",
+        "08-AdaptiveUI/entry/src/main/cangjie/src/utils/hilog.cj",
+        "08-AdaptiveUI/entry/src/main/cangjie/src/utils/windows_manager.cj"
+      ],
+      "blocking_constraints": [
+        "Keep timer-backed progress, MainAbility device-type injection, local component files, and utility helpers source-backed instead of reducing the sample to the entry page alone."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-examples-order-ui-entry-view",
+      "priority": "P20",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Add an official OrderUI sample that keeps the safe-area host page, MainAbility window wiring, same-package home/me/message tab components, and local api/model/util helpers source-backed in one explicit regular closure.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P20 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the host shell, MainAbility safe-area setup, same-package home-tab closure, and local mock ShopApi/model/util files form one bounded closure without network-secret dependencies."
+      },
+      "source_paths": [
+        "OrderUI/entry/src/main/cangjie/src/index.cj",
+        "OrderUI/entry/src/main/cangjie/src/main_ability.cj",
+        "OrderUI/entry/src/main/cangjie/src/api/ShopApi.cj",
+        "OrderUI/entry/src/main/cangjie/src/components/home/home.cj",
+        "OrderUI/entry/src/main/cangjie/src/components/home/homeBanner.cj",
+        "OrderUI/entry/src/main/cangjie/src/components/home/homeContent.cj",
+        "OrderUI/entry/src/main/cangjie/src/components/home/homeHeader.cj",
+        "OrderUI/entry/src/main/cangjie/src/components/home/homeMenu.cj",
+        "OrderUI/entry/src/main/cangjie/src/components/home/homePosition.cj",
+        "OrderUI/entry/src/main/cangjie/src/components/home/homeSearch.cj",
+        "OrderUI/entry/src/main/cangjie/src/components/home/homeShopList.cj",
+        "OrderUI/entry/src/main/cangjie/src/components/home/homeShopRecommend.cj",
+        "OrderUI/entry/src/main/cangjie/src/components/me/me.cj",
+        "OrderUI/entry/src/main/cangjie/src/components/message/message.cj",
+        "OrderUI/entry/src/main/cangjie/src/constants/baseConstants.cj",
+        "OrderUI/entry/src/main/cangjie/src/constants/breakpointConstants.cj",
+        "OrderUI/entry/src/main/cangjie/src/constants/homeConstants.cj",
+        "OrderUI/entry/src/main/cangjie/src/models/homeMenuModel.cj",
+        "OrderUI/entry/src/main/cangjie/src/models/productInfoModel.cj",
+        "OrderUI/entry/src/main/cangjie/src/models/shopInfoModel.cj",
+        "OrderUI/entry/src/main/cangjie/src/models/tab.cj",
+        "OrderUI/entry/src/main/cangjie/src/models/temp.cj",
+        "OrderUI/entry/src/main/cangjie/src/utils/BreakpointType.cj",
+        "OrderUI/entry/src/main/cangjie/src/utils/ResourceUtil.cj",
+        "OrderUI/entry/src/main/cangjie/src/utils/WindowUtil.cj"
+      ],
+      "blocking_constraints": [
+        "Keep safe-area/AppStorage wiring, MainAbility window setup, same-package home/me/message components, and local api/model/util/constant helpers source-backed instead of collapsing the sample to the host shell."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-examples-ui-layout-entry-view",
+      "priority": "P21",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Add an official UILayout gallery sample that keeps the router entry shell, four route-target layout pages, same-package layout components, and local helper/model files source-backed in one bounded regular closure.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the router-backed layout gallery, same-package route-target pages, and local helper/model files form one bounded closure without network, socket, or hybrid-host dependencies."
+      },
+      "source_paths": [
+        "02-UILayout/entry/src/main/cangjie/index.cj",
+        "02-UILayout/entry/src/main/cangjie/pages/BadgeView.cj",
+        "02-UILayout/entry/src/main/cangjie/pages/ListView.cj",
+        "02-UILayout/entry/src/main/cangjie/pages/ScrollView.cj",
+        "02-UILayout/entry/src/main/cangjie/pages/SimpleLayout.cj",
+        "02-UILayout/entry/src/main/cangjie/components/Badge/BadgeExamp.cj",
+        "02-UILayout/entry/src/main/cangjie/components/Badge/ChatAvatar.cj",
+        "02-UILayout/entry/src/main/cangjie/components/Badge/PseudoBadgeExamp.cj",
+        "02-UILayout/entry/src/main/cangjie/components/List/ListBands.cj",
+        "02-UILayout/entry/src/main/cangjie/components/List/User.cj",
+        "02-UILayout/entry/src/main/cangjie/components/List/UserList.cj",
+        "02-UILayout/entry/src/main/cangjie/components/ScrollLayout/HouseScrollBand.cj",
+        "02-UILayout/entry/src/main/cangjie/components/ScrollLayout/house.cj",
+        "02-UILayout/entry/src/main/cangjie/components/SimpleLayout/BillExamp.cj",
+        "02-UILayout/entry/src/main/cangjie/components/SimpleLayout/ColumnExampBand.cj",
+        "02-UILayout/entry/src/main/cangjie/components/SimpleLayout/ColumnSplitExampBand.cj",
+        "02-UILayout/entry/src/main/cangjie/components/SimpleLayout/IntroRecBand.cj",
+        "02-UILayout/entry/src/main/cangjie/components/SimpleLayout/RowExampBand.cj",
+        "02-UILayout/entry/src/main/cangjie/components/SimpleLayout/RowSplitExampBand.cj",
+        "02-UILayout/entry/src/main/cangjie/components/SimpleLayout/product.cj",
+        "02-UILayout/entry/src/main/cangjie/components/entry/Item.cj",
+        "02-UILayout/entry/src/main/cangjie/components/global/DescriptionText.cj",
+        "02-UILayout/entry/src/main/cangjie/components/global/PageHeader.cj",
+        "02-UILayout/entry/src/main/cangjie/components/global/Section.cj",
+        "02-UILayout/entry/src/main/cangjie/components/utils/BlackDivider.cj",
+        "02-UILayout/entry/src/main/cangjie/utils/color.cj",
+        "02-UILayout/entry/src/main/cangjie/utils/counter.cj",
+        "02-UILayout/entry/src/main/cangjie/utils/format.cj"
+      ],
+      "blocking_constraints": [
+        "Keep the router entry shell, four route-target pages, same-package layout components, and local helper/model files source-backed instead of collapsing the sample to the gallery entry page alone."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-examples-stock-chart-entry-view",
+      "priority": "P21",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Add an official StockChart sample that keeps the AppStorage-backed entry shell, MainAbility safe-area wiring, local resource-backed data service, and same-package renderer/viewmodel stack source-backed in one bounded regular closure.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the AppStorage-backed chart shell, MainAbility avoid-area wiring, and local renderer/viewmodel stack stay inside one same-package closure without network, socket, or hybrid-host dependencies."
+      },
+      "source_paths": [
+        "16-StockChart/entry/src/main/cangjie/index.cj",
+        "16-StockChart/entry/src/main/cangjie/main_ability.cj",
+        "16-StockChart/entry/src/main/cangjie/constants/DataConstants.cj",
+        "16-StockChart/entry/src/main/cangjie/constants/StyleConstants.cj",
+        "16-StockChart/entry/src/main/cangjie/models/ChartData.cj",
+        "16-StockChart/entry/src/main/cangjie/models/ChartDimensions.cj",
+        "16-StockChart/entry/src/main/cangjie/models/ChartDrawParams.cj",
+        "16-StockChart/entry/src/main/cangjie/models/DisplayNumberData.cj",
+        "16-StockChart/entry/src/main/cangjie/services/ChartDataService.cj",
+        "16-StockChart/entry/src/main/cangjie/viewmodels/KLineViewModel.cj",
+        "16-StockChart/entry/src/main/cangjie/viewmodels/TimeLineViewModel.cj",
+        "16-StockChart/entry/src/main/cangjie/views/ChartDrawingHelper.cj",
+        "16-StockChart/entry/src/main/cangjie/views/Content.cj",
+        "16-StockChart/entry/src/main/cangjie/views/KLineRenderer.cj",
+        "16-StockChart/entry/src/main/cangjie/views/KLineView.cj",
+        "16-StockChart/entry/src/main/cangjie/views/Numbers.cj",
+        "16-StockChart/entry/src/main/cangjie/views/Quotes.cj",
+        "16-StockChart/entry/src/main/cangjie/views/StyleExtensions.cj",
+        "16-StockChart/entry/src/main/cangjie/views/TimeLineRenderer.cj",
+        "16-StockChart/entry/src/main/cangjie/views/TimeLineView.cj",
+        "16-StockChart/entry/src/main/cangjie/views/Title.cj"
+      ],
+      "blocking_constraints": [
+        "Keep MainAbility avoid-area/AppStorage wiring, local resource-backed data service, and the same-package renderer/viewmodel stack source-backed instead of reducing the sample to the entry page alone."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-examples-waterfall-entry-view",
+      "priority": "P21",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Add an official WaterFall sample that keeps the event-bus-driven entry shell, same-package waterfall/card components, and local mock/data-source files source-backed in one bounded regular closure.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-13",
+        "purpose": "P21 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the waterfall host page, event-bus/timer components, and local mock/data-source helpers stay in one same-package closure without network, socket, or hybrid-host dependencies."
+      },
+      "source_paths": [
+        "WaterFall/entry/src/main/cangjie/src/index.cj",
+        "WaterFall/entry/src/main/cangjie/src/component/card/CoverCard.cj",
+        "WaterFall/entry/src/main/cangjie/src/component/waterfall/WaterColumn.cj",
+        "WaterFall/entry/src/main/cangjie/src/entity/media.cj",
+        "WaterFall/entry/src/main/cangjie/src/event/EventBus.cj",
+        "WaterFall/entry/src/main/cangjie/src/mock/mock.cj",
+        "WaterFall/entry/src/main/cangjie/src/utils/DataSource.cj"
+      ],
+      "blocking_constraints": [
+        "Keep the waterfall host page, event-bus/timer components, and local mock/data-source helpers source-backed instead of collapsing the sample to the entry page alone."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-examples-ui-component-gallery-entry-view",
+      "priority": "P22",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Add an official UIComponent gallery sample that keeps the index host page, same-package gallery cards, and the local data-source helper source-backed in one bounded regular closure.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P22 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the UIComponent gallery shell stays local, router-backed, and bounded to the same-package index cards without reopening the route-target playground pages."
+      },
+      "source_paths": [
+        "02-UIComponent/entry/src/main/cangjie/src/index.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/index/IndexImage.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/index/global.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/index/indexBadge.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/index/indexButton.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/index/indexCheckBox.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/index/indexMusicPlayer.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/index/indexSwiper.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/index/indexTab.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/index/indexText.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/index/indextTextInput.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/utils/dataSource.cj"
+      ],
+      "blocking_constraints": [
+        "Keep the index host page, same-package gallery cards, and the local data-source helper source-backed instead of expanding the P22 freeze to the full route-target playground subtree."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-examples-ui-component-text-playground-page",
+      "priority": "P22",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Add an official UIComponent text-playground sample that keeps the text demo page, same-package text scaffolds, and local playground font/control helpers source-backed in one bounded regular closure.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P22 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the UIComponent text playground stays local, route-target bounded, and free of network, socket, or hybrid-host dependencies while providing a same-package control-panel closure."
+      },
+      "source_paths": [
+        "02-UIComponent/entry/src/main/cangjie/src/pages/textSample.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/pages/global.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/text.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/playground/font/fontStyle.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/playground/font/fontWeight.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/playground/font/textAlign.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/playground/font/textCase.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/playground/font/textDecoration.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/playground/utils/animations.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/playground/utils/colorpicker.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/playground/utils/global.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/playground/utils/selectBand.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/playground/utils/sliderBar.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/playground/utils/toggleBar.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/playground/utils/valueSlider.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/components/playground/utils/variables.cj",
+        "02-UIComponent/entry/src/main/cangjie/src/utils/variables.cj"
+      ],
+      "blocking_constraints": [
+        "Keep the text demo page, same-package text scaffolds, and local playground font/control helpers source-backed instead of expanding P22 to the full UIComponent route-target playground set."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    },
+    {
+      "sample_id": "harmonyos-examples-roulette-ui-public-page-workflow",
+      "priority": "P22",
+      "adoption_decision": "primary",
+      "source_type": "external_repo",
+      "staging_target": "staging-full",
+      "structure_tag": "page-shell",
+      "ownership_tag": "controller-owned-state",
+      "usage_goal": "Add an official RouletteUI public-page workflow sample that keeps the routed PublicPage host plus same-package list/edit helpers source-backed in one bounded regular closure.",
+      "verification_mode": "deveco-import+manual-ui-smoke",
+      "source": {
+        "url": "https://gitcode.com/Cangjie/HarmonyOS-Examples",
+        "branch": "main",
+        "commit": "f29257acc564b5daedaba4c32b0f9530b3fc0c31",
+        "access_date": "2026-04-14",
+        "purpose": "P22 regular candidate selected from the remaining official HarmonyOS-Examples reserve because the routed PublicPage workflow, same-package turntable list, and edit form helpers stay local and bounded without reopening the home-shell or ability wiring lanes."
+      },
+      "source_paths": [
+        "RouletteUI/entry/src/main/cangjie/src/public_page.cj",
+        "RouletteUI/entry/src/main/cangjie/src/common/component/public_page_top.cj",
+        "RouletteUI/entry/src/main/cangjie/src/common/component/public_page_body.cj",
+        "RouletteUI/entry/src/main/cangjie/src/common/component/global.cj",
+        "RouletteUI/entry/src/main/cangjie/src/common/component/found_and_edit.cj",
+        "RouletteUI/entry/src/main/cangjie/src/common/component/turntable_list.cj"
+      ],
+      "blocking_constraints": [
+        "Keep PublicPage plus the same-package list/edit helper closure source-backed instead of merging it back into the RouletteUI home shell or expanding to unused ability/package scaffold files."
+      ],
+      "interaction_tags": [],
+      "exception_tags": [],
+      "sample_scope_tags": []
+    }
+  ],
+  "reference_only": [
+    {
+      "reference_id": "cangjiemagic-agent-runtime",
+      "source_type": "external_repo",
+      "role": "reference",
+      "source": {
+        "url": "https://gitcode.com/Cangjie-TPC/CangjieMagic",
+        "branch": "harmony_os",
+        "commit": "61beaadaa09b55afcb76177e1bdb0532b4b53ae1",
+        "access_date": "2026-04-06",
+        "purpose": "Agent DSL, toolset, MCP, and multi-agent execution runtime."
+      },
+      "source_paths": [
+        "README.md",
+        "docs/tutorial-en.md",
+        "src/agent",
+        "src/tool"
+      ],
+      "reason": "Supports translation/repair agent orchestration but is not a UI translation sample."
+    },
+    {
+      "reference_id": "cj-log-dfx",
+      "source_type": "external_repo",
+      "role": "reference",
+      "source": {
+        "url": "https://gitcode.com/Maker-IOS-cangjie/cj_log",
+        "branch": "main",
+        "commit": "b0609761a9e79c5890fc23215588809bde2e45c1",
+        "access_date": "2026-04-06",
+        "purpose": "Logging and observability utility."
+      },
+      "source_paths": [
+        "cjlog/src/main/cangjie/src/log.cj",
+        "doc/feature_api.md"
+      ],
+      "reason": "Useful for debugging and runtime observability, not for first-wave UI sample curation."
+    }
+  ],
+  "exception_references": [
+    {
+      "reference_id": "avif-ffi-native-boundary",
+      "source_type": "external_repo",
+      "role": "exception",
+      "exception_tags": [
+        "ffi-exception"
+      ],
+      "source": {
+        "url": "https://gitcode.com/Cangjie-TPC/avif-ffi",
+        "branch": "develop",
+        "commit": "61dcbc64c4a95ead7d61b57f96db5b871f5a0f9d",
+        "access_date": "2026-04-06",
+        "purpose": "FFI decoder, PixelMap lifecycle, and native asset handling reference."
+      },
+      "source_paths": [
+        "avif4cj/src/main/cangjie/avif_decoder.cj",
+        "entry/src/main/cangjie/example2.cj"
+      ],
+      "reason": "Native boundary, decoder lifecycle, and PixelMap ownership must stay in an exception rail instead of polluting general UI translation prompt."
+    },
+    {
+      "reference_id": "svga-cj-hybrid-boundary",
+      "source_type": "external_repo",
+      "role": "exception",
+      "exception_tags": [
+        "hybrid-exception"
+      ],
+      "source": {
+        "url": "https://gitcode.com/Cangjie-TPC/svga-cj",
+        "branch": "develop",
+        "commit": "e1f7bb4c74084cb9970fc84e854699c48f3048fb",
+        "access_date": "2026-04-06",
+        "purpose": "Hybrid Cangjie/ETS animation bridge reference."
+      },
+      "source_paths": [
+        "entry/src/main/cangjie/index.cj",
+        "entry/src/main/ets/pages/index.ets"
+      ],
+      "reason": "Hybrid runtime and ETS bridge must be isolated into a dedicated exception rail rather than learned as the default UI translation path."
+    }
+  ],
+  "deferred_pools": [
+    {
+      "pool_id": "cangjiechallenge-application-pool",
+      "source_type": "external_index",
+      "source": {
+        "url": "https://atomgit.com/org/cangjiechallenge/repos",
+        "branch": "N/A (organization index)",
+        "commit": "N/A (organization index)",
+        "access_date": "2026-04-06",
+        "purpose": "Deferred complex-application evaluation pool."
+      },
+      "reason": "Treat as multi-file evaluation pool after Phase 06 sample and prompt rails stabilize. Not suitable for first-wave curated few-shot.",
+      "blocking_constraints": [
+        "Most repos require DevEco Studio, Cangjie plugin, GUI host, and app-level environment provisioning."
+      ]
+    }
+  ]
+}
