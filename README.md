@@ -2,6 +2,8 @@
 
 # CangjieTransSkills
 
+<img src="framework.png" alt="Framework" width="800">
+
 <p>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License"></a>
   <a href=".claude/skills/"><img src="https://img.shields.io/badge/Cangjie-HarmonyOS%20Skills-0A84FF" alt="Cangjie Skills"></a>
