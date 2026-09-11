@@ -24,11 +24,13 @@
 - 应用级翻译：ArkTS / Swift / Java / Python App → 仓颉 HarmonyOS 应用
 - 库级翻译：任意语言库 / SDK / CLI → 纯仓颉 `cjpm` 包
 - 配套支持：构建、测试、UI 检查、经验沉淀、文档下载
+- 全程管理：操作型 Skill 自动使用 LoopX 管理 Goal、Todo、用户 Gate、恢复和结案
 - 经验回流：将类型映射、API 替代、构建修复、语义差异与已知问题写回经验库，用于后续任务复用
 
 核心 skill 位于 [`.claude/skills/`](.claude/skills/)，其中包含：
 
 - `base-skill`：统一入口与路由
+- `cangjie-loopx-management`：把所有操作型流程接入 LoopX 控制面
 - `cangjie-translate`：应用级翻译
 - `cangjie-translate-lib`：库级翻译
 - `build` / `cangjie-lib-build`：应用与库的构建验证
@@ -92,7 +94,7 @@
 
 ### 1. 安装 Claude Code
 
-Claude Code 以 npm 包形式发布，需要 **Node.js 18+**：
+Claude Code 以 npm 包形式发布。本工作流同时使用 LoopX，统一要求 **Node.js 22.6+**：
 
 ```bash
 # 全局安装
@@ -102,26 +104,54 @@ npm install -g @anthropic-ai/claude-code
 claude --version
 ```
 
-### 2. 安装 Skills 到目标项目
+### 2. 一键安装到目标项目
 
-将本仓库的 `.claude/` 目录和 `CLAUDE.md` 复制到你的仓颉 HarmonyOS 项目根目录：
+LoopX 是操作型 Skill 的内置管理依赖，要求 **Python 3.11+**，兼容版本范围为 **LoopX >=1.0.2,<2**。在 POSIX 系统中运行：
 
 ```bash
-# 克隆本仓库
 git clone https://github.com/cjhCoder7/CangjieTransSkills.git
-
-# 复制 Skills 和项目说明到你的项目
-cp -r CangjieTransSkills/.claude /path/to/your-cangjie-project/
-cp CangjieTransSkills/CLAUDE.md /path/to/your-cangjie-project/
+cd CangjieTransSkills
+./setup.sh /path/to/your-cangjie-project
 ```
 
-复制后你的项目目录结构应如下：
+`setup.sh` 会自动选择 Python 3.11+，随后完成：
+
+- 安装或升级 LoopX，并执行 `loopx doctor --deep`；
+- 安装 Claude Code 的 `/loopx` 命令入口；
+- 安装或更新全部仓颉 Skill；
+- 以托管区块方式合并 `CLAUDE.md` 和 `.gitignore`，保留用户已有内容；
+- 生成 `.env.cangjie.example` 和安装清单；
+- 回读校验 Skill 内容。更新已有文件前会备份到目标项目的 `.local/cangjie-trans-skills/setup-backups/`。
+
+目标项目就是当前目录时可以省略路径。若需要指定解释器：
+
+```bash
+CANGJIE_SETUP_PYTHON=/path/to/python3.11 ./setup.sh /path/to/project
+```
+
+Windows PowerShell 可直接调用跨平台安装器：
+
+```powershell
+py -3.11 scripts\setup_loopx.py --install `
+  --target-project C:\path\to\your-cangjie-project
+```
+
+LoopX 已由外部环境管理、只需安装项目 Skill 时运行：
+
+```bash
+./setup.sh --skip-loopx /path/to/your-cangjie-project
+```
+
+LoopX 的实现仍由其正式发行版维护；CangjieTransSkills 内置的是仓颉流程适配层，避免复制后出现协议和安全修复漂移。
+
+安装后目标项目结构如下：
 
 ```
 your-cangjie-project/
 ├── .claude/
 │   └── skills/          # 全部 Skills 定义
 │       ├── base-skill/
+│       ├── cangjie-loopx-management/
 │       ├── build/
 │       ├── cangjie-kernel/
 │       ├── cangjie-harmony/
@@ -131,11 +161,23 @@ your-cangjie-project/
 │       ├── harmonyos-ui-inspect/
 │       ├── download-script/
 │       └── evolution/
-├── CLAUDE.md            # 项目级规则
-├── .env                 # 环境配置（需手动创建）
+├── CLAUDE.md            # 原内容保留，并加入 CangjieTransSkills 托管区块
+├── .env.cangjie.example # 环境配置模板
 ├── entry/               # HarmonyOS 应用目录（应用项目）
 │   └── ...
 └── cjpm.toml            # 或 cjpm 库项目
+```
+
+安装器会将运行时目录加入 `.gitignore`：
+
+```gitignore
+.env
+.loopx/
+.codex/goals/
+.local/
+ui_capture_output/
+hm-docs/
+*.log
 ```
 
 ### 3. 配置环境变量（.env）
@@ -185,7 +227,7 @@ cd /path/to/your-cangjie-project
 claude
 ```
 
-Claude Code 会自动加载 `CLAUDE.md` 和 `.claude/skills/` 中的 Skills。常用工作流：
+Claude Code 会自动加载 `CLAUDE.md` 和 `.claude/skills/` 中的 Skills。直接调用下列操作型 Skill 时，会自动创建或恢复 LoopX Goal，按 Todo/Gate/quota 管理工作，不需要先手工执行 `/loopx`：
 
 ```bash
 # 应用级翻译

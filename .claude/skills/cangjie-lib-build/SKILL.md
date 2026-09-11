@@ -1,11 +1,17 @@
 ---
 name: cangjie-lib-build
 description: "编译纯仓颉 cjpm 库项目（非 HarmonyOS 应用）。自动检测仓颉 SDK，执行 cjpm build 与 cjpm test。在库目录下说编译/构建/build/打包/跑测试时使用"
-allowed-tools: Bash(python3 *), Bash(ls *), Bash(cat *)
+allowed-tools: Bash(loopx *), Bash(python3 *), Bash(ls *), Bash(cat *)
 argument-hint: "[lib-path] [-v 8k|15k] [--no-test] [--clean]"
 ---
 
 # 仓颉 cjpm 库构建
+
+## LoopX 管理（强制）
+
+读取之外的构建或测试必须先加载 `cangjie-loopx-management`。若调用来自库翻译流程，复用当前 Goal 和构建 Todo；若用户独立调用 `/cangjie-lib-build`，自动创建或恢复一个有界构建/测试 Goal。
+
+执行前读取 `quota should-run`。构建类型、测试结果、产物和失败摘要必须写回当前 Todo；脚本启动或部分产物生成不代表完成。
 
 执行：
 
@@ -100,3 +106,10 @@ python3 ${CLAUDE_SKILL_DIR}/lib_build.py -v 15k --clean
 4. `cjpm build` 编译错误 → 错误信息含 `.cj` 文件路径与行号；先查 `evolution/cangjie/syntax.md`，再查 `cangjie-translate-lib/experience/`
 5. `cjpm test` 失败 → 测试自身问题；用 `--no-test` 隔离再单独排查
 6. **经验回写**：排查并解决了非显而易见的构建问题后，通用问题写入 `evolution/cangjie/`，库工程化问题（包循环、导出不一致等）写入 `cangjie-translate-lib/experience/`
+
+## LoopX 结果写回
+
+- 成功：记录实际执行的输出类型、`cjpm build` 结果、测试总数/结果和 `target/` 下产物相对路径，验证后完成 Todo。
+- 失败：保留 Todo 未完成，记录失败阶段、首个可操作错误和下一动作；使用 `--no-test` 隔离问题时不得把“只构建成功”误报为“测试通过”。
+- SDK 缺失：创建或维持用户 Gate，与代码编译失败分开记录。
+- 非显而易见修复只有在重新构建或测试通过后才写入经验库，并在 Todo 中引用对应经验文件。

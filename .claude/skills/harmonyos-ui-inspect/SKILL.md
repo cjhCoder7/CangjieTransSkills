@@ -1,11 +1,17 @@
 ---
 name: harmonyos-ui-inspect
 description: "采集 HarmonyOS 设备/模拟器上的 UI 截图与控件树，执行交互场景验证，输出差异报告和迭代建议"
-allowed-tools: Bash(python3 *), Bash(hdc *), Read
+allowed-tools: Bash(loopx *), Bash(python3 *), Bash(hdc *), Read
 argument-hint: "[--scenario scenario.json] [--emulator port] [--no-screenshot]"
 ---
 
 # HarmonyOS UI 分析反馈 Skill
+
+## LoopX 管理（强制）
+
+读取之外的设备连接、安装、启动、采集和交互必须先加载 `cangjie-loopx-management`。若 UI 验证来自应用翻译流程，复用当前 Goal；若用户独立调用本 skill，自动创建或恢复 UI 验证 Goal。
+
+执行前读取 `quota should-run`。设备、HAP 或 `DEVECO_HOME` 缺失时创建具体用户 Gate；不得把环境缺失写成 UI 缺陷。截图、控件树和 HiLog 原文放在忽略目录，LoopX 只记录断言结果、问题摘要和稳定相对引用。
 
 ## 目的
 
@@ -248,3 +254,5 @@ hdc file recv /data/local/tmp/layout.json ./layout.json
 4. **不过度设计**：界面正常时明确标注"无需改动"
 5. **真实交互优先**：能用模式 B 验证行为时，不只依赖模式 A 的静态采集
 6. **经验回写**：UI 验证中发现并解决了非显而易见的布局/组件/状态问题，将经验写入 `evolution/cangjie/` 对应主题文件（如 `arkui.md`、`state.md`）
+7. **状态闭环**：修复建议不能代表验证完成；只有重新采集并验证关键断言后才完成 UI Todo
+8. **失败留痕**：交互失败时记录动作、预期、实际和下一动作，保留 Todo 未完成；原始证据不写入公开状态或 Git

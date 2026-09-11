@@ -2,13 +2,25 @@
 name: download-script
 description: "从 GitCode 下载最新仓颉语言和 HarmonyOS 原始文档。当 cangjie-kernel 和 cangjie-harmony 未覆盖所需内容时作为兜底使用"
 disable-model-invocation: true
-allowed-tools: Bash(python3 *), Bash(cd *), Bash(ls *)
+allowed-tools: Bash(loopx *), Bash(python3 *), Bash(cd *), Bash(ls *)
 argument-hint: "[--sources stdlib|stdx|syntax|ui-dev|tools]"
 ---
 
 # 仓颉文档下载与查询工具
 
 > 当 `cangjie-kernel` 和 `cangjie-harmony` 技能中的文档无法解决问题时，使用此工具下载最新的原始文档。
+
+## LoopX 管理
+
+`--list-sources` 等不产生写入的查询可直接运行。实际下载会访问网络并写入 `hm-docs/`，必须先加载 `cangjie-loopx-management`：
+
+- 作为翻译、构建或修复的一部分时，复用当前 Goal 和 Todo；
+- 独立下载时，自动创建或恢复一个有界文档获取 Goal；
+- 执行前读取 `quota should-run`，并遵守网络权限和目标写入边界；
+- 成功后记录文档源、语言、索引统计和目标相对路径；失败时保留 Todo 未完成并记录可操作错误；
+- `hm-docs/`、下载日志和临时仓库保持 Git 忽略，不把原始下载内容复制进 LoopX 状态。
+
+若当前环境没有网络权限，创建或维持具体用户 Gate，不得把本地已有旧文档假报为最新下载结果。
 
 ## 快速使用
 
