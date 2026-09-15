@@ -54,6 +54,27 @@ CANGJIE_SDK_HOME-8k=
 CANGJIE_SDK_HOME-15k=
 """
 
+SURFACES = {
+    "claude": {
+        "skills_dir": Path(".claude/skills"),
+        "doc_path": Path("CLAUDE.md"),
+        "loopx_surface": "claude-code",
+    },
+    "codex": {
+        "skills_dir": Path(".agents/skills"),
+        "doc_path": Path("AGENTS.md"),
+        "loopx_surface": "codex",
+    },
+}
+DEFAULT_SURFACES = ("claude", "codex")
+
+
+def surface_doc_content(surface):
+    content = SOURCE_CLAUDE.read_text(encoding="utf-8")
+    if surface == "codex":
+        content = content.replace(".claude/skills", ".agents/skills")
+    return content
+
 
 def run(command):
     print("+ " + " ".join(str(part) for part in command))
@@ -308,7 +329,11 @@ def validate_target(target):
         raise RuntimeError("目标项目目录不存在：{}".format(target))
     if target == Path(target.anchor) or target == Path.home().resolve():
         raise RuntimeError("拒绝将根目录或用户主目录作为目标项目")
-    for relative in (Path(".claude"), Path(".claude/skills"), Path(".local")):
+    protected = [Path(".local")]
+    for surface in SURFACES.values():
+        protected.append(surface["skills_dir"].parent)
+        protected.append(surface["skills_dir"])
+    for relative in protected:
         if (target / relative).is_symlink():
             raise RuntimeError("拒绝写入符号链接目录：{}".format(relative))
     return target
@@ -327,19 +352,21 @@ def project_type(target):
     return "源项目或待判定项目"
 
 
-def manifest_content(skill_dirs):
+def manifest_content(skill_dirs, surfaces):
     payload = {
-        "schema_version": "cangjie_trans_skills_install_v1",
+        "schema_version": "cangjie_trans_skills_install_v2",
         "loopx_requirement": LOOPX_REQUIREMENT,
+        "surfaces": list(surfaces),
         "skills": [path.name for path in skill_dirs],
         "skills_digest": directory_digest(SOURCE_SKILLS),
     }
     return json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
 
 
-def install_project_payload(target):
+def install_project_payload(target, surfaces=DEFAULT_SURFACES):
     skill_dirs = validate_source_payload()
     target = validate_target(target)
+    surfaces = tuple(dict.fromkeys(surfaces)) or DEFAULT_SURFACES
 
     if target == SOURCE_ROOT:
         print("目标是 CangjieTransSkills 源仓库；Skill 文件已就绪，跳过自身复制。")
@@ -347,7 +374,6 @@ def install_project_payload(target):
 
     transaction = InstallTransaction(target)
     changed = []
-    target_skills = target / ".claude" / "skills"
 
     try:
         ignore_path = target / ".gitignore"
@@ -363,34 +389,42 @@ def install_project_payload(target):
             transaction.replace_text(ignore_path, ignore_updated)
             changed.append(".gitignore")
 
-        for source_skill in skill_dirs:
-            target_skill = target_skills / source_skill.name
-            if target_skill.is_symlink():
-                raise RuntimeError(
-                    "拒绝覆盖符号链接 Skill：{}".format(source_skill.name)
-                )
-            if target_skill.is_dir() and directory_digest(target_skill) == directory_digest(
-                source_skill
-            ):
-                continue
-            transaction.replace_directory(target_skill, source_skill)
-            changed.append(".claude/skills/{}".format(source_skill.name))
+        doc_paths = {}
+        for surface in surfaces:
+            spec = SURFACES[surface]
+            target_skills = target / spec["skills_dir"]
 
-        claude_path = target / "CLAUDE.md"
-        if claude_path.is_symlink():
-            raise RuntimeError("拒绝覆盖符号链接：CLAUDE.md")
-        claude_current = (
-            claude_path.read_text(encoding="utf-8") if claude_path.is_file() else ""
-        )
-        claude_updated = merge_managed_block(
-            claude_current,
-            CLAUDE_START,
-            SOURCE_CLAUDE.read_text(encoding="utf-8"),
-            CLAUDE_END,
-        )
-        if claude_updated != claude_current:
-            transaction.replace_text(claude_path, claude_updated)
-            changed.append("CLAUDE.md")
+            for source_skill in skill_dirs:
+                target_skill = target_skills / source_skill.name
+                if target_skill.is_symlink():
+                    raise RuntimeError(
+                        "拒绝覆盖符号链接 Skill：{}".format(source_skill.name)
+                    )
+                if target_skill.is_dir() and directory_digest(
+                    target_skill
+                ) == directory_digest(source_skill):
+                    continue
+                transaction.replace_directory(target_skill, source_skill)
+                changed.append(
+                    "{}/{}".format(spec["skills_dir"].as_posix(), source_skill.name)
+                )
+
+            doc_path = target / spec["doc_path"]
+            doc_paths[surface] = doc_path
+            if doc_path.is_symlink():
+                raise RuntimeError("拒绝覆盖符号链接：{}".format(spec["doc_path"]))
+            doc_current = (
+                doc_path.read_text(encoding="utf-8") if doc_path.is_file() else ""
+            )
+            doc_updated = merge_managed_block(
+                doc_current,
+                CLAUDE_START,
+                surface_doc_content(surface),
+                CLAUDE_END,
+            )
+            if doc_updated != doc_current:
+                transaction.replace_text(doc_path, doc_updated)
+                changed.append(spec["doc_path"].as_posix())
 
         env_example = target / ".env.cangjie.example"
         if env_example.is_symlink():
@@ -405,7 +439,7 @@ def install_project_payload(target):
         manifest_path = target / ".claude" / "cangjie-trans-skills-install.json"
         if manifest_path.is_symlink():
             raise RuntimeError("拒绝覆盖符号链接：安装清单")
-        expected_manifest = manifest_content(skill_dirs)
+        expected_manifest = manifest_content(skill_dirs, surfaces)
         manifest_current = (
             manifest_path.read_text(encoding="utf-8")
             if manifest_path.is_file()
@@ -415,14 +449,19 @@ def install_project_payload(target):
             transaction.replace_text(manifest_path, expected_manifest)
             changed.append(".claude/cangjie-trans-skills-install.json")
 
-        for source_skill in skill_dirs:
-            installed = target_skills / source_skill.name
-            if not installed.is_dir() or directory_digest(installed) != directory_digest(
-                source_skill
-            ):
-                raise RuntimeError("安装回读失败：{}".format(source_skill.name))
-        if CLAUDE_START not in claude_path.read_text(encoding="utf-8"):
-            raise RuntimeError("CLAUDE.md 托管规则回读失败")
+        for surface in surfaces:
+            spec = SURFACES[surface]
+            target_skills = target / spec["skills_dir"]
+            for source_skill in skill_dirs:
+                installed = target_skills / source_skill.name
+                if not installed.is_dir() or directory_digest(
+                    installed
+                ) != directory_digest(source_skill):
+                    raise RuntimeError("安装回读失败：{}".format(source_skill.name))
+            if CLAUDE_START not in doc_paths[surface].read_text(encoding="utf-8"):
+                raise RuntimeError(
+                    "{} 托管规则回读失败".format(spec["doc_path"])
+                )
         if IGNORE_START not in ignore_path.read_text(encoding="utf-8"):
             raise RuntimeError(".gitignore 托管规则回读失败")
         if manifest_path.read_text(encoding="utf-8") != expected_manifest:
@@ -440,7 +479,7 @@ def install_project_payload(target):
     }
 
 
-def setup_loopx(install, no_deep):
+def setup_loopx(install, no_deep, surfaces=DEFAULT_SURFACES):
     if not check_python() or not check_node():
         return 2
 
@@ -472,20 +511,11 @@ def setup_loopx(install, no_deep):
         return 5
 
     if install:
-        if (
-            run(
-                [
-                    loopx,
-                    "slash-commands",
-                    "--install",
-                    "--surface",
-                    "claude-code",
-                    "--cli-bin",
-                    loopx,
-                ]
-            )
-            != 0
-        ):
+        slash_command = [loopx, "slash-commands", "--install"]
+        for surface in surfaces:
+            slash_command += ["--surface", SURFACES[surface]["loopx_surface"]]
+        slash_command += ["--cli-bin", loopx]
+        if run(slash_command) != 0:
             return 6
 
     doctor_command = [loopx, "doctor"]
@@ -520,19 +550,32 @@ def main():
         action="store_true",
         help="只运行普通 doctor，不启动深度运行时检查",
     )
+    parser.add_argument(
+        "--surface",
+        action="append",
+        choices=sorted(SURFACES),
+        dest="surfaces",
+        help=(
+            "安装的目标 Agent 面（claude=Claude Code，codex=Codex CLI）；"
+            "可重复传入以指定多个，缺省安装全部（{}）".format(
+                "、".join(DEFAULT_SURFACES)
+            )
+        ),
+    )
     args = parser.parse_args()
+    surfaces = tuple(dict.fromkeys(args.surfaces)) if args.surfaces else DEFAULT_SURFACES
 
     if args.skip_loopx and not args.target_project:
         parser.error("--skip-loopx 必须与 --target-project 一起使用")
 
     if not args.skip_loopx:
-        status = setup_loopx(args.install, args.no_deep)
+        status = setup_loopx(args.install, args.no_deep, surfaces)
         if status != 0:
             return status
 
     if args.target_project:
         try:
-            result = install_project_payload(args.target_project)
+            result = install_project_payload(args.target_project, surfaces)
         except Exception as exc:
             print("错误：CangjieTransSkills 安装失败：{}".format(exc), file=sys.stderr)
             return 8
@@ -548,7 +591,7 @@ def main():
         if not (result["target"] / ".env").is_file():
             print("下一步：参考 .env.cangjie.example 创建并填写 .env。")
 
-    print("安装完成；重新启动 Claude Code 后即可使用仓颉操作型 Skill。")
+    print("安装完成；重新启动 Claude Code / Codex 后即可使用仓颉操作型 Skill。")
     return 0
 
 

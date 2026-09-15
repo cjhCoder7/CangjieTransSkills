@@ -5,7 +5,7 @@
 遇到仓颉语言或 HarmonyOS 开发相关问题时，**必须按以下顺序查阅资源**：
 
 1. **首先**查阅 `.claude/skills/base-skill/SKILL.md` 获取开发指引和路由信息
-2. **操作型请求**（翻译、修改、构建、测试、UI 验证、经验写入）→ 先使用 `cangjie-loopx-management` 自动创建或恢复 LoopX Goal；只读咨询不创建 Goal
+2. **操作型请求**（翻译、修改、构建、测试、UI 验证）→ 先使用 `cangjie-loopx-management` 自动创建或恢复 LoopX Goal；只读咨询不创建 Goal
 3. **语言问题**（语法/类型/标准库/并发/宏等）→ 使用 `cangjie-kernel` skill
 4. **鸿蒙开发问题**（ArkUI/Ability/系统API/互操作等）→ 使用 `cangjie-harmony` skill
 5. **代码翻译**：
@@ -15,8 +15,8 @@
    - **应用级**（HarmonyOS 应用，产物 HAP）→ 使用 `/build`，需 `DEVECO_HOME`
    - **库级**（cjpm 库，产物 `.cjo`/静态/动态库）→ 使用 `/cangjie-lib-build`，仅需仓颉 SDK
 7. **UI 验证** → 使用 `/harmonyos-ui-inspect` 采集截图、控件树、执行交互场景
-8. **经验查阅** → 使用 `evolution` skill 查阅已积累的踩坑记录
-9. **以上未覆盖** → 使用 `/download-script` 下载原始文档查询
+8. **以上未覆盖** → 使用 `/download-script` 下载原始文档查询
+9. **经验记录（可选）** → `experiences/experiences.md`
 
 ## LoopX 管理规则
 
@@ -32,30 +32,20 @@
 
 各操作型 skill 还有各自的额外前置检查，详见各 SKILL.md 中的"前置检查"章节。
 
-## 经验积累规则
+## 经验记录规则
 
-开发中解决了**非显而易见**的问题后，**必须**将经验记录到对应位置：
-
-| 经验类型 | 存储位置 | 说明 |
-|---------|---------|------|
-| 仓颉通用问题 | `evolution/cangjie/` | 语法踩坑、编译配置、API 行为差异等 |
-| 应用翻译差异 | `cangjie-translate/*2cangjie/` | 源语言 → 仓颉的语法/表达差异 |
-| 库翻译工程化 | `cangjie-translate-lib/experience/` | 包布局、API 面、依赖替代、cjpm 构建 |
-
-两边有交叉的语法点优先记到 `cangjie-translate/*2cangjie/`，`evolution/cangjie/` 只记与翻译无关的通用经验。
-
-记录格式参见 `.claude/skills/evolution/SKILL.md` 中的规范。
+开发中如解决了非显而易见的问题，可选记录到 `.claude/skills/experiences/experiences.md`；所有经验记在同一个文件里，不再分类；不是结案的必需条件。
 
 ## 开发工作流
 
 ```
-LoopX Goal/Todo → 编写代码 → /build 编译 → /harmonyos-ui-inspect --auto-hap --emulator 5555 验证 UI → 经验/质量回写 → 结案
+LoopX Goal/Todo → 编写代码 → /build 编译 → /harmonyos-ui-inspect --auto-hap --emulator 5555 验证 UI → 质量回写 → 结案
 ```
 
 对于库项目：
 
 ```
-LoopX Goal/Todo → 编写代码 → /cangjie-lib-build 编译 + 测试 → 经验/质量回写 → 结案
+LoopX Goal/Todo → 编写代码 → /cangjie-lib-build 编译 + 测试 → 质量回写 → 结案
 ```
 
 ## 环境配置（.env）
@@ -120,14 +110,8 @@ DevEco Studio 安装路径。`/build` 用它定位 ohpm/hvigor/node/Java，`/har
 ├── cangjie-kernel/          # 仓颉语言核心文档（语法/类型/标准库）
 ├── cangjie-harmony/         # HarmonyOS 应用开发文档（ArkUI/Ability/系统API）
 ├── cangjie-translate/       # 应用级翻译（/cangjie-translate）
-│   ├── arkts2cangjie/       #   ArkTS → 仓颉翻译经验
-│   ├── swift2cangjie/       #   Swift → 仓颉翻译经验
-│   ├── java2cangjie/        #   Java → 仓颉翻译经验
-│   └── python2cangjie/      #   Python → 仓颉翻译经验
 ├── cangjie-translate-lib/   # 库级翻译（/cangjie-translate-lib，源语言无关）
-│   └── experience/          #   库工程化经验（type-mapping/deps/build/api-design）
 ├── harmonyos-ui-inspect/    # UI 采集与交互验证（/harmonyos-ui-inspect）
 ├── download-script/         # 原始文档下载（/download-script）
-└── evolution/               # 开发经验总结（通用，非翻译类）
-    └── cangjie/             #   仓颉通用经验（syntax.md/arkui.md/state.md 等）
+└── experiences/             # 共享经验记录（单文件，非强制）
 ```

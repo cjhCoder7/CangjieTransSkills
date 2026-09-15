@@ -15,7 +15,7 @@ argument-hint: "[--sources stdlib|stdx|syntax|ui-dev|tools]"
 `--list-sources` 等不产生写入的查询可直接运行。实际下载会访问网络并写入 `hm-docs/`，必须先加载 `cangjie-loopx-management`：
 
 - 作为翻译、构建或修复的一部分时，复用当前 Goal 和 Todo；
-- 独立下载时，自动创建或恢复一个有界文档获取 Goal；
+- 独立下载时，自动创建或恢复一个有界文档获取 Goal（粒度参考 [原始文档下载](../cangjie-loopx-management/references/workflow-mapping.md#原始文档下载)）；
 - 执行前读取 `quota should-run`，并遵守网络权限和目标写入边界；
 - 成功后记录文档源、语言、索引统计和目标相对路径；失败时保留 Todo 未完成并记录可操作错误；
 - `hm-docs/`、下载日志和临时仓库保持 Git 忽略，不把原始下载内容复制进 LoopX 状态。

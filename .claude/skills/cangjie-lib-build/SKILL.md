@@ -9,7 +9,7 @@ argument-hint: "[lib-path] [-v 8k|15k] [--no-test] [--clean]"
 
 ## LoopX 管理（强制）
 
-读取之外的构建或测试必须先加载 `cangjie-loopx-management`。若调用来自库翻译流程，复用当前 Goal 和构建 Todo；若用户独立调用 `/cangjie-lib-build`，自动创建或恢复一个有界构建/测试 Goal。
+读取之外的构建或测试必须先加载 `cangjie-loopx-management`。若调用来自库翻译流程，复用当前 Goal 和构建 Todo；若用户独立调用 `/cangjie-lib-build`，自动创建或恢复一个有界构建/测试 Goal（粒度参考 [独立构建或测试](../cangjie-loopx-management/references/workflow-mapping.md#独立构建或测试)）。
 
 执行前读取 `quota should-run`。构建类型、测试结果、产物和失败摘要必须写回当前 Todo；脚本启动或部分产物生成不代表完成。
 
@@ -39,7 +39,7 @@ python3 ${CLAUDE_SKILL_DIR}/lib_build.py $ARGUMENTS
 | `cjpm.toml`，无 `entry/` / `module.json5` / `app.json5` | **本 skill** `/cangjie-lib-build` |
 | `entry/` + `module.json5` + `app.json5` | `/build`（应用级） |
 
-库项目可由 `/cangjie-translate-lib` 翻译产出；本 skill 是其 Phase 9（构建验证）的执行手段，也可独立使用。
+库项目可由 `/cangjie-translate-lib` 翻译产出；本 skill 是其构建验证阶段的执行手段，也可独立使用。
 
 ## 构建流程
 
@@ -103,13 +103,12 @@ python3 ${CLAUDE_SKILL_DIR}/lib_build.py -v 15k --clean
 1. `未找到 cjpm.toml` → 路径不对；用 `ls` 确认库根目录
 2. `未找到对应版本的仓颉 SDK` → `~/.cangjie-sdk/` 下无对应版本，或 `.env` 中 `CANGJIE_SDK_HOME` / `CANGJIE_SDK_HOME-<version>` 路径错
 3. `未在 SDK 中找到 cjpm 可执行文件` → SDK 安装不全；查 `<sdk>/bin/cjpm` 是否存在
-4. `cjpm build` 编译错误 → 错误信息含 `.cj` 文件路径与行号；先查 `evolution/cangjie/syntax.md`，再查 `cangjie-translate-lib/experience/`
+4. `cjpm build` 编译错误 → 错误信息含 `.cj` 文件路径与行号
 5. `cjpm test` 失败 → 测试自身问题；用 `--no-test` 隔离再单独排查
-6. **经验回写**：排查并解决了非显而易见的构建问题后，通用问题写入 `evolution/cangjie/`，库工程化问题（包循环、导出不一致等）写入 `cangjie-translate-lib/experience/`
 
 ## LoopX 结果写回
 
 - 成功：记录实际执行的输出类型、`cjpm build` 结果、测试总数/结果和 `target/` 下产物相对路径，验证后完成 Todo。
 - 失败：保留 Todo 未完成，记录失败阶段、首个可操作错误和下一动作；使用 `--no-test` 隔离问题时不得把“只构建成功”误报为“测试通过”。
 - SDK 缺失：创建或维持用户 Gate，与代码编译失败分开记录。
-- 非显而易见修复只有在重新构建或测试通过后才写入经验库，并在 Todo 中引用对应经验文件。
+- 排查并解决了非显而易见的问题时，可选追加记录到 `experiences/experiences.md`

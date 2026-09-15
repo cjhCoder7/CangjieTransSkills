@@ -12,15 +12,15 @@ description: "仓颉语言 HarmonyOS 开发的入口路由。遇到仓颉语法�
 先区分请求是否会改变项目：
 
 - **只读请求**：仓颉语法解释、API 查询、文档定位、代码分析。直接路由到对应领域 skill，不创建 LoopX Goal。
-- **操作型请求**：翻译、写代码、迁移资源、构建、测试、UI 验证、修复和随交付产生的经验回写。必须先加载 `cangjie-loopx-management`，由它自动创建或恢复 Goal，并以 LoopX 的 Todo、Gate、quota 和状态投影管理全过程。
+- **操作型请求**：翻译、写代码、迁移资源、构建、测试、UI 验证、修复。必须加载 `cangjie-loopx-management`，由它按固定顺序完成运行前检查（第一步即本节三步确认）、`loopx doctor` 探活、建立或恢复 Goal，再以 Todo、Gate、quota 和状态投影管理全过程。
 
 用户不需要先手工执行 `/loopx`。直接调用 `/cangjie-translate`、`/cangjie-translate-lib`、`/build`、`/cangjie-lib-build`、`/harmonyos-ui-inspect` 或执行 `/download-script` 下载时，操作型 skill 应主动进入上述管理流程。
 
 LoopX 只管理任务状态，不替代下方项目类型、模型能力和环境检查，也不扩大当前会话的写入、网络、凭据或外部系统权限。
 
-## 前置问答清单（使用任何操作型 skill 前必须完成）
+## 前置问答清单（`cangjie-loopx-management` 运行前检查第一步）
 
-在 `cangjie-loopx-management` 已接管操作型请求后，**必须依次完成以下三步确认**。任何步骤未通过时不要启动领域执行流程；将缺失项写为适当的用户 Gate 或阻塞证据。
+这三步确认是 `cangjie-loopx-management`"运行前检查"的第一步，先于解析 LoopX 命令前缀、`loopx doctor` 探活和建立/恢复 Goal 执行。**必须依次完成以下三步确认**。任何步骤未通过时不要启动领域执行流程；将缺失项写为适当的用户 Gate 或阻塞证据。
 
 ### 第 1 步：模型能力确认
 
@@ -42,7 +42,7 @@ LoopX 只管理任务状态，不替代下方项目类型、模型能力和环�
 |---------|---------|--------|--------|
 | `entry/` + `module.json5` + `app.json5` | HarmonyOS 应用 | `/build` | `/cangjie-translate` |
 | `cjpm.toml`，无 `entry/` | 仓颉 cjpm 库 | `/cangjie-lib-build` | `/cangjie-translate-lib` |
-| 其他语言项目（待翻译） | 源项目 | — | 按形态选择（见各翻译 skill 的 Phase 0） |
+| 其他语言项目（待翻译） | 源项目 | — | 按形态选择（见各翻译 skill 的分流判定） |
 
 ### 第 3 步：环境配置检查（.env）
 
@@ -118,19 +118,19 @@ HarmonyOS 平台应用开发，涉及框架、组件、系统 API。
 
 ### 4b. 库级翻译 → `/cangjie-translate-lib`
 
-源项目是库 / SDK / CLI 工具 / 算法包等任意语言纯逻辑代码，目标输出**纯仓颉 cjpm 包**。语言无关，关注 API 面、依赖策略、cjpm 包骨架与构建验证；不处理 UI 资源、`entry/`、`module.json5`。判定不明时先看 SKILL.md 中的 Phase 0 决策表。用法：`/cangjie-translate-lib [source-lib-path]`。
+源项目是库 / SDK / CLI 工具 / 算法包等任意语言纯逻辑代码，目标输出**纯仓颉 cjpm 包**。语言无关，关注 API 面、依赖策略、cjpm 包骨架与构建验证；不处理 UI 资源、`entry/`、`module.json5`。判定不明时先看 SKILL.md 中的分流判定表。用法：`/cangjie-translate-lib [source-lib-path]`。
 
-### 5. 经验总结 → `evolution`
-
-已积累的仓颉开发经验和踩坑记录。解决新问题后应追加记录。
-
-### 6. UI 检测 → `/harmonyos-ui-inspect`
+### 5. UI 检测 → `/harmonyos-ui-inspect`
 
 构建后验证 UI 表现。采集设备截图 + 控件树，执行交互场景验证，输出差异报告和迭代建议。支持 `--auto-hap`、`--hilog`、`--timestamp`。
 
-### 7. 原始文档 → `/download-script`
+### 6. 原始文档 → `/download-script`
 
 以上 skill 未覆盖时的兜底手段，从 GitCode 下载最新文档（stdlib/stdx/syntax/ui-dev/tools）。
+
+### 7. 经验记录（可选） → `experiences`
+
+跨领域共享的单文件经验日志，遇到非显而易见问题时可查阅或追加，非强制。
 
 ## 技术栈
 

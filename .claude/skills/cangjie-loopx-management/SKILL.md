@@ -1,6 +1,6 @@
 ---
 name: cangjie-loopx-management
-description: "使用 LoopX 管理 CangjieTransSkills 的翻译、构建、测试、UI 验证和经验回写任务。操作型仓颉/HarmonyOS 请求自动使用；纯知识问答不创建 Goal"
+description: "使用 LoopX 管理 CangjieTransSkills 的翻译、构建、测试、UI 验证任务。操作型仓颉/HarmonyOS 请求自动使用；纯知识问答不创建 Goal"
 ---
 
 # CangjieTransSkills 的 LoopX 管理适配
@@ -16,11 +16,13 @@ description: "使用 LoopX 管理 CangjieTransSkills 的翻译、构建、测试
 - 应用或库迁移、代码修改、资源迁移；
 - 应用或 cjpm 库构建、测试；
 - HarmonyOS UI 采集、交互验证和修复迭代；
-- 与上述交付绑定的经验回写和最终质量检查。
+- 与上述交付绑定的最终质量检查。
 
 语法解释、API 查询、文档定位、已有代码只读分析等不会改变项目的请求，不创建 Goal。
 
 ## 运行前检查
+
+以下步骤按顺序执行；Goal 的建立或恢复在全部检查通过后才开始（见下文"新任务"节），不提前创建。
 
 1. 先按 `base-skill` 判定项目类型、模型能力和必要环境。
 2. 解析一次本会话使用的 LoopX 命令前缀：优先使用 PATH 中的 `loopx`；若其不存在但 LoopX 已安装到指定 Python 3.11+ 环境，使用 `<python> -m loopx.cli`。下文的 `loopx` 均代表这个已验证的命令前缀，不得在同一 Goal 中混用不同安装来源。
@@ -115,6 +117,5 @@ loopx --format json quota should-run --goal-id <GOAL_ID> --agent-id <AGENT_ID>
 - 应用构建或 `cjpm build` 成功，要求的测试通过；
 - 含 UI 的应用已按目标范围完成 UI 验证，或存在明确且经用户接受的跳过理由；
 - 所有降级、跳过、用户决策和剩余风险均有记录；
-- 非显而易见且已验证的问题完成经验回写；
 - 启用的质量策略已有当前精确 diff 的有效回执；
 - 最终 `quota should-run` 不再要求重复执行已完成工作。

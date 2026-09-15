@@ -9,7 +9,7 @@ argument-hint: "[-v 8k|15k]"
 
 ## LoopX 管理（强制）
 
-读取之外的构建必须先加载 `cangjie-loopx-management`。若构建来自翻译流程，复用当前 Goal 和构建 Todo；若用户独立调用 `/build`，自动创建或恢复一个有界构建 Goal，不要求用户预先执行 `/loopx`。
+读取之外的构建必须先加载 `cangjie-loopx-management`。若构建来自翻译流程，复用当前 Goal 和构建 Todo；若用户独立调用 `/build`，自动创建或恢复一个有界构建 Goal（粒度参考 [独立构建或测试](../cangjie-loopx-management/references/workflow-mapping.md#独立构建或测试)），不要求用户预先执行 `/loopx`。
 
 执行前读取 `quota should-run`，只在当前构建 Todo 获准时运行。构建结果、HAP 路径和错误摘要必须写回；不能仅凭脚本已运行就完成 Todo。
 
@@ -56,15 +56,14 @@ entry/build/default/outputs/default/entry-default-unsigned.hap
 ## 编译失败排查
 
 1. 仓颉编译错误会显示源文件路径和行号，定位到具体 `.cj` 文件
-2. 查阅 `evolution` skill（`cangjie/syntax.md`、`cangjie/arkui.md`、`cangjie/state.md`）中的已知问题
-3. `macro evaluation has failed` → 检查 `@Component`/`@Observed` 等宏的使用约束
-4. 类型不匹配 → 注意 `Int32` vs `Int64`、`Array` vs `ArrayList` 等差异
-5. 环境问题 → 确认 `.env` 中 `DEVECO_HOME` 路径正确
-6. **经验回写**：排查并解决了非显而易见的编译问题后，将经验写入 `evolution/cangjie/` 对应主题文件（格式参见 `evolution/SKILL.md`）
+2. `macro evaluation has failed` → 检查 `@Component`/`@Observed` 等宏的使用约束
+3. 类型不匹配 → 注意 `Int32` vs `Int64`、`Array` vs `ArrayList` 等差异
+4. 环境问题 → 确认 `.env` 中 `DEVECO_HOME` 路径正确
 
 ## LoopX 结果写回
 
 - 成功：记录三个阶段的真实结果和 HAP 相对路径，验证产物存在后完成构建 Todo。
 - 失败：保留 Todo 未完成，记录失败阶段、首个可操作错误、已验证排查结果和下一动作；原始构建日志留在忽略目录。
 - 环境缺失：创建或维持具体用户 Gate，不把 `DEVECO_HOME`、SDK 或工具链缺失记成代码失败。
-- 修复后重跑：只有新的真实构建成功才能替代旧失败证据；经验回写必须发生在方案验证成功之后。
+- 修复后重跑：只有新的真实构建成功才能替代旧失败证据。
+- 排查并解决了非显而易见的问题时，可选追加记录到 `experiences/experiences.md`

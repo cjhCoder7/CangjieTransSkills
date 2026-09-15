@@ -1,6 +1,6 @@
 ---
 name: cangjie-translate
-description: "将其他语言代码翻译为仓颉语言。支持 ArkTS、Swift、Java、Python 到仓颉的转换，记录翻译经验和等价写法差异"
+description: "将其他语言代码翻译为仓颉语言。支持 ArkTS、Swift、Java、Python 到仓颉的转换"
 argument-hint: "[arkts|swift|java|python] [file-or-code]"
 ---
 
@@ -38,7 +38,7 @@ argument-hint: "[arkts|swift|java|python] [file-or-code]"
 |------|---------|------|
 | 源语言是什么？（ArkTS / Swift / Java / Python） | 参数 `$1` 或项目 manifest 推断 | 决定资源目录识别和类型映射规则 |
 | 源项目路径在哪？ | 参数 `$2` 或用户指定 | 定位源代码和资源 |
-| 源项目是否含 UI？ | 检查是否有视图/页面/布局文件 | 有 UI → 触发截图辅助和资源迁移 |
+| 源项目是否含 UI？ | 检查是否有视图/页面/布局文件 | 有 UI → 触发截图辅助和资源迁移；无 UI → 见下方"分流判定"，可能应改用 `/cangjie-translate-lib` |
 
 ### 3. 目标项目就绪
 
@@ -65,18 +65,35 @@ argument-hint: "[arkts|swift|java|python] [file-or-code]"
 - `.env` 中 `DEVECO_HOME` 是否已配置？（`/build` 必需）
 - 若未配置，提示用户参照 `base-skill` 中的平台典型值补充
 
+## 分流判定（强制）
+
+在执行任何翻译前先判定本 skill 是否适用：
+
+| 源项目形态 | 产物目标 | 应使用 |
+|-----------|---------|--------|
+| 可运行 app / HarmonyOS 应用 / 含 UI 资源 | HAP 应用 | **本 skill** |
+| 库 / SDK / CLI 工具 / 算法包 / 纯逻辑工具包（无 UI、无应用入口） | cjpm package | `/cangjie-translate-lib` |
+| 混合仓库（app + 内部库） | — | app 部分走本 skill，库部分走 `/cangjie-translate-lib` |
+
+**自检规则**：若源项目符合下列任一特征，属 lib 场景，应切到 `/cangjie-translate-lib`：
+- 第 2 步已确认"是否含 UI"为否，且无视图/页面/布局文件
+- 无 HarmonyOS UIAbility、Android `<activity>` + `LAUNCHER`、iOS `@main`/App 结构体等应用入口
+- manifest 将项目标记为库而非应用（如 npm 包无可执行 `bin` 且非独立前端 app、Swift Package 的 `.library` product、Python 包无驱动整体运行的 `if __name__ == "__main__"` 入口）
+- 本质是 CLI 工具、SDK、算法包等供他人调用的库，而非用户直接安装运行的应用
+
+判定为 lib 时，向用户说明原因并建议改用 `/cangjie-translate-lib`，不在本 skill 继续翻译。
+
 ## 翻译流程
 
-1. 分析源代码的语义和结构，将事实和范围结论写回当前 Todo
-2. **复制资源文件** — 见下节"资源文件迁移"（强制，优先于代码翻译）
-3. **读取参考截图**（前置检查已确认截图就绪时）— 见下节"参考截图辅助翻译"
-4. 查阅 `cangjie-kernel` skill 确认仓颉语法和 API
-5. 查阅 `cangjie-harmony` skill 确认 HarmonyOS 平台 API 的仓颉等价写法
-6. 若仓颉 / HarmonyOS 无现成等价 API，优先尝试在仓颉侧补齐 helper / adapter / compat 实现，必要时结合互操作桥接；仅在确认无法安全实现时才允许局部跳过
-7. 逐模块翻译，保持原有逻辑不变；每个 LoopX 模块批次完成后立即构建或测试，不累计未经验证的完成状态
-8. 翻译完成后查阅 `evolution` skill 中的已知踩坑记录，避免重复犯错
-9. **经验回写** — 翻译中遇到并已验证解决的非显而易见问题，按规则写入对应经验目录（见下节"经验回写"）
-10. 按 `cangjie-loopx-management` 的结案条件核对构建、UI、差异报告、经验和质量回执，再完成最终 Todo
+1. **分流判定** — 确认继续本 skill（见上节）
+2. 分析源代码的语义和结构，将事实和范围结论写回当前 Todo
+3. **复制资源文件** — 见下节"资源文件迁移"（强制，优先于代码翻译）
+4. **读取参考截图**（前置检查已确认截图就绪时）— 见下节"参考截图辅助翻译"
+5. 查阅 `cangjie-kernel` skill 确认仓颉语法和 API
+6. 查阅 `cangjie-harmony` skill 确认 HarmonyOS 平台 API 的仓颉等价写法
+7. 若仓颉 / HarmonyOS 无现成等价 API，优先尝试在仓颉侧补齐 helper / adapter / compat 实现，必要时结合互操作桥接；仅在确认无法安全实现时才允许局部跳过
+8. 逐模块翻译，保持原有逻辑不变；每个 LoopX 模块批次完成后立即构建或测试，不累计未经验证的完成状态
+9. 按 `cangjie-loopx-management` 的结案条件核对构建、UI、差异报告和质量回执，再完成最终 Todo
 
 ## 资源文件迁移（强制前置步骤）
 
@@ -165,7 +182,7 @@ argument-hint: "[arkts|swift|java|python] [file-or-code]"
 
 遇到"仓颉没有现成 API / 组件 / 语法糖"时，按以下顺序处理：
 
-1. **先确认是否真的缺失**：查 `cangjie-kernel`、`cangjie-harmony`、已有经验文档，确认是否已有等价能力或可组合实现
+1. **先确认是否真的缺失**：查 `cangjie-kernel`、`cangjie-harmony`，确认是否已有等价能力或可组合实现
 2. **优先自行补齐**：在当前项目内补充最小可用实现，例如 helper、adapter、compat 层、扩展函数、工具类、简单组件封装
 3. **必要时做桥接**：若仓颉侧无直接封装，但底层 HarmonyOS / ArkTS 能力可用，可通过互操作或薄封装桥接实现，前提是不破坏项目整体结构
 4. **最后才允许跳过**：只有在确认无法安全实现、或实现成本显著超出当前翻译边界时，才允许跳过局部功能
@@ -182,39 +199,5 @@ argument-hint: "[arkts|swift|java|python] [file-or-code]"
 - 功能完整度：遵循上节约束（先确认→补齐→桥接→最后才跳过）
 - 保持代码语义等价，不额外添加功能
 - 使用仓颉惯用写法，不要逐行直译
-- 类型映射优先查阅对应子目录下的经验文档（如有）
 - 翻译后代码应可直接编译，注意仓颉与源语言的关键差异
-
-## 经验回写（翻译完成后强制执行）
-
-翻译过程中解决了**非显而易见**的问题后，**必须**将经验写入对应位置。
-
-### 回写时机
-
-- 每完成一个模块的翻译并编译通过后，立即回写该模块中遇到的问题，并在当前 LoopX Todo 记录经验文件的稳定相对路径
-- 不要等全部翻译完才一次性回写，避免遗漏细节
-- 未解决、未复现或未经验证的推测不写入经验库，改为 Todo 风险或后续项
-
-### 回写规则
-
-| 经验类型 | 写入位置 | 示例 |
-|---------|---------|------|
-| 源语言 → 仓颉的语法/表达差异 | `cangjie-translate/<lang>2cangjie/` | 类型映射、API 等价写法、语法糖替代 |
-| 仓颉语言通用问题（与翻译无关） | `evolution/cangjie/` | 编译器行为、宏约束、标准库陷阱 |
-
-**判定规则**：若问题是"从某语言翻译到仓颉时才会遇到"，写入 `*2cangjie/`；若问题是"用仓颉开发都会遇到"，写入 `evolution/cangjie/`。
-
-### 经验目录
-
-按源语言记录到对应子目录：
-
-- ArkTS → 仓颉：[arkts2cangjie/](./arkts2cangjie/)
-- Swift → 仓颉：[swift2cangjie/](./swift2cangjie/)
-- Java → 仓颉：[java2cangjie/](./java2cangjie/)
-- Python → 仓颉：[python2cangjie/](./python2cangjie/)
-
-每个子目录下按需创建主题文件（如 `types.md`、`ui.md`、`async.md`），并在子目录的 `README.md` 中维护索引。
-
-### 格式
-
-遵循 `evolution/SKILL.md` 中的"单条经验格式"：问题现象 → 原因 → 解决方案 → 相关文档。
+- 解决了非显而易见问题时，可选追加记录到 `experiences/experiences.md`（简要现象/原因/方案）

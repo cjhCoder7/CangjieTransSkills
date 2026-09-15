@@ -13,7 +13,7 @@
 
 <p><strong>面向仓颉语言 / HarmonyOS 代码迁移场景的 Claude Code Skills</strong></p>
 
-<p>围绕 <strong>Claude Code + Skills</strong> 的翻译工作流，用于将应用项目或库项目翻译到仓颉，并将翻译过程中的经验持续回流到 Skills 与经验库中。</p>
+<p>围绕 <strong>Claude Code + Skills</strong> 的翻译工作流，用于将应用项目或库项目翻译到仓颉。</p>
 
 </div>
 
@@ -23,9 +23,8 @@
 
 - 应用级翻译：ArkTS / Swift / Java / Python App → 仓颉 HarmonyOS 应用
 - 库级翻译：任意语言库 / SDK / CLI → 纯仓颉 `cjpm` 包
-- 配套支持：构建、测试、UI 检查、经验沉淀、文档下载
+- 配套支持：构建、测试、UI 检查、文档下载
 - 全程管理：操作型 Skill 自动使用 LoopX 管理 Goal、Todo、用户 Gate、恢复和结案
-- 经验回流：将类型映射、API 替代、构建修复、语义差异与已知问题写回经验库，用于后续任务复用
 
 核心 skill 位于 [`.claude/skills/`](.claude/skills/)，其中包含：
 
@@ -35,7 +34,7 @@
 - `cangjie-translate-lib`：库级翻译
 - `build` / `cangjie-lib-build`：应用与库的构建验证
 - `harmonyos-ui-inspect`：UI 截图、控件树与交互验证
-- `evolution`：翻译经验与踩坑记录，作为后续任务的经验底座
+- `experiences`：跨领域共享的经验记录（单文件，可选）
 
 更完整的规则见 [CLAUDE.md](CLAUDE.md)。
 
@@ -48,24 +47,6 @@
 
 2. **翻译样例项目**
    位于 [`CangjieProject/`](CangjieProject/)，用于展示这套 workflow 的实际产物。
-
-## 🔁 经验回流与迭代
-
-本仓库将翻译过程中的经验记录视为工作流的一部分，而不是附属产物。
-
-- 每次翻译过程中遇到的非显而易见问题，均要求沉淀为经验
-- 应用级经验写回 `cangjie-translate/` 对应语言目录
-- 仓颉通用经验写回 `evolution/cangjie/`
-- 库级工程化经验写回 `cangjie-translate-lib/experience/`
-
-经验回流后，可直接用于后续同类任务，例如：
-
-- 类型映射可以复用
-- API 替代策略可以复用
-- 构建与兼容性修复可以复用
-- 已知限制和失败案例也会被记录下来，减少重复试错
-
-因此，`CangjieTransSkills` 并非一组静态 prompt，而是一套可迭代维护的翻译与验证流程。
 
 ## 🚀 6 个翻译项目
 
@@ -117,9 +98,9 @@ cd CangjieTransSkills
 `setup.sh` 会自动选择 Python 3.11+，随后完成：
 
 - 安装或升级 LoopX，并执行 `loopx doctor --deep`；
-- 安装 Claude Code 的 `/loopx` 命令入口；
-- 安装或更新全部仓颉 Skill；
-- 以托管区块方式合并 `CLAUDE.md` 和 `.gitignore`，保留用户已有内容；
+- 安装 Claude Code 和 Codex 的 `/loopx` 命令入口；
+- 安装或更新全部仓颉 Skill，默认同时装到 `.claude/skills/`（Claude Code）和 `.agents/skills/`（Codex CLI）；
+- 以托管区块方式分别合并 `CLAUDE.md` / `AGENTS.md` 和 `.gitignore`，保留用户已有内容；
 - 生成 `.env.cangjie.example` 和安装清单；
 - 回读校验 Skill 内容。更新已有文件前会备份到目标项目的 `.local/cangjie-trans-skills/setup-backups/`。
 
@@ -127,6 +108,13 @@ cd CangjieTransSkills
 
 ```bash
 CANGJIE_SETUP_PYTHON=/path/to/python3.11 ./setup.sh /path/to/project
+```
+
+只想安装其中一个 Agent 面时，用 `--surface` 限定（可重复传入，缺省安装全部）：
+
+```bash
+./setup.sh --surface claude /path/to/your-cangjie-project   # 仅 Claude Code
+./setup.sh --surface codex /path/to/your-cangjie-project    # 仅 Codex CLI
 ```
 
 Windows PowerShell 可直接调用跨平台安装器：
@@ -149,7 +137,7 @@ LoopX 的实现仍由其正式发行版维护；CangjieTransSkills 内置的是�
 ```
 your-cangjie-project/
 ├── .claude/
-│   └── skills/          # 全部 Skills 定义
+│   └── skills/          # Claude Code 使用的 Skills 定义
 │       ├── base-skill/
 │       ├── cangjie-loopx-management/
 │       ├── build/
@@ -160,8 +148,11 @@ your-cangjie-project/
 │       ├── cangjie-lib-build/
 │       ├── harmonyos-ui-inspect/
 │       ├── download-script/
-│       └── evolution/
+│       └── experiences/
+├── .agents/
+│   └── skills/          # Codex CLI 使用的同一套 Skills（与 .claude/skills 内容一致）
 ├── CLAUDE.md            # 原内容保留，并加入 CangjieTransSkills 托管区块
+├── AGENTS.md            # 同上，供 Codex CLI 读取
 ├── .env.cangjie.example # 环境配置模板
 ├── entry/               # HarmonyOS 应用目录（应用项目）
 │   └── ...
@@ -227,7 +218,7 @@ cd /path/to/your-cangjie-project
 claude
 ```
 
-Claude Code 会自动加载 `CLAUDE.md` 和 `.claude/skills/` 中的 Skills。直接调用下列操作型 Skill 时，会自动创建或恢复 LoopX Goal，按 Todo/Gate/quota 管理工作，不需要先手工执行 `/loopx`：
+Claude Code 会自动加载 `CLAUDE.md` 和 `.claude/skills/` 中的 Skills；Codex CLI 同理会自动加载 `AGENTS.md` 和 `.agents/skills/`。直接调用下列操作型 Skill 时，会自动创建或恢复 LoopX Goal，按 Todo/Gate/quota 管理工作，不需要先手工执行 `/loopx`：
 
 ```bash
 # 应用级翻译

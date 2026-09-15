@@ -4,10 +4,13 @@ set -eu
 
 print_usage() {
     printf '%s\n' \
-        "用法: ./setup.sh [--no-deep] [--skip-loopx] [目标项目路径]" \
+        "用法: ./setup.sh [--no-deep] [--skip-loopx] [--surface claude|codex]... [目标项目路径]" \
         "" \
         "安装 LoopX，并将 CangjieTransSkills 安装到目标项目。" \
         "目标项目缺省为当前工作目录。" \
+        "" \
+        "选项:" \
+        "  --surface claude|codex  指定安装的 Agent 面，可重复；缺省安装全部" \
         "" \
         "环境变量:" \
         "  CANGJIE_SETUP_PYTHON  指定 Python 3.11+ 解释器"
@@ -16,6 +19,7 @@ print_usage() {
 setup_no_deep=0
 setup_skip_loopx=0
 setup_target=""
+setup_surface_args=""
 
 while [ "$#" -gt 0 ]; do
     case "$1" in
@@ -28,6 +32,21 @@ while [ "$#" -gt 0 ]; do
             ;;
         --skip-loopx)
             setup_skip_loopx=1
+            ;;
+        --surface)
+            shift
+            if [ "$#" -eq 0 ]; then
+                printf '%s\n' "错误：--surface 需要一个值（claude|codex）。" >&2
+                exit 2
+            fi
+            case "$1" in
+                claude|codex) ;;
+                *)
+                    printf '%s\n' "错误：--surface 的值必须是 claude 或 codex。" >&2
+                    exit 2
+                    ;;
+            esac
+            setup_surface_args="$setup_surface_args --surface $1"
             ;;
         --)
             shift
@@ -98,18 +117,24 @@ if [ -z "$setup_python" ]; then
 fi
 
 if [ "$setup_skip_loopx" -eq 1 ]; then
+    # shellcheck disable=SC2086
     exec "$setup_python" "$setup_root/scripts/setup_loopx.py" \
         --skip-loopx \
-        --target-project "$setup_target"
+        --target-project "$setup_target" \
+        $setup_surface_args
 fi
 
 if [ "$setup_no_deep" -eq 1 ]; then
+    # shellcheck disable=SC2086
     exec "$setup_python" "$setup_root/scripts/setup_loopx.py" \
         --install \
         --target-project "$setup_target" \
-        --no-deep
+        --no-deep \
+        $setup_surface_args
 fi
 
+# shellcheck disable=SC2086
 exec "$setup_python" "$setup_root/scripts/setup_loopx.py" \
     --install \
-    --target-project "$setup_target"
+    --target-project "$setup_target" \
+    $setup_surface_args
