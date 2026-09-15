@@ -7,6 +7,8 @@ description: "仓颉编程语言核心文档。涉及仓颉语法、类型系统
 
 > 请按需查阅相关文档
 
+语法、类型或标准库的只读查询不创建 LoopX Goal。若用户要求依据这些知识修改项目、编写实现或修复代码，先加载 `cangjie-loopx-management`，在获准的 Goal/Todo 边界内执行并写回验证结果。
+
 - [基本概念](./basic_concepts/README.md): 介绍仓颉编程语言的关键字、标识符、程序结构、变量定义(let/var/const)、值类型与引用类型、作用域规则、表达式(if/while/for-in/break/continue)、函数等基本概念和规则
 - [基本数据类型](./basic_data_type/README.md): 介绍仓颉语言的整数、浮点、布尔、字符(Rune)、字符串(String)、Unit、Nothing、元组(Tuple)、数组(Array/VArray)、区间(Range)类型以及基本运算符的语法和规则
 - [字符串/String](./string/README.md): 介绍仓颉标准库 String 类型的构造、搜索、替换、分割、拼接、裁剪、大小写转换、编码处理、下标访问、迭代等操作的完整 API 和用法

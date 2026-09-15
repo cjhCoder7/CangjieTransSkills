@@ -7,6 +7,8 @@ description: "仓颉语言 HarmonyOS 应用开发文档。涉及 ArkUI 组件、
 
 > 请按需查阅相关文档。本文档覆盖使用仓颉语言进行 HarmonyOS 应用开发的各个方面。
 
+HarmonyOS API 和架构的只读查询不创建 LoopX Goal。若用户要求修改应用、接入系统能力、编写 ArkUI 或修复交互，先加载 `cangjie-loopx-management`，在获准的 Goal/Todo 边界内执行，并以构建或 UI 复验结果作为完成证据。
+
 ## 入门
 
 - [应用开发导读](./cj-start-application-development-overview.md): HarmonyOS 仓颉应用开发的整体学习路径与文档结构导读

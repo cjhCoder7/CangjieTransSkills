@@ -4,3 +4,9 @@ hm-docs/
 *.log
 
 claude.sh
+
+# LoopX 与本地验证状态（不得提交）
+.loopx/
+.codex/goals/
+.local/
+ui_capture_output/

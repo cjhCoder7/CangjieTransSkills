@@ -5,21 +5,26 @@
 遇到仓颉语言或 HarmonyOS 开发相关问题时，**必须按以下顺序查阅资源**：
 
 1. **首先**查阅 `.claude/skills/base-skill/SKILL.md` 获取开发指引和路由信息
-2. **语言问题**（语法/类型/标准库/并发/宏等）→ 使用 `cangjie-kernel` skill
-3. **鸿蒙开发问题**（ArkUI/Ability/系统API/互操作等）→ 使用 `cangjie-harmony` skill
-4. **代码翻译**：
+2. **操作型请求**（翻译、修改、构建、测试、UI 验证、经验写入）→ 先使用 `cangjie-loopx-management` 自动创建或恢复 LoopX Goal；只读咨询不创建 Goal
+3. **语言问题**（语法/类型/标准库/并发/宏等）→ 使用 `cangjie-kernel` skill
+4. **鸿蒙开发问题**（ArkUI/Ability/系统API/互操作等）→ 使用 `cangjie-harmony` skill
+5. **代码翻译**：
    - **应用级**（ArkTS/Swift/Java/Python App → 仓颉应用）→ 使用 `/cangjie-translate` skill
    - **库级**（任意语言库/SDK/CLI → 纯仓颉 cjpm 包）→ 使用 `/cangjie-translate-lib` skill
-5. **编译构建**：
+6. **编译构建**：
    - **应用级**（HarmonyOS 应用，产物 HAP）→ 使用 `/build`，需 `DEVECO_HOME`
    - **库级**（cjpm 库，产物 `.cjo`/静态/动态库）→ 使用 `/cangjie-lib-build`，仅需仓颉 SDK
-6. **UI 验证** → 使用 `/harmonyos-ui-inspect` 采集截图、控件树、执行交互场景
-7. **经验查阅** → 使用 `evolution` skill 查阅已积累的踩坑记录
-8. **以上未覆盖** → 使用 `/download-script` 下载原始文档查询
+7. **UI 验证** → 使用 `/harmonyos-ui-inspect` 采集截图、控件树、执行交互场景
+8. **经验查阅** → 使用 `evolution` skill 查阅已积累的踩坑记录
+9. **以上未覆盖** → 使用 `/download-script` 下载原始文档查询
+
+## LoopX 管理规则
+
+用户直接调用仓颉操作型 Skill 时自动进入 LoopX，不要求先手工执行 `/loopx`。Goal、Todo、Gate、quota、证据、隐私、自修复和结案的完整规则，以 [`.claude/skills/cangjie-loopx-management/SKILL.md`](.claude/skills/cangjie-loopx-management/SKILL.md) 为唯一事实来源，本文件仅负责入口路由。
 
 ## 前置问答清单（重要）
 
-**执行任何操作型 skill 前，必须先完成 `base-skill` 中的三步前置检查：**
+**执行任何操作型 skill 前，必须先由 `cangjie-loopx-management` 接管，再完成 `base-skill` 中的三步领域前置检查：**
 
 1. **模型能力确认** — 多模态还是纯文本？影响截图相关流程
 2. **项目类型判定** — 应用（`entry/` + `module.json5`）还是库（`cjpm.toml`）？决定构建和翻译路由
@@ -44,13 +49,13 @@
 ## 开发工作流
 
 ```
-编写代码 → /build 编译 → /harmonyos-ui-inspect --auto-hap --emulator 5555 验证 UI
+LoopX Goal/Todo → 编写代码 → /build 编译 → /harmonyos-ui-inspect --auto-hap --emulator 5555 验证 UI → 经验/质量回写 → 结案
 ```
 
 对于库项目：
 
 ```
-编写代码 → /cangjie-lib-build 编译 + 测试
+LoopX Goal/Todo → 编写代码 → /cangjie-lib-build 编译 + 测试 → 经验/质量回写 → 结案
 ```
 
 ## 环境配置（.env）
@@ -109,6 +114,7 @@ DevEco Studio 安装路径。`/build` 用它定位 ohpm/hvigor/node/Java，`/har
 ```
 .claude/skills/
 ├── base-skill/              # 入口路由（自动加载）
+├── cangjie-loopx-management/ # LoopX 目标/Todo/Gate/状态管理适配
 ├── build/                   # 应用级编译构建（/build，产物 HAP）
 ├── cangjie-lib-build/       # 库级编译构建（/cangjie-lib-build，产物 cjpm 包）
 ├── cangjie-kernel/          # 仓颉语言核心文档（语法/类型/标准库）

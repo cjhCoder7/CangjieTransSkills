@@ -10,6 +10,18 @@ argument-hint: "[source-lib-path] [--lang <hint>]"
 
 本 skill 面向**库级别**翻译，产物为 **`cjpm` 包**。不包含应用资源迁移、`$r()` 引用、HarmonyOS `entry/` 骨架、UI 截图辅助等 app 级逻辑 —— 这些由 `/cangjie-translate` 负责。
 
+## LoopX 管理（强制）
+
+开始任何读取之外的操作前，加载 `cangjie-loopx-management`：
+
+1. 从目标项目根创建或恢复一个 Goal；
+2. 按其 [库迁移映射](../cangjie-loopx-management/references/workflow-mapping.md#库迁移) 先规划、后写入有序 Todo；
+3. 每轮只执行 `quota should-run` 选中的阶段；
+4. 高风险语义决策、SDK 缺失或写入范围变化通过用户 Gate 管理；
+5. 每个模块批次只有在 `cjpm build` 或对应测试通过后才完成 Todo。
+
+不得因为用户直接调用了本 skill 就绕过 LoopX，也不得在 LoopX 不可用时退化为聊天内的临时进度表。
+
 ## 前置检查（启动翻译前必须完成）
 
 | # | 检查项 | 获取方式 | 未就绪时 |
@@ -188,6 +200,7 @@ argument-hint: "[source-lib-path] [--lang <hint>]"
 
 - 按依赖拓扑序翻译：无依赖的 leaf 包 → 依赖其他包的模块
 - 每完成一个模块立即进入 Phase 9 编译，不积攒错误
+- 模块完成与验证结果写回当前 LoopX Todo；编译失败时保持 Todo 未完成并记录紧凑失败证据
 - 翻译每个文件前先查 `evolution` skill 的已知坑，解决新坑后回写到 `cangjie-translate-lib/experience/`（Phase 10）
 - 不要一次 diff 写几十个文件；保持"写一个 → 编一次 → 记一笔"节奏
 
@@ -232,6 +245,8 @@ python3 ${CLAUDE_SKILL_DIR}/../cangjie-lib-build/lib_build.py <lib-root>
 
 **与 `cangjie-translate/*2cangjie/` 的区别**：那里沉淀应用翻译中"源语言 → 仓颉"的语法/表达差异；这里沉淀**库工程化**经验（包布局、API 面、依赖替代、cjpm 构建）。两边有交叉的语法点优先记到 `cangjie-translate/*2cangjie/`，本目录只记库独有的。
 
+经验文件只有在问题已复现、方案已验证后写入。将其稳定相对路径记录到当前 LoopX Todo；未验证猜测保留为风险或 successor，不进入经验库。
+
 ## 翻译总则
 
 - 优先保全公共 API 与核心功能；仓颉缺失现成 API 时，先自行实现 compat / adapter / helper，再考虑 `stub` 或 `skip`
@@ -248,3 +263,5 @@ python3 ${CLAUDE_SKILL_DIR}/../cangjie-lib-build/lib_build.py <lib-root>
 3. `deps_plan.md` — 依赖决策记录
 4. `decisions.md` — 不可直译项的决策点（即使为空也保留文件）
 5. 翻译报告：分流判定结论 + 关键取舍 + 已跳过 / 降级项 + 已知遗留项 + 验证结果
+
+以上输出物齐备、构建与测试通过、启用的质量策略回执有效，且最终 `quota should-run` 不再选择已完成工作后，才能结案 Goal。

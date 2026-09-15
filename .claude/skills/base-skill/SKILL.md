@@ -1,15 +1,26 @@
 ---
 name: base-skill
-description: "仓颉语言 HarmonyOS 开发的入口路由。遇到仓颉语法、HarmonyOS API、编译构建等问题时自动加载，引导使用正确的 skill"
+description: "仓颉语言 HarmonyOS 开发的入口路由。遇到仓颉语法、HarmonyOS API、翻译或构建等问题时自动加载，并将操作型任务接入 LoopX 管理"
 ---
 
 # 仓颉语言应用开发指引
 
 遇到仓颉相关问题时，按以下优先级选择 skill：
 
+## LoopX 管理入口
+
+先区分请求是否会改变项目：
+
+- **只读请求**：仓颉语法解释、API 查询、文档定位、代码分析。直接路由到对应领域 skill，不创建 LoopX Goal。
+- **操作型请求**：翻译、写代码、迁移资源、构建、测试、UI 验证、修复和随交付产生的经验回写。必须先加载 `cangjie-loopx-management`，由它自动创建或恢复 Goal，并以 LoopX 的 Todo、Gate、quota 和状态投影管理全过程。
+
+用户不需要先手工执行 `/loopx`。直接调用 `/cangjie-translate`、`/cangjie-translate-lib`、`/build`、`/cangjie-lib-build`、`/harmonyos-ui-inspect` 或执行 `/download-script` 下载时，操作型 skill 应主动进入上述管理流程。
+
+LoopX 只管理任务状态，不替代下方项目类型、模型能力和环境检查，也不扩大当前会话的写入、网络、凭据或外部系统权限。
+
 ## 前置问答清单（使用任何操作型 skill 前必须完成）
 
-在执行构建、翻译、UI 检测等操作前，**必须依次完成以下三步确认**。任何步骤未通过时不要启动主流程，先向用户确认缺失项。
+在 `cangjie-loopx-management` 已接管操作型请求后，**必须依次完成以下三步确认**。任何步骤未通过时不要启动领域执行流程；将缺失项写为适当的用户 Gate 或阻塞证据。
 
 ### 第 1 步：模型能力确认
 
@@ -66,15 +77,20 @@ description: "仓颉语言 HarmonyOS 开发的入口路由。遇到仓颉语法�
 
 ### 各 skill 前置检查速查
 
-| skill | 模型能力 | 项目类型 | `.env` | 额外前置 |
-|-------|---------|---------|--------|---------|
-| `/cangjie-translate` | ✅ 影响截图流程 | ✅ 需确认是应用 | ⚠️ 翻译完构建时需要 | 源项目路径、截图就绪（多模态时） |
-| `/cangjie-translate-lib` | — | ✅ 需确认是库 | ⚠️ 构建验证时需要 | 源项目路径、源语言 |
-| `/build` | — | ✅ 必须是应用 | ✅ `DEVECO_HOME` 必填 | — |
-| `/cangjie-lib-build` | — | ✅ 必须是库 | ⚠️ 可选 | 仓颉 SDK 可用性 |
-| `/harmonyos-ui-inspect` | ✅ 影响截图读取 | ✅ 必须是应用 | ✅ `DEVECO_HOME` 必填 | 设备连接、HAP 就绪 |
+| skill | LoopX | 模型能力 | 项目类型 | `.env` | 额外前置 |
+|-------|-------|---------|---------|--------|---------|
+| `/cangjie-translate` | ✅ Goal/Todo | ✅ 影响截图流程 | ✅ 需确认是应用 | ⚠️ 翻译完构建时需要 | 源项目路径、截图就绪（多模态时） |
+| `/cangjie-translate-lib` | ✅ Goal/Todo | — | ✅ 需确认是库 | ⚠️ 构建验证时需要 | 源项目路径、源语言 |
+| `/build` | ✅ Goal/Todo | — | ✅ 必须是应用 | ✅ `DEVECO_HOME` 必填 | — |
+| `/cangjie-lib-build` | ✅ Goal/Todo | — | ✅ 必须是库 | ⚠️ 可选 | 仓颉 SDK 可用性 |
+| `/harmonyos-ui-inspect` | ✅ Goal/Todo | ✅ 影响截图读取 | ✅ 必须是应用 | ✅ `DEVECO_HOME` 必填 | 设备连接、HAP 就绪 |
+| `/download-script`（实际下载） | ✅ Goal/Todo | — | — | — | 网络权限、下载目标路径 |
 
 ## 资源查找流程
+
+### 0. 操作型任务管理 → `cangjie-loopx-management`
+
+创建或恢复 Goal，按计划写入 Todo，每轮读取 quota 与用户 Gate，执行后写回可验证证据，并在状态漂移时自修复。所有操作型领域 skill 均通过此入口运行。
 
 ### 1. 语言核心 → `cangjie-kernel`
 

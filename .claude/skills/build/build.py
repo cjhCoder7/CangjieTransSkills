@@ -171,6 +171,10 @@ def main():
 
     # 注入 Java 环境
     java_home = deveco_home / "jbr"
+    # macOS 应用包中的 JetBrains Runtime 使用标准 JDK bundle 布局。
+    macos_java_home = java_home / "Contents" / "Home"
+    if platform.system() == "Darwin" and macos_java_home.exists():
+        java_home = macos_java_home
     if java_home.exists():
         env["JAVA_HOME"] = str(java_home)
         java_bin = str(java_home / "bin")
