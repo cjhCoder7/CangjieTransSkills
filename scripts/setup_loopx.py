@@ -38,6 +38,7 @@ IGNORE_BODY = """.env
 .local/
 ui_capture_output/
 hm-docs/
+translate_refs/
 *.log"""
 
 ENV_TEMPLATE = """# CangjieTransSkills 环境配置模板

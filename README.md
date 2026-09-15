@@ -21,7 +21,7 @@
 
 `CangjieTransSkills` 提供一套面向仓颉迁移场景的可复用工作流：
 
-- 应用级翻译：ArkTS / Swift / Java / Python App → 仓颉 HarmonyOS 应用
+- 应用级翻译：任意语言的应用 → 仓颉 HarmonyOS 应用
 - 库级翻译：任意语言库 / SDK / CLI → 纯仓颉 `cjpm` 包
 - 配套支持：构建、测试、UI 检查、文档下载
 - 全程管理：操作型 Skill 自动使用 LoopX 管理 Goal、Todo、用户 Gate、恢复和结案
@@ -130,6 +130,12 @@ LoopX 已由外部环境管理、只需安装项目 Skill 时运行：
 ./setup.sh --skip-loopx /path/to/your-cangjie-project
 ```
 
+只想跳过 `loopx doctor --deep` 的深度运行时检查（网络受限或已确认环境正常时可加速安装）：
+
+```bash
+./setup.sh --no-deep /path/to/your-cangjie-project
+```
+
 LoopX 的实现仍由其正式发行版维护；CangjieTransSkills 内置的是仓颉流程适配层，避免复制后出现协议和安全修复漂移。
 
 安装后目标项目结构如下：
@@ -168,6 +174,7 @@ your-cangjie-project/
 .local/
 ui_capture_output/
 hm-docs/
+translate_refs/
 *.log
 ```
 
@@ -222,7 +229,7 @@ Claude Code 会自动加载 `CLAUDE.md` 和 `.claude/skills/` 中的 Skills；Co
 
 ```bash
 # 应用级翻译
-/cangjie-translate arkts /path/to/source-project
+/cangjie-translate /path/to/source-project
 
 # 库级翻译
 /cangjie-translate-lib /path/to/source-lib

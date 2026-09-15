@@ -114,7 +114,7 @@ HarmonyOS 平台应用开发，涉及框架、组件、系统 API。
 
 ### 4a. 应用级翻译 → `/cangjie-translate`
 
-源项目是可运行应用（含 UI/资源），目标输出 HarmonyOS HAP。会执行资源迁移、`$r()` 引用改写、UI 截图辅助等流程。用法：`/cangjie-translate [arkts|swift|java|python] [code]`。
+源项目是可运行应用（含 UI/资源），目标输出 HarmonyOS HAP。语言无关，按项目结构自动判定源语言；会执行资源迁移、`$r()` 引用改写、UI 截图辅助等流程。用法：`/cangjie-translate [source-project-path] [--lang <hint>]`。
 
 ### 4b. 库级翻译 → `/cangjie-translate-lib`
 

@@ -131,13 +131,24 @@ def connect_emulator(addr: str) -> str:
     sys.exit(1)
 
 
-def check_device(emulator_addr: Optional[str] = None) -> str:
-    """检查 hdc 设备连接，返回设备 SN / 地址
+def _is_emulator_target(target: str) -> bool:
+    """判断 target 是否为模拟器地址（ip:port 形式），否则视为物理设备 SN"""
+    return re.match(r"^\d{1,3}(?:\.\d{1,3}){3}:\d+$", target) is not None
+
+
+def check_device(emulator_addr: Optional[str] = None, device_arg: Optional[str] = None) -> str:
+    """检查 hdc 设备连接，返回设备 SN / 地址，并写入全局 _device_target 供后续 hdc 命令使用
 
     若指定 emulator_addr，先执行 tconn 连接模拟器
+    若指定 device_arg（--device/-t），直接校验并使用该目标
+    都未指定且存在多个目标时，优先选择物理设备（真机），其次才是模拟器
     """
+    global _device_target
     if emulator_addr:
-        return connect_emulator(emulator_addr)
+        target = connect_emulator(emulator_addr)
+        _device_target = target
+        return target
+
     out = run(["hdc", "list", "targets"])
     targets = [t.strip() for t in out.splitlines() if t.strip() and "Empty" not in t]
     if not targets:
@@ -145,9 +156,26 @@ def check_device(emulator_addr: Optional[str] = None) -> str:
         print("  物理设备: 请确认 USB 连接和 hdc 环境")
         print("  模拟器:   请使用 --emulator <port> 参数（如 --emulator 5555）")
         sys.exit(1)
-    sn = targets[0]
-    print(f"[OK] 设备已连接: {sn}")
-    return sn
+
+    if device_arg:
+        if device_arg not in targets:
+            print(f"[ERROR] 指定设备 {device_arg} 未连接。当前可用目标: {', '.join(targets)}")
+            sys.exit(1)
+        chosen = device_arg
+    elif len(targets) > 1:
+        physical = [t for t in targets if not _is_emulator_target(t)]
+        chosen = physical[0] if physical else targets[0]
+        print(f"[INFO] 检测到 {len(targets)} 个目标: {', '.join(targets)}")
+        if physical:
+            print(f"[INFO] 优先选择物理设备: {chosen}（如需连接其他目标，用 --device <SN> 或 --emulator <port> 指定）")
+        else:
+            print(f"[INFO] 未检测到物理设备，默认选择: {chosen}（如需指定，用 --device <SN>）")
+    else:
+        chosen = targets[0]
+
+    _device_target = chosen
+    print(f"[OK] 设备已连接: {chosen}")
+    return chosen
 
 
 def install_hap(hap_path: str):
@@ -804,7 +832,7 @@ def main():
     parser.add_argument("--wait-after", type=float, default=1.5, metavar="SEC",
                         help="--do 执行后等待秒数（默认 1.5），让界面完成刷新再采集")
     parser.add_argument("--hilog", action="store_true", help="采集期间同时抓取 HiLog 日志")
-    parser.add_argument("--timestamp", action="store_true", help="输出目录名追加时间戳，防止覆盖")
+    parser.add_argument("--timestamp", action="store_true", help="在 --out 目录下按时间戳建子目录，防止多次运行互相覆盖（不产生新的顶层目录）")
     parser.add_argument("--no-screenshot", action="store_true",
                         help="跳过截图采集，仅产出控件树与文本摘要（纯文本模型或不需要视觉确认时使用）")
     args = parser.parse_args()
@@ -812,15 +840,10 @@ def main():
     # === 确保 hdc 可用 ===
     _ensure_hdc_in_path()
 
-    # === 设备选择 ===
-    global _device_target
-    if args.device:
-        _device_target = args.device
-
     # === 输出目录时间戳 ===
     if args.timestamp:
         ts = datetime.now().strftime("%Y%m%d_%H%M%S")
-        args.out = f"{args.out}_{ts}"
+        args.out = os.path.join(args.out, ts)
 
     # === 自动检测项目信息 ===
     project_dir = args.project
@@ -846,7 +869,7 @@ def main():
     print(f"[INFO] 目标应用: {args.bundle} / {args.ability}")
 
     os.makedirs(args.out, exist_ok=True)
-    check_device(args.emulator)
+    check_device(args.emulator, args.device)
 
     # === HAP 安装 ===
     hap_path = args.hap

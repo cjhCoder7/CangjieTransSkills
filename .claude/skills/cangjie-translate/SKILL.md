@@ -1,12 +1,12 @@
 ---
 name: cangjie-translate
-description: "将其他语言代码翻译为仓颉语言。支持 ArkTS、Swift、Java、Python 到仓颉的转换"
-argument-hint: "[arkts|swift|java|python] [file-or-code]"
+description: "将其他语言的应用代码翻译为仓颉语言，产物为 HarmonyOS 应用（HAP）。语言无关，按项目结构自动判定"
+argument-hint: "[source-project-path] [--lang <hint>]"
 ---
 
 # 代码翻译为仓颉语言
 
-将 $1 代码翻译为仓颉语言（待翻译内容：$2）。
+将位于 $1 的应用代码翻译为仓颉语言，产物为 HarmonyOS 应用（HAP）。`--lang <hint>` 可选，在无法从项目结构自动判定源语言时使用。
 
 ## LoopX 管理（强制）
 
@@ -36,8 +36,8 @@ argument-hint: "[arkts|swift|java|python] [file-or-code]"
 
 | 问题 | 获取方式 | 影响 |
 |------|---------|------|
-| 源语言是什么？（ArkTS / Swift / Java / Python） | 参数 `$1` 或项目 manifest 推断 | 决定资源目录识别和类型映射规则 |
-| 源项目路径在哪？ | 参数 `$2` 或用户指定 | 定位源代码和资源 |
+| 源语言是什么？ | 从项目 manifest / 目录结构自动推断（参考下方"识别源项目资源目录"中的平台示例）；无法判定时用 `--lang <hint>` 或询问用户 | 决定资源目录识别和类型映射规则 |
+| 源项目路径在哪？ | 参数 `$1` 或用户指定 | 定位源代码和资源 |
 | 源项目是否含 UI？ | 检查是否有视图/页面/布局文件 | 有 UI → 触发截图辅助和资源迁移；无 UI → 见下方"分流判定"，可能应改用 `/cangjie-translate-lib` |
 
 ### 3. 目标项目就绪
@@ -101,14 +101,14 @@ argument-hint: "[arkts|swift|java|python] [file-or-code]"
 
 ### 识别源项目资源目录
 
-按源语言类型定位：
+按源项目的平台/生态定位资源目录，以下为常见示例，未列出的平台按类似原则（先找 UI 框架的资源约定目录）处理：
 
-| 源语言 | 典型资源目录 |
+| 常见平台/生态（示例） | 典型资源目录 |
 |--------|-------------|
-| ArkTS（HarmonyOS） | `entry/src/main/resources/`（`base/media/`、`base/element/`、`rawfile/`） |
-| Swift（iOS） | `Assets.xcassets/`、`Resources/`、`*.lproj/`、`Base.lproj/` |
-| Java（Android） | `app/src/main/res/`（`drawable*/`、`mipmap*/`、`values*/`、`raw/`、`assets/`） |
-| Python | `static/`、`templates/`、`assets/`、`resources/`（按框架不同而异，如 Django/Flask/Tkinter） |
+| HarmonyOS 应用 | `entry/src/main/resources/`（`base/media/`、`base/element/`、`rawfile/`） |
+| iOS 应用 | `Assets.xcassets/`、`Resources/`、`*.lproj/`、`Base.lproj/` |
+| Android 应用 | `app/src/main/res/`（`drawable*/`、`mipmap*/`、`values*/`、`raw/`、`assets/`） |
+| Web / 脚本类应用 | `static/`、`templates/`、`assets/`、`resources/`（按框架不同而异，如 Django/Flask） |
 
 ### 映射到仓颉 HarmonyOS 工程
 

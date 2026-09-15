@@ -2,7 +2,7 @@
 name: harmonyos-ui-inspect
 description: "采集 HarmonyOS 设备/模拟器上的 UI 截图与控件树，执行交互场景验证，输出差异报告和迭代建议"
 allowed-tools: Bash(loopx *), Bash(python3 *), Bash(hdc *), Read
-argument-hint: "[--scenario scenario.json] [--emulator port] [--no-screenshot]"
+argument-hint: "[--auto-hap|--hap <path>] [--emulator port|--device SN] [--do action --target json] [--no-launch] [--no-screenshot] [--hilog] [--timestamp]"
 ---
 
 # HarmonyOS UI 分析反馈 Skill
@@ -54,6 +54,7 @@ hdc list targets
 - `127.0.0.1:5555` → 模拟器，后续加 `--emulator 5555`
 - `0123456789ABCDEF` → USB 设备，无需 `--emulator`
 - 空或 `Empty` → 先启动模拟器或连接设备
+- 输出中出现**多个**目标（多台设备/多个模拟器同时在线）→ 脚本默认**优先选择物理设备（真机）**，没有物理设备时才选第一个模拟器；如需连接非默认目标，显式加 `--device <SN>`（等价 `-t`）指定，避免连错设备
 
 ---
 
@@ -91,13 +92,14 @@ python "${CLAUDE_SKILL_DIR}/ui_capture.py" --emulator 5555 --no-screenshot --out
 | 参数 | 说明 |
 |------|------|
 | `--emulator 5555` | 连接本地模拟器 |
+| `--device <SN>` | 多设备/多模拟器同时在线时，显式指定目标（等价 `-t`）；不指定时默认优先选物理设备 |
 | `--hap <路径>` | 安装指定 .hap 包 |
 | `--auto-hap` | 自动搜索 entry/build/ 下最新 .hap 安装 |
 | `--no-launch` | 应用已在前台时跳过启动 |
 | `--no-screenshot` | 跳过截图采集，仅产出控件树与文本摘要（纯文本模型必选） |
 | `--wait N` | 启动后等待 N 秒（默认 3） |
 | `--hilog` | 同时抓取 HiLog 日志 |
-| `--timestamp` | 输出目录追加时间戳，防止多次运行互相覆盖 |
+| `--timestamp` | 在 `--out` 目录下按时间戳建子目录（如 `ui_capture_output/20260915_120000/`），防止多次运行互相覆盖，且不会在项目根新增顶层目录 |
 
 ### A2. 读取结果
 

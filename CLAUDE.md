@@ -9,7 +9,7 @@
 3. **语言问题**（语法/类型/标准库/并发/宏等）→ 使用 `cangjie-kernel` skill
 4. **鸿蒙开发问题**（ArkUI/Ability/系统API/互操作等）→ 使用 `cangjie-harmony` skill
 5. **代码翻译**：
-   - **应用级**（ArkTS/Swift/Java/Python App → 仓颉应用）→ 使用 `/cangjie-translate` skill
+   - **应用级**（任意语言的应用 → 仓颉应用）→ 使用 `/cangjie-translate` skill
    - **库级**（任意语言库/SDK/CLI → 纯仓颉 cjpm 包）→ 使用 `/cangjie-translate-lib` skill
 6. **编译构建**：
    - **应用级**（HarmonyOS 应用，产物 HAP）→ 使用 `/build`，需 `DEVECO_HOME`
